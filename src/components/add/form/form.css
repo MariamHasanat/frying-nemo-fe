@@ -1,0 +1,6 @@
+.add-form > input{
+
+  appearance: none;
+  border: 1px solid #999;
+  outline: none;
+}
