@@ -20,7 +20,6 @@ const Form = (props) => {
       value = {name} 
       onChange = {e => setName (e.target.value)}
       />
-
       <div><button type='submit'  
       onClick={handle}> Create</button></div>
     </form>
