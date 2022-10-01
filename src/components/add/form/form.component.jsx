@@ -2,35 +2,32 @@ import { useState } from 'react';
 import './form.css';
 
 const Form = (props) => {
-  const [name, setName] = useState('Qusai');
-
+  const[name,setName]=useState('Nadeen');
   /**
-   * Handler function for the form onSubmit event.
-   * @param {React.FormEvent<HTMLFormElement>} e Event object.
+   * 
+   * @param {React.FormEvent<HTMLFormElement>} e 
    */
-  const submitHandler = e => {
-    e.preventDefault();
-
-    /**
-     * @type {HTMLFormElement}
-     */
+  const SubmitHandel=e=>{
+    e.preventDefult();
+/**
+ * @type {HtmlFormElement}
+ */
     const target = e.target;
-    console.debug(target.ATTRIBUTE_NODE);
-  };
 
+  }
   return (
-    <form className="add-form" onSubmit={submitHandler} >
-      <input
-        type="text"
-        name="name"
-        placeholder="Name"
+    <form className='add-form' onSubmit={SubmitHandel}>
+       <input type="text"
+        placeholder='Name'
         value={name}
-        onChange={e => setName(e.target.value)}
-      />
-      <div style={{ marginTop: 20 }}>
-        <button type="submit">Create</button>
-      </div>
-    </form>
+        name='name'
+       onChange={e=>setName(e.target
+        .value)}
+       /> 
+       <div>
+        <button type='submit'>Create</button>
+       </div>
+       </form>
   );
 };
 
