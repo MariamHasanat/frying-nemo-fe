@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Input from '../../common/input/input-component';
 import './form.css';
 
 const Form = (props) => {
@@ -17,15 +18,26 @@ const Form = (props) => {
     const target = e.target;
     console.debug(target);
   };
+
+  const onNameChange = e => {
+    let value = e.target.value;
+    if (value.length > 20) {
+      alert("Noooooooo Please !!!!! toooo much");
+      value = value.substring(0, 20);
+    }
+    if (value.includes("find")) {
+      value = value.replace("find", "fry");
+    }
+    setName(value);
+  };
   return (
     <form className='add-form' onSubmit={submitHandler}>
-      <input
-        type="text"
-        name='name'
-        placeholder='Name'
-        value={name}
-        onChange={e => setName(e.target.value)} />
       <div style={{ marginTop: 20 }}>
+        <Input
+          label="Name"
+          value={name}
+          onChange={onNameChange}
+        />
         <button type='submit'>Create</button>
       </div>
     </form>

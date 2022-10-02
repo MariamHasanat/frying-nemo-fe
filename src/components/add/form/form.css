@@ -1,7 +1,4 @@
-.add-form > input{
-  
-}
-.add-form > button {
+.add-form button {
   display: inline-block;
   padding: 15px 25px;
   font-size: 24px;
@@ -14,9 +11,12 @@
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
+  margin-left: 50px;
 }
 
-.add-form button:hover {background-color: #3e8e41}
+.add-form button:hover {
+  background-color: #3e8e41
+}
 
 .add-form button:active {
   background-color: #3e8e41;
