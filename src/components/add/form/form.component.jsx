@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './form.css';
+import Input from '../../../common/input/input.component';
 
 const Form = (props) => {
   const [name, setName] = useState('Nadeen');
@@ -15,15 +16,25 @@ const Form = (props) => {
     const target = e.target;
 
   };
+  const onNameChange = e =>  {
+    let value = e.target.value;
+
+    if (value.includes('find')) {
+      value=value.replace(/find/ig, 'fry');
+    }
+    setName(value);
+  
+  };
   return (
     <form className='add-form' onSubmit={SubmitHandel}>
-      <input type="text"
-        placeholder='Name'
+    <div style={{marginTop:20}}>
+       <Input
+        lable="Name"
+        placeholder='name'
         value={name}
-        name='name'
-        onChange={e => setName(e.target
-          .value)}
-      />
+        onChange={onNameChange}
+       />
+      </div>
       <div>
         <button type='submit'>Create</button>
       </div>
