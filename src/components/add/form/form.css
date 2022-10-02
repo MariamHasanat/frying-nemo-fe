@@ -1,6 +1,22 @@
-.form > input{
-    padding: 5px 3px;
+.form>input {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    appearance: none;
+    border-radius: 0.375rem;
 }
-.sub{
+
+.form>input:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 14px 0.25rem rgb(117 166 239 / 25%);
+}
+
+.sub {
     margin-top: 10px;
 }
