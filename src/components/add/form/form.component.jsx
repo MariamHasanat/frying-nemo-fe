@@ -1,7 +1,6 @@
 import './form.css';
 import { useState } from 'react';
-import './form.css';
-
+import Input from '../../common/input.component';
 
 const Form = (props) => {
   const [name, setName] = useState('Lana');
@@ -22,19 +21,39 @@ const Form = (props) => {
     console.debug(target.ATTRIBUTE_NODE);
   };
 
+  const onNameChange = e => {
+
+    let value = e.target.value;
+
+    if (value.includes('.')) {
+
+      alert('. character is not allowed !');
+      value = value.replace('.', ' ');
+    }
+
+    if (/find/ig.test(value)) {
+
+      alert('find word is not allowed !');
+      value = value.replace('/find/ig', 'fry ');
+    }
+
+    setName(value);
+  }
 
   return (
     <form className="add-form" onSubmit={submitHandler}>
-      <input
-        type="text"
-        name="name"
-        placeholder="Name"
-        value={name}
-        onChange={e => setName(e.target.value)}
-      />
       <div style={{ marginTop: 20 }}>
+
+        <Input
+          label="Name"
+          value={name}
+          onChange={onNameChange}
+        />
+
+
         <button type="submit">Create </button>
       </div>
+
     </form>
   );
 };
