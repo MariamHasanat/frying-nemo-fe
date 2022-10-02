@@ -12,15 +12,16 @@ const Form = (props) => {
     console.debug(target);
   }
   return (
-    <form onSubmit={handler}>
+    <form className='add-form' onSubmit={handler}>
+      
       <input 
-      type="text" 
-      value={name}
-      placeholder="name"
-      onChange={e => setName(e.target.value)}
+        type="text" 
+        value={name}
+        placeholder="name"
+        onChange={e => setName(e.target.value)}
       />
       <div style={{ margintop : 20 }}>
-        <button type='submit'>Creat</button>
+        <button className='btn' type='submit'>Creat</button>
         </div>
     </form>
   );
