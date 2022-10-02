@@ -6,6 +6,7 @@ const AddPage = (props) => {
   return (
     <div>
       <h1>Add a new item</h1>
+      <br></br>
       <Form />
     </div>
   );
