@@ -20,9 +20,23 @@ const Form = (props) => {
 
 
   return (
-    <form onSubmit={submitHandler}>
-      <input type="text" name="item-name" onChange={e => setName(e.target.value)} value={name} />
-      <button type='submit'>Add Item</button>
+    <form onSubmit={submitHandler} className='add-item-form'>
+      <input type="text"
+        name="item-name"
+        onChange={
+          e => {
+            // setName(e.target.value);
+            let value = e.target.value;
+            if (value === 'find') {
+              value = 'fry';
+            }
+            setName(value);
+          }}
+        value={name} />
+
+      <div>
+        <button type='submit'>Add Item</button>
+      </div>
     </form>
   );
 };
