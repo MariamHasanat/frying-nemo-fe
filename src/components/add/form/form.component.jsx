@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Input from '../../common/input/input.component';
 import './form.css';
 
 const Form = (props) => {
@@ -13,20 +14,34 @@ const Form = (props) => {
     /**
      * @type {HTMLFormElement}
      */
-    const target = e.target;
-    //  console.log(e.target.uName.value);
-    console.log(target.Name.value);
+    console.log(name)
   };
 
+  const inputChangeHandler = (e) => {
+    /*
+              let value = e.target.value;
+              if(value.includes('find')){
+                // alert('we are not finding nemo... we are frying nemo!')
+                value = value.replace('find', 'fry')
+              }
+              setName(value);
+              */
+
+    let value = e.target.value;
+    if (value.length >= 20) {
+      alert('character limit exceeded');
+      value = value.substring(0, 20);
+    }
+    setName(value);
+  };
   return (
     <form onSubmit={submitHandler} className="styled-form">
-      <input
-        type="text"
-        name="Name"
-        placeholder="Name"
+      <Input
+        label="sajeda"
+        onChange={inputChangeHandler}
         value={name}
-        onChange={e => setName(e.target.value)}
       />
+
       <div>
         <button type='submit'>Create</button>
       </div>
