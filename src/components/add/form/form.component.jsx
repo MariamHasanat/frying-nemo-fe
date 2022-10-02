@@ -1,36 +1,44 @@
 import React, { useState } from 'react';
 import './form.css';
-
+import  Input from '../../common/input';
 const Form = (props) => {
-  const [name,setName]=useState('mariam');
+  const [name, setName] = useState('mariam');
 
-/**
- * 
- * @param {React.FormEvent<HTMLFormElement>} e event object
- */
+  /**
+   * 
+   * @param {React.FormEvent<HTMLFormElement>} e event object
+   */
 
-const submitHandler= e  =>{
-  e.preventDefault();
-}
-/**
- *  @type {HTMLFormElement}
- */
-const target =e.target;
+  const submitHandler = e => {
+    e.preventDefault();
+    const target = e.target;
+  };
+  /**
+   *  @type {HTMLFormElement}
+   */
+  const onChange = e => {
+    let value = e.target.value;
+    if (value.includes('find')) {
+      alert('find');
+      value = value.replace('find', 'fry');
+    }
+    setName(value);
+  };
 
 
-return (
+  return (
     <form className='add-form' onSubmit={submitHandler}>
-    <input type='text'
-    name= "name"
-    placeholder='name'
-    value={name}
-    onChange={e =>setName( e.target.value)}
-    />
-      <div style ={{ marginTop:20}}>
+
+      <Input
+        label="Name"
+        value={name}
+        onChange={onChange}
+      />
+      <div style={{ marginTop: 20 }}>
         <button type="submit">creat</button>
-    
+
       </div>
- 
+
     </form>
   );
 };
