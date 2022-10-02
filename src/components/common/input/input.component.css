@@ -1,0 +1,25 @@
+.add-item-form>input {
+  padding: 8px 16px;
+  font-size: 20px;
+  font-family: sans-serif;
+  border-radius: 16px;
+  border: 1px solid gray;
+  outline: unset;
+  margin-bottom: 16px;
+}
+
+.add-item-form > label{
+  display: block;
+}
+.add-item-form > div > button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.add-item-form > div > button:hover {
+  background-color: #007bffab;
+  cursor: pointer;
+}

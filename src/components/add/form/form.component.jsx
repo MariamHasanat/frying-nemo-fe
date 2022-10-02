@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './form.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import Input from '../../common/input/input.componen';
 
 const Form = (props) => {
 
@@ -21,7 +23,7 @@ const Form = (props) => {
 
   return (
     <form onSubmit={submitHandler} className='add-item-form'>
-      <input type="text"
+      {/* <input type="text"
         name="item-name"
         onChange={
           e => {
@@ -32,7 +34,18 @@ const Form = (props) => {
             }
             setName(value);
           }}
-        value={name} />
+        value={name} /> */}
+      <Input
+        label='name'
+        onChange={
+          e => {
+            // setName(e.target.value);
+            let value = e.target.value;
+            if (value === 'find') {
+              value = 'fry';
+            }
+            setName(value);
+          }} />
 
       <div>
         <button type='submit'>Add Item</button>
