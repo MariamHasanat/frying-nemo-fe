@@ -20,6 +20,7 @@ const Form = (props) => {
                 name='name'
                 placeholder='Name'
                 value={name}
+                
                 onChange={(e) => { setName(e.target.value); }}
             />
             <div className='sub'>
