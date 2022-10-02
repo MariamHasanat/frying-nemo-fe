@@ -1,8 +1,10 @@
-import './form.css';
 import { useState } from 'react';
+import Input from '../../../input/input.component';
+import './form.css';
 
 const Form = (props) => {
-  const [name,setName] = useState('Huda');
+  const [name, setName] = useState('Huda');
+
   /**
    * Handler function for the form onSubmit event.
    * @param {React.FormEvent<HTMLFormElement>} e Event object.
@@ -14,20 +16,26 @@ const Form = (props) => {
      * @type {HTMLFormElement}
      */
     const target = e.target;
-    console.debug(target);
+    console.debug(target.ATTRIBUTE_NODE);
   };
+  
+  const onNameChange = e => {
+    let value =e.target.value;
+    if (value.includes('find')){
+      value =value.replace('find','fry');
+    }
+    setName(value);
+  }
 
   return (
-    <form className='add-form' onSubmit={submitHandler()}>
-      <input
-        type="text"
-        name='name'
-        placeholder='Name'
-        value={name}
-        onChange={e => setName(e.target.value)}
-      />
+    <form className="add-form" onSubmit={submitHandler} >
       <div style={{ marginTop: 20 }}>
-        <button type='submit'>Create</button>
+      <Input
+        label="name"
+        value={name}
+        onChange={onNameChange}
+      />
+        <button type="submit">Create</button>
       </div>
     </form>
   );
