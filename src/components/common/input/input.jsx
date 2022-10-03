@@ -2,18 +2,19 @@ import'./input.css';
 import React from 'react';
 /**
  * 
- * @param { React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>&{
- * label?:string}} props 
+ * @param {React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
+ *  label?: string;
+ * }} props 
  * @returns 
  */
 
 
 const Input =(props)=>{
-  const { label,...inputprops} = props;
+  const { label,...inputProps} = props;
   return(
     <div className='input-group'>
-    {label?<lable>{label}</lable>:null}
-    <input {...inputprops}/>
+    {label?<label>{label}</label>:null}
+    <input {...inputProps}/>
     </div>
   );
 };

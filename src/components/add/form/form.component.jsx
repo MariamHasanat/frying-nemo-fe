@@ -20,11 +20,11 @@ const[name,setname]=useState('Sajeda');
     if(/find/ig.test(value)){
       value = value.replace(/find/ig, 'fry');
     }
-    if(value.lenght()>=20){
-      value = value.substr(0,18);
-    }
+    // if(value.lenght>=20){
+    //   value = value.substr(0,18);
+    // }
     setname(value);
-  };
+  }
 return(
   <form className='form' onSubmit={handleSubmit}>
     <div className='input'>
