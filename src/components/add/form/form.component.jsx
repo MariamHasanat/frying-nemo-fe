@@ -35,13 +35,13 @@ const Form = (props) => {
   };
 
   return (
-    <form className="add-form" onSubmit={submitHandler} >
-      <div style={{ marginTop: 20 }}>
-        <Input
-          label="Name"
-          value={name}
-          onChange={onNameChange}
-        />
+    <form className="addForm" onSubmit={submitHandler} >
+      <Input
+        label="Name"
+        value={name}
+        onChange={onNameChange}
+      />
+      <div className="addFormButtons">
         <button type="submit">Create</button>
       </div>
     </form>

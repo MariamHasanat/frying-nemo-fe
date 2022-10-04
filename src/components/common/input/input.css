@@ -10,13 +10,18 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.375rem;
+  border-radius: 3px;
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .input-group > label {
   display: block;
   margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #666;
+  letter-spacing: 0.5px;
 }
 
 .input-group > input:focus {
