@@ -1,0 +1,31 @@
+.textareaGroup {
+    margin-bottom: 20px;
+}
+
+.textareaGroup > textarea {
+    padding: 6px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 205px;
+    height: 70px;
+}
+
+.textareaGroup > textarea:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+.textareaGroup > label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.textareaGroup > label > span:nth-child(2) {
+  color: rgb(210, 21, 21);
+}
