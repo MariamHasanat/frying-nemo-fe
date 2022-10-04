@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Input from '../../common/input/input.component';
+import Textarea from '../../common/textarea/textarea.component';
+
 import './form.css';
 
 const Form = (props) => {
@@ -43,6 +45,24 @@ const Form = (props) => {
           onChange={onNameChange}
           required = {true}
         />
+        <Textarea
+        label="Description"
+        />
+
+        <Input
+          label="Price"
+          type="number"
+          min = {0}
+          
+          required = {true}
+        />
+        <select>
+        <option>fish</option>
+        <option>meat</option>
+        <option>chicken</option>
+        <option>salad</option>
+          </select>
+
         <button type="submit">Create</button>
       </div>
     </form>
