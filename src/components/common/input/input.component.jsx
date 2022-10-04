@@ -10,7 +10,10 @@ const Input = (props) => {
     const { label, ...otherInputs } = props;
     return (
         <div className='inputGroup'>
-            <label>{label}</label>
+            <label>
+                <span>{label}</span>
+                {otherInputs.required && <span> * </span>}
+            </label>
             <input {...otherInputs} />
         </div>
     );

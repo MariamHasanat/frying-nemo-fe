@@ -1,9 +1,17 @@
-.inputGroup > label{
+.inputGroup > label {
     display: block;
+    margin-bottom: 10px;
+}
+
+
+.inputGroup > label > span:nth-child(1){
     margin-bottom: 5px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
     user-select: none;
+}
+.inputGroup > label > span:nth-child(2){
+    color: rgb(233, 0, 0);
 }
 
 .inputGroup > input{

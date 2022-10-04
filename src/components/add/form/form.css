@@ -14,4 +14,13 @@
     margin-top: 10px;
     height: 30px;
     width: 70px;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(36, 130, 253);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+}
+.sub > input:hover{
+    cursor: pointer;
 }

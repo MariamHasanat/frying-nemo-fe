@@ -8,18 +8,18 @@ import Input from '../../common/input/input.component';
 
 const Form = (props) => {
     const [name, setName] = useState('');
-    /**
- * @param {React.FocusEvent<HTMLFormElement>} e
+
+/**
+ * @param {React.ChangeEvent<HTMLInputElement>} e
  */
+
     const submitHandler = (e) => {
         e.target.preventDefault();
     };
 
     const changeHandler = (e) => {
         let val = e.target.value;
-        if (val.includes('find')) {
-            val = val.replace(/find/ig, 'fry');
-        }
+        
         if (val.length > 20) {
             val = val.substring(0, val.length - 1);
         }
@@ -35,12 +35,7 @@ const Form = (props) => {
                     onChange={changeHandler}
                     required
                 />
-                <Input
-                    label='Date'
-                    type={'Date'}
-                    value={name}
-                    onChange={changeHandler}
-                />
+                
                 <div className='sub'>
                     <input type="submit" onSubmit={submitHandler} />
                 </div>
