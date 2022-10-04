@@ -1,14 +1,17 @@
 import { type } from '@testing-library/user-event/dist/type';
 import React, { useState } from 'react';
 import Input from '../../common/input/input';
+import Textarea from '../../common/textarea/textarea/Tarea';
 import './form.css';
 
 const Form = (props) => {
   const [name, setName] = useState('ayat');
 
   /** 
-  * @parm {React.ChangeEvent<HTMLInputElement>} e event object.
-  
+   * handle change event.
+  * @parm {React.ChangeEvent<HTMLInputElement> } e  on change event
+  * 
+  *
   */
   const submitHandeller = (e) => {
     e.preventDefault();
@@ -20,22 +23,25 @@ const Form = (props) => {
   };
 
 
-  <input type="text"
-    name="name"
-    placeholder='Name'
-    value={name}
+  // <input type="text"
+  //   name="name"
+  //   placeholder='Name'
+  //   value={name}
 
-  />
+  // />
 
   const onNameChange = e => {
     let value = e.target.value;
     if (value.includes('.')) {
       alert("not allow char ");
     }
-    // if (/find/ig.test(value)){
-    //   value=value.replace(/find/ig,'fry');
-    // }
+
+    if (/find/ig.test(value)) {
+      value = value.replace(/find/ig, 'fry');
+    }
     setName(value);
+    console.log('hi');
+
   };
 
 
@@ -44,10 +50,14 @@ const Form = (props) => {
       <div>
 
         <Input
-          lable="Name"
+          label="Name"
           value={name}
           onChange={onNameChange}
+          required
         />
+<Textarea
+label="Decription"
+/>
 
       </div>
 

@@ -2,23 +2,33 @@
 
 /**
  *  @param { React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>,HTMLInputElement> & {
- * lable?: string;
+ * label?: string;
  * }} props
  *  
+ * b
  * 
  */
 
-const Input = props=>{
-  const {lable ,...inputProps}=props;
+const Input = props => {
+  const { label, ...inputProps } = props;
 
 
-  return(
+  return (
 
-<div>
-  { lable ? <label> {lable} </label> : null}
-  <input {...inputProps} />
-</div>
+    <div>
+      {
+      label ?
+        <label> <span> {label} </span>
+          &nbsp;
+
+          {inputProps.required && <span style={{ color: "red" }} > * </span> }
+
+        </label> : null
+        }
+
+      <input {...inputProps} />
+    </div>
 
   );
-}
+};
 export default Input;
