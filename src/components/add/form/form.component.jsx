@@ -1,29 +1,48 @@
 import { useState } from 'react';
+import Input from '../../common/input/input.component';
 import './form.css';
+
 const Form = (props) => {
-  const [name, setName] = useState('Abdullah');
+  const [name, setName] = useState('Qusai');
+
   /**
-   * 
-   * @param {React.ChangeEvent<HTMLInputElement>} e 
+   * Handler function for the form onSubmit event.
+   * @param {React.FormEvent<HTMLFormElement>} e Event object.
    */
-  
-  const submitHandler = e=>{
+  const submitHandler = e => {
     e.preventDefault();
-    /**
-     * @type {HtmlFormElement}
-     */
-    const target = e.target;
-  }
+
+    const menuItem = {
+      name: name
+    };
+
+    console.debug('Form submitted', menuItem);
+  };
+
+  const onNameChange = e => {
+    let value = e.target.value;
+
+    if (value.includes('.')) {
+      alert('. character is not allowed');
+      value = value.replace('.', '');
+    }
+
+    if (/find/ig.test(value)) {
+      value = value.replace(/find/ig, 'fry');
+    }
+
+    setName(value);
+  };
+
   return (
-    <form className='addForm' onSubmit={submitHandler}>
-      <input
-        type='text'
-        name='name'
-        placeholder='name'
-        onChange={e=> setName(e.target.value)}
+    <form className="addForm" onSubmit={submitHandler} >
+      <Input
+        label="Name"
+        value={name}
+        onChange={onNameChange}
       />
-      <div style={{marginTop: 20}}>
-        <button type='submit'>Create</button>
+      <div className="addFormButtons">
+        <button type="submit">Create</button>
       </div>
     </form>
   );
