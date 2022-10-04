@@ -6,6 +6,7 @@ const Form = (props) => {
    * 
    * @param {React.ChangeEvent<HTMLInputElement>} e 
    */
+  
   const submitHandler = e=>{
     e.preventDefault();
     /**
@@ -14,7 +15,7 @@ const Form = (props) => {
     const target = e.target;
   }
   return (
-    <form>
+    <form className='addForm' onSubmit={submitHandler}>
       <input
         type='text'
         name='name'
