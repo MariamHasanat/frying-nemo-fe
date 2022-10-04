@@ -13,8 +13,16 @@ const Input = props => {
 
   return (
     <div>
-      {label ? <label>{label}</label> : null}
+      {label ?
+       <label>
+         <span> {label}</span> 
+        { inputProps.required && <span>* </span>}
+   </label>
+        : null
+      }
+
       <input {...inputProps} />
+
     </div>
   );
 };

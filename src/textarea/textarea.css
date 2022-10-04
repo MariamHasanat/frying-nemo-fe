@@ -1,0 +1,13 @@
+.textarea-group .dec {
+  color: blueviolet;
+position:relative;
+bottom: 30px;
+right: 8px;
+}
+textarea {
+
+
+  padding: 5px;
+  padding-right: 60px;
+
+}
