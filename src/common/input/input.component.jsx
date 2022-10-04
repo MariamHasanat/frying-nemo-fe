@@ -11,7 +11,13 @@ const{label,...inputProps}=props;
 
 return(
   <div className="input-group">
-   {label ? <label>{label}</label>:null}
+   {label ? 
+   <label>
+    <span>{label}</span>
+    
+    {inputProps.required && <span>*</span>}
+   </label>:null
+   }
    <input {...inputProps} />
 
   </div>
