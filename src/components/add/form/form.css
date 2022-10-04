@@ -4,6 +4,10 @@
   padding: 20px
 }
 
+.addForm  input,.addForm textarea {
+  margin-bottom: 10px;
+}
+
 .addForm > .addFormButtons {
   display: flex;
   justify-content: flex-end;
