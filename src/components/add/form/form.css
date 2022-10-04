@@ -20,3 +20,7 @@
   font-size: 13px;
   cursor: pointer;
 }
+
+.addForm > .input-group, .addForm > .textarea-group {
+  margin-bottom: 20px;
+}
