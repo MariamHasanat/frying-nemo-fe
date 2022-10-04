@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Input from '../../common/input/input.component';
+import Textarea from '../../common/textarea/textarea.component'
 import './form.css';
 
 const Form = (props) => {
@@ -37,6 +38,9 @@ const Form = (props) => {
         onChange={inputChangeHandler}
         value={name}
         required
+      />
+      <Textarea
+        label='Description'
       />
 
       <div>

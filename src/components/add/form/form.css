@@ -43,3 +43,7 @@
   background-color: #dee5ec;
   border-color: #dae0e5;
 }
+
+.input-group, .textarea-group{
+  margin-bottom: 20px
+}
