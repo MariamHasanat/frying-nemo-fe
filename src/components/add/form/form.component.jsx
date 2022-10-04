@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Input from '../../common/input/input.component';
 import './form.css';
 
@@ -19,7 +19,11 @@ const Form = (props) => {
     console.debug('Form submitted', menuItem);
   };
 
-  const onNameChange = e => {
+  /**
+   * Handles on change events on the name field.
+   * @param {React.ChangeEvent<HTMLInputElement>} e On change event object.
+   */
+  const onNameChange = (e) => {
     let value = e.target.value;
 
     if (value.includes('.')) {
@@ -40,6 +44,7 @@ const Form = (props) => {
         label="Name"
         value={name}
         onChange={onNameChange}
+        required
       />
       <div className="addFormButtons">
         <button type="submit">Create</button>

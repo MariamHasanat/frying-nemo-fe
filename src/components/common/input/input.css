@@ -24,6 +24,10 @@
   letter-spacing: 0.5px;
 }
 
+.input-group > label > span:nth-child(2) {
+  color: rgb(210, 21, 21);
+}
+
 .input-group > input:focus {
   color: #212529;
   background-color: #fff;
