@@ -4,6 +4,11 @@ import Input from '../../../common/input/input.common';
 
 const Form = (props) => {
   const [name , setName] = useState('dala');
+
+  /**
+   * Handles on change events on the name field.
+   * @param {React.ChangeEvent<HTMLInputElement>} e On change event object.
+   */
   const handler = e => {
    e.preventDefault();
     /**
@@ -13,7 +18,7 @@ const Form = (props) => {
     console.debug(target);
   }
 
-  const onNamech = e => {
+  const onNamechange = e => {
 
     let val = e.target.value;
 
@@ -41,12 +46,12 @@ const Form = (props) => {
 
   return (
     <form className='add-form' onSubmit={handler}>
-
       <div style={{ margintop : 20 }}>
         <Input
          label="Name"
          value={name}
-         onChange={onNamech}
+         onChange={onNamechange}
+         required
         />
         <button className='btn' type='submit'>Creat</button>
         </div>
