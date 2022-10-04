@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Input from './common/input/input';
 import './form.css';
+import Textarea from './common/textarea/textarea.component';
+import Selector from './common/selector/selector';
 
 const Form = (props) => {
   const [name, setName] = useState('Qusai');
@@ -40,9 +42,20 @@ const Form = (props) => {
       <Input
         label="name"
         value={name}
-        onChange={onNameChange
-        }
+        onChange={onNameChange}
+        required
       />
+      <Textarea 
+     label="descripition" 
+      />
+      
+    <Selector label="category"
+        
+        required>
+
+    </Selector>
+
+
       <div style={{ marginTop: 20 }}>
         <button type="submit">Create</button>
       </div>
