@@ -1,0 +1,23 @@
+
+.selectareaGroup {
+    margin-bottom: 20px;
+}
+.selectareaGroup > select {
+    width: 150px;
+    height: 40px;
+    padding: 8px;
+}
+
+.selectareaGroup > label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.selectareaGroup>label>span:nth-child(2) {
+    color: rgb(233, 0, 0);
+}
+
