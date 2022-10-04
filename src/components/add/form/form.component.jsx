@@ -40,6 +40,7 @@ const Form = (props) => {
         label="Name"
         value={name}
         onChange={onNameChange}
+        required
       />
       <div className="addFormButtons">
         <button type="submit">Create</button>
