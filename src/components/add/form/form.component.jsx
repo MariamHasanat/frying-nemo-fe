@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './form.css';
 import Input from '../../../common/input/input.component';
+import Textarea from '../../../common/textarea/textarea.component';
+import Select from '../../../common/select/select.component';
 
 const Form = (props) => {
   const [name, setName] = useState('Nadeen');
@@ -10,33 +12,51 @@ const Form = (props) => {
    */
   const SubmitHandel = e => {
     e.preventDefult();
-    /**
-     * @type {HtmlFormElement}
-     */
-    const target = e.target;
 
   };
-  const onNameChange = e =>  {
+  const onNameChange = e => {
     let value = e.target.value;
 
     if (value.includes('find')) {
-      value=value.replace(/find/ig, 'fry');
+      value = value.replace(/find/ig, 'fry');
     }
     setName(value);
-  
+
   };
+  const Categories=[
+      "Fish",
+      "Drink",
+      "Salade",
+      "Sandwaches",
+      "Ice Cream",
+  ];
   return (
     <form className='add-form' onSubmit={SubmitHandel}>
-    <div style={{marginTop:20}}>
-       <Input
-        lable="Name"
-        placeholder='name'
-        value={name}
-        onChange={onNameChange}
-       />
+      <div style={{ marginTop: 20 }}>
+
+        <Input
+          label="Name"
+          placeholder='name'
+          value={name}
+          onChange={onNameChange}
+          required
+        />
+        <Textarea
+          label="Describtion"
+        />
+        <Input
+          type='number'
+          label='price'
+          min={0}
+          required
+        />
+        <Select label='Category'>
+ 
+
+        </Select>
       </div>
       <div>
-        <button type='submit'>Create</button>
+        <button type='submit' className='submit'>Create</button>
       </div>
     </form>
   );
