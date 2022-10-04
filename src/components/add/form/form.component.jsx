@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import './form.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import Input from '../../common/input/input.componen';
+import Input from '../../common/input/input.component';
+import Textarea from '../../common/textarea/textarea.component';
+import Select from '../../common/select/select.component';
 
 const Form = (props) => {
 
   const [name, setName] = useState('abd');
   /**
-   * 
-   * @param {React.FormEvent<HTMLFormElement>} e 
+   *
+   * @param {React.FormEvent<HTMLFormElement>} e
    */
   const submitHandler = e => {
     e.preventDefault();
@@ -20,38 +21,43 @@ const Form = (props) => {
     console.log(target);
   };
 
+  const categories = ["Fish", "Drinks", "Main Dishes", "Salads"];
 
   return (
     <form onSubmit={submitHandler} className='add-item-form'>
-      {/* <input type="text"
-        name="item-name"
-        onChange={
-          e => {
-            // setName(e.target.value);
-            let value = e.target.value;
-            if (value === 'find') {
-              value = 'fry';
-            }
-            setName(value);
-          }}
-        value={name} /> */}
-      <Input
-        label='name'
-        onChange={
-          e => {
-            // setName(e.target.value);
-            let value = e.target.value;
-            if (value === 'find') {
-              value = 'fry';
-            }
-            setName(value);
-          }} />
 
       <div>
-        <button type='submit'>Add Item</button>
+
+        <Input
+          label='name'
+          onChange={onNameChange}
+          required
+        />
+
+        <Textarea
+          label='description'
+        />
+
+        <Select
+          label='menu'
+          options={categories}
+        />
+
+
+        <div>
+          <button type='submit'>Add Item</button>
+        </div>
       </div>
     </form>
   );
+
+  function onNameChange(e) {
+    let value = e.target.value;
+    if (value === 'find') {
+      value = 'fry';
+    }
+    setName(value);
+  }
 };
 
 export default Form;
