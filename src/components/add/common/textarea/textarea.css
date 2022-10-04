@@ -1,4 +1,4 @@
-.input-group label {
+.textarea-group label {
   color: #fab700;
   font-weight: 700;
   position: relative;
@@ -6,7 +6,8 @@
   font-size: 17px;
 }
 
-.input-group input {
+.textarea-group textarea {
+  resize: vertical;
   width: 250px;
   padding: .6rem .8rem;
   font-size: 1rem;
@@ -19,18 +20,18 @@
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.input-group input:focus {
+.textarea-group textarea:focus {
   color: #212529;
     background-color: #fff;
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25);
 }
 
-.input-group label .required {
+.textarea-group label .required {
   color: red;
 }
 
-.input-group label {
+.textarea-group label {
   display: flex;
   justify-content: left;
 }

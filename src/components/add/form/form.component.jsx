@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import './form.css';
 import Input from '../common/input/input.component';
+import Button from '../common/button/button.component';
+import Textarea from '../common/textarea/textarea.component';
+import Select from '../common/select/select.component';
 
 const Form = (props) => {
   const [name, setName] = useState(`Omar`)
-  /**
-   * 
-   * @param {React.FormEvent<HTMLFormElement>} e 
-   */
+
   const submitHandler = e => {
     e.preventDefault();
     console.debug(e.target.name.value)
@@ -17,7 +17,7 @@ const Form = (props) => {
   const changeName = (value) => {
     const isAllowed = (char) => {
       console.log(`char: ${char}`)
-      if (char == ' ') {
+      if (char === ' ') {
       }
       const allowed = [['a', 'z'], ['A', 'Z'], [' ', ' ']]
       for (let i = 0; i < allowed.length; i++) {
@@ -35,10 +35,11 @@ const Form = (props) => {
   return (
     <form className='add-form' onSubmit={submitHandler}>
       <div style={{marginTop: 20}}>
-        <Input label="Name" value={name} onChange={changeName}></Input>
-        <button type="submit">
-          Create
-        </button>
+        <Input label="Name" value={name} onChange={changeName} required></Input>
+        <Textarea label="Description" ></Textarea>
+        <Input label="Price" type="number" value={0} required></Input>
+        <Select items={[`Fish`, `Shisha`, `Drink`]}></Select>
+        <Button name="SUBMIT" type="submit"></Button>
       </div>
     </form>
   );

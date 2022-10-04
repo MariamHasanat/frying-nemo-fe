@@ -1,0 +1,33 @@
+.mid {
+  display: flex;
+  justify-content: center;
+}
+
+.btn button {
+  width: 100px;
+  padding: .7rem .8rem;
+  background-color: #fab700;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  border-radius: .3rem;
+  box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  flex: 1 1 auto;
+  font-family: Inter,sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s,-webkit-box-shadow .2s;
+  border: none;
+  outline: none;
+}
+
+.btn button:hover {
+  box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+}

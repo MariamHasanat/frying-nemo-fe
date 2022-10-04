@@ -1,19 +1,19 @@
-import './input.css'
+import './textarea.css'
 
-const Input = props => {
+const Textarea = props => {
   const {label, required, ...inputProps} = props;
 
   return (
-    <div className="input-group">
+    <div className="textarea-group">
       {label &&
       (<label>
         <span>{label}</span>
         &nbsp;
         {required && (<span className='required'>*</span>)}
         </label>)}
-      <input {...{required: required, ...inputProps}} />
+      <textarea {...{required: required, ...inputProps}} />
     </div>
   )
 }
 
-export default Input
+export default Textarea
