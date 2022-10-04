@@ -1,6 +1,7 @@
 import './form.css';
 import { useState } from 'react';
-import Input from '../../common/input.component';
+import Input from '../../common/input/input.component';
+import Textarea from '../../common/textarea/textarea.component';
 
 const Form = (props) => {
   const [name, setName] = useState('Lana');
@@ -21,7 +22,11 @@ const Form = (props) => {
     console.debug(target.ATTRIBUTE_NODE);
   };
 
-  const onNameChange = e => {
+  /**
+   * Handels on change event on the name field.
+   * @param {React.ChangeEvent<HTMLInputElement>} e on change event object . 
+   */
+  const onNameChange = (e) => {
 
     let value = e.target.value;
 
@@ -38,7 +43,7 @@ const Form = (props) => {
     }
 
     setName(value);
-  }
+  };
 
   return (
     <form className="add-form" onSubmit={submitHandler}>
@@ -48,13 +53,35 @@ const Form = (props) => {
           label="Name"
           value={name}
           onChange={onNameChange}
+          required
         />
 
+        <Textarea
+          label=" Description"
+        />
 
-        <button type="submit">Create </button>
+        <Input
+          label="Price"
+          type="number"
+          min={0}
+          required
+        />
+
+        <select>
+          <option>Fish</option>
+          <option>Drinks</option>
+          <option>Hookah</option>
+          <option>salads</option>
+          <option>Sandwiches</option>
+          <option>Main dish</option>
+          <option>Appetizers</option>
+          <option>Ice creem</option>
+        </select>
+        <div><button type="submit">Create </button></div>
+
       </div>
 
-    </form>
+    </form >
   );
 };
 

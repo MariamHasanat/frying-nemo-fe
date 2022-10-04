@@ -1,0 +1,32 @@
+.input-group>label>span:nth-child(2) {
+
+  color: rgb(102, 7, 62);
+
+}
+
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.input-group>label {
+  display: block;
+  padding-bottom: 5px;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+
+
+.input-group>input {
+  display: block;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px solid white;
+}
