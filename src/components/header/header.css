@@ -1,0 +1,17 @@
+@import url('http://fonts.cdnfonts.com/css/new-walt-disney-font');
+
+.header {
+  background-color:#f8f9fb;
+  padding: 0 5px;
+  font-family: new new-walt-disney-font, sans-serif;
+  margin: 0;
+}
+
+img {
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+hr {
+  margin: 0;
+}
