@@ -14,20 +14,16 @@ const Form = (props) => {
     /**
      * @type {HTMLFormElement}
      */
-    console.log(name)
+    console.log(name);
   };
 
   const inputChangeHandler = (e) => {
-    /*
-              let value = e.target.value;
-              if(value.includes('find')){
-                // alert('we are not finding nemo... we are frying nemo!')
-                value = value.replace('find', 'fry')
-              }
-              setName(value);
-              */
 
     let value = e.target.value;
+    if (value.includes('find')) {
+      value = value.replace('find', 'fry');
+    }
+
     if (value.length >= 20) {
       alert('character limit exceeded');
       value = value.substring(0, 20);
@@ -37,9 +33,10 @@ const Form = (props) => {
   return (
     <form onSubmit={submitHandler} className="styled-form">
       <Input
-        label="sajeda"
+        label="Name"
         onChange={inputChangeHandler}
         value={name}
+        required
       />
 
       <div>
