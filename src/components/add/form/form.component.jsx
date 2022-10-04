@@ -1,17 +1,21 @@
 import { useState } from 'react';
 import Input from '../../../input/input.component';
+import Textarea from '../../../textarea/textarea.component';
 import './form.css';
 
 
+/**
+ * 
+ * @param {React.ChangeEvent<HTMLInputElement>} e 
+ */
 const Form = (props) => {
  
   
-  const [name, SetName] = useState(' Add item');
+  const [name, SetName] = useState('Add item');
  
-  const sumbitHandler = e => {
-
+  const submitHandler = e => {
+e.preventDefault();
     const target = e.target;
-    console.debug(target);
 
   };
 
@@ -29,17 +33,23 @@ const Form = (props) => {
       SetName(value);
     };
   
-
+const category =[]
+;
   return (
-    <form className='item-page' onSubmit={sumbitHandler}>
+    <form className='item-page' onSubmit={submitHandler}>
       <br />
       <div className='div1'>
         <Input
-          label="Name"
+          label="Name "
           value={name}
           onChange={onChange1}
+          required
         />
+          <br></br>
+        <Textarea label='Description'/>
+  <br></br>
 
+  <select label='Category'></select>
         <button type='sumbit'>Create</button>
       </div>
     </form>
