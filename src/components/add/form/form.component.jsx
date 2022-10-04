@@ -33,9 +33,10 @@ const Form = (props) => {
                     type={'Text'}
                     value={name}
                     onChange={changeHandler}
+                    required
                 />
                 <Input
-                    label='Name'
+                    label='Date'
                     type={'Date'}
                     value={name}
                     onChange={changeHandler}

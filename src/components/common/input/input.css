@@ -8,6 +8,7 @@
 
 .inputGroup > input{
     padding: 6px;
+    margin-bottom: 20px;
     display: block;
     height: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
