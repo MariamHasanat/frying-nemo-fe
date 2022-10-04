@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './form.css';
 import Input from '../../../common/input/input.common';
+import Textarea from '../../../common/textarea/textarea.component';
+import Select from '../../../common/Select/Select';
 
 const Form = (props) => {
   const [name , setName] = useState('dala');
@@ -53,6 +55,20 @@ const Form = (props) => {
          onChange={onNamechange}
          required
         />
+       
+        <Textarea
+        label="Describtion"
+        />
+        <Select label="Category">
+          <option>Fish</option>
+          <option>Drinks</option>
+          <option>Hookah</option>
+          <option>salad</option>
+          <option>Sandwiches</option>
+          <option>Main Dish</option>
+          <option>Appetizers</option>
+          <option>Ice Cream</option> 
+        </Select>
         <button className='btn' type='submit'>Creat</button>
         </div>
     </form>
