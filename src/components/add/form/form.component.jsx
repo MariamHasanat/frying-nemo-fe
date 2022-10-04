@@ -1,6 +1,17 @@
 import { useState } from 'react';
 import Input from '../../../input/input.component';
+import Textarea from '../../../textarea/textarea/textarea.component';
 import './form.css';
+import Select from './select/select.component';
+
+const categories = [
+  'fish',
+  'salad',
+  'juice',
+  'meat',
+  'chicken',
+  'bread'
+]
 
 const Form = (props) => {
   const [name, setName] = useState('Huda');
@@ -28,14 +39,27 @@ const Form = (props) => {
   }
 
   return (
-    <form className="add-form" onSubmit={submitHandler} >
+    <form className="addForm" onSubmit={submitHandler} >
       <div style={{ marginTop: 20 }}>
       <Input
-        label="name"
+        label="Name"
         value={name}
         onChange={onNameChange}
+        required
       />
-        <button type="submit">Create</button>
+      <Textarea
+        label="Description"
+      />
+      <Input
+        label="Price"
+        required
+      />
+      <Select label='category' required>
+        {categories.map(item =>{
+          return <option key={item} value={item}>{item}</option>
+        })}
+        </Select>
+        <button className='addFormButtons' type="submit">Create</button>
       </div>
     </form>
   );

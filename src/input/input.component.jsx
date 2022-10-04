@@ -12,12 +12,20 @@ import './input.css';
  * 
  */
 const Input = props => {
-  const {label, ...inputProps} = props;
+  const { label, ...inputProps } = props;
 
   return (
-    <div className="container">
-      {label ? <label>{label}</label> : null}
-      <input className="input-group" {...inputProps}/>
+    <div className="input-group">
+      {
+        label ? (
+          <label>
+          <span>{label}</span>
+          &nbsp;
+      {inputProps.required && <span>*</span>}
+      </label>
+      ): null
+        }
+      <input {...inputProps} />
     </div>
   );
 };
