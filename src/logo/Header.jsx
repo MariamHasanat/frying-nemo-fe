@@ -10,6 +10,7 @@ const Header = props => {
          Frying Nemo
        </h1>
       </div>
+     
     </header>
   )
 }

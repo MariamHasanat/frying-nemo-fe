@@ -1,4 +1,21 @@
+header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+
+}
 .Header  img{
   width: 150px;
   height: 150px;
+}
+.Header h1{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background: -webkit-linear-gradient(155deg, rgb(255, 255, 255), #f87e04);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
