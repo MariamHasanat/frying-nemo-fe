@@ -23,7 +23,7 @@ const Form = (props) => {
     setName(value);
 
   };
-  const Categories=[
+  const categories =[
       "Fish",
       "Drink",
       "Salade",
@@ -51,7 +51,9 @@ const Form = (props) => {
           required
         />
         <Select label='Category'>
- 
+          {categories.map(item => {
+            return <option key={item} value={item}>{item}</option>;
+          })}
 
         </Select>
       </div>
