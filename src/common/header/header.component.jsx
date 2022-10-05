@@ -4,7 +4,7 @@ import nemo from '../../image/nemo.png';
 
 const Header = props => {
   return (
-    <header className="heder">
+    <header className="header">
       <div className="HeaderDesign">
         <h1>
           <img src={nemo} alt="Nemo" />
