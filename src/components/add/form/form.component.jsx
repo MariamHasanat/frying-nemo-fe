@@ -10,7 +10,13 @@ import SelectArea from '../../common/selectarea/selectarea.component';
 
 const Form = (props) => {
     const [name, setName] = useState('');
-
+    let categories = [
+        'Fish',
+        'Main Dish',
+        'Drink',
+        'Salad',
+        'Ice-cream',
+    ];
     /**
      * @param {React.ChangeEvent<HTMLInputElement>} e
      */
@@ -47,9 +53,9 @@ const Form = (props) => {
                     required
                 />
                 <SelectArea label='Categories' required>
-                    <option>Fish</option>
-                    <option>Main Dish</option>
-                    <option>Drinks</option>
+                    {categories.map((item) => {
+                        return <option key={item} value={item}>{item}</option>
+                    })}
                 </SelectArea>
                 <div className='sub'>
                     <input type="submit" onSubmit={submitHandler} />
