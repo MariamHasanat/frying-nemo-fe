@@ -2,5 +2,8 @@
     "editor.insertSpaces": true,
     "editor.detectIndentation": false,
     "editor.tabSize": 4,
-    "javascript.format.semicolons": "insert"
+    "javascript.format.semicolons": "insert",
+    "cSpell.words": [
+        "Nemo"
+    ]
 }
