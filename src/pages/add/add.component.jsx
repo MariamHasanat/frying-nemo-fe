@@ -1,11 +1,14 @@
 import './add.css';
 
 import Form from '../../components/add/form/form.component';
+import Head from '../../components/pop/header';
 
 const AddPage = (props) => {
   return (
     <div>
-      <h1>Add a new item</h1>
+
+      <Head/>
+      {/* <h1>Add a new item</h1> */}
       <Form />
     </div>
   );

@@ -1,5 +1,10 @@
 
 
+
+
+import React from 'react';
+import './input.css';
+
 /**
  *  @param { React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>,HTMLInputElement> & {
  * label?: string;
@@ -12,23 +17,20 @@
 const Input = props => {
   const { label, ...inputProps } = props;
 
-
   return (
-
-    <div>
+    <div className="textarea-group">
       {
-      label ?
-        <label> <span> {label} </span>
-          &nbsp;
-
-          {inputProps.required && <span style={{ color: "red" }} > * </span> }
-
-        </label> : null
-        }
-
+        label ? (
+          <label>
+            <span>{label}</span>
+            &nbsp;
+            {inputProps.required && <span>*</span>}
+          </label>
+        ) : null
+      }
       <input {...inputProps} />
     </div>
-
   );
 };
+
 export default Input;

@@ -1,0 +1,13 @@
+form {
+  background-color: "";
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  margin: 10px;
+  border: 2px rgb(243, 201, 124) solid;
+color: orange;
+}
+
+

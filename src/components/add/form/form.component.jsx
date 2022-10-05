@@ -1,6 +1,7 @@
 import { type } from '@testing-library/user-event/dist/type';
 import React, { useState } from 'react';
 import Input from '../../common/input/input';
+import MySelect from '../../common/select/select';
 import Textarea from '../../common/textarea/textarea/Tarea';
 import './form.css';
 
@@ -22,14 +23,16 @@ const Form = (props) => {
     const target = e.target;
   };
 
-
-  // <input type="text"
-  //   name="name"
-  //   placeholder='Name'
-  //   value={name}
-
-  // />
-
+  const categories = [
+    'Fish',
+    'Drinks',
+    'Hookah',
+    'Salads',
+    'Sandwiches',
+    'Main Dish',
+    'Appetizers',
+    'Ice Cream'
+  ];
   const onNameChange = e => {
     let value = e.target.value;
     if (value.includes('.')) {
@@ -47,21 +50,33 @@ const Form = (props) => {
 
   return (
     <form onSubmit={submitHandeller}>
-      <div>
 
-        <Input
-          label="Name"
-          value={name}
-          onChange={onNameChange}
-          required
-        />
-<Textarea
-label="Decription"
-/>
+      <h1>Add to the menu !</h1>
+      <Input
+        label="Name"
+        value={name}
+        onChange={onNameChange}
+        required
+      />
+      <Textarea
+        label="Decription"
 
+      />
+
+      <MySelect
+        label='categories' required>
+        {
+          categories.map(item => {
+
+            return <option value={item} key={item}>{item}</option>;
+          })
+        }
+      </MySelect>
+
+
+      <div className='btn'>
+        <button type='submit' className='submit-button'>create</button>
       </div>
-
-      <button type='submit'>create</button>
     </form>
   );
 };
