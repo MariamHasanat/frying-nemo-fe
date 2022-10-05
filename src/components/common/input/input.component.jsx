@@ -7,11 +7,12 @@ import './input.css';
  *  label?: string;
  * }} props 
  */
-const Input = props => {
+const Input = (props) => {
   const { label, ...inputProps } = props;
 
   return (
     <div className="input-group"> 
+    
       {label ?( 
       <label>
         <span>{label}</span>
@@ -23,6 +24,8 @@ const Input = props => {
       
       
       <input {...inputProps} />
+    
+      
     </div>
   );
 };

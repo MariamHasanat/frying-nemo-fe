@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Input from '../../common/input/input.component';
+import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
-
 import './form.css';
 
 const Form = (props) => {
-  const [name, setName] = useState('Qusai');
+  const [name, setName] = useState('Ruba');
 
   /**
    * Handler function for the form onSubmit event.
@@ -21,7 +21,11 @@ const Form = (props) => {
     console.debug('Form submitted', menuItem);
   };
 
-  const onNameChange = e => {
+  /**
+   * Handles on change events on the name field.
+   * @param {React.ChangeEvent<HTMLInputElement>} e On change event object.
+   */
+  const onNameChange = (e) => {
     let value = e.target.value;
 
     if (value.includes('.')) {
@@ -36,33 +40,40 @@ const Form = (props) => {
     setName(value);
   };
 
+  const categories = [
+    'Fish',
+    'Drinks',
+    'Hookah',
+    'Salads',
+    'Sandwiches',
+    'Main Dish',
+    'Appetizers',
+    'Ice Cream'
+  ];
+
   return (
-    <form className="add-form" onSubmit={submitHandler} >
-      <div style={{ marginTop: 20 }}>
-        <Input
-          label="Name"
-          value={name}
-          onChange={onNameChange}
-          required = {true}
-        />
-        <Textarea
+    <form className="addForm" onSubmit={submitHandler} >
+      <Input
+        label="Name"
+        value={name}
+        onChange={onNameChange}
+        required
+      />
+      <Textarea
         label="Description"
-        />
-
-        <Input
-          label="Price"
-          type="number"
-          min = {0}
-          
-          required = {true}
-        />
-        <select>
-        <option>fish</option>
-        <option>meat</option>
-        <option>chicken</option>
-        <option>salad</option>
-          </select>
-
+      />
+      <Input
+        label="Price"
+        type="number"
+        min={0}
+        required
+      />
+      <Select label="Category" required>
+        {categories.map(item => {
+          return <option key={item} value={item}>{item}</option>;
+        })}
+      </Select>
+      <div className="addFormButtons">
         <button type="submit">Create</button>
       </div>
     </form>
