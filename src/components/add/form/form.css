@@ -1,5 +1,5 @@
 .add-form  .btn {
-  background: #000;
+  background: #d2ad78;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -44,7 +44,7 @@
 }
 
 .add-form {
-    background-color: #ced4da;
+    background-color: #fcdeb3;
     padding: 20px;
     width: 80%;
     height: 400px;
@@ -53,9 +53,9 @@
 .add-form > input:focus {
   color: #212529;
   background-color: #fff;
-  border-color: #86b7fe;
+  border-color: #fcdeb3;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+  box-shadow: 0 0 0 0.25rem #fcdeb3;
 }
 
 
