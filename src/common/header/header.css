@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  padding-left: 10px;
+  
+}
+
+.HeaderDesign>h1 {
+  font-size: 20px;
+  color: #2f69d6;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+img {
+  height: 35px;
+  width: auto;
+  margin-right: 5px;
+}
