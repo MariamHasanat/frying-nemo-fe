@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Input from '../../../input/input.component';
 import Textarea from '../../../textarea/textarea.component';
+import Select from '../../common/select/select.component';
 import './form.css';
 
 
@@ -33,7 +34,7 @@ e.preventDefault();
       SetName(value);
     };
   
-const category =[]
+const category =["Fish","Meat","Hooka","Salads","Sandwich","Appetizers","Ice cream","Drinks"]
 ;
   return (
     <form className='item-page' onSubmit={submitHandler}>
@@ -48,8 +49,15 @@ const category =[]
           <br></br>
         <Textarea label='Description'/>
   <br></br>
+<Select label='Category' required>
+  {category.map(item=>{
+    return <option value={item} key={item}>{item}</option>;
 
-  <select label='Category'></select>
+  })}
+</Select>
+
+
+  
         <button type='sumbit'>Create</button>
       </div>
     </form>
