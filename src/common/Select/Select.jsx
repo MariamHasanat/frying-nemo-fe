@@ -1,22 +1,22 @@
-import React from 'react'
-import './select.css'
+import React from 'react';
+import './select.css';
 
 const Select = (props) => {
   const { label, ...selectProps } = props;
   return (
-   <div>
-     {
-         label ? (
-            <label>
-              <span>{label}</span>
-              &nbsp;
-              {selectProps.required && <span>*</span>}
-            </label>) : null}
-     
-        <select {...selectProps} />
-   </div>
-    
-  )
-}
+    <div className="select-group">
+      {
+        label ? (
+          <label>
+            <span>{label}</span>
+            &nbsp;
+            {selectProps.required && <span>*</span>}
+          </label>) : null}
 
-export default Select
+      <select {...selectProps} />
+    </div>
+
+  );
+};
+
+export default Select;

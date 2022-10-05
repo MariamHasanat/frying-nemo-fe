@@ -1,4 +1,36 @@
-select {
-  display: block;
+
+.select-group > select {
+  padding: 5px 30px 5px 10px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgb(72, 76, 80);
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.select-group > select {
   margin-bottom: 20px;
+}
+.select-group > label {
+  display: block;
+  margin-bottom: 10px;
+  font-family: cursive;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #666;
+  letter-spacing: 0.5px;
+}
+.select-group > select:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+.select-group > label > span:nth-child(2) {
+  color: rgb(207, 162, 103);
 }
