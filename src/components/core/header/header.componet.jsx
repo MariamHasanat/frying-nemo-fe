@@ -7,7 +7,7 @@ const Header = props => {
       <div className="left">
         <h1>
           <img src="./008.svg" alt="fish-pic" />
-          Frying Nemo resturent
+          Frying Nemo resturent 
         </h1>
       </div>
     </header>
