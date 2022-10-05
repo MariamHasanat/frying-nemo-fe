@@ -1,11 +1,11 @@
 import './button.css'
 
 const Button = ({name, ...props}) => {
-  return <div className='mid'>
+  return (
     <div className="btn">
-    <button {...props}>{name}</button>
-  </div>
-  </div>
+      <button {...props}>{name}</button>
+    </div>
+  )
 }
 
 export default Button

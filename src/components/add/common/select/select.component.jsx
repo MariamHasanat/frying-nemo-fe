@@ -1,11 +1,11 @@
 import './select.css'
 
-const Select = ({items}) => {
+const Select = ({items, ...options}) => {
   let listItems = items.map(item => <option key={item} value={item.toLowerCase()}>{item}</option>)
   return (
     <div className="select">
-      <select name="" id="">
-        <option value="none" selected disabled>Select a value</option>
+      <select {...options} name="category">
+        <option value="none" selected disabled>Select a category</option>
         {listItems}
       </select>
     </div>

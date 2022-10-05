@@ -19,7 +19,7 @@ const Form = (props) => {
       console.log(`char: ${char}`)
       if (char === ' ') {
       }
-      const allowed = [['a', 'z'], ['A', 'Z'], [' ', ' ']]
+      const allowed = [['a', 'z'], ['A', 'Z'], [' ', ' '], ['0', '9']]
       for (let i = 0; i < allowed.length; i++) {
         if (char >= allowed[i][0] && char <= allowed[i][1]) {
           return true;
@@ -34,11 +34,11 @@ const Form = (props) => {
 
   return (
     <form className='add-form' onSubmit={submitHandler}>
-      <div style={{marginTop: 20}}>
+      <div className='inputs'>
         <Input label="Name" value={name} onChange={changeName} required></Input>
         <Textarea label="Description" ></Textarea>
-        <Input label="Price" type="number" value={0} required></Input>
-        <Select items={[`Fish`, `Shisha`, `Drink`]}></Select>
+        <Input label="Price" type="number" required></Input>
+        <Select items={[`Fish`, `Shisha`, `Drink`]} required></Select>
         <Button name="SUBMIT" type="submit"></Button>
       </div>
     </form>

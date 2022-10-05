@@ -1,4 +1,4 @@
-.mid {
+.btn {
   display: flex;
   justify-content: center;
 }
@@ -8,13 +8,11 @@
   padding: .7rem .8rem;
   background-color: #fab700;
   color: white;
-  display: inline-flex;
   align-items: center;
   border-radius: .3rem;
   box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
   box-sizing: border-box;
   cursor: pointer;
-  flex: 1 1 auto;
   font-family: Inter,sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
@@ -29,5 +27,9 @@
 }
 
 .btn button:hover {
-  box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+  box-shadow: #ffffff71 0 0 0 3px, transparent 0 0 0 0;
+}
+
+.btn button:active {
+  background-color: #eeae00;
 }

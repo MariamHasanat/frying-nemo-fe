@@ -1,20 +1,6 @@
-:root {
-  --polka-bg-image:
-    radial-gradient(rgb(245, 245, 245) 10%, transparent 10%),
-    radial-gradient(rgb(245, 245, 245) 10%, transparent 10%);
-  --polka-bg-position: 0px 0px, 8px 8px;
-  --polka-bg-size: 16px 16px;
-  --polka-bg-color: rgb(255, 255, 255);
-}
 body {
   display: flex;
   justify-content: center;
-  background-image: 
-    radial-gradient(rgb(245, 245, 245) 10%, transparent 10%),
-    radial-gradient(rgb(245, 245, 245) 10%, transparent 10%);
-  background-position: 0px 0px, 8px 8px;
-  background-size: 16px 16px;
-  background-color: rgb(255, 255, 255);
 }
 .add-form {
   background-color: #212121;
@@ -23,17 +9,19 @@ body {
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   box-shadow: 5px 5px #fab700;
   border-radius: 10px;
+  margin-top: 70px;
 }
 
 .add-form:hover {
   box-shadow: -5px -5px #fab700;
 }
 
-.add-form div {
+.add-form .inputs div {
+  width: 281px;
   margin-bottom: 30px;
 }
 
-.add-form div:last-child {
+.add-form .inputs div:last-child {
   margin-top: 10px;
   margin-bottom: 0;
 }

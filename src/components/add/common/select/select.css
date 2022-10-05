@@ -3,7 +3,7 @@
 }
 
 .select select {
-  width: 277px;
+  width: 100%;
   padding: .6rem .7rem;
   border: 3px solid white;
   background-color: #212121;
