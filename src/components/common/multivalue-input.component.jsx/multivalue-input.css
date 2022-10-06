@@ -1,0 +1,9 @@
+.multivalue-input-group > .input-button-wrapper {
+    display: flex;
+    align-items: flex-end;
+}
+
+.multivalue-input-group > .input-button-wrapper > button {
+    /* margin-left: 10px; */
+    height: 38px;
+}

@@ -1,6 +1,9 @@
 {
     "editor.insertSpaces": true,
     "editor.detectIndentation": false,
-    "editor.tabSize": 2,
-    "javascript.format.semicolons": "insert"
+    "editor.tabSize": 4,
+    "javascript.format.semicolons": "insert",
+    "cSpell.words": [
+        "Multivalue"
+    ]
 }
