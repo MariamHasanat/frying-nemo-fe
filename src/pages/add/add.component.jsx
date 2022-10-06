@@ -1,11 +1,14 @@
 import './add.css';
 
 import Form from '../../components/add/form/form.component';
+import Handel from './handel/handel';
 
 const AddPage = (props) => {
   return (
     <div>
-      <h1>Add a new item</h1>
+      <Handel
+      img = './fish.png'
+      />
       <Form />
     </div>
   );

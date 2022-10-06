@@ -27,6 +27,14 @@ const[name,setname]=useState('Sajeda');
     }
     setname(value);
   }
+  const categories = [
+     'Fish',
+     'Shrimmps',
+     'Drink',
+     'Mussels',
+     'shesha',
+     'Ice cream',
+]
 return(
   <form className='form' onSubmit={handleSubmit}>
     <div className='input'>
@@ -48,13 +56,9 @@ return(
     <Select
      label ="The Chioce"
      >
-     <option>Fish</option>
-     <option>Shrimmps </option>
-     <option>Drink</option>
-     <option>Mussels</option>
-     <option>shesha</option>
-    
-     
+    {categories.map(item=>{
+      return <option key={item} value={item}>{item}</option>
+    })}
      </Select>
       
 
