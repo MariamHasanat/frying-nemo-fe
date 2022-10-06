@@ -2,28 +2,28 @@ import React from 'react';
 import './select.css';
 
 /**
- * Renders an input element.
- * @param {React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> & {
+ * Renders a select element.
+ * @param {React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement> & {
  *  label?: string;
  * }} props 
  */
 const Select = props => {
-  const { label, ...textareaProps } = props;
+  const { label, ...selectProps } = props;
 
   return (
-    <div className="textarea-group">
+    <div className="select-group">
       {
         label ? (
           <label>
             <span>{label}</span>
             &nbsp;
-            {/* {Select.required && <span>*</span>} */}
+            {selectProps.required && <span>*</span>}
           </label>
         ) : null
       }
-      <textarea {...textareaProps} />
+      <select {...selectProps} />
     </div>
   );
 };
 
-export default Textarea;
+export default Select;

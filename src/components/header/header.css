@@ -3,11 +3,11 @@
   align-items: center;
   width: 100%;
   padding: 0px 20px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid rgb(180, 76, 6);
 }
 
 .webisteHeader > .left > h1 {
-  font-size: 25px;
+  font-size: 21px;
   color: #c33407;
   line-height: 1.2;
   display: flex;
@@ -18,7 +18,7 @@
 
 
 .webisteHeader > .left > h1 > img {
-  height: 75px;
+  height: 65px;
   width: auto;
   margin-right: 15px;
 }
