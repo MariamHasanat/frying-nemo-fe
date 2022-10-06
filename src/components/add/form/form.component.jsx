@@ -3,6 +3,8 @@ import Input from '../../common/input/input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
+import Textarea from './common/textarea/textarea.component';
+import Selector from './common/selector/selector';
 
 const Form = (props) => {
   const [name, setName] = useState('Qusai');
@@ -20,6 +22,11 @@ const Form = (props) => {
 
     console.debug('Form submitted', menuItem);
   };
+  const onNameChange = e => {
+    let value = e.target.value;
+    if (value.includes('.')) {
+      alert("points is not allowed !!");
+      value = value.replace(".", "");
 
   /**
    * Handles on change events on the name field.
@@ -38,7 +45,7 @@ const Form = (props) => {
     }
 
     setName(value);
-  };
+  }};
 
   const categories = [
     'Fish',
@@ -79,6 +86,6 @@ const Form = (props) => {
       </div>
     </form>
   );
-};
+  }};
 
 export default Form;
