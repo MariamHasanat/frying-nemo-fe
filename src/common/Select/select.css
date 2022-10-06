@@ -1,0 +1,7 @@
+label > span :nth-child(1){
+  color: rgb(24, 58, 42);
+  padding: 10px;
+}
+.select-group {
+  padding-bottom: 10px;
+}

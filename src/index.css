@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.mydiv{
+  background-color: #000000b0;
+  border-radius: 30px;
+  height: 50%;
+  width: 400px;
+  padding: 30px;
+  margin-top: 20px;
+  box-shadow: 2px 11px 9px 0px #1a403d;
+}
+.flex{
+  display: flex;
+  justify-content: space-around;
+}
+img {
+border-radius: 50%;
+width: 90px;
+height: 90px;
+
+}
+.img1{
+  background-color: #00000038;
+  display: flex;
+  padding:10px
+}
