@@ -1,20 +1,19 @@
-
 .input-group > input {
   padding: 10px;
   min-width: 200px;
   border: 2px solid rgba(150, 150, 150, 0.473);
   margin-bottom: 20px;
   border-radius: 10px;
+  
 } 
-button{
-  padding: 7px;
-  background-color: rgb(247, 248, 248);
-  border: 2px solid rgb(158, 158, 158);
-  border-radius: 5px;
-}
 .input-group > label{
-  margin: 3px;
-  padding: 5px;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #666;
+  letter-spacing: 0.5px;
 }
 .input-group >label > span:nth-child(2){
   color: rgb(230, 26, 26);

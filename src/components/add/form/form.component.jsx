@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import Input from '../../common/input/input.component';
+import MultiValueInput from '../../common/multivalue-input/multi-value-input.component';
+import Select from '../../common/select/select.component';
+import Textarea from '../../common/textarea/textarea/textarea.component';
 import './form.css';
 
 const Form = (props) => {
@@ -13,12 +16,20 @@ const Form = (props) => {
 
  
      /**
-      * Handkles on change events on the name feild.
+      * Handles on change events on the name feild.
       * @param {React.ChangeEvent<HTMLInputElement>} e On change event object. 
       */
 
 
-
+const categories=[
+  "fish",
+  "drink",
+  "Mooka",
+  "Chocolate",
+  "Sheesha",
+  "Sandowich",
+  
+]
 
   const submitHandler = e => {
     e.preventDefault();
@@ -50,14 +61,28 @@ const Form = (props) => {
   return (
     <form className="add-form" onSubmit={submitHandler} >
       <div style={{ marginTop: 20 }}>
-        <Input 
+        <Input
         label = "Name"
         value={name}
         onChange = {onNameChange}
          required
         />
+        <Textarea
+        label = "Descreption"/>
+        <Input
+        label = "Price"
+        type="number"
+        min={0}
+         required
+        />
+        <Select label='select from menu' required>
+         return {categories.map((item) =>{
+             return <option key={item} value={item}>{item}</option>;
+         })}
+        </Select>
+        <MultiValueInput></MultiValueInput>
       </div>
-        <button type="submit">Create</button>
+        <button className='nemo-button' type="submit">Create</button>
       
     </form>
   );
