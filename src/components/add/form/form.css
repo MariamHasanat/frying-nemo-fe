@@ -1,3 +1,9 @@
+.form-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 .addForm {
   background-color: #fafafa;
   border: 1px solid #ddd;

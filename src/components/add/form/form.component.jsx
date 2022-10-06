@@ -37,19 +37,22 @@ const Form = (props) => {
   };
   let catigories = ["SeaFood", "Drinks", "MainDish", "Salad"];
   return (
-    <form className="addForm" onSubmit={submitHandler}>
-      <Input label="Name" value={name} onChange={onNameChange} required />
-      <Textarea label="Description" />
-      <Input label="price" type="number" required />
-      <Select label="category">
-        {catigories.map((item) => {
-          return <option value={item}>{item}</option>;
-        })}
-      </Select>
-      <div className="addFormButtons">
-        <button type="submit">Create</button>
-      </div>
-    </form>
+    <div className="form-container">
+      <h1>Add Menu Item</h1>
+      <form className="addForm" onSubmit={submitHandler}>
+        <Input label="Name" value={name} onChange={onNameChange} required />
+        <Textarea label="Description" />
+        <Input label="price" type="number" required />
+        <Select label="categories">
+          {catigories.map((item) => {
+            return <option value={item}>{item}</option>;
+          })}
+        </Select>
+        <div className="addFormButtons">
+          <button type="submit">Create</button>
+        </div>
+      </form>
+    </div>
   );
 };
 
