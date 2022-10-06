@@ -3,6 +3,7 @@ import Input from "../../common/input/input.component";
 import Textarea from "../../common/textarea/textarea.component";
 import Select from "../../common/select/select.component";
 import "./form.css";
+import MultiValueInput from "../../multi-value-input.jsx/multi-value-input.component";
 
 const Form = (props) => {
   const [name, setName] = useState("");
@@ -45,9 +46,14 @@ const Form = (props) => {
         <Input label="price" type="number" required />
         <Select label="categories">
           {catigories.map((item) => {
-            return <option key={item} value={item}>{item}</option>;
+            return (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            );
           })}
         </Select>
+        <MultiValueInput label="indegridients" />
         <div className="addFormButtons">
           <button type="submit">Create</button>
         </div>
