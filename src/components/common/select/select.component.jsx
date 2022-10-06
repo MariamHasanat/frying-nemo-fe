@@ -25,11 +25,15 @@ const Select = props => {
 
 
       <select>
-        {options.map(e => {
-          return (
-            <option key={e}>{e}</option>
-          );
-        })}
+        {
+          options.map(
+            e => {
+              return (
+                <option key={e}>{e}</option>
+              );
+            }
+          )
+        }
       </select>
     </div>
   );

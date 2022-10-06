@@ -3,6 +3,7 @@ import './form.css';
 import Input from '../../common/input/input.component';
 import Textarea from '../../common/textarea/textarea.component';
 import Select from '../../common/select/select.component';
+import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
 
 const Form = (props) => {
 
@@ -43,6 +44,11 @@ const Form = (props) => {
           options={categories}
         />
 
+        <MultivalueInput
+          label='ingredients'
+          value={categories}
+          onChange={e => {}}
+        />
 
         <div>
           <button type='submit'>Add Item</button>
