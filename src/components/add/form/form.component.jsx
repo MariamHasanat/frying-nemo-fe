@@ -3,17 +3,17 @@ import Input from '../../common/input/input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
-import Textarea from './common/textarea/textarea.component';
-import Selector from './common/selector/selector';
+
+
 
 const Form = (props) => {
-  const [name, setName] = useState('Qusai');
+  const [name, setName] = useState('yara');
 
   /**
    * Handler function for the form onSubmit event.
    * @param {React.FormEvent<HTMLFormElement>} e Event object.
    */
-  const submitHandler = e => {
+   const submitHandler = e => {
     e.preventDefault();
 
     const menuItem = {
@@ -22,11 +22,6 @@ const Form = (props) => {
 
     console.debug('Form submitted', menuItem);
   };
-  const onNameChange = e => {
-    let value = e.target.value;
-    if (value.includes('.')) {
-      alert("points is not allowed !!");
-      value = value.replace(".", "");
 
   /**
    * Handles on change events on the name field.
@@ -45,7 +40,8 @@ const Form = (props) => {
     }
 
     setName(value);
-  }};
+  };
+
 
   const categories = [
     'Fish',
@@ -82,10 +78,10 @@ const Form = (props) => {
       </Select>
       <div className="addFormButtons">
    
-        <button class="button-56" role="button" type="submit">Create</button>
+        <button class="button-56" type="submit">Create</button>
       </div>
     </form>
   );
-  }};
+  };
 
 export default Form;
