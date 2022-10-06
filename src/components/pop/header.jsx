@@ -8,7 +8,7 @@ return(
 <div className="head-container">
   <h1>
 <img src="./mylogo.svg" alt="HACONA MATATA" />
-HACONA MATATA
+HAKONA MATATA
 </h1>
 </div>
 </header>

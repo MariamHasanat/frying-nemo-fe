@@ -1,10 +1,10 @@
 import { type } from '@testing-library/user-event/dist/type';
 import React, { useState } from 'react';
 import Input from '../../common/input/input';
+import MultivalueInput from '../../common/multi-value-input/multi-value-input';
 import MySelect from '../../common/select/select';
 import Textarea from '../../common/textarea/textarea/Tarea';
 import './form.css';
-
 const Form = (props) => {
   const [name, setName] = useState('ayat');
 
@@ -14,6 +14,9 @@ const Form = (props) => {
   * 
   *
   */
+
+
+  
   const submitHandeller = (e) => {
     e.preventDefault();
     /*
@@ -22,6 +25,7 @@ const Form = (props) => {
 
     const target = e.target;
   };
+
 
   const categories = [
     'Fish',
@@ -72,7 +76,10 @@ const Form = (props) => {
           })
         }
       </MySelect>
-
+<MultivalueInput
+label='Ingrediant'  
+value ={['suger','cream'] }                                       
+/>
 
       <div className='btn'>
         <button type='submit' className='submit-button'>create</button>
