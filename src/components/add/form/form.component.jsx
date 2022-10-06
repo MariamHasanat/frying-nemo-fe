@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Input from '../../common/input/input.component';
+import MultivalueInput from '../../common/multivalueinput/multi-value-input';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
@@ -8,12 +9,13 @@ import './form.css';
 
 const Form = (props) => {
   const [name, setName] = useState('yara');
+  const [ingredients, setIngredients] = useState([]);
 
   /**
    * Handler function for the form onSubmit event.
    * @param {React.FormEvent<HTMLFormElement>} e Event object.
    */
-   const submitHandler = e => {
+  const submitHandler = e => {
     e.preventDefault();
 
     const menuItem = {
@@ -76,12 +78,16 @@ const Form = (props) => {
           return <option key={item} value={item}>{item}</option>;
         })}
       </Select>
+
+
+
       <div className="addFormButtons">
-   
+
         <button class="button-56" type="submit">Create</button>
       </div>
+
     </form>
   );
-  };
+};
 
 export default Form;
