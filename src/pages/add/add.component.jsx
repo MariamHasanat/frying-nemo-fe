@@ -8,6 +8,7 @@ const AddPage = (props) => {
     <div>
       <Handel
       img = './fish.png'
+      // img = './fish.svg/'
       />
       <Form />
     </div>

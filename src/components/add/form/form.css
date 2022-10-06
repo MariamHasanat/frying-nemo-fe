@@ -23,7 +23,7 @@
 .form .input input:hover{ 
  box-shadow: 3px  4px palevioletred ;
  }
- .form button{
+ /* .form button{
   font-family: 'Rubik Dirt', cursive;
   font-weight: bolder;
   display: block;
@@ -36,6 +36,6 @@
  }
  .form button:hover{
   box-shadow: 5px 4px  8px black ;
- }
+ } */
 
   

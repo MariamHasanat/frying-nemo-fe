@@ -7,8 +7,11 @@
 }
 .handel-group{
   background: rgb(0,255,24);
+  width:730px;
   background: linear-gradient(90deg, rgba(0,255,24,1) 15%, rgba(0,228,255,1) 52%, rgba(9,9,121,0.9193915562913907) 81%, rgba(2,0,36,1) 93%);;
   display: flex;
+  
+  align-items: center;
 
   font-weight: bolder;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

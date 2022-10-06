@@ -1,0 +1,14 @@
+.nemo{
+  font-family: 'Rubik Dirt', cursive;
+  font-weight: bolder;
+  display: block;
+ min-width: 100px;
+ padding: 15px 15px;
+ margin: 7px;
+ border:2px solid rgb(73, 2, 73);
+ border-radius:50px;
+ cursor: pointer;
+}
+.nemo:hover{
+  box-shadow: 5px 4px  8px black ;
+}
