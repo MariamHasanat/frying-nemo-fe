@@ -1,26 +1,29 @@
-.form-container{
+.form-container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
+
 .addForm {
   background-color: #fafafa;
   border: 1px solid #ddd;
   padding: 20px
 }
 
-.addForm  input,.addForm textarea {
+.addForm Input,
+.addForm Textarea,
+.addForm Select {
   margin-bottom: 10px;
 }
 
-.addForm > .addFormButtons {
+.addForm>.addFormButtons {
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
 }
 
-.addForm > .addFormButtons > button {
+.addForm>.addFormButtons>button {
   appearance: none;
   border: 1px solid #134694;
   background: #165fc9;

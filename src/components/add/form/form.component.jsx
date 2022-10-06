@@ -45,7 +45,7 @@ const Form = (props) => {
         <Input label="price" type="number" required />
         <Select label="categories">
           {catigories.map((item) => {
-            return <option value={item}>{item}</option>;
+            return <option key={item} value={item}>{item}</option>;
           })}
         </Select>
         <div className="addFormButtons">
