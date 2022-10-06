@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import './form.css';
-import Input from '../../../common/input/input.common';
+import Input from '../../../common/input/input.component';
 import Textarea from '../../../common/textarea/textarea.component';
 import Select from '../../../common/Select/Select';
+import MultivalueInput from '../../../common/multivalue-input/multivalue-input.component';
 
 const Form = (props) => {
   const [name, setName] = useState('dala');
@@ -75,7 +76,8 @@ const Form = (props) => {
           return <option key={item} value={item}>{item}</option>
         })}
         </Select>
-        <button className='btn' type='submit'>Creat</button>
+        <MultivalueInput />
+        <button className="nemo-button" type='submit'>Creat</button>
       </div>
     </form>
   );
