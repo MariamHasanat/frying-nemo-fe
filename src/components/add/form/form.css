@@ -10,17 +10,6 @@
   margin-top: 10px;
 }
 
-.addForm > .addFormButtons > button {
-  appearance: none;
-  border: 1px solid #134694;
-  background: #165fc9;
-  color: white;
-  padding: 5px 10px;
-  border-bottom-width: 2px;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-.addForm > .input-group, .addForm > .textarea-group {
+.addForm > .input-group, .addForm > .textarea-group, .addForm > .select-group {
   margin-bottom: 20px;
 }

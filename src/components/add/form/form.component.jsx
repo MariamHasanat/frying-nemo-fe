@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Input from '../../common/input/input.component';
+import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 
 const Form = (props) => {
   const [name, setName] = useState('Qusai');
+  const [ingredients, setIngredients] = useState([]);
 
   /**
    * Handler function for the form onSubmit event.
@@ -73,8 +75,13 @@ const Form = (props) => {
           return <option key={item} value={item}>{item}</option>;
         })}
       </Select>
+      <MultivalueInput
+        label="Ingredients"
+        value={ingredients}
+        onChange={newIngredients => setIngredients(newIngredients)}
+      />
       <div className="addFormButtons">
-        <button type="submit">Create</button>
+        <button className="nemo-button" type="submit">Create</button>
       </div>
     </form>
   );
