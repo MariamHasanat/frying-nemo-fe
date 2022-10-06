@@ -1,11 +1,14 @@
+import React, { useState } from 'react';
 import './form.css';
-import { useState } from 'react';
 import Input from '../../common/input/input.component';
+import MultivalueInput from '../../common/mutivalue-input/multivalue-input.component';
+import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
+
 
 const Form = (props) => {
   const [name, setName] = useState('Lana');
-
+  const [ingredients, setIngredients] = useState([]);
   /**
    * Handler fn for the form onSubmit event .
    * @param {React.FormEvent<HTMLFormElement>}e Event object.
@@ -23,7 +26,7 @@ const Form = (props) => {
   };
 
   /**
-   * Handels on change event on the name field.
+   * Handles on change event on the name field.
    * @param {React.ChangeEvent<HTMLInputElement>} e on change event object . 
    */
   const onNameChange = (e) => {
@@ -44,6 +47,19 @@ const Form = (props) => {
 
     setName(value);
   };
+
+
+  const categories = [
+    'Fish',
+    'Drinks',
+    'Hookah',
+    'Salads',
+    'Sandwiches',
+    'Main Dish',
+    'Appetizers',
+    'Ice Cream'
+  ];
+
 
   return (
     <form className="add-form" onSubmit={submitHandler}>
@@ -67,26 +83,22 @@ const Form = (props) => {
           required
         />
 
-        <select>
-          <option>Fish</option>
-          <option>Drinks</option>
-          <option>Hookah</option>
-          <option>salads</option>
-          <option>Sandwiches</option>
-          <option>Main dish</option>
-          <option>Appetizers</option>
-          <option>Ice creem</option>
-        </select>
+        <Select label="Category" required>
+          {categories.map(item => {
+            return <option key={item} value={item}>{item}</option>;
+          })}
+        </Select>
+
+        <MultivalueInput
+          label="Ingredients"
+          value={ingredients}
+          onChange={newIngredients => setIngredients(newIngredients)}
+        />
+                  
+          <div><button type="submit">Create </button></div>
 
 
-
-
-
-        
-        <div><button type="submit">Create </button></div>
-        
-
-      </div>
+        </div>
 
     </form >
   );

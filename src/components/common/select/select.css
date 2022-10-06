@@ -28,14 +28,13 @@
 
 .select-group>label {
   display: block;
-  margin-bottom: 5px;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #666;
-  letter-spacing: 0.5px;
+  padding-bottom: 5px;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
 }
 
 .select-group>label>span:nth-child(2) {
-  color: rgb(210, 21, 21);
+  color:  rgb(102, 7, 62);
 }
