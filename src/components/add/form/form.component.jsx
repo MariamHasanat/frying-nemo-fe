@@ -3,6 +3,7 @@ import Input from '../../common/input/input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
+import MultivalueInout from '../../common/multivalue-input/multivalue-input.component';
 
 const Form = (props) => {
   const [name, setName] = useState('Ruba');
@@ -73,6 +74,12 @@ const Form = (props) => {
           return <option key={item} value={item}>{item}</option>;
         })}
       </Select>
+
+      <MultivalueInout 
+      label="INGRADIANTS"
+      value={
+        ['sugar','cream','chocolat','ice']
+      } />
       <div className="addFormButtons">
         <button type="submit">Create</button>
       </div>

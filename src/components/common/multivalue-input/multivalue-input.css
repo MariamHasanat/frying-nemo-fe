@@ -1,0 +1,17 @@
+.multivalue-input-counter{
+
+}
+
+
+.multivalue-input-counter > controls{
+  display: flex;
+  align-items: flex-end;
+}
+
+.multivalue-input-counter > controls >.input-group {
+  margin-right: 10px;
+  
+}
+.multivalue-input-counter > controls > button{
+height: 38px;
+}
