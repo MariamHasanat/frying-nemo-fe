@@ -1,4 +1,4 @@
-.textarea-group > textarea {
+.select-group > select {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
@@ -14,7 +14,7 @@
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.textarea-group > textarea:focus {
+.select-group > select:focus {
   color: #212529;
   background-color: #fff;
   border-color: #86b7fe;
@@ -22,7 +22,7 @@
   box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
 }
 
-.textarea-group > label {
+.select-group > label {
   display: block;
   margin-bottom: 5px;
   font-size: 12px;
@@ -32,6 +32,6 @@
   letter-spacing: 0.5px;
 }
 
-.textarea-group > label > span:nth-child(2) {
+.select-group > label > span:nth-child(2) {
   color: rgb(210, 21, 21);
 }

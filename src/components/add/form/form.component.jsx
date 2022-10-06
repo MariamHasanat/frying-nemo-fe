@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './form.css';
 import Input from '../../common/input';
 import Textarea from '../../textarea/textarea.component';
+import Select from '../../selector/selector.component';
 const Form = (props) => {
 
   const [name, setName] = useState('mariam');
@@ -27,7 +28,12 @@ const Form = (props) => {
     setName(value);
   };
 
-
+  let food = [
+    "tea",
+    "coffe",
+    "nemo",
+    "abu-nemo",
+  ];
   return (
     <form className='add-form' onSubmit={submitHandler}>
 
@@ -40,13 +46,14 @@ const Form = (props) => {
       <Textarea
         label="Discription"
       />
-      <select >
-        <option value=" ">tea</option>
-        <option value=" ">coffe</option>
-        <option value=" ">salad</option>
-        <option value=" ">nemo</option>
-        <option value=" ">abu-nemo</option>
-      </select>
+
+      <Select label="Select a meal">
+        {food.map
+          (item => {
+            return <option key={item} value={item}>{item}</option>;
+          }
+          )}
+      </Select>
       <div style={{ marginTop: 20 }}>
         <button type="submit">creat</button>
 

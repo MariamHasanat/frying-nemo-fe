@@ -1,5 +1,5 @@
 import React from 'react';
-import './select.css';
+import './selector.css';
 
 /**
  * Renders an input element.
@@ -15,7 +15,7 @@ const Select = props => {
       {
         label ? (
           <label>
-            <span>{label}</span>
+            <span className='label-name'>{label}</span>
             &nbsp;
             {selectProps.required && <span>*</span>}
           </label>
