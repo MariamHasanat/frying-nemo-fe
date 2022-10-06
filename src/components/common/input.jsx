@@ -11,7 +11,7 @@ const Input = (props) => {
   const { label, ...inputProps } = props;
 
   return (
-    <div className="potato">
+    <div className="potato margin-button-component">
 
       {label
         ?

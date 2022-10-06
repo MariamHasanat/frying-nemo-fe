@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './form.css';
-import Input from '../../common/input';
-import Textarea from '../../textarea/textarea.component';
-import Select from '../../selector/selector.component';
+import Input from '../common/input';
+import Textarea from '../textarea/textarea.component';
+import Select from '../selector/selector.component';
 const Form = (props) => {
 
   const [name, setName] = useState('mariam');

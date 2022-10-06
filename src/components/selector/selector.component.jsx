@@ -11,7 +11,7 @@ const Select = props => {
   const { label, ...selectProps } = props;
 
   return (
-    <div className="select-group">
+    <div className="select-group margin-button-component">
       {
         label ? (
           <label>

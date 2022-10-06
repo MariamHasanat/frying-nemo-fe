@@ -1,6 +1,6 @@
-import './add.css';
+import './pageContainerStyle.css';
 
-import Form from '../../components/add/form/form.component';
+import Form from '../../components/form/form.component';
 
 const AddPage = (props) => {
   return (

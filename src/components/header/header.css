@@ -1,12 +1,15 @@
 .webisteHeader {
-  display: flex;
-  align-items: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
   width: 100%;
   padding: 10px 20px;
   border-bottom: 1px solid #ddd;
+  background-color: rgba(201, 218, 233, 0.726);
+
 }
 
-.webisteHeader > .left > h1 {
+.webisteHeader>.classWhichHaveHeaderContent>h1 {
   font-size: 18px;
   color: #be441d;
   line-height: 1.2;
@@ -17,7 +20,7 @@
 }
 
 
-.webisteHeader > .left > h1 > img {
+.webisteHeader>.classWhichHaveHeaderContent>h1>img {
   height: 35px;
   width: auto;
   margin-right: 5px;

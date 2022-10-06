@@ -1,10 +1,12 @@
-import AddPage from "./pages/add/add.component";
-import Header from "./components/header/header"
+// Here we import the components
+import AddPage from "./pages/pageContainer/page.container";
+import Header from "./components/header/header.component";
+
+//A function App will render the components
 function App() {
   return (
-    <div>
+    <div className="consistancy-header-with-page">
       <Header />
-
       <AddPage />
     </div>
   );
