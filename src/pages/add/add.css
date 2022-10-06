@@ -1,3 +1,11 @@
- h1{
-  padding: 30px;
+.logo{
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+.logo p{
+  text-transform: capitalize;
+}
+h1{
+  margin-left: 20px;
 }

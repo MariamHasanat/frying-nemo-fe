@@ -1,0 +1,32 @@
+.multivalue-input-wrapper {}
+
+.multivalue-input-wrapper .controls {
+  display: flex;
+  max-width: 150px;
+  align-items: center;
+
+}
+
+.multivalue-input-wrapper .controls .input-group {
+  flex-grow: 1;
+}
+
+.multivalue-input-wrapper .controls .add {
+  height: 30px;
+}
+
+.multivalue-input-wrapper ul {
+  list-style: none;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid white;
+  margin-left: 30px;
+  background-color: #fff;
+  max-width: 200px;
+}
+.multivalue-input-wrapper ul li{
+  margin-top: 5px;
+}
+.multivalue-input-wrapper ul li:not(:last-child){
+  border-bottom: 1px solid #000;
+}

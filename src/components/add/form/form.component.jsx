@@ -2,7 +2,9 @@ import { useState } from 'react';
 import Input from '../../common/input/input-component';
 import Textarea from '../../common/textarea/textarea-component';
 import Select from '../../common/select/select-component';
+import MultiValuInput from '../../common/multivalue-input/input-component';
 import './form.css';
+
 
 const categories = [
   'Fish',
@@ -63,11 +65,12 @@ const Form = (props) => {
           min={0}
         />
         <Select label="Category" required>
-            {categories.map(item => {
-              return <option key={item} value={item}>{item}</option>
-            })}
+          {categories.map(item => {
+            return <option key={item} value={item}>{item}</option>;
+          })}
         </Select>
-        <button type='submit'>Create</button>
+        <MultiValuInput label='ingredients' />
+        <button type='submit' className='create'>Create</button>
       </div>
     </form>
   );

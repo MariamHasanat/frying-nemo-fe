@@ -2,7 +2,7 @@
   background-color: #eee;
 }
 
-.add-form button {
+.add-form .create {
   display: inline-block;
   padding: 15px 25px;
   font-size: 24px;
@@ -20,11 +20,11 @@
   margin-top: 20px;
 }
 
-.add-form button:hover {
+.add-form .create:hover {
   background-color: #3e8e41
 }
 
-.add-form button:active {
+.add-form .create:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
