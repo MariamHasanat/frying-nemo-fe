@@ -30,7 +30,7 @@ const Form = (props) => {
 
   let food = [
     "tea",
-    "coffe",
+    "coffee",
     "nemo",
     "abu-nemo",
   ];
@@ -44,10 +44,10 @@ const Form = (props) => {
         required
       />
       <Textarea
-        label="Discription"
+        label="Description"
       />
 
-      <Select label="Select a meal">
+      <Select label="Choose" required>
         {food.map
           (item => {
             return <option key={item} value={item}>{item}</option>;
@@ -55,7 +55,7 @@ const Form = (props) => {
           )}
       </Select>
       <div style={{ marginTop: 20 }}>
-        <button type="submit">creat</button>
+        <button type="submit" className='nemo-button'>create</button>
 
       </div>
 
