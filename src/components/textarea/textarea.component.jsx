@@ -15,7 +15,7 @@ const Textarea = props => {
       {
         label ? (
           <label>
-            <span>{label}</span>
+            <span className='label-name'>{label}</span>
             &nbsp;
             {textareaProps.required && <span>*</span>}
           </label>

@@ -16,7 +16,7 @@ const Input = (props) => {
       {label
         ?
         <label>
-          <span>{label}</span>
+          <span className='label-name'>{label}</span>
           &nbsp;
           {inputProps.required && <span>*</span>}
         </label>

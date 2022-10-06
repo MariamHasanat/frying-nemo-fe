@@ -28,10 +28,13 @@
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
-  color: #666;
+  color: rgb(37, 36, 36);
   letter-spacing: 0.5px;
 }
 
 .textarea-group > label > span:nth-child(2) {
   color: rgb(210, 21, 21);
+}
+.label-name{
+  color: rgb(37, 36, 36);
 }
