@@ -3,6 +3,7 @@ import './form.css';
 import Input from '../../../common/input/input.component';
 import Textarea from '../../../common/textarea/textarea.component';
 import Select from '../../../common/select/select.component';
+import MultivalueInput from '../../../common/Multivalue-input/multivalue-input.component';
 
 const Form = (props) => {
   const [name, setName] = useState('Nadeen');
@@ -27,7 +28,7 @@ const Form = (props) => {
       "Fish",
       "Drink",
       "Salade",
-      "Sandwaches",
+      "Sandwiches",
       "Ice Cream",
   ];
   return (
@@ -42,24 +43,29 @@ const Form = (props) => {
           required
         />
         <Textarea
-          label="Describtion"
+          label="Description"
         />
         <Input
           type='number'
           label='price'
           min={0}
           required
-        />
+        /><MultivalueInput
+        label='INGREDIENTS'
+        type="text"
+        ></MultivalueInput>
         <Select label='Category'>
           {categories.map(item => {
             return <option key={item} value={item}>{item}</option>;
           })}
-
         </Select>
-      </div>
+
+       
+      </div>   
       <div>
+          
         <button type='submit' className='submit'>Create</button>
-      </div>
+      </div> 
     </form>
   );
 };
