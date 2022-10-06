@@ -1,6 +1,6 @@
 import Header from "./components/common/header/header.component";
 import AddPage from "./pages/add/add.component";
-
+import './common.css' ;
 function App() {
   return (
     <div>

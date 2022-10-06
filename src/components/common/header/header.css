@@ -18,13 +18,13 @@
 .webisteHeader > .left {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
   width: 200px;
 }
 
 
 .webisteHeader > .left > img {
-  height: 55px;
+  height: 40px;
   width: auto;
   margin-right: 5px;
 }

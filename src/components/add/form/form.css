@@ -10,7 +10,7 @@
   margin-top: 10px;
 }
 
-.addForm > .addFormButtons > button {
+/* .addForm > .addFormButtons > button {
   appearance: none;
   border: 1px solid #134694;
   background: #165fc9;
@@ -19,7 +19,7 @@
   border-bottom-width: 2px;
   font-size: 13px;
   cursor: pointer;
-}
+} */
 
 .req {
   color: red;

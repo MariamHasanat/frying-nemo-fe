@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import Input from '../../common/input/input.component';
+import MultivalueInput from '../../common/multivalue-input/multivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 
 const Form = (props) => {
   const [name, setName] = useState('Raghad');
+  const [ingredients, setIngredients] = useState([]);
   /*
    * calls JSDoc
    * @param {React.ChangeEvent<HTMLInputElement>} e   //Event object
@@ -34,7 +36,7 @@ const Form = (props) => {
     console.log(val.length);
     setName(val);
   };
-  const catigories = ["Salads" , "Main Dishes" , "Drinks" , "Sweets"] ;
+  const catigories = ["Salads", "Main Dishes", "Drinks", "Sweets"];
   return (
     <form className='addForm' onSubmit={handle}>
       <Input
@@ -54,24 +56,30 @@ const Form = (props) => {
         label="Price"
         required
         min={0}
-      /> 
+      />
       {/* using array mapping */}
       <Select label='Select'>
-        {catigories.map (item => 
+        {catigories.map(item =>
           <option key={item} value={item}>{item}</option>
-        )} 
+        )}
         {/* key must be mintions */}
       </Select>
-      <Select label='Select' required>
+      <MultivalueInput
+      onChange={item => setIngredients (item)}
+      value = {ingredients}
+
+      />
+
+      {/* <Select label='Select' required>
         <option value="salad">Salads</option>
         <option value="salad">Main Dishes</option>
         <option value="salad">Drinks</option>
         <option value="salad">Sweets</option>
-      </Select>
+      </Select> */}
       <div className='addFormButtons'>
         <button
           type='submit'
-          className='formComp'
+          className='formComp nemo-button'
         >
           Create
         </button>
