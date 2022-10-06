@@ -1,7 +1,7 @@
 import './input.css'
 
 const Input = props => {
-  const {label, required, ...inputProps} = props;
+  const {label, required, rmBorder, ...inputProps} = props;
 
   return (
     <div className="input-group">
@@ -11,7 +11,7 @@ const Input = props => {
         &nbsp;
         {required && (<span className='required'>*</span>)}
         </label>)}
-      <input {...{required: required, ...inputProps}} />
+      <input style={rmBorder? {borderRight: 'none', borderTopRightRadius: '0px', borderBottomRightRadius: '0px'} : {}} {...{required: required, ...inputProps}} />
     </div>
   )
 }

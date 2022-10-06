@@ -4,6 +4,7 @@ import Input from '../common/input/input.component';
 import Button from '../common/button/button.component';
 import Textarea from '../common/textarea/textarea.component';
 import Select from '../common/select/select.component';
+import MultivalueInput from '../common/multivalue-input/multivalue-input.component';
 
 const Form = (props) => {
   const [name, setName] = useState(`Omar`)
@@ -39,6 +40,7 @@ const Form = (props) => {
         <Textarea label="Description" ></Textarea>
         <Input label="Price" type="number" required></Input>
         <Select items={[`Fish`, `Shisha`, `Drink`]} required></Select>
+        <MultivalueInput label='Ingredients'/>
         <Button name="SUBMIT" type="submit"></Button>
       </div>
     </form>

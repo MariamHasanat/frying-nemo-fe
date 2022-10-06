@@ -4,7 +4,7 @@
 }
 
 .btn button {
-  width: 100px;
+  width: 150px;
   padding: .7rem .8rem;
   background-color: #fab700;
   color: white;
@@ -17,7 +17,7 @@
   font-size: 1.1rem;
   font-weight: 700;
   justify-content: center;
-  line-height: 1;
+  height: 43px;
   margin: 0;
   text-align: center;
   text-decoration: none;
