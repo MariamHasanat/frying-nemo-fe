@@ -10,36 +10,45 @@ import { useState } from 'react';
  * }} props 
  */
 const MultivalueInput = props => {
-  // Define a state for your input component.
-  // this state will store the item to be added to the list.
 
-  // const addItem = () => {
-  //   // Add new item to existing array and call inform parent of change
-  //   // Validate new item is not empty and does not exist in the original array
-  // };
+  const [newItemValue, setNewItemValue] = useState('');
+
+   const addItem = () => {
+    if (newItemValue.trim().length > 0 && !props.value.includes(newItemValue)) {
+      props.onChange([...props.value, newItemValue]);
+    }
+  };
 
   return (
     <div className="multivalueInputWrapper">
       <div className="controls">
-        {/* Input goes here */}
+      <Input
+          label={props.label}
+          value={newItemValue}
+          onChange={e => setNewItemValue(e.target.value)}
+        />
         <button
           className="nemo-button"
           type="button"
-        // Handel addition of new item (On click)
+          onClick={addItem}
         >
           Add
         </button>
       </div>
-      {/* Render list of items */}
-      {/* Do not render list if incoming value has no items */}
-      {/* 
-        <ul>
-          <li>
-            <span>{item}</span>
-            <button type="button">&times;</button>
-          </li>
-        </ul>
-       */}
+      {
+        props.value.length > 0 && (
+          <ul>
+            {props.value.map(item => {
+              return (
+                <li key={item} >
+                  <span>{item}</span>
+                  <button type="button">&times;</button>
+                </li>
+              );
+            })}
+          </ul>
+        )
+      }
     </div>
   );
 };
