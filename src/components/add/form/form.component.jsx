@@ -4,6 +4,8 @@ import Multivalue from '../../common/multivalue-input.component.jsx/multivalue-i
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
+import '../../../common.css';
+
 
 const categories = [
     "Fish",
@@ -16,6 +18,7 @@ const categories = [
 
 const Form = (props) => {
     const [name, setName] = useState('');
+    const [Ingredients, setIngredients] = useState('');
 
     /**
      * Form Submit Handler 
@@ -60,7 +63,12 @@ const Form = (props) => {
                 })}
             </Select>
 
-            <Multivalue label="Ingredients"/>
+            <Multivalue
+                label="Ingredients"
+                value={[2, 3, 4, 5]}
+                // value={Ingredients}
+                onChange = {() => console.log('sth changed')}
+            />
 
             <div>
                 <button className='nemo-button' type='submit'>Create</button>

@@ -1,9 +1,56 @@
-.multivalue-input-group > .input-button-wrapper {
+.multivalue-input-group>.input-button-wrapper {
     display: flex;
-    align-items: flex-end;
+    /* align-items: flex-end; */
+
 }
 
-.multivalue-input-group > .input-button-wrapper > button {
-    /* margin-left: 10px; */
+.multivalue-input-group>.input-button-wrapper>button {
+    margin-left: -6px;
+    margin-top: 27px;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
     height: 38px;
+    background-color: #00a6ff;
+}
+
+.multivalue-input-group>.input-button-wrapper>button:hover {
+    background-color: #dee5ec;
+    border-color: #dae0e5;
+}
+
+.multivalue-input-group>ul {
+    list-style: none;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    ;
+    background-color: white;
+
+}
+
+.multivalue-input-group>ul>li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+
+}
+
+.multivalue-input-group>ul>li:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
+
+.multivalue-input-group>ul>li>button {
+    appearance: none;
+    border: none;
+    background: none;
+    font-family: 'Times New Roman';
+    font-size: 15px;
+}
+
+.multivalue-input-group>ul>li>button:hover {
+    background-color: #dee5ec;
+    border-radius: 0.25rem;
 }
