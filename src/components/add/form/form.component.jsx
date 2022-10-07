@@ -11,6 +11,7 @@ import MultivalueInput from '../../common/multivalue-input/multivalueInput';
 
 const Form = (props) => {
     const [name, setName] = useState('');
+    const [Ingredients, setIngredients] = useState([]);
     let categories = [
         'Fish',
         'Main Dish',
@@ -59,8 +60,9 @@ const Form = (props) => {
                     })}
                 </SelectArea>
                 <MultivalueInput
-                    label = {'Ingredients'}
-                    value ={['ice', 'tomato', 'potato']}
+                    label={'Ingredients'}
+                    value={Ingredients}
+                    onChange={(newItem) => { setIngredients(newItem); }}
                 />
                 <div className='sub'>
                     <input type="submit" className='nemo-button' onSubmit={submitHandler} />
