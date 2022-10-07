@@ -1,22 +1,19 @@
-import { type } from '@testing-library/user-event/dist/type';
 import React, { useState } from 'react';
 import Input from '../../common/input/input';
-import MultivalueInput from '../../common/multi-value-input/multi-value-input';
 import MySelect from '../../common/select/select';
 import Textarea from '../../common/textarea/textarea/Tarea';
+import { type } from '@testing-library/user-event/dist/type';
+import MultivalueInput from '../../common/multi-value-input/multi-value-input';
 import './form.css';
 const Form = (props) => {
   const [name, setName] = useState('ayat');
+  const [ingrediant, setIngrediant] = useState([]);
 
-  /** 
-   * handle change event.
-  * @parm {React.ChangeEvent<HTMLInputElement> } e  on change event
-  * 
-  *
-  */
+  /**
+     * 
+     * @param {React.ChangeEvent<HTMLInputElement>} e 
+     */
 
-
-  
   const submitHandeller = (e) => {
     e.preventDefault();
     /*
@@ -76,10 +73,11 @@ const Form = (props) => {
           })
         }
       </MySelect>
-<MultivalueInput
-label='Ingrediant'  
-value ={['suger','cream'] }                                       
-/>
+      <MultivalueInput
+        label="Ingradiant"
+        value={ingrediant}
+        onChange={newI => setIngrediant(newI)}
+      />
 
       <div className='btn'>
         <button type='submit' className='submit-button'>create</button>
