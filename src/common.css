@@ -12,3 +12,14 @@
     border-radius: 8px;
     color: #fff;
 }
+
+.nemo-button:hover {
+    cursor: pointer;
+}
+
+.nemo-button:active {
+    cursor: pointer;
+    color: rgb(36, 130, 253);
+    background-color: #fff;
+    border: 1px solid rgb(36, 130, 253);
+}

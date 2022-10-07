@@ -13,17 +13,9 @@
     justify-content: flex-end;
 }
 
-.sub>input:hover {
-    cursor: pointer;
-}
 
-.sub>input:active {
-    cursor: pointer;
-    color: rgb(36, 130, 253);
-    background-color: #fff;
-    border: 1px solid rgb(36, 130, 253);
-}
-
-.form > .inputGroup , .selectareaGroup, .textareaGroup {
+.form>.inputGroup,
+.selectareaGroup,
+.textareaGroup {
     margin-bottom: 20px;
 }

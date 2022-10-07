@@ -1,0 +1,37 @@
+.wrapper {}
+
+.wrapper>div {
+    display: flex;
+    width: 300px;
+    align-items: flex-end;
+}
+
+.wrapper>div>.inputGroup {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+}
+
+.wrapper>div>button {
+    width: 50px;
+    height: 33px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.wrapper>ul {
+    list-style: none;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    background-color: white;
+    width: 250px;
+}
+
+.wrapper>ul>li{
+    padding: 10px 5px;
+}
+
+.wrapper>ul>li:not(:last-child){
+    border-bottom: 1px solid rgb(179, 179, 179);
+}

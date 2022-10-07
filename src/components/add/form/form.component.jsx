@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Input from '../../common/input/input.component';
 import Textarea from '../../common/textarea/textarea.component';
 import SelectArea from '../../common/selectarea/selectarea.component';
+import MultivalueInput from '../../common/multivalue-input/multivalueInput';
 
 
 
@@ -57,7 +58,10 @@ const Form = (props) => {
                         return <option key={item} value={item}>{item}</option>;
                     })}
                 </SelectArea>
-
+                <MultivalueInput
+                    label = {'Ingredients'}
+                    value ={['ice', 'tomato', 'potato']}
+                />
                 <div className='sub'>
                     <input type="submit" className='nemo-button' onSubmit={submitHandler} />
                 </div>
