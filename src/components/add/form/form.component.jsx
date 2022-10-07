@@ -3,8 +3,7 @@ import Input from '../../common/input/input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
-import Textarea from './common/textarea/textarea.component';
-import Selector from './common/selector/selector';
+
 
 const Form = (props) => {
   const [name, setName] = useState('Qusai');
