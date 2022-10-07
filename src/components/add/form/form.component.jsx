@@ -17,10 +17,10 @@ const Form = (props) => {
         'Salad',
         'Ice-cream',
     ];
+
     /**
      * @param {React.ChangeEvent<HTMLInputElement>} e
      */
-
     const submitHandler = (e) => {
         e.target.preventDefault();
     };
@@ -54,11 +54,12 @@ const Form = (props) => {
                 />
                 <SelectArea label='Categories' required>
                     {categories.map((item) => {
-                        return <option key={item} value={item}>{item}</option>
+                        return <option key={item} value={item}>{item}</option>;
                     })}
                 </SelectArea>
+
                 <div className='sub'>
-                    <input type="submit" onSubmit={submitHandler} />
+                    <input type="submit" className='nemo-button' onSubmit={submitHandler} />
                 </div>
             </form>
         </div>
