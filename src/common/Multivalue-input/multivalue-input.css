@@ -1,37 +1,46 @@
-.input-group>input {
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+.Multivalue-input {
+  max-width: 265px;
+}
+
+.Multivalue-input>.input {
+  display: flex;
+  align-items: flex-end;
+}
+
+.Multivalue-input>.input>.input-group>input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.Multivalue-input>.input>button {
+  height: 38px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.Multivalue-input>ul {
+  list-style: none;
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background-color: white;
+}
+
+.Multivalue-input>ul>li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.Multivalue-input>ul>li:not(:last-child) {
+  border-bottom: 1px solid #ddd;
+}
+
+
+.Multivalue-input>ul>li>button {
   appearance: none;
-  border-radius: 3px;
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-}
-
-.input-group>label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #666;
-  letter-spacing: 0.5px;
-}
-
-.input-group>label>span:nth-child(2) {
-  color: rgb(210, 21, 21);
-}
-
-.input-group>input:focus {
-  color: #212529;
-  background-color: #fff;
-  border-color: #86b7fe;
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+  border: none;
+  background: none;
+  font-family: 'Times New Roman';
+  font-size: 15px;
 }

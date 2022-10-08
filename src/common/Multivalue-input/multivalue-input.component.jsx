@@ -23,8 +23,8 @@ const MultivalueInput = props => {
     
 
 return (
-    <div className="multivalueInputWrapper">
-      <div className="controls">
+    <div className="Multivalue-input">
+      <div className="input">
         <Input
           label={props.label}
           value={newItemValue}
