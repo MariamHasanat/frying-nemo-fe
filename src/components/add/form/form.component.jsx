@@ -7,6 +7,7 @@ import MultivalueInput from '../../../common/Multivalue-input/multivalue-input.c
 
 const Form = (props) => {
   const [name, setName] = useState('Nadeen');
+  const [ingredients, setIngredients] = useState([]);
   /**
    * 
    * @param {React.FormEvent<HTMLFormElement>} e 
@@ -14,7 +15,17 @@ const Form = (props) => {
   const SubmitHandel = e => {
     e.preventDefult();
 
+    const menuItem = {
+      name: name
+    };
+
+
   };
+  /**
+   * Handles on change events on the name field.
+   * @param {React.ChangeEvent<HTMLInputElement>} e On change event object.
+   */
+
   const onNameChange = e => {
     let value = e.target.value;
 
@@ -33,8 +44,6 @@ const Form = (props) => {
   ];
   return (
     <form className='add-form' onSubmit={SubmitHandel}>
-      <div style={{ marginTop: 20 }}>
-
         <Input
           label="Name"
           placeholder='name'
@@ -50,20 +59,20 @@ const Form = (props) => {
           label='price'
           min={0}
           required
-        /><MultivalueInput
-        label='INGREDIENTS'
-        type="text"
-        ></MultivalueInput>
-        <Select label='Category'>
+        />
+        <Select label='Category' required>
           {categories.map(item => {
             return <option key={item} value={item}>{item}</option>;
           })}
         </Select>
 
-       
-      </div>   
+        <MultivalueInput
+          label="Ingredients"
+          value={ingredients}
+          onChange={newIngredients => setIngredients(newIngredients)}
+        />
+
       <div>
-          
         <button type='submit' className='submit'>Create</button>
       </div> 
     </form>
