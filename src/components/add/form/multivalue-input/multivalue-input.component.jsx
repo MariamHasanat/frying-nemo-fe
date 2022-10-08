@@ -3,31 +3,37 @@ import Input from '../input/input.component';
 import { useState } from 'react';
 
 /**
- * Render an input component and a list of values.
+ * Renders an input component and a list of values.
  * @param {{
- * label?:string;
- * value: string[];
- * onChange: (value: string[]) => void;
- * }}props
+ *  label?: string;
+ *  value: string[];
+ *  onChange: (value: string[]) => void;
+ * }} props 
  */
-
 const MultivalueInput = props => {
   const [newItemValue, setNewItemValue] = useState('');
+
   const addItem = () => {
-    props.onChange(...props.value, newItemValue);
+    if (newItemValue.trim().length > 0 && !props.value.includes(newItemValue)) {
+      props.onChange([...props.value, newItemValue]);
+    }
   };
 
+  const deleteItem = (key) => {
+    
+            
+  };
   return (
-    <div className='multivalueInputWrapper'>
-      <div className='controls'>
+    <div className="multivalueInputWrapper">
+      <div className="controls">
         <Input
           label={props.label}
           value={newItemValue}
           onChange={e => setNewItemValue(e.target.value)}
         />
         <button
-          className='add-button'
-          type='button'
+          className="nemo-button"
+          type="button"
           onClick={addItem}
         >
           Add
@@ -37,13 +43,13 @@ const MultivalueInput = props => {
         props.value.length > 0 && (
           <ul>
             {props.value.map(item => {
-            return(
-              <li key={item}>
-                <span>{item}</span>
-                <button type='button'>&times;</button>
-              </li>
-            );
-          })}
+              return (
+                <li key={item} >
+                  <span>{item}</span>
+                  <button type="button" onClick={deleteItem(item)}>&times;</button>
+                </li>
+              );
+            })}
           </ul>
         )
       }

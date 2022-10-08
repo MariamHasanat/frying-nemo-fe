@@ -11,19 +11,19 @@ import './multivalue-input.css';
  * }} props 
  */
 const MultivalueInput = props => {
-const [newItemValue, setNewItemValue] = useState('');
-const addItem = () => {
-  props.onChange(...props.value, newItemValue);
-};
-  
+  const [newItemValue, setNewItemValue] = useState('');
+  const addItem = () => {
+    props.onChange(...props.value, newItemValue);
+  };
+
 
   return (
     <div className="multivalueInputWrapper">
       <div className="controls">
         <Input
-        label = {props.label}
-        value = {newItemValue}
-        onChange={e => setNewItemValue(e.target.value)}
+          label={props.label}
+          value={newItemValue}
+          onChange={e => setNewItemValue(e.target.value)}
         />
         <button
           className="nemo-button"
@@ -33,16 +33,23 @@ const addItem = () => {
           Add
         </button>
       </div>
-      {/* Render list of items */}
-      {/* Do not render list if incoming value has no items */}
-      {/* 
-        <ul>
-          <li>
-            <span>{item}</span>
-            <button type="button">&times;</button>
-          </li>
-        </ul>
-       */}
+      {
+        props.value.length > 0 && (
+          <ul>
+            {props.value.map(item => {
+              return (
+                <li>
+                  <span>{item}</span>
+                  <button type="button">&times;</button>
+                </li>
+              );
+            })}
+
+          </ul>
+        )
+      }
+
+
     </div>
   );
 };
