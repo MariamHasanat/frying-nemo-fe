@@ -3,6 +3,7 @@ import './form.css';
 import Input from '../../common/input/input.component';
 import Textarea from '../../common/textarea/textarea.component';
 import Select from '../../common/select/select.component';
+import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
 
 const Form = (props) => {
 
@@ -21,12 +22,15 @@ const Form = (props) => {
     console.log(target);
   };
 
-  const categories = ["Fish", "Drinks", "Main Dishes", "Salads"];
-
+  const categories = ["Fish", "Drinks", "Main Dishes", "Salads",];
+  const [ingredients, setNewIngredients] = useState([]);
   return (
     <form onSubmit={submitHandler} className='add-item-form'>
 
       <div>
+        <div style={{textAlign:'right'}}>
+          <button type='submit'>Add Item</button>
+        </div>
 
         <Input
           label='name'
@@ -43,10 +47,12 @@ const Form = (props) => {
           options={categories}
         />
 
+        <MultivalueInput
+          label='ingredients'
+          value={ingredients}
+          onChange={newIngredients => setNewIngredients(newIngredients)}
+        />
 
-        <div>
-          <button type='submit'>Add Item</button>
-        </div>
       </div>
     </form>
   );

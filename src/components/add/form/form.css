@@ -6,6 +6,8 @@
   color: white;
   border: none;
   border-radius: 4px;
+  text-align: right;
+  font-size: larger;
 }
 
 .add-item-form>div>div>button:hover {

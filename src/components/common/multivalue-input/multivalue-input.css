@@ -1,0 +1,39 @@
+.multivalue-container {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.multivalue-container>ul {
+  border: 1px solid black;
+  list-style-type: none;
+  width: 300px;
+  align-self: flex-end;
+  padding: 0 8px;
+
+}
+
+.multivalue-container>ul>li {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  /* background-color: greenyellow; */
+  border-bottom: 1px solid grey;
+}
+
+.input-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 28vw;
+}
+
+.input-container>button {
+  padding: 8px 16px;
+  height: 38px;
+}
+
+.multivalue-list {
+  background-color: gray;
+}
