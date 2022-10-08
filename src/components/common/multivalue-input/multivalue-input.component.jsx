@@ -21,6 +21,14 @@ const addItem = () => {
   }
 };
 
+let list = [];
+
+const remove = (e) => {
+  list = [...props.value];
+    list.splice(list.indexOf(e), 1);
+  props.onChange(list);
+};
+
   
   return (
     <div className="multivalue-input-counter">
@@ -35,7 +43,7 @@ const addItem = () => {
           return (
             <li key={e}>
               <span>{e}</span>
-              <button onClick={this.target.value=""}>x</button>
+              <button onClick={() => remove(e)} >x</button>
             </li>
           );
         })}
