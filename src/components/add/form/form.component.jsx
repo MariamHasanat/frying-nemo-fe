@@ -7,6 +7,7 @@ import MultivalueInout from '../../common/multivalue-input/multivalue-input.comp
 
 const Form = (props) => {
   const [name, setName] = useState('Ruba');
+  const [ingredients, setIngredients] = useState([]);
 
   /**
    * Handler function for the form onSubmit event.
@@ -78,8 +79,10 @@ const Form = (props) => {
       <MultivalueInout 
       label="INGRADIANTS"
       value={
-        ['sugar','cream','chocolat','ice']
-      } />
+        ingredients
+      } 
+      onChange={e => setIngredients(e)}
+      />
       <div className="addFormButtons">
         <button type="submit">Create</button>
       </div>

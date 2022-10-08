@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './multivalue-input.css';
 import Input from '../../common/input/input.component';
 
@@ -12,20 +12,30 @@ import Input from '../../common/input/input.component';
  */
 
 const MultivalueInput = (props) => {
-  const
+  const [NewItemValue ,SetItemValue] = useState('');
+
+
+const addItem = () => {
+  if (NewItemValue.trim().length > 0 && !props.value.includes(NewItemValue)) {
+    props.onChange([...props.value, NewItemValue]);
+  }
+};
+
+  
   return (
     <div className="multivalue-input-counter">
       <div className="controls">
         <Input
-          label={props.label} />
-        <button type="button">Add</button>
+          label={props.label}
+          onChange={e => SetItemValue(e.target.value)} />
+        <button type="button" onClick={addItem}>Add</button>
       </div>
       <ul>
         {props.value.map(e => {
           return (
             <li key={e}>
               <span>{e}</span>
-              <button></button>
+              <button onClick={this.target.value=""}>x</button>
             </li>
           );
         })}
@@ -33,7 +43,7 @@ const MultivalueInput = (props) => {
       </ul>
     </div>
   );
-};
+}
 
 export default MultivalueInput;
 
