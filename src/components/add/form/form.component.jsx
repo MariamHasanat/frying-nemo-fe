@@ -3,10 +3,11 @@ import Input from "../../common/input/input.component";
 import Textarea from "../../common/textarea/textarea.component";
 import Select from "../../common/select/select.component";
 import "./form.css";
-import MultiValueInput from "../../multi-value-input.jsx/multi-value-input.component";
+import MultivalueInput from "../../multi-value-input.jsx/multivalue-input.component";
 
 const Form = (props) => {
   const [name, setName] = useState("");
+  const [ingredients, setIngredients] = useState([]);
 
   /**
    * Handler function for the form onSubmit event.
@@ -53,7 +54,11 @@ const Form = (props) => {
             );
           })}
         </Select>
-        <MultiValueInput label="indegridients" />
+        <MultivalueInput
+        label="Ingredients"
+        value={ingredients}
+        onChange={newIngredients => setIngredients(newIngredients)}
+      />
         <div className="addFormButtons">
           <button type="submit">Create</button>
         </div>
