@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import Input from '../common/input/input.component';
 import './multivalue-input.css';
-
+import '../../common.css';
 /**
- * Renders an input component and a list of values.
  * @param {{
  *  label?: string;
  *  value: string[];
@@ -12,13 +11,14 @@ import './multivalue-input.css';
  */
 const MultivalueInput = (props) => {
   const [newItemValue, setNewItemValue] = useState('');
-
   const addItem = () => {
     if (newItemValue.trim().length > 0 && !props.value.includes(newItemValue)) {
       props.onChange([...props.value, newItemValue]);
     }
   };
-
+  const removeItem = (item) => {
+    props.value.splice(item, 1);
+  };
   return (
     <div className="multivalueInputWrapper">
       <div className="controls">
@@ -42,7 +42,8 @@ const MultivalueInput = (props) => {
               return (
                 <li key={item} >
                   <span>{item}</span>
-                  <button type="button">&times;</button>
+                  <button type="button" className='remove-btn'
+                    onClick={removeItem(props.value.indexOf(item))}>&times;</button>
                 </li>
               );
             })}
