@@ -24,7 +24,7 @@ const MultivalueInput = props => {
     if (newItem.trim().length > 0 && !props.value.includes(newItem)) {
       props.onChange([...props.value, newItem]);
     }
- 
+    setNewItem("");
 
   };
 
