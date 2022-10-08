@@ -20,7 +20,8 @@ const Multivalue = (props) => {
         setNewItem('');
     };
     const removeItem = (toRemove) => {
-        console.log(toRemove)
+        console.log(toRemove);
+        props.onChange(props.value.filter(value => value !== toRemove));
     };
 
     return (
@@ -38,14 +39,14 @@ const Multivalue = (props) => {
                 >add
                 </button>
             </div>
-            <ul>
+            {props.value.length > 0 && <ul>
                 {props.value.map(item => {
                     return <li key={item}>
                         <span>{item}</span>
                         <button type='button' id={item} onClick={() => removeItem(item)}>&times;</button>
                     </li>;
                 })}
-            </ul>
+            </ul>}
         </div>
     );
 };
