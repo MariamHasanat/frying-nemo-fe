@@ -16,8 +16,8 @@ const MultivalueInput = (props) => {
       props.onChange([...props.value, newItemValue]);
     }
   };
-  const removeItem = (item) => {
-    props.value.splice(item, 1);
+  const removeItem = (index) => {
+    props.value.splice(index, 1);
   };
   return (
     <div className="multivalueInputWrapper">
