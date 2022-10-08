@@ -18,7 +18,7 @@ const categories = [
 
 const Form = (props) => {
     const [name, setName] = useState('');
-    const [Ingredients, setIngredients] = useState('');
+    const [ingredients, setIngredients] = useState([]);
 
     /**
      * Form Submit Handler 
@@ -65,11 +65,10 @@ const Form = (props) => {
 
             <Multivalue
                 label="Ingredients"
-                value={[2, 3, 4, 5]}
-                // value={Ingredients}
-                onChange = {() => console.log('sth changed')}
+                // value={[2, 3, 4, 5]}
+                value={ingredients}
+                onChange={(newIngredients) => setIngredients(newIngredients)}
             />
-
             <div>
                 <button className='nemo-button' type='submit'>Create</button>
             </div>

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Input from '../input/input.component';
 import './multivalue-input.css';
 
@@ -11,16 +12,29 @@ import './multivalue-input.css';
  * @returns 
  */
 const Multivalue = (props) => {
+    const [newItem, setNewItem] = useState('');
+    const addItem = () => {
+        if (newItem.trim().length && !props.value.includes(newItem)) {
+            props.onChange([...props.value, newItem]);
+        }
+        setNewItem('');
+    };
+    const removeItem = (toRemove) => {
+        console.log(toRemove)
+    };
+
     return (
         <div className='multivalue-input-group'>
             <div className='input-button-wrapper'>
                 <Input
                     label={props.label}
+                    value={newItem}
+                    onChange={e => setNewItem(e.target.value)}
                 />
                 <button
                     type='button'
                     className='nemo-button'
-                    onClick={props.onChange}
+                    onClick={addItem}
                 >add
                 </button>
             </div>
@@ -28,7 +42,7 @@ const Multivalue = (props) => {
                 {props.value.map(item => {
                     return <li key={item}>
                         <span>{item}</span>
-                        <button type='button'>&times;</button>
+                        <button type='button' id={item} onClick={() => removeItem(item)}>&times;</button>
                     </li>;
                 })}
             </ul>
