@@ -18,18 +18,21 @@ const MultivalueInput = props => {
       props.onChange([...props.value, newItemValue]);
     }
   };
-  var delList = [];
-  const DeletItem = (item) => {
-    delList = [...props.value];
-    const index = delList.indexOf(item);
-    if (index >= -1) {
-      delList.splice(index, 1);
-    }
-    props.onChange(delList);
-  };
   
-    
-
+  
+  //const DeleteItem = (item) => {
+  //   var newList = [];
+  //   newList = [...props.value];
+  //   const index = newList.indexOf(item);
+  //   if (index >= 0) {
+  //     newList.splice(index, 1);
+  //   }
+  //   props.onChange(newList);
+  // };
+  const removeItem=(item)=>{
+    const afterRemove=props.value.filter(element=> element !== item);
+    props.onChange(afterRemove);
+  };
 return (
     <div className="Multivalue-input">
       <div className="input">
@@ -47,13 +50,15 @@ return (
         </button>
       </div>
       {
+        //render if value >0
         props.value.length > 0 && (
           <ul>
             {props.value.map(item => {
               return (
                 <li key={item} >
                   <span>{item}</span>
-                  <button type="button" onClick={()=>DeletItem(item)}  >&times;</button>
+                  <button type="button" onClick={()=> removeItem(item)
+                   }  >&times;</button>
                 </li>
               );
             })}
