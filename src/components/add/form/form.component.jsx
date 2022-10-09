@@ -16,17 +16,28 @@ const Form = (props) => {
   const submitHandler = e => {
     e.preventDefault();
 
+    const description = e.target.description.value;
+    const price = Number(e.target.price.value);
+    const category = e.target.category;
     const menuItem = {
-      name: name
+      name: name,
+      description: description,
+      price: price,
+      category: category,
+      ingredients: ingredients
     };
 
-    console.debug('Form submitted', menuItem);
+    const itemsJson = localStorage.getItem('menueItems') || '[]'
+    const items = Json.stringify(itemsJson)
+    localStorage.setItem('menuItem' ,JSON.stringify(items));
   };
 
   /**
    * Handles on change events on the name field.
    * @param {React.ChangeEvent<HTMLInputElement>} e On change event object.
    */
+
+
   const onNameChange = (e) => {
     let value = e.target.value;
 
@@ -56,6 +67,7 @@ const Form = (props) => {
   return (
     <form className="addForm" onSubmit={submitHandler} >
       <Input
+        name='name'
         label="Name"
         value={name}
         onChange={onNameChange}
@@ -63,25 +75,30 @@ const Form = (props) => {
       />
       <Textarea
         label="Description"
+        name='description'
       />
       <Input
         label="Price"
         type="number"
         min={0}
         required
+        name='price'
       />
-      <Select label="Category" required>
-        {categories.map(item => {
-          return <option key={item} value={item}>{item}</option>;
-        })}
+      <Select label="Category" required name='category'>
+        {
+          categories.map(item => {
+            return <option key={item} value={item}>{item}</option>;
+
+          })}
       </Select>
 
-      <MultivalueInout 
-      label="INGRADIANTS"
-      value={
-        ingredients
-      } 
-      onChange={e => setIngredients(e)}
+      <MultivalueInout
+        name='ingredients'
+        label="INGRADIANTS"
+        value={
+          ingredients
+        }
+        onChange={e => setIngredients(e)}
       />
       <div className="addFormButtons">
         <button type="submit">Create</button>

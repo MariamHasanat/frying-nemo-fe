@@ -12,24 +12,20 @@ import Input from '../../common/input/input.component';
  */
 
 const MultivalueInput = (props) => {
-  const [NewItemValue ,SetItemValue] = useState('');
+  const [NewItemValue, SetItemValue] = useState('');
 
 
-const addItem = () => {
-  if (NewItemValue.trim().length > 0 && !props.value.includes(NewItemValue)) {
-    props.onChange([...props.value, NewItemValue]);
-  }
-};
+  const addItem = () => {
+    // if (NewItemValue.trim().length > 0 && !props.value.includes(NewItemValue)) {
+    // props.onChange([...props.value, NewItemValue]);
+    const valueAfterAddition = [...props.value, NewItemValue];
+    props.onChange(valueAfterAddition);
+  };
 
-let list = [];
 
-const remove = (e) => {
-  list = [...props.value];
-    list.splice(list.indexOf(e), 1);
-  props.onChange(list);
-};
 
-  
+
+
   return (
     <div className="multivalue-input-counter">
       <div className="controls">
@@ -43,7 +39,10 @@ const remove = (e) => {
           return (
             <li key={e}>
               <span>{e}</span>
-              <button onClick={() => remove(e)} >x</button>
+              <button onClick={() => {
+                const valueAfterRemove = [...props.value].filter(item => item !== e);
+                props.onChange(valueAfterRemove);
+              }}>x</button>
             </li>
           );
         })}
@@ -51,7 +50,7 @@ const remove = (e) => {
       </ul>
     </div>
   );
-}
+};
 
 export default MultivalueInput;
 
