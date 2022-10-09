@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import Input from '../../common/input/input.component';
-import MultiValueInput from '../../common/multivalue-input/multi-value-input.component';
+import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea/textarea.component';
 import './form.css';
 
 const Form = (props) => {
   const [name, setName] = useState('ali');
-
+  const [ingredients, setIngredients] = useState([]);
   /**
    * Handler function for the form onSubmit event.
    * @param {React.FormEvent<HTMLFormElement>} e Event object.
@@ -19,7 +19,6 @@ const Form = (props) => {
       * Handles on change events on the name feild.
       * @param {React.ChangeEvent<HTMLInputElement>} e On change event object. 
       */
-
 
 const categories=[
   "fish",
@@ -34,6 +33,24 @@ const categories=[
   const submitHandler = e => {
     e.preventDefault();
 
+    const descreption = e.target.descreption.value;
+    const price = Number(e.target.price.value);
+    const category = e.target.category.value;
+    
+
+
+
+    const menuItem = {
+   name , // or name =name 
+   descreption,
+   price,
+   category,
+  ingredients 
+  };
+ localStorage.setItem('menuItems',JSON.stringify(menuItem));
+ const itemsJSON = localStorage.getItem('menuitems') || "[]";
+ const items = JSON.parse(itemsJSON);
+ items.push(menuItem);
     /**
      * @type {HTMLFormElement}
      */
@@ -50,7 +67,7 @@ const categories=[
       value = value.replace('find','fry');
       }
       if ( value.length > 20){
-        alert("plese edit that");
+        alert("please edit that");
       };
       setName(value);
       // console.log(value);
@@ -68,24 +85,37 @@ const categories=[
          required
         />
         <Textarea
+        name='descreption'
         label = "Descreption"/>
         <Input
+        name = 'price'
         label = "Price"
         type="number"
         min={0}
          required
         />
-        <Select label='select from menu' required>
+        <Select  name='category' label='select from menu' required>
          return {categories.map((item) =>{
              return <option key={item} value={item}>{item}</option>;
          })}
         </Select>
-        <MultiValueInput></MultiValueInput>
+        <MultivalueInput
+        label="Ingredients"
+        value={ingredients}
+        onChange={newIngredients => setIngredients(newIngredients)}
+      />
+
       </div>
-        <button className='nemo-button' type="submit">Create</button>
+        <button className='nemo-button special' type="submit">Create</button>
       
     </form>
   );
 };
 
 export default Form;
+//"how to change state react?"               
+
+
+
+
+

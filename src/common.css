@@ -3,4 +3,7 @@
   background-color: rgb(197, 204, 202);
   border: 2px solid rgb(101, 228, 211);
   border-radius: 5px;
+  margin: 5px 6px;
+  position: relative;
+  bottom: 15px;
 }

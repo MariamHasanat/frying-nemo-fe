@@ -3,8 +3,11 @@
   margin: 20px;
   position: relative;
   border: 1px solid gray;
-  background-color: rgb(222, 241, 235);
-  box-shadow: 1px 3px 8px #b1a9a9;
+  background-color: rgb(237, 248, 245);
+  box-shadow: 5px 2px 8px #d4d1d1;
+  border: 2px solid #c5c5c5;
+  display: flex;
+  justify-content: center;
 }
 .add-form > input {
   padding: 10px;
@@ -12,14 +15,9 @@
   border: 2px solid rgba(150, 150, 150, 0.473);
   margin-bottom: 20px;
   border-radius: 10px;
-} 
-button{
-  padding: 7px;
-  background-color: rgb(247, 248, 248);
-  border: 2px solid rgb(158, 158, 158);
-  border-radius: 5px;
-  background-color: rgb(223, 223, 238);
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-}
+ } 
+ button.special{  
+ align-self: flex-end;
+position: absolute;
+bottom: -3px;
+ }  
