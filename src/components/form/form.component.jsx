@@ -18,7 +18,19 @@ const Form = (props) => {
    */
   const submitHandler = e => {
     e.preventDefault();
-    const target = e.target;
+    // const target = e.target;
+    const description = e.target.description.value;
+    // const price = Number(e.target.price.value);
+    const category = e.target.category.value;
+
+    const menuItem = {
+      name: name,
+      description: description,
+      // price: price,
+      category: category,
+      ingredients: ingredients
+    };
+    console.log(menuItem);
   };
 
   /**
@@ -49,10 +61,11 @@ const Form = (props) => {
         required
       />
       <Textarea
+      name='description'
         label="Description"
       />
 
-      <Select label="Choose" required>
+      <Select label="Choose" required name='category'>
         {food.map
           (item => {
             return <option key={item} value={item}>{item}</option>;
@@ -65,7 +78,7 @@ const Form = (props) => {
         value={ingredients}
         onChange={newIngredients => setIngredients(newIngredients)}
       />
-        
+
       <div style={{ marginTop: 20 }}>
         <button type="submit" className='nemo-button'>create</button>
 
