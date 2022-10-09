@@ -24,8 +24,9 @@ const Select = props => {
       }
 
 
-      <select>
+      <select {...selectProps}>
         {
+          
           options.map(
             e => {
               return (

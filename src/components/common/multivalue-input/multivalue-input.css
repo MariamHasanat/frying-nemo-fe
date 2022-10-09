@@ -14,6 +14,10 @@
 
 }
 
+.multivalue-container>ul>li>button:hover {
+  cursor: pointer;
+}
+
 .multivalue-container>ul>li {
   display: flex;
   justify-content: space-between;

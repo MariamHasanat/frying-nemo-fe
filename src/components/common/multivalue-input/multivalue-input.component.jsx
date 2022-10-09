@@ -28,7 +28,7 @@ const MultivalueInput = props => {
     }
     props.onChange(tempList);
   };
-  
+
   return (
     <div className='multivalue-container'>
       <div className='input-container'>

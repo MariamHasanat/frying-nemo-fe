@@ -8,41 +8,61 @@ import MultivalueInput from '../../common/multivalue-input/multivalue-input.comp
 const Form = (props) => {
 
   const [name, setName] = useState('abd');
+  const [ingredients, setNewIngredients] = useState([]);
+
   /**
    *
    * @param {React.FormEvent<HTMLFormElement>} e
    */
   const submitHandler = e => {
     e.preventDefault();
+    const description = e.target.description.value;
+    const category = e.target.category.value;
+    const price = Number(e.target.price.value);
+
+    const menuItem = {
+      name: name,
+      price: price,
+      description: description,
+      category: category,
+      ingredients: ingredients,
+    };
 
     /**
      * @type {HTMLFormElement}
      */
     const target = e.target;
-    console.log(target);
+    console.log("menu item: " , menuItem);
   };
 
   const categories = ["Fish", "Drinks", "Main Dishes", "Salads",];
-  const [ingredients, setNewIngredients] = useState([]);
   return (
     <form onSubmit={submitHandler} className='add-item-form'>
 
       <div>
-        <div style={{textAlign:'right'}}>
+        <div style={{ textAlign: 'right' }}>
           <button type='submit'>Add Item</button>
         </div>
 
         <Input
           label='name'
+          name='name'
           onChange={onNameChange}
+          required
+        />
+        <Input
+          label='Price'
+          name='price'
           required
         />
 
         <Textarea
+          name='description'
           label='description'
         />
 
         <Select
+          name='category'
           label='menu'
           options={categories}
         />
