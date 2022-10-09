@@ -13,16 +13,34 @@ const Form = (props) => {
    * Handler fn for the form onSubmit event .
    * @param {React.FormEvent<HTMLFormElement>}e Event object.
    */
-
-
   const submitHandler = e => {
     e.preventDefault();
 
+    // /**
+    //  * @type {HTMLFormElement}
+    //  */
+    // const target = e.target;
+    // console.debug(target.ATTRIBUTE_NODE);
+
+
     /**
-     * @type {HTMLFormElement}
+     * @param  const price = number ;
      */
-    const target = e.target;
-    console.debug(target.ATTRIBUTE_NODE);
+    const description = e.target.description.value;
+    const price = e.target.price.value;
+    const category = e.target.category.value;
+
+
+    const menueItems = {
+
+      name: name,
+      description: description,
+      price: price,
+      category: category,
+      ingredients: ingredients
+    };
+
+    console.debug('Form submitted', menueItems);
   };
 
   /**
@@ -73,17 +91,19 @@ const Form = (props) => {
         />
 
         <Textarea
+          name='description'
           label=" Description"
         />
 
         <Input
+          name='price'
           label="Price"
           type="number"
           min={0}
           required
         />
 
-        <Select label="Category" required>
+        <Select name='category' label="Category" required>
           {categories.map(item => {
             return <option key={item} value={item}>{item}</option>;
           })}
@@ -94,11 +114,11 @@ const Form = (props) => {
           value={ingredients}
           onChange={newIngredients => setIngredients(newIngredients)}
         />
-                  
-          <div><button type="submit">Create </button></div>
+
+        <div><button type="submit">Create </button></div>
 
 
-        </div>
+      </div>
 
     </form >
   );
