@@ -3,9 +3,14 @@ import './form.css';
 import Input from '../common/input';
 import Textarea from '../textarea/textarea.component';
 import Select from '../selector/selector.component';
+import MultivalueInput from '../multivalue/multivalue-input';
+
 const Form = (props) => {
 
   const [name, setName] = useState('mariam');
+  const [ingredients, setIngredients] = useState([]);
+
+
 
   /**
    * 
@@ -54,6 +59,13 @@ const Form = (props) => {
           }
           )}
       </Select>
+
+      <MultivalueInput
+        label="Ingredients"
+        value={ingredients}
+        onChange={newIngredients => setIngredients(newIngredients)}
+      />
+        
       <div style={{ marginTop: 20 }}>
         <button type="submit" className='nemo-button'>create</button>
 

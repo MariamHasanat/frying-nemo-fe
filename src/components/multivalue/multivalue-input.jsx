@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Input from '../input/input.component';
+import Input from '../common/input.jsx';
 import './multivalue-input.css';
 
 /**
@@ -27,6 +27,7 @@ const MultivalueInput = props => {
           value={newItemValue}
           onChange={e => setNewItemValue(e.target.value)}
         />
+
         <button
           className="nemo-button"
           type="button"
@@ -42,14 +43,20 @@ const MultivalueInput = props => {
               return (
                 <li key={item} >
                   <span>{item}</span>
-                  <button type="button">&times;</button>
+                  <button type="button"
+                    onClick={() => {
+                      const valueAfterChange = props.value.filter(element => element != item);
+                      props.onChange(valueAfterChange);
+                    }}
+                  >&times;
+                  </button>
                 </li>
               );
             })}
           </ul>
         )
       }
-    </div>
+    </div >
   );
 };
 
