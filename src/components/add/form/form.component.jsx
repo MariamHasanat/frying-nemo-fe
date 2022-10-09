@@ -23,11 +23,9 @@ const Form = (props) => {
     // console.debug(target.ATTRIBUTE_NODE);
 
 
-    /**
-     * @param  const price = number ;
-     */
+    
     const description = e.target.description.value;
-    const price = e.target.price.value;
+    const price = Number( e.target.price.value);
     const category = e.target.category.value;
 
 
