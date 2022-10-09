@@ -7,11 +7,23 @@ import Select from '../common/select/select.component';
 import MultivalueInput from '../common/multivalue-input/multivalue-input.component';
 
 const Form = (props) => {
-  const [name, setName] = useState(`Omar`)
+  const [name, setName] = useState(``)
 
   const submitHandler = e => {
     e.preventDefault();
-    console.debug(e.target.name.value)
+    console.debug(`form price`, e.target.price.value)
+
+    const description = e.target.description.value
+    const price = e.target.price.value
+    const category = e.target.category.value
+
+    const menuItems = {
+      name,
+      description,
+      price,
+      category
+    }
+    console.debug('Form Items ', menuItems)
   }
 
 
@@ -36,11 +48,11 @@ const Form = (props) => {
   return (
     <form className='add-form' onSubmit={submitHandler}>
       <div className='inputs'>
-        <Input label="Name" value={name} onChange={changeName} required></Input>
-        <Textarea label="Description" ></Textarea>
-        <Input label="Price" type="number" required></Input>
-        <Select items={[`Fish`, `Shisha`, `Drink`]} required></Select>
-        <MultivalueInput label='Ingredients'/>
+        <Input name='name' label="Name" value={name} onChange={changeName} required></Input>
+        <Textarea name='description' label="Description" ></Textarea>
+        <Input name="price" label="Price" type="number" required></Input>
+        <Select name='category' items={[`Fish`, `Shisha`, `Drink`]} required></Select>
+        <MultivalueInput name='ingredients' label='Ingredients'/>
         <Button name="SUBMIT" type="submit"></Button>
       </div>
     </form>

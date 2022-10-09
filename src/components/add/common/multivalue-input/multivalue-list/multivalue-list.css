@@ -4,15 +4,36 @@
   color: white;
 }
 
+.multivalueList li {
+  transition: .3s all;
+}
+
 .multivalueList ul {
   padding: 0;
   list-style-type: none;
 }
 
 .multivalueList ul li {
-  padding: 7px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 15px;
   list-style-type: none;
 }
+
+.multivalueList ul li p {
+  margin: 0px;
+}
+
+.multivalueList button {
+  font-size: 20px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  top: 0;
+  cursor: pointer;
+}
+
 
 .multivalueList li:hover {
   background-color: rgba(0, 0, 0, 0.281);
