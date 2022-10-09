@@ -1,24 +1,46 @@
-.MultivalueInputWrapper{
+.multivalueInputWrapper {
   max-width: 265px;
 }
 
-.MultivalueInputWraper > .controls {
-  display: flex ;
+.multivalueInputWrapper > .controls {
+  display: flex;
   align-items: flex-end;
 }
 
-.MultivalueInputWrapper > .controls > .input-group >input{
+.multivalueInputWrapper > .controls > .input-group > input {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.MultivalueInputWrapper > .controls > .input-group {
-  margin-right: 10px;
-}
-
-.MultivalueInputWrapper > .controls > button {
-  height: 30px;
+.multivalueInputWrapper > .controls > button {
+  height: 38px;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
 
+.multivalueInputWrapper > ul {
+  list-style: none;
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background-color: white;
+}
+
+.multivalueInputWrapper > ul > li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.multivalueInputWrapper > ul > li:not(:last-child) {
+  border-bottom: 1px solid #ddd;
+}
+
+
+.multivalueInputWrapper > ul > li > button {
+  appearance: none;
+  border: none;
+  background: none;
+  font-family: 'Times New Roman';
+  font-size: 15px;
+}
