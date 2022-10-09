@@ -16,7 +16,7 @@ code {
   background-color: #000000b0;
   border-radius: 30px;
   height: 50%;
-  width: 400px;
+  width: 525px;
   padding: 30px;
   margin-top: 20px;
   box-shadow: 2px 11px 9px 0px #1a403d;
@@ -24,6 +24,7 @@ code {
 .flex{
   display: flex;
   justify-content: space-around;
+ 
 }
 img {
 border-radius: 50%;

@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import Input from '../input/input';
+import './multivalue-input.css';
+ 
 
 
 /**
@@ -18,21 +21,26 @@ const MultivalueInput = props => {
       props.onChange([...props.value, newItemValue]);
     }
   };
+const removeitem= (item)=>{
 
+  const newlistafteremove=props.value.filter(elemnt=> elemnt !== item);
+  props.
+  onChange(newlistafteremove);
+}
   return (
     <div className="multivalueInputWrapper">
-      <div className="controls">
+      <div >
       <Input
           label={props.label}
-          value={newItemValue}
+          value={props.newItemValue}
           onChange={e => setNewItemValue(e.target.value)}
-        />
+       required />
         <button
-          className="nemo-button"
+          className='bou'
           type="button"
           onClick={addItem}
         >
-          Add
+        +
         </button>
       </div>
       {
@@ -42,13 +50,13 @@ const MultivalueInput = props => {
               return (
                 <li key={item} >
                   <span>{item}</span>
-                  <button type="button">&times;</button>
+                  <button type="button" onClick={()=>{removeitem(item)}}>&times;</button>
                 </li>
               );
             })}
           </ul>
         )
-      }
+      }<br></br>
     </div>
   );
 };

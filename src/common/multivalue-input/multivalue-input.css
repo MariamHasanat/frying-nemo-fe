@@ -1,39 +1,33 @@
-.multivalueInputWrapper {
-  max-width: 265px;
-}
 
-.multivalueInputWrapper > .controls {
-  display: flex;
-  align-items: flex-end;
-}
 
-.multivalueInputWrapper > .controls > .input-group > input {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
+ .bou  {
+  height: 41px;
+  width: 57px;
+  position: relative;
+  bottom: 34px;
+  left: 60%;
+  border-radius: 15px;
 
-.multivalueInputWrapper > .controls > button {
-  height: 38px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
 }
 
 .multivalueInputWrapper > ul {
   list-style: none;
   margin-top: 10px;
   padding: 5px 10px;
-  border: 1px solid #ddd;
-  background-color: white;
+  border: 1px solid rgb(20, 206, 159);
+  background-color: rgb(32 29 29 / 62%)
 }
 
 .multivalueInputWrapper > ul > li {
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
+  color: yellow;
 }
 
+
 .multivalueInputWrapper > ul > li:not(:last-child) {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid rgb(20, 206, 159);
 }
 
 
@@ -43,4 +37,6 @@
   background: none;
   font-family: 'Times New Roman';
   font-size: 15px;
+  color: rgb(255, 0, 0);
+  cursor: pointer;
 }

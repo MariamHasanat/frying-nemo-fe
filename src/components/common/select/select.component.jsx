@@ -17,7 +17,7 @@ const Select = props => {
           <label>
             <span>{label}</span>
             &nbsp;
-            {selectProps.required && <span>*  </span>}
+            {selectProps.required && <span>*</span>}
           </label>
         ) : null
       }

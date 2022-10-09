@@ -15,10 +15,22 @@ import MultivalueInput from '../../../common/multivalue-input/multivalue-input.c
 const Form = (props) => {
 
   const [name, SetName] = useState('Add item');
-
+  const [ingredients, setIngredients] = useState([]);
   const submitHandler = e => {
     e.preventDefault();
-    const target = e.target;
+    const description = e.target.description.value;
+    const price = Number(e.target.price.value);
+    const category = e.target.category.value;
+
+    const menuitem = {
+     name:name, 
+     description:description,
+     price:price,
+     category:category,
+     ingredients:ingredients
+    };
+
+    console.log("from suited: ",menuitem)
 
   };
 
@@ -47,20 +59,35 @@ const Form = (props) => {
           value={name}
           onChange={onChange1}
           required
+
+        />
+        <Input
+          label="Price"
+          type='number'
+          name='price'
+          required
+
         />
         <br></br>
-        <Textarea label='Description' />
+        <Textarea
+          name='description'
+          label='Description' />
         <br></br>
-        <Select label='Category' required>
+        <Select  name='category' label='Category' required>
           {category.map(item => {
             return <option value={item} key={item}>{item}</option>;
 
           })}
         </Select>
 
-    
 
-<MultivalueInput/>
+        <MultivalueInput
+          label="Ingredients"
+          value={ingredients}
+          onChange={newIngredients => setIngredients(newIngredients)}
+
+        />
+
         <button type='sumbit'>Create</button>
       </div>
     </form>
