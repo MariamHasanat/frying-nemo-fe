@@ -20,6 +20,7 @@ const categories = [
 const Form = (props) => {
 
   const [name, setName] = useState("");
+  const [ingredients, setIngredients] = useState([]);
   /**
    * 
    * @param {React.FormEvent<HTMLFormElement>} e Event Object. 
@@ -27,11 +28,23 @@ const Form = (props) => {
   const submitHandler = e => {
     e.preventDefault();
 
-    /**
-     * @type {HTMLFormElement}
-     */
-    const target = e.target;
-    console.debug(target);
+    // e.target == Form
+    const description = e.target.description.value;
+    const price = e.target.price.value;
+    const category = e.target.category.value;
+    const menuItems = {
+      name,
+      description,
+      price,
+      category,
+      ingredients
+    };
+
+    const itemsJson = localStorage.getItem('menuItems') || '[]';
+    const items = JSON.parse(itemsJson);
+    items.push(menuItems);
+
+    localStorage.setItem('menuItems', JSON.stringify(items));
   };
 
   const onNameChange = e => {
@@ -56,20 +69,26 @@ const Form = (props) => {
           required
         />
         <Textarea
+          name="description"
           label="Description"
         />
         <Input
+          name="price"
           label="Price"
           type="number"
           required
           min={0}
         />
-        <Select label="Category" required>
+        <Select name="category" label="Category" required>
           {categories.map(item => {
             return <option key={item} value={item}>{item}</option>;
           })}
         </Select>
-        <MultiValuInput label='ingredients' />
+        <MultiValuInput
+          label='ingredients'
+          value={ingredients}
+          onChange={newIngredients => setIngredients(newIngredients)}
+        />
         <button type='submit' className='create'>Create</button>
       </div>
     </form>

@@ -26,6 +26,9 @@
 }
 .multivalue-input-wrapper ul li{
   margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .multivalue-input-wrapper ul li:not(:last-child){
   border-bottom: 1px solid #000;
