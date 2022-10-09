@@ -42,7 +42,16 @@ const MultivalueInput = props => {
               return (
                 <li key={item} >
                   <span>{item}</span>
-                  <button type="button">&times;</button>
+                  <button type="button"
+                    onClick={() => {
+
+                      // console.debug('Remove button clicked :', item);
+                      // console.debug('props.value :', props.value);
+                      const copy = [...props.value];
+                      const valueAfterRemoval = copy.filter(element => element !== item);
+                      props.onChange(valueAfterRemoval);
+                    }}
+                  >&times;</button>
                 </li>
               );
             })}

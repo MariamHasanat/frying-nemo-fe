@@ -31,6 +31,7 @@
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
+  color: #ad065a;
 }
 
 .multivalueInputWrapper > ul > li:not(:last-child) {
@@ -44,4 +45,5 @@
   background: none;
   font-family: 'Times New Roman';
   font-size: 15px;
+  cursor: pointer;
 }
