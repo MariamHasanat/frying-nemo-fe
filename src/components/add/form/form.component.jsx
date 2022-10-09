@@ -11,7 +11,7 @@ const categories = [
     "Fish",
     "Drinks",
     "desserts",
-    "Main Dishs",
+    "Main Dishes",
     "Pizza",
     "Sandwiches"
 ];
@@ -26,13 +26,28 @@ const Form = (props) => {
      */
     const submitHandler = (e) => {
         e.preventDefault();
-        /**
-         * @type {HTMLFormElement}
-         */
-        console.log(name);
+
+        const description = e.target.description.value;
+        const category = e.target.category.value;
+        const price = e.target.price.value;
+
+        const menuItem = {
+            name: name,
+            description: description,
+            price: price,
+            category: category,
+            ingredients: ingredients
+        };
+
+        console.log(menuItem);
+        e.target.description.value = '';
+        e.target.category.value = '';
+        e.target.price.value = '';
+        setIngredients([]);
+        setName('');
     };
 
-    const inputChangeHandler = (e) => {
+    const inputChangeHandler = e => {
 
         let value = e.target.value;
         if (value.includes('find')) {
@@ -48,16 +63,25 @@ const Form = (props) => {
     return (
         <form onSubmit={submitHandler} className="styled-form">
             <Input
+                name="name"
                 label="Name"
                 onChange={inputChangeHandler}
                 value={name}
                 required
             />
             <Textarea
+                name="description"
                 label='Description'
             />
 
-            <Select required label='Category'>
+            <Input
+                name="price"
+                label="Price"
+                type="number"
+                required
+            />
+
+            <Select required name="category" label='Category'>
                 {categories.map((item) => {
                     return <option key={item} value={item}>{item}</option>;
                 })}
@@ -65,6 +89,7 @@ const Form = (props) => {
 
             <Multivalue
                 label="Ingredients"
+                name="ingredients"
                 // value={[2, 3, 4, 5]}
                 value={ingredients}
                 onChange={(newIngredients) => setIngredients(newIngredients)}
