@@ -20,6 +20,34 @@ const Form = (props) => {
      * @type {HTMLFormElement} 
     */
 
+    const description = e.target.description.value;
+    // const price = e.target.price.value;
+    const categories = e.target.categories.value;
+
+    const menuItem = {
+      // name: name,
+      description: description,
+      // price: price,
+      categories: categories,
+      ingrediant: ingrediant
+
+    };
+
+    const itemsJson = localStorage.getItem('menuItems') || '[]';
+
+    const items = JSON.parse(itemsJson);
+    
+    items.push(menuItem);
+    
+    localStorage.setItem('menuitems', JSON.stringify(items));
+
+
+
+
+    ///to store complex object on local storage we need to convert it to json file using JSON.stringify (string representation )
+    // use JSON.pars  convert -> object 
+
+
     const target = e.target;
   };
 
@@ -50,7 +78,7 @@ const Form = (props) => {
 
 
   return (
-    <form onSubmit={submitHandeller}>
+    <form onSubmit={submitHandeller} >
 
       <h1>Add to the menu !</h1>
       <Input
@@ -61,10 +89,11 @@ const Form = (props) => {
       />
       <Textarea
         label="Decription"
-
+        name='description'
       />
 
       <MySelect
+      name ="categories"
         label='categories' required>
         {
           categories.map(item => {

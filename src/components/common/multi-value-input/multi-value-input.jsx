@@ -30,14 +30,19 @@ const MultivalueInput = props => {
 
   const deleted = (removedItem) => {
 
-    var Myitems = [...props.value];
+    var Myitems = [...props.value]; //copy array , don't edit the  original array 
     var index = Myitems.indexOf(removedItem);
     if (index >= 0) {
       Myitems.splice(index, 1);
     }
-    props.onChange(Myitems);
+    props.onChange(Myitems); //update the value 
 
   };
+
+///another way is to use the function filter its return array using true / false 
+
+//filter function return new  copy from the original  without change on the  props.value(array)
+
 
 
   return (
@@ -60,7 +65,7 @@ const MultivalueInput = props => {
               return (
                 <li key={item} >
                   <span>{item}</span>
-                  <button type="button" onClick={() => deleted(item)}>&times;</button>
+                  <button type="button"  onClick={() => deleted(item)}>&times;</button>
                 </li>
               );
             })}
