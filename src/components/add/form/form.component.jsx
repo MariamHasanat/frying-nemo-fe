@@ -8,7 +8,7 @@ import './form.css';
 
 const Form = (props) => {
   const [name, setName] = useState('yara');
-  const [ingredients, setIngredients] = useState([]);
+  const [Ingredients, setIngredients] = useState([]);
 
   /**
    * Handler function for the form onSubmit event.
@@ -16,10 +16,22 @@ const Form = (props) => {
    */
   const submitHandler = e => {
     e.preventDefault();
+    const Price = e.target.Price.value;
+    const Description =Number( e.target.Description.value);
+    const category = e.target.category.value;
 
     const menuItem = {
-      name: name
+      name,
+      Description,
+      Price,
+      category,
+      Ingredients
+
     };
+    const itemsJason =localStorage.getItem('menuItems') || '[]';
+    const items =JSON.parse(itemsJason);
+    items.push(menuItem)
+    localStorage.setItem('MenuItems',JSON.stringify(items));
 
     console.debug('Form submitted', menuItem);
   };
@@ -65,28 +77,34 @@ const Form = (props) => {
       />
       <Textarea
         label="Description"
+        name='Description'
       />
       <Input
         label="Price"
+        name='Price'
         type="number"
         min={0}
         required
       />
-      <Select label="Category" required>
+      <Select
+        label="Category"
+        name='category'
+        required>
         {categories.map(item => {
           return <option key={item} value={item}>{item}</option>;
         })}
       </Select>
-      
+
       <MultivalueInput
         label="Ingredients"
-        value={ingredients}
+        name="Ingredients"
+        value={Ingredients}
         onChange={newIngredients => setIngredients(newIngredients)}
       />
-      
-        <div className="addFormButtons">
 
-        <button class="button-56" type="submit">Create</button>
+      <div className="addFormButtons">
+
+        <button className="button-56" type="submit">Create</button>
 
       </div>
 

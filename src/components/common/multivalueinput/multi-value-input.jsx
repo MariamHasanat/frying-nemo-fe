@@ -17,6 +17,7 @@ const MultivalueInput = props => {
   const addItem = () => {
     if (newItemValue.trim().length > 0 && !props.value.includes(newItemValue)) {
       props.onChange([...props.value, newItemValue]);
+
     }
   };
 
@@ -29,7 +30,7 @@ const MultivalueInput = props => {
           onChange={e => setNewItemValue(e.target.value)}
         />
         <button
-          class="button-56"
+          className='nemo-button'
           type="button"
           onClick={addItem}
         >
