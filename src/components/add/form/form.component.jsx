@@ -15,11 +15,25 @@ const Form = (props) => {
    */
   const submitHandler = (e) => {
     e.preventDefault();
-
+    let description = e.target.description.value;
+    let price = e.target.price.value;
+    let category = e.target.category.value;
     const menuItem = {
       name: name,
+      description: description,
+      price: parseInt(price),
+      category: category,
+      ingredients
     };
-
+    e.target.description.value='';
+    e.target.price.value='';
+    setName('');
+    setIngredients([]);
+    const itemsJson = localStorage.getItem('menuItems');
+    const items= JSON.parse(itemsJson);
+    items.push(menuItem);
+    
+    localStorage.setItem(JSON.stringify(items));
     console.debug("Form submitted", menuItem);
   };
 
@@ -42,10 +56,10 @@ const Form = (props) => {
     <div className="form-container">
       <h1>Add Menu Item</h1>
       <form className="addForm" onSubmit={submitHandler}>
-        <Input label="Name" value={name} onChange={onNameChange} required />
-        <Textarea label="Description" />
-        <Input label="price" type="number" required />
-        <Select label="categories">
+        <Input name="name" label="Name" value={name} onChange={onNameChange} required />
+        <Textarea name="description" label="Description" />
+        <Input name="price" label="price" type="number" required />
+        <Select name="category" label="categories">
           {catigories.map((item) => {
             return (
               <option key={item} value={item}>

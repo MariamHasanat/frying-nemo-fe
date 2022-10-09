@@ -15,6 +15,7 @@ const MultivalueInput = (props) => {
     if (newItemValue.trim().length > 0 && !props.value.includes(newItemValue)) {
       props.onChange([...props.value, newItemValue]);
     }
+    setNewItemValue('')
   };
   return (
     <div className="multivalueInputWrapper">
@@ -40,7 +41,7 @@ const MultivalueInput = (props) => {
                   onClick={() => {
                     const valueCopy = [...props.value];
                     valueCopy.splice(valueCopy.indexOf(item), 1);
-                    props.onChange(valueCopy);
+                    props.onChange([...valueCopy]);
                   }}
                 >
                   &times;
