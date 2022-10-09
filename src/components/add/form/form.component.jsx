@@ -8,6 +8,10 @@ import MultivalueInput from '../common/multivalue-input/multivalue-input.compone
 
 const Form = (props) => {
   const [name, setName] = useState(``)
+  let ings = [] // Ingredients
+  const updateIngs = (newIngs) => {
+    ings = newIngs;
+  }
 
   const submitHandler = e => {
     e.preventDefault();
@@ -21,9 +25,14 @@ const Form = (props) => {
       name,
       description,
       price,
-      category
+      category,
+      ings
     }
-    console.debug('Form Items ', menuItems)
+    let arr = localStorage.getItem('menuItems') || '[]';
+    arr = JSON.parse(arr);
+    arr.push(menuItems)
+    console.debug('arr', arr)
+    console.debug('Menu Items ', menuItems)
   }
 
 
@@ -52,7 +61,7 @@ const Form = (props) => {
         <Textarea name='description' label="Description" ></Textarea>
         <Input name="price" label="Price" type="number" required></Input>
         <Select name='category' items={[`Fish`, `Shisha`, `Drink`]} required></Select>
-        <MultivalueInput name='ingredients' label='Ingredients'/>
+        <MultivalueInput onChange={updateIngs} name='ingredients' label='Ingredients'/>
         <Button name="SUBMIT" type="submit"></Button>
       </div>
     </form>

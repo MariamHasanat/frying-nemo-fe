@@ -4,7 +4,7 @@ import Button from '../button/button.component';
 import MultivalueList from './multivalue-list/multivalue-list.component';
 import { useState } from 'react';
 
-const MultivalueInput = ({ label }) => {
+const MultivalueInput = ({ label, onChange }) => {
   
   const [itemName, setItemName] = useState('')
   const [ingredients, setIngredients] = useState([])
@@ -14,16 +14,21 @@ const MultivalueInput = ({ label }) => {
       setItemName('')
       return;
     }
-    setIngredients([...ingredients, itemName])
+    let ings = [...ingredients, itemName];
+    setIngredients(ings)
+    onChange(ings)
     setItemName('')
   }
 
   const removeIngredient = (itemName) => {
     if (itemName == '') {
       setIngredients([])
+      onChange([])
       return;
     }
-    setIngredients(ingredients.filter(item => (itemName != item)))
+    let ings = ingredients.filter(item => (itemName != item));
+    setIngredients(ings)
+    onChange(ings)
   }
 
   const changeItemNameInput = (value) => {
