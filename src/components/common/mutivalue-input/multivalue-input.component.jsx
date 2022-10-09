@@ -44,11 +44,11 @@ const MultivalueInput = props => {
                   <span>{item}</span>
                   <button type="button"
                     onClick={() => {
-
                       // console.debug('Remove button clicked :', item);
                       // console.debug('props.value :', props.value);
-                      const copy = [...props.value];
-                      const valueAfterRemoval = copy.filter(element => element !== item);
+                      // const copy = [...props.value];
+                      // const valueAfterRemoval = copy.filter(element => element !== item); // filter doesn't affect the original array
+                      const valueAfterRemoval = props.filter(element => element !== item);
                       props.onChange(valueAfterRemoval);
                     }}
                   >&times;</button>
