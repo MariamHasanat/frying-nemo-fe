@@ -25,11 +25,29 @@ const Form = (props) => {
   const submitHandler = e => {
     e.preventDefault();
 
-    /**
-     * @type {HTMLFormElement}
-     */
-    const target = e.target;
-    console.debug(target.ATTRIBUTE_NODE);
+    const description = e.target.description.value;
+    const price = Number(e.target.price.value);
+    const category = e.target.category.value;
+
+    const menuItem = {
+      name:name,
+      description:description,
+      price:price,
+      category:category,
+      ingredients:ingredients
+    };
+
+    console.log('form submetted' , menuItem)
+    // const JsonItem = localStorage.getItem('menuItem');
+    // const items = JSON.parse(JsonItem);
+    // items.push(menuItem);
+    // localStorage.setItem('menuItem', JSON.stringify(items))
+
+    // /**
+    //  * @type {HTMLFormElement}
+    //  */
+    // const target = e.target;
+    // console.debug(target.ATTRIBUTE_NODE);
   };
 
   const onNameChange = e => {
@@ -49,13 +67,15 @@ const Form = (props) => {
           required
         />
         <Textarea
+          name='description'
           label="Description"
         />
         <Input
+          name='price'
           label="Price"
           required
         />
-        <Select label='category' required>
+        <Select name='category' label='category' required>
           {categories.map(item => {
             return <option key={item} value={item}>{item}</option>;
           })}
