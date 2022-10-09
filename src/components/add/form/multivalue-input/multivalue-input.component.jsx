@@ -23,41 +23,41 @@ const MultivalueInput = props => {
   const deleteItem = (item) => {
     const valueAfterRemoval = props.value.filter(element => element !== item);
     props.onChange(valueAfterRemoval);
-
   };
-return (
-  <div className="multivalueInputWrapper">
-    <div className="controls">
-      <Input
-        label={props.label}
-        value={newItemValue}
-        onChange={e => setNewItemValue(e.target.value)}
-      />
-      <button
-        className="nemo-button"
-        type="button"
-        onClick={addItem}
-      >
-        Add
-      </button>
+
+  return (
+    <div className="multivalueInputWrapper">
+      <div className="controls">
+        <Input
+          label={props.label}
+          value={newItemValue}
+          onChange={e => setNewItemValue(e.target.value)}
+        />
+        <button
+          className="nemo-button"
+          type="button"
+          onClick={addItem}
+        >
+          Add
+        </button>
+      </div>
+      {
+        props.value.length > 0 && (
+          <ul>
+            {props.value.map(item => {
+              return (
+                <li key={item} >
+                  <span>{item}</span>
+                  <button type="button" onClick={() => deleteItem(item)}>
+                    &times;</button>
+                </li>
+              );
+            })}
+          </ul>
+        )
+      }
     </div>
-    {
-      props.value.length > 0 && (
-        <ul>
-          {props.value.map(item => {
-            return (
-              <li key={item} >
-                <span>{item}</span>
-                <button type="button" onClick={deleteItem(item)}>
-                  &times;</button>
-              </li>
-            );
-          })}
-        </ul>
-      )
-    }
-  </div>
-);
+  );
 };
 
 export default MultivalueInput;
