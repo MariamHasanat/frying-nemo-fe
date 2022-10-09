@@ -16,11 +16,24 @@ const Form = (props) => {
   const submitHandler = e => {
     e.preventDefault();
 
+    const description = e.target.description.value;
+    const price = Number(e.target.price.value);
+    const category = e.target.category.value;
+
     const menuItem = {
-      name: name
+      name: name,
+      description: description,
+      price: price,
+      category: category,
+      ingredients: ingredients
     };
 
-    console.debug('Form submitted', menuItem);
+    const itemsJson = localStorage.getItem('menuItems') || '[]';
+    const items = JSON.parse(itemsJson);
+
+    items.push(menuItem);
+
+    localStorage.setItem('menuItems', JSON.stringify(items))
   };
 
   /**
@@ -62,15 +75,17 @@ const Form = (props) => {
         required
       />
       <Textarea
-        label="Description"
+        name="description"
+        label="Description (Add your description here. Customers will be able to read it)"
       />
       <Input
+        name="price"
         label="Price"
         type="number"
         min={0}
         required
       />
-      <Select label="Category" required>
+      <Select name="category" label="Category" required>
         {categories.map(item => {
           return <option key={item} value={item}>{item}</option>;
         })}
