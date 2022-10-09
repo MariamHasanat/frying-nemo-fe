@@ -39,7 +39,12 @@ const Form = (props) => {
             ingredients: ingredients
         };
 
-        console.log(menuItem);
+        const menu = localStorage.getItem('menu') || '[]';
+        const parsed = JSON.parse(menu);
+        parsed.push(menuItem);
+        console.log('parsed:', parsed);
+        localStorage.setItem('menu', JSON.stringify(parsed));
+
         e.target.description.value = '';
         e.target.category.value = '';
         e.target.price.value = '';
