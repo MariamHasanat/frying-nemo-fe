@@ -23,9 +23,9 @@ const Form = (props) => {
     // console.debug(target.ATTRIBUTE_NODE);
 
 
-    
+
     const description = e.target.description.value;
-    const price = Number( e.target.price.value);
+    const price = Number(e.target.price.value);
     const category = e.target.category.value;
 
 
@@ -38,7 +38,12 @@ const Form = (props) => {
       ingredients: ingredients
     };
 
-    console.debug('Form submitted', menueItems);
+    // console.debug('Form submitted', menueItems);
+    const itemsJson = localStorage.getItem('menueItems') || '[]';
+    const items = JSON.parse(itemsJson);
+
+    items.push(menueItems);
+    localStorage.setItem('menueItems', JSON.stringify(items));
   };
 
   /**
