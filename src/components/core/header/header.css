@@ -3,8 +3,8 @@
   align-items: center;
   width: 100%;
   padding: 10px 20px;
-  border-bottom: 1px solid #ddd;
-  background-color: antiquewhite;
+  border-bottom: 4px groove  #be1d96;
+  background-color: rgb(236, 184, 186);
 }
 
 .webisteHeader > .left > h1 {

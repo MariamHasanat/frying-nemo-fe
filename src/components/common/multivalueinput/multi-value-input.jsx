@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Input from '../input/input.component';
 import './multi-value-input.css';
 
+
 /**
  * Renders an input component and a list of values.
  * @param {{
@@ -28,7 +29,7 @@ const MultivalueInput = props => {
           onChange={e => setNewItemValue(e.target.value)}
         />
         <button
-          className="nemo-button"
+          class="button-56"
           type="button"
           onClick={addItem}
         >
@@ -42,7 +43,13 @@ const MultivalueInput = props => {
               return (
                 <li key={item} >
                   <span>{item}</span>
-                  <button type="button">&times;</button>
+                  <button type="button"
+                    onClick={() => {
+                      const ValueAfterRemove = props.value.filter(element => element !== item);
+                      props.onChange(ValueAfterRemove);
+                    }}
+
+                  >&times;</button>
                 </li>
               );
             })}

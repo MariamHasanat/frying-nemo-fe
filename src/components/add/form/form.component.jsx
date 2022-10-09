@@ -77,19 +77,17 @@ const Form = (props) => {
           return <option key={item} value={item}>{item}</option>;
         })}
       </Select>
+      
       <MultivalueInput
         label="Ingredients"
         value={ingredients}
         onChange={newIngredients => setIngredients(newIngredients)}
       />
-
-
-
-
-      <div className="addFormButtons">
+      
+        <div className="addFormButtons">
 
         <button class="button-56" type="submit">Create</button>
-        
+
       </div>
 
     </form>
