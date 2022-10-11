@@ -57,7 +57,7 @@
 }
 
 .nav-btn:hover{
-  background-color: rgb(255, 94, 0);
+  background-color: rgb(209, 211, 212);
 }
 .nav-btn:active{
   transform: scale(0.95);
