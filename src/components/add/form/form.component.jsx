@@ -14,21 +14,21 @@ const Form = (props) => {
    */
 
 
- 
-     /**
-      * Handles on change events on the name feild.
-      * @param {React.ChangeEvent<HTMLInputElement>} e On change event object. 
-      */
 
-const categories=[
-  "fish",
-  "drink",
-  "Mooka",
-  "Chocolate",
-  "Sheesha",
-  "Sandowich",
-  
-]
+  /**
+   * Handles on change events on the name feild.
+   * @param {React.ChangeEvent<HTMLInputElement>} e On change event object. 
+   */
+
+  const categories = [
+    "fish",
+    "drink",
+    "Mooka",
+    "Chocolate",
+    "Sheesha",
+    "Sandowich",
+
+  ];
 
   const submitHandler = e => {
     e.preventDefault();
@@ -36,84 +36,86 @@ const categories=[
     const descreption = e.target.descreption.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
-    
+
 
 
 
     const menuItem = {
-   name , // or name =name 
-   descreption,
-   price,
-   category,
-  ingredients 
-  };
- localStorage.setItem('menuItems',JSON.stringify(menuItem));
- const itemsJSON = localStorage.getItem('menuitems') || "[]";
- const items = JSON.parse(itemsJSON);
- items.push(menuItem);
+      name, // or name =name 
+      descreption,
+      price,
+      category,
+      ingredients
+    };
+    localStorage.setItem('menuItems', JSON.stringify(menuItem));
+    const itemsJSON = localStorage.getItem('menuitems') || "[]";
+    const items = JSON.parse(itemsJSON);
+    items.push(menuItem);
+    localStorage.setItem('menuItems', JSON.stringify(items));
+    props.onNavigate('view');
     /**
      * @type {HTMLFormElement}
      */
     const target = e.target;
     console.debug(target.ATTRIBUTE_NODE);
-    
+
   };
-  const onNameChange = e =>{
-       let value = e.target.value;
-      if (value.includes('.')){
-        alert("there a char in name");
-      };
-      if(value.includes("find")){
-      value = value.replace('find','fry');
-      }
-      if ( value.length > 20){
-        alert("please edit that");
-      };
-      setName(value);
-      // console.log(value);
+  const onNameChange = e => {
+    let value = e.target.value;
+    if (value.includes('.')) {
+      alert("there a char in name");
+    };
+    if (value.includes("find")) {
+      value = value.replace('find', 'fry');
+    }
+    if (value.length > 20) {
+      alert("please edit that");
+    };
+    setName(value);
+    // console.log(value);
   };
 
 
-      
+
   return (
     <form className="add-form" onSubmit={submitHandler} >
       <div style={{ marginTop: 20 }}>
         <Input
-        label = "Name"
-        value={name}
-        onChange = {onNameChange}
-         required
+          label="Name"
+          value={name}
+          onChange={onNameChange}
+          required
         />
         <Textarea
-        name='descreption'
-        label = "Descreption"/>
+          name='descreption'
+          label="Descreption" />
         <Input
-        name = 'price'
-        label = "Price"
-        type="number"
-        min={0}
-         required
+          name='price'
+          label="Price"
+          type="number"
+          min={0}
+          required
         />
-        <Select  name='category' label='select from menu' required>
-         return {categories.map((item) =>{
-             return <option key={item} value={item}>{item}</option>;
-         })}
+        <Select name='category' label='select from menu' required>
+          return {categories.map((item) => {
+            return <option key={item} value={item}>{item}</option>;
+          })}
         </Select>
         <MultivalueInput
-        label="Ingredients"
-        value={ingredients}
-        onChange={newIngredients => setIngredients(newIngredients)}
-      />
+          label="Ingredients"
+          value={ingredients}
+          onChange={newIngredients => setIngredients(newIngredients)}
+        />
 
       </div>
-        <button className='nemo-button special' type="submit">Create</button>
-      
+      <button className='nemo-button special' type="submit">Create</button>
+
     </form>
   );
 };
 
 export default Form;
-//"how to change state react?"               
+//"how to change state to another state react?"
 
 
 

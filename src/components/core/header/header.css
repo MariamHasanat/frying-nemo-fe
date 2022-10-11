@@ -1,0 +1,49 @@
+.webisteHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.webisteHeader > .left > h1 {
+  font-size: 18px;
+  color: #be441d;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+
+.webisteHeader > .left > h1 > img {
+  height: 35px;
+  width: auto;
+  margin-right: 5px;
+}
+.right{
+  justify-content: space-evenly;
+}
+.right button{
+  border: unset;
+  background: unset;
+  margin: 2px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 9px 20px;
+
+}
+.right button:hover{
+  text-shadow: 2px 1px 2px #c3c3c3;
+}
+.right button:active{
+  text-shadow: -1px 2px 3px rgb(102, 101, 101);
+}
+.right > button.current {
+  background-color: #f17f59;
+  border-radius: 5px;
+  color: white;
+}

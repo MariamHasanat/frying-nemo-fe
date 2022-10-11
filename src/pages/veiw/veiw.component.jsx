@@ -1,14 +1,14 @@
-import './add.css';
+import './veiw.css';
 
 import Form from '../../components/add/form/form.component';
 
-const AddPage = (props) => {
+const Addveiw = (props) => {
   return (
     <div>
       <h1>Add a new item</h1>
-      <Form onNavigate={props.onNavigate}/>
+     
     </div>
   );
 };
 
-export default AddPage;
+export default Addveiw;
