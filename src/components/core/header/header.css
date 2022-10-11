@@ -1,25 +1,46 @@
 .webisteHeader {
   display: flex;
   align-items: center;
-  width: 100%;
+  justify-content: space-between;
   padding: 10px 20px;
-  border-bottom: 4px groove  #be1d96;
-  background-color: rgb(236, 184, 186);
+  border-bottom: 1px solid #ddd;
 }
 
-.webisteHeader > .left > h1 {
+.webisteHeader>.left>h1 {
   font-size: 18px;
-  color: #be1d96;
+  color: #be441d;
   line-height: 1.2;
-  display: flex;
-  align-items: center;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 
-.webisteHeader > .left > h1 > img {
+.webisteHeader>.left>h1>img {
   height: 35px;
   width: auto;
   margin-right: 5px;
+}
+
+.webisteHeader .right nav {
+  display: flex; 
+}
+
+.webisteHeader .right nav button {
+  background: unset;
+  border: unset;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 9px 20px;
+}
+
+.webisteHeader .right nav button:hover {
+  text-shadow: -1px 2px 3px #777777;
+}
+
+.webisteHeader .right nav button:active {
+  text-shadow: -1px 2px 3px #333;
+}
+
+.webisteHeader .right nav button.current {
+  background-color: #be441d;
+  border-radius: 5px;
+  color: white;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import './header.css';
 
-const Header = props => {
+const Header =( props) => {
   return (
     <header className="webisteHeader">
       <div className="left">
@@ -9,6 +9,15 @@ const Header = props => {
           <img src="./008.svg" alt="fish-pic" />
           Frying Nemo resturent 
         </h1>
+      </div>
+      <div className='right'>
+        <nav>
+          <button className={props.currentPage === 'add' ? 'current':''}  onClick = {()=>props.onNavigate('add')}>add</button>
+          <button className={props.currentPage === 'view' ? 'current':''}  onClick = {()=>props.onNavigate('view')}>view</button>
+
+
+        </nav>
+
       </div>
     </header>
   );
