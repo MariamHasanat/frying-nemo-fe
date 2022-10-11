@@ -28,12 +28,14 @@ const Form = (props) => {
       ingredients: ingredients
     };
 
-    const itemsJson = localStorage.getItem('menuItems') || '[]';
-    const items = JSON.parse(itemsJson);
+    const itemsJson = localStorage.getItem('menuItems');
+    const items = JSON.parse(itemsJson) || [];
 
     items.push(menuItem);
 
-    localStorage.setItem('menuItems', JSON.stringify(items))
+    localStorage.setItem('menuItems', JSON.stringify(items));
+    props.onNavigate('view');
+
   };
 
   /**
@@ -67,7 +69,7 @@ const Form = (props) => {
   ];
 
   return (
-    <form className="addForm" onSubmit={submitHandler} >
+    <form className="addForm" onSubmit={submitHandler}>
       <Input
         label="Name"
         value={name}
