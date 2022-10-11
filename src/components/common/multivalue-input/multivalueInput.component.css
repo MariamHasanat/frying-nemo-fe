@@ -28,10 +28,10 @@
     width: 250px;
 }
 
-.wrapper>ul>li{
+.wrapper>ul>li {
     padding: 10px 5px;
 }
 
-.wrapper>ul>li:not(:last-child){
+.wrapper>ul>li:not(:last-child) {
     border-bottom: 1px solid rgb(179, 179, 179);
 }

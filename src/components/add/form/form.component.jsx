@@ -23,8 +23,19 @@ const Form = (props) => {
     /**
      * @param {React.ChangeEvent<HTMLInputElement>} e
      */
-    const submitHandler = (e) => {
-        e.target.preventDefault();
+    const submitHandler = e => {
+        console.log(e.target);
+        const price = Number(e.target.price.value);
+        const des = e.target.description.value;
+        const cat = e.target.categories.value;
+
+        const item = {
+            name: name,
+            price: price,
+            description: des,
+            categories: cat,
+            Ingredients: Ingredients,
+        };
     };
 
     const changeHandler = (e) => {
@@ -37,38 +48,41 @@ const Form = (props) => {
     };
     return (
         <div>
-            <form className='form'>
-                <Input
-                    label='Name'
-                    type={'Text'}
-                    value={name}
-                    onChange={changeHandler}
-                    required
-                />
-                <Textarea
-                    label='Description'
-                />
-                <Input
-                    label='Price'
-                    type={'number'}
-                    min={0}
-                    required
-                />
-                <SelectArea label='Categories' required>
-                    {categories.map((item) => {
-                        return <option key={item} value={item}>{item}</option>;
-                    })}
-                </SelectArea>
-                <MultivalueInput
-                    label={'Ingredients'}
-                    value={Ingredients}
-                    onChange={(newItem) => { setIngredients(newItem); }}
-                />
-                <div className='sub'>
-                    <input type="submit" className='nemo-button' onSubmit={submitHandler} />
-                </div>
-            </form>
-        </div>
+            <form className='form' onSubmit={e => {
+                e.preventDefault();
+                submitHandler(e);
+            }}>
+            <Input
+                label='Name'
+                type={'Text'}
+                value={name}
+                onChange={changeHandler}
+                required
+            />
+            <Textarea
+                label='Description'
+            />
+            <Input
+                label='Price'
+                type={'number'}
+                min={0}
+                required
+            />
+            <SelectArea label='Categories' required>
+                {categories.map((item) => {
+                    return <option key={item} value={item}>{item}</option>;
+                })}
+            </SelectArea>
+            <MultivalueInput
+                label={'Ingredients'}
+                value={Ingredients}
+                onChange={(newItem) => { setIngredients(newItem); }}
+            />
+            <div className='sub'>
+                <input type="submit" className='nemo-button' />
+            </div>
+        </form>
+        </div >
     );
 
 };
