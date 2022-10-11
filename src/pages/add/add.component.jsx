@@ -1,11 +1,10 @@
-import './add.css';
+import "./add.css";
 
-import Form from '../../components/add/form/form.component';
+import Form from "../../components/add/form/form.component";
 
 const AddPage = (props) => {
   return (
-    <div className='head'>
-      <h1></h1>
+    <div className="head">
       <Form />
     </div>
   );
