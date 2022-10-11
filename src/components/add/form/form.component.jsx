@@ -26,7 +26,13 @@ const Form = (props) => {
       category: category,
       ingredients: ingredients
     };
- const itemJson = localStorage.getItem('menuItem');
+    const itemsJson = localStorage.getItem('menuItems') || '[]';
+    const items = JSON.parse(itemsJson);
+
+    items.push(menuItem);
+
+    localStorage.setItem('menuItems', JSON.stringify(items))
+
 
 
 console.debug(menuItem);
