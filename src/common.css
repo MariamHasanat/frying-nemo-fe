@@ -1,5 +1,5 @@
 /* In the common css file we will write the styles shared between elements and classes */
-
+/* never forget your friend (alt+shift+f) */
 .nemo-button {
   appearance: none;
   border: 1px solid #134694;
@@ -15,9 +15,14 @@
   margin-bottom: 15px;
 }
 
-/* .consistancy-header-with-page{
+.consistancy-between-pages {
+  margin: 10px;
+}
+
+.pages-container {
+  margin-top: 55px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
-} */
+}

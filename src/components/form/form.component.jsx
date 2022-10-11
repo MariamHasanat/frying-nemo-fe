@@ -3,9 +3,10 @@ import './form.css';
 import Input from '../common/input';
 import Textarea from '../textarea/textarea.component';
 import Select from '../selector/selector.component';
-const Form = (props) => {
 
-  const [name, setName] = useState('mariam');
+
+const Form = (props) => {
+  const [name, setName] = useState('Israa');
 
   /**
    * 
@@ -22,19 +23,21 @@ const Form = (props) => {
   const onChange = e => {
     let value = e.target.value;
     if (value.includes('find')) {
-      alert('find');
+      // alert('find');
       value = value.replace('find', 'fry');
     }
     setName(value);
   };
 
-  let food = [
+  let orders = [
     "tea",
     "coffee",
     "nemo",
     "abu-nemo",
   ];
+
   return (
+
     <form className='add-form' onSubmit={submitHandler}>
 
       <Input
@@ -43,20 +46,21 @@ const Form = (props) => {
         onChange={onChange}
         required
       />
+
       <Textarea
         label="Description"
       />
 
       <Select label="Choose" required>
-        {food.map
+        {orders.map
           (item => {
             return <option key={item} value={item}>{item}</option>;
           }
           )}
       </Select>
+
       <div style={{ marginTop: 20 }}>
         <button type="submit" className='nemo-button'>create</button>
-
       </div>
 
     </form>
