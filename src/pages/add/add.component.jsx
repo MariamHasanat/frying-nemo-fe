@@ -8,9 +8,9 @@ const AddPage = (props) => {
     <div className="add-page">
     
       <h1>Add Menu Item</h1>
-      <Form />
+      <Form onNavigate={props.onNavigate}/>
     </div>
   );
 };
 
-export default AddPage;
+export default AddPage; 

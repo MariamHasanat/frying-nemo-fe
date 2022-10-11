@@ -2,24 +2,27 @@
   max-width: 265px;
 }
 
-.multivalueInputWrapper > .controls {
+.multivalueInputWrapper>.controls {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
-.multivalueInputWrapper > .controls > .input-group > input {
+.multivalueInputWrapper>.controls>.input-group>input {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.multivalueInputWrapper > .controls > button {
-  height: 38px;
-  /* border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px; */
+.multivalueInputWrapper>.controls>button {
+  height: 27px;
+  margin-top: 13px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   border: 1px solid white;
+  background-color: #ea75ba;
+
 }
 
-.multivalueInputWrapper > ul {
+.multivalueInputWrapper>ul {
   list-style: none;
   margin-top: 10px;
   padding: 5px 10px;
@@ -27,19 +30,19 @@
   background-color: white;
 }
 
-.multivalueInputWrapper > ul > li {
+.multivalueInputWrapper>ul>li {
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
   color: #ad065a;
 }
 
-.multivalueInputWrapper > ul > li:not(:last-child) {
+.multivalueInputWrapper>ul>li:not(:last-child) {
   border-bottom: 1px solid #ddd;
 }
 
 
-.multivalueInputWrapper > ul > li > button {
+.multivalueInputWrapper>ul>li>button {
   appearance: none;
   border: none;
   background: none;

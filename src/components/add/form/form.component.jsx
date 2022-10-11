@@ -44,6 +44,7 @@ const Form = (props) => {
 
     items.push(menueItems);
     localStorage.setItem('menueItems', JSON.stringify(items));
+    props.onNavigate('view');
   };
 
   /**

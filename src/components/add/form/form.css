@@ -3,15 +3,15 @@ html {
 }
 
 body {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   font-family: sans-serif;
   background: linear-gradient(#ff69b4, #00ffff);
   color: white;
 }
 
 
-.add-form > input{
+.add-form>input {
 
   appearance: none;
   border: 1px solid rgb(12, 12, 12);
@@ -19,30 +19,33 @@ body {
   padding: 10px;
 }
 
-.add-form{
+.add-form {
   position: absolute;
   top: 60%;
   left: 50%;
   width: 400px;
   padding: 15px 40px 40px 40px;
   transform: translate(-50%, -50%);
-  background: rgba(0,0,0,.5);
+  background: rgb(0 0 0 / 24%);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
   border-radius: 10px;
 }
 
-.add-form > div > div> button {
+.add-form>div>div>button {
+  border: none;
+  border-radius: 5px;
   bottom: 0;
   right: -100%;
   width: 30%;
   height: 30px;
   display: block;
-  background: linear-gradient(0deg, transparent, #c5e4e6);
+  background-color: #ffb7e2;
   animation: btn-anim3 1s linear infinite;
   animation-delay: .5s;
-  margin-left  : 240px;
+  margin-left: 240px;
   margin-bottom: -26px;
-  
-}
+  font-size: 15px;
+  font-family: cursive;
 
+}
