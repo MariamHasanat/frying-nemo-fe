@@ -25,13 +25,15 @@ const Form = (props) => {
    * 
    * @param {React.FormEvent<HTMLFormElement>} e Event Object. 
    */
-  const submitHandler = e => {
-    e.preventDefault();
+  const submitHandler = e => { // this function handling the form 
+    e.preventDefault(); // don't refresh and don't take me to another page
 
     // e.target == Form
     const description = e.target.description.value;
     const price = e.target.price.value;
     const category = e.target.category.value;
+
+    // object
     const menuItems = {
       name,
       description,
@@ -40,11 +42,13 @@ const Form = (props) => {
       ingredients
     };
 
-    const itemsJson = localStorage.getItem('menuItems') || '[]';
-    const items = JSON.parse(itemsJson);
+    const itemsJson = localStorage.getItem('menuItems') || '[]'; // local storage take string 
+    const items = JSON.parse(itemsJson); // convert string to javascript object
     items.push(menuItems);
 
-    localStorage.setItem('menuItems', JSON.stringify(items));
+    localStorage.setItem('menuItems', JSON.stringify(items)); // convert javascript object to string
+
+    props.onNavigate('view');
   };
 
   const onNameChange = e => {

@@ -1,0 +1,25 @@
+.main-class {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.main-class .logo{
+  min-width: 100%;
+}
+.main-class .right{
+  display: flex;
+}
+.main-class .right button{
+  padding: 10px;
+  margin-right: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: #fff;
+  box-shadow: 3px 3px 3px 1px #dbc4c4;
+
+}
+.main-class .right button:focus{
+  background-color: brown;
+  color: #fff;
+}
