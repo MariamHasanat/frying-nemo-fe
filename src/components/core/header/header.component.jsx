@@ -1,12 +1,17 @@
 import './header.css'
 import logo from './images/logo.png'
 
-const Header = () => {
+const Header = ({pageId, changeNav}) => {
   return (
     <div class='header'>
-      <img src={logo} alt="Logo" />
-      <p>MY RESTURANT</p>
-      <hr />
+      <div className='logo'>
+        <img src={logo} alt="Logo" />
+        <p>FRYING NEMO</p>
+      </div>
+      <div className='btns'>
+        <button className={pageId == 0 && `selected`} onClick={(() => changeNav(0))}>Add</button>
+        <button className={pageId == 1 && `selected`} onClick={(() => changeNav(1))}>View</button>
+      </div>
     </div>
   )
 }

@@ -1,22 +1,64 @@
 .header {
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding: 10px;
   padding-left: 25px;
-
+  padding-right: 50px;
   box-shadow: 0 0.0625em 0.5em rgba(0, 0, 0, 0.3);
 }
 
-.header img {
+.header .logo {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.header .logo img {
   width: 55px;
   height: 50px;
 }
 
-.header p {
+.header .logo p {
   margin: 0;
   padding: 0;
   margin-left: 20px;
   font-size: 20px;
   font-weight: 700;
+}
+
+
+.header .btns button {
+  background-color: white;
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  min-width: 4.7rem;
+  height: 2.4rem;
+  margin: 0px 5px;
+  padding: 0px 15px;
+  border-radius: .4rem;
+  cursor: pointer;
+  transition: .2s all;
+}
+
+.header .btns button:hover {
+  background-color: #ffd29f;
+}
+
+.header .btns button:active {
+  background-color: #ffb96a;
+}
+
+.header .btns button.selected {
+  background-color: #fb8500;
+}
+
+.header .btns button.selected:hover {
+  background-color: #eb7d00;
+}
+
+.header .btns button.selected:active {
+  background-color: #dd7600;
 }

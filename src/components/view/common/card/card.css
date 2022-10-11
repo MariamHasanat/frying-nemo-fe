@@ -1,0 +1,50 @@
+.card-wrapper {
+  position: relative;
+  top: 50px;
+  background-color: white;
+  width: 300px;
+  height: 600px;
+  border-radius: 6px;
+  box-shadow: 5px 10px 10px #88888841;
+  overflow: hidden;
+}
+
+.card-wrapper p {
+  margin: 0;
+  padding: 0;
+}
+
+.card-wrapper .info {
+  padding: 10px 15px;
+}
+
+.card-wrapper img {
+  width: 100%;
+  height: 200px;
+}
+
+.card-wrapper .itemName {
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.card-wrapper .itemCategory {
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 7px;
+}
+
+.card-wrapper .priceInfo {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  margin-top: 10px;
+  border-top: 1px solid rgb(201, 201, 201);
+}
+
+.card-wrapper .priceInfo .itemPrice {
+  color: orange;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 7px;
+}

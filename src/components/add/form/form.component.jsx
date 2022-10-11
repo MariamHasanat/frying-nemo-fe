@@ -14,9 +14,13 @@ const Form = (props) => {
   }
 
   const submitHandler = e => {
+    const resetForm = () => {
+      e.target.reset();
+      setName('')
+      updateIngs([])
+    }
+    
     e.preventDefault();
-    console.debug(`form price`, e.target.price.value)
-
     const description = e.target.description.value
     const price = e.target.price.value
     const category = e.target.category.value
@@ -28,11 +32,10 @@ const Form = (props) => {
       category,
       ings
     }
-    let arr = localStorage.getItem('menuItems') || '[]';
-    arr = JSON.parse(arr);
+    let arr = JSON.parse(localStorage.getItem('menuItems')) || [];
     arr.push(menuItems)
-    console.debug('arr', arr)
-    console.debug('Menu Items ', menuItems)
+    localStorage.setItem('menuItems', JSON.stringify(arr));
+    resetForm();
   }
 
 

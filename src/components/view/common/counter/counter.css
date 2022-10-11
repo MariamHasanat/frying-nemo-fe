@@ -1,0 +1,21 @@
+.counter-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter-wrapper .block {
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.counter-wrapper .block:nth-child(even) {
+  background-color: rgb(228, 228, 228);
+}
