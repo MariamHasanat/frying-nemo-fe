@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Input from './input/input.component';
+import Input from '../../input/input.component';
 import Textarea from '../../../textarea/textarea/textarea.component';
 import './form.css';
-import Select from './select/select.component';
+import Select from '../../select/select.component';
 import MultivalueInput from './multivalue-input/multivalue-input.component';
 
 const categories = [
@@ -38,16 +38,19 @@ const Form = (props) => {
     };
 
     console.log('form submetted' , menuItem)
-    // const JsonItem = localStorage.getItem('menuItem');
-    // const items = JSON.parse(JsonItem);
-    // items.push(menuItem);
-    // localStorage.setItem('menuItem', JSON.stringify(items))
+    const JsonItem = localStorage.getItem('menuItem');
+    console.log(JsonItem);
+    const items = JSON.parse(JsonItem) || [];
+    items.push(menuItem);
+    localStorage.setItem('menuItem', JSON.stringify(items))
 
-    // /**
-    //  * @type {HTMLFormElement}
-    //  */
-    // const target = e.target;
-    // console.debug(target.ATTRIBUTE_NODE);
+    props.onNavigate('view');
+
+    /**
+     * @type {HTMLFormElement}
+     */
+    const target = e.target;
+    console.debug(target.ATTRIBUTE_NODE);
   };
 
   const onNameChange = e => {
@@ -57,6 +60,7 @@ const Form = (props) => {
     }
     setName(value);
   };
+  
   return (
     <form className="addForm" onSubmit={submitHandler} >
       <div style={{ marginTop: 20 }}>

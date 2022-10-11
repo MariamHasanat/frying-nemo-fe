@@ -1,5 +1,5 @@
 import './multivalue-input.css';
-import Input from '../input/input.component';
+import Input from '../../../input/input.component';
 import { useState } from 'react';
 
 /**
