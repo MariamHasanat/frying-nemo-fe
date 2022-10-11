@@ -3,6 +3,7 @@
 // Here we import the components
 import AddPage from "./pages/pageContainer/page.container";
 import Header from "./components/header/header.component";
+import ViewPage from "./pages/view/view.container";
 
 //A function App will render the components
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <div className="consistancy-between-pages">
         <Header />
         <AddPage />
+        <ViewPage />
       </div>
     </div>
   );
