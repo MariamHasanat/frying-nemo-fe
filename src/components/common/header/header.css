@@ -21,6 +21,22 @@
   background-position: center;
 }
 
+.left-header{
+  display: flex;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  justify-content: flex-start;
+}
+
+.right-header{
+  display: flex;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  justify-content: flex-end;
+}
+
 .resturant-name{
   font-family: 'Alkalami', serif;
   font-size: 30px;
@@ -28,4 +44,35 @@
   padding: 0px 10px;
   padding-left: 0;
   padding-top: 15px;
+}
+.nav-btn{
+  position: sticky;
+  left: 80%;
+  background-color: aliceblue;
+  border: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.nav-btn:hover{
+  background-color: rgb(255, 94, 0);
+}
+.nav-btn:active{
+  transform: scale(0.95);
+}
+.active-nav-btn{
+  position: sticky;
+  left: 80%;
+  background-color: rgb(250, 127, 56);
+  border: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.active-nav-btn:active{
+  transform: scale(0.95);
 }

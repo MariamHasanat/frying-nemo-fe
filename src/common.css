@@ -10,3 +10,11 @@
   margin-bottom: 10px;
   cursor: pointer;
 }
+
+.nemo-button:hover{
+  border: 1px solid #113e83;
+  background: #1451ad;
+}
+.nemo-button:active{
+  transform: scale(0.95);
+}

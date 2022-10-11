@@ -33,7 +33,7 @@ const Form = (props) => {
     const items = JSON.parse(itemsJson);
     items.push(menuItem);
     localStorage.setItem("menuItems", JSON.stringify(items));
-    console.debug("Form submitted", menuItem);
+    props.onNavigate("view");
   };
 
   const onNameChange = (e) => {
