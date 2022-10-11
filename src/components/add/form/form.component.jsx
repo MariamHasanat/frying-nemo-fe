@@ -31,11 +31,11 @@ const Form = (props) => {
 
     items.push(menuItem);
 
-    localStorage.setItem('menuItems', JSON.stringify(items))
+    localStorage.setItem('menuItems', JSON.stringify(items));
 
 
+    props.onNavigate('view');
 
-console.debug(menuItem);
 
   };
   /**
