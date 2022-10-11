@@ -6,7 +6,7 @@ const AddPage = (props) => {
   return (
     <><h1>Add a new item</h1>
       <div className='add-page'>
-        <Form />
+        <Form setCurrentPage={props.setCurrentPage}/>
       </div>
     </>
   );

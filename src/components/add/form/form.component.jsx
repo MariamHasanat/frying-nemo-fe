@@ -45,11 +45,13 @@ const Form = (props) => {
         console.log('parsed:', parsed);
         localStorage.setItem('menu', JSON.stringify(parsed));
 
-        e.target.description.value = '';
-        e.target.category.value = '';
-        e.target.price.value = '';
-        setIngredients([]);
-        setName('');
+        // e.target.description.value = '';
+        // e.target.category.value = '';
+        // e.target.price.value = '';
+        // setIngredients([]);
+        // setName('');
+
+        props.setCurrentPage('view');
     };
 
     const inputChangeHandler = e => {

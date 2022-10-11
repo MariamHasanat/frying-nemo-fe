@@ -8,15 +8,27 @@ import './header.css';
  */
 
 const Header = (props) => {
-  return (
-    <div>
-      <div className='header'>
-        <img src={props.img} alt='logo' width={props.width} />
-        {props.text ? <span>{props.text}</span> : null}
-      
-      </div>
-      <hr/>
-    </div>
-  );
+    return (
+        <div>
+            <div className='header'>
+                <img src={props.img} alt='logo' width={props.width} />
+                {props.text ? <span>{props.text}</span> : null}
+                <span>
+                    <button
+                        className={props.currentPage === 'add'? 'active nemo-button' :'nemo-button'}
+                        onClick={() => props.setCurrentPage('add')}
+                    >add
+                    </button>
+
+                    <button
+                        className={props.currentPage === 'view'? 'active nemo-button' :'nemo-button'}
+                        onClick={() => props.setCurrentPage('view')}
+                    >view
+                    </button>
+                </span>
+            </div>
+            <hr />
+        </div>
+    );
 };
 export default Header;
