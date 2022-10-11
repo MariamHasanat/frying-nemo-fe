@@ -1,4 +1,4 @@
-.header{
+.header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -8,24 +8,26 @@
     background-color: rgb(228 228 228);
     border: 1px solid rgb(192 192 192);
 }
-.header > .left{
+
+.header>.left {
     display: flex;
     height: 100%;
     width: 200px;
 }
-.header > .left > img {
+
+.header>.left>img {
     padding: 2px;
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
     height: 40px;
     width: 60px;
 }
 
-.header > .left > h2{
+.header>.left>h2 {
     margin-left: 10px;
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
     font-size: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -42,3 +44,26 @@
     width: 200px;
     height: 100%;
 }
+
+.header .right nav button {
+    background: unset;
+    border: unset;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 9px 20px;
+  }
+  
+  .header .right nav button:hover {
+    text-shadow: -1px 2px 3px #777777;
+  }
+  
+  .header .right nav button:active {
+    text-shadow: -1px 2px 3px #333;
+  }
+  
+  .header .right nav button.current {
+    background-color: #be441d;
+    border-radius: 5px;
+    color: white;
+  }
+  

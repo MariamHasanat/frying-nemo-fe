@@ -10,8 +10,21 @@ const Header = (props) => {
                 </h2>
             </div>
             <div className='right'>
-                <button onClick={() => props.onNavigate("add")}>Add</button>
-                <button onClick={() => props.onNavigate("view")}>view</button>
+                <nav>
+
+                    <button
+                        onClick={() => props.onNavigate("add")}
+                        className={props.currentPage === 'add' ? 'current' : ''}
+                    >
+                        Add
+                    </button>
+                    <button
+                        onClick={() => props.onNavigate("view")}
+                        className={props.currentPage === 'view' ? 'current' : ''}
+                    >
+                        view
+                    </button>
+                </nav>
             </div>
         </header>
     );
