@@ -4,7 +4,8 @@
 
 .multivalueInputWrapper > .controls {
   display: flex;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
 }
 
 .multivalueInputWrapper > .controls > .input-group > input {
@@ -13,6 +14,7 @@
 }
 
 .multivalueInputWrapper > .controls > button {
+  margin-left: 15px;
   height: 38px;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;

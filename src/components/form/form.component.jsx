@@ -46,7 +46,7 @@ const Form = (props) => {
     setName(value);
   };
 
-  let orders = [
+  let food = [
     "tea",
     "coffee",
     "nemo",
