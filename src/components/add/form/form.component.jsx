@@ -18,7 +18,8 @@ const Form = (props) => {
 
     const description = e.target.description.value;
     const price = Number(e.target.price.value);
-    const category = e.target.category;
+    const category = e.target.category.value;
+
     const menuItem = {
       name: name,
       description: description,
@@ -27,9 +28,13 @@ const Form = (props) => {
       ingredients: ingredients
     };
 
-    const itemsJson = localStorage.getItem('menueItems') || '[]'
-    const items = Json.stringify(itemsJson)
-    localStorage.setItem('menuItem' ,JSON.stringify(items));
+    const itemsJson = localStorage.getItem('menuItems') || '[]';
+    const items = JSON.parse(itemsJson);
+
+    items.push(menuItem);
+
+    localStorage.setItem('menuItems', JSON.stringify(items))
+
   };
 
   /**
@@ -65,7 +70,7 @@ const Form = (props) => {
   ];
 
   return (
-    <form className="addForm" onSubmit={submitHandler} >
+    <form className="addForm"  onSubmit={submitHandler}>
       <Input
         name='name'
         label="Name"

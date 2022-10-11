@@ -4,7 +4,7 @@ import './index.css';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Title from './header/header.comonent';
+
 //import { import } from '@babel/types';
 //import '.common.css';
 
@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <Title/>
+  
     <App />
   </React.StrictMode>
 );
