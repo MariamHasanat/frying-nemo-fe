@@ -1,9 +1,10 @@
 /* never forget your friend (alt+shift+f) */
 
 // Here we import the components
-import AddPage from "./pages/pageContainer/page.container";
+import AddPage from "./pages/menuPageContainer/page.container";
 import Header from "./components/header/header.component";
 import ViewPage from "./pages/view/view.container";
+import NotFound from "./pages/not-found/not-found.component";
 
 //A function App will render the components
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Header />
         <AddPage />
         <ViewPage />
+        <NotFound />
       </div>
     </div>
   );
