@@ -23,17 +23,16 @@ const Form = (props) => {
       description: description,
       price: parseInt(price),
       category: category,
-      ingredients
+      ingredients,
     };
-    e.target.description.value='';
-    e.target.price.value='';
-    setName('');
+    e.target.description.value = "";
+    e.target.price.value = "";
+    setName("");
     setIngredients([]);
-    const itemsJson = localStorage.getItem('menuItems');
-    const items= JSON.parse(itemsJson);
+    const itemsJson = localStorage.getItem("menuItems") || "[]";
+    const items = JSON.parse(itemsJson);
     items.push(menuItem);
-    
-    localStorage.setItem(JSON.stringify(items));
+    localStorage.setItem("menuItems", JSON.stringify(items));
     console.debug("Form submitted", menuItem);
   };
 
@@ -56,7 +55,13 @@ const Form = (props) => {
     <div className="form-container">
       <h1>Add Menu Item</h1>
       <form className="addForm" onSubmit={submitHandler}>
-        <Input name="name" label="Name" value={name} onChange={onNameChange} required />
+        <Input
+          name="name"
+          label="Name"
+          value={name}
+          onChange={onNameChange}
+          required
+        />
         <Textarea name="description" label="Description" />
         <Input name="price" label="price" type="number" required />
         <Select name="category" label="categories">
@@ -69,10 +74,10 @@ const Form = (props) => {
           })}
         </Select>
         <MultivalueInput
-        label="Ingredients"
-        value={ingredients}
-        onChange={newIngredients => setIngredients(newIngredients)}
-      />
+          label="Ingredients"
+          value={ingredients}
+          onChange={(newIngredients) => setIngredients(newIngredients)}
+        />
         <div className="addFormButtons">
           <button type="submit">Create</button>
         </div>
