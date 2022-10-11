@@ -1,24 +1,51 @@
-.header {
+.webisteHeader {
   display: flex;
   align-items: center;
-  width: 100%;
+  justify-content: space-between;
   padding: 10px 20px;
   border-bottom: 1px solid #ddd;
-  padding-left: 10px;
-  background-color: aliceblue;
-  
 }
 
-.HeaderDesign>h1 {
-  font-size: 20px;
-  color: #2f69d6;
+.webisteHeader>.left>h1 {
+  font-size: 18px;
+  color: #627cd1;
+  line-height: 1.2;
   display: flex;
   align-items: center;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
 }
 
-img {
+
+.webisteHeader>.left>h1>img {
   height: 35px;
   width: auto;
   margin-right: 5px;
+}
+
+.webisteHeader .right nav {
+  display: flex;
+}
+
+.webisteHeader .right nav button {
+  background: unset;
+  border: unset;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 9px 20px;
+}
+
+.webisteHeader .right nav button:hover {
+  text-shadow: -1px 2px 3px #777777;
+}
+
+.webisteHeader .right nav button:active {
+  text-shadow: -1px 2px 3px #333;
+}
+
+.webisteHeader .right nav button.current {
+  background-color: #3d7ed3;
+  border-radius: 5px;
+  color: white;
 }

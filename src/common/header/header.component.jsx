@@ -1,15 +1,22 @@
+
+import nemo from '../../image/nemo.png';
 import React from 'react';
 import './header.css';
-import nemo from '../../image/nemo.png';
 
-const Header = props => {
+const Header = (props) => {
   return (
-    <header className="header">
-      <div className="HeaderDesign">
+    <header className="webisteHeader">
+      <div className="left">
         <h1>
           <img src={nemo} alt="Nemo" />
           Frying Nemo
         </h1>
+      </div>
+      <div className="right">
+        <nav>
+          <button className={props.currentPage === 'add' ? 'current' : ''} onClick={() => {props.onNavigate('add')}}>Add</button>
+          <button className={props.currentPage === 'view' ? 'current' : ''} onClick={() => {props.onNavigate('view')}}>View</button>
+        </nav>
       </div>
     </header>
   );
