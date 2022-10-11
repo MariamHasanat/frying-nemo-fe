@@ -1,15 +1,13 @@
-import './add.css';
-
 import Form from '../../components/add/form/form.component';
-import Head from '../../components/pop/header';
+import './add.css';
 
 const AddPage = (props) => {
   return (
     <div>
-
-      <Head/>
-      {/* <h1>Add a new item</h1> */}
-      <Form />
+      <h1>Add a new item</h1>
+      {/* <Form onNavigate={props.onNavigate} /> */}
+     <Form onNavigate={props.onNavigate}/>
+ 
     </div>
   );
 };

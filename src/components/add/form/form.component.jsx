@@ -33,7 +33,7 @@ const Form = (props) => {
 
     };
 
-    const itemsJson = localStorage.getItem('menuItems') || '[]';
+    const itemsJson = localStorage.getItem('menuItems') || [];
 
     const items = JSON.parse(itemsJson);
     
@@ -45,7 +45,7 @@ const Form = (props) => {
 
 
     ///to store complex object on local storage we need to convert it to json file using JSON.stringify (string representation )
-    // use JSON.pars  convert -> object 
+    // use JSON.pars  convert JSON string   -> js object 
 
 
     const target = e.target;
