@@ -7,11 +7,8 @@ import MultivalueInput from '../multivalue/multivalue-input';
 
 const Form = (props) => {
 
-  const [name, setName] = useState('mariam');
+  const [name, setName] = useState('Choose a dish');
   const [ingredients, setIngredients] = useState([]);
-
-
-
 
   /**
    * 
@@ -19,19 +16,25 @@ const Form = (props) => {
    */
   const submitHandler = e => {
     e.preventDefault();
-    // const target = e.target;
     const description = e.target.description.value;
-    // const price = Number(e.target.price.value);
+    const price = Number(e.target.price.value);
     const category = e.target.category.value;
 
     const menuItem = {
       name: name,
       description: description,
-      // price: price,
+      price: price,
       category: category,
       ingredients: ingredients
     };
-    console.log(menuItem);
+    // console.log(menuItem);
+    const itemsJson = localStorage.getItem('menuItems');
+    const items = JSON.parse(itemsJson) || [];
+
+    items.push(menuItem);
+
+    localStorage.setItem('menuItems', JSON.stringify(items));
+    props.onNavigate('view');
   };
 
   /**
@@ -39,10 +42,16 @@ const Form = (props) => {
    */
   const onChange = e => {
     let value = e.target.value;
-    if (value.includes('find')) {
-      // alert('find');
-      value = value.replace('find', 'fry');
+
+    if (value.includes('.')) {
+      alert('. character is not allowed');
+      value = value.replace('.', '');
     }
+// here i have a question 
+    if (/find/ig.test(value)) {
+      value = value.replace(/find/ig, 'fry');
+    }
+
     setName(value);
   };
 
@@ -51,6 +60,10 @@ const Form = (props) => {
     "coffee",
     "nemo",
     "abu-nemo",
+    'Sandwiches',
+    'Main Dish',
+    'Appetizers',
+    'Ice Cream'
   ];
 
   return (
@@ -69,6 +82,14 @@ const Form = (props) => {
         label="Description"
       />
 
+      <Input
+        name="price"
+        label="Price"
+        type="number"
+        min={0}
+        required
+      />
+
       <Select label="Choose" required name='category'>
         {food.map
           (item => {
@@ -83,9 +104,9 @@ const Form = (props) => {
         onChange={newIngredients => setIngredients(newIngredients)}
       />
 
-  <div style={{ marginTop: 20 }}>
-    <button type="submit" className='nemo-button'>create</button>
-  </div>
+      <div style={{ marginTop: 20 }}>
+        <button type="submit" className='nemo-button'>create</button>
+      </div>
 
     </form >
   );
