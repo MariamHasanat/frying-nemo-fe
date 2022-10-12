@@ -10,6 +10,7 @@ import MultivalueInput from '../../common/multivalue-input/multivalueInput';
 const Form = (props) => {
     const [name, setName] = useState('');
     const [Ingredients, setIngredients] = useState([]);
+
     let categories = [
         'Fish',
         'Drinks',
@@ -54,6 +55,7 @@ const Form = (props) => {
         }
         setName(val);
     };
+
     return (
         <div>
             <form className='form' onSubmit={e => {
@@ -89,7 +91,10 @@ const Form = (props) => {
                 <MultivalueInput
                     label={'Ingredients'}
                     value={Ingredients}
-                    onChange={(newItem) => { setIngredients(newItem); }}
+                    onChange={(newItem) => {
+                        console.log(newItem);
+                        setIngredients(newItem);
+                    }}
                 />
                 <div className='sub'>
                     <input type="submit" className='nemo-button' />

@@ -13,6 +13,7 @@ import './multivalueInput.component.css';
  */
 const MultivalueInput = (props) => {
     const [newItem, setNewItem] = useState('');
+
     const addItem = () => {
         if (newItem.trim().length > 0 && !props.value.includes(newItem)) {
 
@@ -20,13 +21,18 @@ const MultivalueInput = (props) => {
             setNewItem('');
         }
     };
+    const deleteItem = (item) => {
+        let afterRemoval = props.value.filter(element => element !== item);
+        console.log(afterRemoval);
+        props.onChange(afterRemoval);
+    };
     return (
         <div className='wrapper'>
             <div>
                 <Input
                     label={props.label}
                     value={newItem}
-                    onChange={(e) => { setNewItem(e.target.value); }}
+                    onChange={(e) => setNewItem(e.target.value)}
                 />
                 <button
                     type='button'
@@ -42,6 +48,9 @@ const MultivalueInput = (props) => {
                             return (
                                 <li key={item} >
                                     {item}
+                                    <span onClick={() => deleteItem(item)}>
+                                        X
+                                    </span>
                                 </li>
                             );
                         })}
