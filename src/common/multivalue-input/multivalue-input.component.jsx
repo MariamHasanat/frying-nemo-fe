@@ -19,6 +19,8 @@ const MultivalueInput = props => {
   const addItem = () => {
     if (newItemValue.trim().length > 0 && !props.value.includes(newItemValue)) {
       props.onChange([...props.value, newItemValue]);
+      const valueAfterAddition = [...props.value, newItemValue];
+      props.onChange(valueAfterAddition);
     }
   };
 
@@ -44,14 +46,21 @@ const MultivalueInput = props => {
       {/* Render list of items */}
       {/* Do not render list if incoming value has no items */}
       {
-      props.value.length > 0 &&
+        props.value.length > 0 &&
         (
           <ul>
             {props.value.map(item => {
               return (
                 <li key={item}>
                   <span>{item}</span>
-                  <button type="button">&times;</button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const valueAfterRemoval = props.value.filter(element => element !== item);
+                      props.onChange(valueAfterRemoval);
+                    }
+                    }
+                  >&times;</button>
                 </li>);
             })}
           </ul>
