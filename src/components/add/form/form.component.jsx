@@ -14,10 +14,12 @@ const Form = (props) => {
    */
 
   const handler = e => {
+
     e.preventDefault();
     /**
      * @type {HTMLformElement}
      */
+
     const describtion = e.target.describtion.value;
     const price = Number(e.target.price.value);
     const name = e.target.name.value;
@@ -34,7 +36,8 @@ const Form = (props) => {
     const items = JSON.parse(itemJson);
     items.push(menuItem);
     localStorage.setItem('menuItem' , JSON.stringify(items));
-    
+
+    props.onNavigate('view');
   };
   
   const onNamechange = e => {
