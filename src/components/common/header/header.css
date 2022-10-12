@@ -28,29 +28,3 @@
   width: auto;
   margin-right: 5px;
 }
-
-.webisteHeader .right nav {
-  display: flex; 
-}
-
-.webisteHeader .right nav button {
-  background: unset;
-  border: unset;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 9px 20px;
-}
-
-.webisteHeader .right nav button:hover {
-  text-shadow: -1px 2px 3px #777777;
-}
-
-.webisteHeader .right nav button:active {
-  text-shadow: -1px 2px 3px #333;
-}
-
-.webisteHeader .right nav button.current {
-  background-color: #be441d;
-  border-radius: 5px;
-  color: white;
-}

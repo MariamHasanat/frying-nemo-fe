@@ -16,27 +16,20 @@ const Form = (props) => {
     e.preventDefault();
     console.debug(name);
     console.log('Form Submitted');
-
-    const description = e.target.description.value;
-    const price = Number(e.target.price.value);
-    const category = e.target.category.value;
-
-    const menuItem = {
-      name: name,
-      description: description,
-      price: price,
-      category: category,
-      ingredients: ingredients
+    const price = e.target.price.value ;
+    const discription = e.target.discription.value ;
+    const catigory = e.target.catigory.value ;
+    const menueItem = {
+      name : name ,
+      price : price ,
+      discription : discription ,
+      catigorie : catigory ,
+      ingredients : ingredients
     };
-
-    const itemsJson = localStorage.getItem('menuItems') || '[]';
-    const items = JSON.parse(itemsJson);
-
-    items.push(menuItem);
-
-    localStorage.setItem('menuItems', JSON.stringify(items))
-
-    props.onNavigate('view') ;
+    const JSONitem = localStorage.getItem('menueItems') || '[]' ;
+    const items = JSON.parse (JSONitem) ;
+    items.push (menueItem) ;
+    localStorage.setItem ('menuItems' , JSON.stringify (items)) ;
   };
   /**
    * 
@@ -68,30 +61,29 @@ const Form = (props) => {
         onChange={nameChange}
       />
       <Textarea
+      name='discription'
         label="Discription"
         className='textarea-group'
-        name="description"
       />
       <Input
         className='input-group'
-        name="price"
         type="number"
         label="Price"
+        name = 'price'
         required
         min={0}
       />
       {/* using array mapping */}
-      <Select label='Select' name = "category">
+      <Select label='Select' name = 'catigory'>
         {catigories.map(item =>
           <option key={item} value={item}>{item}</option>
         )}
         {/* key must be mintions */}
       </Select>
       <MultivalueInput
-        label='ingredients'
-        onChange={item => setIngredients (item)}
-        value = {ingredients}
-
+      label='Ingredients'  name = 'ingredients'
+      onChange={item => setIngredients (item)}
+      value = {ingredients}
       />
 
       {/* <Select label='Select' required>
@@ -105,7 +97,7 @@ const Form = (props) => {
           type='submit'
           className='formComp nemo-button'
         >
-          Create  
+          Create
         </button>
       </div>
     </form>
