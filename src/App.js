@@ -19,7 +19,7 @@ function App() {
             />
             {
                 (curPage === 'add')
-                    ? <AddPage />
+                    ? <AddPage onNavigate={changePage} />
                     : <View />
             }
 

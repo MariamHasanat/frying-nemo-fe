@@ -7,24 +7,25 @@ import MultivalueInput from '../../common/multivalue-input/multivalueInput';
 
 
 
-
-
 const Form = (props) => {
     const [name, setName] = useState('');
     const [Ingredients, setIngredients] = useState([]);
     let categories = [
         'Fish',
+        'Drinks',
+        'Hookah',
+        'Salads',
+        'Sandwiches',
         'Main Dish',
-        'Drink',
-        'Salad',
-        'Ice-cream',
+        'Appetizers',
+        'Ice Cream'
+
     ];
 
     /**
      * @param {React.ChangeEvent<HTMLInputElement>} e
      */
     const submitHandler = e => {
-        console.log(e.target);
         const price = Number(e.target.price.value);
         const des = e.target.description.value;
         const cat = e.target.categories.value;
@@ -36,6 +37,13 @@ const Form = (props) => {
             categories: cat,
             Ingredients: Ingredients,
         };
+
+        let items = localStorage.getItem('categoriesArray');
+        items = JSON.parse(items) || [];
+        items.push(item);
+        localStorage.setItem('categoriesArray', JSON.stringify(items));
+
+        props.onNavigate('view');
     };
 
     const changeHandler = (e) => {
@@ -52,36 +60,41 @@ const Form = (props) => {
                 e.preventDefault();
                 submitHandler(e);
             }}>
-            <Input
-                label='Name'
-                type={'Text'}
-                value={name}
-                onChange={changeHandler}
-                required
-            />
-            <Textarea
-                label='Description'
-            />
-            <Input
-                label='Price'
-                type={'number'}
-                min={0}
-                required
-            />
-            <SelectArea label='Categories' required>
-                {categories.map((item) => {
-                    return <option key={item} value={item}>{item}</option>;
-                })}
-            </SelectArea>
-            <MultivalueInput
-                label={'Ingredients'}
-                value={Ingredients}
-                onChange={(newItem) => { setIngredients(newItem); }}
-            />
-            <div className='sub'>
-                <input type="submit" className='nemo-button' />
-            </div>
-        </form>
+                <Input
+                    label='Name'
+                    type={'Text'}
+                    value={name}
+                    onChange={changeHandler}
+                    required
+                />
+                <Textarea
+                    label='Description'
+                    name={'description'}
+                />
+                <Input
+                    label='Price'
+                    name='price'
+                    type={'number'}
+                    min={0}
+                    required
+                />
+                <SelectArea label='Categories' name={'categories'} required>
+
+                    {
+                        categories.map((item) => {
+                            return <option key={item} value={item}>{item}</option>;
+                        })
+                    }
+                </SelectArea>
+                <MultivalueInput
+                    label={'Ingredients'}
+                    value={Ingredients}
+                    onChange={(newItem) => { setIngredients(newItem); }}
+                />
+                <div className='sub'>
+                    <input type="submit" className='nemo-button' />
+                </div>
+            </form>
         </div >
     );
 
