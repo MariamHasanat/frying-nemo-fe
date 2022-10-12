@@ -8,6 +8,7 @@
  border:2px solid rgb(73, 2, 73);
  border-radius:50px;
  cursor: pointer;
+ color: black
 }
 .nemo:hover{
   box-shadow: 5px 4px  8px black ;

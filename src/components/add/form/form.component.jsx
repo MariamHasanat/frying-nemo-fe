@@ -6,6 +6,7 @@ import Textarea from '../../common/textarea/textarea.component';
 
 import './form.css';
 const Form = (props) => {
+  const [ingredients,setIngredients]=useState([]);
   const [name, setname] = useState('Sajeda');
   /**
    * 
@@ -13,6 +14,23 @@ const Form = (props) => {
    */
   const handleSubmit = (e) => {
     e.preventDefult();
+
+    const price=Number(e.target.price.value);
+    const description =e.target.description.value;
+    const category = e.target.category.value;
+    const menuItem = {
+      name: name,
+      description: description,
+      price: price,
+      category: category,
+      ingredients: ingredients
+    };
+    const itemJ = localStorage.getItem('menuItem');
+    const items = JSON.parse(itemJ)||[];
+    items.push(menuItem);
+    localStorage.setItem('menuItem',JSON.stringify(items));
+   props.onNavigate('view');
+    console.log(price);
   };
   const onNameChange = (e) => {
     let value = e.target.value;
@@ -47,25 +65,33 @@ const Form = (props) => {
         />
         <Textarea
           label="Discripion"
+          name = 'description'
         />
         <Input
           label="Price"
+          name = 'price'
           type="number"
           min={0}
           required
         />
         <Select
           label="The Chioce"
+          name ='category'
+          required
         >
           {categories.map(item => {
             return <option key={item} value={item}>{item}</option>;
           })}
         </Select>
-       <Multiinput label="Ingradaint"/>
+       <Multiinput 
+       label="Ingradaint"
+       value={ingredients}
+       onChange={newIngredients=>setIngredients(newIngredients)}
+       />
 
 
       </div>
-      <button  className='nemo'  type='submit' >Sign in</button>
+      <button  className='nemo'  type='submit' >Creat</button>
     </form>
   );
 };
