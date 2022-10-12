@@ -18,9 +18,10 @@ const MultivalueInput = props => {
 
   const addItem = () => {
     if (newItemValue.trim().length > 0 && !props.value.includes(newItemValue)) {
-      props.onChange([...props.value, newItemValue]);
+      // props.onChange([...props.value, newItemValue]);
       const valueAfterAddition = [...props.value, newItemValue];
       props.onChange(valueAfterAddition);
+      setNewItemValue('');
     }
   };
 
