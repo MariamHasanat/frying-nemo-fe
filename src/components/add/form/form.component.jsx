@@ -16,6 +16,21 @@ const Form = (props) => {
     e.preventDefault();
     console.debug(name);
     console.log('Form Submitted');
+    const price = e.target.price.value ;
+    const discription = e.target.discription.value ;
+    const catigory = e.target.catigory.value ;
+    const menueItem = {
+      name : name ,
+      price : price ,
+      discription : discription ,
+      catigorie : catigory ,
+      ingredients : ingredients
+    };
+    const JSONitem = localStorage.getItem('menueItems') || '[]' ;
+    const items = JSON.parse (JSONitem) ;
+    items.push (menueItem) ;
+    localStorage.setItem ('menuItems' , JSON.stringify (items)) ;
+    props.onNavigate('view') ;
   };
   /**
    * 
@@ -47,6 +62,7 @@ const Form = (props) => {
         onChange={nameChange}
       />
       <Textarea
+      name='discription'
         label="Discription"
         className='textarea-group'
       />
@@ -54,20 +70,21 @@ const Form = (props) => {
         className='input-group'
         type="number"
         label="Price"
+        name = 'price'
         required
         min={0}
       />
       {/* using array mapping */}
-      <Select label='Select'>
+      <Select label='Select' name = 'catigory'>
         {catigories.map(item =>
           <option key={item} value={item}>{item}</option>
         )}
         {/* key must be mintions */}
       </Select>
       <MultivalueInput
+      label='Ingredients'  name = 'ingredients'
       onChange={item => setIngredients (item)}
       value = {ingredients}
-
       />
 
       {/* <Select label='Select' required>

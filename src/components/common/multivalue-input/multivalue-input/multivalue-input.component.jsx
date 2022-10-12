@@ -18,6 +18,11 @@ const MultivalueInput = props => {
   const addItem = () => {
     // Add new item to existing array and call inform parent of change
     // Validate new item is not empty and does not exist in the original array
+    if (ingredient.trim().length && !props.value.includes (ingredient)) {
+      const valueAfterAddition = [...props.value , ingredient] ;
+      props.onChange (valueAfterAddition) ;
+      setIngredient ('') ;
+    }
   };
 
   return (
@@ -26,13 +31,14 @@ const MultivalueInput = props => {
         {/* Input goes here */}
         <Input  
         label={props.label}
-        onChange = {item => setIngredient (item)}
+        onChange = {e => setIngredient (e.target.value)}
+        value = {ingredient}
         />
         <button
           className="nemo-button"
           type="button"
         // Handel addition of new item (On click)
-        
+          onClick={addItem}
         >
           Add
         </button>
@@ -40,17 +46,23 @@ const MultivalueInput = props => {
       {/* Render list of items */}
       {/* Do not render list if incoming value has no items */}
       {
-        value.trim().length && !value.include (ingredient) && {
-          return ( value.map ( item => 
-            {<ul>
-              <li>
+        props.value.length && (
+          <ul>
+            {props.value.map (item => {
+              return (<li key = {item}>
                 <span>{item}</span>
-                <button type="button">&times;</button>
-              </li>
-            </ul>
-}
-          )
-        }
+                <button type='button'
+                onClick = {() => {
+                  const valueAfterRemoval = props.value.filter (elt => elt != item) ;
+                  props.onChange (valueAfterRemoval) ;
+                }} 
+                >
+                  &times;
+                </button>
+                </li>)
+            })}
+          </ul>
+        )
       }
       
     </div>
