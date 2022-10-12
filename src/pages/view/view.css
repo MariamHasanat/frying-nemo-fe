@@ -1,10 +1,16 @@
 .view-page h1,
 .view-page h2,
 .view-page h3 {
-  text-align: center;
+    text-align: center;
 }
 
 .view-page>.main {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.view-page>.main>.item-card{
+    margin: 20px
 }

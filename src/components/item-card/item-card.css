@@ -1,0 +1,46 @@
+.item-card>.card-wrapper {
+    /* border:1px solid black; */
+    padding: 0 0 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.276);
+    width: 250px;
+}
+
+.item-card>.card-wrapper:hover {
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.276);
+}
+
+.item-card>.card-wrapper>img {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.item-card>.card-wrapper>.item-description h3,
+.item-card>.card-wrapper>.item-description p {
+    text-align: center;
+    margin: 0;
+    padding: 5px
+}
+
+.item-card>.card-wrapper>.buy-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.item-card>.card-wrapper>.buy-item>.price {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.item-card>.card-wrapper>.buy-item>.item-quantity>button {
+    width: 30px;
+    height: 30px;
+    line-height: 0px;
+}
+
+.item-card>.card-wrapper>.buy-item>.item-quantity>.quant{
+    display: inline-block;
+    text-align: center;
+    width: 30px;
+}
