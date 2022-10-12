@@ -30,6 +30,7 @@ const Form = (props) => {
     const items = JSON.parse (JSONitem) ;
     items.push (menueItem) ;
     localStorage.setItem ('menuItems' , JSON.stringify (items)) ;
+    props.onNavigate('view') ;
   };
   /**
    * 
