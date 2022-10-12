@@ -27,14 +27,15 @@ const MultivalueInput = props => {
     <div className="multivalueInputWrapper">
       <div className="controls">
         {/* Input goes here */}
-        <Input 
-         label="INGREDIENTS"
-         value={newItemValue}
-         onChange={e => setNewItemValue(e.target.value)}
+        <Input
+          label="INGREDIENTS"
+          value={newItemValue}
+          onChange={e => setNewItemValue(e.target.value)}
         />
         <button
           className="nemo-button"
           type="button"
+          onClick={addItem}
         // Handel addition of new item (On click)
         >
           Add
@@ -42,14 +43,22 @@ const MultivalueInput = props => {
       </div>
       {/* Render list of items */}
       {/* Do not render list if incoming value has no items */}
-      {/* 
-        <ul>
-          <li>
-            <span>{item}</span>
-            <button type="button">&times;</button>
-          </li>
-        </ul>
-       */}
+      {
+      props.value.length > 0 &&
+        (
+          <ul>
+            {props.value.map(item => {
+              return (
+                <li key={item}>
+                  <span>{item}</span>
+                  <button type="button">&times;</button>
+                </li>);
+            })}
+          </ul>
+        )
+      }
+
+
     </div>
   );
 };

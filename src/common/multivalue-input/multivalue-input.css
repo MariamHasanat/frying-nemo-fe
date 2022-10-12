@@ -4,7 +4,7 @@
 
 .multivalueInputWrapper > .controls {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .multivalueInputWrapper > .controls > .input-group > input {

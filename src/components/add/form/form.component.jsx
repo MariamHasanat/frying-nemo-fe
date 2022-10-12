@@ -7,7 +7,7 @@ import MultivalueInput from '../../../common/multivalue-input/multivalue-input.c
 
 const Form = (props) => {
   const [name, setName] = useState('dala');
-  
+  const [ingredients, setIngredients] = useState([]);
   /**
    * Handles on change events on the name field.
    * @param {React.ChangeEvent<HTMLInputElement>} e On change event object.
@@ -76,7 +76,11 @@ const Form = (props) => {
           return <option key={item} value={item}>{item}</option>
         })}
         </Select>
-        <MultivalueInput />
+        <MultivalueInput 
+          label="Ingrediants"
+          value={ingredients}
+          onChange={newIngredients => setIngredients(newIngredients)}
+        />
         <button className="nemo-button" type='submit'>Creat</button>
       </div>
     </form>
