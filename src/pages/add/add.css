@@ -1,10 +1,10 @@
-h1,
-h2,
-h3 {
-  text-align: center;
+.add-page > .main{
+    display: flex;
+    justify-content: center;
 }
 
-.add-page {
-  display: flex;
-  justify-content: center;
+.add-page h1,
+.add-page h2,
+.add-page h3 {
+    text-align: center;
 }

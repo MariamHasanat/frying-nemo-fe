@@ -1,10 +1,10 @@
-h1,
-h2,
-h3 {
+.view-page h1,
+.view-page h2,
+.view-page h3 {
   text-align: center;
 }
 
-.view-page {
+.view-page>.main {
   display: flex;
   justify-content: center;
 }
