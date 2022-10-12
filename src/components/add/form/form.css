@@ -23,10 +23,7 @@
   transform: scale(0.98);
 }
 
-.btn-block {
-  display: block;
-  width: 100%;
-}
+
 .add-form > input {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
@@ -46,8 +43,14 @@
 .add-form {
     background-color: #fcdeb3;
     padding: 20px;
-    width: 80%;
-    height: 700px;
+    width: 60%;
+   
+    
+}
+.create-btn {
+  /* width: 60%; */
+  display: flex;
+  justify-content: flex-end;
 }
 
 .add-form > input:focus {

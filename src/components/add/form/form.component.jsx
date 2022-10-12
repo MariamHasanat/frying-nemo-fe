@@ -105,7 +105,9 @@ const Form = (props) => {
           value={ingredients}
           onChange={newIngredients => setIngredients(newIngredients)}
         />
-        <button className="nemo-button" type='submit'>Creat</button>
+        <div className="create-btn">
+          <button className="nemo-button" type='submit'>Creat</button>
+          </div>
       </div>
     </form>
   );
