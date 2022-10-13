@@ -1,0 +1,15 @@
+.menuitem {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  width: 200px;
+  height: 200px;
+  align-items: center;
+  justify-content: space-around;
+  border: 2px solid #999;
+  box-shadow: 3px 3px 5px 1px #ccc;
+  border-radius: 10px;
+  margin: 10px;
+  background-image: linear-gradient(rgb(247, 181, 146) , rgb(255, 135, 60));
+  font-size: 13px; font-weight: bold;
+}

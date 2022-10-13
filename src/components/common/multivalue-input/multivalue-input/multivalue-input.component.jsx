@@ -51,7 +51,7 @@ const MultivalueInput = props => {
             {props.value.map (item => {
               return (<li key = {item}>
                 <span>{item}</span>
-                <button type='button'
+                <button type='button' className='addIngredient'
                 onClick = {() => {
                   const valueAfterRemoval = props.value.filter (elt => elt != item) ;
                   props.onChange (valueAfterRemoval) ;

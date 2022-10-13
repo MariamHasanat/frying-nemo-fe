@@ -1,5 +1,6 @@
 .multivalueInputWrapper {
   max-width: 265px;
+  margin-bottom: 10px;
 }
 
 .multivalueInputWrapper > .controls {
@@ -16,6 +17,8 @@
   height: 38px;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
+  position: relative;
+  bottom: 10px;
 }
 
 .multivalueInputWrapper > ul {
