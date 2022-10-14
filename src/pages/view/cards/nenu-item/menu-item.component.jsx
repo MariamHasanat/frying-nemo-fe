@@ -1,12 +1,12 @@
 import React from 'react' ;
 import './menu-item.css' ;
 
-const MenuItem = () => {
+const MenuItem = (props) => {
   const items = JSON.parse (localStorage.getItem ('menuItems')) ;
   return (
     <div >
       {
-        items.map ((item , index) => {return(
+        props.value.map ((item , index) => {return(
           <div key={index} className='menuitem'>
             <span>Name : {item.name}</span>
             <span>Price : {item.price}</span>

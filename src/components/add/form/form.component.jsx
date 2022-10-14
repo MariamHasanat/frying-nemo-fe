@@ -6,7 +6,7 @@ import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 
 const Form = (props) => {
-  const [name, setName] = useState('Raghad');
+  const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState([]);
   /*
    * calls JSDoc
@@ -26,11 +26,14 @@ const Form = (props) => {
       catigorie : catigory ,
       ingredients : ingredients
     };
-    const JSONitem = localStorage.getItem('menueItems') || '[]' ;
-    const items = JSON.parse (JSONitem) ;
-    items.push (menueItem) ;
+    const itemsJson = localStorage.getItem('menueItems') || '[]' ;
+    const items = JSON.parse (itemsJson) ;
+    console.log ("before" , items) ;
+    items.push(menueItem) ;
+    console.log ("after" , items) ;
     localStorage.setItem ('menuItems' , JSON.stringify (items)) ;
     props.onNavigate('view') ;
+    props.onAdd (menueItem) ;
   };
   /**
    * 
@@ -48,7 +51,6 @@ const Form = (props) => {
       alert('charecter limit excedded');
       val = val.substring(0, 20);
     }
-    console.log(val.length);
     setName(val);
   };
   const catigories = ["Salads", "Main Dishes", "Drinks", "Sweets"];

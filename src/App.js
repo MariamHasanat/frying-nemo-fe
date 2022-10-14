@@ -8,7 +8,12 @@ function App() {
   const changePage = (newPage) => {
     setCurrentPage (newPage) ;
   }
-
+  const [items , setItems] = useState ([]) ;
+  const addItem = (item) => {
+    const tempItems = items ;
+    tempItems.push (item) ;
+    setItems (tempItems) ;
+  } 
   return (
     <div>
       <Header 
@@ -16,8 +21,10 @@ function App() {
         title = "Frying Nemo"
         onNavigate = {changePage}  
       />
-      {currentPage === 'add' && <AddPage onNavigate = {changePage} />}
-      {currentPage === 'view' && <ViewPage />}
+      {currentPage === 'add' && 
+      <AddPage onNavigate = {changePage}
+      onAdd = {addItem}  />}
+      {currentPage === 'view' && <ViewPage value = {items}/>}
 
     </div>
   );
