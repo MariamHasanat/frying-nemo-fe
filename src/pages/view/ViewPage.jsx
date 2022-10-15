@@ -1,11 +1,11 @@
 import './viewpage.css';
-
+import Card from './Card/Card';
 // import Form from '../../components/add/form/form.component';
 
 const ViewPage = (props) => {
   return (
     <div className='View-page'>
-      <h1>View Page is Here</h1>
+       <Card/>
     </div>
   );
 };

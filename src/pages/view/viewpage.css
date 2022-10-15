@@ -1,3 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Dancing+Script&family=Fira+Sans+Extra+Condensed:ital,wght@0,200;0,300;1,100&family=Indie+Flower&family=Nunito+Sans:ital,wght@0,300;1,300&family=Work+Sans:ital,wght@0,300;0,400;1,200&display=swap');
+
+
 .View-page {
   padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.View-page > .Card {
+  width: 700px;
+  height: 630px;
+  /* border: 3px solid rgb(163, 148, 80); */
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  font-family:Nunito Sans;
+  font-size: 26px;
+  background-color:#fbd7a4;
+}
+.View-page > .Card > img {
+  width: 500px;
+  height: 400px;
+}
+.View-page > .Card > .describtion {
+  align-self: center;
 }

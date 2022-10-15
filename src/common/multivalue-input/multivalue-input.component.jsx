@@ -25,7 +25,6 @@ const MultivalueInput = props => {
     }
   };
 
-
   return (
     <div className="multivalueInputWrapper">
       <div className="controls">
@@ -67,8 +66,6 @@ const MultivalueInput = props => {
           </ul>
         )
       }
-
-
     </div>
   );
 };
