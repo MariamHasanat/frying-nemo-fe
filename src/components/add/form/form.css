@@ -1,11 +1,12 @@
 .form{
-  max-width: 700px;
+  max-width: 1400px;
   display:flex;
   /* justify-content: center; */
   align-items: center;
   flex-direction: column;
+  
   padding: 10px 10px;
-  background-color: bisque;
+  background-color: rgb(158, 232, 236);
   margin:10px;
  /* font-family: 'Pacifico', cursive; */
   font-family: 'Rubik Dirt', cursive;
@@ -37,5 +38,7 @@
  .form button:hover{
   box-shadow: 5px 4px  8px black ;
  } */
-
+.form.nemo>button{
+justify-self: end;
+}
   
