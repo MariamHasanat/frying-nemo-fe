@@ -81,8 +81,6 @@ const Form = (props) => {
           value={ingredients}
           onChange={(newIngredients) => setIngredients(newIngredients)}
         />
-        <label htmlFor="upload-photo" className="photo-label">Image</label>
-        <input type="file" name="photo" id="upload-photo" accept="image/png, image/jpeg"/>
         <div className="addFormButtons">
           <button type="submit">Create</button>
         </div>
