@@ -4,6 +4,7 @@ import Textarea from "../../common/textarea/textarea.component";
 import Select from "../../common/select/select.component";
 import "./form.css";
 import MultivalueInput from "../../multi-value-input.jsx/multivalue-input.component";
+import "../../../../src/common.css";
 
 const Form = (props) => {
   const [name, setName] = useState("");
@@ -18,12 +19,14 @@ const Form = (props) => {
     let description = e.target.description.value;
     let price = e.target.price.value;
     let category = e.target.category.value;
+    let photo= e.target.photo.value;
     const menuItem = {
       name: name,
       description: description,
       price: parseInt(price),
       category: category,
       ingredients,
+      photo: photo
     };
     e.target.description.value = "";
     e.target.price.value = "";
@@ -78,6 +81,8 @@ const Form = (props) => {
           value={ingredients}
           onChange={(newIngredients) => setIngredients(newIngredients)}
         />
+        <label htmlFor="upload-photo" className="photo-label">Image</label>
+        <input type="file" name="photo" id="upload-photo" accept="image/png, image/jpeg"/>
         <div className="addFormButtons">
           <button type="submit">Create</button>
         </div>

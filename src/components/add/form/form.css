@@ -38,3 +38,21 @@ h1 {
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   margin-top: 0;
 }
+
+.photo-label {
+  cursor: pointer;
+  /* Style as you please, it will become the visible UI component. */
+}
+
+.photo-label:hover{
+  background-color: #134694;
+  color: white;
+  padding: 0px 10px;
+}
+
+
+#upload-photo {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
