@@ -1,12 +1,24 @@
 .card-wrapper {
+  display: flex;
+  flex-direction: column;
   position: relative;
   top: 50px;
   background-color: white;
   width: 300px;
-  height: 600px;
   border-radius: 6px;
   box-shadow: 5px 10px 10px #88888841;
   overflow: hidden;
+  height: auto;
+  padding-bottom: 10px;
+  margin: 25px 20px;
+  margin-top: 0px;
+  transition: transform .2s;
+  opacity: 0;
+  transition: .7s all;
+}
+
+.card-wrapper:hover {
+  transform: scale(1.05)
 }
 
 .card-wrapper p {
@@ -15,7 +27,9 @@
 }
 
 .card-wrapper .info {
+  height: 100%;
   padding: 10px 15px;
+  padding-bottom: 0;
 }
 
 .card-wrapper img {
@@ -29,22 +43,38 @@
 }
 
 .card-wrapper .itemCategory {
+  color: #e76f51;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.card-wrapper .itemDescription {
   font-size: 14px;
   font-weight: 400;
   margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.card-wrapper .itemIngredients {
+  color: rgb(114, 74, 0);
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 15px;
+  margin-bottom: 7px;
 }
 
 .card-wrapper .priceInfo {
   display: flex;
   justify-content: space-between;
   padding: 10px 10px;
-  margin-top: 10px;
+  margin-top: 15px;
   border-top: 1px solid rgb(201, 201, 201);
+  padding-top: 15px;
 }
 
 .card-wrapper .priceInfo .itemPrice {
   color: orange;
   font-size: 24px;
   font-weight: 600;
-  margin-top: 7px;
 }

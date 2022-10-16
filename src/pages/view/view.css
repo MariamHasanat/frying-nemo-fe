@@ -1,6 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap');
+
 .view-page {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 100px;
   width: 100%;
+}
+
+.view-page > p {
+  font-family: 'Fuzzy Bubbles', cursive;
+  font-size: 35px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.view-page > .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 300px);
+}
+
+.view-page > .selector {
+  display: flex;
+}
+
+.view-page > .selector p {
+  font-size: 20px;
+  border-right: 1px solid gray;
+  margin-right: 13px;
+  padding-right: 13px;
+  cursor: pointer;
+}
+.view-page > .selector p.selected {
+  color: orange;
+}
+
+.view-page > .selector p:last-child {
+  border-right: none;
 }

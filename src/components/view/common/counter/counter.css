@@ -14,8 +14,21 @@
   height: 35px;
   font-size: 18px;
   font-weight: 600;
+  cursor: pointer;
+  transition: .3s all;
+}
+
+.counter-wrapper .block:nth-child(odd):hover {
+  transform: scale(1.1);
+  background-color: rgb(245, 245, 245);
+}
+
+.counter-wrapper .block:nth-child(odd):active {
+  transform: scale(1.1);
+  background-color: rgb(226, 226, 226);
 }
 
 .counter-wrapper .block:nth-child(even) {
   background-color: rgb(228, 228, 228);
+  cursor: default;
 }

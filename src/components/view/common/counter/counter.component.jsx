@@ -1,11 +1,11 @@
 import './counter.css'
 
-const Counter = () => {
+const Counter = ({counter, incCounter, decCounter}) => {
   return (
     <div className="counter-wrapper">
-    <button className='block add'>-</button>
-    <div className='block value'>0</div>
-    <button className='block remove'>+</button>
+    <button onClick={decCounter} className='block'>-</button>
+    <div className='block value'>{counter}</div>
+    <button onClick={incCounter} className='block'>+</button>
     </div>
   )
 }

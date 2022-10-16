@@ -24,12 +24,14 @@ const Form = (props) => {
     const description = e.target.description.value
     const price = e.target.price.value
     const category = e.target.category.value
+    const image = e.target.image.value
 
     const menuItems = {
       name,
       description,
       price,
       category,
+      image,
       ings
     }
     let arr = JSON.parse(localStorage.getItem('menuItems')) || [];
@@ -63,7 +65,8 @@ const Form = (props) => {
         <Input name='name' label="Name" value={name} onChange={changeName} required></Input>
         <Textarea name='description' label="Description" ></Textarea>
         <Input name="price" label="Price" type="number" required></Input>
-        <Select name='category' items={[`Fish`, `Shisha`, `Drink`]} required></Select>
+        <Input name="image" label="Image" type="text" required></Input>
+        <Select name='category' items={[`Fish`, `Shisha`, `Drink`, `Chicken`]} required></Select>
         <MultivalueInput onChange={updateIngs} name='ingredients' label='Ingredients'/>
         <Button name="SUBMIT" type="submit"></Button>
       </div>
