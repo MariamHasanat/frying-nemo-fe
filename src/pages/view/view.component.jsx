@@ -1,5 +1,5 @@
 import './view.css';
-import Item from './item/item.component';
+import Item from '../../components/view/item/item.component';
 const ViewPage = (props) => {
   return (
     <div className="view-page">

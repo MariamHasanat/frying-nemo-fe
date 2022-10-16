@@ -20,6 +20,7 @@
 
 .item-card>.info {
   padding: 15px;
+  background-color: #ffffff6e;
 }
 
 .item-card>.info>h2 {
@@ -33,6 +34,8 @@
 .item-card>.info>p {
   font-size: 14px;
   font-weight: 300;
+  color: #d904d2;
+
 }
 
 .item-card>.info>p.ingredients {
@@ -47,12 +50,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #ffffff6e;
 }
 
 .item-card>.price>span {
   font-size: 28px;
   font-weight: 500;
-  color: #be441d;
+  color: #e53a03;
+
 }
 
 .item-card>.price>.add-cart {
