@@ -9,3 +9,38 @@
 h1{
   margin-left: 20px;
 }
+.items-container{
+  margin-left: 20px;
+display: flex;
+/* justify-content: space-between; */
+align-items: center;
+flex-wrap: wrap;
+gap: 40px;
+padding: 10px;
+}
+.items-container .box{
+  box-shadow: 1px 1px 11px 3px #888888;
+  padding: 20px;
+  position: relative;
+}
+.items-container .box .desc{
+  max-width: 400px;
+}
+.items-container .box img{
+  min-width: 100%;
+}
+.items-container .box div{
+  line-height: 2;
+}
+.items-container .box span,
+.items-container .box p
+{
+  color: rgb(189, 10, 10);
+  font-weight: bold;
+  font-size: 20px;
+}
+.items-container .box p{
+  font-size: 30px;
+  margin: 10px 0;
+  color: #2f6d05;
+}

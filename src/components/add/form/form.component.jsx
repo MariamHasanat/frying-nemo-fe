@@ -39,7 +39,7 @@ const Form = (props) => {
       description,
       price,
       category,
-      ingredients
+      ingredients,
     };
 
     const itemsJson = localStorage.getItem('menuItems') || '[]'; // local storage take string 
