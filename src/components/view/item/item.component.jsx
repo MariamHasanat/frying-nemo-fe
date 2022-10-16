@@ -1,5 +1,17 @@
+import { useState } from 'react';
 import './item.css';
-
+/**
+ * 
+ * @param {{
+ * data:{
+ *  name: string;
+ *  description: string;
+ *  price: number;
+ *  category: string;
+ *  ingredients: string[];
+ * }
+ * }} props 
+ */
 const Item = (props) => {
 
   return (
@@ -8,13 +20,13 @@ const Item = (props) => {
         <img src="https://i.imgur.com/eFWRUuR.jpg" alt="food" />
       </div>
       <div className="info">
-        <h2>Double Cheese Potato Burger</h2>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque dicta laudantium.</p>
-        <p className="ingredients">Beef, Bread, Tomato, Fries, Lectus</p>
+        <h2>{props.data.name}</h2>
+        <p>{props.data.description}</p>
+        <p className="ingredients">{props.data.ingredients.join(" , ")}</p>
         <hr />
       </div>
       <div className="price">
-        <span>25.5$</span>
+        <span>{props.data.price}$</span>
         <div className="add-cart">
           <button>+</button>
           <input type="number" max={500} />
