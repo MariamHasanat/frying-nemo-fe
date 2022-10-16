@@ -8,7 +8,7 @@ const Item = (props) => {
         <img src="https://i.imgur.com/eFWRUuR.jpg" alt="food" />
       </div>
       <div className="info">
-        <h2>Double Cheese Potato Burger</h2>
+        <h2>{props.data.name}</h2>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque dicta laudantium.</p>
         <p className="ingredients">Beef, Bread, Tomato, Fries, Lectus</p>
         <hr />
