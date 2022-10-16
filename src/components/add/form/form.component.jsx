@@ -30,13 +30,15 @@ const Form = (props) => {
         const description = e.target.description.value;
         const category = e.target.category.value;
         const price = e.target.price.value;
+        const image = e.target.image.value;
 
         const menuItem = {
             name: name,
             description: description,
             price: price,
             category: category,
-            ingredients: ingredients
+            ingredients: ingredients,
+            image: image
         };
 
         const menu = localStorage.getItem('menu') || '[]';
@@ -69,6 +71,7 @@ const Form = (props) => {
     };
     return (
         <form onSubmit={submitHandler} className="styled-form">
+
             <Input
                 name="name"
                 label="Name"
@@ -101,6 +104,8 @@ const Form = (props) => {
                 value={ingredients}
                 onChange={(newIngredients) => setIngredients(newIngredients)}
             />
+            <Input name="image" label='Image link' />
+
             <div>
                 <button className='nemo-button' type='submit'>Create</button>
             </div>

@@ -11,7 +11,7 @@ const ViewPage = (props) => {
             <h1>view items</h1>
             <div className="main">
                 {menu.map((item, index) => {
-                    return <ItemCard img={'images/pizza.jpg'} {...item} key={item + index}/>
+                    return <ItemCard {...item} key={item + index}/>
                 })}
             </div>
         </div>
