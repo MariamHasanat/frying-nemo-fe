@@ -21,6 +21,7 @@
 .item-card>.info {
   padding: 15px;
   background-color: #ffffff6e;
+  flex-grow: 1;
 }
 
 .item-card>.info>h2 {

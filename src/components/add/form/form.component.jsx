@@ -16,14 +16,7 @@ const Form = (props) => {
   const submitHandler = e => {
     e.preventDefault();
 
-    // /**
-    //  * @type {HTMLFormElement}
-    //  */
-    // const target = e.target;
-    // console.debug(target.ATTRIBUTE_NODE);
-
-
-
+  
     const description = e.target.description.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
@@ -33,6 +26,7 @@ const Form = (props) => {
 
       name: name,
       description: description,
+      image : image,
       price: price,
       category: category,
       ingredients: ingredients
@@ -100,12 +94,20 @@ const Form = (props) => {
         />
 
         <Input
+          name='image'
+          label="Image"
+          type="srting"
+          required
+        />
+
+        <Input
           name='price'
           label="Price"
           type="number"
           min={0}
           required
         />
+
 
         <Select name='category' label="Category" required>
           {categories.map(item => {

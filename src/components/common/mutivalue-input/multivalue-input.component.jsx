@@ -30,6 +30,7 @@ const MultivalueInput = props => {
           label={props.label}
           value={newItemValue}
           onChange={e => setNewItemValue(e.target.value)}
+          
         />
         <button
           className="nemo-button"
