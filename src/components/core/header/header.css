@@ -3,13 +3,15 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid rgb(65, 18, 18);
+  background-color: rgb(236, 171, 188);
 }
 
 .webisteHeader>.left>h1 {
   font-size: 18px;
-  color: #be441d;
+  color: #ffffff;
   line-height: 1.2;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 
@@ -42,5 +44,5 @@
 .webisteHeader .right nav button.current {
   background-color: #be441d;
   border-radius: 5px;
-  color: white;
+  color: rgb(173, 115, 115);
 }

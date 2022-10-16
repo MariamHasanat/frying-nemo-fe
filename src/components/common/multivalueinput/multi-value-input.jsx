@@ -28,6 +28,13 @@ const MultivalueInput = props => {
           label={props.label}
           value={newItemValue}
           onChange={e => setNewItemValue(e.target.value)}
+          onKeyDown={e =>{
+         
+            if (e.key === "Enter" ){
+          e.preventDefault();
+          addItem();
+          }
+        }}
         />
         <button
           className='nemo-button'
