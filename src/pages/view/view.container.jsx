@@ -1,11 +1,11 @@
-import './viewContainerStyle.css';
 import Item from './item/item.jsx';
+import './viewContainerStyle.css';
 import { useState } from 'react';
 
-const getMenuItem = () => JSON.parse(localStorage.menuItem || '[]');
+const getMenuItem = () => JSON.parse(localStorage.menuItems || '[]');
 
 const ViewPage = (props) => {
-  
+
   const [menuItems] = useState(getMenuItem());
 
   return (
@@ -16,7 +16,7 @@ const ViewPage = (props) => {
           menuItems.map((item, index) => <Item data={item} key={item.name + index} />)
         }
       </div>
-  
+
     </div>
   );
 };

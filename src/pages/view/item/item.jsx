@@ -10,7 +10,7 @@ const Item = (props) => {
       <div className="info">
         <h2>{props.data.name}</h2>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque dicta laudantium.</p>
-        <p className="ingredients">Beef, Bread, Tomato, Fries, Lectus</p>
+        <p className="ingredients">{props.data.ingredients.join(', ')}</p>
         <hr />
       </div>
       <div className="price">
