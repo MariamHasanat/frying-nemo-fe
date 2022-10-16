@@ -1,13 +1,11 @@
+import Item from './item/item.component';
 import './view.css';
-
-import Form from '../../components/add/form/form.component';
 
 const ViewPage = (props) => {
   return (
-    <div className="add-page">
-      <h1 >View items</h1>
-      <Form />
-
+    <div className="view-page">
+      <h1>View Menu Items</h1>
+      <Item />
     </div>
   );
 };

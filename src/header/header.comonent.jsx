@@ -1,20 +1,33 @@
-import React from 'react'
-import './header.css'
-function Title(props) {
+import React from 'react';
+import './header.css';
+
+const Header = (props) => {
   return (
-    <header
-    className="webisteHeader">
-    <div>
-      <h1>FRYING NEMO</h1>
-    </div>
-    <div>
-      <nav>
-        <button onClick={()=> props.onNavigate('add')}>Add</button>
-        <button onClick={()=> props.onNavigate('view')}>view</button>
-      </nav>
-    </div>
+    <header className="webisteHeader">
+      <div className="left">
+        <h1>
+          <img src="./nemo.svg" alt="Nemo" />
+          Frying Nemo
+        </h1>
+      </div>
+      <div className="right">
+        <nav>
+          <button
+            className={props.currentPage === 'add' ? 'current' : ''}
+            onClick={() => props.onNavigate('add')}
+          >
+            Add
+          </button>
+          <button
+            className={props.currentPage === 'view' ? 'current' : ''}
+            onClick={() => props.onNavigate('view')}
+          >
+            View
+          </button>
+        </nav>
+      </div>
     </header>
   );
 };
 
-export default Title
+export default Header;
