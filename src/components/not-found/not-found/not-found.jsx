@@ -1,6 +1,6 @@
 import './not-found.css';
 
-import Form from '../../components/add/form/form.component';
+import Form from '../../add/form/form.component';
 
 const NotFoundPage = (props) => {
   return (

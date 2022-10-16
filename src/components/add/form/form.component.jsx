@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Input from '../../input/input.component';
-import Textarea from '../../../textarea/textarea/textarea.component';
+import Textarea from '../../textarea/textarea/textarea.component';
 import './form.css';
 import Select from '../../select/select.component';
-import MultivalueInput from './multivalue-input/multivalue-input.component';
+import MultivalueInput from '../../multivalue-input/multivalue-input.component';
 
 const categories = [
   'fish',
