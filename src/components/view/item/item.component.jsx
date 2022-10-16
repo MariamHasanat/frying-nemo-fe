@@ -14,6 +14,7 @@ import './item.css';
  */
 const Item = (props) => {
 
+  console.log(props);
   return (
     <div className="item-card">
       <div className="img">

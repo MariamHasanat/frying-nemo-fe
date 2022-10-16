@@ -15,7 +15,7 @@ const ViewPage = (props) => {
       <h1>View Menu Items</h1>
       <div className="view-container">
         {
-          menueItems.map((item, index) => <Item data={Item} key={item.name + index} />)
+          menueItems.map((item, index) => <Item data={item} key={item.name + index} />)
         }
       </div>
     </div>
