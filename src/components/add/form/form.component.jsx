@@ -19,6 +19,7 @@ const Form = (props) => {
     const description = e.target.description.value;
     const category = e.target.category.value;
     const price = Number(e.target.price.value);
+    const imageUrl = Number(e.target.image.value);
 
     const menuItem = {
       name: name,
@@ -26,16 +27,28 @@ const Form = (props) => {
       description: description,
       category: category,
       ingredients: ingredients,
+      image: imageUrl
     };
 
+    const itemsJson = localStorage.getItem('menuItems');
+    const items = JSON.parse(itemsJson) || [];
+
+    items.push(menuItem);
+
+    localStorage.setItem('menuItems', JSON.stringify(items));
+
+
     /**
-     * @type {HTMLFormElement}
+     * @type {HTMLFormElemfent}
      */
     const target = e.target;
     console.log("menu item: ", menuItem);
+
   };
 
   const categories = ["Fish", "Drinks", "Main Dishes", "Salads",];
+
+
   return (
     <form onSubmit={submitHandler} className='add-item-form'>
 
@@ -71,6 +84,12 @@ const Form = (props) => {
           label='ingredients'
           value={ingredients}
           onChange={newIngredients => setNewIngredients(newIngredients)}
+        />
+
+        <Input
+          name='image'
+          label='image'
+          required
         />
 
       </div>
