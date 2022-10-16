@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Input from '../../common/input/input.component';
+import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
-import MultivalueInout from '../../common/multivalue-input/multivalue-input.component';
 
 const Form = (props) => {
   const [name, setName] = useState('Ruba');
@@ -28,12 +28,13 @@ const Form = (props) => {
       ingredients: ingredients
     };
 
-    const itemsJson = localStorage.getItem('menuItems') || '[]';
-    const items = JSON.parse(itemsJson);
+    const itemsJson = localStorage.getItem('menuItems');
+    const items = JSON.parse(itemsJson) || [];
 
     items.push(menuItem);
 
-    localStorage.setItem('menuItems', JSON.stringify(items))
+    localStorage.setItem('menuItems', JSON.stringify(items));
+    props.onNavigate('view');
 
   };
 
@@ -41,8 +42,6 @@ const Form = (props) => {
    * Handles on change events on the name field.
    * @param {React.ChangeEvent<HTMLInputElement>} e On change event object.
    */
-
-
   const onNameChange = (e) => {
     let value = e.target.value;
 
@@ -70,46 +69,45 @@ const Form = (props) => {
   ];
 
   return (
-    <form className="addForm"  onSubmit={submitHandler}>
+    <form className="addForm" onSubmit={submitHandler}>
       <Input
-        name='name'
         label="Name"
         value={name}
         onChange={onNameChange}
         required
       />
       <Textarea
-        label="Description"
-        name='description'
+        name="description"
+        label="Description (Add your description here. Customers will be able to read it)"
       />
       <Input
+        label="img"
+       
+      
+      />
+      <Input
+        name="price"
         label="Price"
         type="number"
         min={0}
         required
-        name='price'
       />
-      <Select label="Category" required name='category'>
-        {
-          categories.map(item => {
-            return <option key={item} value={item}>{item}</option>;
-
-          })}
+      <Select name="category" label="Category" required>
+        {categories.map(item => {
+          return <option key={item} value={item}>{item}</option>;
+        })}
       </Select>
-
-      <MultivalueInout
-        name='ingredients'
-        label="INGRADIANTS"
-        value={
-          ingredients
-        }
-        onChange={e => setIngredients(e)}
+      <MultivalueInput
+        label="Ingredients"
+        value={ingredients}
+        onChange={newIngredients => setIngredients(newIngredients)}
       />
       <div className="addFormButtons">
-        <button type="submit">Create</button>
+        <button className="nemo-button" type="submit">Create</button>
       </div>
     </form>
   );
 };
 
 export default Form;
+
