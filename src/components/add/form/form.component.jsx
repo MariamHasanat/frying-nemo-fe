@@ -20,17 +20,22 @@ const Form = (props) => {
      * @type {HTMLformElement}
      */
 
-    const describtion = e.target.describtion.value;
+     const description = e.target.description;
+    // const image = e.target.image.value;
     const price = Number(e.target.price.value);
-    const name = e.target.name.value;
+    const category = e.target.category.value;
+
+
      
     const menuItem = {
-      describtion : "Describtion" ,
-      price : "price" ,
-      name : "name" ,
-      ingredients : "ingredients" ,
-      category : "category"
-    }
+      name: name,
+      // image,
+      description: description,
+      price: price,
+      category: category,
+      ingredients: ingredients
+    };
+
     
     const itemJson = localStorage.getItem('menuItem') || '[]';
     const items = JSON.parse(itemJson);
@@ -74,7 +79,7 @@ const Form = (props) => {
     <form className='add-form' onSubmit={handler}>
       <div style={{ margintop: 20 }}>
         <Input
-          name = "name"
+          // name = "name"
           label="Name"
           value={name}
           onChange={onNamechange}
@@ -91,6 +96,7 @@ const Form = (props) => {
         <Textarea
           name="describtion"
           label="Describtion"
+          // value={props.description}
         />
         <Select 
         name="category"

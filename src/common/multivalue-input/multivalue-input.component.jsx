@@ -30,7 +30,7 @@ const MultivalueInput = props => {
       <div className="controls">
         {/* Input goes here */}
         <Input
-          label="INGREDIENTS"
+          label={props.label}
           value={newItemValue}
           onChange={e => setNewItemValue(e.target.value)}
         />
