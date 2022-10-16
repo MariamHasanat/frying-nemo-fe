@@ -36,7 +36,7 @@ const Form = (props) => {
     const descreption = e.target.descreption.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
-
+    const image = e.target.image.value;
 
 
 
@@ -44,13 +44,15 @@ const Form = (props) => {
       name, // or name =name 
       descreption,
       price,
+      image,
       category,
       ingredients
     };
-    localStorage.setItem('menuItems', JSON.stringify(menuItem));
-    const itemsJSON = localStorage.getItem('menuitems') || "[]";
+    
+    const itemsJSON = localStorage.getItem('menuItems') || "[]";
     const items = JSON.parse(itemsJSON);
-    items.push(menuItem);
+    items.push(menuItem); 
+   
     localStorage.setItem('menuItems', JSON.stringify(items));
     props.onNavigate('view');
     /**
@@ -96,6 +98,12 @@ const Form = (props) => {
           min={0}
           required
         />
+        <Input
+        name='image'
+        label='Image'
+        type='string'
+        required
+        ></Input>
         <Select name='category' label='select from menu' required>
           return {categories.map((item) => {
             return <option key={item} value={item}>{item}</option>;
