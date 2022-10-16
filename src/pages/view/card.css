@@ -1,0 +1,57 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 300px;
+    /* background-color: rgb(250, 225, 229); */
+    padding: 1rem;
+    align-items: center;
+    border: 3px solid orange;
+    box-shadow: 2px 2px 2px 2px rgb(224, 160, 160);
+    margin: .5rem;
+}
+.card h2 {
+    color: orange;
+    text-shadow: 1px 2px 1px rgb(73, 65, 50) ;
+}
+.imgs {
+
+    width: 80%;
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+
+}
+.imgs img {
+    width: 300px;
+}
+.discreption {
+    text-align: left;
+    padding: 1rem;
+    border-top: 1px solid rgb(102, 52, 52);
+    margin: 1px;
+    font-weight: bolder;
+}
+
+.info-details {
+    display: flex;
+    justify-content: space-between;
+    margin: 1px;
+    color: orange;
+    font-weight: bolder;
+
+
+}
+
+.number-of-meals {
+    display: flex;
+    flex-direction: column;
+}
+
+.price {
+    font-size: xx-large;
+    color: orange;
+    font-weight: bolder;
+    padding: 5px;
+}

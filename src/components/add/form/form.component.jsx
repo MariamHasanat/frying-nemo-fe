@@ -21,19 +21,21 @@ const Form = (props) => {
     */
 
     const description = e.target.description.value;
-    // const price = e.target.price.value;
+    const price = e.target.price.value;
     const categories = e.target.categories.value;
 
     const menuItem = {
-      // name: name,
+      name: name,
       description: description,
-      // price: price,
+      price: price,
       categories: categories,
       ingrediant: ingrediant
 
     };
 
-    const itemsJson = localStorage.getItem('menuItems') || [];
+  ///the name between " " should be the same name :) 
+
+    const itemsJson = localStorage.getItem('menuitems') || '[]';
 
     const items = JSON.parse(itemsJson);
     
@@ -102,10 +104,19 @@ const Form = (props) => {
           })
         }
       </MySelect>
+
+      <Input
+      label ="price "
+      name='price'
+      type='number'
+      min ={0}
+      required
+      />
       <MultivalueInput
         label="Ingradiant"
         value={ingrediant}
         onChange={newI => setIngrediant(newI)}
+        
       />
 
       <div className='btn'>

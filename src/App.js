@@ -21,6 +21,8 @@ function App() {
       {currentPage === 'view' && <ViewPage />}
       {currentPage === '404' && <NotFound />}
       {/* <AddPage /> */}
+
+    
     </div>
   );
 }
