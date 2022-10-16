@@ -7,18 +7,19 @@ import NotFound from "./pages/add/not-found/not-found";
 import View from "./pages/add/view/view";
 
 function App() {
-  const[curentpage,setCurentPage]=useState('add')
-  const changepage=(newpage)=>{
-   setCurentPage(newpage);
-  }
+  const [currentPage, setCurrentPage] = useState('add');
+
+  const changePage = (newPage) => {
+    setCurrentPage(newPage);
+  };
+  
   return (
     <div>
-     <Handel onnavigate={changepage} curentpage={curentpage}
-      />
-      
-      {curentpage==='add'&&<AddPage onnavigate={changepage}/>}
-      {curentpage==='view'&&<View/>}
-      {curentpage==='not-found'&&<NotFound/>}
+      <Handel onNavigate={changePage} currentPage={currentPage} />
+
+      {currentPage === 'add' && <AddPage onNavigate={changePage} />}
+      {currentPage === 'view' && <View />}
+      {currentPage === 'not-found' && <NotFound />}
     </div>
   );
 }

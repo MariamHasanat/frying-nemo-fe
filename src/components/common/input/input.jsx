@@ -1,4 +1,4 @@
-import'./input.css';
+import './input.css';
 import React from 'react';
 /**
  * 
@@ -9,20 +9,20 @@ import React from 'react';
  */
 
 
-const Input =(props)=>{
-  const { label,...inputProps} = props;
-  return(
+const Input = (props) => {
+  const { label, ...inputProps } = props;
+  return (
     <div className='input-group'>
-    {
-    label&&(
-      <label>
-       <span>{label}</span>
-       &nbsp;
-      {inputProps.required&& <span>*</span>}
-      </label>
-    ) 
- }
-  <input {...inputProps}/>
+      {
+        label && (
+          <label>
+            <span>{label}</span>
+            &nbsp;
+            {inputProps.required && <span>*</span>}
+          </label>
+        )
+      }
+      <input {...inputProps} />
     </div>
   );
 };
