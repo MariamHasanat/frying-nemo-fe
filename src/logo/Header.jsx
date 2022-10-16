@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import './Header.css';
 
 const Header = props => {
@@ -14,9 +14,9 @@ const Header = props => {
         </div>
         <div className="right">
           <nav>
-            <button className={props.curretnPage == 'add' ? 'current' : ''}
+            <button className={props.curretnPage === 'add' ? 'current' : ''}
               onClick={() => props.onNavigate('add')}>Add</button>
-            <button className={props.curretnPage == 'view' ? 'current' : ''}
+            <button className={props.curretnPage === 'view' ? 'current' : ''}
              onClick={() => props.onNavigate('view')}>View</button>
           </nav>
         </div>
