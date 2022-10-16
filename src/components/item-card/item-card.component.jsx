@@ -10,20 +10,19 @@ const subtractOne = (oldVal) => {
     return (oldVal > 0)? (oldVal - 1) : oldVal;
 
 }
-
 const ItemCard = (props) => {
     const [quantity, setQuantity] = useState(0);
     return (
         <div className='item-card'>
             <div className="card-wrapper">
-                <img src="images/pizza.jpg" width={250} height={200} alt="pizza"/>
+                <img src={props.img} width={250} height={200} alt="pizza"/>
                 <div className="item-description">
-                    <h3>Pizza</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, obcaecati!</p>
+                    <h3>{props.name}</h3>
+                    <p>{props.description}</p>
                 </div>
                 <div className="buy-item">
                     <div className="price">
-                        <h3>$ 9.99</h3>
+                        <h3>${props.price}</h3>
                     </div>
                     <div className="item-quantity">
                         <button
