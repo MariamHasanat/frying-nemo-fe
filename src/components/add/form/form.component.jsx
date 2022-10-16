@@ -17,11 +17,13 @@ const Form = (props) => {
     e.preventDefault();
 
     const description = e.target.description.value;
+    const image = e.target.image.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
 
     const menuItem = {
       name: name,
+      image,
       description: description,
       price: price,
       category: category,
@@ -79,6 +81,11 @@ const Form = (props) => {
       <Textarea
         name="description"
         label="Description (Add your description here. Customers will be able to read it)"
+      />
+      <Input
+        label="Image"
+        name="image"
+        required
       />
       <Input
         name="price"
