@@ -16,24 +16,24 @@ const Form = (props) => {
     e.preventDefault();
     console.debug(name);
     console.log('Form Submitted');
-    const price = e.target.price.value ;
-    const discription = e.target.discription.value ;
-    const catigory = e.target.catigory.value ;
+    const price = e.target.price.value;
+    const discription = e.target.discription.value;
+    const catigory = e.target.catigory.value;
     const menueItem = {
-      name : name ,
-      price : price ,
-      discription : discription ,
-      catigorie : catigory ,
-      ingredients : ingredients
+      name: name,
+      price: price,
+      discription: discription,
+      catigory: catigory,
+      ingredients: ingredients
     };
-    const itemsJson = localStorage.getItem('menueItems') || '[]' ;
-    const items = JSON.parse (itemsJson) ;
-    console.log ("before" , items) ;
-    items.push(menueItem) ;
-    console.log ("after" , items) ;
-    localStorage.setItem ('menuItems' , JSON.stringify (items)) ;
-    props.onNavigate('view') ;
-    props.onAdd (menueItem) ;
+    const itemsJson = localStorage.getItem('menuItems') || '[]';
+    const items = JSON.parse(itemsJson);
+    console.log("before", items);
+    items.push(menueItem);
+    console.log("after", items);
+    localStorage.setItem('menuItems', JSON.stringify(items));
+    props.onNavigate('view');
+    props.onAdd(menueItem);
   };
   /**
    * 
@@ -42,13 +42,13 @@ const Form = (props) => {
   const nameChange = e => {
     let val = e.target.value;
     if (/find/ig.test(val)) {
-      alert('find not aloowed to be includded in the input !');
+      alert('find not allowed to be included in the input !');
       val = val.replace(/find/ig, 'fry');
       console.log(val);
     }
     if (val.length > 20) {
 
-      alert('charecter limit excedded');
+      alert('character limit exceeded');
       val = val.substring(0, 20);
     }
     setName(val);
@@ -64,7 +64,7 @@ const Form = (props) => {
         onChange={nameChange}
       />
       <Textarea
-      name='discription'
+        name='discription'
         label="Discription"
         className='textarea-group'
       />
@@ -72,21 +72,21 @@ const Form = (props) => {
         className='input-group'
         type="number"
         label="Price"
-        name = 'price'
+        name='price'
         required
         min={0}
       />
       {/* using array mapping */}
-      <Select label='Select' name = 'catigory'>
+      <Select label='Select' name='catigory'>
         {catigories.map(item =>
           <option key={item} value={item}>{item}</option>
         )}
         {/* key must be mintions */}
       </Select>
       <MultivalueInput
-      label='Ingredients'  name = 'ingredients'
-      onChange={item => setIngredients (item)}
-      value = {ingredients}
+        label='Ingredients' name='ingredients'
+        onChange={item => setIngredients(item)}
+        value={ingredients}
       />
 
       {/* <Select label='Select' required>
