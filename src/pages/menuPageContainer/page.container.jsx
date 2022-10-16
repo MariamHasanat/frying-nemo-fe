@@ -6,7 +6,7 @@ const AddPage = (props) => {
   return (
     <div className='form-container'>
       <h1 className='h1'>Add a new item</h1>
-      <Form />
+      <Form onNavigate={props.onNavigate} />
     </div>
   );
 };
