@@ -13,6 +13,7 @@
     display: flex;
     height: 100%;
     width: 200px;
+    user-select: none;
 }
 
 .header>.left>img {
@@ -51,19 +52,18 @@
     cursor: pointer;
     font-size: 14px;
     padding: 9px 20px;
-  }
-  
-  .header .right nav button:hover {
+}
+
+.header .right nav button:hover {
     text-shadow: -1px 2px 3px #777777;
-  }
-  
-  .header .right nav button:active {
+}
+
+.header .right nav button:active {
     text-shadow: -1px 2px 3px #333;
-  }
-  
-  .header .right nav button.current {
+}
+
+.header .right nav button.current {
     background-color: #be441d;
     border-radius: 5px;
     color: white;
-  }
-  
+}

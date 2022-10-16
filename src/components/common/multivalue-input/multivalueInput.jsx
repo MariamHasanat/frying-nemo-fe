@@ -23,7 +23,6 @@ const MultivalueInput = (props) => {
     };
     const deleteItem = (item) => {
         let afterRemoval = props.value.filter(element => element !== item);
-        console.log(afterRemoval);
         props.onChange(afterRemoval);
     };
     return (
@@ -33,6 +32,15 @@ const MultivalueInput = (props) => {
                     label={props.label}
                     value={newItem}
                     onChange={(e) => setNewItem(e.target.value)}
+                    onKeyDown= {
+                        (e) => {
+                            if(e.key === "Enter")
+                            {
+                                e.preventDefault();
+                                addItem();
+                            }
+                        }
+                    }
                 />
                 <button
                     type='button'

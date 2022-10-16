@@ -92,7 +92,6 @@ const Form = (props) => {
                     label={'Ingredients'}
                     value={Ingredients}
                     onChange={(newItem) => {
-                        console.log(newItem);
                         setIngredients(newItem);
                     }}
                 />
