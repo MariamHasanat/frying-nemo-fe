@@ -32,7 +32,7 @@ const Form = (props) => {
      * @type {HTMLFormElement}
      */
     const target = e.target;
-    console.log("menu item: " , menuItem);
+    console.log("menu item: ", menuItem);
   };
 
   const categories = ["Fish", "Drinks", "Main Dishes", "Salads",];

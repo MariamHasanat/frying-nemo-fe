@@ -1,4 +1,4 @@
-.header{
+.header {
   padding: 16px;
   height: 2rem;
   background-color: rgba(0, 0, 0, 0.12);
@@ -7,13 +7,37 @@
   align-content: flex-start;
 }
 
-.header > div{
+.header>div {
   display: flex;
   justify-content: space-between;
   width: 12rem;
 }
 
-#app-title{
+#app-title {
   font-weight: bold;
   font-size: larger;
+}
+
+.header-navigation-buttons>nav {
+  margin-right: 50px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+.header-navigation-buttons>nav>button {
+  border: none;
+  font-size: larger;
+  background-color: transparent;
+}
+
+.header-navigation-buttons>nav>button:hover {
+  cursor: pointer;
+}
+
+.header-navigation-buttons>nav>.current-page {
+  border-bottom: 5px solid orangered;
+  border-radius: 3px;
+
 }
