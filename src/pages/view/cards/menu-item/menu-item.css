@@ -12,4 +12,10 @@
   margin: 10px;
   background-image: linear-gradient(rgb(247, 181, 146) , rgb(255, 135, 60));
   font-size: 13px; font-weight: bold;
+  overflow: hidden;
+}
+
+.menuitem img {
+  width: 100%;
+  height: fit-content;
 }

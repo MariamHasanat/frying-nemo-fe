@@ -19,12 +19,14 @@ const Form = (props) => {
     const price = e.target.price.value;
     const discription = e.target.discription.value;
     const catigory = e.target.catigory.value;
+    const image = e.target.image.value;
     const menueItem = {
       name: name,
       price: price,
       discription: discription,
       catigory: catigory,
-      ingredients: ingredients
+      ingredients: ingredients , 
+      image : image
     };
     const itemsJson = localStorage.getItem('menuItems') || '[]';
     const items = JSON.parse(itemsJson);
@@ -68,6 +70,7 @@ const Form = (props) => {
         label="Discription"
         className='textarea-group'
       />
+      <Input label='Enter image link' type="text" name = "image" />
       <Input
         className='input-group'
         type="number"
