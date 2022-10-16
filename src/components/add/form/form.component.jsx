@@ -19,12 +19,14 @@ const Form = (props) => {
     let description = e.target.description.value;
     let price = e.target.price.value;
     let category = e.target.category.value;
+    let photo = e.target.photo.value;
     const menuItem = {
       name: name,
       description: description,
       price: parseInt(price),
       category: category,
       ingredients,
+      photo: photo
     };
     e.target.description.value = "";
     e.target.price.value = "";
@@ -79,6 +81,7 @@ const Form = (props) => {
           value={ingredients}
           onChange={(newIngredients) => setIngredients(newIngredients)}
         />
+        <Input name="photo" label="insert photo link" type="text"/>
         <div className="addFormButtons">
           <button type="submit">Create</button>
         </div>
