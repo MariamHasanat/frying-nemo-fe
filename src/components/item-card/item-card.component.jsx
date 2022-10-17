@@ -8,14 +8,25 @@ import './item-card.css';
 
 const subtractOne = (oldVal) => {
     return (oldVal > 0) ? (oldVal - 1) : oldVal;
-
 };
+
 const ItemCard = (props) => {
+    const getImage = () => {
+        if (/http(s)?:\/\/picsum.photos\/\d+(\/\d+)?/.test(props.image)) { 
+            console.log('imags was found')
+            return props.image; 
+        }
+        else{
+            console.log('imags was NOT found')
+            return 'images/default.jpg';
+        }
+    };
     const [quantity, setQuantity] = useState(0);
     return (
         <div className='item-card'>
             <div className="card-wrapper">
-                <img src={props.image || 'images/default.jpg'} width={250} height={200} alt={props.name} />
+                {/* <img src={props.image || 'images/default.jpg'} width={250} height={200} alt={props.name} /> */}
+                <img src={getImage()} width={250} height={200} alt={props.name} />
                 <div className="item-description">
                     <h3>{props.name}</h3>
                     <p>{props.description}</p>
