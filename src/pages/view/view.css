@@ -4,12 +4,11 @@
     text-align: center;
 }
 
-.view-page>.main {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+.view-page>.main{
+    margin: 0 5%;
 }
 
 .view-page>.main>.item-card{
-    margin: 20px
+    margin: 20px;
+    display: inline-block;
 }

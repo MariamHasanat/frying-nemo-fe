@@ -1,9 +1,13 @@
 .item-card>.card-wrapper {
-    /* border:1px solid black; */
-    padding: 0 0 10px 0;
     border-radius: 10px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.276);
-    width: 250px;
+    width: 300px;
+    height: 450px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .item-card>.card-wrapper:hover {
@@ -15,14 +19,18 @@
     border-top-left-radius: 10px;
 }
 
-.item-card>.card-wrapper>.item-description h3,
+.item-card>.card-wrapper>.item-description {
+    flex-grow: 1;
+}
+
 .item-card>.card-wrapper>.item-description p {
-    text-align: center;
-    margin: 0;
-    padding: 5px
+    text-align: left;
+    padding: 0 10px;
+    margin: 10px
 }
 
 .item-card>.card-wrapper>.buy-item {
+    border-top: 1px solid rgba(69, 69, 69, 0.18);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -39,7 +47,7 @@
     line-height: 0px;
 }
 
-.item-card>.card-wrapper>.buy-item>.item-quantity>.quant{
+.item-card>.card-wrapper>.buy-item>.item-quantity>.quant {
     display: inline-block;
     text-align: center;
     width: 30px;

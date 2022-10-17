@@ -3,6 +3,7 @@ import ViewPage from "./pages/view/view.component";
 import Header from "./components/core/header/header.component";
 import NotFound from "./pages/not-found/not-found.component";
 import { useState } from "react";
+import './index.css';
 
 function App() {
     const [currentPage, setCurrentPage] = useState('404');
