@@ -107,7 +107,7 @@ const Form = (props) => {
             <Input name="image" label='Image link' />
 
             <div>
-                <button className='nemo-button' type='submit'>Create</button>
+                <input className='nemo-button' type='submit' label='Create'/>
             </div>
         </form>
     );
