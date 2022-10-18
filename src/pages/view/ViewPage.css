@@ -1,0 +1,19 @@
+.div-view {
+  width: 100%;
+}
+
+.div-view h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-view .items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+}
+

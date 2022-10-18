@@ -1,17 +1,55 @@
-.add-form > input {
-  background-color: rgba(195, 209, 223, 0.932);
-  border-radius: 4px;
-  border: 1px transparent;
-  margin: 10px 20px 10px;
-  height: 27px;
-  box-shadow: 4px 8px 30px -1px;
+body{
+  display: flex;
+  justify-content: center;
 }
 
-.add-form > button{
-  border-radius: 4px;
-  border: 1px transparent;
-  margin: 10px 20px 10px;
-  height: 27px;
-  box-shadow: 4px 8px 30px -1px;
-  background-color: beige;
+
+.addForm {
+  
+  background-image: linear-gradient(50deg, rgba(92, 2, 47, 0.4), rgba(242, 50, 250, 0.1));
+  box-shadow: 9px 10px 18px -1px rgba(127, 104, 140, 0.64);
+  -webkit-box-shadow: 9px 10px 18px -1px rgba(127, 104, 140, 0.64);
+  -moz-box-shadow: 9px 10px 18px -1px rgba(127, 104, 140, 0.64);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 40vw;
+}
+
+.addForm > .addFormButtons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.addForm > .input-group, .addForm > .textarea-group, .addForm > .select-group {
+  margin-bottom: 20px;
+}
+
+
+.textarea-group > textarea:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem rgb(13 110 253 / 25%);
+}
+
+.textarea-group > textarea:focus::placeholder{
+  color: transparent;
+}
+
+
+.textarea-group > label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: rgb(134, 108, 108);
+  letter-spacing: 0.5px;
+}
+
+.textarea-group > label > span:nth-child(2) {
+  color: rgb(210, 21, 21);
 }
