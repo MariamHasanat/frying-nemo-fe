@@ -14,7 +14,7 @@ const MultivalueInput = props => {
   const [newItemValue, setNewItemValue] = useState('');
 
   const addItem = () => {
-    
+
     if (newItemValue.trim().length > 0 && !props.value.includes(newItemValue)) {
       const valueAfterAddition = [...props.value, newItemValue];
       props.onChange(valueAfterAddition);
@@ -30,7 +30,13 @@ const MultivalueInput = props => {
           label={props.label}
           value={newItemValue}
           onChange={e => setNewItemValue(e.target.value)}
-          
+          onKeyDown={e => {
+            if (e.key === "Enter") {
+              // e.stopPropagation();
+              e.preventDefault();
+              addItem();
+            }
+          }}
         />
         <button
           className="nemo-button"

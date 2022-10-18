@@ -4,7 +4,7 @@
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 2px 10px rgb(0 0 0 / 6%);
-  max-width: 300px;
+  width: 300px;
 }
 
 .item-card>.img {
@@ -47,11 +47,12 @@
 }
 
 .item-card>.price {
-  padding: 0 15px 25px;
+  padding: 15px 15px 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff6e;
+  border-top: 1px solid #c3c3c3;
 }
 
 .item-card>.price>span {

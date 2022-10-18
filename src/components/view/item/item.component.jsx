@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './item.css';
 /**
- * 
+ * Render a single menu item based on the data passed
  * @param {{
  * data:{
  *  name: string;
@@ -15,7 +15,7 @@ import './item.css';
  */
 const Item = (props) => {
 
-  console.log(props);
+
   return (
     <div className="item-card">
       <div className="img">
