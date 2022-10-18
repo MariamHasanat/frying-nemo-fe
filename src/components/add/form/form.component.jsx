@@ -30,12 +30,14 @@ const Form = (props) => {
 
     // e.target == Form
     const description = e.target.description.value;
+    const image = e.target.image.value;
     const price = e.target.price.value;
     const category = e.target.category.value;
 
     // object
     const menuItems = {
       name,
+      image,
       description,
       price,
       category,
@@ -44,6 +46,9 @@ const Form = (props) => {
 
     const itemsJson = localStorage.getItem('menuItems') || '[]'; // local storage take string 
     const items = JSON.parse(itemsJson); // convert string to javascript object
+
+    
+
     items.push(menuItems);
 
     localStorage.setItem('menuItems', JSON.stringify(items)); // convert javascript object to string
@@ -75,6 +80,11 @@ const Form = (props) => {
         <Textarea
           name="description"
           label="Description"
+        />
+        <Input
+          label="Image"
+          name="image"
+          required
         />
         <Input
           name="price"

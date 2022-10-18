@@ -13,9 +13,7 @@ function App() {
 
   return (
     <div>
-
       <Header onNavigate={changePage} currentPage={currentPage} />
-
       {currentPage === 'add' && <AddPage onNavigate={changePage} />}
       {currentPage === 'view' && <ViewPage />}
       {currentPage === '404' && <NotFoundPage />}
