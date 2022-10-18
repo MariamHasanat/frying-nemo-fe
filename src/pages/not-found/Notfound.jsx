@@ -10,6 +10,9 @@ const Notfound = () => {
   
   useEffect(()=> {
      alert(`WELCOME TO THE GAME COUNTER`)
+     return() => {
+      alert("good bye!");
+     };
   }, [])
 
   useEffect (() => {
