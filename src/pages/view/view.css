@@ -13,8 +13,9 @@
 
 }
 
-.view-page .items-container {
+.view-page .view-container {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  margin: 32px;
 }
