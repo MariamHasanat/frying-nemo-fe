@@ -5,11 +5,12 @@
   width: 200px;
   min-height: 200px;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
   border: 2px solid #999;
   box-shadow: 3px 3px 5px 1px #ccc;
   border-radius: 10px;
   margin: 10px;
+  min-height: 250;
   background-image: linear-gradient(rgb(247, 181, 146) , rgb(255, 135, 60));
   font-size: 13px; font-weight: bold;
   overflow: hidden;
@@ -19,3 +20,7 @@
   width: 100%;
   height: fit-content;
 }
+
+/* .menuitem > .price {
+  margin-top: 100px;
+} */

@@ -6,6 +6,8 @@ import './menu-item.css' ;
  * name : string ;
  * price : number ;
  * discription : string ;
+ * catigory : string ;
+ * image : string ;
  * ingredients : string[] ;
  * } props 
  * @returns 
@@ -16,10 +18,10 @@ const MenuItem = (props) => {
     <div className='menuitem'>
       <span><img src={props.item.image} alt="" /></span>
       <span>Name : {props.item.name}</span>
-      <span>Price : {props.item.price}</span>
       <span>Description : {props.item.discription}</span>
-      <span>Its a : {props.item.catigorie}</span>
+      <span>Its a : {props.item.catigory}</span>
       <div>Ingredients : {props.item.ingredients.join(", ")}</div>
+      <span className='price'>{props.item.price} $</span>
            
       {
         // props.value.map ((item , index) => {return(
