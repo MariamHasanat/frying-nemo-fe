@@ -1,5 +1,5 @@
 import './view.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Item from './item/item.component';
 
 const getMenuItems = () => JSON.parse(localStorage.MenuItems || '[]');
@@ -9,6 +9,9 @@ const ViewPage = (props) => {
   /**
    * @type {{Array,Function}} loading
    */
+  useEffect(()=>{
+alert("welcome");
+  },[]);
   const  [menuItems ]= useState(getMenuItems());
   return (
     <div className="view-page">
