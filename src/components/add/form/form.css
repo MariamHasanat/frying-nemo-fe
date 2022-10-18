@@ -3,6 +3,7 @@
   display:flex;
   /* justify-content: center; */
   align-items: center;
+  
   flex-direction: column;
   
   padding: 10px 10px;
@@ -21,6 +22,7 @@
  
 
 }
+
 .form .input input:hover{ 
  box-shadow: 3px  4px palevioletred ;
  }
@@ -39,6 +41,7 @@
   box-shadow: 5px 4px  8px black ;
  } */
 .form.nemo>button{
+  display: flex;
 justify-self: end;
 }
   

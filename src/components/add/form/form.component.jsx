@@ -5,7 +5,7 @@ import Select from '../../common/select/select';
 import Textarea from '../../common/textarea/textarea.component';
 
 import './form.css';
-const Form = (props) => {
+const Form = (props) => { 
   const [ingredients,setIngredients]=useState([]);
   const [name, setname] = useState('Sajeda');
   /**
@@ -13,13 +13,15 @@ const Form = (props) => {
    * @param {React.FormEvent<HTMLFormElement>} e 
    */
   const handleSubmit = (e) => {
+  
     e.preventDefult();
-
+      const image =e.target.imge.value;
     const price=Number(e.target.price.value);
     const description =e.target.description.value;
     const category = e.target.category.value;
     const menuItem = {
       name: name,
+      image,
       description: description,
       price: price,
       category: category,
@@ -29,8 +31,8 @@ const Form = (props) => {
     const items = JSON.parse(itemJ)||[];
     items.push(menuItem);
     localStorage.setItem('menuItem',JSON.stringify(items));
-   props.onNavigate('view');
-    console.log(price);
+     props.onNavigate('view');
+    
   };
   const onNameChange = (e) => {
     let value = e.target.value;
@@ -55,17 +57,22 @@ const Form = (props) => {
     'Ice cream',
   ];
   return (
-    <form className='form' onSubmit={handleSubmit}>
+    <form className= 'form' onSubmit={handleSubmit}>
       <div className='input'>
         <Input
           label='name'
           value={name}
           onChange={onNameChange}
-          requird
+          required
         />
         <Textarea
-          label="Discripion"
+          label="Description"
           name = 'description'
+        />
+        <Input
+         label ="Image"
+         name="image"
+         required
         />
         <Input
           label="Price"

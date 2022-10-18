@@ -19,7 +19,7 @@ function App() {
 
       {currentPage === 'add' && <AddPage onNavigate={changePage} />}
       {currentPage === 'view' && <View />}
-      {currentPage === 'not-found' && <NotFound />}
+      {currentPage === '404' && <NotFound />}
     </div>
   );
 }

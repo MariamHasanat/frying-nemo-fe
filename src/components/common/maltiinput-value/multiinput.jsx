@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Input from '../input/input';
-import './multiinput.css';
+import './multiInput.css';
 
-const Multiinput = props => {
+const MultiInput = props => {
   const [newItemvalue, setItemvalue] = useState('');
 
   const addItem = () => {
@@ -13,16 +13,22 @@ const Multiinput = props => {
     }
   };
   return (
-    <div className='multivalue'>
+    <div className='multivalueInputWrapper'>
       <div className='controls'>
         <Input
           label={props.label}
           value={newItemvalue}
           onChange={e => setItemvalue(e.target.value)}
+          onKeyDown={e=>{
+            if(e.key==='Enter'){
+              e.preventDefault();
+              addItem();
+            }
+          }}
         />
 
         <button
-          className='nemo'
+          className="nemo"
           type='button'
           onClick={addItem}
         >
@@ -31,7 +37,7 @@ const Multiinput = props => {
       </div>
       {
         props.value.length > 0 &&(
-          <ul>
+          <ul className='style'>
             {
               props.value.map(item=>{
                 return(
@@ -54,4 +60,4 @@ const Multiinput = props => {
     </div>
   );
 };
-export default Multiinput;
+export default MultiInput;
