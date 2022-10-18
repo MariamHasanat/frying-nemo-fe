@@ -7,6 +7,7 @@ import '.././item/item.css';
  * name: string;
  * description: string;
  * price: number;
+ * image:string;
  * category: string;
  * ingredients: string[];
  * }
@@ -17,8 +18,8 @@ import '.././item/item.css';
 const Items = (props) => {
   return (
     <div className="item-page">
-      <div>
-        <img src="https://th.bing.com/th/id/R.1f2833b08b926e8ea9807cb7f6ce2b2f?rik=JOGqAAN8Ff04FQ&pid=ImgRaw&r=0" alt="pizza hut" />
+      <div className='image'>
+        <img src={props.data.image} alt="pizza hut" />
       </div>
       <div className="details">
         <h2>{props.data.name}</h2>
@@ -27,7 +28,7 @@ const Items = (props) => {
 
       </div>
       <div className="price">
-        <h2>{props.data.price}</h2>
+        <h3>{props.data.price}</h3>
       </div>
     </div>
   );
