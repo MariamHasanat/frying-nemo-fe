@@ -21,7 +21,7 @@ const MenuItem = (props) => {
       <span>Description : {props.item.discription}</span>
       <span>Its a : {props.item.catigory}</span>
       <div>Ingredients : {props.item.ingredients.join(", ")}</div>
-      <span className='price'>{props.item.price} $</span>
+      <div className='price'><span >{props.item.price} $</span></div>
            
       {
         // props.value.map ((item , index) => {return(

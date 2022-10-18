@@ -3,6 +3,7 @@ import AddPage from "./pages/add/add.component";
 import ViewPage from "./pages/view/view.component";
 import { useState } from "react";
 import './common.css' ;
+import NotFound from "./pages/not-found/notFound.component";
 function App() {
   const [currentPage , setCurrentPage] = useState ('add') ;
   const changePage = (newPage) => {
@@ -25,6 +26,7 @@ function App() {
       <AddPage onNavigate = {changePage}
       onAdd = {addItem}  />}
       {currentPage === 'view' && <ViewPage value = {items}/>}
+      <NotFound/>
 
     </div>
   );

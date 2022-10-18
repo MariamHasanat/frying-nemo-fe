@@ -21,6 +21,9 @@
   height: fit-content;
 }
 
-/* .menuitem > .price {
-  margin-top: 100px;
-} */
+.menuitem > .price {
+ flex-grow: 1;
+ display: flex;
+ align-items: flex-end;
+ padding: 10px;
+}
