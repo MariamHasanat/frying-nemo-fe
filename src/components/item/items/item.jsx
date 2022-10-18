@@ -8,7 +8,7 @@ const Item = (props) => {
       <div className='info'>
          <h2>{props.data.name}</h2>
          <p>{props.data.description}</p>
-         <p className='ingredients'> {props.data.ingredients.jons(", ")} </p>
+         <p className='ingredients'> {props.data.ingredients.join(", ")} </p>
          <hr/>
       </div>
       <div className='price'>

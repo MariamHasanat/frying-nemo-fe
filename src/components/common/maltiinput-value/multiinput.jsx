@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Input from '../input/input';
-import './multiInput.css';
+import './multiinput.css';
 
 const MultiInput = props => {
   const [newItemvalue, setItemvalue] = useState('');
@@ -19,14 +19,13 @@ const MultiInput = props => {
           label={props.label}
           value={newItemvalue}
           onChange={e => setItemvalue(e.target.value)}
-          onKeyDown={e=>{
-            if(e.key==='Enter'){
+          onKeyDown={e => {
+            if (e.key === 'Enter') {
               e.preventDefault();
               addItem();
             }
           }}
         />
-
         <button
           className="nemo"
           type='button'
@@ -36,20 +35,20 @@ const MultiInput = props => {
         </button>
       </div>
       {
-        props.value.length > 0 &&(
+        props.value.length > 0 && (
           <ul className='style'>
             {
-              props.value.map(item=>{
-                return(
-                  <li key ={item}>
+              props.value.map(item => {
+                return (
+                  <li key={item}>
                     <span>{item}</span>
-                    <button 
-                    type='button'
-                   onClick={()=>{
-                    const valueAfterRemoval = props.value.filter(element => element !== item);
-                      props.onChange(valueAfterRemoval);
-                   }}
-                   >&times;</button>
+                    <button
+                      type='button'
+                      onClick={() => {
+                        const valueAfterRemoval = props.value.filter(element => element !== item);
+                        props.onChange(valueAfterRemoval);
+                      }}
+                    >&times;</button>
                   </li>
                 );
               })

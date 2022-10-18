@@ -5,19 +5,19 @@ import Select from '../../common/select/select';
 import Textarea from '../../common/textarea/textarea.component';
 
 import './form.css';
-const Form = (props) => { 
-  const [ingredients,setIngredients]=useState([]);
+const Form = (props) => {
+  const [ingredients, setIngredients] = useState([]);
   const [name, setname] = useState('Sajeda');
   /**
    * 
    * @param {React.FormEvent<HTMLFormElement>} e 
    */
   const handleSubmit = (e) => {
-  
-    e.preventDefult();
-      const image =e.target.imge.value;
-    const price=Number(e.target.price.value);
-    const description =e.target.description.value;
+    e.preventDefault();
+
+    const image = e.target.image.value;
+    const price = Number(e.target.price.value);
+    const description = e.target.description.value;
     const category = e.target.category.value;
     const menuItem = {
       name: name,
@@ -27,12 +27,14 @@ const Form = (props) => {
       category: category,
       ingredients: ingredients
     };
+
+
     const itemJ = localStorage.getItem('menuItem');
-    const items = JSON.parse(itemJ)||[];
+    const items = JSON.parse(itemJ) || [];
     items.push(menuItem);
-    localStorage.setItem('menuItem',JSON.stringify(items));
-     props.onNavigate('view');
-    
+    localStorage.setItem('menuItem', JSON.stringify(items));
+
+    props.onNavigate('view');
   };
   const onNameChange = (e) => {
     let value = e.target.value;
@@ -57,7 +59,7 @@ const Form = (props) => {
     'Ice cream',
   ];
   return (
-    <form className= 'form' onSubmit={handleSubmit}>
+    <form className='form' onSubmit={handleSubmit}>
       <div className='input'>
         <Input
           label='name'
@@ -67,38 +69,38 @@ const Form = (props) => {
         />
         <Textarea
           label="Description"
-          name = 'description'
+          name='description'
         />
         <Input
-         label ="Image"
-         name="image"
-         required
+          label="Image"
+          name="image"
+          required
         />
         <Input
           label="Price"
-          name = 'price'
+          name='price'
           type="number"
           min={0}
           required
         />
         <Select
           label="The Chioce"
-          name ='category'
+          name='category'
           required
         >
           {categories.map(item => {
             return <option key={item} value={item}>{item}</option>;
           })}
         </Select>
-       <Multiinput 
-       label="Ingradaint"
-       value={ingredients}
-       onChange={newIngredients=>setIngredients(newIngredients)}
-       />
+        <Multiinput
+          label="Ingradaint"
+          value={ingredients}
+          onChange={newIngredients => setIngredients(newIngredients)}
+        />
 
 
       </div>
-      <button  className='nemo'  type='submit' >Creat</button>
+      <input className='nemo' type='submit' value="Create" />
     </form>
   );
 };
