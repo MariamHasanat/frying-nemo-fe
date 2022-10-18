@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+
+.websiteHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.websiteHeader > .left > h1 {
+  font-size: 18px;
+  font-family: 'Dancing Script', cursive;
+  color: #be441d;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+
+.websiteHeader > .left > h1 > img {
+  height: 50px;
+  width: 50px;
+  margin-right: 5px;
+}
+
+.websiteHeader > .right{
+  display: flex;
+  justify-content: flex-end;
+  width: 200px;
+}
+
+.websiteHeader >.right > .add-button, .websiteHeader >.right > .view-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+  height: 40px;
+  width: 65px;
+  margin-right: 8px;
+  border-radius: 7px;
+  border: none;
+  transition: ease-in-out border 2s;
+}
+
+.websiteHeader >.right > .view-button{
+  background-color: #f7a692 ;
+  
+}
+
+
+  .websiteHeader >.right > .add-button:hover, .websiteHeader >.right > .view-button:hover{
+    cursor: pointer;
+    border: 0.001rem inset ;
+
+    
+  }

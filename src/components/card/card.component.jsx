@@ -3,7 +3,6 @@ import "./card.css";
 import { useState } from "react";
 
 const Cards = (props) => {
-  let x = ["hello", "world"];
   const menuItems = [...JSON.parse(localStorage.getItem("menuItems"))];
   const [cardsValue, setCardsValue] = useState(menuItems || []);
   return (

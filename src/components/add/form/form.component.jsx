@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import Input from '../../common/input/input.component';
+import MultivalueInput from '../../common/multivalue-input/mulitvalue-input.component';
+import Select from '../../common/select/select.component';
+import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 
-
-
 const Form = (props) => {
-  const [name, setName] = useState(`John Doe`)
+  const [name, setName] = useState('');
+  const [ingredients, setIngredients] = useState([]);
+
   /**
-   *
-   * @param {React.FormEvent<HTMLFormElement>} e
+   * Handler function for the form onSubmit event.
+   * @param {React.FormEvent<HTMLFormElement>} e Event object.
    */
   const submitHandler = e => {
     e.preventDefault();
@@ -15,13 +19,15 @@ const Form = (props) => {
     const description = e.target.description.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
+    const photo = e.target.photo.value;
 
     const menuItem = {
       name: name,
       description: description,
       price: price,
       category: category,
-      ingredients: ingredients
+      ingredients: ingredients,
+      photo: photo
     };
 
     const itemsJson = localStorage.getItem('menuItems') || '[]';
@@ -43,27 +49,52 @@ const Form = (props) => {
       alert('. character is not allowed');
       value = value.replace('.', '');
     }
-    if (value.target.value.length > 20) alert(`You can't enter more than 20 characters`)
-    else if (isAllowed(value.nativeEvent.data)) setName(value.target.value.replace('find', 'fry'))
-    else alert(`Denied character (${value.nativeEvent.data})`)
-  }
+
+    if (/find/ig.test(value)) {
+      value = value.replace(/find/ig, 'fry');
+    }
+
+    setName(value);
+  };
+
+  const categories = [
+    'Fish',
+    'Drinks',
+    'Hookah',
+    'Salads',
+    'Sandwiches',
+    'Main Dish',
+    'Appetizers',
+    'Ice Cream'
+  ];
+
   return (
     <form className="addForm" onSubmit={submitHandler} >
       <Input
         label="Name"
         value={name}
         onChange={onNameChange}
+        placeholder='Insert name here'
         required
       />
       <Textarea
         name="description"
-        label="Description (Add your description here. Customers will be able to read it)"
+        label="Description (Notes for Customers)"
+        placeholder='She sells sea shells by the sea shore'
       />
       <Input
         name="price"
         label="Price"
         type="number"
+        placeholder='Price'
         min={0}
+        required
+      />
+       <Input
+        name="photo"
+        label="image"
+        type="text"
+        placeholder='Type valid image URL here'
         required
       />
       <Select name="category" label="Category" required>
@@ -77,9 +108,10 @@ const Form = (props) => {
         onChange={newIngredients => setIngredients(newIngredients)}
       />
       <div className="addFormButtons">
-        <button className="nemo-button" type="submit">Create</button>
+        <button className="btn" type="submit" onSubmit={submitHandler}>Create</button>
       </div>
     </form>
   );
 };
+
 export default Form;
