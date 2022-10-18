@@ -3,8 +3,9 @@ import Header from "./components/common/header/header.component";
 import View from "./pages/view/view";
 import '../src/pages/add/add.component';
 import AddPage from "../src/pages/add/add.component";
+import Test from "./pages/test/test.component";
 function App() {
-  const [currentPage, setCurrentPage] = useState('add');
+  const [currentPage, setCurrentPage] = useState('test');
 
   const changePage = (newPage) => {
     setCurrentPage(newPage);
@@ -15,10 +16,14 @@ function App() {
       <Header onNavigate={changePage} currentPage={currentPage} />
 
       {
-        currentPage === 'add' ? <AddPage />: <View />
+        currentPage === 'test' && <Test />
       }
-      
-      
+      {
+        currentPage === 'add' && <AddPage />
+      }
+
+
+
     </div>
   );
 }
