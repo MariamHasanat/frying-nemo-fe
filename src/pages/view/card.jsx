@@ -38,7 +38,7 @@ const Card = (props) => {
       </div>
      
       <div className="description">
-        {props.data.ingrediant.join(",")}
+        {props.data.ingrediant.join( " "+ ","+" ")}
       </div>
     </div>
 

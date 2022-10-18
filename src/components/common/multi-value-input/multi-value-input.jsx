@@ -55,7 +55,7 @@ const MultivalueInput = props => {
           onChange={e => setNewItem(e.target.value)}
         ></Input>
 
-        <button className="nemo-button" onClick={addItem} >Add</button>
+        <button className="nemo-button" onClick={addItem} type="button" >Add</button>
       </div>
       {
 

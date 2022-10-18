@@ -11,7 +11,7 @@ const ViewPage = (props) => {
   const [menuitems] = useState(GetmenuItems());
 
   return (
-    <div>
+    <div >
       <h1>View items page</h1>
       <div className="container" >
 
