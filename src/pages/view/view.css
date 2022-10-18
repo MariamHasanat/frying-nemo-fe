@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap');
-
 .view-page {
   display: flex;
   flex-wrap: wrap;
@@ -31,15 +30,9 @@
 
 .view-page > .selector p {
   font-size: 20px;
-  border-right: 1px solid gray;
-  margin-right: 13px;
   padding-right: 13px;
   cursor: pointer;
 }
 .view-page > .selector p.selected {
   color: orange;
-}
-
-.view-page > .selector p:last-child {
-  border-right: none;
 }

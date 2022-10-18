@@ -11,6 +11,7 @@ const Header = ({pageId, changeNav}) => {
       <div className='btns'>
         <button className={pageId == 0 && `selected`} onClick={(() => changeNav(0))}>Add</button>
         <button className={pageId == 1 && `selected`} onClick={(() => changeNav(1))}>View</button>
+        <button className={pageId == 2 && `selected`} onClick={(() => changeNav(2))}>404</button>
       </div>
     </div>
   )

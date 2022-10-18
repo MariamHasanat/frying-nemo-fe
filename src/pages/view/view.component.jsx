@@ -7,7 +7,6 @@ const ViewPage = (props) => {
   const [selectedType, setSelectedType] = useState(0)
 
   const isCurrentCategory = (category) => {
-    console.log(`cat: ${category}`)
     if (selectedType == 0) return true;
     else if (selectedType == 1 && category == 'fish') return true;
     else if (selectedType == 2 && category == 'shisha') return true;
@@ -25,9 +24,13 @@ const ViewPage = (props) => {
       <p>OUR MENU</p>
       <div className='selector'>
         <p className={selectedType == 0? `selected` : ``} onClick={() => {setSelectedType(0)}}>All</p>
+        <p>•</p>
         <p className={selectedType == 1? `selected` : ``} onClick={() => {setSelectedType(1)}}>Fish</p>
+        <p>•</p>
         <p className={selectedType == 2? `selected` : ``} onClick={() => {setSelectedType(2)}}>Shisha</p>
+        <p>•</p>
         <p className={selectedType == 3? `selected` : ``} onClick={() => {setSelectedType(3)}}>Drink</p>
+        <p>•</p>
         <p className={selectedType == 4? `selected` : ``} onClick={() => {setSelectedType(4)}}>Chicken</p>
       </div>
       <div className='cards'>

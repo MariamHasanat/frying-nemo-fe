@@ -14,7 +14,7 @@
   margin-top: 0px;
   transition: transform .2s;
   opacity: 0;
-  transition: .7s all;
+  transition: .3s all;
 }
 
 .card-wrapper:hover {
