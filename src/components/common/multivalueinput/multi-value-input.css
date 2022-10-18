@@ -1,10 +1,19 @@
 .multivalueInputWrapper {
   max-width: 265px;
+  padding: 20px;
+  margin: 20px;
+  
+ 
+ 
+
 }
 
 .multivalueInputWrapper>.controls {
   display: flex;
   align-items: flex-end;
+  justify-content: center;
+  
+  
 }
 
 .multivalueInputWrapper>.controls>.input-group>input {

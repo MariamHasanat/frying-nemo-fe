@@ -2,13 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  border-bottom: 1px solid rgb(65, 18, 18);
-  background-color: rgb(236, 171, 188);
+  padding: 10px 10px;
+  border-bottom: 2px solid #FF731D;
+  background-color: #5F9DF7;
 }
 
 .webisteHeader>.left>h1 {
-  font-size: 18px;
+  font-size: 25px;
   color: #ffffff;
   line-height: 1.2;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -16,7 +16,7 @@
 
 
 .webisteHeader>.left>h1>img {
-  height: 35px;
+  height: 30px;
   width: auto;
   margin-right: 5px;
 }
@@ -42,7 +42,7 @@
 }
 
 .webisteHeader .right nav button.current {
-  background-color: #be441d;
+  background-color: #FFF7E9;
   border-radius: 5px;
-  color: rgb(173, 115, 115);
+  color: #FF731D;
 }
