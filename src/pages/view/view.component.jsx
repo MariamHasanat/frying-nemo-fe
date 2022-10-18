@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ItemCard from '../../components/item-card/item-card.component';
+import ItemCard from './item-card/item-card.component';
 import './view.css';
 
 const getMenu = () => JSON.parse(localStorage.getItem('menu') || '[]');
