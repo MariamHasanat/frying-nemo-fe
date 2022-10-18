@@ -16,6 +16,7 @@ const Form = (props) => {
    */
   const submitHandler = e => {
     e.preventDefault();
+    const image = e.target.image.value;
     const Price = e.target.Price.value;
     const Description =Number( e.target.Description.value);
     const category = e.target.category.value;
@@ -23,6 +24,7 @@ const Form = (props) => {
     const menuItem = {
       name,
       Description,
+      image,
       Price,
       category,
       Ingredients
@@ -80,6 +82,12 @@ const Form = (props) => {
         label="Description"
         name='Description'
       />
+      <Input
+        label="Image"
+        name="image"
+        required
+      />
+
       <Input
         label="Price"
         name='Price'
