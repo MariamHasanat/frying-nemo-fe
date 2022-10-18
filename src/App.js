@@ -5,7 +5,7 @@ import ViewPage from "./pages/view/view.component";
 import NotFoundPage from "./pages/not-found/not-found.component";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('add');
+  const [currentPage, setCurrentPage] = useState('404');
 
   const changePage = (newPage) => {
     setCurrentPage(newPage);
