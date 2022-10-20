@@ -38,7 +38,7 @@ const Form = (props) => {
             description: des,
             categories: cat,
             Ingredients: Ingredients,
-            img : image,
+            img: image,
         };
 
         let items = localStorage.getItem('categoriesArray');
@@ -65,6 +65,7 @@ const Form = (props) => {
                 submitHandler(e);
             }}>
                 <Input
+                    name='Name'
                     label='Name'
                     type={'Text'}
                     value={name}
@@ -98,6 +99,7 @@ const Form = (props) => {
                 <MultivalueInput
                     label={'Ingredients'}
                     value={Ingredients}
+                    name={'Ingredients'}
                     onChange={(newItem) => {
                         setIngredients(newItem);
                     }}

@@ -1,6 +1,16 @@
 import './header.css';
+import { useEffect, useState } from 'react';
 
 const Header = (props) => {
+    const [time, setTime] = useState(new Date());
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setTime(new Date());
+        }, 1000);
+        return () => {
+            clearInterval(timer);
+        };
+    }, []);
     return (
         <header className='header'>
             <div className='left'>
@@ -8,6 +18,9 @@ const Header = (props) => {
                 <h2>
                     Frying Nemo
                 </h2>
+                <span className='clock'>{time.toLocaleTimeString()}</span>
+
+                
             </div>
             <div className='right'>
                 <nav>

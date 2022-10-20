@@ -19,12 +19,12 @@ const View = (props) => {
     return (
         <div className="div-view">
             <h1>
-                View Page
+                Menu Items
             </h1>
             {
                 loading
                     ?
-                    <div style={{ marginTop :"100px",display: "flex", justifyContent: "center" }}>
+                    <div style={{ marginTop: "100px", display: "flex", justifyContent: "center" }}>
                         <Spinner />
                     </div>
                     :
