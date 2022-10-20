@@ -5,6 +5,7 @@
   flex-wrap: wrap;
 }
 .main-class .logo{
+  display: flex;
   min-width: 100%;
 }
 .main-class .right{
