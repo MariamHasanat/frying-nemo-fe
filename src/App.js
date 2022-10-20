@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Header from "./components/common/header/header.component";
 import AddPage from "./pages/add/add.component";
 import View from "./pages/view/view";
+import Header from "./core/header/header.component";
 
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
 
     return (
         <div>
+
             <Header
                 onNavigate={changePage}
                 currentPage={curPage}
