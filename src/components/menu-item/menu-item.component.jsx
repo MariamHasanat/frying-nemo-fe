@@ -4,6 +4,7 @@ import './menu-item.css';
  * 
   * @param {{data:{
   * name:string;
+  * image: string;
   * descriptions:string;
   * price:number;
   * category:sring;
@@ -17,7 +18,7 @@ const Item = (props) => {
   return (
     <div className="item-card">
       <div className="img">
-        <img src="https://i.imgur.com/eFWRUuR.jpg" alt="food" />
+        <img src={props.data.image} alt="food" />
       </div>
       <div className="info">
         <h2>{props.data.name}</h2>
