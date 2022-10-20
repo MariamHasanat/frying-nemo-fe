@@ -3,7 +3,7 @@ import Counter from '../counter/counter.component'
 import burger from './images/burger.jpg'
 import { useState } from 'react';
 
-const Card = ({itemName, itemCategory, itemPrice, itemDescription, itemIngredients, image}) => {
+const Card = ({itemName, itemCategory, itemPrice, itemDescription, itemIngredients, image, i}) => {
   const [counter, setCounter] = useState(0);
 
   const incCounter = () => {
@@ -17,7 +17,9 @@ const Card = ({itemName, itemCategory, itemPrice, itemDescription, itemIngredien
   }
 
   return (
-    <div className='card-wrapper' onLoad={(e) => {console.log(e.target.offsetParent.style.opacity = 1)}}>
+    <div className='card-wrapper' onLoad={(e) => {setTimeout(() => {
+      console.log(e.target.offsetParent.style.opacity = 1)
+    }, 50*i);}}>
       <img src={image} alt="" />
       <div className='info'>
       <p className='itemName'>{itemName}</p>

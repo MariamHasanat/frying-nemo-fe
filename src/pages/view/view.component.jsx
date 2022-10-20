@@ -35,7 +35,7 @@ const ViewPage = (props) => {
       </div>
       <div className='cards'>
         {
-          arr.length != 0? (arr.map((item) => isCurrentCategory(item.category)? <Card itemName={item.name} itemCategory={capitalizeFirstLetter(item.category)} itemDescription={item.description} itemIngredients={item.ings.toString().replaceAll(',', ', ')} itemPrice={item.price} image={item.image}/> : null))
+          arr.length != 0? (arr.map((item, i) => isCurrentCategory(item.category)? <Card itemName={item.name} itemCategory={capitalizeFirstLetter(item.category)} itemDescription={item.description} itemIngredients={item.ings.toString().replaceAll(',', ', ')} itemPrice={item.price} image={item.image} i={i}/> : null))
         : <div>No items found!</div>
         }
       </div>

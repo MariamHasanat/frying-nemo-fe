@@ -1,5 +1,6 @@
 import './header.css'
 import logo from './images/logo.png'
+import Timer from './timer/timer.component'
 
 const Header = ({pageId, changeNav}) => {
   return (
@@ -7,6 +8,7 @@ const Header = ({pageId, changeNav}) => {
       <div className='logo'>
         <img src={logo} alt="Logo" />
         <p>FRYING NEMO</p>
+        <Timer></Timer>        
       </div>
       <div className='btns'>
         <button className={pageId == 0 && `selected`} onClick={(() => changeNav(0))}>Add</button>
