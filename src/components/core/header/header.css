@@ -6,6 +6,11 @@
   border-bottom: 1px solid #ddd;
 }
 
+.webisteHeader>.left {
+  display: flex;
+  align-items: center;
+}
+
 .webisteHeader>.left>h1 {
   font-size: 18px;
   color: #be441d;
@@ -15,6 +20,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin: 0;
+  margin-right: 20px;
 }
 
 
@@ -25,7 +31,7 @@
 }
 
 .webisteHeader .right nav {
-  display: flex; 
+  display: flex;
 }
 
 .webisteHeader .right nav button {

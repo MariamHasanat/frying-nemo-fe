@@ -9,7 +9,7 @@ const ViewPage = (props) => {
    * @type {[Array, Function]} Loading
    */
   const [menuItems, setMenuItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const getMenuItems = () => {
     setLoading(true);
@@ -20,7 +20,6 @@ const ViewPage = (props) => {
       setMenuItems(items);
       setLoading(false);
     }, 1000);
-
   };
 
   useEffect(() => {
