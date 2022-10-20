@@ -8,7 +8,7 @@
     box-shadow: 4px 3px 5px grey;
     width: 300px;
     height: 480px;
-    margin: 5px;
+    margin: 7px;
 }
 
 .item img {
@@ -52,6 +52,8 @@
     margin-bottom: 8px;
     padding: 2px;
     min-height: 19px;
+    max-height: 23px;
+    overflow: auto;
 }
 
 .price {
@@ -59,10 +61,11 @@
     justify-content: space-around;
     padding-top: 10px;
     border-top: 1px solid gray;
+    user-select: none;
 }
 
 .the-price {
-    font-size: 20px;
+    font-size: 30px;
     height: 45px;
     width: 70px;
     display: flex;
@@ -79,25 +82,41 @@
 }
 
 .number-of-items input {
-    height: 30px;
-    width: 45px;
+    height: 34px;
+    width: 50px;
     display: flex;
     justify-content: center;
-    margin: 0px 5px;
+    margin: 0px 0px;
     padding: 5px;
     font-size: 18px;
+    border: 1px solid gray;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.number-of-items input::-webkit-outer-spin-button,
+.number-of-items input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .number-of-items>span {
+    user-select: none;
     display: flex;
     justify-content: center;
+    border: 1px solid#be441d;
     align-items: center;
     height: 44px;
-    width: 40px;
-    background-color: rgb(192 192 192);
+    width: 50px;
     cursor: pointer;
     border-radius: 2px;
-    font-size: 25px;
+    background-color: #be441d;
+    color: white;
+    font-size: 30px;
+    font-weight: 800;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.number-of-items>span:active {
+    background-color: #fff;
+    color: #be441d;
 }

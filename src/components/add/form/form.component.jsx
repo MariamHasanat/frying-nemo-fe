@@ -29,6 +29,7 @@ const Form = (props) => {
     const submitHandler = e => {
         const price = Number(e.target.price.value);
         const des = e.target.description.value;
+        const image = e.target.image.value;
         const cat = e.target.categories.value;
 
         const item = {
@@ -37,6 +38,7 @@ const Form = (props) => {
             description: des,
             categories: cat,
             Ingredients: Ingredients,
+            img : image,
         };
 
         let items = localStorage.getItem('categoriesArray');
@@ -72,6 +74,11 @@ const Form = (props) => {
                 <Textarea
                     label='Description'
                     name={'description'}
+                />
+                <Input
+                    label="Image"
+                    name="image"
+                    required
                 />
                 <Input
                     label='Price'
