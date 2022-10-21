@@ -1,12 +1,25 @@
 import AddPage from "./pages/add/add.component";
-
+import ViewPage from "./components/ViewPage/ViewPage";
+import NotFoundPage from "./components/notfound/NotFound ";
+import { useState } from "react";
+import Header from "./components/core/header/header.componet";
 function App() {
+
+  const [currentPage, setCurrentPage] = useState('Add');
+
+  const changePage = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
   return (
     <div>
-      <div className="img1"><img src="https://th.bing.com/th/id/OIP.tQeCr2wfItAJ6TtT45cd9QAAAA?w=171&h=180&c=7&r=0&o=5&pid=1.7"></img> <span>My RESTAURANT Nigga</span> </div>
+     <Header onNavigate={changePage}></Header>
       <div className="flex">
         <div className="mydiv">
-          <AddPage />
+        {currentPage === 'Add' && <AddPage onNavigate={changePage} />}
+      {currentPage === 'View' && <ViewPage />}
+      {currentPage === '404' && <NotFoundPage />}
+
         </div>
       </div>
     </div>

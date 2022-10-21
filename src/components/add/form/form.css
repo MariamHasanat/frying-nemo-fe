@@ -21,3 +21,6 @@ button{
     text-align: center;
     
 }
+.point{
+  cursor: pointer;
+}

@@ -4,7 +4,7 @@ import Textarea from '../../../common/textarea/textarea';
 import Input from '../../../common/input/input';
 import './form.css';
 import MultivalueInput from '../../../common/multivalue-input/multivalue-input.component';
-
+import Image from '../../../common/image/Image';
 
 
 
@@ -18,19 +18,28 @@ const Form = (props) => {
   const [ingredients, setIngredients] = useState([]);
   const submitHandler = e => {
     e.preventDefault();
+
     const description = e.target.description.value;
+    const image = e.target.image.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
 
-    const menuitem = {
-     name:name, 
-     description:description,
-     price:price,
-     category:category,
-     ingredients:ingredients
+    const menuItem = {
+      name: name,
+      image,
+      description: description,
+      price: price,
+      category: category,
+      ingredients: ingredients
     };
 
-    console.log("from suited: ",menuitem)
+    const itemsJson = localStorage.getItem('menuItems');
+    const items = JSON.parse(itemsJson) || [];
+
+    items.push(menuItem);
+
+    localStorage.setItem('menuItems', JSON.stringify(items));
+    props.onNavigate('View');
 
   };
 
@@ -69,11 +78,16 @@ const Form = (props) => {
 
         />
         <br></br>
+        <Image required name="image" label="Image" onSubmit={e=>{console.log(e.target.value)}}>
+        </Image>
+
+
+        <br />
         <Textarea
           name='description'
           label='Description' />
         <br></br>
-        <Select  name='category' label='Category' required>
+        <Select name='category' label='Category' required>
           {category.map(item => {
             return <option value={item} key={item}>{item}</option>;
 
@@ -88,7 +102,7 @@ const Form = (props) => {
 
         />
 
-        <button type='sumbit'>Create</button>
+        <button className='point' type='sumbit'>Create</button>
       </div>
     </form>
   );
