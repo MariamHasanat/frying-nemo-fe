@@ -21,7 +21,14 @@ const MenuItem = (props) => {
       <span>Description : {props.item.discription}</span>
       <span>Its a : {props.item.catigory}</span>
       <div>Ingredients : {props.item.ingredients.join(", ")}</div>
-      <div className='price'><span >{props.item.price} $</span></div>
+      <div className='price'>
+        <span >{props.item.price} $</span>
+        <div className='order'> 
+          <button> - </button>
+          <input type="number" className='ordersCount' />
+          <button> + </button>
+        </div>
+      </div>
            
       {
         // props.value.map ((item , index) => {return(
