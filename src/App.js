@@ -26,7 +26,7 @@ function App() {
       <AddPage onNavigate = {changePage}
       onAdd = {addItem}  />}
       {currentPage === 'view' && <ViewPage value = {items}/>}
-      <NotFound/>
+      {/* <NotFound/> */}
 
     </div>
   );
