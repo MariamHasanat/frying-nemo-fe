@@ -6,7 +6,7 @@ import Notfound from "./pages/not-found/Notfound";
 import './common.css';
 
 function App() {
-  const [CurretnPage, setCurrentPage] = useState('404');
+  const [CurretnPage, setCurrentPage] = useState('add');
   return (
     <div>
       <Header curretnPage={CurretnPage}
