@@ -51,6 +51,7 @@ header {
   cursor: pointer;
   font-size: 14px;
   padding: 9px 20px;
+  text-decoration: none;
 }
 
 .Header .right nav a:hover {

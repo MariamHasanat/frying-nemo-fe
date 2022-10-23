@@ -1,5 +1,6 @@
 // import React, { useState } from 'react';
 import './Header.css';
+import { Link } from 'react-router-dom'
 
 const Header = props => {
 
@@ -14,10 +15,10 @@ const Header = props => {
         </div>
         <div className="right">
           <nav>
-            <a href='/add'
-             >Add</a>
-            <a href='/view'
-             >View</a>
+            <Link to='/add'
+             >Add</Link >
+            <Link to='/view'
+             >View</Link >
           </nav>
         </div>
         
