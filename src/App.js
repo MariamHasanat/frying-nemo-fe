@@ -2,27 +2,29 @@ import { useState } from "react";
 import AddPage from "./pages/add/add.component";
 import View from "./pages/view/view";
 import Header from "./core/header/header.component";
+import NotFound from "./pages/not-found/not-found.component";
 
 
 function App() {
-    const [curPage, setCurPage] = useState('add');
 
-    const changePage = (newPage) => {
-        setCurPage(newPage);
-    };
-
+    const pathName = window.location.pathname;
+    let page = null;
+    switch (pathName) {
+        case '/add':
+            page = <AddPage />;
+            break;
+        case '/view':
+            page = <View />;
+            break;
+        default:
+            page = <NotFound />;
+            break;
+    }
+    
     return (
         <div>
-
-            <Header
-                onNavigate={changePage}
-                currentPage={curPage}
-            />
-            {
-                (curPage === 'add')
-                    ? <AddPage onNavigate={changePage} />
-                    : <View />
-            }
+            <Header />
+            {page}
 
         </div>
     );

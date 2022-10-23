@@ -62,7 +62,7 @@
     height: 100%;
 }
 
-.header .right nav button {
+.header .right nav .but {
     background: unset;
     border: unset;
     cursor: pointer;
@@ -70,15 +70,15 @@
     padding: 9px 20px;
 }
 
-.header .right nav button:hover {
+.header .right nav .but:hover {
     text-shadow: -1px 2px 3px #777777;
 }
 
-.header .right nav button:active {
+.header .right nav .but:active {
     text-shadow: -1px 2px 3px #333;
 }
 
-.header .right nav button.current {
+.header .right nav .but.current {
     background-color: #be441d;
     border-radius: 5px;
     color: white;

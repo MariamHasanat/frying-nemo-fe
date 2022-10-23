@@ -31,7 +31,7 @@ const Item = (props) => {
                 </div>
                 <div className='price'>
                     <span className='the-price'>
-                        {props.item.price}$
+                        ${props.item.price}
                     </span>
                     <div className='number-of-items'>
                         <span onClick={add}>+</span>
