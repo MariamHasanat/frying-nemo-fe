@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./header.css";
 
 const Header = (props) => {
@@ -12,8 +13,8 @@ const Header = (props) => {
         <nav>
           {/* <button className={props.currentPage === 'add' ? 'current' : ''} onClick={() => props.onNavigate('add')}>Add</button>
           <button onClick={() => props.onNavigate('view')}>View</button> */}
-          <a href="/add" className='add'>Add</a>
-          <a href="/view" className='view'>View</a>
+          <Link to="/add" className='add'>Add</Link>
+          <Link to="/view" className='view'>View</Link>
         </nav>
       </div>
     </div>
