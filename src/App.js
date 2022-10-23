@@ -15,6 +15,20 @@ function App() {
     tempItems.push (item) ;
     setItems (tempItems) ;
   } 
+
+  const pathname = window.location.pathname ;
+  console.log (pathname)
+  let page = null ; 
+  if (pathname === '/view') {
+    page = <ViewPage />
+  }
+  else if (pathname === '/add') {
+    page = <AddPage  />
+  }
+  else {
+    page = <NotFound/> 
+  }
+
   return (
     <div>
       <Header 
@@ -22,11 +36,12 @@ function App() {
         title = "Frying Nemo"
         onNavigate = {changePage}  
       />
-      {currentPage === 'add' && 
+      {page}
+      {/* {currentPage === 'add' && 
       <AddPage onNavigate = {changePage}
       onAdd = {addItem}  />}
       {currentPage === 'view' && <ViewPage value = {items}/>}
-      {/* <NotFound/> */}
+      <NotFound/> */}
 
     </div>
   );
