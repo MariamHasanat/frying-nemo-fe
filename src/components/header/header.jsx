@@ -6,8 +6,10 @@ const Handel =(props)=>{
     <h1>Seafood Restaurant</h1>
     <div>
    
-        <div><button className={props.currentPage==='add'?'current':''} onClick={()=>props.onNavigate('add') } >Add</button></div>
-        <div><button className={props.currentPage==='view'?'current':''}  onClick={()=>props.onNavigate('view')}>View</button></div>
+        <div>
+          <a href="/add" >Add</a>
+          </div>
+        <div>< a href = "/view">View</a></div>
      
     </div>
   </header>

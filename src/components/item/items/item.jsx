@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import './item.css';
+
 const Item = (props) => {
   return (
     <div className='item-card'>
@@ -11,6 +13,7 @@ const Item = (props) => {
          <p className='ingredients'> {props.data.ingredients.join(", ")} </p>
          <hr/>
       </div>
+    
       <div className='price'>
         <span>{props.data.price}$</span>
         <div className='add-cart'>
