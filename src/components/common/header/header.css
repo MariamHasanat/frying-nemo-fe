@@ -54,6 +54,7 @@
   font-size: 20px;
   border-radius: 7px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .nav-btn:hover{
@@ -71,6 +72,7 @@
   font-size: 20px;
   border-radius: 7px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .active-nav-btn:active{

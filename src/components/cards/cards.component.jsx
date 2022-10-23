@@ -30,7 +30,7 @@ const Cards = (props) => {
               <span className="card-text">Ingredients</span>
             </div>
 
-            <Select name="category" label="" className="card-Ingredients">
+            <Select name="category" label="" className="card-Ingredients" >
               {item.ingredients.map((current) => {
                 return (
                   <option key={current} value={current} disabled>
