@@ -1,5 +1,6 @@
 import './header.css';
 import { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom';
 
 const Header = (props) => {
     const [time, setTime] = useState(new Date());
@@ -20,17 +21,16 @@ const Header = (props) => {
                 </h2>
                 <span className='clock'>{time.toLocaleTimeString()}</span>
 
-                
+
             </div>
             <div className='right'>
                 <nav>
-
-                    <a className ='but' href='/add'>
+                    <Link className='but' to='/add'>
                         Add
-                    </a>
-                    <a className='but' href='/view'>
+                    </Link>
+                    <Link className='but' to='/view'>
                         view
-                    </a>
+                    </Link>
                 </nav>
             </div>
         </header>

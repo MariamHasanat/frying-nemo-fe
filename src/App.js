@@ -1,31 +1,22 @@
-import { useState } from "react";
 import AddPage from "./pages/add/add.component";
 import View from "./pages/view/view";
 import Header from "./core/header/header.component";
 import NotFound from "./pages/not-found/not-found.component";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 function App() {
 
-    const pathName = window.location.pathname;
-    let page = null;
-    switch (pathName) {
-        case '/add':
-            page = <AddPage />;
-            break;
-        case '/view':
-            page = <View />;
-            break;
-        default:
-            page = <NotFound />;
-            break;
-    }
-    
     return (
         <div>
-            <Header />
-            {page}
-
+            <BrowserRouter>
+                <Header />
+                <Routes>
+                    <Route path="/add" element={<AddPage />} />
+                    <Route path="/view" element={<View />} />
+                    <Route path="/*" element={<NotFound />} />
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }
