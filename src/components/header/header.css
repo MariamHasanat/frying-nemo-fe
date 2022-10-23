@@ -51,24 +51,26 @@
   margin-right: 100px
 }
 
-.webisteHeader .right nav button {
+.webisteHeader .right nav a {
   background: unset;
   border: unset;
   cursor: pointer;
   font-size: 17px;
   padding: 9px 20px;
+  text-decoration: none;
+  color: inherit;
  
 }
 
-.webisteHeader .right nav button:hover {
+.webisteHeader .right nav a:hover {
   text-shadow: 3px 2px 10px #59d8e1;
 }
 
-.webisteHeader .right nav button:active {
+.webisteHeader .right nav a:active {
   text-shadow: -1px 2px 3px rgb(216, 88, 3);
 }
 
-.webisteHeader .right nav button.current {
+.webisteHeader .right nav a.current {
   background-color:#a70c65;
   border-radius: 5px;
   color: white;

@@ -7,24 +7,27 @@ import NotFoundPage from "./pages/not-found/not-found.component";
 
 function App() {
 
+  const pathName = window.location.pathname;
 
-  const [currentPage, setCurrentPage] = useState('add');
+  console.debug(`pathName`, pathName);
 
-  const changePage = (newPage) => {
-    setCurrentPage(newPage);
-  };
+  let page = null;
+
+  if (pathName === '/view') {
+    page = <ViewPage />;
+  } else if (pathName === '/add') {
+    page = <AddPage />;
+  } else {
+    page = <NotFoundPage />;
+  }
 
   return (
 
     <div>
 
 
-      <Header onNavigate={changePage} currentPage={currentPage} />
-
-      {currentPage === 'add' && <AddPage onNavigate={changePage} />}
-      {currentPage === 'view' && <ViewPage />}
-      {currentPage === '404' && <NotFoundPage />}
-
+      <Header />
+      {page}
 
 
     </div>
