@@ -11,7 +11,8 @@ const Header = (props) => {
     return (
         <div>
             <div className='header'>
-                <img src={props.img} alt='logo' width={props.width} />
+                {/* <img src={props.img} alt='logo' width={props.width} /> */}
+                <img src='images/nemo.png' alt='logo' width={100} />
                 {props.text ? <span>{props.text}</span> : null}
                 <span>
                     <a href="/add" className='nemo-button'>add</a>

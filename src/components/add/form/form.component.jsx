@@ -47,11 +47,12 @@ const Form = (props) => {
         console.log('parsed:', parsed);
         localStorage.setItem('menu', JSON.stringify(parsed));
 
-        // e.target.description.value = '';
-        // e.target.category.value = '';
-        // e.target.price.value = '';
-        // setIngredients([]);
-        // setName('');
+        // just in case ;)
+        e.target.description.value = '';
+        e.target.category.value = '';
+        e.target.price.value = '';
+        setIngredients([]);
+        setName('');
 
         props.setCurrentPage('view');
     };
