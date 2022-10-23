@@ -9,3 +9,11 @@
 h1{
   margin-left: 20px;
 }
+.clock{
+  position: fixed;
+  right: 20px;
+  bottom: 50px;
+  background-color: #a44a2a33;
+  padding: 6px 18px;
+  border-radius: 19px 36px;
+}

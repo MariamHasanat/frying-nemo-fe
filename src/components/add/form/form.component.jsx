@@ -70,6 +70,7 @@ const Form = (props) => {
 
   return (
     <form className='add-form' onSubmit={submitHandler}>
+      <h1>Add New Items</h1>
       <div style={{ marginTop: 20 }}>
         <Input
           label="Name"
