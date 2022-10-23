@@ -2,8 +2,9 @@
 import nemo from '../../image/nemo.png';
 import React from 'react';
 import './header.css';
+import { Link } from 'react-router-dom';
 
-const Header = (props) => {
+const Header = () => {
   return (
     <header className="websiteHeader">
       <div className="left">
@@ -14,8 +15,8 @@ const Header = (props) => {
       </div>
       <div className="right">
         <nav>
-          <a href='/add' >Add</a>
-          <a href='/view'>View</a>
+          <Link to='/add' >Add</Link>
+          <Link to='/view'>View</Link>
         </nav>
       </div>
     </header>
