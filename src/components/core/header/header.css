@@ -19,11 +19,12 @@
     margin: 0;
 }
 
-.header>span>button {
+.header>span>a {
+    text-decoration: none;
     margin: 0 5px;
 }
 
-.header>span>.active {
+.header>span>a.active {
     color: #212529;
     background-color: #dee5ec;
     border-color: #dae0e5;
