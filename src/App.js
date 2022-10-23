@@ -10,23 +10,29 @@ import NotFound from "./pages/not-found/not-found.component";
 //A function App will render the components
 function App() {
 
-  const [currentPage, setCurrentPage] = useState('add');
+  // const [currentPage, setCurrentPage] = useState('add');
 
-  const changePage = (newPage) => {
-    setCurrentPage(newPage);
-  };
+  // const changePage = (newPage) => {
+  //   setCurrentPage(newPage);
+  // };
+  const pathname = window.location.pathname;
 
-  
+  let page = null;
+
+  if (pathname === "/view") {
+    page = <ViewPage />;
+  } else if (pathname === "/add") {
+    page = <AddPage />;
+  } else {
+    page = <NotFound />;
+  }
+
 
   return (
     <div className="pages-container">
       <div className="consistancy-between-pages">
-        <Header onNavigate={changePage} currentPage={currentPage} />
-
-        {currentPage === 'add' && <AddPage onNavigate={changePage} />}
-        {currentPage === 'view' && <ViewPage />}
-        {currentPage === '404' && <NotFound />}
-
+        <Header />
+        {page}
       </div>
     </div>
   );
