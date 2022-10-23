@@ -22,7 +22,7 @@
 }
 
 .webisteHeader .right nav {
-  display: flex; 
+  display: flex;
 }
 
 .webisteHeader .right nav a {
@@ -45,4 +45,11 @@
   background-color: #FFF7E9;
   border-radius: 5px;
   color: #FF731D;
+}
+
+a {
+  background-color: #FF731D;
+  color: #333;
+  font-weight: bold;
+
 }
