@@ -6,6 +6,7 @@ import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 
 
+
 const Form = (props) => {
   const [name, setName] = useState('yara');
   const [Ingredients, setIngredients] = useState([]);
@@ -85,7 +86,7 @@ const Form = (props) => {
       <Input
         label="Image"
         name="image"
-        required
+   
       />
 
       <Input
@@ -114,7 +115,7 @@ const Form = (props) => {
 
       <div className="addFormButtons">
 
-        <button className="button-56" type="submit">Create</button>
+        <button className="nemo-button" type="submit">Create</button>
 
       </div>
 

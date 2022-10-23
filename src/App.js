@@ -3,23 +3,10 @@ import Header from "./components/core/header/header.component";
 import AddPage from "./pages/add/add.component";
 import NotFound from "./pages/page not found/page-not-found.component";
 import ViewPage from "./pages/view/view.component";
+import{BrowserRouter,Routes ,Route} from 'react-router-dom';
 function App() {
 
  
-const pathname = window.location.pathname;
-let page = null;
-if(pathname ==="/add")
-{
-page=<AddPage/>;
-}
-else if (pathname==="/view")
-{
-page=<ViewPage/>;
-}
-else 
-{
-page=<NotFound/>;
-}
 
 
   
@@ -27,11 +14,18 @@ page=<NotFound/>;
     
 <div>
 
-
+<BrowserRouter>
 <Header></Header>
+<Routes>
+  <Route path="/*" element={<NotFound/>}></Route>
+  <Route path="/view" element={<ViewPage/>}></Route>
+  <Route path="/add" element={<AddPage/>}></Route>
+</Routes>
+</BrowserRouter>
 
 
-{page}
+
+
 
     </div>
   );

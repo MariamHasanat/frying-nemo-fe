@@ -9,9 +9,9 @@ const ViewPage = (props) => {
   /**
    * @type {{Array,Function}} loading
    */
-  useEffect(()=>{
-alert("welcome");
-  },[]);
+//   useEffect(()=>{
+// alert("welcome");
+//   },[]);
   const  [menuItems ]= useState(getMenuItems());
   return (
     <div className="view-page">
