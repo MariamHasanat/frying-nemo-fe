@@ -34,7 +34,6 @@ const Form = (props) => {
     items.push(menueItem);
     console.log("after", items);
     localStorage.setItem('menuItems', JSON.stringify(items));
-    props.onNavigate('view');
     props.onAdd(menueItem);
   };
   /**
@@ -99,12 +98,13 @@ const Form = (props) => {
         <option value="salad">Sweets</option>
       </Select> */}
       <div className='addFormButtons'>
-        <button
-          type='submit'
-          className='formComp nemo-button'
-        >
-          Create
-        </button>
+          <button
+            type='submit'
+            className='formComp nemo-button'
+          >
+            <a href='/view'> Create </a>
+          </button>
+        
       </div>
     </form>
   );

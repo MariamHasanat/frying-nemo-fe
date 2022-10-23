@@ -4,6 +4,7 @@ import ViewPage from "./pages/view/view.component";
 import { useState } from "react";
 import './common.css' ;
 import NotFound from "./pages/not-found/notFound.component";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   const [currentPage , setCurrentPage] = useState ('add') ;
   const changePage = (newPage) => {
@@ -14,35 +15,27 @@ function App() {
     const tempItems = items ;
     tempItems.push (item) ;
     setItems (tempItems) ;
-  } 
-
-  const pathname = window.location.pathname ;
-  console.log (pathname)
-  let page = null ; 
-  if (pathname === '/view') {
-    page = <ViewPage />
-  }
-  else if (pathname === '/add') {
-    page = <AddPage  />
-  }
-  else {  //called catch all block
-    page = <NotFound/> 
   }
 
   return (
     <div>
-      <Header 
-        img = "./nemo.svg.svg" 
-        title = "Frying Nemo"
-        onNavigate = {changePage}  
-      />
-      {page}
+      <BrowserRouter>
+        <Header 
+          img = "./nemo.svg.svg" 
+          title = "Frying Nemo" 
+        />
+        <Routes>
+          <Route path="/add" element = {<AddPage onAdd = {addItem} />} />
+          <Route path="/view" element = {<ViewPage />} />
+          <Route path="/*" element = {<NotFound  />} />
+        </Routes> 
+      </BrowserRouter>
+      {/* {page} */}
       {/* {currentPage === 'add' && 
       <AddPage onNavigate = {changePage}
       onAdd = {addItem}  />}
       {currentPage === 'view' && <ViewPage value = {items}/>}
       <NotFound/> */}
-
     </div>
   );
 }
