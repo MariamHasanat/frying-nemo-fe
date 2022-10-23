@@ -1,4 +1,5 @@
 import "./header.css";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
   return (
@@ -9,20 +10,27 @@ const Header = (props) => {
       </div>
       <div className="right-header">
         <nav>
-          <a
-            className={window.location.pathname === "/add" ? "active-nav-btn" : "nav-btn"}
-            href="/add"
-            
+          <Link
+            className={
+              window.location.pathname === "/add" ||
+              window.location.pathname === "/"
+                ? "active-nav-btn"
+                : "nav-btn"
+            }
+            to="/add"
           >
             Add
-          </a>
-          <a
-            className={window.location.pathname === "/view" ? "active-nav-btn" : "nav-btn"}
-            href="/view"
-            
+          </Link>
+          <Link
+            className={
+              window.location.pathname === "/view"
+                ? "active-nav-btn"
+                : "nav-btn"
+            }
+            to="/view"
           >
             View
-          </a>
+          </Link>
         </nav>
       </div>
     </div>
