@@ -10,7 +10,7 @@ import NotFound from "./pages/not-found/not-found.component";
 //A function App will render the components
 function App() {
 
-  const [currentPage, setCurrentPage] = useState('404');
+  const [currentPage, setCurrentPage] = useState('add');
 
   const changePage = (newPage) => {
     setCurrentPage(newPage);
