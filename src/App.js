@@ -25,7 +25,7 @@ function App() {
   else if (pathname === '/add') {
     page = <AddPage  />
   }
-  else {
+  else {  //called catch all block
     page = <NotFound/> 
   }
 
