@@ -6,17 +6,30 @@ import Notfound from "./pages/not-found/Notfound";
 import './common.css';
 
 function App() {
-  const [CurretnPage, setCurrentPage] = useState('add');
+  // const [CurretnPage, setCurrentPage] = useState('add');
+  const path = window.location.pathname;
+
+  let page = null;
+
+  if(path === '/add') {
+    page = <AddPage/>
+  }else if(path === '/view') {
+    page = <ViewPage />
+  }else
+  page = <Notfound/>
+
+
   return (
     <div>
-      <Header curretnPage={CurretnPage}
-        onNavigate={(changePage) => setCurrentPage(changePage)} />
-
+      <Header
+      />
+      {page}
+{/* 
       {CurretnPage === 'add' && <AddPage
         onNavigate={(changePage) => setCurrentPage(changePage)} />}
       {CurretnPage === 'view' && <ViewPage />}
       {CurretnPage === '404' && <Notfound />}
-      {/* {currentPage === '404' && <NotFoundPage />} */}
+      {currentPage === '404' && <NotFoundPage />} */}
     </div>
   );
 }

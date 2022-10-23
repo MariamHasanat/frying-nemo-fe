@@ -45,7 +45,7 @@ header {
   display: flex; 
 }
 
-.Header .right nav button {
+.Header .right nav a {
   background: unset;
   border: unset;
   cursor: pointer;
@@ -53,15 +53,15 @@ header {
   padding: 9px 20px;
 }
 
-.Header .right nav button:hover {
+.Header .right nav a:hover {
   text-shadow: -1px 2px 3px #777777;
 }
 
-.Header .right nav button:active {
+.Header .right nav a:active {
   text-shadow: -1px 2px 3px #333;
 }
 
-.Header .right nav button.current {
+.Header .right nav a.current {
   background-color: #d2ad78;
   border-radius: 5px;
   color: white;

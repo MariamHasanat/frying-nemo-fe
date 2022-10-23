@@ -22,7 +22,7 @@ const Notfound = () => {
   return (
     <div className="Not-found">
       <h1 style={{color}}>404 This page not found</h1>
-
+      {/* /image.png */}
       <h2>{counter}</h2>
       <button onClick={() => setCounter(counter+1)} className="nemo-button">+</button>
       <input type="text" value={name} onChange={(e) => setName(e.target.value)}  className="input-style"/>

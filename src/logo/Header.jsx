@@ -14,10 +14,10 @@ const Header = props => {
         </div>
         <div className="right">
           <nav>
-            <button className={props.curretnPage === 'add' ? 'current' : ''}
-              onClick={() => props.onNavigate('add')}>Add</button>
-            <button className={props.curretnPage === 'view' ? 'current' : ''}
-             onClick={() => props.onNavigate('view')}>View</button>
+            <a href='/add'
+             >Add</a>
+            <a href='/view'
+             >View</a>
           </nav>
         </div>
         

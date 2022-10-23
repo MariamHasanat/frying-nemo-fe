@@ -23,6 +23,7 @@ const ViewPage = (props) => {
   useEffect(() => {
     getMenuItems();
   }, []);
+
   return (
     <div className="View-page">
        {loading
@@ -31,6 +32,7 @@ const ViewPage = (props) => {
         {
           menuItems.map((item, index) => <Card data={item} key={item.name + index}/>)
         }
+       { console.log("fkjhdakj "+ loading)}
       </div>
       }
     </div>
