@@ -1,5 +1,7 @@
 .item-card {
   display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
   flex-direction: column;
   border-radius: 5px;
   overflow: hidden;

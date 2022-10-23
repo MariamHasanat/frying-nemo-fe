@@ -10,7 +10,7 @@ const Addveiw = (props) => {
   return (
     <div>
       <h1>Add a new item</h1>
-     <div className="item-container">
+     <div className="npm ">
       {
   menuItem.map((item,index) => <Item data = {item} key ={item.name + index}/> )
       }

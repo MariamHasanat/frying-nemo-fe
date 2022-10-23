@@ -27,16 +27,18 @@
 .right{
   justify-content: space-evenly;
 }
-.right button{
+.right a{
   border: unset;
   background: unset;
+  color: #696363;
+  text-decoration: none;
   margin: 2px;
   cursor: pointer;
   font-size: 14px;
   padding: 9px 20px;
 
 }
-.right button:hover{
+.right a:hover{
   text-shadow: 2px 1px 2px #c3c3c3;
 }
 .right button:active{

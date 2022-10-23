@@ -10,8 +10,8 @@ const Header = props => {
         </h1>
       </div>
       <div className="right">
-        <button  className={props.currentPage === 'add' ? 'current' : ''} onClick={() => props.onNavigate('add')}>Add</button>
-        <button className={props.currentPage === 'view' ? 'current' : ''} onClick={() => props.onNavigate('view')}>View</button>
+       <a href="/add">Add</a>
+       <a href="/view">View</a>
       </div>
     </header>
   );
