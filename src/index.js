@@ -4,6 +4,7 @@ import './index.css';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import NotFound from './pages/add/not-found/not-found.component';
 
 //import { import } from '@babel/types';
 //import '.common.css';
@@ -14,6 +15,7 @@ root.render(
   <React.StrictMode>
   
     <App />
+    <NotFound/>
   </React.StrictMode>
 );
 

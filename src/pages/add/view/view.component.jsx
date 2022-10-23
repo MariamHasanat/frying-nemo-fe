@@ -4,8 +4,7 @@ import { useState } from 'react';
 
 const getMenueItem = () => JSON.parse(localStorage.menuItems || '[]');
 
-
-const ViewPage = () => {
+const ViewPage = () =>{
   /**
    * @type {[Array, Function]} Loading
    */
@@ -28,6 +27,6 @@ const ViewPage = () => {
 
     </div>
   );
-};
+      };
 
 export default ViewPage;
