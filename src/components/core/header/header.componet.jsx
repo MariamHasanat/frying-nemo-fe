@@ -13,7 +13,7 @@ const Header = props => {
 
       </div>
       <div className='right'>
-        <div className='add-button' onClick={() => {props.setPageName('add')}}>
+        <div className='add-button' onClick={'#add'}>
           Add
         </div>
         <div className='view-button' onClick={() => {props.setPageName('view')}  }>

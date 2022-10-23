@@ -1,20 +1,25 @@
-import { useState } from "react";
 import Header from "./components/core/header/header.componet";
 import AddPage from "./pages/add/add.component";
+import NotFound from "./pages/notfound/notfound.component";
 import ViewPage from "./pages/view/ViewPage.component";
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 function App() {
-  const [pageName, setPageName] = useState('add');
-  return (
-    <div>
-      <Header setPageName={setPageName} />
-      {pageName === 'add' && <AddPage />}
-      {pageName === 'view' && <ViewPage />}
+return(
+  <div>
+    <BrowserRouter>
+    <Header />
+        <Routes>
+          <Route path="/add" element={<AddPage />}></Route>
+          <Route path="/view" element={<ViewPage />}></Route>
+          <Route path="/*" element={<NotFound />}></Route>
 
 
+        </Routes>
+    </BrowserRouter>
+  </div>
+)
 
-    </div>
-  );
+
 }
-
 export default App;
