@@ -1,6 +1,8 @@
 import React from 'react';
 import './header.css';
 
+import { Link } from 'react-router-dom';
+
 const Header = (props) => {
   return (
     <header className="websiteHeader">
@@ -12,12 +14,12 @@ const Header = (props) => {
       </div>
       <div className="right">
         <nav>
-          <a href="/add">
+          <Link to="/add">
             Add
-          </a>
-          <a href="/view">
+          </Link>
+          <Link to="/view">
             View
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
