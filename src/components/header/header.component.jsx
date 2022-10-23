@@ -1,6 +1,6 @@
 import React from 'react';
 import './header.css';
-
+import { Link } from 'react-router-dom';
 const Header = props => {
   return (
     <header className="webisteHeader">
@@ -14,15 +14,15 @@ const Header = props => {
 
         <nav>
 
-          <a href="/add">
+          <Link to="/add">
             Add
 
-          </a>
+          </Link>
 
-          <a href="/view">
-            View       
+          <Link to="/view">
+            View
 
-          </a>
+          </Link>
 
         </nav>
       </div>
