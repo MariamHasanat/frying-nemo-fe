@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './header.css';
 /**
  * 
@@ -18,15 +19,11 @@ const Header = (props) => {
       <div className='header-navigation-buttons'>
         <nav>
 
-          <a href='/add'>
-            Add
-          </a>
 
-          <a href='/view'>
+          <Link to='/add'>Add</Link>
 
-            View
-          </a>
-
+          <Link to='/view'>View</Link>
+          
         </nav>
       </div>
     </div>

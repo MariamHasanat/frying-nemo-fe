@@ -4,23 +4,21 @@ import View from "./pages/view/view";
 import '../src/pages/add/add.component';
 import AddPage from "../src/pages/add/add.component";
 import Test from "./pages/test/test.component";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
 
   const pathName = window.location.pathname;
 
-  let page = null;
-  if (pathName === '/view') {
-    page = <View />;
-  } else if (pathName === '/add') {
-    page = <AddPage />;
-  } else {
-    page = <Test />;
-  }
-
   return (
     <div>
-      <Header />
-      {page}
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/add" element={<AddPage />} />
+          <Route path="/view" element={<View />} />
+          <Route path="/*" element={<Test />} />
+        </Routes>
+      </BrowserRouter>
 
 
     </div>
