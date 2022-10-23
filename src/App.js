@@ -5,20 +5,22 @@ import ViewPage from "./pages/view/view.component";
 import NotFoundPage from "./pages/not-found/not-found.component";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('add');
+  const pathname = window.location.pathname;
 
-  const changePage = (newPage) => {
-    setCurrentPage(newPage);
-  };
+  let page = null;
+
+  if (pathname === '/view') {
+    page = <ViewPage />;
+  } else if (pathname === '/add') {
+    page = <AddPage />;
+  } else {
+    page = <NotFoundPage />;
+  }
 
   return (
     <div>
-      <Header onNavigate={changePage} currentPage={currentPage} />
-
-      {currentPage === 'add' && <AddPage onNavigate={changePage} />}
-      {currentPage === 'view' && <ViewPage />}
-      {currentPage === '404' && <NotFoundPage />}
-
+      <Header  />
+      {page}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import './header.css';
 
 const Header = (props) => {
   return (
-    <header className="webisteHeader">
+    <header className="websiteHeader">
       <div className="left">
         <h1>
           <img src="./nemo.svg" alt="Nemo" />
@@ -12,18 +12,12 @@ const Header = (props) => {
       </div>
       <div className="right">
         <nav>
-          <button
-            className={props.currentPage === 'add' ? 'current' : ''}
-            onClick={() => props.onNavigate('add')}
-          >
+          <a href="/add">
             Add
-          </button>
-          <button
-            className={props.currentPage === 'view' ? 'current' : ''}
-            onClick={() => props.onNavigate('view')}
-          >
+          </a>
+          <a href="/view">
             View
-          </button>
+          </a>
         </nav>
       </div>
     </header>
