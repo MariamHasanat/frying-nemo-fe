@@ -1,3 +1,7 @@
+*::-webkit-scrollbar {
+  display: none;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -29,7 +33,8 @@
 }
 
 
-.header .btns button {
+.header .btns a {
+  text-decoration: none;
   background-color: white;
   font-size: 14px;
   font-weight: 600;
@@ -38,28 +43,29 @@
   min-width: 4.7rem;
   height: 2.4rem;
   margin: 0px 5px;
-  padding: 0px 15px;
+  padding: 7px 20px;
   border-radius: .4rem;
   cursor: pointer;
   transition: .2s all;
+  color: black;
 }
 
-.header .btns button:hover {
+.header .btns a:hover {
   background-color: #ffd29f;
 }
 
-.header .btns button:active {
+.header .btns a:active {
   background-color: #ffb96a;
 }
 
-.header .btns button.selected {
+.header .btns a.selected {
   background-color: #fb8500;
 }
 
-.header .btns button.selected:hover {
+.header .btns a.selected:hover {
   background-color: #eb7d00;
 }
 
-.header .btns button.selected:active {
+.header .btns a.selected:active {
   background-color: #dd7600;
 }

@@ -5,19 +5,18 @@ import NotFoundPage from "./pages/not-found/not-found.component";
 import { useState } from "react";
 
 function App() {
-  const [pageId, setPageId] = useState(0);
-  
-  const changeNav = (pageId) => {
-    setPageId(pageId)
-  }
+  const pathname = window.location.pathname.replace('/', '');
+  console.debug(pathname)
+
+  let page = <NotFoundPage/>
+
+  if (pathname == 'add') page = <AddPage/>
+  else if (pathname == 'view') page = <ViewPage/>
 
   return (
-    <div style={{width: `100%`}}>
-      <Header pageId={pageId} changeNav={changeNav}/>
-      {
-        pageId == 0? <AddPage />
-        : (pageId == 1? <ViewPage /> : <NotFoundPage/>)
-      }
+    <div style={{ width: `100%` }}>
+      <Header/>
+      {page}
     </div>
   );
 }

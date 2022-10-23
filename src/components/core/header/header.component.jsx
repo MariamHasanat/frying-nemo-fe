@@ -2,7 +2,8 @@ import './header.css'
 import logo from './images/logo.png'
 import Timer from './timer/timer.component'
 
-const Header = ({pageId, changeNav}) => {
+const Header = () => {
+  const pathname = window.location.pathname.replace('/', '');
   return (
     <div class='header'>
       <div className='logo'>
@@ -11,9 +12,8 @@ const Header = ({pageId, changeNav}) => {
         <Timer></Timer>        
       </div>
       <div className='btns'>
-        <button className={pageId == 0 && `selected`} onClick={(() => changeNav(0))}>Add</button>
-        <button className={pageId == 1 && `selected`} onClick={(() => changeNav(1))}>View</button>
-        <button className={pageId == 2 && `selected`} onClick={(() => changeNav(2))}>404</button>
+        <a href='/add' className={pathname == 'add' && `selected`}>Add</a>
+        <a href='/view' className={pathname == 'view' && `selected`}>View</a>
       </div>
     </div>
   )

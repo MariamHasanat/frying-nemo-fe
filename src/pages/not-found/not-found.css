@@ -6,7 +6,14 @@
   width: 100%;
 }
 
-.not-found-page p {
-  font-size: 25px;
+.not-found-page .msg1 {
+  font-size: 40px;
+  font-weight: 600;
+  margin-top: -30px;
+}
+
+.not-found-page .msg2 {
+  font-size: 23px;
   font-weight: 500;
+  margin-top: -20px;
 }
