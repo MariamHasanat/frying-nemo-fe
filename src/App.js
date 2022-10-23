@@ -1,5 +1,4 @@
-import { useState } from "react";
-import Header from "./components/core/header/header.componet";
+import Header from "./components/core/header/header.component";
 import AddPage from "./pages/add/add.component";
 import ViewPage from "./pages/view/view.component";
 import NotFoundPage from "./pages/not-found/not-found.component";
