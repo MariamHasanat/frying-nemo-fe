@@ -26,7 +26,7 @@ const Item = (props) => {
         {/* instead of join you can use // map((ing, i) => ing + (i < props.data.ingredients.length - 1 ? ', ' : ' ')) */}
       </div>
       <div className="price">
-        <span>{props.data.price}$</span>
+        <span>${props.data.price}</span>
         <div className="add-cart">
           <button>+</button>
           <input type="number" max={500} />
