@@ -4,10 +4,7 @@ import Form from '../../add/form/form.component';
 
 const NotFoundPage = (props) => {
   return (
-    <div className='add-page'> 
-      <h1>Add a new item</h1>
-      <Form />
-    </div>
+    <div><h1>eeeeerrrrrrrrrrrerrororororororrrrrr</h1></div>
   );
 };
 

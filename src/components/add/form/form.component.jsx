@@ -26,11 +26,13 @@ const Form = (props) => {
     e.preventDefault();
 
     const description = e.target.description.value;
+    const image = e.target.image.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
 
     const menuItem = {
       name:name,
+      image:image,
       description:description,
       price:price,
       category:category,
@@ -74,6 +76,11 @@ const Form = (props) => {
           name='description'
           label="Description"
         />
+        <Input
+        label="Image"
+        name="image"
+        required
+      />
         <Input
           name='price'
           label="Price"
