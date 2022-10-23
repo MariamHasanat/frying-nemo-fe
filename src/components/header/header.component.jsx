@@ -20,7 +20,7 @@ const Header = props => {
           </a>
 
           <a href="/view">
-            View
+            View       
 
           </a>
 
