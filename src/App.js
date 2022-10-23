@@ -1,7 +1,6 @@
 /* never forget your friend (alt+shift+f) */
 
 // Here we import the components
-import { useState } from "react";
 import AddPage from "./pages/menuPageContainer/page.container";
 import Header from "./components/header/header.component";
 import ViewPage from "./pages/view/view.container";

@@ -36,7 +36,7 @@
   align-items: center;
 } */
 
-.webisteHeader .right nav button {
+.webisteHeader .right nav a {
   background: unset;
   border: unset;
   cursor: pointer;
@@ -45,15 +45,15 @@
   
 }
 
-.webisteHeader .right nav button:hover {
+.webisteHeader .right nav a:hover {
   text-shadow: -1px 2px 3px #777777;
 }
 
-.webisteHeader .right nav button:active {
+.webisteHeader .right nav a:active {
   text-shadow: -1px 2px 3px #333;
 }
 
-.webisteHeader .right nav button.current {
+.webisteHeader .right nav a.current {
   background-color: #be441d;
   border-radius: 5px;
   color: white;
