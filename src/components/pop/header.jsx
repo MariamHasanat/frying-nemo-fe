@@ -12,9 +12,11 @@ HAKONA MATATA
 </h1>
 </div>
 <div className="right">
-        <nav>
-          <button className={props.currentPage === 'add' ? 'current' : ''} onClick={() => props.onNavigate('add')}>Add</button>
-          <button className={props.currentPage === 'view' ? 'current' : ''} onClick={() => props.onNavigate('view')}>View</button>
+        <nav style={{  margin: "1rem" }}>
+          {/* <button className={props.currentPage === 'add' ? 'current' : ''} onClick={() => props.onNavigate('add')}>Add</button>
+          <button className={props.currentPage === 'view' ? 'current' : ''} onClick={() => props.onNavigate('view')}>View</button> */}
+          <a style={{padding:"1rem"}} href="./add">ADD</a>
+          <a href="./view">VIEW</a>
         </nav>
       </div>
 
