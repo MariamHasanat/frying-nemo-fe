@@ -26,7 +26,7 @@
 }
 
 .webisteHeader .right nav {
-  display: flex; 
+  display: flex;
 }
 
 .webisteHeader .right nav button {
@@ -52,27 +52,18 @@
   border-radius: 3px;
   color: white;
 }
-.add{
 
-  background: unset;
-  border: unset;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 9px 20px;
-  background-color: darkslategrey;
-  margin: 6px;
-  border-radius: 17px;
-  color: white;
+.add {
+
+  margin-right: 10px;
+  width: 50px;
+  height:50px;
+
 }
-.view{
 
-  background: unset;
-  border: unset;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 9px 20px;
-  background-color: darkslategrey;
-  margin: 6px;
-  color: white;
-  border-radius: 17px;
+.view {
+
+
+  width: 50px;
+  height:50px;
 }

@@ -3,23 +3,23 @@ import ViewPage from "./components/ViewPage/ViewPage";
 import NotFoundPage from "./components/notfound/NotFound ";
 import { useState } from "react";
 import Header from "./components/core/header/header.componet";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 function App() {
 
-  const pathename = window.location.pathname;
-  console.log("the path is :", pathename);
-
-  let page = null;
-
-  if (pathename === "/view") {
-    page = <ViewPage />;
-  }  else if (pathename === "/add") {
-    page = <AddPage />;
-  } else page = <NotFoundPage />;
 
   return (
     <div>
-      <Header />
-      <div className="flex"> <div>{page} </div></div>
+      <BrowserRouter>
+        <Header />
+        <div className="flex"> 
+        <Routes>
+            <Route path="/*" element={<NotFoundPage></NotFoundPage>}></Route>
+            <Route path="/add" element={<AddPage></AddPage>} ></Route>
+            <Route path="/view" element={<ViewPage></ViewPage>}></Route>
+        </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

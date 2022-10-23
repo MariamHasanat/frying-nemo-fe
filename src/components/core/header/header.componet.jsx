@@ -1,6 +1,6 @@
 import React from 'react';
 import './header.css';
-
+import { Link} from "react-router-dom"
 const Header = (props) => {
   return (
     <header className="webisteHeader">
@@ -11,14 +11,14 @@ const Header = (props) => {
       </div>
       <div className="right">
         <nav>
-          <a href='/add'>
+          <Link to="/add">
 
-            <img className='' src="https://th.bing.com/th/id/OIP.1TOk33fReQL3_tEO7VcKngHaHa?pid=ImgDet&w=159&h=159&c=7"></img>
-          </a>
+            <img className='add' src="https://th.bing.com/th/id/OIP.1TOk33fReQL3_tEO7VcKngHaHa?pid=ImgDet&w=159&h=159&c=7"></img>
+          </Link>
        
-          <a href='/view'>
-            <img src='https://th.bing.com/th/id/OIP.3XkYPHZ4zrcvQuJjfjY0cAAAAA?pid=ImgDet&w=150&h=150&c=7'></img>
-          </a>
+          <Link to="/view">
+            <img  className='view'src='https://th.bing.com/th/id/OIP.3XkYPHZ4zrcvQuJjfjY0cAAAAA?pid=ImgDet&w=150&h=150&c=7'></img>
+          </Link>
         </nav>
       </div>
     </header>
