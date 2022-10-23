@@ -1,10 +1,11 @@
-import './header.css';
+import { useEffect, useState } from "react";
+import "./header.css";
 
 const Header = (props) => {
   return (
-    <div className='main-class'>
-      <div className='logo'>
-        <img src={process.env.PUBLIC_URL + '/logo.png'} alt="" width={70} />
+    <div className="main-class">
+      <div className="logo">
+        <img src={process.env.PUBLIC_URL + "/logo.png"} alt="" width={70} />
         <p>Frying Nemo</p>
       </div>
       <div className="right">
