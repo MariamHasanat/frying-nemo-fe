@@ -17,7 +17,7 @@ const AddPage = (props) => {
       clearInterval(timer);
     };
   }, []);
-
+  
   const updateTime = () => {
     console.log("updateTime is executing");
     setTime(new Date());
