@@ -1,5 +1,6 @@
 import React from 'react';
 import './header.css';
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
   return (
@@ -12,19 +13,9 @@ const Header = (props) => {
       </div>
       <div className="right">
         <nav>
-          <button
-            className={props.currentPage === 'add' ? 'current' : ''}
-            onClick={() => props.onNavigate('add')}
-          >
-            Add
-          </button>
-          <button
-            className={props.currentPage === 'view' ? 'current' : ''}
-            onClick={() => props.onNavigate('view')}
-          >
-            View
-          </button>
-        </nav>
+          <Link to="/add">Add</Link>
+          <Link to="/view">View</Link>
+         </nav>
       </div>
     </header>
   );
