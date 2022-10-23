@@ -13,10 +13,10 @@ const Header = props => {
 
       </div>
       <div className='right'>
-        <a className='add-button' href='add'>
+        <a className='add-button' href='/add'>
           Add
         </a>
-        <a className='view-button'href='view'>
+        <a className='view-button'href='/view'>
           View
         </a>
       </div>
