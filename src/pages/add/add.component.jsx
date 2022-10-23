@@ -5,7 +5,9 @@ import Form from '../../components/add/form/form.component';
 const AddPage = (props) => {
   const [time, Settime] = useState(new Date())
 
- 
+
+
+
   useEffect(() => {
 
   const timer=setInterval(Updatetime , 1000)
@@ -23,8 +25,8 @@ return ()=>(
    } };
 
   return (
-    <div>
-      <span className='clock'>{time.toLocaleTimeString()}</span>
+    <div className="mydiv1" >
+      <span className='clock'>&#9200;{time.toLocaleTimeString()}</span>
       <Form onNavigate={props.onNavigate} />
     </div>
   );

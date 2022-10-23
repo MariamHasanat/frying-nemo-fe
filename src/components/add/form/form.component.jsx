@@ -70,6 +70,7 @@ const Form = (props) => {
           required
 
         />
+        <br />
         <Input
           label="Price"
           type='number'

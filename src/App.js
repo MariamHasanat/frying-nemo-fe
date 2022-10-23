@@ -5,23 +5,21 @@ import { useState } from "react";
 import Header from "./components/core/header/header.componet";
 function App() {
 
-  const [currentPage, setCurrentPage] = useState('Add');
+  const pathename = window.location.pathname;
+  console.log("the path is :", pathename);
 
-  const changePage = (newPage) => {
-    setCurrentPage(newPage);
-  };
+  let page = null;
+
+  if (pathename === "/view") {
+    page = <ViewPage />;
+  }  else if (pathename === "/add") {
+    page = <AddPage />;
+  } else page = <NotFoundPage />;
 
   return (
     <div>
-     <Header onNavigate={changePage}></Header>
-      <div className="flex">
-        <div className="mydiv">
-        {currentPage === 'Add' && <AddPage onNavigate={changePage} />}
-      {currentPage === 'View' && <ViewPage />}
-      {currentPage === '404' && <NotFoundPage />}
-
-        </div>
-      </div>
+      <Header />
+      <div className="flex"> <div>{page} </div></div>
     </div>
   );
 }

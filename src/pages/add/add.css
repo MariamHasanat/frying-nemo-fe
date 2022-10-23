@@ -1,5 +1,6 @@
 .add-page {
   padding: 30px 20px;
+  
 }
 .clock{
 
@@ -8,4 +9,14 @@
   border-radius: 10px;
   box-shadow: 1px 4px 7px 2px #000000;
   color: #1cc49d;
+}
+
+.mydiv1{
+  background-color: #000000b0;
+  border-radius: 30px;
+  height: 84%;
+  padding: 30px;
+  width: 525px;
+  margin-top: 20px;
+  box-shadow: 2px 11px 9px 0px #1a403d;
 }

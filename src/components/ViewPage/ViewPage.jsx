@@ -30,7 +30,7 @@ const ViewPage = (props) => {
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
-
+<br />
       {loading
         ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
         : <div className="items-container">
