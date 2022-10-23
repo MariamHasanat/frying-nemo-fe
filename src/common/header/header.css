@@ -1,4 +1,4 @@
-.webisteHeader {
+.websiteHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -6,7 +6,7 @@
   border-bottom: 1px solid #ddd;
 }
 
-.webisteHeader>.left>h1 {
+.websiteHeader>.left>h1 {
   font-size: 18px;
   color: #627cd1;
   line-height: 1.2;
@@ -18,17 +18,17 @@
 }
 
 
-.webisteHeader>.left>h1>img {
+.websiteHeader>.left>h1>img {
   height: 35px;
   width: auto;
   margin-right: 5px;
 }
 
-.webisteHeader .right nav {
+.websiteHeader .right nav {
   display: flex;
 }
 
-.webisteHeader .right nav button {
+.websiteHeader .right nav a {
   background: unset;
   border: unset;
   cursor: pointer;
@@ -36,15 +36,15 @@
   padding: 9px 20px;
 }
 
-.webisteHeader .right nav button:hover {
+.websiteHeader .right nav a:hover {
   text-shadow: -1px 2px 3px #777777;
 }
 
-.webisteHeader .right nav button:active {
+.websiteHeader .right nav a:active {
   text-shadow: -1px 2px 3px #333;
 }
 
-.webisteHeader .right nav button.current {
+.websiteHeader .right nav a.current {
   background-color: #3d7ed3;
   border-radius: 5px;
   color: white;
