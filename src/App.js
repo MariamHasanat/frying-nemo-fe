@@ -5,23 +5,22 @@ import '../src/pages/add/add.component';
 import AddPage from "../src/pages/add/add.component";
 import Test from "./pages/test/test.component";
 function App() {
-  const [currentPage, setCurrentPage] = useState('test');
 
-  const changePage = (newPage) => {
-    setCurrentPage(newPage);
-  };
+  const pathName = window.location.pathname;
+
+  let page = null;
+  if (pathName === '/view') {
+    page = <View />;
+  } else if (pathName === '/add') {
+    page = <AddPage />;
+  } else {
+    page = <Test />;
+  }
 
   return (
     <div>
-      <Header onNavigate={changePage} currentPage={currentPage} />
-
-      {
-        currentPage === 'test' && <Test />
-      }
-      {
-        currentPage === 'add' && <AddPage />
-      }
-
+      <Header />
+      {page}
 
 
     </div>

@@ -18,17 +18,14 @@ const Header = (props) => {
       <div className='header-navigation-buttons'>
         <nav>
 
-          <button
-            className={props.currentPage === 'add' ? 'current-page' : ''}
-            onClick={e => { props.onNavigate('add'); }}>
+          <a href='/add'>
             Add
-          </button>
+          </a>
 
-          <button
-            className={props.currentPage === 'view' ? 'current-page' : ''}
-            onClick={e => { props.onNavigate('view'); }}>
+          <a href='/view'>
+
             View
-          </button>
+          </a>
 
         </nav>
       </div>

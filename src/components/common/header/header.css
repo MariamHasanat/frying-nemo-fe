@@ -26,13 +26,13 @@
 }
 
 
-.header-navigation-buttons>nav>button {
+.header-navigation-buttons>nav>a {
   border: none;
   font-size: larger;
   background-color: transparent;
 }
 
-.header-navigation-buttons>nav>button:hover {
+.header-navigation-as>nav>a:hover {
   cursor: pointer;
 }
 
