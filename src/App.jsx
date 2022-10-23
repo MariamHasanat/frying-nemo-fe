@@ -2,21 +2,22 @@ import AddPage from "./pages/add/add.component";
 import Header from "./components/core/header/header.component";
 import ViewPage from "./pages/view/view.component";
 import NotFoundPage from "./pages/not-found/not-found.component";
-import { useState } from "react";
+import { BrowserRouter, Routes, Route  } from "react-router-dom";
 
 function App() {
   const pathname = window.location.pathname.replace('/', '');
   console.debug(pathname)
 
-  let page = <NotFoundPage/>
-
-  if (pathname == 'add') page = <AddPage/>
-  else if (pathname == 'view') page = <ViewPage/>
-
   return (
     <div style={{ width: `100%` }}>
-      <Header/>
-      {page}
+    <Header/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/add" element={<AddPage/>}/>
+          <Route path="/view" element={<ViewPage/>}/>
+          <Route path="/*" element={<NotFoundPage/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
