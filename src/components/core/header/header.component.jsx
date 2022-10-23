@@ -1,12 +1,6 @@
 import React from 'react';
 import './header.css';
-
-/**
- * 
- * @param {React.DetailedHTMLProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement> & {text:string;}} props 
- * @returns 
- */
-
+import {Link} from 'react-router-dom' 
 const Header = (props) => {
     return (
         <div>
@@ -15,8 +9,8 @@ const Header = (props) => {
                 <img src='images/nemo.png' alt='logo' width={100} />
                 {props.text ? <span>{props.text}</span> : null}
                 <span>
-                    <a href="/add" className='nemo-button'>add</a>
-                    <a href="/view" className='nemo-button'>view</a>
+                    <Link to="/add" className='nemo-button'>add</Link>
+                    <Link to="/view" className='nemo-button'>view</Link>
                 </span>
             </div>
             <hr />
