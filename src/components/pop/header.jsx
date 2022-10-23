@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './header.css';
 const Head =(props)=>{
 
@@ -12,9 +13,11 @@ HAKONA MATATA
 </h1>
 </div>
 <div className="right">
-        <nav>
-          <button className={props.currentPage === 'add' ? 'current' : ''} onClick={() => props.onNavigate('add')}>Add</button>
-          <button className={props.currentPage === 'view' ? 'current' : ''} onClick={() => props.onNavigate('view')}>View</button>
+        <nav style={{  margin: "1rem" }}>
+          {/* <button className={props.currentPage === 'add' ? 'current' : ''} onClick={() => props.onNavigate('add')}>Add</button>
+          <button className={props.currentPage === 'view' ? 'current' : ''} onClick={() => props.onNavigate('view')}>View</button> */}
+          <Link style={{padding:"1rem"}} to="./add">ADD</Link>
+          <Link to="./view">VIEW</Link>
         </nav>
       </div>
 
