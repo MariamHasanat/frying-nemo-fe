@@ -18,7 +18,8 @@ const Item = (props) => {
   return (
     <div className="item-card">
       <div className="img">
-        <img src="https://picsum.photos/200" />
+      
+        <img src={props.data.image} alt="food" />
       </div>
       <div className="info">
         <h2>{props.data.name}</h2>

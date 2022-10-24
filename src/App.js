@@ -1,7 +1,8 @@
 
 
-import Header from "./components/core/header/header.component";
+
 import AddPage from "./pages/add/add.component";
+import Header from "./components/core/header/header.component";
 import ViewPage from "./pages/add/view/view.component";
 import NotFound from "./pages/add/not-found/not-found.component";
 import { BrowserRouter, Route, Routes } from 'react-router-dom'

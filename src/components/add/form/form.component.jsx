@@ -19,13 +19,15 @@ const Form = (props) => {
     const description = e.target.description.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
+    const image = e.target.image.value;
 
     const menuItem = {
       name: name,
       description: description,
       price: price,
       category: category,
-      ingredients: ingredients
+      ingredients: ingredients,
+      image : image
     };
 
     const itemsJson = localStorage.getItem('menuItems');
@@ -82,6 +84,7 @@ const Form = (props) => {
       />
       <Input
         label="img"
+        name='image'
        
       
       />
