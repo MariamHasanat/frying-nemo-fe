@@ -1,8 +1,9 @@
 import AddPage from "./pages/add/add.component";
 import ViewPage from "./common/view/view.component";
 import Header from './common/header/header.component';
-import NotFoundPage from "./pages/add/not-found";
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import NotFoundPage from "./pages/add/not_found/not-found";
 
 function App() {
   // const [currentPage,setCurrentPage]=useState('add');
@@ -26,7 +27,7 @@ function App() {
         <Routes>
           <Route path="/add/*" element={<AddPage />} />
           <Route path="/view" element={<ViewPage />} />
-          <Route path="/*" element={<NotFoundPage />} />
+          <Route path="/*" element={ <NotFoundPage/>} />
         </Routes>
       </BrowserRouter>
     </div>
