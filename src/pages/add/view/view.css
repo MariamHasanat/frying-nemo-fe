@@ -8,3 +8,6 @@
   flex-wrap: wrap;
   gap:30px;
 }
+.view-page .input-group{
+  margin: 6px;
+}

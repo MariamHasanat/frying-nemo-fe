@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Input from '../../common/input/input';
 import Multiinput from '../../common/maltiinput-value/multiinput';
 import Select from '../../common/select/select';
@@ -8,6 +9,7 @@ import './form.css';
 const Form = (props) => {
   const [ingredients, setIngredients] = useState([]);
   const [name, setname] = useState('Sajeda');
+  const navigate = useNavigate();
   /**
    * 
    * @param {React.FormEvent<HTMLFormElement>} e 
@@ -34,7 +36,7 @@ const Form = (props) => {
     items.push(menuItem);
     localStorage.setItem('menuItem', JSON.stringify(items));
 
-    props.onNavigate('view');
+    navigate("/View")
   };
   const onNameChange = (e) => {
     let value = e.target.value;
