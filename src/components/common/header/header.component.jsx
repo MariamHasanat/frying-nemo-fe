@@ -1,5 +1,6 @@
 import "./header.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Header = (props) => {
   return (
@@ -16,7 +17,7 @@ const Header = (props) => {
               window.location.pathname === "/"
                 ? "active-nav-btn"
                 : "nav-btn"
-            }
+                }
             to="/add"
           >
             Add
@@ -26,7 +27,7 @@ const Header = (props) => {
               window.location.pathname === "/view"
                 ? "active-nav-btn"
                 : "nav-btn"
-            }
+              }
             to="/view"
           >
             View
