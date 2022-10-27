@@ -4,8 +4,10 @@ import Input from '../../common/input/input.component';
 import Textarea from '../../common/textarea/textarea.component';
 import Select from '../../common/select/select.component';
 import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
+import { useNavigate } from 'react-router-dom';
 
 const Form = (props) => {
+  const navigate = useNavigate();
 
   const [name, setName] = useState('abd');
   const [ingredients, setNewIngredients] = useState([]);
@@ -19,7 +21,7 @@ const Form = (props) => {
     const description = e.target.description.value;
     const category = e.target.category.value;
     const price = Number(e.target.price.value);
-    const imageUrl = Number(e.target.image.value);
+    const imageUrl = e.target.image.value;
 
     const menuItem = {
       name: name,
@@ -43,6 +45,9 @@ const Form = (props) => {
      */
     const target = e.target;
     console.log("menu item: ", menuItem);
+    navigate('/view');
+
+    console.log("image: " + menuItem.image);
 
   };
 
