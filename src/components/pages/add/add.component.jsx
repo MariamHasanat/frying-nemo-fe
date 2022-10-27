@@ -2,16 +2,11 @@ import './add.css';
 
 import Form from '../../add/form/form.component';
 import { useEffect, useState } from 'react';
-<<<<<<< HEAD
 
 
 
 const AddPage = (props) => {
 
-=======
-
-const AddPage = (props) => {
->>>>>>> 0e51ec02ae3b40fcdb14c892a3f68a9748699c44
   const [time, setTime] = useState(new Date());
   useEffect(() => {
     const timer = setInterval(updateTime, 1000);
