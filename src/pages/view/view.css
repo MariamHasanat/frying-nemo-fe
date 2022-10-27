@@ -12,3 +12,7 @@
     margin: 20px;
     display: inline-block;
 }
+
+.view-page>.input-group{
+    margin-left: 80px;
+}
