@@ -6,7 +6,7 @@ import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 
 const Form = (props) => {
-  const [name, setName] = useState('Moayed');
+  const [name, setName] = useState('Sajeda');
   const [ingredients, setIngredients] = useState([]);
 
   /**
