@@ -12,11 +12,11 @@ h1{
 .clock{
   position: fixed;
   right: 20px;
-  bottom: 50px;
+  bottom: 66px;
   background-color: #a44a2a33;
   padding: 6px 18px;
   border-radius: 19px 36px;
 }
 .add-page span{
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }

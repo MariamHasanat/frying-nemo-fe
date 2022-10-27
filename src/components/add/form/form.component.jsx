@@ -4,6 +4,7 @@ import Textarea from '../../common/textarea/textarea-component';
 import Select from '../../common/select/select-component';
 import MultiValuInput from '../../common/multivalue-input/input-component';
 import './form.css';
+import { useNavigate } from 'react-router-dom';
 
 
 const categories = [
@@ -21,6 +22,8 @@ const Form = (props) => {
 
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState([]);
+  const navigate = useNavigate();
+
   /**
    * 
    * @param {React.FormEvent<HTMLFormElement>} e Event Object. 
@@ -47,13 +50,13 @@ const Form = (props) => {
     const itemsJson = localStorage.getItem('menuItems') || '[]'; // local storage take string 
     const items = JSON.parse(itemsJson); // convert string to javascript object
 
-    
+
 
     items.push(menuItems);
 
     localStorage.setItem('menuItems', JSON.stringify(items)); // convert javascript object to string
 
-    props.onNavigate('view');
+    navigate('/view')
   };
 
   const onNameChange = e => {
