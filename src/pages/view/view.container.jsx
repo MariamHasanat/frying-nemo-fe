@@ -6,12 +6,25 @@ import Input from '../../components/common/input.jsx';
 const getMenuItem = () => JSON.parse(localStorage.menuItems || '[]');
 
 const ViewPage = (props) => {
+  /**
+   * @type {Array<{
+   * name: string;
+   * description: string;
+   * ingredients: string[];
+   * price: number;
+   * category: string;
+   * image: string;
+   * }>}
+   */
 
   const [menuItems] = useState(getMenuItem());
   const [searchTerm, setSearchTerm] = useState('');
 
 
   const filteredItem = menuItems.filter(item => {
+
+    
+    
     return item.name.toLowerCase().includes(searchTerm.toLowerCase().trim());
   }
   );
