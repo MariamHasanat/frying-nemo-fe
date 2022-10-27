@@ -4,6 +4,7 @@ import Textarea from '../../textarea/textarea/textarea.component';
 import './form.css';
 import Select from '../../select/select.component';
 import MultivalueInput from '../../multivalue-input/multivalue-input.component';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const categories = [
   'fish',
@@ -17,6 +18,7 @@ const categories = [
 const Form = (props) => {
   const [name, setName] = useState('Huda');
   const [ingredients, setIngredients] = useState([]);
+  const Navigate = useNavigate();
 
   /**
    * Handler function for the form onSubmit event.
@@ -46,7 +48,7 @@ const Form = (props) => {
     items.push(menuItem);
     localStorage.setItem('menuItem', JSON.stringify(items))
 
-    props.onNavigate('view');
+    Navigate('/view');
 
     /**
      * @type {HTMLFormElement}
@@ -81,11 +83,6 @@ const Form = (props) => {
           name='description'
           label="Description"
         />
-        <Input
-        label="Image"
-        name="image"
-        required
-      />
         <Input
           name='price'
           label="Price"

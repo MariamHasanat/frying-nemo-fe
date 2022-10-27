@@ -8,3 +8,14 @@
   gap: 30px;
 
 }
+
+.NFimg{
+  padding-left: 70%;
+}
+
+.NFtext{
+  padding-left: 95%;
+  width: 55%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(109, 107, 107);
+}
