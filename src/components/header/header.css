@@ -29,12 +29,14 @@
 
 .webisteHeader .right nav {
   display: flex;
+
+
 }
-/* .webisteHeadert  {
+.webisteHeadert  {
   display: flex;
   justify-content: space-between;
   align-items: center;
-} */
+}
 
 .webisteHeader .right nav a {
   background: unset;

@@ -10,7 +10,7 @@ const Header = props => {
           Frying Nemo
         </h1>
       </div>
-      <div className="right">
+      <div className="right" >
         <nav>
           <Link to='/add'>Add</Link>
           <Link to='/view'>View</Link>
