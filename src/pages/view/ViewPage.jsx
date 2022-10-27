@@ -14,7 +14,8 @@ const ViewPage = (props) => {
     
     // Run the code inside after 1000 milliseconds (1 Second)
     setTimeout(() => {
-      const items = JSON.parse(localStorage.menuItems || '[]');
+      const items = JSON.parse(localStorage.getItem('menuItem') || '[]');
+      console.log("items  ", localStorage.menuItem)
       setMenuItems(items);
       setLoading(false);
     }, 1000);
@@ -32,7 +33,7 @@ const ViewPage = (props) => {
         {
           menuItems.map((item, index) => <Card data={item} key={item.name + index}/>)
         }
-       { console.log("fkjhdakj "+ loading)}
+     
       </div>
       }
     </div>

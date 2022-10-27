@@ -4,10 +4,12 @@ import Input from '../../../common/input/input.component';
 import Textarea from '../../../common/textarea/textarea.component';
 import Select from '../../../common/Select/Select';
 import MultivalueInput from '../../../common/multivalue-input/multivalue-input.component';
+import { useNavigate } from 'react-router-dom';
 
 const Form = (props) => {
   const [name, setName] = useState('dala');
   const [ingredients, setIngredients] = useState([]);
+  const navigate = useNavigate();
   /**
    * Handles on change events on the name field.
    * @param {React.ChangeEvent<HTMLInputElement>} e On change event object.
@@ -42,7 +44,7 @@ const Form = (props) => {
     items.push(menuItem);
     localStorage.setItem('menuItem' , JSON.stringify(items));
 
-    props.onNavigate('view');
+   navigate('/view');
   };
   
   const onNamechange = e => {
