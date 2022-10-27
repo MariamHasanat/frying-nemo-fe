@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Spinner from '../../components/core/spinner/spinner.component';
 import Item from '../../components/view/item/item.component';
 import './view.css';
+import Input from '../../components/common/input/input.component';
 
 
 const ViewPage = (props) => {
@@ -10,6 +11,7 @@ const ViewPage = (props) => {
    */
   const [menuItems, setMenuItems] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [searchTerms, setSearchTerms] = useState('');
 
   const getMenuItems = () => {
     setLoading(true);
@@ -25,16 +27,33 @@ const ViewPage = (props) => {
   useEffect(() => {
     getMenuItems();
   }, []);
+  console.debug('searchTerms', searchTerms);
 
+  const filteredItems = menuItems.filter(item => {
+    const doesItMatch = str => str.toLowerCase().includes(searchTerms.toLocaleLowerCase().trim());
+
+    const match = (
+      doesItMatch(item.name) ||
+      doesItMatch(item.description) ||
+      item.ingredients.some(ingredient => doesItMatch(ingredient))
+    );
+    return match;
+
+  });
+  console.log('menuItems', menuItems, 'filteredItems', filteredItems);
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
-
+      <Input
+        type='search'
+        value={searchTerms}
+        onChange={e => setSearchTerms(e.target.value)}
+        placeholder='search' />
       {loading
         ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
         : <div className="items-container">
           {
-            menuItems.map((item, index) => <Item data={item} key={item.name + index} />)
+            filteredItems.map((item, index) => <Item data={item} key={item.name + index} />)
           }
         </div>
       }
