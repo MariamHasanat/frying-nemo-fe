@@ -12,6 +12,7 @@ const ViewPage = (props) => {
     else if (selectedType == 2 && category == 'shisha') return true;
     else if (selectedType == 3 && category == 'drink') return true;
     else if (selectedType == 4 && category == 'chicken') return true;
+    else if (selectedType == 5 && category == 'salad') return true;
   }
 
   const capitalizeFirstLetter = (str) => {
@@ -32,6 +33,8 @@ const ViewPage = (props) => {
         <p className={selectedType == 3? `selected` : ``} onClick={() => {setSelectedType(3)}}>Drink</p>
         <p>•</p>
         <p className={selectedType == 4? `selected` : ``} onClick={() => {setSelectedType(4)}}>Chicken</p>
+        <p>•</p>
+        <p className={selectedType == 5? `selected` : ``} onClick={() => {setSelectedType(5)}}>Salad</p>
       </div>
       <div className='cards'>
         {

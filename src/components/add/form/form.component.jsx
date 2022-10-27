@@ -5,8 +5,12 @@ import Button from '../common/button/button.component';
 import Textarea from '../common/textarea/textarea.component';
 import Select from '../common/select/select.component';
 import MultivalueInput from '../common/multivalue-input/multivalue-input.component';
+import { useNavigate } from 'react-router-dom';
 
 const Form = (props) => {
+
+  const navigate = useNavigate();
+
   const [name, setName] = useState(``)
   let ings = [] // Ingredients
   const updateIngs = (newIngs) => {
@@ -18,6 +22,7 @@ const Form = (props) => {
       e.target.reset();
       setName('')
       updateIngs([])
+      navigate('/view')
     }
     
     e.preventDefault();
@@ -66,7 +71,7 @@ const Form = (props) => {
         <Textarea name='description' label="Description" ></Textarea>
         <Input name="price" label="Price" type="number" required></Input>
         <Input name="image" label="Image" type="text" required></Input>
-        <Select name='category' items={[`Fish`, `Shisha`, `Drink`, `Chicken`]} required></Select>
+        <Select name='category' items={[`Fish`, `Shisha`, `Drink`, `Chicken`, `Salad`]} required></Select>
         <MultivalueInput onChange={updateIngs} name='ingredients' label='Ingredients'/>
         <Button name="SUBMIT" type="submit"></Button>
       </div>

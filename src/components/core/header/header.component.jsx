@@ -1,4 +1,3 @@
-import { BrowserRouter, Link } from 'react-router-dom';
 import './header.css'
 import logo from './images/logo.png'
 import Timer from './timer/timer.component'
@@ -10,7 +9,7 @@ const Header = () => {
       <div className='logo'>
         <img src={logo} alt="Logo" />
         <p>FRYING NEMO</p>
-        <Timer></Timer>        
+        <Timer></Timer>
       </div>
       <div className='btns'>
         <a href='/add' className={pathname == 'add' && `selected`}>Add</a>
