@@ -18,7 +18,7 @@ const Card = ({itemName, itemCategory, itemPrice, itemDescription, itemIngredien
 
   return (
     <div className='card-wrapper' onLoad={(e) => {setTimeout(() => {
-      console.log(e.target.offsetParent.style.opacity = 1)
+      e.target.offsetParent.style.opacity = 1
     }, 50*i);}}>
       <img src={image} alt="" />
       <div className='info'>

@@ -25,15 +25,32 @@
   margin-top: -20px;
 }
 
-.view-page > .selector {
+.view-page .view-header {
   display: flex;
+  align-items: center;
 }
 
-.view-page > .selector p {
+.view-page .selector {
+  display: flex;
+  margin-right: -500px;
+}
+
+.view-page .input-group {
+  position: relative;
+  left: 430px;
+  margin-left: 250px;
+}
+
+.view-page .selector p {
   font-size: 20px;
   padding-right: 13px;
   cursor: pointer;
 }
-.view-page > .selector p.selected {
+.view-page .selector p.selected {
   color: orange;
+}
+
+.cards .none {
+  margin-top: 200px;
+  font-size: 30px;
 }
