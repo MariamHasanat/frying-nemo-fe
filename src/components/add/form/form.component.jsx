@@ -22,7 +22,7 @@ const Form = (props) => {
      * @type {HTMLformElement}
      */
 
-     const description = e.target.description;
+     const description = e.target.description.value;
     // const image = e.target.image.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
@@ -96,8 +96,8 @@ const Form = (props) => {
         />
 
         <Textarea
-          name="describtion"
-          label="Describtion"
+          name="description"
+          label="Description"
           // value={props.description}
         />
         <Select 

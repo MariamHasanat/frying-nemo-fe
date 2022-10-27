@@ -4,7 +4,7 @@ import './card.css'
 /**
  * @param {{
  *   data: {
- *   describtion : String ,
+ *   description : String ,
  *   price : number ,
  *   name : String ,
  *   ingredients : String[] ,
@@ -21,7 +21,7 @@ const Card = (props) => {
         </div>
       <div className="inf">
         <h2>{props.data.name}</h2>
-        <p>{props.data.describtion}</p>
+        <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients}</p>
       </div>
 
