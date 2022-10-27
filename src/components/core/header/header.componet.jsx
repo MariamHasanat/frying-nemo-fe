@@ -10,7 +10,8 @@ const Header = (props) => {
         </h1>
       </div>
       <div className="right">
-        <nav>
+    {  <nav>
+        
           <Link to="/add">
 
             <img className='add' src="https://th.bing.com/th/id/OIP.1TOk33fReQL3_tEO7VcKngHaHa?pid=ImgDet&w=159&h=159&c=7"></img>
@@ -19,7 +20,7 @@ const Header = (props) => {
           <Link to="/view">
             <img  className='view'src='https://th.bing.com/th/id/OIP.3XkYPHZ4zrcvQuJjfjY0cAAAAA?pid=ImgDet&w=150&h=150&c=7'></img>
           </Link>
-        </nav>
+        </nav>}
       </div>
     </header>
   );

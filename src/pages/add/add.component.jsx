@@ -27,7 +27,7 @@ return ()=>(
   return (
     <div className="mydiv1" >
       <span className='clock'>&#9200;{time.toLocaleTimeString()}</span>
-      <Form onNavigate={props.onNavigate} />
+      <Form  />
     </div>
   );
 };
