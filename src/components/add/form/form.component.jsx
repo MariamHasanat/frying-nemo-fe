@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Input from '../../common/input/input.component';
 import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
@@ -8,6 +9,7 @@ import './form.css';
 const Form = (props) => {
   const [name, setName] = useState('ali');
   const [ingredients, setIngredients] = useState([]);
+  const navigate = useNavigate();
   /**
    * Handler function for the form onSubmit event.
    * @param {React.FormEvent<HTMLFormElement>} e Event object.
@@ -47,14 +49,14 @@ const Form = (props) => {
       image,
       category,
       ingredients
-    };
+    };  
     
     const itemsJSON = localStorage.getItem('menuItems') || "[]";
     const items = JSON.parse(itemsJSON);
     items.push(menuItem); 
    
     localStorage.setItem('menuItems', JSON.stringify(items));
-    props.onNavigate('view');
+   navigate("/view");         
     /**
      * @type {HTMLFormElement}
      */

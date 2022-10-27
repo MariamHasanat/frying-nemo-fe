@@ -44,8 +44,8 @@
 .right button:active{
   text-shadow: -1px 2px 3px rgb(102, 101, 101);
 }
-.right > button.current {
-  background-color: #f17f59;
+.right > a {
+  background-color: #ffb397;
   border-radius: 5px;
   color: white;
 }

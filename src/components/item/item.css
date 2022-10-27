@@ -3,9 +3,9 @@
   gap: 20px;
   flex-wrap: wrap;
   flex-direction: column;
-  border-radius: 5px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 2px 2px 2px 2px #f0f5f0;
+  box-shadow: 2px 2px 2px 2px #faf4ee;
   max-width: 300px;
 }
 
