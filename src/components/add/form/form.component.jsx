@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Input from '../../common/input/input.component';
 import MultivalueInput from '../../common/multivalue-input/multivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
@@ -9,14 +9,13 @@ import './form.css';
 const Form = (props) => {
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState([]);
-  
+  const navigate = useNavigate() ;
   /*
    * calls JSDoc
    * @param {React.ChangeEvent<HTMLInputElement>} e   //Event object
    */
   const handle = e => {
     e.preventDefault();
-    // Navigate ('/view') ;
     console.debug(name);
     console.log('Form Submitted');
     const price = e.target.price.value;
@@ -28,8 +27,8 @@ const Form = (props) => {
       price: price,
       discription: discription,
       catigory: catigory,
-      ingredients: ingredients , 
-      image : image
+      ingredients: ingredients,
+      image: image
     };
     const itemsJson = localStorage.getItem('menuItems') || '[]';
     const items = JSON.parse(itemsJson);
@@ -38,6 +37,7 @@ const Form = (props) => {
     console.log("after", items);
     localStorage.setItem('menuItems', JSON.stringify(items));
     props.onAdd(menueItem);
+    navigate ('/view') ;   // to change url without link , without needing to render it as a link component
   };
   /**
    * 
@@ -59,7 +59,7 @@ const Form = (props) => {
   };
   const catigories = ["Salads", "Main Dishes", "Drinks", "Sweets"];
   return (
-    <form className='addForm' onSubmit={handle} action = '/view'>
+    <form className='addForm' onSubmit={handle} action='/view'>
       <Input
         className='input-group'
         label="Name"
@@ -72,7 +72,7 @@ const Form = (props) => {
         label="Discription"
         className='textarea-group'
       />
-      <Input label='Enter image link' type="text" name = "image" />
+      <Input label='Enter image link' type="text" name="image" />
       <Input
         className='input-group'
         type="number"
@@ -93,22 +93,13 @@ const Form = (props) => {
         onChange={item => setIngredients(item)}
         value={ingredients}
       />
-
-      {/* <Select label='Select' required>
-        <option value="salad">Salads</option>
-        <option value="salad">Main Dishes</option>
-        <option value="salad">Drinks</option>
-        <option value="salad">Sweets</option>
-      </Select> */}
       <div className='addFormButtons'>
-            <button
-              type='submit'
-              className='formComp nemo-button'
-            >
-              Creat
-              {/* <Link to = "/view"> Creat</Link> */}
-              {/* <a href='/view'> Create </a> */}
-            </button>
+        <button
+          type='submit'
+          className='formComp nemo-button'
+        >
+          Create
+        </button>
       </div>
     </form>
   );
