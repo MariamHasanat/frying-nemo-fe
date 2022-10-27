@@ -3,11 +3,14 @@ import Input from '../../common/input/input.component';
 import MultivalueInput from '../../common/multivalue-input/mulitvalue-input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
+import { useNavigate, useParams } from "react-router-dom";
 import './form.css';
+
 
 const Form = (props) => {
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState([]);
+  const navigate = useNavigate();
 
   /**
    * Handler function for the form onSubmit event.
@@ -36,7 +39,11 @@ const Form = (props) => {
     items.push(menuItem);
 
     localStorage.setItem('menuItems', JSON.stringify(items))
+    navigate('/view'); 
+
   };
+
+  
 
   /**
    * Handles on change events on the name field.

@@ -52,6 +52,11 @@
   
 }
 
+ 
+.websiteHeader >.left > .add-button{
+  text-decoration: none;
+}
+
 
   .websiteHeader >.right > .add-button:hover, .websiteHeader >.right > .view-button:hover{
     cursor: pointer;

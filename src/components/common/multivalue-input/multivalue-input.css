@@ -45,3 +45,28 @@
   font-size: 15px;
   cursor: pointer;
 }
+
+.btn{
+  border-radius: 7px;
+  border: 0.01em whitesmoke solid;
+  margin-left: 2px;
+  padding: 5px;
+  background-color: #CDC4EA;
+  width: 50px;
+  height: 30px;
+  transition: height,width, 1s;
+}
+
+.btn:hover{
+  border: 0.01em solid teal;
+  color: cadetblue;
+  cursor: pointer;
+  width: 15%;
+  height: 32px;
+}
+
+
+/* .controls> :nth-child(2){
+    height: 32px;
+} */
+
