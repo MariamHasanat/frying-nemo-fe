@@ -4,10 +4,12 @@ import Input from '../../../common/input/input.component';
 import Textarea from '../../../common/textarea/textarea.component';
 import Select from '../../../common/select/select.component';
 import MultivalueInput from '../../../common/Multivalue-input/multivalue-input.component';
+import { useNavigate } from 'react-router-dom';
 
 const Form = (props) => {
   const [name, setName] = useState('Nadeen');
   const [ingredients, setIngredients] = useState([]);
+  const navigate = useNavigate();
   /**
    * 
    * @param {React.FormEvent<HTMLFormElement>} e 
@@ -35,8 +37,7 @@ const Form = (props) => {
 
     localStorage.setItem('menuItems', JSON.stringify(items));
 
-
-    props.onNavigate('view');
+    navigate("/view");
 
 
   };
