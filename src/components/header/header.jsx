@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const Handel =(props)=>{
   return(
   <header className='handel-group'>
-    <img className='img' src ='./fish.png' />
+    <img className='img' src ='./fish-removebg-preview.png' />
     <h1>Seafood Restaurant</h1>
     
     <div>

@@ -1,0 +1,9 @@
+.grouping-start{
+  display: flex;
+ border-image-width: 30px;
+ width:50px;
+}
+.fish{
+  width: 400px;
+  height: 200px;
+}

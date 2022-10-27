@@ -1,5 +1,7 @@
 .view-page {
   padding: 30px 20px;
+  color: rgba(61, 117, 237, 0.865);
+  
 }
 .view-page .item-container{
   display: flex;

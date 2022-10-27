@@ -7,6 +7,7 @@ import NotFound from "./pages/add/not-found/not-found";
 import View from "./pages/add/view/view";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Start from "./pages/start/start ";
 function App() {
   // const path = window.location.pathname;
   // console.log(path);
@@ -21,10 +22,10 @@ function App() {
   return (
     <div>
 
-      <BrowserRouter>
+      <BrowserRouter >
         <Handel />
         <Routes>
-          <Route path="/*" element={<NotFound />} />
+          <Route path="/*" element={<Start/>} />
           <Route path="/add" element={<AddPage />} />
           <Route path="/view" element={<View />} />
         </Routes>
