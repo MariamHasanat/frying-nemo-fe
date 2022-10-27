@@ -5,9 +5,16 @@ import Textarea from '../../common/textarea/textarea/Tarea';
 import { type } from '@testing-library/user-event/dist/type';
 import MultivalueInput from '../../common/multi-value-input/multi-value-input';
 import './form.css';
+import { useNavigate } from 'react-router-dom';
+
+
+
 const Form = (props) => {
+
+
   const [name, setName] = useState('ayat');
   const [ingrediant, setIngrediant] = useState([]);
+  const navigate =useNavigate();
 
   /**
      * 
@@ -42,8 +49,8 @@ const Form = (props) => {
     items.push(menuItem);
     
     localStorage.setItem('menuitems', JSON.stringify(items));
-
-
+console.table('menuitems',items )
+navigate('/view');
 
 
     ///to store complex object on local storage we need to convert it to json file using JSON.stringify (string representation )
