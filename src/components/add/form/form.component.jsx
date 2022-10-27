@@ -5,6 +5,7 @@ import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import '../../../common.css';
+import { useNavigate } from 'react-router-dom';
 
 
 const categories = [
@@ -19,7 +20,7 @@ const categories = [
 const Form = (props) => {
     const [name, setName] = useState('');
     const [ingredients, setIngredients] = useState([]);
-
+    const navigate = useNavigate();
     /**
      * Form Submit Handler 
      * @param e{React.ChangeEvent<HTMLInputElement>} event
@@ -44,17 +45,17 @@ const Form = (props) => {
         const menu = localStorage.getItem('menu') || '[]';
         const parsed = JSON.parse(menu);
         parsed.push(menuItem);
-        console.log('parsed:', parsed);
+        // console.log('parsed:', parsed);
         localStorage.setItem('menu', JSON.stringify(parsed));
 
         // just in case ;)
-        e.target.description.value = '';
-        e.target.category.value = '';
-        e.target.price.value = '';
-        setIngredients([]);
-        setName('');
+        // e.target.description.value = '';
+        // e.target.category.value = '';
+        // e.target.price.value = '';
+        // setIngredients([]);
+        // setName('');
 
-        props.setCurrentPage('view');
+        navigate('/view');
     };
 
     const inputChangeHandler = e => {
@@ -108,7 +109,7 @@ const Form = (props) => {
             <Input name="image" label='Image link' />
 
             <div>
-                <input className='nemo-button' type='submit' label='Create'/>
+                <input className='nemo-button' type='submit' label='Create' />
             </div>
         </form>
     );
