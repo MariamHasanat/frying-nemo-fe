@@ -4,12 +4,14 @@ import MultivalueInput from '../../common/multivalueinput/multi-value-input';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Form = (props) => {
   const [name, setName] = useState('yara');
   const [Ingredients, setIngredients] = useState([]);
+  const navigate = useNavigate();
 
   /**
    * Handler function for the form onSubmit event.
@@ -19,7 +21,7 @@ const Form = (props) => {
     e.preventDefault();
     const image = e.target.image.value;
     const Price = e.target.Price.value;
-    const Description =Number( e.target.Description.value);
+    const Description = Number(e.target.Description.value);
     const category = e.target.category.value;
 
     const menuItem = {
@@ -31,14 +33,14 @@ const Form = (props) => {
       Ingredients
 
     };
-    const itemsJason =localStorage.getItem('MenuItems') || '[]';
-    const items =JSON.parse(itemsJason);
-    items.push(menuItem)
-    localStorage.setItem('MenuItems',JSON.stringify(items));
-    props.onNavigate('view');
+    const itemsJason = localStorage.getItem('MenuItems') || '[]';
+    const items = JSON.parse(itemsJason);
+    items.push(menuItem);
+    localStorage.setItem('MenuItems', JSON.stringify(items));
+    navigate('/view');
 
- 
   };
+  
 
   /**
    * Handles on change events on the name field.
@@ -71,6 +73,7 @@ const Form = (props) => {
     'Ice Cream'
   ];
 
+
   return (
     <form className="addForm" onSubmit={submitHandler} >
       <Input
@@ -86,7 +89,7 @@ const Form = (props) => {
       <Input
         label="Image"
         name="image"
-   
+
       />
 
       <Input
@@ -106,7 +109,7 @@ const Form = (props) => {
       </Select>
 
       <MultivalueInput
- 
+
         label="Ingredients"
         name="Ingredients"
         value={Ingredients}
