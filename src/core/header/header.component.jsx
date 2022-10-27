@@ -1,6 +1,6 @@
 import './header.css';
 import { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Header = (props) => {
     const [time, setTime] = useState(new Date());

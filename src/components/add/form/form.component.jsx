@@ -4,13 +4,14 @@ import Input from '../../common/input/input.component';
 import Textarea from '../../common/textarea/textarea.component';
 import SelectArea from '../../common/selectarea/selectarea.component';
 import MultivalueInput from '../../common/multivalue-input/multivalueInput';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Form = (props) => {
     const [name, setName] = useState('');
     const [Ingredients, setIngredients] = useState([]);
-
+    const navigate = useNavigate();
     let categories = [
         'Fish',
         'Drinks',
@@ -20,7 +21,6 @@ const Form = (props) => {
         'Main Dish',
         'Appetizers',
         'Ice Cream'
-
     ];
 
     /**
@@ -46,7 +46,7 @@ const Form = (props) => {
         items.push(item);
         localStorage.setItem('categoriesArray', JSON.stringify(items));
 
-        props.onNavigate('view');
+        navigate('/view');
     };
 
     const changeHandler = (e) => {

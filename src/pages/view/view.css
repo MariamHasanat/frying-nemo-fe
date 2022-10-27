@@ -4,7 +4,7 @@
 
 .div-view h1 {
     display: flex;
-    justify-content: center;
+    /* justify-content: ce; */
     align-items: center;
 }
 
@@ -17,3 +17,7 @@
     width: 100%;
 }
 
+.div-view .inputGroup {
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
