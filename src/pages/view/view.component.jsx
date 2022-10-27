@@ -7,10 +7,10 @@ import './view.css' ;
 /**
  * @type {Array<{
  * name: string;
- * description: string;
+ * discription: string;
  * ingredients: string[];
  * price: number;
- * category: string;
+ * catigory: string;
  * image: string;
  * }>}
  */
@@ -32,20 +32,24 @@ const ViewPage = (props) => {
     return (() => console.log ('Im out'))
   } , [])
 
-  const checkIngredient = (ingredients) => {
-    let ingredientFound = false ;
-    for (let idx=0 ; idx<ingredients.length ; idx++) {
-      if (ingredients[idx].toLowerCase().includes (searchTerms))
-        ingredientFound = true ;
-    }
-    return ingredientFound ;
-
-  }
+  // const checkIngredient = (ingredients) => {
+  //   let ingredientFound = false ;
+  //   for (let idx=0 ; idx<ingredients.length ; idx++) {
+  //     if (ingredients[idx].toLowerCase().includes (searchTerms))
+  //       ingredientFound = true ;
+  //   }
+  //   return ingredientFound ;
+  // }
   // console.log (searchTerms)
-  const filteredIetems = items.filter (element => (
+  const filteredIetems = items.filter (element => {
+    return (
     element.name.toLowerCase().includes(searchTerms.toLowerCase().trim()) 
-    || (element.catigory.toLowerCase().includes(searchTerms.toLowerCase().trim())) 
-    || ( checkIngredient (element.ingredients)))) ;
+    || element.discription.toLowerCase().includes(searchTerms.toLowerCase().trim()) 
+    || (element.catigory.toLowerCase().includes(searchTerms.toLowerCase().trim())) )
+    || (element.ingredients.some (ingredient => ingredient.toLowerCase().includes(searchTerms.toLowerCase().trim())))
+    // || ( checkIngredient (element.ingredients))
+    // || (element.ingredients.filter().length)
+}) ;
 
   return (
     <div className='view'>
