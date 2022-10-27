@@ -1,4 +1,4 @@
-
+import './item.css'
 /**
  * 
  * @param {{
