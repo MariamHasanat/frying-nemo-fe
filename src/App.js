@@ -13,8 +13,6 @@ return(
           <Route path="/add" element={<AddPage />}></Route>
           <Route path="/view" element={<ViewPage />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
-
-
         </Routes>
     </BrowserRouter>
   </div>
