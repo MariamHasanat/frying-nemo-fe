@@ -1,14 +1,39 @@
 import { useState } from "react";
 import Select from "../common/select/select.component";
 import "./cards.css";
-
+import Input from "../common/input/input.component";
+/**
+ * @type {Array<{
+ * name: string;
+ * description: string;
+ * ingredients: string[];
+ * price: number;
+ * category: string;
+ * image: string;
+ * }>}
+ */
 const Cards = (props) => {
-  let x = ["hello", "world"];
   const menuItems = [...JSON.parse(localStorage.getItem("menuItems"))];
-  const [cardsValue, setCardsValue] = useState(menuItems || []);
+  const [searchTerm,setSearchTerm]= useState('');
+  const searchList= menuItems.filter(item=>{
+    /**
+     * @param {string} str
+     */
+    const doesItMatch= (str)=>{return(str.toLowerCase().includes(searchTerm.toLowerCase().trim()));}
+    const match =(doesItMatch(item.name) ||
+    doesItMatch(item.description) ||
+    item.ingredients.some(ingredient=>doesItMatch(ingredient))
+    );
+    return(match);
+  });
   return (
+    <div>
+      <Input 
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+      />
     <div className="card-container">
-      {cardsValue.map((item, index) => {
+      {searchList.map((item, index) => {
         return (
           <div className="card" key={index}>
             <div
@@ -29,7 +54,7 @@ const Cards = (props) => {
               <br />
               <span className="card-text">Ingredients</span>
             </div>
-
+            <div className="card-buttom-container">
             <Select name="category" label="" className="card-Ingredients" >
               {item.ingredients.map((current) => {
                 return (
@@ -39,9 +64,11 @@ const Cards = (props) => {
                 );
               })}
             </Select>
+            </div>
           </div>
         );
       })}
+    </div>
     </div>
   );
 };
