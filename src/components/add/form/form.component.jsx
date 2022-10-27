@@ -72,6 +72,11 @@ const Form = (props) => {
           onChange={onNameChange}
           required
         />
+        <Input
+        label="Image"
+        name="image"
+        required
+      />
         <Textarea
           name='description'
           label="Description"

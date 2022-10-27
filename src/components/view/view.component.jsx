@@ -4,7 +4,6 @@ import './view.css';
 import { useEffect } from 'react';
 import Spinner from '../spinner/spinner.component';
 
-
 const getMenuItems = () => JSON.parse(localStorage.menuItem || '[]');
 
 const ViewPage = (props) => {
@@ -41,8 +40,8 @@ const ViewPage = (props) => {
           }
         </div>
       }
-
     </div>
+
   );
 };
 
