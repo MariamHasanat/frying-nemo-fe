@@ -3,21 +3,37 @@
 }
 
 .div-view h1 {
+    margin-left: 20px;
     display: flex;
-    /* justify-content: ce; */
     align-items: center;
 }
 
 .div-view .items {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
     height: 100%;
     width: 100%;
+    margin-left: 15px;
 }
 
 .div-view .inputGroup {
     margin-bottom: 20px;
     margin-left: 20px;
+}
+
+.empty {
+    margin-bottom: 20px;
+    margin-left: 10px;
+
+    width: 212px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: system-ui;
+    color: #db4530;
+    text-shadow: 1px 1px 3px black;
 }

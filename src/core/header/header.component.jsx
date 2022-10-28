@@ -25,10 +25,10 @@ const Header = (props) => {
             </div>
             <div className='right'>
                 <nav>
-                    <Link className='but' to='/add'>
+                    <Link className={`but ${window.location.pathname === '/add' ? 'current' : ''}`} to='/add'>
                         Add
                     </Link>
-                    <Link className='but' to='/view'>
+                    <Link className={`but ${window.location.pathname === '/view' ? 'current' : ''}`} to='/view'>
                         view
                     </Link>
                 </nav>

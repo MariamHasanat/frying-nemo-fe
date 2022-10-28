@@ -8,14 +8,15 @@ import './view.css';
 * @type {Array<{
     * name: string;
     * description: string;
-    * ingredients: string[];
+    * Ingredients: string[];
     * price: number;
-    * category: string;
-    * image: string;
+    * categories: string;
+    * img: string;
     * }>}
     */
 const initialItems = [];
-const View = (props) => {
+
+const View = () => {
     const [menuItems, setMeuItems] = useState(initialItems);
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState('');
@@ -32,7 +33,15 @@ const View = (props) => {
     }, []);
 
     const filteredItems = menuItems.filter((item) => {
-        return item.name.toLowerCase().includes(search.toLowerCase().trim());
+        let match = true;
+        const check = str => str.toLowerCase().includes(search.toLowerCase().trim());
+        match = (
+            check(item.name) ||
+            check(item.description) ||
+            item.Ingredients.some(ingredient => check(ingredient))
+        );
+
+        return match;
     });
 
 
@@ -56,10 +65,13 @@ const View = (props) => {
                     <div className="items">
                         {
 
-                            filteredItems
-                                .map((item, index) => {
-                                    return <Item item={item} key={item.name + index} />;
-                                })
+                            (filteredItems.length > 0)
+                                ? filteredItems
+                                    .map((item, index) => {
+                                        return <Item item={item} key={item.name + index} />;
+                                    })
+                                : <div className="empty">The is no any meal</div>
+
                         }
                     </div>
             }

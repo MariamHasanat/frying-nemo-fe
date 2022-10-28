@@ -1,4 +1,10 @@
 .not-found-page {
     padding: 30px 20px;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.not-found-page img {
+    height: 800px;
+}
   
