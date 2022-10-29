@@ -7,3 +7,7 @@ view-page {
   flex-wrap: wrap;
   gap: 30px;
 }
+
+.view-page > .input-group {
+  margin-bottom: 20px;
+}

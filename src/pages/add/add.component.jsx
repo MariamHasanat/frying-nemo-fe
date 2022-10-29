@@ -1,4 +1,5 @@
 import './add.css';
+import React from 'react';
 
 import Form from '../../components/add/form/form.component';
 

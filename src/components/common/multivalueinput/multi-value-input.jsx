@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Input from '../input/input.component';
 import './multi-value-input.css';
+import React from 'react';
 
 
 /**

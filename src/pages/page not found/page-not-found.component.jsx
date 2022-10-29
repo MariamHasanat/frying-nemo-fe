@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './page-not-found.css';
-import Result from './result.component';
+
+import React from 'react';
 
 const NotFound = (props) => {
   const [Counter,setCounter]= useState(0);
@@ -25,7 +26,7 @@ setColor("#"+ Math.floor(Math.random()* 16777215).toString(16));
       <h3>{Counter}</h3>
       <button onClick={()=>{setCounter(Counter+1)}} > +1 </button>
      <div className='input-text'><input   type="text"  value={Name} onChange = { (e)=> setName(e.target.value)}/></div> 
-      <Result Counter={Counter}/>
+     
     </div>
   );
 };
