@@ -42,9 +42,35 @@ const Form = (props) => {
 
   ///the name between " " should be the same name :) 
 
-    const itemsJson = localStorage.getItem('menuitems') || '[]';
+  
 
-    const items = JSON.parse(itemsJson);
+
+
+  // const itemsJson = localStorage.getItem('menuItems');
+  // const items = JSON.parse(itemsJson) || [];
+
+  // items.push(menuItem);
+
+  // localStorage.setItem('menuItems', JSON.stringify(items));
+
+  // navigate('/view');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    const itemsJson = localStorage.getItem('menuitems') ;
+
+    const items = JSON.parse(itemsJson) || [];
     
     items.push(menuItem);
     

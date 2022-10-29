@@ -22,26 +22,34 @@ const ViewPage = (props) => {
 
 
 
-  const [menuitems, getMenuitems] = useState(GetmenuItems());
+  const [menuitems, setMenuItems] = useState(GetmenuItems());
   const [search, setSearch] = useState("");
+
+
+
   const filterItems = menuitems.filter(item => {
-    // const isMatch = srt => str.toLowerCase().includes(search.toLowerCase().trim();
-    // /**
-    //  * @param {string}srt
-    //  * 
-    //  * 
-    //  */
+
+/**
+     * Check if search terms are somewhere inside given string.
+     * @param {string} str 
+     */
+ const isMatch = str => str.toLowerCase().includes(search.toLowerCase().trim());
 
 
 
+ 
 
+    const match = (
+      isMatch(item.name) ||
+      isMatch(item.description) ||
+      item.ingrediant.some(ingredient => isMatch(ingredient))
+    );
+    return   match;
 
-
-    // return (
-    //   item.name.toLowerCase().includes(search.toLowerCase().trim())
-
-    // );
-    // });
+      // item.name.toLowerCase().includes(search.toLowerCase().trim())
+    
+    
+    });
 
 
   return (
