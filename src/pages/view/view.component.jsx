@@ -9,8 +9,8 @@ import './view.css';
 /**
  * @type {Array<{
  * name: string;
- * description: string;
- * ingredients: string[];
+ * Description: string;
+ * Ingredients: string[];
  * price: number;
  * category: string;
  * image: string;
@@ -47,8 +47,8 @@ import './view.css';
  
      const match = (
        doesItMatch(item.name) ||
-       doesItMatch(item.description) ||
-       item.ingredients.some(ingredient => doesItMatch(ingredient))
+       doesItMatch(item.Description) ||
+       item.Ingredients.some(Ingredient => doesItMatch(Ingredient))
      );
  
      return match;
