@@ -14,7 +14,7 @@ const Form = (props) => {
 
   const [name, setName] = useState('ayat');
   const [ingrediant, setIngrediant] = useState([]);
-  const navigate =useNavigate();
+  const navigate = useNavigate();
 
   /**
      * 
@@ -40,43 +40,15 @@ const Form = (props) => {
 
     };
 
-  ///the name between " " should be the same name :) 
-
-  
-
-
-
-  // const itemsJson = localStorage.getItem('menuItems');
-  // const items = JSON.parse(itemsJson) || [];
-
-  // items.push(menuItem);
-
-  // localStorage.setItem('menuItems', JSON.stringify(items));
-
-  // navigate('/view');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    const itemsJson = localStorage.getItem('menuitems') ;
+    const itemsJson = localStorage.getItem('menuitems');
 
     const items = JSON.parse(itemsJson) || [];
-    
+
     items.push(menuItem);
-    
+
     localStorage.setItem('menuitems', JSON.stringify(items));
-console.table('menuitems',items )
-navigate('/view');
+    console.table('menuitems', items);
+    navigate('/view');
 
 
     ///to store complex object on local storage we need to convert it to json file using JSON.stringify (string representation )
@@ -128,7 +100,7 @@ navigate('/view');
       />
 
       <MySelect
-      name ="categories"
+        name="categories"
         label='categories' required>
         {
           categories.map(item => {
@@ -139,17 +111,17 @@ navigate('/view');
       </MySelect>
 
       <Input
-      label ="price "
-      name='price'
-      type='number'
-      min ={0}
-      required
+        label="price "
+        name='price'
+        type='number'
+        min={0}
+        required
       />
       <MultivalueInput
         label="Ingradiant"
         value={ingrediant}
         onChange={newI => setIngrediant(newI)}
-        
+
       />
 
       <div className='btn'>
