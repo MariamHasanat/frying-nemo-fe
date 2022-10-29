@@ -20,8 +20,8 @@ const Form = (props) => {
   const submitHandler = e => {
     e.preventDefault();
     const image = e.target.image.value;
-    const Price = e.target.Price.value;
-    const Description = Number(e.target.Description.value);
+    const Price = Number(e.target.Price.value);
+    const Description = e.target.Description.value;
     const category = e.target.category.value;
 
     const menuItem = {
@@ -33,10 +33,10 @@ const Form = (props) => {
       Ingredients
 
     };
-    const itemsJason = localStorage.getItem('MenuItems') || '[]';
+    const itemsJason = localStorage.getItem('menuItems') || '[]';
     const items = JSON.parse(itemsJason);
     items.push(menuItem);
-    localStorage.setItem('MenuItems', JSON.stringify(items));
+    localStorage.setItem('menuItems', JSON.stringify(items));
     navigate('/view');
 
   };

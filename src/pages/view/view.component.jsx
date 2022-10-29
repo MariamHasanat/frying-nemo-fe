@@ -68,7 +68,7 @@ import './view.css';
          : <div className="items-container">
            {
              filteredItems
-               .map((item, index) => <Item data={item} key={item.name + index} />)
+               .map((item, index) => <Item data={item} key={item.name+ index} />)
            }
          </div>
        }
