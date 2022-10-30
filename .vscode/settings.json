@@ -4,6 +4,7 @@
     "editor.tabSize": 4,
     "javascript.format.semicolons": "insert",
     "cSpell.words": [
-        "Multivalue"
+        "Multivalue",
+        "nemo"
     ]
 }

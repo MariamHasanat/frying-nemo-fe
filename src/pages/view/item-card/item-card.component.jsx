@@ -25,7 +25,7 @@ const ItemCard = (props) => {
     return (
         <div className='item-card'>
             <div className="card-wrapper">
-                <img src={getImage()} width={300} height={200} alt={props.name} />
+                <img src={props.img} width={300} height={200} alt={props.name} />
                 <div className="item-description">
                     <h3>{props.name}</h3>
                     <p>{props.description}</p>
