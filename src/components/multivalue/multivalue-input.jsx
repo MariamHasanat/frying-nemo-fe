@@ -45,7 +45,7 @@ const MultivalueInput = props => {
                   <span>{item}</span>
                   <button type="button"
                     onClick={() => {
-                      const valueAfterChange = props.value.filter(element => element != item);
+                      const valueAfterChange = props.value.filter(element => element !== item);
                       props.onChange(valueAfterChange);
                     }}
                   >&times;

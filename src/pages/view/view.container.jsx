@@ -23,9 +23,16 @@ const ViewPage = (props) => {
 
   const filteredItem = menuItems.filter(item => {
 
-    
-    
-    return item.name.toLowerCase().includes(searchTerm.toLowerCase().trim());
+    const match = (
+      item.name.toLowerCase().includes(searchTerm.toLowerCase().trim()) ||
+
+      item.description.toLowerCase().includes(searchTerm.toLowerCase().trim()) ||
+
+      item.ingredients.some(ingredients =>
+        ingredients.toLowerCase().includes(searchTerm.toLowerCase().trim())
+      )
+    );
+    return match;
   }
   );
 
@@ -46,7 +53,7 @@ const ViewPage = (props) => {
           filteredItem
             .map((item, index) => <Item data={item} key={item.name + index} />)
         }
-      </div>;
+      </div>
 
     </div>
   );
