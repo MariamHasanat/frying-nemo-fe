@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import Input from "../../components/common/input/input.component";
 import Item from "../../components/common/item/item.component";
 import Spinner from "../../core/spinner/spinner";
@@ -6,20 +7,26 @@ import './view.css';
 
 /**
 * @type {Array<{
-    * name: string;
-    * description: string;
-    * Ingredients: string[];
-    * price: number;
-    * categories: string;
-    * img: string;
-    * }>}
-    */
+* name: string;
+* description: string;
+* Ingredients: string[];
+* price: number;
+* categories: string;
+* img: string;
+* }>}
+*/
 const initialItems = [];
 
 const View = () => {
     const [menuItems, setMeuItems] = useState(initialItems);
     const [loading, setLoading] = useState(true);
-    const [search, setSearch] = useState(localStorage.getItem('frying-nemo-view-search') || '');
+    const [paramsFromURL, setParam] = useSearchParams();
+
+    const searchParFromURL = paramsFromURL.get('searchTerms') || '';
+
+    useEffect(() => {
+        getMenuItems();
+    }, []);
 
     const getMenuItems = () => {
         setLoading(true);
@@ -30,18 +37,9 @@ const View = () => {
         }, 1000);
     };
 
-    useEffect(() => {
-        getMenuItems();
-    }, []);
-
-    const setLocalStorageAndSetSearch = (value) => {
-        localStorage.setItem('frying-nemo-view-search', value);
-        setSearch(value);
-    };
-
     const filteredItems = menuItems.filter((item) => {
         let match = true;
-        const check = str => str.toLowerCase().includes(search.toLowerCase().trim());
+        const check = str => str.toLowerCase().includes(searchParFromURL.toLowerCase().trim());
         match = (
             check(item.name) ||
             check(item.description) ||
@@ -57,10 +55,14 @@ const View = () => {
                 Menu Items
             </h1>
             <Input
-                value={search}
-                type={'search'}
+                value={searchParFromURL}
+                type="search"
                 placeholder={'Search'}
-                onChange={e => setLocalStorageAndSetSearch(e.target.value)}
+                onChange={e => {
+                    const newP = new URLSearchParams(paramsFromURL);
+                    newP.set('searchTerms', e.target.value);
+                    setParam(newP);
+                }}
             />
             {
                 loading
