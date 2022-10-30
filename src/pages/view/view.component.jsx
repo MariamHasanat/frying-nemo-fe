@@ -19,7 +19,16 @@ const initialItems = [];
 const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
-  const [searchTerms, setSearchTerms] = useState('');
+  const [searchTerms, setSearchTerms] = useState(localStorage.getItem('frying-nemo-view-search-terms') || '');
+
+  /**
+   * Updates the search terms state and stores updates in localStorage
+   * @param {string} value Input value.
+   */
+  const setSearchTermsAndSaveToLocalStorage = (value) => {
+    localStorage.setItem('frying-nemo-view-search-terms', value);
+    setSearchTerms(value);
+  }
 
   const getMenuItems = () => {
     setLoading(true);
@@ -58,7 +67,7 @@ const ViewPage = (props) => {
       <Input
         type="search"
         value={searchTerms}
-        onChange={e => setSearchTerms(e.target.value)}
+        onChange={e => setSearchTermsAndSaveToLocalStorage(e.target.value)}
         placeholder="Search"
       />
       {loading
