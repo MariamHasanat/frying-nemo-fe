@@ -30,7 +30,7 @@
   .item-card>.info>h2 {
     margin: 0;
     font-size: 24px;
-    color: #0bd548;
+    color: #333;
     font-weight: 500;
   
   }
@@ -113,10 +113,5 @@
   input::-webkit-inner-spin-button {
     appearance: none;
     margin: 0;
-  }
-  .beside{
-
-    display: flex;
-    justify-content: center;
   }
   

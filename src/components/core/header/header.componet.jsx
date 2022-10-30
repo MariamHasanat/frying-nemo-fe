@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './header.css';
-import { Link } from "react-router-dom"
+import { Link} from "react-router-dom"
 const Header = (props) => {
-  const [showButton, setShow] = useState("view")
-  
   return (
     <header className="webisteHeader">
       <div className="left">
@@ -12,17 +10,17 @@ const Header = (props) => {
         </h1>
       </div>
       <div className="right">
-        <nav>
-          {showButton ==="view" ? <Link to="/add"> 
-            <img onClick={(() => setShow("add"))} className='view' src="https://th.bing.com/th/id/OIP.1TOk33fReQL3_tEO7VcKngHaHa?pid=ImgDet&w=159&h=159&c=7"></img>
-          </Link> : ""}
-          
-          { showButton==="add" ? <Link to="/view" >
-            <img onClick={(() => setShow("view"))} className='add' src="https://th.bing.com/th/id/OIP.3XkYPHZ4zrcvQuJjfjY0cAAAAA?pid=ImgDet&w=150&h=150&c=7"></img>
-          </Link>:""}
+    {  <nav>
         
+          <Link to="/add">
 
-        </nav>
+            <img className='add' src="https://th.bing.com/th/id/OIP.1TOk33fReQL3_tEO7VcKngHaHa?pid=ImgDet&w=159&h=159&c=7"></img>
+          </Link>
+       
+          <Link to="/view">
+            <img  className='view'src='https://th.bing.com/th/id/OIP.3XkYPHZ4zrcvQuJjfjY0cAAAAA?pid=ImgDet&w=150&h=150&c=7'></img>
+          </Link>
+        </nav>}
       </div>
     </header>
   );
