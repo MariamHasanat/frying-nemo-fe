@@ -1,4 +1,10 @@
-.view-page{
-  padding: 16px 32px;
+.view-page {
+  padding: 16px 2em;
 
+}
+
+.items-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }

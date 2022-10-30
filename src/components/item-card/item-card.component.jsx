@@ -1,6 +1,4 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-
+import './item-card.css';
 
 /**
  * 
@@ -18,21 +16,14 @@ import Card from 'react-bootstrap/Card';
  */
 function ItemCard(props) {
   return (
-    <Card style={{ width: '18rem', border: '1px solid black', margin: '10px', padding: '8px' }}>
+    <div className='card-container'>
+      <img src={props.item.image} alt='food'/>
+      <h2>{props.item.name}</h2>
+      <p>{props.item.description}</p>
+      <br />
+      <p>{props.item.ingredients.join(', ')}</p>
 
-      <Card.Img variant="top" src={props.item.image} />
-      <Card.Body>
-        <Card.Title><h3>{props.item.name}</h3></Card.Title>
-        <Card.Text>
-          {props.item.description}
-          {
-            props.item.ingredients.map(item => {
-              return <span> {item} </span>;
-            })
-          }
-        </Card.Text>
-      </Card.Body>
-    </Card>
+    </div>
   );
 }
 
