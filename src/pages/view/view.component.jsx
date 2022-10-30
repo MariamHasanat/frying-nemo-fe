@@ -19,7 +19,7 @@ const initialItems = [];
 const ViewPage = (props) => {
   const [loading , setLoading] = useState (true) ;
   const [items , setItems] = useState (initialItems) ;
-  const [searchTerms , setSearchTerms] = useState ('') ;
+  const [searchTerms , setSearchTerms] = useState (localStorage.getItem ('viewSearchTerms') || '') ;
   const getMenuItems = () =>{
     setLoading (true) ;
     setTimeout(() => {
@@ -32,6 +32,10 @@ const ViewPage = (props) => {
     return (() => console.log ('Im out'))
   } , [])
 
+  const setSearchTermsToLocalStorage = (value) => {
+    localStorage.setItem ('viewSearchTerms' , value) ;
+    setSearchTerms (value) ;
+  }
   // const checkIngredient = (ingredients) => {
   //   let ingredientFound = false ;
   //   for (let idx=0 ; idx<ingredients.length ; idx++) {
@@ -46,7 +50,8 @@ const ViewPage = (props) => {
     element.name.toLowerCase().includes(searchTerms.toLowerCase().trim()) 
     || element.discription.toLowerCase().includes(searchTerms.toLowerCase().trim()) 
     || (element.catigory.toLowerCase().includes(searchTerms.toLowerCase().trim())) )
-    || (element.ingredients.some (ingredient => ingredient.toLowerCase().includes(searchTerms.toLowerCase().trim())))
+    || (element.ingredients.some (ingredient => ingredient.toLowerCase().includes(searchTerms.toLowerCase().trim()))) 
+    // => i can use find function instead , but (some is better to use) 
     // || ( checkIngredient (element.ingredients))
     // || (element.ingredients.filter().length)
 }) ;
@@ -54,7 +59,7 @@ const ViewPage = (props) => {
   return (
     <div className='view'>
       <h1 align = 'center'>View Menu Items</h1>
-      <Input type='search' value={searchTerms} onChange = {e => setSearchTerms (e.target.value)} placeholder = 'search'/>
+      <Input type='search' value={searchTerms} onChange = {e => setSearchTermsToLocalStorage (e.target.value)} placeholder = 'search'/>
       {loading 
       ? <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Spinner />
