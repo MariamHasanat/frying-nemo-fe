@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Input from '../../components/common/input/input.component';
 import Spinner from '../../components/core/spinner/spinner.component';
 import Item from '../../components/view/item/item.component';
@@ -19,16 +20,9 @@ const initialItems = [];
 const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
-  const [searchTerms, setSearchTerms] = useState(localStorage.getItem('frying-nemo-view-search-terms') || '');
+  const [params, setParams] = useSearchParams();
+  const searchTermsFromURL = params.get('searchTerms') || '';
 
-  /**
-   * Updates the search terms state and stores updates in localStorage
-   * @param {string} value Input value.
-   */
-  const setSearchTermsAndSaveToLocalStorage = (value) => {
-    localStorage.setItem('frying-nemo-view-search-terms', value);
-    setSearchTerms(value);
-  }
 
   const getMenuItems = () => {
     setLoading(true);
@@ -50,7 +44,7 @@ const ViewPage = (props) => {
      * Check if search terms are somewhere inside given string.
      * @param {string} str 
      */
-    const doesItMatch = str => str.toLowerCase().includes(searchTerms.toLowerCase().trim());
+    const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
 
     const match = (
       doesItMatch(item.name) ||
@@ -66,8 +60,19 @@ const ViewPage = (props) => {
       <h1>View Menu Items</h1>
       <Input
         type="search"
-        value={searchTerms}
-        onChange={e => setSearchTermsAndSaveToLocalStorage(e.target.value)}
+        value={searchTermsFromURL}
+        onChange={e => {
+          const newParams = new URLSearchParams(params);
+          const inputValue = e.target.value;
+
+          if (inputValue) {
+            newParams.set('searchTerms', inputValue);
+          } else {
+            newParams.delete('searchTerms');
+          }
+
+          setParams(newParams);
+        }}
         placeholder="Search"
       />
       {loading
