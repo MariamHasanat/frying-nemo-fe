@@ -13,13 +13,12 @@ code {
 }
 
 .mydiv{
-  background-color: #000000b0;
+
   border-radius: 30px;
   height: 50%;
-  width: 525px;
   padding: 30px;
   margin-top: 20px;
-  box-shadow: 2px 11px 9px 0px #1a403d;
+ 
 }
 .flex{
   display: flex;
@@ -27,12 +26,22 @@ code {
  
 }
 img {
-border-radius: 50%;
+
 width: 90px;
 height: 90px;
 
 }
 .img1{
   display: flex;
-  padding:10px
+  padding:10px;
+  cursor: default;
+}
+.mydiv1{
+  background-color: #000000b0;
+  border-radius: 30px;
+  height: 50%;
+  padding: 30px;
+  width: 525px;
+  margin-top: 20px;
+  box-shadow: 2px 11px 9px 0px #1a403d;
 }

@@ -1,7 +1,8 @@
 * {margin: 0; padding: 0;}
 body {
 background-image: url("https://th.bing.com/th/id/R.1907d0176882bd3adba5d60687963e16?rik=GOwcpQiGLNNmKA&riu=http%3a%2f%2fwallpapersdsc.net%2fwp-content%2fuploads%2f2016%2f09%2fBurger-4K.jpg&ehk=eYY3b8sejwbDIFHNWlBcgZyf0Gw%2f5%2b%2bnSOL03%2fL5wsg%3d&risl=&pid=ImgRaw&r=0");
-	
+	background-repeat: no-repeat;
+  background-size: cover;
 
 	font: normal 18px Sniglet; color: white; text-align: center;
 }

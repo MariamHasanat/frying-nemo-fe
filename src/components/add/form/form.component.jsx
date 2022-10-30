@@ -5,6 +5,8 @@ import Input from '../../../common/input/input';
 import './form.css';
 import MultivalueInput from '../../../common/multivalue-input/multivalue-input.component';
 import Image from '../../../common/image/Image';
+import { useNavigate } from 'react-router-dom'
+
 
 
 
@@ -13,7 +15,7 @@ import Image from '../../../common/image/Image';
  * @param {React.ChangeEvent<HTMLInputElement>} e 
  */
 const Form = (props) => {
-
+  const navigate = useNavigate()
   const [name, SetName] = useState('Add item');
   const [ingredients, setIngredients] = useState([]);
   const submitHandler = e => {
@@ -39,7 +41,7 @@ const Form = (props) => {
     items.push(menuItem);
 
     localStorage.setItem('menuItems', JSON.stringify(items));
-    props.onNavigate('View');
+    navigate("/view")
 
   };
 
@@ -70,6 +72,7 @@ const Form = (props) => {
           required
 
         />
+        <br />
         <Input
           label="Price"
           type='number'
@@ -102,7 +105,7 @@ const Form = (props) => {
 
         />
 
-        <button className='point' type='sumbit'>Create</button>
+        <button className='point' type='sumbit' >Create</button>
       </div>
     </form>
   );

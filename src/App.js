@@ -3,25 +3,23 @@ import ViewPage from "./components/ViewPage/ViewPage";
 import NotFoundPage from "./components/notfound/NotFound ";
 import { useState } from "react";
 import Header from "./components/core/header/header.componet";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 function App() {
 
-  const [currentPage, setCurrentPage] = useState('Add');
-
-  const changePage = (newPage) => {
-    setCurrentPage(newPage);
-  };
 
   return (
     <div>
-     <Header onNavigate={changePage}></Header>
-      <div className="flex">
-        <div className="mydiv">
-        {currentPage === 'Add' && <AddPage onNavigate={changePage} />}
-      {currentPage === 'View' && <ViewPage />}
-      {currentPage === '404' && <NotFoundPage />}
-
+      <BrowserRouter>
+        <Header />
+        <div className="flex"> 
+        <Routes>
+            <Route path="/*" element={<NotFoundPage></NotFoundPage>}></Route>
+            <Route path="/add" element={<AddPage></AddPage>} ></Route>
+            <Route path="/view" element={<ViewPage></ViewPage>}></Route>
+        </Routes>
         </div>
-      </div>
+      </BrowserRouter>
     </div>
   );
 }
