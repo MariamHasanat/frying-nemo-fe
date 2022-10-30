@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import * as React from "react";
+import { useSearchParams } from "react-router-dom";
 import Input from '../../../components/common/input/input';
 import Item from '../../../components/item/items/item';
 import Spinner from '../../../components/spinner/spinner';
@@ -17,15 +19,25 @@ const initialItems = [];
 const View = (props) => {
   const [menuItem, setMenuItem] = useState(initialItems);
   const [loading, setLoading] = useState(true);
-  const [Search, SetSearch] = useState("");
+  // const [Search, SetSearch] = useState('');
+  const [param,SetParam]= useSearchParams(); 
+  const searchFromUrl=param.get('search')||'';
+  console.log(searchFromUrl);
+  // const setItemSearchInLocalStoreg=(value)=>{
+  //   localStorage.setItem("the informathion search",value);
+  //   SetSearch(value);
+
+  // }
+
+
   const filterItem = menuItem.filter(item => {
     console.log(item)
-    const dose = str=>str.toLowerCase().includes(Search.toLowerCase().trim());//function ببعت الو يلي جواتو اخنصار
+    const dose = str=>str.toLowerCase().includes(searchFromUrl.toLowerCase().trim());//function ببعت الو يلي جواتو اخنصار
     
     const match=(
       dose(item.name)||//ممكن اكتب هيك بختصر 
-      item.description.toLowerCase().includes(Search.toLowerCase().trim())||
-      item.ingredients.some(ingredient=>ingredient.toLowerCase().includes(Search.toLowerCase().trim()))
+      item.description.toLowerCase().includes(searchFromUrl.toLowerCase().trim())||
+      item.ingredients.some(ingredient=>ingredient.toLowerCase().includes(searchFromUrl.toLowerCase().trim()))
     )
     return match;
   }
@@ -49,9 +61,13 @@ const View = (props) => {
       <h1>View menu item </h1>
       <Input
         type="search"
-        value={Search}
+        value={searchFromUrl}
         placeholder="Search"
-        onChange={e => SetSearch(e.target.value)}
+        onChange={e => {
+          const newParam = new URLSearchParams(param);
+          newParam.set('search',e.target.value);
+          SetParam(newParam);
+          }}
       ></Input>
       {loading ?
         <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
