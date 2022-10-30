@@ -12,7 +12,7 @@ const ViewPage = (props) => {
     const [loading, setLoading] = useState(true);
     const [params, setParams] = useSearchParams();
 
-    const searchTerms = params.get('searchTerms');
+    const searchTerms = params.get('searchTerms') || '';
     console.log('searchTerms:', searchTerms);
 
     const filteredMenu = menu
