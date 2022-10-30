@@ -3,6 +3,7 @@ import Card from '../../components/view/common/card/card.component';
 import { useState } from 'react';
 import Input from '../../components/add/common/input/input.component';
 import { useEffect } from 'react';
+import { createSearchParams, useSearchParams } from 'react-router-dom';
 
 const ViewPage = (props) => {
 
@@ -17,10 +18,11 @@ const ViewPage = (props) => {
   };
 
   const [selectedType, setSelectedType] = useState(0);
-  const [search, setSearch] = useState(localStorage.getItem('view-search') || '');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [search, setSearch] = useState(searchParams.get('search') || '');
 
   const updateSearch = (value) => {
-    localStorage.setItem('view-search', value);
+    setSearchParams(value != ''? createSearchParams({search: value}) : createSearchParams({}))
     setSearch(value)
   }
 
