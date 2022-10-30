@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Input from '../../components/common/input/input.component';
 import Spinner from '../../components/core/spinner.component';
@@ -18,12 +19,15 @@ import './view.css';
  */
  const initialItems = [];
 
+
  const ViewPage = (props) => {
    const [menuItems, setMenuItems] = useState(initialItems);
    const [loading, setLoading] = useState(false);
-   const [searchTerms, setSearchTerms] = useState('');
+   const [params,setParams]=useSearchParams();
+   const searchTermsFromURL = params.get('q')||'';
  
-   const getMenuItems = () => {
+console.debug('q =',searchTermsFromURL);
+ const getMenuItems = () => {
      setLoading(true);
  
      // Run the code inside after 1000 milliseconds (1 Second)
@@ -39,19 +43,23 @@ import './view.css';
    }, []);
  
    const filteredItems = menuItems.filter(item => {
+
      /**
       * Check if search terms are somewhere inside given string.
       * @param {string} str 
       */
-     const doesItMatch = str => str.toLowerCase().includes(searchTerms.toLowerCase().trim());
+     const DoesItMatch = str =>
+      str.toLowerCase().includes(
+        searchTermsFromURL.toLowerCase().trim()
+        );
  
-     const match = (
-       doesItMatch(item.name) ||
-       doesItMatch(item.Description) ||
-       item.Ingredients.some(Ingredient => doesItMatch(Ingredient))
+     const Match = (
+      DoesItMatch(item.name) ||
+       DoesItMatch(item.Description) ||
+       item.Ingredients.some(Ingredient => DoesItMatch(Ingredient))
      );
  
-     return match;
+     return Match;
    });
  
    return (
@@ -59,8 +67,12 @@ import './view.css';
        <h1>View Menu Items</h1>
        <Input
          type="search"
-         value={searchTerms}
-         onChange={e => setSearchTerms(e.target.value)}
+         value={searchTermsFromURL}
+        onChange={e=>{
+          const newParams=new URLSearchParams(params);
+          newParams.set('q',e.target.value);
+          setParams(newParams);
+        } }
          placeholder="Search"
        />
        {loading
