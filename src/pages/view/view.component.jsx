@@ -36,8 +36,11 @@ const ViewPage = (props) => {
                 type="search" value={searchTerms}
                 onChange={e => {
                     const newParams = new URLSearchParams(params);
-                    newParams.set('searchTerms', e.target.value);
-
+                    const searchVal = e.target.value;
+                    if (searchVal)
+                        newParams.set('searchTerms', searchVal);
+                    else
+                        newParams.delete('searchTerms');
                     setParams(newParams);
                 }}
             />
