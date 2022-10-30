@@ -54,3 +54,9 @@ span.card-text-dollar{
   color: green;
   font-weight: bolder;
 }
+
+.search-term-input{
+  margin-left: 5%;
+  width: 90%;
+  padding: 0px;
+}

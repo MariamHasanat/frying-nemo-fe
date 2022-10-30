@@ -1,6 +1,8 @@
+import * as React from "react";
 import { useState } from "react";
-import Select from "../common/select/select.component";
+import { useSearchParams } from "react-router-dom";
 import "./cards.css";
+import Select from "../common/select/select.component";
 import Input from "../common/input/input.component";
 /**
  * @type {Array<{
@@ -13,8 +15,9 @@ import Input from "../common/input/input.component";
  * }>}
  */
 const Cards = (props) => {
-  const menuItems = [...JSON.parse(localStorage.getItem("menuItems"))];
-  const [searchTerm,setSearchTerm]= useState('');
+  const menuItems = localStorage.getItem("menuItems").length ? [...JSON.parse(localStorage.getItem("menuItems"))]: [];
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchTerm,setSearchTerm]= useState(searchParams.get('q') || '');
   const searchList= menuItems.filter(item=>{
     /**
      * @param {string} str
@@ -26,12 +29,20 @@ const Cards = (props) => {
     );
     return(match);
   });
+  const setSearchTermAndSearchParam = (value)=>{
+    setSearchParams({ 'q': value });
+    setSearchTerm(value);
+    console.debug(searchTerm);
+  };
   return (
     <div>
-      <Input 
+      <Input
       value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
-      />
+      onChange={(e) => setSearchTermAndSearchParam(e.target.value)}
+      className="search-term-input"
+      placeholder="Search"
+      />  
+      
     <div className="card-container">
       {searchList.map((item, index) => {
         return (
