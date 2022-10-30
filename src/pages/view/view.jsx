@@ -29,8 +29,8 @@ const ViewPage = (props) => {
 
 
 
-  const searchFromURL = params.get("search");
-  console.log(params.get("search"));
+  const searchFromURL = params.get("search") || '';
+  console.log(params.get("search") );
 
 
   /**

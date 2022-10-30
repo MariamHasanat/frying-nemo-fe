@@ -19,7 +19,7 @@ import './card.css';
 
 const Card = (props) => {
   return (
-
+<div className="wrapper">
     <div className="card">
       <h2>{props.data.name} </h2>
       <div className="imgs">
@@ -40,7 +40,7 @@ const Card = (props) => {
       </div>
     </div>
 
-
+    </div>
   );
 
 };
