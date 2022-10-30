@@ -9,7 +9,12 @@ const getMenu = () => JSON.parse(localStorage.getItem('menu') || '[]');
 const ViewPage = (props) => {
     const [menu] = useState(getMenu);
     const [loading, setLoading] = useState(true);
-    const [searchText, setSearchText] = useState('');
+    const [searchText, setSearchText] = useState(localStorage.getItem('searchText-ViewPage') || '');
+
+    const setSearchTextAndSaveToLocalStorage = (value) => {
+        setSearchText(value);
+        localStorage.setItem('searchText-ViewPage', value);
+    }
     const filteredMenu = menu
         .filter(
             item => {
@@ -29,7 +34,7 @@ const ViewPage = (props) => {
                         <Input
                             placeholder='Search'
                             type="search" value={searchText}
-                            onChange={e => setSearchText(e.target.value)}
+                            onChange={e => setSearchTextAndSaveToLocalStorage(e.target.value)}
                         />
 
                         {loading
