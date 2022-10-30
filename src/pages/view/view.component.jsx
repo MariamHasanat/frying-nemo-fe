@@ -1,6 +1,7 @@
 import "./view.css";
 import { useEffect, useState } from "react";
 import Input from "../../components/common/input/input-component";
+import { useSearchParams } from "react-router-dom";
 
 /**
  * @type {Array<{
@@ -17,14 +18,10 @@ const initialItems = [];
 const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(true);
-  const [searchTerms, setSearchTerms] = useState(
-    localStorage.getItem("view-search-terms") || ""
-  );
+  // const [searchTerms, setSearchTerms] = useState("");
+  const [params, setParams] = useSearchParams();
 
-  const setSearchTermsAndSaveToLocalStorage = (value) => {
-    localStorage.setItem("view-search-terms", value);
-    setSearchTerms(value);
-  };
+  const searchTerms = params.get("searchTerms") || "";
 
   const getMenuItems = () => {
     setLoading(true);
@@ -48,7 +45,11 @@ const ViewPage = (props) => {
       <Input
         type="search"
         value={searchTerms}
-        onChange={(e) => setSearchTermsAndSaveToLocalStorage(e.target.value)}
+        onChange={(e) => {
+          const newParams = new URLSearchParams(params);
+          newParams.set("searchTerms", e.target.value);
+          setParams(newParams);
+        }}
         placeholder="Search"
       />
       {loading && (
@@ -74,9 +75,7 @@ const ViewPage = (props) => {
         {menuItems
           .filter((item) => {
             const match =
-              item.name
-                .toLowerCase()
-                .includes(searchTerms.toLowerCase().trim()) ||
+              item.name.toLowerCase().includes(searchTerms.toLowerCase().trim()) ||
               item.description
                 .toLowerCase()
                 .trim()
@@ -93,7 +92,7 @@ const ViewPage = (props) => {
             return (
               <div key={item.name + index} className="box">
                 <div className="img">
-                  <img src={item.image} alt="food" height={400}/>
+                  <img src={item.image} alt="food" height={400} />
                 </div>
                 <div>
                   <span>Name :</span> {item.name}
