@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Input from '../../components/common/input/input.component';
 import Spinner from '../../components/common/spinner/spinner.componenr';
 import MenuItem from './cards/menu-item/menu-item.component';
@@ -19,7 +20,10 @@ const initialItems = [];
 const ViewPage = (props) => {
   const [loading , setLoading] = useState (true) ;
   const [items , setItems] = useState (initialItems) ;
-  const [searchTerms , setSearchTerms] = useState (localStorage.getItem ('viewSearchTerms') || '') ;
+  //param is an instanse of complex class (URLSearchParams) so I need to use get (name) to access spesific param 
+  const [param , setParam] = useSearchParams() ;  
+  const searchUsingURL = param.get ('searchTerms') || '' ;
+  console.log ('searchTerms param = ' , param.get('searchTerms')) ;
   const getMenuItems = () =>{
     setLoading (true) ;
     setTimeout(() => {
@@ -31,35 +35,28 @@ const ViewPage = (props) => {
     getMenuItems() ;
     return (() => console.log ('Im out'))
   } , [])
-
-  const setSearchTermsToLocalStorage = (value) => {
-    localStorage.setItem ('viewSearchTerms' , value) ;
-    setSearchTerms (value) ;
-  }
-  // const checkIngredient = (ingredients) => {
-  //   let ingredientFound = false ;
-  //   for (let idx=0 ; idx<ingredients.length ; idx++) {
-  //     if (ingredients[idx].toLowerCase().includes (searchTerms))
-  //       ingredientFound = true ;
-  //   }
-  //   return ingredientFound ;
-  // }
-  // console.log (searchTerms)
+  
   const filteredIetems = items.filter (element => {
+    const doesItMatch  = (value) => value.toLowerCase().includes(searchUsingURL.toLowerCase().trim())
     return (
-    element.name.toLowerCase().includes(searchTerms.toLowerCase().trim()) 
-    || element.discription.toLowerCase().includes(searchTerms.toLowerCase().trim()) 
-    || (element.catigory.toLowerCase().includes(searchTerms.toLowerCase().trim())) )
-    || (element.ingredients.some (ingredient => ingredient.toLowerCase().includes(searchTerms.toLowerCase().trim()))) 
+    doesItMatch (element.name) 
+    || doesItMatch (element.discription) 
+    || doesItMatch (element.catigory) 
+    || element.ingredients.some (ingredient => doesItMatch (ingredient)) 
     // => i can use find function instead , but (some is better to use) 
-    // || ( checkIngredient (element.ingredients))
-    // || (element.ingredients.filter().length)
-}) ;
+    )
+  }) ;
 
   return (
     <div className='view'>
       <h1 align = 'center'>View Menu Items</h1>
-      <Input type='search' value={searchTerms} onChange = {e => setSearchTermsToLocalStorage (e.target.value)} placeholder = 'search'/>
+      <Input type='search' value={searchUsingURL}
+      onChange = {e => {
+        let newParam = new URLSearchParams (param) ;  // create new object of the same type as param
+        newParam.set ('searchTerms' , e.target.value) ; // use set function to edit the search value of the new object 
+        setParam (newParam) ;  // set the param value as the new created object 
+      }} 
+      placeholder = 'search'/>
       {loading 
       ? <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Spinner />
@@ -70,7 +67,6 @@ const ViewPage = (props) => {
           <MenuItem  item = {item} />
         </div>) 
       }
-      {/* <MenuItem value = {props.value}/> */}
     </div>
     }
       
