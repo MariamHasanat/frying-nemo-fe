@@ -4,6 +4,7 @@ import './view.css';
 import { useEffect } from 'react';
 import Spinner from '../spinner/spinner.component';
 import Input from '../input/input.component';
+import { useSearchParams } from 'react-router-dom';
 
 /**
  * @type {Array<{
@@ -26,6 +27,11 @@ const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerms, setSearchTerms] = useState('');
+  const [params, setParams] = useSearchParams();
+
+  const search = params.get('search') || '';
+
+  console.log('search params = ', search);
 
   const getMenuItems = () => {
     setLoading(true);
@@ -47,15 +53,15 @@ const ViewPage = (props) => {
      * check if search terms are somewhere inside given string.
      * @param {string} str
      */
-    const isMatch = str => str.toLowerCase().includes(searchTerms.toLowerCase().trim());
+    const isMatch = str => str.toLowerCase().includes(search.toLowerCase().trim());
 
     const match = (
       isMatch(item.name) ||
       isMatch(item.description) ||
       item.ingredients.some(ingredient => isMatch(ingredient))
-      )
+    );
 
-return match;
+    return match;
   });
 
   return (
@@ -63,8 +69,12 @@ return match;
       <h1>View Menu Items</h1>
       <Input
         type='search'
-        value={searchTerms}
-        onChange={e => setSearchTerms(e.target.value)}
+        value={search}
+        onChange={e => {
+          const newParams = new URLSearchParams(params);
+          newParams.set('search', e.target.value);
+          setParams(newParams);
+        }}
         placeholder='search'
       />
       <br />
