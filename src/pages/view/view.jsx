@@ -19,7 +19,8 @@ const initialItems = [];
 const View = () => {
     const [menuItems, setMeuItems] = useState(initialItems);
     const [loading, setLoading] = useState(true);
-    const [search, setSearch] = useState('');
+    const [search, setSearch] = useState(localStorage.getItem('frying-nemo-view-search') || '');
+
     const getMenuItems = () => {
         setLoading(true);
         setTimeout(() => {
@@ -28,9 +29,15 @@ const View = () => {
             setLoading(false);
         }, 1000);
     };
+
     useEffect(() => {
         getMenuItems();
     }, []);
+
+    const setLocalStorageAndSetSearch = (value) => {
+        localStorage.setItem('frying-nemo-view-search', value);
+        setSearch(value);
+    };
 
     const filteredItems = menuItems.filter((item) => {
         let match = true;
@@ -44,7 +51,6 @@ const View = () => {
         return match;
     });
 
-
     return (
         <div className="div-view">
             <h1>
@@ -52,8 +58,9 @@ const View = () => {
             </h1>
             <Input
                 value={search}
+                type={'search'}
                 placeholder={'Search'}
-                onChange={e => setSearch(e.target.value)}
+                onChange={e => setLocalStorageAndSetSearch(e.target.value)}
             />
             {
                 loading
