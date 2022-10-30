@@ -60,7 +60,11 @@ const View = () => {
                 placeholder={'Search'}
                 onChange={e => {
                     const newP = new URLSearchParams(paramsFromURL);
-                    newP.set('searchTerms', e.target.value);
+                    const valueOfInput = e.target.value;
+                    if (valueOfInput)
+                        newP.set('searchTerms', valueOfInput);
+                    else
+                        newP.delete('searchTerms');
                     setParam(newP);
                 }}
             />
