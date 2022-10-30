@@ -44,23 +44,23 @@ console.debug('q =',searchTermsFromURL);
  
    const filteredItems = menuItems.filter(item => {
 
-     /**
-      * Check if search terms are somewhere inside given string.
-      * @param {string} str 
-      */
-     const DoesItMatch = str =>
-      str.toLowerCase().includes(
-        searchTermsFromURL.toLowerCase().trim()
-        );
+       /**
+     * Check if search terms are somewhere inside given string.
+     * @param {string} str 
+     */
+
+        const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
+
  
-     const Match = (
-      DoesItMatch(item.name) ||
-       DoesItMatch(item.Description) ||
-       item.Ingredients.some(Ingredient => DoesItMatch(Ingredient))
-     );
- 
-     return Match;
-   });
+      const match = (
+        doesItMatch(item.name) ||
+        doesItMatch(item.Description) ||
+        item.Ingredients.some(Ingredient => doesItMatch(Ingredient))
+      );
+  
+      return match;
+    });
+  
  
    return (
      <div className="view-page">
