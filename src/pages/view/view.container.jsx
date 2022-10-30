@@ -18,7 +18,13 @@ const ViewPage = (props) => {
    */
 
   const [menuItems] = useState(getMenuItem());
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(localStorage.getItem('key-value')||'');
+
+
+    const setSearchTermToLocalStorage =(value)=>{
+      localStorage.setItem('key-value',value);
+      setSearchTerm(value);
+    }
 
 
   const filteredItem = menuItems.filter(item => {
@@ -43,7 +49,7 @@ const ViewPage = (props) => {
         type="search"
         value={searchTerm}
         onChange={e => {
-          setSearchTerm(e.target.value);
+          setSearchTermToLocalStorage(e.target.value);
         }}
         placeholder="Search"
       />
