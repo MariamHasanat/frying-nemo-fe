@@ -71,7 +71,7 @@ const Form = (props) => {
         <Textarea name='description' label="Description" ></Textarea>
         <Input name="price" label="Price" type="number" required></Input>
         <Input name="image" label="Image" type="text" required></Input>
-        <Select name='category' items={[`Fish`, `Shisha`, `Drink`, `Chicken`, `Salad`]} required></Select>
+        <Select name='category' items={[`Fish`, `Main Dish`, `Drink`, `Chicken`, `Salad`]} required></Select>
         <MultivalueInput onChange={updateIngs} name='ingredients' label='Ingredients'/>
         <Button name="SUBMIT" type="submit"></Button>
       </div>
