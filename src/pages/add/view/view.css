@@ -1,0 +1,14 @@
+.view-page {
+    padding: 30px 20px;
+  }
+  
+  .view-page .items-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
+  .view-page > .input-group {
+    margin-bottom: 20px;
+  }
+  

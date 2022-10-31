@@ -7,7 +7,7 @@ const Header = (props) => {
     <header className="webisteHeader">
       <div className="left">
         <h1>
-          <img src="./nemo.svg" />
+          <img src="./nemo.svg" alt="b"/>
           Frying Nemo
         </h1>
       </div>

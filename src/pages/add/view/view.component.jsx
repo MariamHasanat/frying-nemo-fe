@@ -2,8 +2,11 @@ import Item from '../../../components/view/item/item/item.component';
 import './view.css';
 import { useState } from 'react';
 import Input from '../../../components/common/input/input.component';
+import { useEffect } from 'react';
+import Spinner from '../../../components/core/header/spinner/spinner.component';
 
-const getMenueItem = () => JSON.parse(localStorage.menuItems || '[]');
+
+
 /**
  * @type {Array<{
  * name: string;
@@ -18,19 +21,42 @@ const initialItems = [];
 
 const ViewPage = () => {
   const [searchTerms,setSearchTerms] = useState('');
-  /**
-   * @type {[Array, Function]} Loading
-   */
-  const [menueItems] = useState(getMenueItem());
-  console.log(menueItems);
-  const Menue = menueItems.map((item, index) =>
-    <Item
-      data={item} key={item.name + index}
-    />);
+  const [menueItems, setMenuItems] = useState(initialItems);
+  const [loading, setLoading] = useState(false);
 
-const filterItems = menueItems.filter(e =>{
-  return e.name.toLowerCase().includs(searchTerms.toLocaleLowerCase().trim());
-})
+  const getMenueItem = () => {
+    setLoading(true);
+
+    setTimeout( () =>{
+      const items = JSON.parse(localStorage.menuItems || '[]');
+      setMenuItems(items);
+      setLoading(false);
+    }, 1000);
+
+  };
+
+  useEffect(() =>{
+    getMenueItem();
+  }, []);
+
+  const filteredItems = menueItems.filter(item => {
+
+    const match =(
+      item.name.toString().toLowerCase().includes(searchTerms.toLowerCase().trim()) 
+    //  item.description.toLowerCase().includes(searchTerms.toLowerCase().trim()) ||
+    //  item.ingredients.toLowerCase().includes(searchTerms.toLowerCase().trim()) 
+
+    );
+    return match;
+  })
+
+
+
+ 
+
+
+
+
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
@@ -40,14 +66,20 @@ const filterItems = menueItems.filter(e =>{
         onChange={e => setSearchTerms(e.target.value)}
         placeholder="Search"
       />
-      <div>
-        {
-          Menue
-        }
-      </div>
+       {loading
+        ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
+        : <div className="items-container">
+          {
+            filteredItems
+              .map((item, index) => <Item data={item} key={item.name + index} />)
+          }
+        </div>
+      }
+
 
     </div>
   );
 };
 
 export default ViewPage;
+

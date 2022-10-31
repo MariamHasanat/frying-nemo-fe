@@ -1,5 +1,5 @@
 
-import Result from "./result";
+//import Result from "./result";
 
 const NotFound = (props) => {
 
