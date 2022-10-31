@@ -13,6 +13,7 @@ import Input from '../../common/input/input.component';
  * ingredients: string[];
  * price: number;
  * category: string;
+ * image: string;
  * }>}
  */
 const initialItems = [];

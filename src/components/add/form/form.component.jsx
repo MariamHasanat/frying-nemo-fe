@@ -26,13 +26,14 @@ const Form = (props) => {
     // const image = e.target.image.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
-
+    const image = e.target.image.value;
 
      
     const menuItem = {
       name: name,
       // image,
       description: description,
+      image,
       price: price,
       category: category,
       ingredients: ingredients
@@ -94,7 +95,11 @@ const Form = (props) => {
           min={0}
           required
         />
-
+          <Input
+        label="Image"
+        name="image"
+        required
+      />
         <Textarea
           name="description"
           label="Description"
