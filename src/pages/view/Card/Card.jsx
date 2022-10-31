@@ -20,13 +20,13 @@ const Card = (props) => {
         <img src="./download (2).jpeg" alt="" />
         </div>
       <div className="inf">
-        <h2>{props.data.name}</h2>
-        <p>{props.data.description}</p>
-        <p className="ingredients">{props.data.ingredients}</p>
+        <h2>Name : {props.data.name}</h2>
+        <p>describtion : <br/>{props.data.description}</p>
+        <p className="ingredients">ingredients : {props.data.ingredients}</p>
       </div>
 
       <div className="price">
-        <span>{props.data.price}</span>
+        <span>${props.data.price}</span>
         <div className="add-card">
           <button>+</button>
           <input type="number" max={600} />

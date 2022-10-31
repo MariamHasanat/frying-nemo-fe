@@ -1,5 +1,6 @@
 import './viewpage.css';
 import Card from './Card/Card';
+import { useSearchParams } from 'react-router-dom';
 import { useState , useEffect} from 'react';
 import Spinner from '../spinner/spinner.component';
 import Input from '../../common/input/input.component';
@@ -12,7 +13,6 @@ import Input from '../../common/input/input.component';
  * ingredients: string[];
  * price: number;
  * category: string;
- * image: string;
  * }>}
  */
 const initialItems = [];
@@ -20,8 +20,12 @@ const initialItems = [];
 const ViewPage = (props) => {
   const [menuItems , setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
-  const [searchItem, setSearchItem] = useState('');
-  
+  const [params , setParams] = useSearchParams();
+
+  const searchFromURL = params.get('search') || '';
+
+
+
   const getMenuItems = () => {
     setLoading(true);
     
@@ -38,30 +42,45 @@ const ViewPage = (props) => {
     getMenuItems();
   }, []);
 
-  const filtierItem = menuItems.filter(items =>  {
+  const filteredItems = menuItems.filter(item => {
+    /**
+     * Check if search terms are somewhere inside given string.
+     * @param {string} str 
+     */
+     const doesItMatch = str => str.toLowerCase().includes(searchFromURL.toLowerCase().trim());
+    
+    console.log("item = " ,item);
+
     const match = (
-      items.name.toLowerCase().includes(searchItem.toLowerCase().trim()) ||
-      items.description.toLowerCase().includes(searchItem.toLowerCase().trim()) ||
-      items.ingredients.some(ingredients => (searchItem.toLowerCase().trim()))
-      
-    )
-  
-      
-  })
+      doesItMatch(item.name) ||
+      doesItMatch(item.description) ||
+      item.ingredients.some(ingredient => doesItMatch(ingredient))
+    );
+
+    return match;
+  });
+
+
 
   return (
     <div className="View-page">
       <Input
       type="search"
-      value={searchItem}
-      onChange={e => setSearchItem(e.target.value)}
+      value={searchFromURL}
+      onChange={e => {
+        const newParams = new URLSearchParams(params);
+
+        newParams.set('search' ,e.target.value)
+        
+        setParams(newParams);
+      } }
       placeholder="Search"
       />
        {loading
         ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
         :<div className="items-container">
         {
-          filtierItem.map((item, index) => <Card data={item} key={item.name + index}/>)
+          filteredItems.map((item, index) => <Card data={item} key={item.name + index}/>)
         }
      
       </div>
