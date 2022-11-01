@@ -1,11 +1,11 @@
 import Item from '../../../components/view/item/item/item.component';
 import './view.css';
 import { useState } from 'react';
-import Input from '../../../components/common/input/input.component';
+import FilterBar from '../../../components/view/item/item/filter-bar/filter-bar.component';
 import { useEffect } from 'react';
 import Spinner from '../../../components/core/header/spinner/spinner.component';
 import { useSearchParams } from 'react-router-dom';
-import FilterBar from '../../../components/view/item/item/filter-bar/filter-bar.component';
+
 
 
 
@@ -27,6 +27,8 @@ const ViewPage = () => {
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
   const searchTermsFromURL = params.get('searchTerms') || '';
+  const categoryFromURL = params.get('searchTerms') || '';
+ 
 
 
   const getMenueItem = () => {
@@ -67,9 +69,12 @@ const ViewPage = () => {
       doesItMatch(item.description) ||
       item.ingredients.some(ingredient => doesItMatch(ingredient))
     );
-
+if(categoryFromURL ){
+  match = match && (item.category === categoryFromURL);
+}
     return match;
   });
+
 
 
 
@@ -82,30 +87,7 @@ const ViewPage = () => {
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
-     <Input
-       /* type="search"
-        value={searchTerms}
-        onChange={e => setSearchTerms(e.target.value)}
-        placeholder="Search"*/
-        
-       /* type="search"
-        value={searchTermsFromURL}
-        onChange={e => {
-          const newParams = new URLSearchParams(params);
-          const inputValue = e.target.value;
-
-          if (inputValue) {
-            newParams.set('searchTerms', inputValue);
-          } else {
-            newParams.delete('searchTerms');
-          }
-
-          setParams(newParams);
-        }}
-        placeholder="Search"*/
-      
-
-      />
+    <FilterBar/>
 
        {loading
         ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
