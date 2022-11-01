@@ -26,11 +26,11 @@ const Select = props => {
 
       <select {...selectProps}>
         {
-          
+
           options.map(
             e => {
               return (
-                <option key={e}>{e}</option>
+                <option key={e} value={e}>{e}</option>
               );
             }
           )

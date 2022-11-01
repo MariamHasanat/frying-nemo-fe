@@ -1,7 +1,6 @@
 
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import Input from '../../components/common/input/input.component';
 import ItemCard from '../../components/item-card/item-card.component';
 import FilterBar from '../../components/view/filter-input.component';
 import './view.css';
@@ -35,19 +34,27 @@ const View = () => {
     setMenuItems(getMenuItems());
   }, []);
 
-  /**
-   * @param {String} str
-   */
-  const doesItMatch = str => str.toLowerCase().includes(searchParamFromURl.toLowerCase().trim());
-  const filteredItems = menuItems.filter(e => {
-    return doesItMatch(e.name) ||
-      doesItMatch(e.description) || e.ingredients.some(e => doesItMatch(e));
 
+  const filteredItems = menuItems.filter(e => {
+
+    /**
+     * 
+     * @param {String} str 
+     * @returns 
+     */
+    const doesItMatch = str => str.toLowerCase().includes(searchParamFromURl.toLowerCase().trim());
+
+    let match = (doesItMatch(e.name) ||
+      doesItMatch(e.description) || e.ingredients.some(e => doesItMatch(e)));
+
+    if (categoryFromURl) {
+      match = match && e.category === categoryFromURl;
+    }
+
+    return match;
 
   });
-  if (categoryFromURl) {
-    doesItMatch = doesItMatch && e.category === categoryFromURl;
-  }
+
 
 
 

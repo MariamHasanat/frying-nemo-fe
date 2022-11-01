@@ -26,20 +26,20 @@ const FilterBar = props => {
       />
       <Select
         onChange={e => {
-          var userInput = e.target.value.trim();
+          var userInput = e.target.value;
 
           const newParam = new URLSearchParams(props.params);
-          if (userInput)
+          if (userInput !== 'All')
             newParam.set('category', userInput);
           else newParam.delete('category');
 
           props.setParams(newParam);
-
         }}
         value={props.category}
         name='categories'
         label='categories'
-        options={CATEGORIES}
+
+        options={['All', ...CATEGORIES]}
       />
     </div>
   );
