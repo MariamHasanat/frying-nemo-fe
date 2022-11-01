@@ -13,7 +13,9 @@ const ViewPage = (props) => {
     const [params, setParams] = useSearchParams();
 
     const searchTerms = params.get('searchTerms') || '';
-    console.log('searchTerms:', searchTerms);
+    const categoryFilters = params.get('categoryFilters') || '';
+    // console.log('searchTerms:', searchTerms);
+    // console.log('categoryFilters:', categoryFilters);
 
     const filteredMenu = menu
         .filter(

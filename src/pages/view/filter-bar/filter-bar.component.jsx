@@ -21,11 +21,11 @@ const FilterBar = (props) => {
             }}
         />
 
-            <Select name="category" label='Category'>
+            <Select name="category" label='Category' defaultValue='All'>
                 {CATEGORIES.map((item) => {
                     return <option key={item} value={item}>{item}</option>;
                 })}
-                <option selected>All</option>
+                <option value='All'>All</option>
             </Select>
 
         </div>
