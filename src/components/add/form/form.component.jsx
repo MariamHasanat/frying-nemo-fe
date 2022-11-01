@@ -5,23 +5,13 @@ import Textarea from '../../common/textarea/textarea.component';
 import SelectArea from '../../common/selectarea/selectarea.component';
 import MultivalueInput from '../../common/multivalue-input/multivalueInput';
 import { useNavigate } from 'react-router-dom';
-
+import { CATEGORIES } from '../../../data/constants';
 
 
 const Form = (props) => {
     const [name, setName] = useState('');
     const [Ingredients, setIngredients] = useState([]);
     const navigate = useNavigate();
-    let categories = [
-        'Fish',
-        'Drinks',
-        'Hookah',
-        'Salads',
-        'Sandwiches',
-        'Main Dish',
-        'Appetizers',
-        'Ice Cream'
-    ];
 
     /**
      * @param {React.ChangeEvent<HTMLInputElement>} e
@@ -91,7 +81,7 @@ const Form = (props) => {
                 <SelectArea label='Categories' name={'categories'} required>
 
                     {
-                        categories.map((item) => {
+                        CATEGORIES.map((item) => {
                             return <option key={item} value={item}>{item}</option>;
                         })
                     }
