@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./cards.css";
 import Select from "../common/select/select.component";
-import Input from "../common/input/input.component";
+import FilteredSearch from "../view/filter-search/filtered-search.component";
+import "../../common.css";
 /**
  * @type {Array<{
  * name: string;
@@ -29,19 +30,15 @@ const Cards = (props) => {
     );
     return(match);
   });
-  const setSearchTermAndSearchParam = (value)=>{
-    setSearchParams({ 'q': value });
-    setSearchTerm(value);
-    console.debug(searchTerm);
-  };
+  
   return (
     <div>
-      <Input
-      value={searchTerm}
-      onChange={(e) => setSearchTermAndSearchParam(e.target.value)}
-      className="search-term-input"
-      placeholder="Search"
-      />  
+      <FilteredSearch
+      searchTerm={searchTerm}
+      setSearchTerm={setSearchTerm}
+      setSearchParams={setSearchParams}
+      searchParams= {searchParams}
+      />
       
     <div className="card-container">
       {searchList.map((item, index) => {

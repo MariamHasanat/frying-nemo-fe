@@ -6,6 +6,7 @@ import Select from "../../common/select/select.component";
 import "./form.css";
 import MultivalueInput from "../../multi-value-input.jsx/multivalue-input.component";
 import "../../../../src/common.css";
+import { CATEGORIES } from "../../../data/constants";
 
 const Form = (props) => {
   const [name, setName] = useState("");
@@ -55,7 +56,6 @@ const Form = (props) => {
 
     setName(value);
   };
-  let catigories = ["SeaFood", "Drinks", "MainDish", "Salad"];
   return (
     <div className="form-container">
       <h1>Add Menu Item</h1>
@@ -70,7 +70,7 @@ const Form = (props) => {
         <Textarea name="description" label="Description" />
         <Input name="price" label="price" type="number" required />
         <Select name="category" label="categories">
-          {catigories.map((item) => {
+          {CATEGORIES.map((item) => {
             return (
               <option key={item} value={item}>
                 {item}

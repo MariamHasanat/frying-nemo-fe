@@ -1,11 +1,10 @@
 import "./view.css";
-import { useState } from "react";
 import Cards from "../cards/cards.component";
 
 const ViewPage = (props) => {
   return (
     <div>
-      <h1>view Page</h1>
+      <h1 className="view-page-header">view Page</h1>
       <Cards />
     </div>
   );

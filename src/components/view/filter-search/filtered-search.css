@@ -1,0 +1,6 @@
+.search-items-constained{
+  display: flex;
+  column-gap: 10px;
+  margin-left:2em;
+  margin-bottom:1em;
+}
