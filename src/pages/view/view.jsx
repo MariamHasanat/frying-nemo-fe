@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Input from '../../components/common/input/input.component';
 import ItemCard from '../../components/item-card/item-card.component';
 import './view.css';
@@ -19,9 +20,13 @@ const initialItems = [];
 
 const View = () => {
 
-  const [searchTerms, setSearchTerms] = useState('');
-
   const [menuItems, setMenuItems] = useState(initialItems);
+  const [searchTerms, setSearchTerms] = useState(localStorage.getItem('search-terms') || '');
+  const [params, setParams] = useSearchParams();
+
+  const searchParam = params.get('search') || '';
+  console.log("search param: " + searchParam);
+
   console.log(menuItems);
 
   useEffect(() => {
@@ -31,32 +36,46 @@ const View = () => {
   /**
    * @param {String} str
    */
-  const doesItMatch = str => str.toLowerCase().includes(searchTerms.toLowerCase().trim());
+  const doesItMatch = str => str.toLowerCase().includes(searchParam.toLowerCase().trim());
   const filteredItems = menuItems.filter(e => {
     return doesItMatch(e.name) ||
       doesItMatch(e.description) || e.ingredients.some(e => doesItMatch(e));
   });
 
+  const setSearchTermsAndSave = (value) => {
+    setSearchTerms(value);
+    localStorage.setItem('search-terms', value);
+  };
+
   return (
     <div className="view-page">
       <h1>All Menu Items</h1>
       <Input
-        value={searchTerms}
+        value={searchParam}
         type='Search'
-        placeholder='Search'
-        onChange={e => setSearchTerms(e.target.value)}
+        placeholder={'search'}
+        onChange={e => {
+
+          const newParam = new URLSearchParams(params);
+          newParam.set('search', e.target.value.trim());
+
+          setParams(newParam);
+        }}
       />
 
-      {
-        filteredItems.map(
-          item => {
-            return (
+      <div className='items-container'>
 
-              <ItemCard item={item} />
-            );
+        {
+          filteredItems.map(
+            item => {
+              return (
 
-          })
-      }
+                <ItemCard item={item} />
+              );
+
+            })
+        }
+      </div>
     </div>
   );
 };
