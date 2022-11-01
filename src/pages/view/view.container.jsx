@@ -1,8 +1,8 @@
 import Item from './item/item.jsx';
 import './viewContainerStyle.css';
 import { useState } from 'react';
-import Input from '../../components/common/input.jsx';
 import { useSearchParams } from 'react-router-dom';
+import Filter from './filter-bar/filter.bar.component.jsx';
 
 const getMenuItem = () => JSON.parse(localStorage.menuItems || '[]');
 
@@ -20,12 +20,12 @@ const ViewPage = (props) => {
 
   const [menuItems] = useState(getMenuItem());
   const [params, setParams] = useSearchParams();
-
   const searchParams = params.get('q') || '';
+  const categoriesFromURL = params.get('category') || '';
 
   const filteredItem = menuItems.filter(item => {
 
-    const match = (
+    let match = (
       item.name.toLowerCase().includes(searchParams.toLowerCase().trim()) ||
 
       item.description.toLowerCase().includes(searchParams.toLowerCase().trim()) ||
@@ -34,6 +34,10 @@ const ViewPage = (props) => {
         ingredients.toLowerCase().includes(searchParams.toLowerCase().trim())
       )
     );
+
+    if(categoriesFromURL){
+      match = match && (item.category === categoriesFromURL)
+    }
     return match;
   }
   );
@@ -41,24 +45,13 @@ const ViewPage = (props) => {
   return (
     <div className='view-container'>
       <h1 className='h1'>View Menu Items</h1>
-      <Input
-        type="search"
-        value={searchParams}
-        onChange={e => {
-          const newParam = new URLSearchParams(params);
-          const inputValue = e.target.value;
 
-          if (inputValue) {
-            newParam.set('q', e.target.value);
-          } else {
-            newParam.delete('q');
-          }
-
-          setParams(newParam);
-
-        }}
-        placeholder="Search"
-      />
+      <Filter
+        params={params}
+        setParams={setParams}
+        searchParams={searchParams} 
+        categoriesFromURL={categoriesFromURL}
+        />
 
       <div className='items-container'>
         {
