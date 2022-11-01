@@ -2,8 +2,12 @@
   display: flex;
   margin-bottom: 20px;
   justify-content: flex-start;
-  align-items: flex-end;
+  align-items: center;
   column-gap: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid #e3e3e3;
+}
+
+.filter-bar>.categories {
+  display: flex;
 }

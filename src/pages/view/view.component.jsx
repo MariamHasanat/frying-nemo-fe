@@ -22,7 +22,7 @@ const ViewPage = (props) => {
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
   const searchTermsFromURL = params.get('searchTerms') || '';
-  const categoryFromURL = params.get('category') || '';
+  const categoriesFromURL = params.getAll('category') || '';
 
   const getMenuItems = () => {
     setLoading(true);
@@ -52,8 +52,8 @@ const ViewPage = (props) => {
       item.ingredients.some(ingredient => doesItMatch(ingredient))
     );
 
-    if (categoryFromURL) {
-      match = match && (item.category === categoryFromURL);
+    if (categoriesFromURL) {
+      match = match && (categoriesFromURL.includes(item.category));
     }
 
     return match;
@@ -64,7 +64,7 @@ const ViewPage = (props) => {
       <h1>View Menu Items</h1>
       <FilterBar
         searchTermsFromURL={searchTermsFromURL}
-        categoryFromURL={categoryFromURL}
+        categoriesFromURL={categoriesFromURL}
         params={params}
         setParams={setParams}
       />
