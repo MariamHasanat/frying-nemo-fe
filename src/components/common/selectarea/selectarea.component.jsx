@@ -21,7 +21,7 @@ const SelectArea = props => {
                     </label>
                 ) : null
             }
-            <select {...selectareaProps}/>
+            <select {...selectareaProps} />
         </div>
     );
 };

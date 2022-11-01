@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import Input from "../../components/common/input/input.component";
-import Item from "../../components/common/item/item.component";
+import Item from "../../components/view/filter-bar/item/item.component";
+import FilterBar from "../../components/view/filter-bar/filter-bar.component";
 import Spinner from "../../core/spinner/spinner";
 import './view.css';
+import { CATEGORIES } from "../../data/constants";
 
 /**
 * @type {Array<{
@@ -20,9 +21,10 @@ const initialItems = [];
 const View = () => {
     const [menuItems, setMeuItems] = useState(initialItems);
     const [loading, setLoading] = useState(true);
-    const [paramsFromURL, setParam] = useSearchParams();
+    const [params, setParam] = useSearchParams();
 
-    const searchParFromURL = paramsFromURL.get('searchTerms') || '';
+    const searchParFromURL = params.get('searchTerms') || '';
+    const categoryParFromURL = params.get('category') || '';
 
     useEffect(() => {
         getMenuItems();
@@ -34,7 +36,7 @@ const View = () => {
             const items = JSON.parse(localStorage.categoriesArray || '[]');
             setMeuItems(items);
             setLoading(false);
-        }, 1000);
+        }, 100);
     };
 
     const filteredItems = menuItems.filter((item) => {
@@ -45,6 +47,9 @@ const View = () => {
             check(item.description) ||
             item.Ingredients.some(ingredient => check(ingredient))
         );
+        if (categoryParFromURL && categoryParFromURL !== 'All') {
+            match = match && (CATEGORIES.includes(categoryParFromURL));
+        }
 
         return match;
     });
@@ -54,19 +59,11 @@ const View = () => {
             <h1>
                 Menu Items
             </h1>
-            <Input
-                value={searchParFromURL}
-                type="search"
-                placeholder={'Search'}
-                onChange={e => {
-                    const newP = new URLSearchParams(paramsFromURL);
-                    const valueOfInput = e.target.value;
-                    if (valueOfInput)
-                        newP.set('searchTerms', valueOfInput);
-                    else
-                        newP.delete('searchTerms');
-                    setParam(newP);
-                }}
+            <FilterBar
+                params={params}
+                setParam={setParam}
+                searchParFromURL={searchParFromURL}
+                categoryParFromURL={categoryParFromURL}
             />
             {
                 loading
