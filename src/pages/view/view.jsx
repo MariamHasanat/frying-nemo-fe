@@ -55,9 +55,12 @@ const View = () => {
         type='Search'
         placeholder={'search'}
         onChange={e => {
+          var userInput = e.target.value.trim();
 
           const newParam = new URLSearchParams(params);
-          newParam.set('search', e.target.value.trim());
+          if (userInput)
+            newParam.set('search', userInput);
+          else newParam.delete('search');
 
           setParams(newParam);
         }}

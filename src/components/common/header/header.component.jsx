@@ -8,7 +8,7 @@ import './header.css';
  * }} props 
  * @returns 
  */
-const Header = (props) => {
+const Header = () => {
   return (
     <div className='header'>
       <div>
@@ -19,11 +19,10 @@ const Header = (props) => {
       <div className='header-navigation-buttons'>
         <nav>
 
-
           <Link to='/add'>Add</Link>
 
           <Link to='/view'>View</Link>
-          
+
         </nav>
       </div>
     </div>
