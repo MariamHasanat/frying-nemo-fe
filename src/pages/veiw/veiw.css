@@ -3,10 +3,14 @@
     gap: 20px;
     flex-wrap: wrap;
 }
-.item-container{
+.items-container{
   display: flex;
   justify-content: start;
   gap: 20px;
   flex-wrap: wrap;
 
+}
+.select-filter{
+  margin: 15px;
+ 
 }

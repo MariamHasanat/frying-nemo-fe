@@ -5,7 +5,7 @@ import MultivalueInput from '../../common/multivalue-input/multivalue-input.comp
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea/textarea.component';
 import './form.css';
-
+import { CATEGORIES } from "../../../data/constant";
 const Form = (props) => {
   const [name, setName] = useState('ali');
   const [ingredients, setIngredients] = useState([]);
@@ -22,15 +22,7 @@ const Form = (props) => {
    * @param {React.ChangeEvent<HTMLInputElement>} e On change event object. 
    */
 
-  const categories = [
-    "fish",
-    "drink",
-    "Mooka",
-    "Chocolate",
-    "Sheesha",
-    "Sandowich",
 
-  ];
 
   const submitHandler = e => {
     e.preventDefault();
@@ -107,7 +99,7 @@ const Form = (props) => {
         required
         ></Input>
         <Select name='category' label='select from menu' required>
-          return {categories.map((item) => {
+          return {CATEGORIES.map((item) => {
             return <option key={item} value={item}>{item}</option>;
           })}
         </Select>
@@ -125,7 +117,7 @@ const Form = (props) => {
 };
 
 export default Form;
-//"how to change state to another state react?"
+
 
 
 
