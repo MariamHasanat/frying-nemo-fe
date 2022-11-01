@@ -10,7 +10,7 @@ const FilterBar = props => {
     <div className='filter-bar-container'>
 
       <Input
-        value={props.searchParam}
+        value={props.searchParamFromURl}
         type='Search'
         placeholder={'search'}
         onChange={e => {
@@ -25,9 +25,21 @@ const FilterBar = props => {
         }}
       />
       <Select
-      name='categories'
-      label='categories'
-      options={CATEGORIES}
+        onChange={e => {
+          var userInput = e.target.value.trim();
+
+          const newParam = new URLSearchParams(props.params);
+          if (userInput)
+            newParam.set('category', userInput);
+          else newParam.delete('category');
+
+          props.setParams(newParam);
+
+        }}
+        value={props.category}
+        name='categories'
+        label='categories'
+        options={CATEGORIES}
       />
     </div>
   );

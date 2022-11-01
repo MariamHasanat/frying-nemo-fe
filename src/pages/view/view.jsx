@@ -24,8 +24,10 @@ const View = () => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [params, setParams] = useSearchParams();
 
-  const searchParam = params.get('search') || '';
-  console.log("search param: " + searchParam);
+  const searchParamFromURl = params.get('search') || '';
+  const categoryFromURl = params.get('category') || '';
+
+  console.log("search param: " + searchParamFromURl);
 
   console.log(menuItems);
 
@@ -36,11 +38,16 @@ const View = () => {
   /**
    * @param {String} str
    */
-  const doesItMatch = str => str.toLowerCase().includes(searchParam.toLowerCase().trim());
+  const doesItMatch = str => str.toLowerCase().includes(searchParamFromURl.toLowerCase().trim());
   const filteredItems = menuItems.filter(e => {
     return doesItMatch(e.name) ||
       doesItMatch(e.description) || e.ingredients.some(e => doesItMatch(e));
+
+
   });
+  if (categoryFromURl) {
+    doesItMatch = doesItMatch && e.category === categoryFromURl;
+  }
 
 
 
@@ -48,7 +55,12 @@ const View = () => {
     <div className="view-page">
       <h1>All Menu Items</h1>
 
-      <FilterBar searchParam={searchParam} setParams={setParams} params={params} />
+      <FilterBar
+        searchParamFromURl={searchParamFromURl}
+        setParams={setParams}
+        params={params}
+        category={categoryFromURl}
+      />
 
       <div className='items-container'>
 

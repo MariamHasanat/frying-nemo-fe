@@ -5,6 +5,7 @@ import Textarea from '../../common/textarea/textarea.component';
 import Select from '../../common/select/select.component';
 import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
 import { useNavigate } from 'react-router-dom';
+import { CATEGORIES } from '../../../data/constants';
 
 const Form = (props) => {
   const navigate = useNavigate();
@@ -51,8 +52,6 @@ const Form = (props) => {
 
   };
 
-  const categories = ["Fish", "Drinks", "Main Dishes", "Salads",];
-
 
   return (
     <form onSubmit={submitHandler} className='add-item-form'>
@@ -82,7 +81,7 @@ const Form = (props) => {
         <Select
           name='category'
           label='menu'
-          options={categories}
+          options={CATEGORIES}
         />
 
         <MultivalueInput
