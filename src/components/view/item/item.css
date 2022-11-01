@@ -30,7 +30,7 @@
   .item-card>.info>h2 {
     margin: 0;
     font-size: 24px;
-    color: #333;
+    color: #f00;
     font-weight: 500;
   
   }
@@ -43,7 +43,7 @@
   .item-card>.info>p.ingredients {
     font-size: 12px;
     font-weight: bold;
-    color: #5d5d5d;
+    color: #26ffaf;
     margin: 0;
   }
   

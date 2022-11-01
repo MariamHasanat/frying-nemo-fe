@@ -1,7 +1,11 @@
 import React from 'react';
 import './header.css';
 import { Link} from "react-router-dom"
+import { useState } from 'react';
+
 const Header = (props) => {
+
+  const [button, setButton] = useState("add")
   return (
     <header className="webisteHeader">
       <div className="left">
@@ -11,15 +15,15 @@ const Header = (props) => {
       </div>
       <div className="right">
     {  <nav>
-        
-          <Link to="/add">
+        {button==="add"?  <Link to="/add">
 
-            <img className='add' src="https://th.bing.com/th/id/OIP.1TOk33fReQL3_tEO7VcKngHaHa?pid=ImgDet&w=159&h=159&c=7"></img>
-          </Link>
-       
+<img  onClick={()=>setButton("view")} className='add' src="https://th.bing.com/th/id/OIP.1TOk33fReQL3_tEO7VcKngHaHa?pid=ImgDet&w=159&h=159&c=7"></img>
+</Link>:""}
+{button==="view"?  
           <Link to="/view">
-            <img  className='view'src='https://th.bing.com/th/id/OIP.3XkYPHZ4zrcvQuJjfjY0cAAAAA?pid=ImgDet&w=150&h=150&c=7'></img>
-          </Link>
+            <img onClick={()=>setButton("add")} className='view'src='https://th.bing.com/th/id/OIP.3XkYPHZ4zrcvQuJjfjY0cAAAAA?pid=ImgDet&w=150&h=150&c=7'></img>
+          </Link>:""}
+       
         </nav>}
       </div>
     </header>
