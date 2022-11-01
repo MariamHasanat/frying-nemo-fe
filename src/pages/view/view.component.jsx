@@ -1,6 +1,6 @@
 import "./view.css";
 import { useEffect, useState } from "react";
-import Input from "../../components/common/input/input-component";
+import FilterBar from "../../components/view/filter-bar/filter-bar.component";
 import { useSearchParams } from "react-router-dom";
 
 /**
@@ -22,6 +22,7 @@ const ViewPage = (props) => {
   const [params, setParams] = useSearchParams();
 
   const searchTerms = params.get("searchTerms") || "";
+  const categoryFromURL = params.get("categoryFromURL") || "";
 
   const getMenuItems = () => {
     setLoading(true);
@@ -42,16 +43,11 @@ const ViewPage = (props) => {
   return (
     <div>
       <h1>View Menu Items</h1>
-      <Input
-        type="search"
-        value={searchTerms}
-        onChange={(e) => {
-          const newParams = new URLSearchParams(params);
-          newParams.set("searchTerms", e.target.value);
-          setParams(newParams);
-        }}
-        placeholder="Search"
-      />
+      <FilterBar 
+      searchTerms={searchTerms} 
+      categoryFromURL={categoryFromURL}
+      params={params} 
+      setParams={setParams} />
       {loading && (
         <div className="loading">
           <div className="lds-spinner">
@@ -74,7 +70,7 @@ const ViewPage = (props) => {
       <div className="items-container">
         {menuItems
           .filter((item) => {
-            const match =
+            let match =
               item.name.toLowerCase().includes(searchTerms.toLowerCase().trim()) ||
               item.description
                 .toLowerCase()
@@ -86,6 +82,11 @@ const ViewPage = (props) => {
                   .trim()
                   .includes(searchTerms.toLowerCase().trim());
               });
+
+            if (categoryFromURL) {
+              match = match && (item.category === categoryFromURL);
+            }
+
             return match;
           })
           .map((item, index) => {
