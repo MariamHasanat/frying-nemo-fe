@@ -1,7 +1,6 @@
 body{
   display: flex;
   justify-content: center;
-  align-items: flex-end;
   background-size: cover ;
   background-image: url('../../../public/nemo.jpg');
 }
@@ -18,4 +17,15 @@ body{
 }
 .label-name{
   color: rgb(37, 36, 36);
+}
+.items-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.item-card{
+  margin: 20px;
+  width: 300px;
+
 }
