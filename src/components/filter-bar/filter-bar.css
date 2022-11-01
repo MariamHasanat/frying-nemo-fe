@@ -1,0 +1,7 @@
+.filter-bar{
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: flex-start;
+  align-items: flex-end;
+  column-gap: 20px;
+}

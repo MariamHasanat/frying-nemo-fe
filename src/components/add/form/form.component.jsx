@@ -5,15 +5,16 @@ import './form.css';
 import Select from '../../select/select.component';
 import MultivalueInput from '../../multivalue-input/multivalue-input.component';
 import { Navigate, useNavigate } from 'react-router-dom';
+import CATEGORIES from '../../data/categories';
 
-const categories = [
-  'fish',
-  'salad',
-  'juice',
-  'meat',
-  'chicken',
-  'bread'
-];
+// const categories = [
+//   'fish',
+//   'salad',
+//   'juice',
+//   'meat',
+//   'chicken',
+//   'bread'
+// ];
 
 const Form = (props) => {
   const [name, setName] = useState('Huda');
@@ -89,7 +90,7 @@ const Form = (props) => {
           required
         />
         <Select name='category' label='category' required>
-          {categories.map(item => {
+          {CATEGORIES.map(item => {
             return <option key={item} value={item}>{item}</option>;
           })}
         </Select>
