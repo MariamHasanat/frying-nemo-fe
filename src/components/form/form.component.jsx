@@ -5,6 +5,7 @@ import Input from '../common/input';
 import Textarea from '../textarea/textarea.component';
 import Select from '../selector/selector.component';
 import MultivalueInput from '../multivalue/multivalue-input';
+import { CATEGORIES } from '../data/categories';
 
 
 const Form = (props) => {
@@ -60,17 +61,6 @@ const Form = (props) => {
     setName(value);
   };
 
-  let food = [
-    "tea",
-    "coffee",
-    "nemo",
-    "abu-nemo",
-    'Sandwiches',
-    'Main Dish',
-    'Appetizers',
-    'Ice Cream'
-  ];
-
   return (
 
     <form className='add-form' onSubmit={submitHandler}>
@@ -96,7 +86,7 @@ const Form = (props) => {
       />
 
       <Select label="Choose" required name='category'>
-        {food.map
+        {CATEGORIES.map
           (item => {
             return <option key={item} value={item}>{item}</option>;
           }
