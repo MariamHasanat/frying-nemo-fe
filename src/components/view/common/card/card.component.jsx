@@ -3,8 +3,8 @@ import Counter from '../counter/counter.component'
 import burger from './images/burger.jpg'
 import { useState } from 'react';
 
-const Card = ({itemName, itemCategory, itemPrice, itemDescription, itemIngredients, image, i}) => {
-  const [counter, setCounter] = useState(0);
+const Card = ({itemName, itemCategory, itemPrice, itemDescription, itemIngredients, image, i, ctr}) => {
+  const [counter, setCounter] = useState(ctr);
 
   const incCounter = () => {
     if (counter >= 100) return;

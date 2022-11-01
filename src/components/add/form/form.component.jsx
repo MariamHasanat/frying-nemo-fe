@@ -6,6 +6,7 @@ import Textarea from '../common/textarea/textarea.component';
 import Select from '../common/select/select.component';
 import MultivalueInput from '../common/multivalue-input/multivalue-input.component';
 import { useNavigate } from 'react-router-dom';
+import { CATEGORIES } from '../../../data/constants';
 
 const Form = (props) => {
 
@@ -71,7 +72,7 @@ const Form = (props) => {
         <Textarea name='description' label="Description" ></Textarea>
         <Input name="price" label="Price" type="number" required></Input>
         <Input name="image" label="Image" type="text" required></Input>
-        <Select name='category' items={[`Fish`, `Main Dish`, `Drink`, `Chicken`, `Salad`]} required></Select>
+        <Select name='category' items={CATEGORIES} required></Select>
         <MultivalueInput onChange={updateIngs} name='ingredients' label='Ingredients'/>
         <Button name="SUBMIT" type="submit"></Button>
       </div>
