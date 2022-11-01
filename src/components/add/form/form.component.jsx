@@ -5,6 +5,7 @@ import MultivalueInput from '../../common/multivalue-input/multivalue-input/mult
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
+import CATEGORIES from '../../../data/constants' ;
 
 const Form = (props) => {
   const [name, setName] = useState('');
@@ -57,7 +58,7 @@ const Form = (props) => {
     }
     setName(val);
   };
-  const catigories = ["Salads", "Main Dishes", "Drinks", "Sweets"];
+  // const CATEGORIES = ["Salads", "Main Dishes", "Drinks", "Sweets"];
   return (
     <form className='addForm' onSubmit={handle} action='/view'>
       <Input
@@ -83,7 +84,7 @@ const Form = (props) => {
       />
       {/* using array mapping */}
       <Select label='Select' name='catigory'>
-        {catigories.map(item =>
+        {CATEGORIES.map(item =>
           <option key={item} value={item}>{item}</option>
         )}
         {/* key must be mintions */}

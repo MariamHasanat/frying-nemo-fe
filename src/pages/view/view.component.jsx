@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import Input from '../../components/common/input/input.component';
 import Spinner from '../../components/common/spinner/spinner.componenr';
 import MenuItem from './cards/menu-item/menu-item.component';
+import FilterBar from './filter-bar/filter-bar.component';
 import './view.css' ;
 
 /**
@@ -23,6 +24,7 @@ const ViewPage = (props) => {
   //param is an instanse of complex class (URLSearchParams) so I need to use get (name) to access spesific param 
   const [param , setParam] = useSearchParams() ;  
   const searchUsingURL = param.get ('searchTerms') || '' ;
+  const categoryUsingURL = param.get ('category') || '' ;
   console.log ('searchTerms param = ' , param.get('searchTerms')) ;
   const getMenuItems = () =>{
     setLoading (true) ;
@@ -38,31 +40,27 @@ const ViewPage = (props) => {
   
   const filteredIetems = items.filter (element => {
     const doesItMatch  = (value) => value.toLowerCase().includes(searchUsingURL.toLowerCase().trim())
-    return (
+    let match = (
     doesItMatch (element.name) 
     || doesItMatch (element.discription) 
-    || doesItMatch (element.catigory) 
     || element.ingredients.some (ingredient => doesItMatch (ingredient)) 
     // => i can use find function instead , but (some is better to use) 
     )
+    if (categoryUsingURL) {
+      match = match && element.catigory == categoryUsingURL ;
+    }
+    return match ;
   }) ;
 
   return (
     <div className='view'>
       <h1 align = 'center'>View Menu Items</h1>
-      <Input type='search' value={searchUsingURL}
-      onChange = {e => {
-        let newParam = new URLSearchParams (param) ;  // create new object of the same type as param
-        const inputValue = e.target.value ;
-        if (inputValue) {
-          newParam.set ('searchTerms' , e.target.value) ; // use set function to edit the search value of the new object
-        }
-        else {
-          newParam.delete ('searchTerms') ;
-        } 
-        setParam (newParam) ;  // set the param value as the new created object 
-      }} 
-      placeholder = 'search'/>
+      <FilterBar
+        searchUsingURL = {searchUsingURL} 
+        categoryUsingURL = {categoryUsingURL}
+        param = {param}
+        setParam = {setParam}
+      />
       {loading 
       ? <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Spinner />
