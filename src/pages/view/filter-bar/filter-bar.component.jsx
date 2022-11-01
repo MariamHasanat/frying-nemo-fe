@@ -8,8 +8,8 @@ const FilterBar = (props) => {
         <div className='filter-group'><Input
             placeholder='Search'
             type="search"
-             value={props.searchTerms}
-             label="Search"
+            value={props.searchTerms}
+            label="Search"
             onChange={e => {
                 const newParams = new URLSearchParams(props.params);
                 const searchVal = e.target.value;
@@ -21,11 +21,24 @@ const FilterBar = (props) => {
             }}
         />
 
-            <Select name="category" label='Category' defaultValue='All'>
+            <Select
+                name="category"
+                defaultValue=""
+                label='Category'
+                onChange={e => {
+                    const newParams = new URLSearchParams(props.params);
+                    const searchVal = e.target.value;
+                    if (searchVal)
+                        newParams.set('categoryFilters', searchVal);
+                    else
+                        newParams.delete('categoryFilters');
+                    props.setParams(newParams);
+                }}
+            >
                 {CATEGORIES.map((item) => {
                     return <option key={item} value={item}>{item}</option>;
                 })}
-                <option value='All'>All</option>
+                <option value="">All</option>
             </Select>
 
         </div>

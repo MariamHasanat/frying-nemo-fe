@@ -20,13 +20,13 @@
             "rice",
             "chicken"
         ],
-        "img": "https://www.hungrypaprikas.com/wp-content/uploads/2021/04/Maqluba-New-1-1024x1536.jpg"
+        "img": "https://tasteofpalestine.org/user/pages/02.Recipes/04.maqluba-chicken-rice-pot/maqluba-header-2.jpg"
     },
     {
         "name": "shawermah",
         "price": 15,
         "description": "shawerma al haram",
-        "category": "Fish",
+        "category": "Sandwiches",
         "ingredients": [
             "chicken",
             "garlic",

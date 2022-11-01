@@ -20,9 +20,16 @@ const ViewPage = (props) => {
     const filteredMenu = menu
         .filter(
             item => {
-                return (item.name.toLowerCase().includes(searchTerms.trim().toLowerCase()))
+                let match = (
+                    (item.name.toLowerCase().includes(searchTerms.trim().toLowerCase()))
                     || (item.description.toLowerCase().includes(searchTerms.trim().toLowerCase()))
-                    || (item.ingredients.some(element => element.toLowerCase().includes(searchTerms.trim().toLowerCase())));
+                    || (item.ingredients.some(element => element.toLowerCase().includes(searchTerms.trim().toLowerCase())))
+                );
+
+                if (categoryFilters) {
+                    match = match && (categoryFilters.includes(item.category));
+                }
+                return match;
             });
 
     setTimeout(() => {
@@ -33,8 +40,8 @@ const ViewPage = (props) => {
     return (
         <div className='view-page'>
             <h1>view items</h1>
-            <FilterBar 
-                searchTerms={searchTerms} 
+            <FilterBar
+                searchTerms={searchTerms}
                 params={params}
                 setParams={setParams}
             />
