@@ -1,4 +1,12 @@
 .container{
   display: flex;
   flex-wrap: wrap;
+
+}
+.wrapper{
+  display: flex;
+  flex-direction: column;
+}
+.filter{
+display: flex;
 }

@@ -6,6 +6,7 @@ import { type } from '@testing-library/user-event/dist/type';
 import MultivalueInput from '../../common/multi-value-input/multi-value-input';
 import './form.css';
 import { useNavigate } from 'react-router-dom';
+import {CATEGORIES } from '../../../data/data';
 
 
 
@@ -59,16 +60,16 @@ const Form = (props) => {
   };
 
 
-  const categories = [
-    'Fish',
-    'Drinks',
-    'Hookah',
-    'Salads',
-    'Sandwiches',
-    'Main Dish',
-    'Appetizers',
-    'Ice Cream'
-  ];
+  // const categories = [
+  //   'Fish',
+  //   'Drinks',
+  //   'Hookah',
+  //   'Salads',
+  //   'Sandwiches',
+  //   'Main Dish',
+  //   'Appetizers',
+  //   'Ice Cream'
+  // ];
   const onNameChange = e => {
     let value = e.target.value;
     if (value.includes('.')) {
@@ -103,7 +104,7 @@ const Form = (props) => {
         name="categories"
         label='categories' required>
         {
-          categories.map(item => {
+          CATEGORIES.map(item => {
 
             return <option value={item} key={item}>{item}</option>;
           })
