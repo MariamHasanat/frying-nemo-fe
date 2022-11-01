@@ -10,9 +10,9 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/*" element={<NotFoundPage />} />
           <Route path="/add" element={<AddPage />} />
           <Route path="/view" element={<ViewPage />} />
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </div>

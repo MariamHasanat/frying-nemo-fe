@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './form.css';
+import { CATEGORIES } from '../../../data/constants';
 
 import Input from '../../common/input/input.component';
 import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
@@ -62,17 +63,6 @@ const Form = (props) => {
     setName(value);
   };
 
-  const categories = [
-    'Fish',
-    'Drinks',
-    'Hookah',
-    'Salads',
-    'Sandwiches',
-    'Main Dish',
-    'Appetizers',
-    'Ice Cream'
-  ];
-
   return (
     <form className="addForm" onSubmit={submitHandler}>
       <Input
@@ -98,7 +88,7 @@ const Form = (props) => {
         required
       />
       <Select name="category" label="Category" required>
-        {categories.map(item => {
+        {CATEGORIES.map(item => {
           return <option key={item} value={item}>{item}</option>;
         })}
       </Select>
