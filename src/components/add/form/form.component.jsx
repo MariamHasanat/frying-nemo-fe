@@ -6,17 +6,7 @@ import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import '../../../common.css';
 import { useNavigate } from 'react-router-dom';
-
-
-const categories = [
-    "Fish",
-    "Drinks",
-    "desserts",
-    "Main Dishes",
-    "Pizza",
-    "Sandwiches"
-];
-
+import {CATEGORIES} from '../../../data/constants'
 const Form = (props) => {
     const [name, setName] = useState('');
     const [ingredients, setIngredients] = useState([]);
@@ -94,7 +84,7 @@ const Form = (props) => {
             />
 
             <Select required name="category" label='Category'>
-                {categories.map((item) => {
+                {CATEGORIES.map((item) => {
                     return <option key={item} value={item}>{item}</option>;
                 })}
             </Select>

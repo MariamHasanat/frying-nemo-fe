@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import ItemCard from './item-card/item-card.component';
 import Loading from '../../components/common/loading/loading.component';
-import Input from '../../components/common/input/input.component';
 import './view.css';
 import { useSearchParams } from 'react-router-dom';
+import FilterBar from './filter-bar/filter-bar.component';
 
 const getMenu = () => JSON.parse(localStorage.getItem('menu') || '[]');
 
@@ -31,18 +31,10 @@ const ViewPage = (props) => {
     return (
         <div className='view-page'>
             <h1>view items</h1>
-            <Input
-                placeholder='Search'
-                type="search" value={searchTerms}
-                onChange={e => {
-                    const newParams = new URLSearchParams(params);
-                    const searchVal = e.target.value;
-                    if (searchVal)
-                        newParams.set('searchTerms', searchVal);
-                    else
-                        newParams.delete('searchTerms');
-                    setParams(newParams);
-                }}
+            <FilterBar 
+                searchTerms={searchTerms} 
+                params={params}
+                setParams={setParams}
             />
 
             {loading
