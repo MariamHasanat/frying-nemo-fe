@@ -20,6 +20,7 @@ const MultivalueInput = props => {
       props.onChange([...props.value, newItemValue]);
 
     }
+    setNewItemValue('');
   };
 
   return (
@@ -34,6 +35,7 @@ const MultivalueInput = props => {
             if (e.key === "Enter" ){
           e.preventDefault();
           addItem();
+        
           }
         }}
         />

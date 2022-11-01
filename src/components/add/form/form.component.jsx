@@ -6,6 +6,7 @@ import MultivalueInput from '../../common/multivalueinput/multi-value-input';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
+import { CATEGORIES } from '../../../data/constant';
 
 
 const Form = (props) => {
@@ -62,16 +63,7 @@ const Form = (props) => {
   };
 
 
-  const categories = [
-    'Fish',
-    'Drinks',
-    'Hookah',
-    'Salads',
-    'Sandwiches',
-    'Main Dish',
-    'Appetizers',
-    'Ice Cream'
-  ];
+ 
 
 
   return (
@@ -103,7 +95,7 @@ const Form = (props) => {
         label="Category"
         name='category'
         required>
-        {categories.map(item => {
+        {CATEGORIES.map(item => {
           return <option key={item} value={item}>{item}</option>;
         })}
       </Select>
