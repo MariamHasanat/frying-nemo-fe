@@ -5,6 +5,7 @@ import Textarea from '../../../common/textarea/textarea.component';
 import Select from '../../../common/Select/Select';
 import MultivalueInput from '../../../common/multivalue-input/multivalue-input.component';
 import { useNavigate } from 'react-router-dom';
+import { CATEGORIES } from '../../../data/category';
 
 const Form = (props) => {
   const [name, setName] = useState('dala');
@@ -67,17 +68,6 @@ const Form = (props) => {
     setName(val);
   };
   
-  const Category = [
-    "Fish",
-    "Drinks",
-    "Hookah",
-    "salad",
-    "Sandwiches",
-    "Main Dishes",
-    "Appetizers",
-    "Ice Craem",
-  ]
-
   return (
     <form className='add-form' onSubmit={handler}>
       <div style={{ margintop: 20 }}>
@@ -109,7 +99,7 @@ const Form = (props) => {
         name="category"
         label="Category" 
         required>
-        {Category.map(item =>  {
+        {CATEGORIES.map(item =>  {
           return <option key={item} value={item}>{item}</option>
         })}
         </Select>
