@@ -53,7 +53,13 @@ const ViewPage = (props) => {
       <Input type='search' value={searchUsingURL}
       onChange = {e => {
         let newParam = new URLSearchParams (param) ;  // create new object of the same type as param
-        newParam.set ('searchTerms' , e.target.value) ; // use set function to edit the search value of the new object 
+        const inputValue = e.target.value ;
+        if (inputValue) {
+          newParam.set ('searchTerms' , e.target.value) ; // use set function to edit the search value of the new object
+        }
+        else {
+          newParam.delete ('searchTerms') ;
+        } 
         setParam (newParam) ;  // set the param value as the new created object 
       }} 
       placeholder = 'search'/>
@@ -75,3 +81,4 @@ const ViewPage = (props) => {
 };
 
 export default ViewPage;
+
