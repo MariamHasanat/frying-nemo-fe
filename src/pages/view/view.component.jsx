@@ -45,10 +45,7 @@ const ViewPage = (props) => {
     || doesItMatch (element.discription) 
     || element.ingredients.some (ingredient => doesItMatch (ingredient)) 
     // => i can use find function instead , but (some is better to use) 
-    )
-    if (categoryUsingURL) {
-      match = match && element.catigory == categoryUsingURL ;
-    }
+    ) && (element.catigory == categoryUsingURL && categoryUsingURL)
     return match ;
   }) ;
 
