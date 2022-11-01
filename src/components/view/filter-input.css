@@ -1,0 +1,6 @@
+.filter-bar-container {
+  display: flex;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  align-items: center;
+}

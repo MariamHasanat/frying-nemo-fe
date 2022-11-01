@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Input from '../../components/common/input/input.component';
 import ItemCard from '../../components/item-card/item-card.component';
+import FilterBar from '../../components/view/filter-input.component';
 import './view.css';
 const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]');
 
@@ -21,7 +22,6 @@ const initialItems = [];
 const View = () => {
 
   const [menuItems, setMenuItems] = useState(initialItems);
-  const [searchTerms, setSearchTerms] = useState(localStorage.getItem('search-terms') || '');
   const [params, setParams] = useSearchParams();
 
   const searchParam = params.get('search') || '';
@@ -42,29 +42,13 @@ const View = () => {
       doesItMatch(e.description) || e.ingredients.some(e => doesItMatch(e));
   });
 
-  const setSearchTermsAndSave = (value) => {
-    setSearchTerms(value);
-    localStorage.setItem('search-terms', value);
-  };
+
 
   return (
     <div className="view-page">
       <h1>All Menu Items</h1>
-      <Input
-        value={searchParam}
-        type='Search'
-        placeholder={'search'}
-        onChange={e => {
-          var userInput = e.target.value.trim();
 
-          const newParam = new URLSearchParams(params);
-          if (userInput)
-            newParam.set('search', userInput);
-          else newParam.delete('search');
-
-          setParams(newParam);
-        }}
-      />
+      <FilterBar searchParam={searchParam} setParams={setParams} params={params} />
 
       <div className='items-container'>
 
