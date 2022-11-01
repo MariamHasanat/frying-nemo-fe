@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Input from '../../../components/common/input/input.component';
 import { useEffect } from 'react';
 import Spinner from '../../../components/core/header/spinner/spinner.component';
+import { useSearchParams } from 'react-router-dom';
+import FilterBar from '../../../components/view/item/item/filter-bar/filter-bar.component';
 
 
 
@@ -20,9 +22,12 @@ import Spinner from '../../../components/core/header/spinner/spinner.component';
 const initialItems = [];
 
 const ViewPage = () => {
-  const [searchTerms,setSearchTerms] = useState('');
-  const [menueItems, setMenuItems] = useState(initialItems);
+ // const [searchTerms,setSearchTerms] = useState('');
+  const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
+  const [params, setParams] = useSearchParams();
+  const searchTermsFromURL = params.get('searchTerms') || '';
+
 
   const getMenueItem = () => {
     setLoading(true);
@@ -39,7 +44,7 @@ const ViewPage = () => {
     getMenueItem();
   }, []);
 
-  const filteredItems = menueItems.filter(item => {
+ /* const filteredItems = menueItems.filter(item => {
 
     const match =(
       item.name.toString().toLowerCase().includes(searchTerms.toLowerCase().trim()) 
@@ -48,7 +53,24 @@ const ViewPage = () => {
 
     );
     return match;
-  })
+  })*/
+
+  const filteredItems = menuItems.filter(item => {
+    /**
+     * Check if search terms are somewhere inside given string.
+     * @param {string} str 
+     */
+    const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
+
+    const match = (
+      doesItMatch(item.name) ||
+      doesItMatch(item.description) ||
+      item.ingredients.some(ingredient => doesItMatch(ingredient))
+    );
+
+    return match;
+  });
+
 
 
 
@@ -60,18 +82,36 @@ const ViewPage = () => {
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
-      <Input
-        type="search"
+     <Input
+       /* type="search"
         value={searchTerms}
         onChange={e => setSearchTerms(e.target.value)}
-        placeholder="Search"
+        placeholder="Search"*/
+        
+       /* type="search"
+        value={searchTermsFromURL}
+        onChange={e => {
+          const newParams = new URLSearchParams(params);
+          const inputValue = e.target.value;
+
+          if (inputValue) {
+            newParams.set('searchTerms', inputValue);
+          } else {
+            newParams.delete('searchTerms');
+          }
+
+          setParams(newParams);
+        }}
+        placeholder="Search"*/
+      
+
       />
+
        {loading
         ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
         : <div className="items-container">
           {
-            filteredItems
-              .map((item, index) => <Item data={item} key={item.name + index} />)
+            filteredItems.map((item, index) => <Item data={item} key={item.name + index} />)
           }
         </div>
       }
