@@ -13,9 +13,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
        <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/*" element={<NotFound/>} />
+         
           <Route path="/add" element={<AddPage />} />
-          <Route path="/view" element={<ViewPage />} />
+          <Route path="/view" element={<ViewPage />} /> 
+          <Route path="/*" element={<NotFound/>} />
         </Routes>
       </BrowserRouter>
     </div>
