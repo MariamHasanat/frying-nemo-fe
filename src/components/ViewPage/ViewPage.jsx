@@ -5,7 +5,7 @@ import Filter from '../core/filter-bar/Filter';
 import Spinner from '../core/spinner/Spinner';
 import Item from '../view/item/view.componets';
 import './viewpage.css';
-import CATAGORY from '../../common/data/constants.js';
+
 
 
 const ViewPage = (props) => {
@@ -26,6 +26,8 @@ const ViewPage = (props) => {
   const [Params, setParams] = useSearchParams();
   const searchURL = Params.get('searchTerms') || "";
   const categoryParams = Params.get('category') || "";
+  const MINParams = Params.get('Min') || "";
+  const MAXParams = Params.get('Max') || "";
 
   const getMenuItems = () => {
     setLoading(true);
@@ -53,13 +55,20 @@ const ViewPage = (props) => {
     var match = (
       DostItMatch(item.name) ||
       DostItMatch(item.description) ||
-      item.ingredients.some(ing => DostItMatch(ing)) ||
-      DostItMatch(item.price.toString())
+      item.ingredients.some(ing => DostItMatch(ing))
+
 
     );
     if (categoryParams) {
       match = match && (item.category === categoryParams);
     }
+
+
+  
+    if (MINParams && MAXParams) {
+      match = match && (item.price >= MINParams && item.price <= MAXParams)
+    }
+
     return match;
 
   });
@@ -75,7 +84,12 @@ const ViewPage = (props) => {
         categoryParams={categoryParams}
         Params={Params}
         searchURL={searchURL}
-        setParams={setParams}>
+        setParams={setParams}
+        MAXParams={MAXParams}
+        MINParams={MINParams}
+
+
+      >
       </Filter>
 
 
