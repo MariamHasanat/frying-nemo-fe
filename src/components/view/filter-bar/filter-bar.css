@@ -1,6 +1,6 @@
 .filter-bar {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   justify-content: flex-start;
   align-items: center;
   column-gap: 20px;

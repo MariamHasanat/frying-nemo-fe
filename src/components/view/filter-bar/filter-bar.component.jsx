@@ -4,55 +4,40 @@ import Input from '../../common/input/input.component';
 import { CATEGORIES } from '../../../data/constants';
 import CheckBox from '../../common/check-box/check-box.component';
 
-// TODO: Add types here -brett-
+/**
+ * Renders a filters bar.
+ * @param {{
+ *  searchTerms: string;
+ *  categories: string[];
+ *  setParam: (name: string, value: string | string[]) => void
+ * }} props Component properties object.
+ */
 const FilterBar = (props) => {
-
-  const handleFilterChange = (filterName, inputValue) => {
-    const newParams = new URLSearchParams(props.params);
-
-    if (inputValue) {
-      newParams.set(filterName, inputValue);
-    } else {
-      newParams.delete(filterName);
-    }
-    props.setParams(newParams);
-  };
-
   return (
     <div className="filter-bar">
       <Input
         type="search"
         label="Search for Item"
-        value={props.searchTermsFromURL}
-        onChange={e => handleFilterChange('searchTerms', e.target.value)}
+        value={props.searchTerms}
+        onChange={e => props.setParam('searchTerms', e.target.value)}
         placeholder="Search"
       />
       <div className="categories">
-        {CATEGORIES.map(cat => <CheckBox
-          key={cat}
-          value={cat}
-          label={cat}
-          checked={props.categoriesFromURL.includes(cat)}
-          onChange={(e) => {
-            const newParams = new URLSearchParams(props.params);
-            const oldItems = newParams.getAll('category');
+        {CATEGORIES.map(cat => (
+          <CheckBox
+            key={cat}
+            value={cat}
+            label={cat}
+            checked={props.categories.includes(cat)}
+            onChange={e => {
+              const updated = e.target.checked
+                ? [...props.categories, cat]
+                : props.categories.filter(category => category !== cat);
 
-            if (e.target.checked) {
-              newParams.append('category', cat);
-            } else {
-              const filteredCategories = oldItems.filter(oItem => oItem !== cat);
-              if (filteredCategories.length) {
-                newParams.delete('category');
-                filteredCategories.forEach((v) => newParams.append('category', v));
-              } else {
-                newParams.delete('category');
-              }
-            }
-
-            props.setParams(newParams);
-          }}
-        />
-        )}
+              props.setParam('category', updated);
+            }}
+          />
+        ))}
       </div>
     </div>
   );

@@ -59,22 +59,43 @@ const ViewPage = (props) => {
     return match;
   });
 
+  /**
+   * Set query string parameter.
+   * @param {string} name Parameter name.
+   * @param {string | string[]} value Parameter value.
+   */
+  const setParam = (name, value) => {
+    const newParams = new URLSearchParams(params);
+
+    newParams.delete(name);
+
+    if (Array.isArray(value)) {
+      value.forEach(item => newParams.append(name, item));
+    } else if (value.trim()) {
+      newParams.set(name, value.trim());
+    }
+
+    setParams(newParams);
+  };
+
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
       <FilterBar
-        searchTermsFromURL={searchTermsFromURL}
-        categoriesFromURL={categoriesFromURL}
-        params={params}
-        setParams={setParams}
+        searchTerms={searchTermsFromURL}
+        categories={categoriesFromURL}
+        setParam={setParam}
       />
-      {loading
-        ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
-        : <div className="items-container">
-          {
-            filteredItems.map((item, index) => <Item data={item} key={item.name + index} />)
-          }
-        </div>
+      {
+        loading
+          ? <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Spinner /></div>
+          : (
+            <div className="items-container">
+              {
+                filteredItems.map((item, index) => <Item data={item} key={item.name + index} />)
+              }
+            </div>
+          )
       }
     </div>
   );
