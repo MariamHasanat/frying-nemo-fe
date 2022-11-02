@@ -1,7 +1,6 @@
 import React from 'react';
 import './filter-bar.css';
 import Input from '../../common/input/input.component';
-import Select from '../../common/select/select.component';
 import { CATEGORIES } from '../../../data/constants';
 import CheckBox from '../../common/check-box/check-box.component';
 

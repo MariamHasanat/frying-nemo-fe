@@ -52,7 +52,7 @@ const ViewPage = (props) => {
       item.ingredients.some(ingredient => doesItMatch(ingredient))
     );
 
-    if (categoriesFromURL) {
+    if (categoriesFromURL.length) {
       match = match && (categoriesFromURL.includes(item.category));
     }
 
