@@ -30,7 +30,7 @@
 .card-name{
   font-size: 30px;
   font-weight: bolder;
-  text-align: center;
+  text-align:start;
 }
 .card-description, .card-price, .card-category, .card-name ,.card-Ingredients{
   margin-left: 12px;
