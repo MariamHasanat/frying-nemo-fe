@@ -20,7 +20,7 @@ const FilterBar = (props) => {
     <div className='filter-bar'>
       <Input type='search' value={props.searchUsingURL}
       onChange = {e => {
-        
+        filterChanges ('searchTerms' , e.target.value) ;
       }} 
       placeholder = 'search'
       label='search'
@@ -29,7 +29,7 @@ const FilterBar = (props) => {
       <Select label='Select' name='catigory'
          onChange = {e => filterChanges ('category' , e.target.value)} 
       >
-        <option value="">All</option>
+        <option value=''>All</option>
         {CATEGORIES.map(item =>
           <option key={item} value={item}>{item}</option>
         )}
