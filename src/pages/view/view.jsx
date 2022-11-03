@@ -65,7 +65,7 @@ const View = () => {
         match = (
             check(item.name) ||
             check(item.description) ||
-            item.Ingredients.some(ingredient => check(ingredient))
+            item.ingredients.some(ingredient => check(ingredient))
         );
         if(categoriesFromURL.length > 0)
             match &= (categoriesFromURL.includes(item.categories));

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import './check-box.css';
+import './toggle-bullet.css';
 /**
  * 
  * @param {{
@@ -9,7 +9,7 @@ import './check-box.css';
  * }} props 
  * @returns 
  */
-const CheckBox = (props) => {
+const ToggleBullet = (props) => {
 
     const [params] = useSearchParams();
     const [checked, setChecked] = useState(false);
@@ -39,4 +39,4 @@ const CheckBox = (props) => {
     );
 };
 
-export default CheckBox;
+export default ToggleBullet;

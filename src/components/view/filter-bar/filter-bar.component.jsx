@@ -2,7 +2,7 @@ import React from 'react';
 import './filter-bar.css';
 import Input from '../../common/input/input.component';
 import { CATEGORIES } from '../../../data/constants';
-import CheckBox from '../check-box-view-page/check-box.component';
+import ToggleBullet from '../../common/toggle-bullets/toggle-bullet.component';
 
 const FilterBar = (props) => {
 
@@ -24,15 +24,17 @@ const FilterBar = (props) => {
                 placeholder={'Search'}
                 onChange={(e) => { handleFilterChange('searchTerms', e.target.value); }}
             />
-            {
-                CATEGORIES.map((item, index) => {
-                    return <CheckBox
-                        name={item}
-                        key={index}
-                        useParam={props.useParam}
-                    />;
-                })
-            }
+            <div className='categories-in-view-page'>
+                {
+                    CATEGORIES.map((item, index) => {
+                        return <ToggleBullet
+                            name={item}
+                            key={index}
+                            useParam={props.useParam}
+                        />;
+                    })
+                }
+            </div>
         </div>
     );
 };

@@ -4,10 +4,19 @@
     align-items: flex-start;
     gap: 10px;
     border-bottom: 1px solid rgb(199, 199, 199);
-    height: 80px;
+    min-height: 80px;
+    width: 96vw;
     padding-left: 20px ;
-    padding-bottom: 12px ;
     margin-bottom: 20px;
+}
+.filterBar .categories-in-view-page{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 80px;
+    align-content: center;
+    justify-content: flex-start;
+    padding-bottom: 10px;
 }
 .filterBar .inputGroup>input{
     display: flex;
