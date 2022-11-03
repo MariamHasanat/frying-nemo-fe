@@ -1,0 +1,25 @@
+.filter-bar {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-bar > * {
+  margin-bottom: 20px;
+}
+
+.filter-bar .tags {
+  display: flex;
+}
+
+.filter-bar .tags .tag {
+  margin-left: 6px;
+}
+
+.filter-bar .tags .tag:first-child {
+  margin-left: 0px;
+}
+
+.filter-bar .input-group input {
+  width: 220px;
+}

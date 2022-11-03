@@ -1,25 +1,33 @@
 import './filter-bar.css'
 import Input from '../../../add/common/input/input.component'
 import { CATEGORIES } from '../../../../data/constants'
+import Tag from '../tag/tag.component'
 
-const FilterBar = ({selectedCategory, setSelectedCategory, updateParam, search, setSearch}) => {
-
-  const updateCategory = (value) => {
-    updateParam('category', value)
-    setSelectedCategory(value)
-  }
+const FilterBar = ({searchParams, updateParam, search, setSearch}) => {
 
   const updateSearch = (value) => {
     updateParam('search', value)
     setSearch(value)
   }
 
+  const removeCategory = (value) => {
+    let arr = searchParams.getAll('category')[0].split(',').filter(item => item != value)
+    updateParam('category', arr)
+  }
+
+  // const addCategory = (value) => {
+  //   let arr = searchParams.getAll('category');
+  //   arr.push(value)
+  //   updateParam('category', arr)
+  // }
+
   return (
-    <div className='view-header'>
-      <div className='selector'>
-      {['All', ...CATEGORIES].map(((item, i) => (<p className={selectedCategory == i ? `selected` : ``} onClick={() => { updateCategory(i); }}>{item}</p>)))}
+    <div className='filter-bar'>
+    <Input placeholder="Search" onChange={(e) => updateSearch(e.target.value)} value={search} style={{ backgroundColor: `white`, color: `black`, border: '1px solid black' }}></Input>
+      <div className='tags'>
+      {['All', ...CATEGORIES].map(((item, i) => (<Tag onClick={() => {removeCategory(item)}}>{item}</Tag>)))}
+        <Tag add={true}>Cinder drinks</Tag>
       </div>
-      <Input placeholder="Search" onChange={(e) => updateSearch(e.target.value)} value={search} style={{ backgroundColor: `white`, color: `black`, border: '1px solid black' }}></Input>
     </div>
   )
 }

@@ -2,7 +2,7 @@
   display: none;
 }
 
-.header {
+.page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,18 +13,18 @@
   background-color: white;
 }
 
-.header .logo {
+.page-header .logo {
   display: flex;
   justify-content: left;
   align-items: center;
 }
 
-.header .logo img {
+.page-header .logo img {
   width: 55px;
   height: 50px;
 }
 
-.header .logo p {
+.page-header .logo p {
   margin: 0;
   padding: 0;
   margin-left: 20px;
@@ -33,7 +33,7 @@
 }
 
 
-.header .btns a {
+.page-header .btns a {
   text-decoration: none;
   background-color: white;
   font-size: 14px;
@@ -50,22 +50,22 @@
   color: black;
 }
 
-.header .btns a:hover {
+.page-header .btns a:hover {
   background-color: #ffd29f;
 }
 
-.header .btns a:active {
+.page-header .btns a:active {
   background-color: #ffb96a;
 }
 
-.header .btns a.selected {
+.page-header .btns a.selected {
   background-color: #fb8500;
 }
 
-.header .btns a.selected:hover {
+.page-header .btns a.selected:hover {
   background-color: #eb7d00;
 }
 
-.header .btns a.selected:active {
+.page-header .btns a.selected:active {
   background-color: #dd7600;
 }

@@ -16,16 +16,10 @@ const ViewPage = (props) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get('search') || '');
-  const [selectedCategory, setSelectedCategory] = useState(0);
 
-  const isCurrentCategory = (category) => { // Helper
-    if (selectedCategory == 0) return true
-    return (translateCategory(selectedCategory).toLowerCase() == category)
-  };
-  
   const updateParam = (key, value) => {
     let params = new URLSearchParams(searchParams);
-    value ? params.set(key, translateCategory(value)) : params.delete(key);
+    value ? params.set(key, value) : params.delete(key);
     setSearchParams(params);
   };
 
@@ -34,19 +28,20 @@ const ViewPage = (props) => {
     const fixStr = (str) => str.toLowerCase().trim(); // Helper
     const isMatch = (str1) => fixStr(str1).includes(fixStr(search)); // Helper
     return (
-      (isMatch(item.name) ||
+      isMatch(item.name) ||
       isMatch(item.description) ||
-      item.ings.some(ing => ing.includes(search))) &&
-      isCurrentCategory(item.category)
+      item.ings.some(ing => ing.includes(search))
     );
   });
 
 
   return (
     <div className='view-page'>
-      <p>OUR MENU</p>
-      <FilterBar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} updateParam={updateParam} search={search} setSearch={setSearch}></FilterBar>
-
+      <div className='header'>
+        <p>OUR MENU</p>
+        <FilterBar searchParams={searchParams} updateParam={updateParam} search={search} setSearch={setSearch}></FilterBar>
+      </div>
+      
       <div className='cards'>
         {
           arr.length != 0 ? (arr.map((item, i) => <Card itemName={item.name} itemCategory={capitalizeFirstLetter(item.category)} itemDescription={item.description} itemIngredients={item.ings.toString().replaceAll(',', ', ')} itemPrice={item.price} image={item.image} i={i} ctr={0} />))

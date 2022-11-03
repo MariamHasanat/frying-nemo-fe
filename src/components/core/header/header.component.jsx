@@ -5,7 +5,7 @@ import Timer from './timer/timer.component'
 const Header = () => {
   const pathname = window.location.pathname.replace('/', '');
   return (
-    <div className='header'>
+    <div className='page-header'>
       <div className='logo'>
         <img src={logo} alt="Logo" />
         <p>FRYING NEMO</p>
