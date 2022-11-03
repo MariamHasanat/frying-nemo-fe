@@ -1,6 +1,7 @@
 import './header.css'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 const Handel =(props)=>{
+  const location = useLocation();
   return(
   <header className='handel-group'>
     <img className='img' src ='./fish-removebg-preview.png' />
@@ -13,9 +14,9 @@ const Handel =(props)=>{
           </div>
         <div>< a href = "/view">View</a></div> */}
          <div>
-          <Link to="/add" >Add</Link>
+          <Link to="/add"  className={ location.pathname ==="/add"?'current':"" }>Add</Link>
           </div>
-        <div>< Link to  = "/view">View</Link ></div>
+        <div>< Link to  = "/view" className={ location.pathname ==="/view"?'current':"" }>View</Link ></div>
      
     </div>
   </header>
