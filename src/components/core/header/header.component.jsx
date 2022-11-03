@@ -1,8 +1,10 @@
 import React from 'react';
 import './header.css';
-import {Link} from "react-router-dom";
+
+import { Link  , useLocation } from 'react-router-dom';
 
 const Header =( props) => {
+  const location =useLocation();
   return (
     <header className="webisteHeader">
       <div className="left">
@@ -20,8 +22,8 @@ const Header =( props) => {
 <br></br>
 <a href='./view'>view</a> */}
 
-<Link to="/add">add</Link>
-<Link to="/view">view</Link>
+<Link to="/add" className={location.pathname==="/add" ? 'current' : ''}>add</Link>
+<Link to="/view" className={location.pathname==="/view" ? 'current' : ''}>view</Link>
 
         </nav>
 
