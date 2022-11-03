@@ -3,7 +3,7 @@
   display: flex;
  align-items: center;
   width: 100%;
-  height: 50px;
+  height: 3.6rem;
   margin: 0px;
   position: sticky;
   top: 0px;
@@ -49,16 +49,18 @@
   position: sticky;
   left: 80%;
   background-color: aliceblue;
+  color: #d14841;
+  font-weight: bolder;
   border: none;
   padding: 10px 20px;
-  font-size: 20px;
+  font-size: 1.4rem;
   border-radius: 7px;
   cursor: pointer;
   text-decoration: none;
 }
 
 .nav-btn:hover{
-  background-color: rgb(209, 211, 212);
+  background-color: #d1d3d4;
 }
 .nav-btn:active{
   transform: scale(0.95);
@@ -66,10 +68,12 @@
 .active-nav-btn{
   position: sticky;
   left: 80%;
-  background-color: rgb(250, 127, 56);
+  color: #ffffff;
+  background-color: #d14841;
+  font-weight: bolder;
   border: none;
   padding: 10px 20px;
-  font-size: 20px;
+  font-size: 1.4rem;
   border-radius: 7px;
   cursor: pointer;
   text-decoration: none;

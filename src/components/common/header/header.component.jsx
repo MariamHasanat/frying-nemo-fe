@@ -1,7 +1,9 @@
 import "./header.css";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Header = (props) => {
+  const location = useLocation();
   return (
     <div className="header-container">
       <div className="left-header">
@@ -12,8 +14,8 @@ const Header = (props) => {
         <nav>
           <Link
             className={
-              window.location.pathname === "/add" ||
-              window.location.pathname === "/"
+              location.pathname === "/add" ||
+              location.pathname === "/"
                 ? "active-nav-btn"
                 : "nav-btn"
                 }
@@ -23,7 +25,7 @@ const Header = (props) => {
           </Link>
           <Link
             className={
-              window.location.pathname === "/view"
+              location.pathname === "/view"
                 ? "active-nav-btn"
                 : "nav-btn"
               }

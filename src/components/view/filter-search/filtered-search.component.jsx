@@ -12,8 +12,6 @@ const FilteredSearch = (props) =>{
     props.setSearchTerm(value);
   }
     if(str === "category"){
-      props.setcategoryParams({ str: value });
-      props.setSearchTerm(value);
     }
     if(str === "q " && !value){
       props.setSearchParams(props.searchParams.delete('q'));
