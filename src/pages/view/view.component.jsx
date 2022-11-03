@@ -10,16 +10,14 @@ const ViewPage = (props) => {
 
   const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1); // Helper
 
-  const translateCategory = (value) => {
-    return CATEGORIES[value - 1]
-  }
-
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get('search') || '');
+  const categories = searchParams.getAll('category')[0] || '';
 
   const updateParam = (key, value) => {
+    console.log(value)
     let params = new URLSearchParams(searchParams);
-    value ? params.set(key, value) : params.delete(key);
+    (Array.isArray(value)? value.length != 0 : value) ? params.set(key, value) : params.delete(key);
     setSearchParams(params);
   };
 
@@ -28,9 +26,9 @@ const ViewPage = (props) => {
     const fixStr = (str) => str.toLowerCase().trim(); // Helper
     const isMatch = (str1) => fixStr(str1).includes(fixStr(search)); // Helper
     return (
-      isMatch(item.name) ||
+      (isMatch(item.name) ||
       isMatch(item.description) ||
-      item.ings.some(ing => ing.includes(search))
+      item.ings.some(ing => ing.includes(search))) && categories.toLocaleLowerCase().split(',').includes(item.category.toLowerCase())
     );
   });
 
