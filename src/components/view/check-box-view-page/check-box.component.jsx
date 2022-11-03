@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import './check-box.css';
 /**
@@ -11,15 +11,18 @@ import './check-box.css';
  */
 const CheckBox = (props) => {
 
-    const [params, setParam] = useSearchParams();
+    const [params] = useSearchParams();
+    const [checked, setChecked] = useState(false);
     const categoriesFromURL = params.getAll('categories') || [];
+
     const handleChange = (e) => {
         const check = e.target.checked;
-        console.log(categoriesFromURL);
         if (check) {
+            setChecked(true);
             props.useParam('categories', [...categoriesFromURL, props.name]);
         }
         else {
+            setChecked(false);
             props.useParam('categories', categoriesFromURL.filter((item) => item !== props.name));
         }
     };
@@ -31,7 +34,7 @@ const CheckBox = (props) => {
                 id={`${props.name}`}
                 onChange={(e) => handleChange(e)}
             />
-            <label className='checkBoxLabel' htmlFor={`${props.name}`}>{props.name}</label>
+            <label className={`${checked ? 'checked' : 'checkBoxLabel'}`} htmlFor={`${props.name}`}>{props.name}</label>
         </div>
     );
 };

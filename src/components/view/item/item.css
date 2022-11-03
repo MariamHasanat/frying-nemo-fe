@@ -65,9 +65,9 @@
 }
 
 .the-price {
-    font-size: 30px;
+    font-size: 25px;
     height: 45px;
-    width: 70px;
+    width: 90px;
     display: flex;
     justify-content: center;
     align-items: center;

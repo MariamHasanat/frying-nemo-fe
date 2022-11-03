@@ -10,7 +10,7 @@ import { CATEGORIES } from '../../../data/constants';
 
 const Form = (props) => {
     const [name, setName] = useState('');
-    const [Ingredients, setIngredients] = useState([]);
+    const [ingredients, setIngredients] = useState([]);
     const navigate = useNavigate();
 
     /**
@@ -23,11 +23,12 @@ const Form = (props) => {
         const cat = e.target.categories.value;
 
         const item = {
+            id: (new Date().getTime() + "" + Math.random() * 1000),
             name: name,
             price: price,
             description: des,
             categories: cat,
-            Ingredients: Ingredients,
+            ingredients: ingredients,
             img: image,
         };
 
@@ -88,8 +89,8 @@ const Form = (props) => {
                 </SelectArea>
                 <MultivalueInput
                     label={'Ingredients'}
-                    value={Ingredients}
-                    name={'Ingredients'}
+                    value={ingredients}
+                    name={'ingredients'}
                     onChange={(newItem) => {
                         setIngredients(newItem);
                     }}

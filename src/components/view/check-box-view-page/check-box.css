@@ -3,21 +3,44 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 8px;
 }
 
-.checkBoxGroup .checkBox{
+.checkBoxGroup .checkBox {
     height: 20px;
     width: 20px;
     cursor: pointer;
     appearance: none;
     display: none;
 }
-.checkBoxGroup .checkBoxLabel{
+
+.checkBoxGroup .checkBoxLabel {
+    display: block;
     font-size: 20px;
-    font-family: system-ui;
-    font-style: inherit;
-    font-weight: 600;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    border: 1px solid #e1cbc4;
+    color: #be441d;
     user-select: none;
     cursor: pointer;
+}
+
+.checked {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    border: 1px solid #e1cbc4;
+    user-select: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #be441d;
 }

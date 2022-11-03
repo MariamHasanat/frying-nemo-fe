@@ -1,5 +1,6 @@
 import './item.css';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Item = (props) => {
     const [value, setValue] = useState(0);
@@ -16,7 +17,9 @@ const Item = (props) => {
     };
     return (
         <div className='item'>
+            <Link to={`/view/${props.item.id}`}>
             <img alt="food" src={props.item.img} />
+            </Link>
             <div className='info'>
                 <h2>
                     {props.item.name}
@@ -26,12 +29,12 @@ const Item = (props) => {
                 </p>
                 <div className='ingre'>
                     {
-                        props.item.Ingredients.join(', ')
+                        props.item.ingredients.join(', ')
                     }
                 </div>
                 <div className='price'>
                     <span className='the-price'>
-                        ${props.item.price}
+                        {props.item.price}&nbsp;$
                     </span>
                     <div className='number-of-items'>
                         <span onClick={add}>+</span>
