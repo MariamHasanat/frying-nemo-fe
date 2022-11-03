@@ -1,7 +1,9 @@
 import './filter-bar.css';
 import Input from '../../../components/common/input/input.component';
+import Checkbox from '../../../components/common/checkbox/checkbox.component';
 import { CATEGORIES } from '../../../data/constants';
 import Select from '../../../components/common/select/select.component';
+
 
 const FilterBar = (props) => {
     return (
@@ -41,6 +43,7 @@ const FilterBar = (props) => {
                 <option value="">All</option>
             </Select>
 
+            {<Checkbox label="hello"/>}
         </div>
     );
 };

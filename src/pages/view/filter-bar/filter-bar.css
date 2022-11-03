@@ -1,6 +1,6 @@
 .filter-group {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     column-gap: 20px;
     justify-content: flex-start;
     margin-left: 80px;
