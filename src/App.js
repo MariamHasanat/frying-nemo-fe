@@ -4,6 +4,7 @@ import Header from './common/header/header.component';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NotFoundPage from "./pages/add/not_found/not-found";
+import ViewItemPage from "./common/view/view-item/item.component";
 
 function App() {
   // const [currentPage,setCurrentPage]=useState('add');
@@ -28,6 +29,7 @@ function App() {
           <Route path="/add/*" element={<AddPage />} />
           <Route path="/view" element={<ViewPage />} />
           <Route path="/*" element={ <NotFoundPage/>} />
+          <Route path="/view/id:" element={ <ViewItemPage/>} />
         </Routes>
       </BrowserRouter>
     </div>

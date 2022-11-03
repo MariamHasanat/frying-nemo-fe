@@ -1,7 +1,7 @@
 import { CATEGORY } from '../../../data/cons';
 import  Input  from '../../input/input.component';
 import  Select  from '../../select/select.component';
-import CheckBox from '../check-box/cheack-box';
+import CheckBox from '../check-box/check-box';
 import './filter.css';
 const FilterBar = (props)=>{
   const HandelFilter=(name,inputValue)=>{
