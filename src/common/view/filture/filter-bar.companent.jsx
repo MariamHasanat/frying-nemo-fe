@@ -1,6 +1,7 @@
 import { CATEGORY } from '../../../data/cons';
 import  Input  from '../../input/input.component';
 import  Select  from '../../select/select.component';
+import CheckBox from '../check-box/cheack-box';
 import './filter.css';
 const FilterBar = (props)=>{
   const HandelFilter=(name,inputValue)=>{
@@ -20,19 +21,34 @@ const FilterBar = (props)=>{
     value={props.searchTerm}
     onChange={e => HandelFilter("searchTerm",e.target.value)}
   />
-<Select 
-name="category"
-label="category"
-value={props.categoryFromURL}
-onChange={e=>HandelFilter("category",e.target.value)}
->  <option value="">All</option>
+<div className="categories">
+        {CATEGORY.map(cat => <CheckBox
+          key={cat}
+          value={cat}
+          label={cat}
+          // checked={props.categoryFromURL.includes(cat)}
+          onChange={(e) => {
+            const newParams = new URLSearchParams(props.params);
+            const oldItems = newParams.getAll('category');
 
-{
-  CATEGORY.map(item=>{
-    return <option value={item} key={item}>{item}</option>
-  })
-}
-</Select>
+            if (e.target.checked) {
+              newParams.append('category', cat);
+            } else {
+              const filteredCategories = oldItems.filter(oItem => oItem !== cat);
+              if (filteredCategories.length) {
+                newParams.delete('category');
+                filteredCategories.forEach((v) => newParams.append('category', v));
+              } else {
+                newParams.delete('category');
+              }
+            }
+
+            props.setParams(newParams);
+          }}
+        />
+        )}
+      </div>
+
     </div>
    
   )

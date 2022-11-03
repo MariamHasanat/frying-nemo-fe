@@ -60,7 +60,7 @@ const ViewPage = () => {
       doesItemMatch(item.description) ||
       item.ingredients.some(ingredient => doesItemMatch(ingredient))
     );
-    if (categoryFromURL) {
+    if (categoryFromURL.length) {
       match = match && (item.category == categoryFromURL);
     }
 
