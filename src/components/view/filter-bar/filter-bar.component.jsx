@@ -31,7 +31,7 @@ const FilterBar = (props) => {
                 onChange={e => handleFilterChange('category', e.target.value)}
 
             >
-                <option selected>All</option>
+                <option>All</option>
                 {
                     CATEGORIES.map((item) => {
                         return <option key={item} value={item}>{item}</option>;

@@ -4,7 +4,6 @@ import Item from "../../components/view/filter-bar/item/item.component";
 import FilterBar from "../../components/view/filter-bar/filter-bar.component";
 import Spinner from "../../core/spinner/spinner";
 import './view.css';
-import { CATEGORIES } from "../../data/constants";
 
 /**
 * @type {Array<{
@@ -48,9 +47,8 @@ const View = () => {
             item.Ingredients.some(ingredient => check(ingredient))
         );
         if (categoryParFromURL && categoryParFromURL !== 'All') {
-            match = match && (CATEGORIES.includes(categoryParFromURL));
+            match &= (categoryParFromURL === item.categories);
         }
-
         return match;
     });
 

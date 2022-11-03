@@ -5,9 +5,14 @@
     column-gap: 20px;
     border-bottom: 1px solid rgb(199, 199, 199);
     height: 80px;
+    padding-left: 20px ;
+    padding-bottom: 10px ;
     margin-bottom: 20px;
 }
 .filterBar .inputGroup>input{
     display: flex;
     height: 40px;
+}
+.filterBar .selectareaGroup{
+    margin: 0;
 }
