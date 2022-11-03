@@ -1,7 +1,11 @@
 import React from 'react';
 import './header.css';
-import { Link } from 'react-router-dom';
-const Header = props => {
+import { Link, useLocation } from 'react-router-dom';
+
+const Header = () => {
+
+  const location = useLocation();
+
   return (
     <header className="webisteHeader">
       <div className="left">
@@ -14,12 +18,12 @@ const Header = props => {
 
         <nav>
 
-          <Link to="/add">
+          <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
             Add
 
           </Link>
 
-          <Link to="/view">
+          <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
             View
 
           </Link>
