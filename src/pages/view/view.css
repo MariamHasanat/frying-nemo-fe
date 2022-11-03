@@ -8,3 +8,7 @@
   justify-content: flex-start;
   flex-wrap: wrap;
 }
+
+body::-webkit-scrollbar {
+  display: none;
+}

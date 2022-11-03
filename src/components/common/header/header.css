@@ -1,3 +1,4 @@
+
 .header {
   padding: 16px;
   height: 2rem;
@@ -42,7 +43,8 @@ a {
 }
 
 .header-navigation-buttons>nav>.current-page {
-  border-bottom: 5px solid orangered;
+  box-sizing: border-box;
+  /* border-bottom: 1px solid orangered; */
   border-radius: 3px;
-
+  color: orangered;
 }

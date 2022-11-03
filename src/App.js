@@ -2,8 +2,7 @@ import Header from "./components/common/header/header.component";
 import View from "./pages/view/view";
 import '../src/pages/add/add.component';
 import AddPage from "../src/pages/add/add.component";
-import Test from "./pages/test/test.component";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 function App() {
 
 
@@ -14,8 +13,7 @@ function App() {
         <Routes>
           <Route path="/add" element={<AddPage />} />
           <Route path="/view" element={<View />} />
-          /**catch all route */
-          <Route path="/*" element={<Test />} />
+          <Route path="/*" element={<Navigate to="/add" />} />
         </Routes>
       </BrowserRouter>
 

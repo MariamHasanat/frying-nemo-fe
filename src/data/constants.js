@@ -1,5 +1,5 @@
 const CATEGORIES = [
-  "Fish", "Drinks", "Main Dishes", "Salads", "Sweets"
+  "Fish", "Drinks", "Main Dishes", "Salads", "Sweets", "drugs"
 ];
 
 export {

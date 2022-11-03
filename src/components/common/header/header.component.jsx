@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './header.css';
+
 /**
  * 
  * @param {{
@@ -9,6 +10,7 @@ import './header.css';
  * @returns 
  */
 const Header = () => {
+  const location = useLocation();
   return (
     <div className='header'>
       <div>
@@ -19,13 +21,13 @@ const Header = () => {
       <div className='header-navigation-buttons'>
         <nav>
 
-          <Link to='/add'>Add</Link>
+          <Link to='/add' className={location.pathname === '/add' ? 'current-page' : ''}>Add</Link>
 
-          <Link to='/view'>View</Link>
+          <Link to='/view' className={location.pathname === '/view' ? 'current-page' : ''}> View</Link>
 
         </nav>
       </div>
-    </div>
+    </div >
   );
 };
 
