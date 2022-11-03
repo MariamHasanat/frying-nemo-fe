@@ -24,7 +24,7 @@ const ViewPage = (props) => {
   //param is an instance of complex class (URLSearchParams) so I need to use get (name) to access spesific param 
   const [param , setParam] = useSearchParams() ;  
   const searchUsingURL = param.get ('searchTerms') || '' ;
-  const categoryUsingURL = param.getAll ('category') || '' ;
+  const categoryUsingURL = param.get ('category') || '' ;
   // console.log ('searchTerms param = ' , param.get('searchTerms')) ;
   const getMenuItems = () =>{
     setLoading (true) ;
@@ -45,7 +45,12 @@ const ViewPage = (props) => {
     || doesItMatch (element.discription) 
     || element.ingredients.some (ingredient => doesItMatch (ingredient)) 
     // => i can use find function instead , but (some is better to use) 
-    ) && ((element.catigory == categoryUsingURL) && categoryUsingURL)
+    )
+    // console.log('categoryUsingURL' , categoryUsingURL);
+    if (categoryUsingURL) {
+      match = match && element.catigory == categoryUsingURL ;
+    }
+    // && ((element.catigory == categoryUsingURL) && categoryUsingURL)
     return match ;
   }) ;
 
