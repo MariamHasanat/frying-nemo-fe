@@ -2,7 +2,7 @@ import React from 'react';
 import './filter-bar.css';
 import Input from '../../common/input/input.component';
 import { CATEGORIES } from '../../../data/constants';
-import CheckBox from '../../common/check-box/check-box.component';
+import CheckBox from '../../common/toggle-bullets/check-box.component';
 
 /**
  * Renders a filters bar.
@@ -26,7 +26,6 @@ const FilterBar = (props) => {
         {CATEGORIES.map(cat => (
           <CheckBox
             key={cat}
-            value={cat}
             label={cat}
             checked={props.categories.includes(cat)}
             onChange={e => {
