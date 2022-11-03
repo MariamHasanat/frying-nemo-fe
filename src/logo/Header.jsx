@@ -1,8 +1,9 @@
 // import React, { useState } from 'react';
 import './Header.css';
-import { Link } from 'react-router-dom'
+import { Link , useLocation } from 'react-router-dom'
 
 const Header = props => {
+ const location = useLocation()
 
   return (
     <header >
@@ -15,9 +16,13 @@ const Header = props => {
         </div>
         <div className="right">
           <nav>
-            <Link to='/add'
+            <Link
+             to='/add'
+             className={location.pathname === '/add' ? 'current' : ''}
              >Add</Link >
-            <Link to='/view'
+            <Link
+             to='/view'
+             className={location.pathname === '/view' ? 'current' : ''}
              >View</Link >
           </nav>
         </div>
