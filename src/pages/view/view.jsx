@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import Item from "../../components/view/filter-bar/item/item.component";
 import FilterBar from "../../components/view/filter-bar/filter-bar.component";
+import Item from "../../components/view/item/item.component";
 import Spinner from "../../core/spinner/spinner";
 import './view.css';
 
@@ -28,7 +28,28 @@ const View = () => {
     useEffect(() => {
         getMenuItems();
     }, []);
+    /**
+     * 
+     * @param {string} name 
+     * @param {string | string[]} value 
+     */
+    const useParam = (name, value) => {
+        const newParam = new URLSearchParams(params);
+        newParam.delete(name);
 
+        if (Array.isArray(value)) {
+            if (value.length > 0) {
+
+                value.forEach(item => {
+                    newParam.append(name, item);
+                });
+            }
+        }
+        else
+            newParam.set(name, value);
+
+        setParam(newParam);
+    };
     const getMenuItems = () => {
         setLoading(true);
         setTimeout(() => {
@@ -46,9 +67,9 @@ const View = () => {
             check(item.description) ||
             item.Ingredients.some(ingredient => check(ingredient))
         );
-        
-        match &= (categoriesFromURL.includes(item.categories));
-        
+        if(categoriesFromURL.length > 0)
+            match &= (categoriesFromURL.includes(item.categories));
+
         return match;
     });
 
@@ -58,6 +79,7 @@ const View = () => {
                 Menu Items
             </h1>
             <FilterBar
+                useParam={useParam}
                 params={params}
                 setParam={setParam}
                 searchParFromURL={searchParFromURL}
