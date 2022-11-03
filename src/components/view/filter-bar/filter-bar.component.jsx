@@ -3,6 +3,7 @@ import './filter-bar.css';
 import Input from '../../common/input/input.component';
 import SelectArea from '../../common/selectarea/selectarea.component';
 import { CATEGORIES } from '../../../data/constants';
+import CheckBox from '../check-box-view-page/check-box.component';
 
 const FilterBar = (props) => {
     const handleFilterChange = (filter, valueOfInput) => {
@@ -23,7 +24,16 @@ const FilterBar = (props) => {
                 placeholder={'Search'}
                 onChange={(e) => { handleFilterChange('searchTerms', e.target.value); }}
             />
-            <SelectArea
+            {
+                CATEGORIES.map((item, index) => {
+                    return <CheckBox
+                        name={item}
+                        key={index}
+                        categoriesFromURL = {props.categoriesFromURL}
+                    />;
+                })
+            }
+            {/* <SelectArea
                 label='Categories'
                 name={'categories'}
                 value={props.categoryParFromURL}
@@ -37,7 +47,7 @@ const FilterBar = (props) => {
                         return <option key={item} value={item}>{item}</option>;
                     })
                 }
-            </SelectArea>
+            </SelectArea> */}
 
         </div>
     );

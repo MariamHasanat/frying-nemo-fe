@@ -1,7 +1,7 @@
 .filterBar {
     display: flex;
     justify-content: flex-start;
-    align-items: flex-end;
+    align-items: flex-start;
     column-gap: 20px;
     border-bottom: 1px solid rgb(199, 199, 199);
     height: 80px;

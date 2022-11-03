@@ -23,7 +23,7 @@ const View = () => {
     const [params, setParam] = useSearchParams();
 
     const searchParFromURL = params.get('searchTerms') || '';
-    const categoryParFromURL = params.get('category') || '';
+    const categoriesFromURL = params.getAll('categories') || [];
 
     useEffect(() => {
         getMenuItems();
@@ -46,9 +46,9 @@ const View = () => {
             check(item.description) ||
             item.Ingredients.some(ingredient => check(ingredient))
         );
-        if (categoryParFromURL && categoryParFromURL !== 'All') {
-            match &= (categoryParFromURL === item.categories);
-        }
+        
+        match &= (categoriesFromURL.includes(item.categories));
+        
         return match;
     });
 
@@ -61,7 +61,7 @@ const View = () => {
                 params={params}
                 setParam={setParam}
                 searchParFromURL={searchParFromURL}
-                categoryParFromURL={categoryParFromURL}
+                categoriesFromURL={categoriesFromURL}
             />
             {
                 loading

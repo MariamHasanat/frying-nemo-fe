@@ -1,0 +1,19 @@
+.checkBoxGroup {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkBoxGroup .checkBox{
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.checkBoxGroup .checkBoxLabel{
+    font-size: 20px;
+    font-family: system-ui;
+    font-style: inherit;
+    font-weight: 600;
+}
