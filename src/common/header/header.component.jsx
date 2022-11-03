@@ -2,9 +2,10 @@
 import nemo from '../../image/nemo.png';
 import React from 'react';
 import './header.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
+  const location = useLocation();
   return (
     <header className="websiteHeader">
       <div className="left">
@@ -15,8 +16,8 @@ const Header = () => {
       </div>
       <div className="right">
         <nav>
-          <Link to='/add' >Add</Link>
-          <Link to='/view'>View</Link>
+          <Link to='/add' className={location.pathname === "/add" ? "current" : ""}>Add</Link>
+          <Link to='/view' className={location.pathname === "/view" ? "current" : ""}>View</Link>
         </nav>
       </div>
     </header>
