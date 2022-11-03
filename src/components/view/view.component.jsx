@@ -27,12 +27,10 @@ const ViewPage = (props) => {
    */
   const [menuItems, setMenuItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerms, setSearchTerms] = useState('');
-  const [categorySearch, setCategorySearch] = useState('');
   const [params, setParams] = useSearchParams();
 
   const search = params.get('search') || '';
-  const category = params.get('category') || '';
+  const categoriesFromURL = params.getAll('category') || '';
 
   console.log('search params = ', search);
 
@@ -64,21 +62,41 @@ const ViewPage = (props) => {
       item.ingredients.some(ingredient => isMatch(ingredient))
     );
 
-    if (category){
-      match = match && (item.category === category);
+    if (categoriesFromURL.length) {
+      match = match && (categoriesFromURL.includes(item.category));
     }
+
 
     return match;
   });
+
+   /**
+   * Set query string parameter.
+   * @param {string} name Parameter name.
+   * @param {string | string[]} value Parameter value.
+   */
+    const setParam = (name, value) => {
+      const newParams = new URLSearchParams(params);
+  
+      newParams.delete(name);
+  
+      if (Array.isArray(value)) {
+        value.forEach(item => newParams.append(name, item));
+      } else if (value.trim()) {
+        newParams.set(name, value.trim());
+      }
+  
+      setParams(newParams);
+    };
+  
 
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
       <FilterBar
-      category={category}
-      searchTerms ={searchTerms}
-      params={params}
-      setParams={setParams}
+        searchTerms={search}
+        categories={categoriesFromURL}
+        setParam={setParam}
       />
       <br />
 

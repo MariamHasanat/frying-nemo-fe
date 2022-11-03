@@ -2,6 +2,10 @@
   display: flex;
   margin-bottom: 20px;
   justify-content: flex-start;
-  align-items: flex-end;
-  column-gap: 20px;
+  align-items: center;
+  column-gap: 30px;
+}
+
+.filter-bar>.categories {
+  display: flex;
 }
