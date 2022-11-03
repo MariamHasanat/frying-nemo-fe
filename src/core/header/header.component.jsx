@@ -1,9 +1,10 @@
 import './header.css';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = (props) => {
     const [time, setTime] = useState(new Date());
+    const location = useLocation();
     useEffect(() => {
         const timer = setInterval(() => {
             setTime(new Date());
@@ -25,10 +26,10 @@ const Header = (props) => {
             </div>
             <div className='right'>
                 <nav>
-                    <Link className={`but ${window.location.pathname === '/add' ? 'current' : ''}`} to='/add'>
+                    <Link className={`but ${location.pathname === '/add' ? 'current' : ''}`} to='/add'>
                         Add
                     </Link>
-                    <Link className={`but ${window.location.pathname === '/view' ? 'current' : ''}`} to='/view'>
+                    <Link className={`but ${location.pathname === '/view' ? 'current' : ''}`} to='/view'>
                         view
                     </Link>
                 </nav>

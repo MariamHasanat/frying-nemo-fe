@@ -1,11 +1,11 @@
 import React from 'react';
 import './filter-bar.css';
 import Input from '../../common/input/input.component';
-import SelectArea from '../../common/selectarea/selectarea.component';
 import { CATEGORIES } from '../../../data/constants';
 import CheckBox from '../check-box-view-page/check-box.component';
 
 const FilterBar = (props) => {
+
     const handleFilterChange = (filter, valueOfInput) => {
         const newP = new URLSearchParams(props.params);
         if (valueOfInput)
@@ -29,26 +29,10 @@ const FilterBar = (props) => {
                     return <CheckBox
                         name={item}
                         key={index}
-                        categoriesFromURL = {props.categoriesFromURL}
+                        useParam={props.useParam}
                     />;
                 })
             }
-            {/* <SelectArea
-                label='Categories'
-                name={'categories'}
-                value={props.categoryParFromURL}
-                required
-                onChange={e => handleFilterChange('category', e.target.value)}
-
-            >
-                <option>All</option>
-                {
-                    CATEGORIES.map((item) => {
-                        return <option key={item} value={item}>{item}</option>;
-                    })
-                }
-            </SelectArea> */}
-
         </div>
     );
 };
