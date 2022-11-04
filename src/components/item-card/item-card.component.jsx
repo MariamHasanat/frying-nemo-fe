@@ -20,8 +20,9 @@ function ItemCard(props) {
       <img src={props.item.image} alt='food' />
       <h2>{props.item.name}</h2>
       <p className='item-description'>{props.item.description}</p>
+      {/* <br /> */}
+      <p className='item-ingredients'>{props.item.ingredients.join(', ')}</p>
       <br />
-      <p>{props.item.ingredients.join(', ')}</p>
       <hr />
       <h4 className='item-price'>{props.item.price} $</h4>
     </div>

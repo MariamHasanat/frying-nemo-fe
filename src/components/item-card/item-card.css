@@ -15,10 +15,20 @@
 
 .card-container>.item-description {
   color: rgba(0, 0, 0, 0.60);
+
 }
 
 .card-container>.item-price {
   display: inline;
   font-size: larger;
   color: rgb(251, 102, 47);
+}
+
+.card-container>.item-ingredients {
+  font-size: smaller;
+ box-sizing: border-box;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

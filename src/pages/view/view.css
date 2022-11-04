@@ -1,12 +1,17 @@
 .view-page {
   padding: 16px 2em;
-
+  height: 100vh;
 }
 
 .items-container {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  padding-bottom: 50px;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 body::-webkit-scrollbar {

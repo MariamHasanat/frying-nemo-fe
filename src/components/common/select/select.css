@@ -7,7 +7,7 @@
 
 .select-group>select {
   display: block;
-  width: 40%;
+  /* width: 40%; */
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
   -moz-padding-start: calc(0.75rem - 3px);
   font-size: 1rem;
