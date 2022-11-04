@@ -18,11 +18,13 @@ const Item = (props) => {
     return (
         <div className='item'>
             <Link to={`/view/${props.item.id}`}>
-            <img alt="food" src={props.item.img} />
+                <img alt="food" src={props.item.image} />
             </Link>
             <div className='info'>
                 <h2>
-                    {props.item.name}
+                    <Link to={`/view/${props.item.id}`} className = 'link-in-h2'>
+                        {props.item.name}
+                    </Link>
                 </h2>
                 <p className='item-description'>
                     {props.item.description}

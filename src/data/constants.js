@@ -7,6 +7,7 @@ const CATEGORIES = [
     'Main Dish',
     'Appetizers',
     'Ice Cream',
+    'Sweets',
 ];
 
 export { CATEGORIES };

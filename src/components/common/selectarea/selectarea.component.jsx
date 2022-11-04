@@ -11,7 +11,7 @@ const SelectArea = props => {
     const { label, ...selectareaProps } = props;
 
     return (
-        <div className="selectareaGroup">
+        <div className="selectarea-group">
             {
                 label ? (
                     <label>

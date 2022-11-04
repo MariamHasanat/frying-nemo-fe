@@ -27,14 +27,14 @@ const ToggleBullet = (props) => {
         }
     };
     return (
-        <div className='checkBoxGroup'>
+        <div className='check-box-group'>
             <input
                 type="checkbox"
-                className={`checkBox`}
+                className={`check-box`}
                 id={`${props.name}`}
                 onChange={(e) => handleChange(e)}
             />
-            <label className={`${checked ? 'checked' : 'checkBoxLabel'}`} htmlFor={`${props.name}`}>{props.name}</label>
+            <label className={`${checked ? 'checked' : 'check-box-label'}`} htmlFor={`${props.name}`}>{props.name}</label>
         </div>
     );
 };

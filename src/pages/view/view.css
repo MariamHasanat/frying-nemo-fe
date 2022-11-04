@@ -1,5 +1,5 @@
 .div-view {
-    width:90vw;
+    width: 90vw;
     margin: 0;
 }
 
@@ -7,6 +7,7 @@
     margin-left: 20px;
     display: flex;
     align-items: center;
+
 }
 
 .div-view .items {

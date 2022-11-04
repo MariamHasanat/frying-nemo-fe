@@ -15,7 +15,7 @@ const FilterBar = (props) => {
         props.setParam(newP);
     };
     return (
-        <div className='filterBar'>
+        <div className='filter-bar'>
             <Input
                 label='Search For Item'
                 name='Search'

@@ -20,16 +20,16 @@ const Form = (props) => {
         const price = Number(e.target.price.value);
         const des = e.target.description.value;
         const image = e.target.image.value;
-        const cat = e.target.categories.value;
+        const cat = e.target.category.value;
 
         const item = {
             id: (new Date().getTime() + "" + Math.random() * 1000),
             name: name,
             price: price,
             description: des,
-            categories: cat,
+            category: cat,
             ingredients: ingredients,
-            img: image,
+            image: image,
         };
 
         let items = localStorage.getItem('categoriesArray');
@@ -79,7 +79,7 @@ const Form = (props) => {
                     min={0}
                     required
                 />
-                <SelectArea label='Categories' name={'categories'} required>
+                <SelectArea label='Categories' name={'category'} required>
 
                     {
                         CATEGORIES.map((item) => {

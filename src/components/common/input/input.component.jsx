@@ -9,7 +9,7 @@ import React from 'react';
 const Input = (props) => {
     const { label, ...otherInputs } = props;
     return (
-        <div className='inputGroup'>
+        <div className='input-group'>
             <label>
                 <span>{label}</span>
                 {otherInputs.required && <span> * </span>}

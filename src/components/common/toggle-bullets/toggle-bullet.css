@@ -1,4 +1,4 @@
-.checkBoxGroup {
+.check-box-group {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -6,7 +6,7 @@
     gap: 8px;
 }
 
-.checkBoxGroup .checkBox {
+.check-box-group .check-box {
     height: 20px;
     width: 20px;
     cursor: pointer;
@@ -14,7 +14,7 @@
     display: none;
 }
 
-.checkBoxGroup .checkBoxLabel {
+.check-box-group .check-box-label {
     display: block;
     font-size: 20px;
     font-weight: bold;
@@ -29,7 +29,7 @@
     cursor: pointer;
 }
 
-.checked {
+.check-box-group .checked {
     display: block;
     font-size: 20px;
     font-weight: bold;

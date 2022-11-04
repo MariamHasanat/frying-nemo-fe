@@ -1,4 +1,4 @@
-.filterBar {
+.filter-bar {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -6,10 +6,11 @@
     border-bottom: 1px solid rgb(199, 199, 199);
     min-height: 80px;
     width: 96vw;
-    padding-left: 20px ;
+    padding-left: 20px;
     margin-bottom: 20px;
 }
-.filterBar .categories-in-view-page{
+
+.filter-bar .categories-in-view-page {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -18,10 +19,12 @@
     justify-content: flex-start;
     padding-bottom: 10px;
 }
-.filterBar .inputGroup>input{
+
+.filter-bar .input-group>input {
     display: flex;
     height: 40px;
 }
-.filterBar .selectareaGroup{
+
+.filter-bar .selectarea-group {
     margin: 0;
 }

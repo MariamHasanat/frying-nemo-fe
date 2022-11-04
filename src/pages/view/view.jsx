@@ -11,7 +11,7 @@ import './view.css';
 * description: string;
 * Ingredients: string[];
 * price: number;
-* categories: string;
+* category: string;
 * img: string;
 * }>}
 */
@@ -68,7 +68,7 @@ const View = () => {
             item.ingredients.some(ingredient => check(ingredient))
         );
         if(categoriesFromURL.length > 0)
-            match &= (categoriesFromURL.includes(item.categories));
+            match &= (categoriesFromURL.includes(item.category));
 
         return match;
     });

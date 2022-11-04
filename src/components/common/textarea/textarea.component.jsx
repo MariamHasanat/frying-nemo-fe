@@ -11,7 +11,7 @@ const Textarea = props => {
   const { label, ...textareaProps } = props;
 
   return (
-    <div className="textareaGroup">
+    <div className="textarea-group">
       {
         label ? (
           <label>

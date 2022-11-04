@@ -1,6 +1,6 @@
 
 
-.selectareaGroup>select {
+.selectarea-group>select {
     width: 150px;
     height: 40px;
     padding: 8px;
@@ -9,7 +9,7 @@
     font-weight: 500;
 }
 
-.selectareaGroup>select:focus {
+.selectarea-group>select:focus {
     width: 150px;
     height: 40px;
     padding: 8px;
@@ -21,7 +21,7 @@
     
 }
 
-.selectareaGroup>label {
+.selectarea-group>label {
     display: block;
     margin-bottom: 5px;
     font-size: 12px;
@@ -30,6 +30,6 @@
     letter-spacing: 0.5px;
 }
 
-.selectareaGroup>label>span:nth-child(2) {
+.selectarea-group>label>span:nth-child(2) {
     color: rgb(233, 0, 0);
 }

@@ -1,11 +1,11 @@
 
 
-.inputGroup>input {
+.input-group>input {
     padding: 6px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 205px;
 }
-.inputGroup>label {
+.input-group>label {
     display: block;
     margin-bottom: 5px;
     font-size: 12px;
@@ -14,17 +14,17 @@
     letter-spacing: 0.5px;
 }
 
-.inputGroup>label>span:nth-child(1) {
+.input-group>label>span:nth-child(1) {
     margin-bottom: 2px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.inputGroup>label>span:nth-child(2) {
+.input-group>label>span:nth-child(2) {
     color: rgb(233, 0, 0);
 }
 
 
-.inputGroup>input:focus {
+.input-group>input:focus {
     color: #212529;
     background-color: #fff;
     border-color: #86b7fe;

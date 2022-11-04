@@ -6,7 +6,7 @@
     align-items: flex-end;
 }
 
-.wrapper>div>.inputGroup {
+.wrapper>div>.input-group {
     display: flex;
     flex-direction: column;
     width: 220px;
