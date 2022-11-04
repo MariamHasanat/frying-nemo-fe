@@ -24,7 +24,7 @@ const FilterBar = (props) => {
      />
      {
       CATEGORIES.map(cat => 
-      <CheckBox key={cat } label={cat } checked={props.categories.includes(cat)}
+      <CheckBox key={cat } label={cat } checked={props.categories||[].includes(cat)}
       onChange={e => {
         const updated = e.target.checked
           ? [...props.categories, cat]

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import './view-item.css';
 import { useParams } from 'react-router-dom';
-import { getItem } from '../../services/items';
-import Item from '../../components/view/item/item.component';
-import Spinner from '../../components/core/spinner/spinner.component';
+import { getItem } from '../../services/item';
+import Item from '../../components/item/item.component';
+import Spinner from '../../components/core/spinner.component';
 
 /**
  * @type {Array<{
