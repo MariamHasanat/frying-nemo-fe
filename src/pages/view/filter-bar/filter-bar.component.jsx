@@ -1,54 +1,43 @@
 import React from 'react';
-import Input from '../../../components/common/input/input.component';
-import Select from '../../../components/common/select/select.component';
+import './filter-bar.css';
 import { CATEGORIES } from '../../../data/constant';
-import "./filter-bar.css";
-function FilterBar(props) {
+import CheckBox from '../../../components/common/toggle-bullets/check-boxes.component';
+import Input from '../../../components/common/input/input.component';
+/**
+ * 
+ * @param {{
+ * searchTerms:string ;
+ * categories:string[];
+ * setParm:(name :string , value : string | string[]) => void
+ * }} props 
+ */
 
-  const handelFilterChange = (filterName,inputValue)=>{ 
-    const newParams = new URLSearchParams(props.params);
-
-
-    if (inputValue) {
-      newParams.set(filterName, inputValue);
-    }
-    else {
-      newParams.delete(filterName);
-    }
-
-    props.setParams(newParams);
-  };
-
-  
+const FilterBar = (props) => {
   return (
+    <div className="filter-bar">
+     <Input 
+     type="search"
+     label="search for item"
+     value={props.searchTerms}
+     onChange={ e =>props.setParm('searchTerms', e.target.value)}
+     placeholder="search"
+     />
+     {
+      CATEGORIES.map(cat => 
+      <CheckBox key={cat } label={cat } checked={props.categories.includes(cat)}
+      onChange={e => {
+        const updated = e.target.checked
+          ? [...props.categories, cat]
+          : props.categories.filter(category => category !== cat);
 
-    <div  className="filter-bar">
-
-      <Input
-        type="search"
-        label='search for item'
-        value={props.searchTermsFromURL}
-        onChange={e => handelFilterChange ('searchTerms',e.target.value)}
-         
-
-        placeholder="Search"
-
+        props.setParm('category', updated);
+      }}
       />
-
-
-      <Select
-        name="category"
-        label="category"
-        value={props.categoryFromURL} 
-        onChange={e => handelFilterChange ('category',e.target.value)}
-      >
-        <option value="">all</option>
-        {CATEGORIES.map(item => {
-          return <option key={item} value={item}>{item}</option>;
-        })}
-      </Select>
+      )
+    }
     </div>
-  );
+  )
 }
+
 
 export default FilterBar;

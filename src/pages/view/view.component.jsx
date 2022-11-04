@@ -67,6 +67,24 @@ const ViewPage = (props) => {
 
     return Match;
   });
+/**
+   * Set query string parameter.
+   * @param {string} name Parameter name.
+   * @param {string | string[]} value Parameter value.
+   */
+ const setParam = (name, value) => {
+  const newParams = new URLSearchParams(params);
+
+  newParams.delete(name);
+
+  if (Array.isArray(value)) {
+    value.forEach(item => newParams.append(name, item));
+  } else if (value.trim()) {
+    newParams.set(name, value.trim());
+  }
+
+  setParams(newParams);
+};
 
   return (
     <div className="view-page">
@@ -74,7 +92,6 @@ const ViewPage = (props) => {
       <FilterBar 
       searchTermsFromURL={searchTermsFromURL} 
       categoryFromURL={categoryFromURL}
-      params={params}
       setParams={setParams}
       />
 

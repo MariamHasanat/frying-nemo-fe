@@ -1,11 +1,13 @@
 import './item.css';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 /** 
  * Render a single menu item based on the data passed
  * @param {{
  *     data:{
  *     name: string;
+ * id:number;
  *     image: string;
  *     Description: string;
  *     Price: number;
@@ -22,7 +24,7 @@ const Item = (props) => {
         <img src={props.data.image} alt="food" />
       </div>
       <div className="info">
-        <h2>{props.data.name}</h2>
+      <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
         <p> desc{props.data.Description}</p>
         <p className="ingredients">{ props.data.Ingredients && props.data.Ingredients.join(",")}</p>
         {/* instead of join you can use // map((ing, i) => ing + (i < props.data.ingredients.length - 1 ? ', ' : ' ')) */}
