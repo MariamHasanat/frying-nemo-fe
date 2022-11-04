@@ -20,8 +20,12 @@ const Head = (props) => {
 
           {/* location.pathname==='add'? "class 1 " : "class 2"  to add style to the nav links  */}
 
-          <Link style={{ padding: "1rem" }} to="./add">ADD</Link>
-          <Link to="./view">VIEW</Link>
+          <Link style={{ padding: "1rem" }} to="/add" className={location.pathname === "/add" ? 'current' : ''}>
+            Add
+          </Link>
+          <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
+            View
+          </Link>
         </nav>
       </div>
 

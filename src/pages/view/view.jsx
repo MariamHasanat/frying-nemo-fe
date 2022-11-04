@@ -1,7 +1,7 @@
 import Card from './card';
 import './view.css';
 import React, { useState } from 'react';
-import Input from '../../components/common/input/input';
+// import Input from '../../components/common/input/input';
 import './view.css';
 import { useSearchParams } from 'react-router-dom';
 import { FilterBar } from './filter-bar/filter-bar';
@@ -22,32 +22,30 @@ const ViewPage = (props) => {
   const GetmenuItems = () => JSON.parse(localStorage.menuitems || '[]');
   const [menuitems, setMenuItems] = useState(GetmenuItems());
 
+
+
   //instance of class 
-
-
   const [search, setSearch] = useState('');
-
   /***  القيم الي يتجي بعد علامة الاستفهانم   */
   const [params, setParams] = useSearchParams();
   //my query 
-  const searchFromURL = params.get("search") || '';
-  const categoriesFromURL = params.get("categories") || '';
-  
+  const searchFromURL = params.get("searchTerms") || '';
+
+  const categoriesFromURL = params.getAll("categories") || '';
+
   console.log(params.get("search"));
 
 
   /**
          * Check if search terms are somewhere inside given string.
-         * @param {string} value 
+          @param {string} value 
          */
-  const setSearchInLocalStorage = (value) => {
-    localStorage.setItem("search-Terms ", value);
-    setSearch(value);
-  };
+  // const setSearchInLocalStorage = (value) => {
+  //   localStorage.setItem("search-Terms ", value);
+  //   setSearch(value);
+  // };
 
 
-
-  
   const filterItems = menuitems.filter(item => {
 
     /**
@@ -61,21 +59,38 @@ const ViewPage = (props) => {
       isMatch(item.name) ||
       isMatch(item.description) ||
       item.ingrediant.some(ingredient => isMatch(ingredient))
+      
     );
- if  (categoriesFromURL ){
-  match = match && (item.categories===categoriesFromURL)
- }
+
+    if (categoriesFromURL.length) {
+      match = match && (categoriesFromURL.includes(item.categories));
+    }
 
 
     return match;
 
-
-
-
     // item.name.toLowerCase().includes(search.toLowerCase().trim())
-
-
   });
+
+
+  /**
+   * Set query string parameter.
+   * @param {string} name Parameter name.
+   * @param {string | string[]} value Parameter value.
+   */
+  const setParam = (name, value) => {
+    const newParams = new URLSearchParams(params);
+
+    newParams.delete(name);
+
+    if (Array.isArray(value)) {
+      value.forEach(item => newParams.append(name, item));
+    } else if (value.trim()) {
+      newParams.set(name, value.trim());
+    }
+
+    setParams(newParams);
+  };
 
 
   return (
@@ -84,17 +99,30 @@ const ViewPage = (props) => {
       <h1>View items page</h1>
 
 
-        <div className="filter">
-<FilterBar searchFromURL={searchFromURL} params={params} setParams={setParams}  /> 
-</div>
-    
-      <div className="container" >
-        {
-          filterItems.map((item, id) => <Card key={id + item} data={item} />)
+      <div className="filter">
+        <FilterBar
+          searchTerms={searchFromURL}
+          categories={categoriesFromURL}
+          setParam={setParam}
+        />
+      </div>
 
+      <div className="container" >
+
+        {
+           filterItems.length
+          
+            ? filterItems.map((item, index) => <Card data={item} key={item.name + index} />)
+            : (
+              <div className="no-results">
+                {/* <img src="./frustrated-realistic.png" alt="No results" /> */}
+                <p>No results found</p>
+              </div>
+            )
         }
 
       </div>
+   
     </div>
   );
 };

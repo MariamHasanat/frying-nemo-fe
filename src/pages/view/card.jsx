@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './card.css';
 
 /**
@@ -14,14 +15,12 @@ import './card.css';
  * }} props 
  *  
  */
-
-
-
 const Card = (props) => {
   return (
 <div className="wrapper">
     <div className="card">
-      <h2>{props.data.name} </h2>
+    <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
+
       <div className="imgs">
         <img src="./burg.png" alt="burger" />
       </div>
@@ -37,6 +36,13 @@ const Card = (props) => {
      
       <div className="description">
         {props.data.ingrediant.join( " "+ ","+" ")}
+      </div>
+      <div className="price">
+        <div className="add-cart">
+          <button>+</button>
+          <input type="number" max={500} />
+          <button>-</button>
+        </div>
       </div>
     </div>
 

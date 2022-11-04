@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Input from '../../common/input/input';
 import MySelect from '../../common/select/select';
 import Textarea from '../../common/textarea/textarea/Tarea';
-import { type } from '@testing-library/user-event/dist/type';
 import MultivalueInput from '../../common/multi-value-input/multi-value-input';
 import './form.css';
 import { useNavigate } from 'react-router-dom';
@@ -11,11 +10,11 @@ import {CATEGORIES } from '../../../data/data';
 
 
 const Form = (props) => {
-
-
   const [name, setName] = useState('ayat');
   const [ingrediant, setIngrediant] = useState([]);
   const navigate = useNavigate();
+
+
 
   /**
      * 
@@ -29,7 +28,7 @@ const Form = (props) => {
     */
 
     const description = e.target.description.value;
-    const price = e.target.price.value;
+    const price = Number(e.target.price.value);
     const categories = e.target.categories.value;
 
     const menuItem = {
@@ -56,7 +55,7 @@ const Form = (props) => {
     // use JSON.pars  convert JSON string   -> js object 
 
 
-    const target = e.target;
+
   };
 
 
@@ -112,9 +111,9 @@ const Form = (props) => {
       </MySelect>
 
       <Input
-        label="price "
-        name='price'
-        type='number'
+        name="price"
+        label="Price"
+        type="number"
         min={0}
         required
       />

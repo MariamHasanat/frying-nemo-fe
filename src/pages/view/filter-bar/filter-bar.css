@@ -1,4 +1,9 @@
 .input-bar{
   display: flex;
 /* flex-direction: column; */
+flex-direction: row;
+}
+.categories {
+display: flex;
+padding-right: 1rem ;
 }
