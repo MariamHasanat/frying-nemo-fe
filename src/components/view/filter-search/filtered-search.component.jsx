@@ -6,31 +6,33 @@ import Select from '../../common/select/select.component';
 
 
 const FilteredSearch = (props) =>{
-  const setSearchTermAndSearchParam = (str,value)=>{
+  const setSearchParamAndCategoryParam = (str,value)=>{
     if(str === "q"){
-    props.setSearchParams({ str: value });
+    props.setSearchParams({ "q": value });
     props.setSearchTerm(value);
   }
     if(str === "category"){
+      props.setCategoryParams({ "category": value });
+      props.setCategoryTerm(value);
     }
-    if(str === "q " && !value){
+    if(str === "q" && !value){
       props.setSearchParams(props.searchParams.delete('q'));
     }
-    if(str === "q " && !value){
-      props.setSearchParams(props.searchParams.delete('q'));
+    if(str === "category" && !value){
+      props.setCategoryParams(props.CategoryParams.delete('category'));
     }
   };
 return(
   <div className='search-items-constained'>
   <Input
   value={props.searchTerm}
-  onChange={(e) => setSearchTermAndSearchParam("q",e.target.value)}
+  onChange={(e) => setSearchParamAndCategoryParam("q",e.target.value)}
   label="Search"
   /> 
   <Select name="category" label="categories"
-    onChange={(e) => setSearchTermAndSearchParam("category",e.target.value)}
+    onChange={(e) => setSearchParamAndCategoryParam("category",e.target.value)}
   >
-    <option>All</option>
+    <option></option>
   {CATEGORIES.map((item) => {
     return (
       <option key={item} value={item}>

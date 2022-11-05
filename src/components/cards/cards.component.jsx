@@ -19,15 +19,20 @@ const Cards = (props) => {
   const menuItems = localStorage.getItem("menuItems").length ? [...JSON.parse(localStorage.getItem("menuItems"))]: [];
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchTerm,setSearchTerm]= useState(searchParams.get('q') || '');
+  const [categoryParams, setCategoryParams] = useSearchParams();
+  const [categoryTerm,setCategoryTerm]= useState(categoryParams.get('category') || '');
   const searchList= menuItems.filter(item=>{
     /**
      * @param {string} str
      */
     const doesItMatch= (str)=>{return(str.toLowerCase().includes(searchTerm.toLowerCase().trim()));}
-    const match =(doesItMatch(item.name) ||
+    let match =(doesItMatch(item.name) ||
     doesItMatch(item.description) ||
     item.ingredients.some(ingredient=>doesItMatch(ingredient))
     );
+    if (categoryTerm) {
+      match = match && (item.category === categoryTerm);
+    }
     return(match);
   });
   
@@ -36,8 +41,13 @@ const Cards = (props) => {
       <FilteredSearch
       searchTerm={searchTerm}
       setSearchTerm={setSearchTerm}
-      setSearchParams={setSearchParams}
       searchParams= {searchParams}
+      setSearchParams={setSearchParams}
+
+      categoryTerm={categoryTerm}
+      setCategoryTerm={setCategoryTerm}
+      categoryParams= {categoryParams}
+      setCategoryParams={setCategoryParams}
       />
       
     <div className="card-container">
