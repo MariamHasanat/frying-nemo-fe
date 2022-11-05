@@ -7,34 +7,34 @@ import { useSearchParams } from 'react-router-dom';
 import { FilterBar } from './filter-bar/filter-bar';
 
 /**
- * @type {Array<{
- * name: string;
- * description: string;
- * ingredients: string[];
- * price: number;
- * category: string;
- * image: string;
- * }>}
- */
+   * @type {Array<{name: string;description: string;
+   * ingredients: string[];
+   * price: number;
+   * category: string;
+   * image: string;}>}
+   */
 const ViewPage = (props) => {
 
   const initial = [];
   const GetmenuItems = () => JSON.parse(localStorage.menuitems || '[]');
   const [menuitems, setMenuItems] = useState(GetmenuItems());
-
-
-
+  
+  
   //instance of class 
   const [search, setSearch] = useState('');
   /***  القيم الي يتجي بعد علامة الاستفهانم   */
   const [params, setParams] = useSearchParams();
   //my query 
   const searchFromURL = params.get("searchTerms") || '';
-
   const categoriesFromURL = params.getAll("categories") || '';
 
-  console.log(params.get("search"));
+  const [Min, setMin] = useState("")
+  const [Max, setMax] = useState("")
+  const maxFromURL = params.get("max") || '';
+  const minFromURL = params.get("min") || '';
+  
 
+  console.log(params.get("search"));
 
   /**
          * Check if search terms are somewhere inside given string.
@@ -59,13 +59,17 @@ const ViewPage = (props) => {
       isMatch(item.name) ||
       isMatch(item.description) ||
       item.ingrediant.some(ingredient => isMatch(ingredient))
-      
+
     );
 
     if (categoriesFromURL.length) {
       match = match && (categoriesFromURL.includes(item.categories));
     }
 
+    if (maxFromURL &&minFromURL) {
+      match = match && (item.price >= minFromURL && item.price <= maxFromURL);
+
+    }
 
     return match;
 
@@ -93,6 +97,7 @@ const ViewPage = (props) => {
   };
 
 
+
   return (
 
     <div className='wrapper' >
@@ -110,10 +115,16 @@ const ViewPage = (props) => {
       <div className="container" >
 
         {
-           filterItems.length
+
+          filterItems.length
+            ? 
+            
+          (  filterItems.map((item, index) => <Card data={item} key={item.name + index} />)
           
-            ? filterItems.map((item, index) => <Card data={item} key={item.name + index} />)
-            : (
+          
+          )
+           
+            : ( 
               <div className="no-results">
                 {/* <img src="./frustrated-realistic.png" alt="No results" /> */}
                 <p>No results found</p>
@@ -122,7 +133,7 @@ const ViewPage = (props) => {
         }
 
       </div>
-   
+
     </div>
   );
 };

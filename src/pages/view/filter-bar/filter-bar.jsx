@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
 import CheckBox from '../../../components/common/checkbox/checkbox';
 import Input from '../../../components/common/input/input';
 // import MySelect from '../../../components/common/select/select';
+import { useState } from 'react';
 import { CATEGORIES } from '../../../data/data';
 import './filter-bar.css';
 /**
@@ -12,6 +12,8 @@ import './filter-bar.css';
  *  setParam: (name: string, value: string | string[]) => void
  * }} props Component properties object.
  */
+
+
 
 // const HandleFilterSearch = (props) => {
 
@@ -27,14 +29,12 @@ import './filter-bar.css';
 
 // };
 export const FilterBar = (props) => {
-  const [price, setPrice] = useState(40);
 
-  const handelPrice = (e) => {
-    setPrice(e.target.value);
-  };
+
+
 
   return (
-    <div>
+    <div className='wrapper'>
       <div className="input-bar">
         <Input
 
@@ -71,13 +71,23 @@ export const FilterBar = (props) => {
         ))}
       </div>
       <div className="priceFilter">
+        <span className='disc'> Pleas note the Min price is <b>10</b> and the max is <b>500</b></span>
         <Input
-          type="range"
-          handelPrice={handelPrice}
+          label='min price : '
+          type="number"
+          onChange={e => props.setParam('min', e.target.value)}
+          min={10}
+          max={500}
 
         />
+        <Input
+          label='max price : '
+          type="number"
+          onChange={e => props.setParam('max', e.target.value)}
+          max={500}
+          min={10}
 
-
+        />
       </div>
     </div>
 

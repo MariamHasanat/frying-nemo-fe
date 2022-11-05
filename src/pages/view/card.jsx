@@ -40,7 +40,7 @@ const Card = (props) => {
       <div className="price">
         <div className="add-cart">
           <button>+</button>
-          <input type="number" max={500} />
+          <input type="number" max={500} min={50} />
           <button>-</button>
         </div>
       </div>

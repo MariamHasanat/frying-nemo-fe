@@ -36,7 +36,7 @@ const ViewItemPage = () => {
     <div className="view-item-page">
       <h1>View Menu Item</h1>
       {
-      currentItem !== null
+        currentItem !== null
           ? <Card data={currentItem} />
           : <span>Item Not Found!</span>
       }

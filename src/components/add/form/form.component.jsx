@@ -112,7 +112,7 @@ const Form = (props) => {
 
       <Input
         name="price"
-        label="Price"
+        label="price"
         type="number"
         min={0}
         required

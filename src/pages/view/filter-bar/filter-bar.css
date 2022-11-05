@@ -1,9 +1,36 @@
-.input-bar{
-  display: flex;
-/* flex-direction: column; */
-flex-direction: row;
+.wrapper {
+  margin-bottom: 1rem;
+  margin-left: 1rem;
 }
+
+.input-bar {
+  display: flex;
+  /* flex-direction: column; */
+  flex-direction: row;
+}
+
 .categories {
-display: flex;
-padding-right: 1rem ;
+  display: flex;
+  padding-right: 1rem;
+
+}
+
+.priceFilter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wrapper>.priceFilter>.disc {
+  margin-top: 1rem;
+  color: rgb(182, 169, 146);
+  display: block;
+  margin-bottom: 1rem;
+  /* background-color: red; */
+}
+.wrapper>.priceFilter>.disc>b {
+  margin-top: 1rem;
+  color: orange;
+  margin-bottom: 1rem;
+  /* background-color: red; */
 }

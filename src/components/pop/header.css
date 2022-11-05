@@ -13,3 +13,33 @@
   width:50px;
   
 }
+
+
+.right nav {
+  display: flex;
+}
+
+.right nav a {
+  background: unset;
+  border: unset;
+  cursor: pointer;
+  /* font-size: 14px; */
+  padding: 9px 20px;
+  text-decoration: none;
+  color: inherit;
+  margin: 1rem;
+}
+
+.right nav a:hover {
+  text-shadow: -1px 2px 3px #777777;
+}
+
+.right nav a:active {
+  text-shadow: -1px 2px 3px #333;
+}
+
+.right nav a.current {
+  background-color: orange;
+  border-radius: 5px;
+  color: white;
+}

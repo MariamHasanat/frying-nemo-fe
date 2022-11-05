@@ -14,13 +14,13 @@ const Head = (props) => {
         </h1>
       </div>
       <div className="right">
-        <nav style={{ margin: "1rem" }}>
+        <nav >
           {/* <button className={props.currentPage === 'add' ? 'current' : ''} onClick={() => props.onNavigate('add')}>Add</button>
           <button className={props.currentPage === 'view' ? 'current' : ''} onClick={() => props.onNavigate('view')}>View</button> */}
 
           {/* location.pathname==='add'? "class 1 " : "class 2"  to add style to the nav links  */}
 
-          <Link style={{ padding: "1rem" }} to="/add" className={location.pathname === "/add" ? 'current' : ''}>
+          <Link  to="/add" className={location.pathname === "/add" ? 'current' : ''}>
             Add
           </Link>
           <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
