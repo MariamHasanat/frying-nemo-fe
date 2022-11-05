@@ -1,48 +1,38 @@
-import React from 'react'
+import React from 'react';
 import CheckBox from '../../../components/common/checkbox/checkbox.component';
 import Input from '../../../components/common/input/input.component';
 import Select from '../../../components/common/select/select.component';
-import  CATEGORIES from '../../../data/constants'
-import './filter-bar.css'
+import CATEGORIES from '../../../data/constants';
+import './filter-bar.css';
 
 const FilterBar = (props) => {
 
-  
+
   return (
     <div className='filter-bar'>
       <Input type='search' value={props.searchUsingURL}
-      onChange = {e => {
-        props.setParams ('searchTerms' , e.target.value) ;
-      }} 
-      placeholder = 'search'
-      label='search'
+        onChange={e => {
+          props.setParams('searchTerms', e.target.value);
+        }}
+        placeholder='search'
+        label='search'
       />
-       
-      {CATEGORIES.map (cat => {
-        return (<CheckBox key={cat} label = {cat} 
-          checked = {props.categoryUsingURL.includes(cat)}
-          onChange = {e => { 
-            const updatedCategories =  e.target.checked 
-            ? [...props.categoryUsingURL , cat] 
-            : props.categoryUsingURL.filter (c => c != cat)
-            // let newParam = props.param ;
-            // if (e.target.checked) {
-            //   newParam.append ('category' , cat) ;
-            // }
-            // else {
-            //   const filteredItems = newParam.getAll ('category').filter (c => c != cat) || [] ;
-            //   newParam.delete ('category') ;
-            //   if (filteredItems) {
-            //     filteredItems.forEach(element => {
-            //       newParam.append ('category' , element) ;
-            //     });
-            //   }
-            // }
-            props.setParams ('category' , updatedCategories) ;
-          }} 
-        />)})}
 
-        {/* The following code is for a single category filter -> you have to select only one category of all */}
+      {CATEGORIES.map(cat => {
+        return (<CheckBox key={cat} label={cat}
+          checked={props.categoryUsingURL.includes(cat)}
+          onChange={e => {
+            const updatedCategories = e.target.checked
+              ? [...props.categoryUsingURL, cat]
+              : props.categoryUsingURL.filter(c => c != cat);
+            props.setParams('category', updatedCategories);
+          }}
+        />);
+      })}
+
+      {/* The following code is for a single category filter 
+      -> you have to select only one category of all */}
+
       {/* <Select label='Select' name='catigory'
          onChange = {e => filterChanges ('category' , e.target.value)} 
       >
@@ -53,7 +43,7 @@ const FilterBar = (props) => {
          key must be mintions 
       </Select> */}
     </div>
-  )
-}
+  );
+};
 
-export default FilterBar ;
+export default FilterBar;

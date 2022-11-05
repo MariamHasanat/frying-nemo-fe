@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap');
+
+.notFound {
+  display: flex;
+  justify-content: center;
+}
+.notFound .img {
+  height: 600px;
+  width: 600px;
+  padding: 20px;
+}
+.notFound  > .img > h1 {
+  text-align: center;
+  color: rgb(253, 131, 44);
+  font-family: 'Rubik', sans-serif;
+}

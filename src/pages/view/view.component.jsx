@@ -4,7 +4,7 @@ import Input from '../../components/common/input/input.component';
 import Spinner from '../../components/common/spinner/spinner.componenr';
 import MenuItem from './cards/menu-item/menu-item.component';
 import FilterBar from './filter-bar/filter-bar.component';
-import './view.css' ;
+import './view.css';
 
 /**
  * @type {Array<{
@@ -19,78 +19,77 @@ import './view.css' ;
 const initialItems = [];
 
 const ViewPage = (props) => {
-  const [loading , setLoading] = useState (true) ;
-  const [items , setItems] = useState (initialItems) ;
+  const [loading, setLoading] = useState(true);
+  const [items, setItems] = useState(initialItems);
   //param is an instance of complex class (URLSearchParams) so I need to use get (name) to access spesific param 
-  const [param , setParam] = useSearchParams() ;  
-  const searchUsingURL = param.get ('searchTerms') || '' ;
-  const categoryUsingURL = param.getAll ('category') || '' ;
-  console.log ('category param = ' , categoryUsingURL) ;
+  const [param, setParam] = useSearchParams();
+  const searchUsingURL = param.get('searchTerms') || '';
+  const categoryUsingURL = param.getAll('category') || '';
+  console.log('category param = ', categoryUsingURL);
 
-  const setParams =  (addTo , value) => {
-    let newParam = new URLSearchParams (param) ;
-    newParam.delete (addTo) ;
-    if (Array.isArray (value)) {
-      value.forEach (cat => newParam.append (addTo , cat))
+  const setParams = (addTo, value) => {
+    let newParam = new URLSearchParams(param);
+    newParam.delete(addTo);
+    if (Array.isArray(value)) {
+      value.forEach(cat => newParam.append(addTo, cat));
     }
-    else  if (value.trim ())
-      newParam.set (addTo , value) ;
-    setParam (newParam) ;
-  }
+    else if (value.trim())
+      newParam.set(addTo, value);
+    setParam(newParam);
+  };
 
-  const getMenuItems = () =>{
-    setLoading (true) ;
+  const getMenuItems = () => {
+    setLoading(true);
     setTimeout(() => {
-      setItems (JSON.parse (localStorage.getItem ('menuItems') || '[]')) ;
-      setLoading (false) ;
+      setItems(JSON.parse(localStorage.getItem('menuItems') || '[]'));
+      setLoading(false);
     }, 1000);
-  } 
+  };
 
-  useEffect (() => {
-    getMenuItems() ;
-    return (() => console.log ('Im out'))
-  } , [])
-  
-  const filteredIetems = items.filter (element => {
-    const doesItMatch  = (value) => value.toLowerCase().includes(searchUsingURL.toLowerCase().trim())
+  useEffect(() => {
+    getMenuItems();
+    return (() => console.log('Im out'));
+  }, []);
+
+  const filteredIetems = items.filter(element => {
+    const doesItMatch = (value) => value.toLowerCase().includes(searchUsingURL.toLowerCase().trim());
     let match = (
-    doesItMatch (element.name) 
-    || doesItMatch (element.discription) 
-    || element.ingredients.some (ingredient => doesItMatch (ingredient)) 
-    // => i can use find function instead , but (some is better to use) 
-    )
+      doesItMatch(element.name)
+      || doesItMatch(element.discription)
+      || element.ingredients.some(ingredient => doesItMatch(ingredient))
+      // => i can use find function instead , but (some is better to use) 
+    );
     if (categoryUsingURL) {
       // match = match && element.catigory == categoryUsingURL ;   => for a single category filter :) 
-      match = match && categoryUsingURL.includes (element.catigory)  // for a multiple category filter :)
+      match = match && categoryUsingURL.includes(element.catigory);  // for a multiple category filter :)
     }
-    return match ;
-  }) ;
+    return match;
+  });
 
   return (
     <div className='view'>
-      <h1 align = 'center'>View Menu Items</h1>
+      <h1 align='center'>View Menu Items</h1>
       <FilterBar
-        searchUsingURL = {searchUsingURL} 
-        categoryUsingURL = {categoryUsingURL}
-        param = {param}
-        setParam = {setParam}
-        setParams = {setParams}
+        searchUsingURL={searchUsingURL}
+        categoryUsingURL={categoryUsingURL}
+        param={param}
+        setParam={setParam}
+        setParams={setParams}
       />
-      {loading 
-      ? <div style={{ display: 'flex', justifyContent: 'center' }}>
+      {loading
+        ? <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Spinner />
         </div>
-      : <div className='items'>
-      {
-        filteredIetems.map ((item , index) => <div key = {item.name + index}>
-          <MenuItem  item = {item} />
-        </div>) 
+        : <div className='items'>
+          {
+            filteredIetems.map((item, index) => <div key={item.name + index}>
+              <MenuItem item={item} />
+            </div>)
+          }
+        </div>
       }
-    </div>
-    }
     </div>
   );
 };
 
 export default ViewPage;
-
