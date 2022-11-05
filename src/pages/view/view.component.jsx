@@ -25,6 +25,8 @@ const ViewPage = (props) => {
   const [param, setParam] = useSearchParams();
   const searchUsingURL = param.get('searchTerms') || '';
   const categoryUsingURL = param.getAll('category') || '';
+  const minPrice = param.get ('min') ;
+  const maxPrice = param.get ('max') ;
   console.log('category param = ', categoryUsingURL);
 
   const setParams = (addTo, value) => {
@@ -72,6 +74,8 @@ const ViewPage = (props) => {
       <FilterBar
         searchUsingURL={searchUsingURL}
         categoryUsingURL={categoryUsingURL}
+        maxPrice = {maxPrice}
+        minPrice = {minPrice}
         param={param}
         setParam={setParam}
         setParams={setParams}
@@ -82,9 +86,14 @@ const ViewPage = (props) => {
         </div>
         : <div className='items'>
           {
-            filteredIetems.map((item, index) => <div key={item.name + index}>
+            filteredIetems.length 
+            ? filteredIetems.map((item, index) => <div key={item.name + index}>
               <MenuItem item={item} />
             </div>)
+            : <div className="img">
+              <h5>No such item satisfies your requerments!</h5>
+              <img src="./sad-crab.svg" alt="" />
+              </div>
           }
         </div>
       }

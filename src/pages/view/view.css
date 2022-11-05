@@ -1,9 +1,18 @@
 .items {
 display: flex;
 flex-wrap: wrap; 
-justify-content: flex-start;
+justify-content: center;
 gap: 20px;
 }
 .view {
   padding: 16px;
+}
+.view > .items > .img {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30%;
+  text-align: center;
+  color: #be441d;
 }
