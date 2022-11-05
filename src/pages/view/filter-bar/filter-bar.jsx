@@ -30,7 +30,11 @@ import './filter-bar.css';
 // };
 export const FilterBar = (props) => {
 
+  const [price,setPrice] =useState(10);
 
+const handelPrice=e=>{
+  setPrice(e.target.value)
+}
 
 
   return (
@@ -88,6 +92,18 @@ export const FilterBar = (props) => {
           min={10}
 
         />
+        <Input
+        
+        type="range"
+        onChange={e => {props.setParam('price', e.target.value)
+        handelPrice(e)
+      }
+      }
+      min={10}
+      max={500}
+        
+        />
+        <span className='disc'>price: <b>{price}</b></span>
       </div>
     </div>
 

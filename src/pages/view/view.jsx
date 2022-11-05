@@ -28,10 +28,10 @@ const ViewPage = (props) => {
   const searchFromURL = params.get("searchTerms") || '';
   const categoriesFromURL = params.getAll("categories") || '';
 
-  const [Min, setMin] = useState("")
-  const [Max, setMax] = useState("")
   const maxFromURL = params.get("max") || '';
   const minFromURL = params.get("min") || '';
+  const price = params.get("price") || '';
+  // const [price,setPrice] =useState(10)
   
 
   console.log(params.get("search"));
@@ -70,6 +70,10 @@ const ViewPage = (props) => {
       match = match && (item.price >= minFromURL && item.price <= maxFromURL);
 
     }
+if(price)
+{
+  match = match && (item.price >= price && item.price <= parseInt(price,0));
+}
 
     return match;
 
