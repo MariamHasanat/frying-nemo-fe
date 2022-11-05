@@ -1,0 +1,7 @@
+.view-item-page{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 20px;
+}

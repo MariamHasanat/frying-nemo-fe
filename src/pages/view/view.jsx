@@ -21,6 +21,9 @@ const View = () => {
     const [menuItems, setMeuItems] = useState(initialItems);
     const [loading, setLoading] = useState(true);
     const [params, setParam] = useSearchParams();
+    const [min, setMin] = useState(null);
+    const [max, setMax] = useState(null);
+    
 
     const searchParFromURL = params.get('searchTerms') || '';
     const categoriesFromURL = params.getAll('categories') || [];
@@ -69,7 +72,10 @@ const View = () => {
         );
         if(categoriesFromURL.length > 0)
             match &= (categoriesFromURL.includes(item.category));
-
+        if(min !== null && min !== '')
+            match &= (item.price >= min);
+        if(max !== null && max !== '') 
+            match &= (item.price <= max);
         return match;
     });
 
@@ -84,6 +90,8 @@ const View = () => {
                 setParam={setParam}
                 searchParFromURL={searchParFromURL}
                 categoriesFromURL={categoriesFromURL}
+                setMin = {setMin}
+                setMax = {setMax}
             />
             {
                 loading

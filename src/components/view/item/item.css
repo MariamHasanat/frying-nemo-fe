@@ -3,17 +3,16 @@
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    height: auto;
     border: 1px solid gray;
     box-shadow: 4px 3px 5px grey;
-    width: 300px;
+    width: 320px;
     height: 480px;
     margin: 7px;
 }
 
 .item img {
     height: 190px;
-    width: 100%;
+    flex-basis: 100%;
 }
 
 .info {

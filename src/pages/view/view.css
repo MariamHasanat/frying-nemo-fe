@@ -7,7 +7,6 @@
     margin-left: 20px;
     display: flex;
     align-items: center;
-
 }
 
 .div-view .items {
@@ -19,6 +18,8 @@
     width: 100%;
     margin-left: 15px;
 }
+
+
 
 .empty {
     margin-bottom: 20px;

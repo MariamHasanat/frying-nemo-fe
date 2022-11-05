@@ -2,6 +2,22 @@ import './item.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+/** 
+ * Render a single menu item based on the data passed
+ * @param {{
+ *     item:{
+ *     id: string;
+ *     name: string;
+ *     image: string;
+ *     description: string;
+ *     price: number;
+ *     category: string;
+ *     ingredients: string[];
+ *    }
+ *   }} props
+ */
+
+
 const Item = (props) => {
     const [value, setValue] = useState(0);
 
@@ -15,6 +31,7 @@ const Item = (props) => {
         v -= (v > 0);
         setValue(v);
     };
+
     return (
         <div className='item'>
             <Link to={`/view/${props.item.id}`}>
@@ -22,7 +39,7 @@ const Item = (props) => {
             </Link>
             <div className='info'>
                 <h2>
-                    <Link to={`/view/${props.item.id}`} className = 'link-in-h2'>
+                    <Link to={`/view/${props.item.id}`} className='link-in-h2'>
                         {props.item.name}
                     </Link>
                 </h2>
@@ -46,7 +63,7 @@ const Item = (props) => {
                 </div>
 
             </div>
-        </div>
+        </div >
     );
 };
 
