@@ -37,6 +37,23 @@ const FilterBar = (props) => {
           />
         )
       }
+       <Input
+          label='min price :'
+          type="number"
+          onChange={e => props.setParams('min', e.target.value)}
+          min={0}
+          max={100}
+
+        />
+        <Input
+          label='max price : '
+          type="number"
+          onChange={e => props.setParams('max', e.target.value)}
+          max={100}
+          min={0}
+
+        />
+
     </div>
   );
 };

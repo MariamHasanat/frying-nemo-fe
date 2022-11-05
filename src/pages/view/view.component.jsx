@@ -21,8 +21,14 @@ const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
+  const Price =useSearchParams('price');
   const searchTermsFromURL = params.getAll('searchTerms') || '';
   const categoryFromURL = params.getAll('category') || '';
+  const[min,setMin]=useState("");
+  const[max,setMax]=useState("");
+  const maxFromURL = params.get("max") || '';
+  const minFromURL = params.get("min") || '';
+
 
   console.debug('searchTerms =', searchTermsFromURL);
   const getMenuItems = () => {
@@ -58,6 +64,10 @@ const ViewPage = (props) => {
     );
     if (categoryFromURL) {
       Match = Match && (item.category === categoryFromURL);
+    }
+    if (maxFromURL &&minFromURL) {
+      Match = Match && (item.price >= minFromURL && item.price <= maxFromURL);
+
     }
 
     return Match;
