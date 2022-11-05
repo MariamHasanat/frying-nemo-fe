@@ -17,9 +17,9 @@
 
 }
 
-.input-group > label > span:nth-child(2){
+/* .input-group > label > span:nth-child(2){
   color: red;
-}
+} */
 
 .input-group > input:focus {
   color: #495057;
