@@ -114,8 +114,8 @@ export const FilterBar = (props) => {
           min={10}
 
         />
-        <Input
-
+        <input
+className='slider'
           type="range"
           onChange={e => {
             props.setParam('price', e.target.value);

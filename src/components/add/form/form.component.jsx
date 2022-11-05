@@ -125,7 +125,7 @@ const Form = (props) => {
       />
 
       <div className='btn'>
-        <button type='submit' className='submit-button' >create</button>
+        <button type='submit' className="nemo-button" >create</button>
       </div>
     </form>
   );

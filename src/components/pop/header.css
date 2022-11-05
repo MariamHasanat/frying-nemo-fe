@@ -1,45 +1,60 @@
-.head-container >h1{
-  border: 0 solid rgb(238, 229, 229);
-  box-shadow: -3px 1px 2px 2px;
-  margin-bottom: 20px;
-  color: orange;
+.websiteHeader {
   display: flex;
-  padding-left: 30px;
-  margin-top: -.1rem;
-  padding: 15px;
-
-}
-.head-container >h1> img {
-  width:50px;
-  
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
 }
 
+.websiteHeader>.left {
+  display: flex;
+  align-items: center;
+}
 
-.right nav {
+.websiteHeader>.left>h1 {
+  font-size: 18px;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+  margin-right: 20px;
+  color: #f15a29;
+  text-shadow: 1px 1px 1px #301c16;
+}
+
+
+.websiteHeader>.left>h1>img {
+  height: 35px;
+  width: auto;
+  margin-right: 5px;
+}
+
+.websiteHeader .right nav {
   display: flex;
 }
 
-.right nav a {
+.websiteHeader .right nav a {
   background: unset;
   border: unset;
   cursor: pointer;
-  /* font-size: 14px; */
+  font-size: 14px;
   padding: 9px 20px;
   text-decoration: none;
   color: inherit;
-  margin: 1rem;
 }
 
-.right nav a:hover {
+.websiteHeader .right nav a:hover {
   text-shadow: -1px 2px 3px #777777;
 }
 
-.right nav a:active {
+.websiteHeader .right nav a:active {
   text-shadow: -1px 2px 3px #333;
 }
 
-.right nav a.current {
-  background-color: orange;
+.websiteHeader .right nav a.current {
+  background-color: #f15a29;
   border-radius: 5px;
   color: white;
 }

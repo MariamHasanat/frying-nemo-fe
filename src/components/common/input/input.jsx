@@ -15,7 +15,7 @@ const Input = props => {
   const { label, ...inputProps } = props;
 
   return (
-    <div className="textarea-group">
+    <div className="input-group">
       {
         label ? (
           <label>

@@ -6,8 +6,7 @@ import NotFound from "./pages/not-found/notfound";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ViewPage from "./pages/view/view";
 import ViewItemPage from "./pages/veiw-item/view-item";
-// import { render } from "react-dom";
-;
+import './App.css'
 function App() {
 
   return (
@@ -23,7 +22,6 @@ function App() {
           <Route path="/*" element={<Navigate to='/add' />} />
         </Routes>
       </BrowserRouter>
-
     </div >
   );
 }

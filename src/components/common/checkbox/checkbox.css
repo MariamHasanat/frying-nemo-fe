@@ -20,14 +20,16 @@
   border-radius: 7px;
   cursor: pointer;
   border: 1px solid #e1cbc4;
-  color: orange;
+  color: #f15a29;
+  text-shadow: 1px 1px 1px #492d23;
+  font-weight: 10px;
 }
 
 .checkbox-group>label>span:nth-child(2) {
-  color: orange;
+  color: #f15a29;
 }
 
 .checkbox-group>label.checked {
-  background-color: orange;  
+  background-color: #f15a29;  
   color: #fff;
 }

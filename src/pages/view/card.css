@@ -10,13 +10,13 @@ flex-direction: row;
     /* background-color: rgb(250, 225, 229); */
     padding: .5rem;
     align-items: center;
-    border: 3px solid orange;
+    border: 3px solid #f15a29;
     box-shadow: 2px 2px 2px 2px rgb(224, 160, 160);
     margin: .5rem;
     flex-wrap: wrap;
 }
 .card h2 {
-    color: orange;
+    color: #f15a29;
     text-shadow: 1px 2px 1px rgb(73, 65, 50) ;
 }
 .imgs {
@@ -43,7 +43,7 @@ flex-direction: row;
     display: flex;
     justify-content: space-between;
     margin: 1px;
-    color: orange;
+    color: #f15a29;
     font-weight: bolder;
 
 
@@ -56,7 +56,7 @@ flex-direction: row;
 
 .price {
     font-size: xx-large;
-    color: orange;
+    color: #f15a29;
     font-weight: bolder;
     padding: 5px;
 }

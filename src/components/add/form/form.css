@@ -5,9 +5,21 @@ form {
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
-  margin: 10px;
-  border: 2px rgb(243, 201, 124) solid;
-color: orange;
+  /* margin: 10px; */
+  border: 2px #f15a29 solid;
+color: #f15a29;
+  display: flex;
+  justify-content: center;
 }
 
+.btn >button {
+  background-color: non;
+  border: none;
+  color: #f15a29;
+padding: .5rem ;
+margin-top: 5px;
+font-weight: bolder;
 
+
+
+}

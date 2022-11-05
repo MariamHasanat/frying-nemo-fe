@@ -1,26 +1,22 @@
-import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
 import './header.css';
 
-const Head = (props) => {
-  const location = useLocation();
+import { Link, useLocation } from 'react-router-dom';
 
+const Head = () => {
+  const location = useLocation();  
+  
   return (
-
-    <header>
-      <div className="head-container">
+    <header className="websiteHeader">
+      <div className="left">
         <h1>
-          <img src="./mylogo.svg" alt="HACONA MATATA" />
-          HAKONA MATATA
+          <img src="./nemo.svg" alt="Nemo" />
+          Frying Nemo
         </h1>
       </div>
       <div className="right">
-        <nav >
-          {/* <button className={props.currentPage === 'add' ? 'current' : ''} onClick={() => props.onNavigate('add')}>Add</button>
-          <button className={props.currentPage === 'view' ? 'current' : ''} onClick={() => props.onNavigate('view')}>View</button> */}
-
-          {/* location.pathname==='add'? "class 1 " : "class 2"  to add style to the nav links  */}
-
-          <Link  to="/add" className={location.pathname === "/add" ? 'current' : ''}>
+        <nav>
+          <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
             Add
           </Link>
           <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
@@ -28,10 +24,8 @@ const Head = (props) => {
           </Link>
         </nav>
       </div>
-
     </header>
-
   );
-
 };
+
 export default Head;
