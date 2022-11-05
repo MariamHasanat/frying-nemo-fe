@@ -20,10 +20,13 @@
     padding-bottom: 10px;
 }
 
-
+.filter-bar .input-group .search-terms {
+    height: 40px;
+}
 .filter-bar .selectarea-group {
     margin: 0;
 }
 .filter-bar .price-filter{
     width: 50px;
+    height: 24px;
 }
