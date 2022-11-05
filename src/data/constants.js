@@ -1,11 +1,10 @@
 const CATEGORIES = [
     "Fish",
     "Drinks",
-    "desserts",
     "Main Dishes",
-    "Pizza",
     "Salads",
+    "Sweets",
     "Sandwiches"
 ];
 
-export {CATEGORIES};
+export { CATEGORIES };

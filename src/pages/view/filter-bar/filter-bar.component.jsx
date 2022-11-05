@@ -23,27 +23,12 @@ const FilterBar = (props) => {
             }}
         />
 
-            <Select
-                name="category"
-                defaultValue=""
-                label='Category'
-                onChange={e => {
-                    const newParams = new URLSearchParams(props.params);
-                    const searchVal = e.target.value;
-                    if (searchVal)
-                        newParams.set('categoryFilters', searchVal);
-                    else
-                        newParams.delete('categoryFilters');
-                    props.setParams(newParams);
-                }}
-            >
-                {CATEGORIES.map((item) => {
-                    return <option key={item} value={item}>{item}</option>;
-                })}
-                <option value="">All</option>
-            </Select>
-
-            {<Checkbox label="hello"/>}
+            <div className="category-checkboxes">
+                {CATEGORIES
+                    .map(item => <Checkbox label={item} key={'item_' + item} />
+                    )
+                }
+            </div>
         </div>
     );
 };
