@@ -98,7 +98,11 @@ const Form = (props) => {
         label="Decription"
         name='description'
       />
-
+  <Input
+        label="Image"
+        name="image"
+        
+      />
       <MySelect
         name="categories"
         label='categories' required>
