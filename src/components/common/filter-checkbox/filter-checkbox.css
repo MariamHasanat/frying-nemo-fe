@@ -23,8 +23,8 @@
     transition: color .20s ease-in-out, background-color .20s ease-in-out, border-color .20s ease-in-out, box-shadow .20s ease-in-out;
 }
 
-.filter-checkbox-group>label.checked,
-.filter-checkbox-group>label:hover {
+/* .filter-checkbox-group>label:hover, */
+.filter-checkbox-group>label.checked{
     color: #212529;
     background-color: #dee5ec;
     border-color: #dae0e5;

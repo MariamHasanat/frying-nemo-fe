@@ -55,8 +55,32 @@ const FilterBar = (props) => {
             <div className='priceFilters'>
                 <label>Price Filters</label>
                 <div className="inputs">
-                    <Input placeholder='min' type="number"/>
-                    <Input placeholder='max' type="number"/>
+                    <Input
+                        placeholder='min'
+                        type="number"
+                        onChange={e => {
+                            const newParams = new URLSearchParams(props.params);
+                            const val = e.target.value;
+                            if (val)
+                                newParams.set('priceMin', val);
+                            else
+                                newParams.delete('priceMin');
+                            props.setParams(newParams);
+                        }}
+                    />
+                    <Input
+                        placeholder='max'
+                        type="number"
+                        onChange={e => {
+                            const newParams = new URLSearchParams(props.params);
+                            const val = e.target.value;
+                            if (val)
+                                newParams.set('priceMax', val);
+                            else
+                                newParams.delete('priceMax');
+                            props.setParams(newParams);
+                        }}
+                    />
                 </div>
             </div>
         </div>

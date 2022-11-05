@@ -14,8 +14,8 @@ const ViewPage = (props) => {
 
     const searchTerms = params.get('searchTerms') || '';
     const categoryFilters = params.getAll('category') || '';
-    // console.log('searchTerms:', searchTerms);
-    // console.log('categoryFilters:', categoryFilters);
+    const priceMin = Number(params.getAll('priceMin')) || 0;
+    const priceMax = Number(params.getAll('priceMax')) || 0;
 
     const filteredMenu = menu
         .filter(
@@ -29,6 +29,16 @@ const ViewPage = (props) => {
                 if (categoryFilters) {
                     match = match && (categoryFilters.includes(item.category));
                 }
+                if (priceMin && priceMax) {
+                    match = match && (item.price >= priceMin && item.price <= priceMax);
+                }
+                else if (priceMin) {
+                    match = match && (item.price >= priceMin);
+                }
+                else if (priceMax) {
+                    match = match && (item.price <= priceMax);
+                }
+
                 return match;
             });
 
@@ -45,6 +55,7 @@ const ViewPage = (props) => {
                 params={params}
                 setParams={setParams}
                 categoryFilters={categoryFilters}
+                priceMin={priceMin}
             />
 
             {loading
