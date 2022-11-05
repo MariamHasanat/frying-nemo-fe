@@ -17,7 +17,7 @@ const Header = () => {
       <div className="right">
         <nav>
           <Link to='/add' className={location.pathname === "/add" ? "current" : ""}>Add</Link>
-          <Link to='/view' className={location.pathname === "/view" ? "current" : ""}>View</Link>
+          <Link to='/view' className={location.pathname.startsWith('/view') ? "current" : ""}>View</Link>
         </nav>
       </div>
     </header>
