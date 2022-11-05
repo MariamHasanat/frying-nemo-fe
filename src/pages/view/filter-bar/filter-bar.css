@@ -6,10 +6,15 @@
   column-gap: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid #e3e3e3;
+
 }
 
 .filter-bar>.categories {
   display: flex;
   gap: 5px;
   flex-wrap: wrap;
+
+}
+.filter-bar>.inputs{
+  margin: 5px;
 }
