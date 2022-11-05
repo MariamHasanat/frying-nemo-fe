@@ -4,6 +4,7 @@ import MultivalueInput from '../../common/multivalue-input/mulitvalue-input.comp
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import { useNavigate, useParams } from "react-router-dom";
+import { CATEGORIES } from '../../../data/constants';
 import './form.css';
 
 
@@ -64,16 +65,6 @@ const Form = (props) => {
     setName(value);
   };
 
-  const categories = [
-    'Fish',
-    'Drinks',
-    'Hookah',
-    'Salads',
-    'Sandwiches',
-    'Main Dish',
-    'Appetizers',
-    'Ice Cream'
-  ];
 
   return (
     <form className="addForm" onSubmit={submitHandler} >
@@ -105,7 +96,7 @@ const Form = (props) => {
         required
       />
       <Select name="category" label="Category" required>
-        {categories.map(item => {
+        {CATEGORIES.map(item => {
           return <option key={item} value={item}>{item}</option>;
         })}
       </Select>
