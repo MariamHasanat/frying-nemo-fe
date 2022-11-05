@@ -70,26 +70,26 @@ const ViewPage = (props) => {
    * @param {string} name Parameter name.
    * @param {string | string[]} value Parameter value.
    */
-  // const setParam = (name, value) => {
-  //   const newParams = new URLSearchParams(params);
+  const setParam = (name, value) => {
+    const newParams = new URLSearchParams(params);
 
-  //   newParams.delete(name);
+    newParams.delete(name);
 
-  //   if (Array.isArray(value)) {
-  //     value.forEach(item => newParams.append(name, item));
-  //   } else if (value.trim()) {
-  //     newParams.set(name, value.trim());
-  //   }
+    if (Array.isArray(value)) {
+      value.forEach(item => newParams.append(name, item));
+    } else if (value.trim()) {
+      newParams.set(name, value.trim());
+    }
 
-  //   setParams(newParams);
-  // };
+    setParams(newParams);
+  };
   return (
     <div className="View-page">
       <FilterBar
         searchFromURL={searchFromURL}
         searchCategoryFromURL={searchCategoryFromURL}
         params={params}
-        setParam={setParams}
+        setParam={setParam}
       />
       {loading
         ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>

@@ -1,6 +1,6 @@
 // import React from 'react'
 import Input from '../../../common/input/input.component';
-import Select from '../../../common/Select/Select';
+// import Select from '../../../common/Select/Select';
 import { CATEGORIES } from '../../../data/category';
 import CheckBox from '../../../common/check-box/check-box.component';
 import './filterBar.css';
@@ -33,37 +33,61 @@ const FilterBar = (props) => {
         }}
         placeholder="Search"
       />
+      <Input
+        type="number"
+        label="Min Price : "
+        value={props.searchFromURL}
+        onChange={e => {
+          const newParams = new URLSearchParams(props.params);
+          const inputValue = e.target.value;
+
+          if (inputValue) {
+            newParams.set('search', inputValue);
+          } else {
+            newParams.delete('search');
+          }
+       
+        }}
+        // placeholder="Search"
+      />
+      <Input
+        type="number"
+        label="Max Price : "
+        value={props.searchFromURL}
+        onChange={e => {
+          const newParams = new URLSearchParams(props.params);
+          const inputValue = e.target.value;
+
+          if (inputValue) {
+            newParams.set('search', inputValue);
+          } else {
+            newParams.delete('search');
+          }
+         
+        }}
+        // placeholder="Search"
+      />
+
      <div className="category">
-      {console.log(CATEGORIES)}
+     
         {CATEGORIES.map(categ => 
+        (
            <CheckBox
-           key={categ}
-           label={categ}
-           checked={props.searchCategoryFromURL.includes(categ)}
-           onChange={(e) => {
-            const newParams = new URLSearchParams(props.params);
-            const oldItems = newParams.getAll('category');
+            key={categ}
+            label={categ}
+            checked={props.searchCategoryFromURL.includes(categ)}
+            onChange={e => {
+              const updatE = e.target.checked?
+                 [...props.searchCategoryFromURL, categ]
+                : props.searchCategoryFromURL.filter(t => t !== categ);
 
-            if (e.target.checked) {
-              newParams.append('category', categ);
-            } else {
-              const filteredCategories = oldItems.filter(oItem => oItem !== categ);
+              props.setParam('category', updatE);
+              // console.log("checked " ,props.searchCategoryFromURL.includes(categ))
+            }}
 
-              if (filteredCategories.length) {
-                newParams.delete('category');
-                filteredCategories.forEach((v) => newParams.append('category', v));
-              } else {
-                newParams.delete('category');
-              }
-            }
-
-            props.setParam(newParams);
-          }}
-
-           />
+           />)
         )
-
-        }
+      }
      </div>
 
     </div>

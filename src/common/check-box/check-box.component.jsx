@@ -15,7 +15,8 @@ const CheckBox = props => {
       <input {...inputProps} type="checkbox" />
       {
         label ? (
-          <label>
+          <label  className={props.checked ? "checked" : ""}>
+          
             <span>{label}</span>
             &nbsp;
             {inputProps.required && <span>*</span>}
