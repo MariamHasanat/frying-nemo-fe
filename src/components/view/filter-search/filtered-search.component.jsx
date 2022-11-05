@@ -19,7 +19,7 @@ const FilteredSearch = (props) =>{
       props.setSearchParams(props.searchParams.delete('q'));
     }
     if(str === "category" && !value){
-      props.setCategoryParams(props.CategoryParams.delete('category'));
+      props.setCategoryParams(props.categoryParams.delete('category'));
     }
   };
 return(
@@ -32,7 +32,7 @@ return(
   <Select name="category" label="categories"
     onChange={(e) => setSearchParamAndCategoryParam("category",e.target.value)}
   >
-    <option></option>
+    <option value= "" >All</option>
   {CATEGORIES.map((item) => {
     return (
       <option key={item} value={item}>
