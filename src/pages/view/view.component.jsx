@@ -13,7 +13,7 @@ const ViewPage = (props) => {
     const [params, setParams] = useSearchParams();
 
     const searchTerms = params.get('searchTerms') || '';
-    const categoryFilters = params.get('categoryFilters') || '';
+    const categoryFilters = params.getAll('category') || '';
     // console.log('searchTerms:', searchTerms);
     // console.log('categoryFilters:', categoryFilters);
 
@@ -44,6 +44,7 @@ const ViewPage = (props) => {
                 searchTerms={searchTerms}
                 params={params}
                 setParams={setParams}
+                categoryFilters={categoryFilters}
             />
 
             {loading

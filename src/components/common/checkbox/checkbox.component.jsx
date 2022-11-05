@@ -13,8 +13,19 @@ const Checkbox = (props) => {
 
     return (
         <div className='checkbox-group'>
-            <input type="checkbox" id={`checkbox_id_for_${props.label}`} />
-            <label {...inputProps} htmlFor={`checkbox_id_for_${props.label}`}>{props.label}</label>
+            <input
+                value={props.value}
+                type="checkbox"
+                id={`checkbox_id_for_${props.label}`}
+                checked={props.checked}
+                onChange={props.onChange} />
+
+            <label
+                {...inputProps}
+                htmlFor={`checkbox_id_for_${props.label}`}
+            >
+                {props.label}
+            </label>
         </div>
     );
 };
