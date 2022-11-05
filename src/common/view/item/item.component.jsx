@@ -1,4 +1,5 @@
 import '.././item/item.css';
+import { Link } from 'react-router-dom';
 
 /**
  * 
@@ -19,10 +20,11 @@ const Items = (props) => {
   return (
     <div className="item-page">
       <div className='image'>
-        <img src={props.data.image} alt="pizza hut" />
+        <img src={props.data.image}  />
       </div>
       <div className="details">
-        <h2>{props.data.name}</h2>
+        <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
+
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients}</p>
 
