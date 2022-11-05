@@ -15,15 +15,17 @@ import './menu-item.css' ;
 const MenuItem = (props) => {
   //const items = JSON.parse (localStorage.getItem ('menuItems') || '[]') ;
   return (
-    <div className='menuitem'>
-      <span><img src={props.item.image} alt="" /></span>
-      <span>Name : {props.item.name}</span>
-      <span>Description : {props.item.discription}</span>
-      <span>Its a : {props.item.catigory}</span>
-      <div>Ingredients : {props.item.ingredients.join(", ")}</div>
+    <div className='item-card'>
+      <div className='img'><img src={props.item.image} alt="" /></div>
+      <h2>Name : {props.item.name}</h2>
+      <div className="info">
+        <span>Its a : {props.item.catigory}</span>
+        <p> {props.item.discription}</p>
+        <p className="ingredients"> {props.item.ingredients.join(", ")}</p>
+      </div>
       <div className='price'>
         <span >{props.item.price} $</span>
-        <div className='order'> 
+        <div className='add-cart'> 
           <button> - </button>
           <input type="number" className='ordersCount' />
           <button> + </button>

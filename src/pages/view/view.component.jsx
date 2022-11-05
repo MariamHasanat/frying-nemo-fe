@@ -24,8 +24,20 @@ const ViewPage = (props) => {
   //param is an instance of complex class (URLSearchParams) so I need to use get (name) to access spesific param 
   const [param , setParam] = useSearchParams() ;  
   const searchUsingURL = param.get ('searchTerms') || '' ;
-  const categoryUsingURL = param.get ('category') || '' ;
-  // console.log ('searchTerms param = ' , param.get('searchTerms')) ;
+  const categoryUsingURL = param.getAll ('category') || '' ;
+  console.log ('category param = ' , categoryUsingURL) ;
+
+  const setParams =  (addTo , value) => {
+    let newParam = new URLSearchParams (param) ;
+    newParam.delete (addTo) ;
+    if (Array.isArray (value)) {
+      value.forEach (cat => newParam.append (addTo , cat))
+    }
+    else  if (value.trim ())
+      newParam.set (addTo , value) ;
+    setParam (newParam) ;
+  }
+
   const getMenuItems = () =>{
     setLoading (true) ;
     setTimeout(() => {
@@ -33,6 +45,7 @@ const ViewPage = (props) => {
       setLoading (false) ;
     }, 1000);
   } 
+
   useEffect (() => {
     getMenuItems() ;
     return (() => console.log ('Im out'))
@@ -46,11 +59,10 @@ const ViewPage = (props) => {
     || element.ingredients.some (ingredient => doesItMatch (ingredient)) 
     // => i can use find function instead , but (some is better to use) 
     )
-    // console.log('categoryUsingURL' , categoryUsingURL);
     if (categoryUsingURL) {
-      match = match && element.catigory == categoryUsingURL ;
+      // match = match && element.catigory == categoryUsingURL ;   => for a single category filter :) 
+      match = match && categoryUsingURL.includes (element.catigory)  // for a multiple category filter :)
     }
-    // && ((element.catigory == categoryUsingURL) && categoryUsingURL)
     return match ;
   }) ;
 
@@ -62,6 +74,7 @@ const ViewPage = (props) => {
         categoryUsingURL = {categoryUsingURL}
         param = {param}
         setParam = {setParam}
+        setParams = {setParams}
       />
       {loading 
       ? <div style={{ display: 'flex', justifyContent: 'center' }}>

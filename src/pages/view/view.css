@@ -1,7 +1,8 @@
 .items {
 display: flex;
 flex-wrap: wrap; 
-justify-content: space-around;
+justify-content: flex-start;
+gap: 20px;
 }
 .view {
   padding: 16px;

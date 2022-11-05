@@ -1,2 +1,2 @@
-const CATEGORIES = ["Salads", "Main Dishes", "Drinks", "Sweets"];
+const CATEGORIES = ["Fish", "Drinks", "Main Dishes", "Salads", "Sweets", "Sandwiches"];
 export  default CATEGORIES  ;
