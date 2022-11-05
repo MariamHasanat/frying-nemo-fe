@@ -55,8 +55,8 @@ const FilterBar = (props) => {
             <div className='priceFilters'>
                 <label>Price Filters</label>
                 <div className="inputs">
-                    <Input placeholder='min' />
-                    <Input placeholder='max' />
+                    <Input placeholder='min' type="number"/>
+                    <Input placeholder='max' type="number"/>
                 </div>
             </div>
         </div>
