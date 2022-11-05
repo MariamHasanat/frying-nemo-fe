@@ -1,8 +1,9 @@
 import CheckBox from '../../../components/common/checkbox/checkbox';
 import Input from '../../../components/common/input/input';
-// import MySelect from '../../../components/common/select/select';
+import MySelect from '../../../components/common/select/select';
 import { useState } from 'react';
 import { CATEGORIES } from '../../../data/data';
+
 import './filter-bar.css';
 /**
  * Renders a filters bar.
@@ -15,26 +16,26 @@ import './filter-bar.css';
 
 
 
-// const HandleFilterSearch = (props) => {
-
-//   const newParm = new URLSearchParams(props.params);
-//   // const inputValue = e.target.value;
-//   if (inputValue) {
-//     newParm.set(filtetname, inputValue);
-//   } else {
-//     newParm.delete(filtetname);
-//   }
-//   props.setParams(newParm);
-
-
-// };
 export const FilterBar = (props) => {
 
-  const [price,setPrice] =useState(10);
+  const [price, setPrice] = useState(10);
+  const HandleFilterSearch = (filtetname, inputValue) => {
 
-const handelPrice=e=>{
-  setPrice(e.target.value)
-}
+    const newParm = new URLSearchParams(props.params);
+
+    if (inputValue) {
+      newParm.set(filtetname, inputValue);
+    } else {
+      newParm.delete(filtetname);
+    }
+    props.setParams(newParm);
+
+
+  };
+
+  const handelPrice = e => {
+    setPrice(e.target.value);
+  };
 
 
   return (
@@ -74,6 +75,27 @@ const handelPrice=e=>{
           />
         ))}
       </div>
+
+      <div className="categories">
+      <MySelect
+        name="categories"
+        label='categories' required
+
+        onChange={e =>  props.setParam('categoriess', e.target.value)}>
+
+        {
+          CATEGORIES.map(item => {
+
+            return <option value={item} key={item}>{item}</option>;
+          })
+        }
+
+
+      </MySelect>
+
+      </div>
+
+
       <div className="priceFilter">
         <span className='disc'> Pleas note the Min price is <b>10</b> and the max is <b>500</b></span>
         <Input
@@ -93,15 +115,16 @@ const handelPrice=e=>{
 
         />
         <Input
-        
-        type="range"
-        onChange={e => {props.setParam('price', e.target.value)
-        handelPrice(e)
-      }
-      }
-      min={10}
-      max={500}
-        
+
+          type="range"
+          onChange={e => {
+            props.setParam('price', e.target.value);
+            handelPrice(e);
+          }
+          }
+          min={10}
+          max={500}
+
         />
         <span className='disc'>price: <b>{price}</b></span>
       </div>

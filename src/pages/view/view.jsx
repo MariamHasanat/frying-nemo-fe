@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import './view.css';
 import { useSearchParams } from 'react-router-dom';
 import { FilterBar } from './filter-bar/filter-bar';
+import { CATEGORIES } from '../../data/data';
 
 /**
    * @type {Array<{name: string;description: string;
@@ -18,8 +19,8 @@ const ViewPage = (props) => {
   const initial = [];
   const GetmenuItems = () => JSON.parse(localStorage.menuitems || '[]');
   const [menuitems, setMenuItems] = useState(GetmenuItems());
-  
-  
+
+
   //instance of class 
   const [search, setSearch] = useState('');
   /***  القيم الي يتجي بعد علامة الاستفهانم   */
@@ -27,12 +28,13 @@ const ViewPage = (props) => {
   //my query 
   const searchFromURL = params.get("searchTerms") || '';
   const categoriesFromURL = params.getAll("categories") || '';
+  const  categoriesURL= params.get("categoriess") || '';
 
   const maxFromURL = params.get("max") || '';
   const minFromURL = params.get("min") || '';
   const price = params.get("price") || '';
   // const [price,setPrice] =useState(10)
-  
+
 
   console.log(params.get("search"));
 
@@ -66,14 +68,18 @@ const ViewPage = (props) => {
       match = match && (categoriesFromURL.includes(item.categories));
     }
 
-    if (maxFromURL &&minFromURL) {
+    if  (categoriesURL ){
+      match = match && (item.categories===categoriesURL)
+     }
+    
+    
+    if (maxFromURL && minFromURL) {
       match = match && (item.price >= minFromURL && item.price <= maxFromURL);
 
     }
-if(price)
-{
-  match = match && (item.price >= price && item.price <= parseInt(price,0));
-}
+    if (price) {
+      match = match && (item.price >= price && item.price <= parseInt(price, 0));
+    }
 
     return match;
 
@@ -121,14 +127,14 @@ if(price)
         {
 
           filterItems.length
-            ? 
-            
-          (  filterItems.map((item, index) => <Card data={item} key={item.name + index} />)
-          
-          
-          )
-           
-            : ( 
+            ?
+
+            (filterItems.map((item, index) => <Card data={item} key={item.name + index} />)
+
+
+            )
+
+            : (
               <div className="no-results">
                 {/* <img src="./frustrated-realistic.png" alt="No results" /> */}
                 <p>No results found</p>
