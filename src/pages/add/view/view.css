@@ -11,3 +11,7 @@
 .view-page .input-group{
   margin: 6px;
 }
+.view-container{display: flex;
+justify-content: space-between;
+flex-wrap: wrap
+}

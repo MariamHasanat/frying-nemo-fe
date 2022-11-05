@@ -4,6 +4,7 @@ import Input from '../../common/input/input';
 import Multiinput from '../../common/maltiinput-value/multiinput';
 import Select from '../../common/select/select';
 import Textarea from '../../common/textarea/textarea.component';
+import { CATEGORIES } from './data/constant';
 
 import './form.css';
 const Form = (props) => {
@@ -52,14 +53,7 @@ const Form = (props) => {
     }
     setname(value);
   };
-  const categories = [
-    'Fish',
-    'Shrimmps',
-    'Drink',
-    'Mussels',
-    'shesha',
-    'Ice cream',
-  ];
+
   return (
     <form className='form' onSubmit={handleSubmit}>
       <div className='input'>
@@ -90,7 +84,7 @@ const Form = (props) => {
           name='category'
           required
         >
-          {categories.map(item => {
+          {CATEGORIES.map(item => {
             return <option key={item} value={item}>{item}</option>;
           })}
         </Select>
