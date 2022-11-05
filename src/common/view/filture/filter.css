@@ -1,4 +1,27 @@
 .filter-bar{
-  margin-bottom: 20px;
+  display: flex;
+    margin-bottom: 30px;
+    justify-content: flex-start;
+    align-items: flex-end;
+    column-gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e3e3e3;
 
+}
+.filter-bar>.categories {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.filter-bar>.price{
+  display: flex;
+}
+.filter-bar>.price input{
+  width: 50px;
+  margin-top: 5px;
+}
+.filter-bar>.price label{
+ padding: 10px;
+ font-size: 18px;
+ text-align: center;
 }
