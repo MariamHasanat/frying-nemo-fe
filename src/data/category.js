@@ -1,11 +1,9 @@
 const CATEGORIES = [
   "Fish",
   "Drinks",
-  "Hookah",
-  "salad",
+  "Salads",
   "Sandwiches",
-  "Main Dishes",
-  "Appetizers",
+  "Main Dishe",
   "Ice Craem",
 ]
 

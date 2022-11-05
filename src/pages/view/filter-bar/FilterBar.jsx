@@ -2,7 +2,17 @@
 import Input from '../../../common/input/input.component';
 import Select from '../../../common/Select/Select';
 import { CATEGORIES } from '../../../data/category';
+import CheckBox from '../../../common/check-box/check-box.component';
 import './filterBar.css';
+
+/**
+ * Renders a filters bar.
+ * @param {{
+ *  searchTerms: string;
+ *  searchCategoryFromURL: string[];
+ *  setParam: (name: string, value: string | string[]) => void
+ * }} props Component properties object.
+ */
 
 const FilterBar = (props) => {
   return (
@@ -19,31 +29,42 @@ const FilterBar = (props) => {
           } else {
             newParams.delete('search');
           }
-          props.setParams(newParams);
+          props.setParam(newParams);
         }}
         placeholder="Search"
       />
-      <Select
-        name="category"
-        label="Category"
-        required
-        onChange={e => {
-          const newParams = new URLSearchParams(props.params);
-          const inputValue = e.target.value;
+     <div className="category">
+      {console.log(CATEGORIES)}
+        {CATEGORIES.map(categ => 
+           <CheckBox
+           key={categ}
+           label={categ}
+           checked={props.searchCategoryFromURL.includes(categ)}
+           onChange={(e) => {
+            const newParams = new URLSearchParams(props.params);
+            const oldItems = newParams.getAll('category');
 
-          if (inputValue) {
-            newParams.set('category', inputValue);
-          } else {
-            newParams.delete('category');
-          }
-          props.setParams(newParams);
-        }}
-        >
-          <option value="">ALL</option>
-        {CATEGORIES.map(item => {
-          return <option key={item} value={item}>{item}</option>;
-        })}
-      </Select>
+            if (e.target.checked) {
+              newParams.append('category', categ);
+            } else {
+              const filteredCategories = oldItems.filter(oItem => oItem !== categ);
+
+              if (filteredCategories.length) {
+                newParams.delete('category');
+                filteredCategories.forEach((v) => newParams.append('category', v));
+              } else {
+                newParams.delete('category');
+              }
+            }
+
+            props.setParam(newParams);
+          }}
+
+           />
+        )
+
+        }
+     </div>
 
     </div>
   );
