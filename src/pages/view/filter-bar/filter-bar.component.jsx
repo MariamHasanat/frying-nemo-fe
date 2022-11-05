@@ -18,17 +18,30 @@ const FilterBar = (props) => {
         label='search'
       />
 
-      {CATEGORIES.map(cat => {
-        return (<CheckBox key={cat} label={cat}
-          checked={props.categoryUsingURL.includes(cat)}
-          onChange={e => {
-            const updatedCategories = e.target.checked
-              ? [...props.categoryUsingURL, cat]
-              : props.categoryUsingURL.filter(c => c != cat);
-            props.setParams('category', updatedCategories);
-          }}
-        />);
-      })}
+      <Input 
+        label='min price' 
+        value = {props.minPrice} 
+        onChange = {e => props.setParams ('min' , e.target.value)}
+       />
+      <Input 
+        label='max price' 
+        value = {props.maxPrice} 
+        onChange = {e => props.setParams ('max' , e.target.value)}
+       />
+
+      <div className='menuItems'>
+        {CATEGORIES.map(cat => {
+          return (<CheckBox key={cat} label={cat}
+            checked={props.categoryUsingURL.includes(cat)}
+            onChange={e => {
+              const updatedCategories = e.target.checked
+                ? [...props.categoryUsingURL, cat]
+                : props.categoryUsingURL.filter(c => c != cat);
+              props.setParams('category', updatedCategories);
+            }}
+          />);
+        })}
+      </div>
 
       {/* The following code is for a single category filter 
       -> you have to select only one category of all */}

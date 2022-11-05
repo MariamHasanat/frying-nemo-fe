@@ -32,12 +32,7 @@ const MenuItem = (props) => {
         </div>
       </div>
            
-      {
-        // props.value.map ((item , index) => {return(
-        //   <div key={index} >
-        //     </div>
-        // );})
-      }
+      
     </div>
   )
 }

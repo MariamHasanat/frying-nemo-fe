@@ -25,8 +25,8 @@ const ViewPage = (props) => {
   const [param, setParam] = useSearchParams();
   const searchUsingURL = param.get('searchTerms') || '';
   const categoryUsingURL = param.getAll('category') || '';
-  const minPrice = param.get ('min') ;
-  const maxPrice = param.get ('max') ;
+  const minPrice = param.get ('min') || '' ;
+  const maxPrice = param.get ('max') || '' ;
   console.log('category param = ', categoryUsingURL);
 
   const setParams = (addTo, value) => {
@@ -65,6 +65,10 @@ const ViewPage = (props) => {
       // match = match && element.catigory == categoryUsingURL ;   => for a single category filter :) 
       match = match && categoryUsingURL.includes(element.catigory);  // for a multiple category filter :)
     }
+    if (minPrice) 
+      match = match && element.price >= minPrice ;
+    if (maxPrice) 
+      match = match && element.price <= maxPrice ;
     return match;
   });
 
