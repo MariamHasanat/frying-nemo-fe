@@ -9,10 +9,26 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image:  linear-gradient(120deg, rgba(182, 212, 200, 0.377), rgba(178, 159, 206, 0.493));
+  /* background-image:  linear-gradient(120deg, rgba(182, 212, 200, 0.377), rgba(178, 159, 206, 0.493));
   border-radius: 4px;
   border: 1px transparent;
-  border-radius: 5px;
+  border-radius: 5px; */
+
+  background: rgba(255, 255, 255, 0.25);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.2px);
+-webkit-backdrop-filter: blur(6.2px);
+border: 1px solid rgba(255, 255, 255, 0.47);
+/* From https://css.glass */
+background: #eebdad84;
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.2px);
+-webkit-backdrop-filter: blur(6.2px);
+border: 1px solid rgba(255, 255, 255, 0.47);
+
+
   width: max-content;
   height: 40px;
   min-width: 220px;
