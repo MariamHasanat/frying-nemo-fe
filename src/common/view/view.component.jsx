@@ -1,10 +1,8 @@
 import './view.css';
 import Items from '../view/item/item.component';
-import Input from '../input/input.component';
 import { useState, useEffect } from "react";
 import { useSearchParams } from 'react-router-dom';
 import FilterBar from './filture/filter-bar.companent';
-const getMenu = () => JSON.parse(localStorage.menuItems || '[]');
 const ViewPage = () => {
   /**
  * @type {Array<{
@@ -22,20 +20,13 @@ const ViewPage = () => {
   // const [search, setSearch] = useState('');
   const [params, setParams] = useSearchParams();
   const searchTerm = params.get('searchFood') || "";
-  const categoryFromURL= params.get('category') || "";
-
+  const categoryFromURL = params.getAll('category') || [];
+  const maxFromUrl = params.get('max') || "";
+  const minFromUrl = params.get('min') || "";
 
   /**
     * @param {string} value
     */
-
-
-  // const [search, setSearch] = useState(localStorage.getItem('frying-nemo')|| "");
-  //  const setSearchAndSaveLocalStorage = (value)=>{
-  //   localStorage.setItem('frying-nemo',value);
-  //   setSearch(value);
-  // }
-  console.debug('searchTerm = ', searchTerm.toString());
   const getMenuItems = () => {
     setLoading(true);
     // Run the code inside after 1000 milliseconds (1 Second)
@@ -50,6 +41,7 @@ const ViewPage = () => {
   useEffect(() => {
     getMenuItems();
   }, []);
+
   const filterItem = menuItems.filter(item => {
     /**
      * @param {string}str
@@ -60,20 +52,30 @@ const ViewPage = () => {
       doesItemMatch(item.description) ||
       item.ingredients.some(ingredient => doesItemMatch(ingredient))
     );
+
     if (categoryFromURL.length) {
-      match = match && (item.category == categoryFromURL);
+      match = match && (categoryFromURL.includes(item.category));
     }
 
+    if (minFromUrl) {
+      match = match && (item.price >= minFromUrl);
+    }
+
+    if (maxFromUrl) {
+      match = match && (item.price <= maxFromUrl);
+    }
     return match;
   });
-  console.debug('items', menuItems, 'filtered', filterItem);
+
   return (
     <div className="view-page">
       <h1>View All Menu Items</h1>
       <FilterBar
         value={searchTerm}
+        categoryFromURL={categoryFromURL}
         params={params}
         setParams={setParams} />
+
       <div className="item" >
         {
           filterItem
