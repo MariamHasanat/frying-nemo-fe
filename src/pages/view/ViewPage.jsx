@@ -24,17 +24,16 @@ const ViewPage = (props) => {
   const [params, setParams] = useSearchParams();
 
   const searchFromURL = params.get('search') || '';
-  const searchCategoryFromURL = params.get('category') || '';
-
-
+  const categoriesFromURL = params.getAll('category') || '';
+  const minFromURL = params.get('min') || '';
+  const maxFromURL = params.get('max') || '';
 
   const getMenuItems = () => {
     setLoading(true);
 
     // Run the code inside after 1000 milliseconds (1 Second)
     setTimeout(() => {
-      const items = JSON.parse(localStorage.getItem('menuItem') || '[]');
-      console.log("items  ", localStorage.menuItem);
+      const items = JSON.parse(localStorage.getItem('menuItems') || '[]');
       setMenuItems(items);
       setLoading(false);
     }, 1000);
@@ -51,25 +50,32 @@ const ViewPage = (props) => {
      */
     const doesItMatch = str => str.toLowerCase().includes(searchFromURL.toLowerCase().trim());
 
-    // console.log("item = ", item);
-
     let match = (
       doesItMatch(item.name) ||
       doesItMatch(item.description) ||
       item.ingredients.some(ingredient => doesItMatch(ingredient))
     );
 
-    if (searchCategoryFromURL) {
-      match = match && (item.category === searchCategoryFromURL);
+    if (categoriesFromURL.length) {
+      match = match && categoriesFromURL.includes(item.category);
+    }
+
+    if (minFromURL) {
+      // Add your matching logic here.
+    }
+
+    if (maxFromURL) {
+      // Add your matching logic here.
     }
 
     return match;
   });
- /**
-   * Set query string parameter.
-   * @param {string} name Parameter name.
-   * @param {string | string[]} value Parameter value.
-   */
+
+  /**
+    * Set query string parameter.
+    * @param {string} name Parameter name.
+    * @param {string | string[]} value Parameter value.
+    */
   const setParam = (name, value) => {
     const newParams = new URLSearchParams(params);
 
@@ -83,11 +89,14 @@ const ViewPage = (props) => {
 
     setParams(newParams);
   };
+
   return (
     <div className="View-page">
       <FilterBar
-        searchFromURL={searchFromURL}
-        searchCategoryFromURL={searchCategoryFromURL}
+        search={searchFromURL}
+        categories={categoriesFromURL}
+        min={minFromURL}
+        max={maxFromURL}
         params={params}
         setParam={setParam}
       />

@@ -8,88 +8,52 @@ import './filterBar.css';
 /**
  * Renders a filters bar.
  * @param {{
- *  searchTerms: string;
- *  searchCategoryFromURL: string[];
+ *  search: string;
+ *  categories: string[];
+ *  min: string;
+ *  max: string;
  *  setParam: (name: string, value: string | string[]) => void
  * }} props Component properties object.
  */
-
 const FilterBar = (props) => {
   return (
     <div className="filter-group">
       <Input
         type="search"
-        value={props.searchFromURL}
-        onChange={e => {
-          const newParams = new URLSearchParams(props.params);
-          const inputValue = e.target.value;
-
-          if (inputValue) {
-            newParams.set('search', inputValue);
-          } else {
-            newParams.delete('search');
-          }
-          props.setParam(newParams);
-        }}
+        value={props.search}
+        onChange={e => props.setParam('search', e.target.value)}
         placeholder="Search"
       />
       <Input
         type="number"
         label="Min Price : "
-        value={props.searchFromURL}
-        onChange={e => {
-          const newParams = new URLSearchParams(props.params);
-          const inputValue = e.target.value;
-
-          if (inputValue) {
-            newParams.set('search', inputValue);
-          } else {
-            newParams.delete('search');
-          }
-       
-        }}
-        // placeholder="Search"
+        value={props.min}
+        onChange={e => props.setParam('min', e.target.value)}
+        placeholder="Minimum price"
       />
       <Input
         type="number"
         label="Max Price : "
-        value={props.searchFromURL}
-        onChange={e => {
-          const newParams = new URLSearchParams(props.params);
-          const inputValue = e.target.value;
-
-          if (inputValue) {
-            newParams.set('search', inputValue);
-          } else {
-            newParams.delete('search');
-          }
-         
-        }}
-        // placeholder="Search"
+        value={props.max}
+        onChange={e => props.setParam('max', e.target.value)}
+        placeholder="Maximum price"
       />
-
-     <div className="category">
-     
-        {CATEGORIES.map(categ => 
-        (
-           <CheckBox
-            key={categ}
-            label={categ}
-            checked={props.searchCategoryFromURL.includes(categ)}
+      <div className="category">
+        {CATEGORIES.map(category => (
+          <CheckBox
+            key={category}
+            label={category}
+            checked={props.categories.includes(category)}
             onChange={e => {
-              const updatE = e.target.checked?
-                 [...props.searchCategoryFromURL, categ]
-                : props.searchCategoryFromURL.filter(t => t !== categ);
+              const updatedList = e.target.checked
+                ? [...props.categories, category]
+                : props.categories.filter(t => t !== category);
 
-              props.setParam('category', updatE);
-              // console.log("checked " ,props.searchCategoryFromURL.includes(categ))
+              props.setParam('category', updatedList);
             }}
-
-           />)
-        )
-      }
-     </div>
-
+          />
+        ))}
+      </div>
     </div>
   );
 };

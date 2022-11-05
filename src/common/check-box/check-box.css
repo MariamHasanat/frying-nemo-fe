@@ -4,7 +4,7 @@
   user-select: none;
 }
 
-.checkbox-group>input {
+.checkbox-group>label>input {
   display: none;
 }
 
@@ -22,11 +22,7 @@
   color: #be441d;
 }
 
-.checkbox-group>label>span:nth-child(2) {
-  color: rgb(210, 21, 21);
-}
-
-.checkbox-group>label .checked {
+.checkbox-group>label.checked {
   background-color: #be441d;  
   color: #fff;
 }
