@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+//import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./cards.css";
 import Select from "../common/select/select.component";
@@ -18,20 +18,19 @@ import "../../common.css";
 const Cards = (props) => {
   const menuItems = localStorage.getItem("menuItems").length ? [...JSON.parse(localStorage.getItem("menuItems"))]: [];
   const [searchParams, setSearchParams] = useSearchParams();
-  const [searchTerm,setSearchTerm]= useState(searchParams.get('q') || '');
-  const [categoryParams, setCategoryParams] = useSearchParams();
-  const [categoryTerm,setCategoryTerm]= useState(categoryParams.get('category') || '');
+  const searchTermsFromURL = searchParams.get('q') || '';
+  const categoryFromURL = searchParams.get('category') || '';
   const searchList= menuItems.filter(item=>{
     /**
      * @param {string} str
      */
-    const doesItMatch= (str)=>{return(str.toLowerCase().includes(searchTerm.toLowerCase().trim()));}
+    const doesItMatch= (str)=>{return(str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim()));}
     let match =(doesItMatch(item.name) ||
     doesItMatch(item.description) ||
     item.ingredients.some(ingredient=>doesItMatch(ingredient))
     );
-    if (categoryTerm) {
-      match = match && (item.category === categoryTerm);
+    if (categoryFromURL) {
+      match = match && (item.category === categoryFromURL);
     }
     return(match);
   });
@@ -39,17 +38,11 @@ const Cards = (props) => {
   return (
     <div>
       <FilteredSearch
-      searchTerm={searchTerm}
-      setSearchTerm={setSearchTerm}
+      searchTermsFromURL={searchTermsFromURL}
+      categoryFromURL={categoryFromURL}
       searchParams= {searchParams}
       setSearchParams={setSearchParams}
-
-      categoryTerm={categoryTerm}
-      setCategoryTerm={setCategoryTerm}
-      categoryParams= {categoryParams}
-      setCategoryParams={setCategoryParams}
       />
-      
     <div className="card-container">
       {searchList.map((item, index) => {
         return (
@@ -58,7 +51,8 @@ const Cards = (props) => {
               className="card-image"
               key={index + item.price}
               style={{ backgroundImage: "url(" + item.photo + ")" }}
-            ></div>
+            >
+            </div>
             <div className="card-name">{item.name}</div>
             <span className="card-text">Description</span>
             <div className="card-description">&nbsp;{item.description}</div>
