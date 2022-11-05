@@ -8,7 +8,7 @@ import Input from '../../../components/common/input/input.component';
  * @param {{
  * searchTerms:string ;
  * categories:string[];
- * setParm:(name :string , value : string | string[]) => void
+ * setParms:(name :string , value : string | string[]) => void
  * }} props 
  */
 
@@ -19,7 +19,7 @@ const FilterBar = (props) => {
      type="search"
      label="search for item"
      value={props.searchTerms}
-     onChange={ e =>props.setParm('searchTerms', e.target.value)}
+     onChange={ e =>props.setParms('searchTerms', e.target.value)}
      placeholder="search"
      />
      {
@@ -30,7 +30,7 @@ const FilterBar = (props) => {
           ? [...props.categories, cat]
           : props.categories.filter(category => category !== cat);
 
-        props.setParm('category', updated);
+        props.setParms('category', updated);
       }}
       />
       )

@@ -25,8 +25,8 @@ const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
-  const searchTermsFromURL = params.get('searchTerms') || '';
-  const categoryFromURL =params.get('category') || '';
+  const searchTermsFromURL = params.getAll('searchTerms') || '';
+  const categoryFromURL =params.getAll('category') || '';
 
 
   console.debug('searchTerms =', searchTermsFromURL);
