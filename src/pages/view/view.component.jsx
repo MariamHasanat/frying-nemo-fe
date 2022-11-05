@@ -48,7 +48,7 @@ const ViewPage = (props) => {
      */
     const DoesItMatch = str =>
       str.toLowerCase().includes(
-        searchTermsFromURL
+        searchTermsFromURL.toString().toLowerCase().trim()
       );
 
     let Match = (
@@ -97,10 +97,13 @@ const ViewPage = (props) => {
         : <div className="items-container">
           {
             filteredItems
-              .map((item, index) => <Item data={item} key={item.name + index} />)
+            .map((item, index) => <Item data={item} key={item.name + index} />) 
+              
           }
+       
         </div>
-      }
+      } 
+    
     </div>
   );
 };
