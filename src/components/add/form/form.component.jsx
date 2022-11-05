@@ -59,7 +59,7 @@ const Form = (props) => {
     SetName(value);
   };
 
-  const category = ["Fish", "Meat", "Hooka", "Salads", "Sandwich", "Appetizers", "Ice cream", "Drinks"]
+  const category = [ "Fish", "Meat", "Hooka", "Salads", "Sandwich", "Appetizers", "Ice cream", "Drinks","Main Dishes"]
     ;
   return (
     <form className='item-page' onSubmit={submitHandler}>

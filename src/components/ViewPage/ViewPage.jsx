@@ -26,6 +26,7 @@ const ViewPage = (props) => {
   const [Params, setParams] = useSearchParams();
   const searchURL = Params.get('searchTerms') || "";
   const categoryParams = Params.get('category') || "";
+  const SingleCategoryParams = Params.get('Single-category') || "";
   const MINParams = Params.get('Min') || "";
   const MAXParams = Params.get('Max') || "";
 
@@ -68,10 +69,27 @@ const ViewPage = (props) => {
     if (MINParams && MAXParams) {
       match = match && (item.price >= MINParams && item.price <= MAXParams)
     }
+    if (SingleCategoryParams.length) {
+      match = match && (SingleCategoryParams.includes(item.category));
+    }
+
 
     return match;
 
   });
+  const setParam = (name, value) => {
+    const newParams = new URLSearchParams(Params);
+
+    newParams.delete(name);
+
+    if (Array.isArray(value)) {
+      value.forEach(item => newParams.append(name, item));
+    } else if (value.trim()) {
+      newParams.set(name, value.trim());
+    }
+
+    setParams(newParams);
+  };
 
 
 
@@ -84,9 +102,10 @@ const ViewPage = (props) => {
         categoryParams={categoryParams}
         Params={Params}
         searchURL={searchURL}
-        setParams={setParams}
+        setParam={setParam}
         MAXParams={MAXParams}
         MINParams={MINParams}
+        SingleCategoryParams={SingleCategoryParams}
 
 
       >

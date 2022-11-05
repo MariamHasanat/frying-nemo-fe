@@ -1,0 +1,40 @@
+.check-input>input {
+    width: 20px;
+    height: 20px;
+    display: none;
+
+
+
+}
+
+.check-input>.checked {
+    background-color: #074f07;
+    font-weight: bold;
+    color: #666;
+    padding: 8px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    border: 1px solid #aaa09c;
+    margin-right: 5px;
+    user-select: none;
+}
+
+.check-input>.notchecked {
+    background-color:#84ff847a;;
+    font-weight: bold;
+    color: #666;
+    padding: 8px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    border: 1px solid #aaa09c;
+    margin-right: 5px;
+    user-select: none;
+}
+
+
+.check-input>label>span {
+    color: #d6d6d6;
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none;
+}
