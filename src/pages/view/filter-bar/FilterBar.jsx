@@ -26,14 +26,12 @@ const FilterBar = (props) => {
       />
       <Input
         type="number"
-        label="Min Price : "
         value={props.min}
         onChange={e => props.setParam('min', e.target.value)}
         placeholder="Minimum price"
       />
       <Input
         type="number"
-        label="Max Price : "
         value={props.max}
         onChange={e => props.setParam('max', e.target.value)}
         placeholder="Maximum price"
