@@ -22,13 +22,8 @@ const View = () => {
 
   const [menuItems, setMenuItems] = useState(initialItems);
   const [params, setParams] = useSearchParams();
-
   const searchParamFromURl = params.get('search') || '';
-  const categoryFromURl = params.get('category') || '';
-
-  console.log("search param: " + searchParamFromURl);
-
-  console.log(menuItems);
+  const categoryFromURl = params.getAll('category') || '';
 
   useEffect(() => {
     setMenuItems(getMenuItems());
@@ -44,17 +39,37 @@ const View = () => {
      */
     const doesItMatch = str => str.toLowerCase().includes(searchParamFromURl.toLowerCase().trim());
 
-    let match = (doesItMatch(e.name) ||
-      doesItMatch(e.description) || e.ingredients.some(e => doesItMatch(e)));
+    let match = (
+      doesItMatch(e.name) ||
+      doesItMatch(e.description) ||
+      e.ingredients.some(ingredient => doesItMatch(ingredient)));
 
-    if (categoryFromURl) {
-      match = match && e.category === categoryFromURl;
+    if (categoryFromURl.length) {
+      match = match && (categoryFromURl.includes(e.category));
     }
 
     return match;
 
   });
 
+  /**
+   * Set query string parameter.
+   * @param {string} name Parameter name.
+   * @param {string | string[]} value Parameter value.
+   */
+  const setParam = (name, value) => {
+    const newParams = new URLSearchParams(params);
+
+    newParams.delete(name);
+
+    if (Array.isArray(value)) {
+      value.forEach(item => newParams.append(name, item));
+    } else if (value.trim()) {
+      newParams.set(name, value.trim());
+    }
+
+    setParams(newParams);
+  };
 
 
 
@@ -64,19 +79,18 @@ const View = () => {
 
       <FilterBar
         searchParamFromURl={searchParamFromURl}
-        setParams={setParams}
-        params={params}
-        category={categoryFromURl}
+        categories={categoryFromURl}
+        setParam={setParam}
+
       />
 
       <div className='items-container'>
 
         {
           filteredItems.map(
-            item => {
+            (item, index) => {
               return (
-
-                <ItemCard item={item} />
+                <ItemCard item={item} key={item + index} />
               );
 
             })

@@ -1,8 +1,17 @@
 import { CATEGORIES } from '../../data/constants';
 import Input from '../common/input/input.component';
-import Select from '../common/select/select.component';
 import './filter-input.css';
+import CheckBox from '../toggle-bullets/check-box.component';
 
+
+/**
+ * Renders a filters bar.
+ * @param {{
+ *  searchParamFromURl: string;
+ *  categories: string[];
+ *  setParam: (name: string, value: string | string[]) => void
+ * }} props Component properties object.
+ */
 const FilterBar = props => {
 
   return (
@@ -12,35 +21,43 @@ const FilterBar = props => {
       <Input
         value={props.searchParamFromURl}
         type='Search'
-        placeholder={'search'}
-        onChange={e => {
-          var userInput = e.target.value.trim();
-
-          const newParam = new URLSearchParams(props.params);
-          if (userInput)
-            newParam.set('search', userInput);
-          else newParam.delete('search');
-
-          props.setParams(newParam);
-        }}
+        placeholder='search'
+        onChange={e => props.setParam('search', e.target.value)}
       />
-      <Select
-        onChange={e => {
-          var userInput = e.target.value;
 
-          const newParam = new URLSearchParams(props.params);
-          if (userInput !== 'All')
-            newParam.set('category', userInput);
-          else newParam.delete('category');
+      <div className='categories'>
 
-          props.setParams(newParam);
-        }}
-        value={props.category}
-        name='categories'
-        label='categories'
+        {
+          CATEGORIES.map((categoryItem) => {
+            return <CheckBox
+              key={categoryItem}
+              label={categoryItem}
+              checked={props.categories.includes(categoryItem)}
+              onChange={e => {
+                console.log(typeof props.categories);
+                const updated = e.target.checked
+                  ? [...props.categories, categoryItem]
+                  : props.categories.filter(category => category !== categoryItem);
+                console.log(typeof props.categories);
+                props.setParam('category', updated);
+              }}
+            />;
+          })
+        }
+      </div>
 
-        options={['All', ...CATEGORIES]}
-      />
+      <div className='price-filter'>
+        <div className='min'>
+
+          <label htmlFor="min">min price</label>
+          <input type='number' id='min' min={10} />
+        </div>
+
+        <div className='max'>
+          <label htmlFor="max">max price</label>
+          <input type='number' id='max' max={200} />
+        </div>
+      </div>
     </div>
   );
 };
