@@ -1,6 +1,5 @@
-import React from 'react';
 import './header.css';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation, NavLink } from 'react-router-dom';
 const Header = (props) => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -12,7 +11,7 @@ const Header = (props) => {
                 {props.text ? <span>{props.text}</span> : null}
                 <span>
                     <Link to="/add" className={location.pathname === '/add'? 'active nemo-button': 'nemo-button'}>add</Link>
-                    <Link to="/view" className={location.pathname === '/view'? 'active nemo-button': 'nemo-button'}>view</Link>
+                    <NavLink to="/view" className={(location.pathname === '/view' || location.pathname === '/view/' )? 'active nemo-button': 'nemo-button'}>view</NavLink>
                 </span>
             </div>
             <hr />
