@@ -1,10 +1,10 @@
-import AddPage from "./pages/add/add.component";
-// import { useState } from "react";
-import Header from "./logo/Header";
-import ViewPage from "./pages/view/ViewPage";
-import Notfound from "./pages/not-found/Notfound";
-import './common.css';
 import {BrowserRouter , Route , Routes} from 'react-router-dom'
+import ViewItemPage from './pages/view/ViewItem/ViewItemPage';
+import Notfound from "./pages/not-found/Notfound";
+import AddPage from "./pages/add/add.component";
+import ViewPage from "./pages/view/ViewPage";
+import Header from "./logo/Header";
+import './common.css';
 
 function App() {
  
@@ -15,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/add" element={<AddPage />}/>
           <Route path="/view" element={<ViewPage />}/>
+          <Route path="/view" element = {<ViewItemPage />} />
           <Route path="/*" element={<Notfound />}/>
         </Routes>
       </BrowserRouter>

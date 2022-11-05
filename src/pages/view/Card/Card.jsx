@@ -1,3 +1,5 @@
+import ViewItemPage from '../ViewItem/ViewItemPage';
+import { Link } from 'react-router-dom';
 import React from 'react';
 import './card.css'
 
@@ -20,7 +22,7 @@ const Card = (props) => {
         <img src={props.data.image} alt="food" />
       </div>
       <div className="inf">
-        <h2>Name : {props.data.name}</h2>
+        <Link to={'/veiw/:id'}>Name : {props.data.name}</Link>
         <p>describtion : <br/>{props.data.description}</p>
         <p className="ingredients">ingredients : {props.data.ingredients.join(", ")}</p>
       </div>
