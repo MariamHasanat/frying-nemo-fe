@@ -1,13 +1,10 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
 import Spinner from '../../components/core/spinner.component';
 import Item from '../../components/item/item.component';
 import './view.css';
 import FilterBar from './filter-bar/filter-bar.component';
-
-
 /**
  * @type {Array<{
  * name: string;
@@ -19,7 +16,6 @@ import FilterBar from './filter-bar/filter-bar.component';
  * }>}
  */
 const initialItems = [];
-
 
 const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
