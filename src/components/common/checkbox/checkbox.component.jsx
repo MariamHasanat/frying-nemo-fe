@@ -10,11 +10,11 @@ import './checkbox.css';
 
 const Checkbox = (props) => {
     const { label, ...inputProps } = props;
-    
+
     return (
         <div className='checkbox-group'>
-            <input type="checkbox" id="myCheckbox" />
-            <label {...inputProps} htmlFor="myCheckbox">{props.label}</label>
+            <input type="checkbox" id={`checkbox_id_for_${props.label}`} />
+            <label {...inputProps} htmlFor={`checkbox_id_for_${props.label}`}>{props.label}</label>
         </div>
     );
 };
