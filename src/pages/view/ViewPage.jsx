@@ -61,11 +61,11 @@ const ViewPage = (props) => {
     }
 
     if (minFromURL) {
-      // Add your matching logic here.
+        match = match && item.price >= minFromURL
     }
 
     if (maxFromURL) {
-      // Add your matching logic here.
+      match = match && item.price <= maxFromURL
     }
 
     return match;

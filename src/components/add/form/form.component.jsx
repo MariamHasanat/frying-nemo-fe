@@ -41,10 +41,10 @@ const Form = (props) => {
     };
 
     
-    const itemJson = localStorage.getItem('menuItem') || '[]';
+    const itemJson = localStorage.getItem('menuItems') || '[]';
     const items = JSON.parse(itemJson);
     items.push(menuItem);
-    localStorage.setItem('menuItem' , JSON.stringify(items));
+    localStorage.setItem('menuItems' , JSON.stringify(items));
 
    navigate('/view');
   };
