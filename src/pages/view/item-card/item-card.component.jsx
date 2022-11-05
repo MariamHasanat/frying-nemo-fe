@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './item-card.css';
+import { Link } from 'react-router-dom';
 
 /**
  * 
@@ -27,7 +28,7 @@ const ItemCard = (props) => {
             <div className="card-wrapper">
                 <img src={props.img} width={300} height={200} alt={props.name} />
                 <div className="item-description">
-                    <h3>{props.name}</h3>
+                    <Link to={`/view/${props.id}`}>{props.name}</Link >
                     <p>{props.description}</p>
                     <p><b>{props.ingredients.join(', ')}</b></p>
                 </div>

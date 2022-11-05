@@ -1,0 +1,15 @@
+.view-item-page h1,
+.view-item-page h2,
+.view-item-page h3 {
+    text-align: center;
+}
+
+.view-item-page>.item-card{
+    margin-top: 20px;
+    margin-left: 40px;
+    display: inline-block;
+}
+
+.view-item-page>.input-group{
+    margin-left: 80px;
+}

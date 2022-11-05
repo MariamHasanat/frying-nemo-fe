@@ -1,5 +1,6 @@
 import AddPage from "./pages/add/add.component";
 import ViewPage from "./pages/view/view.component";
+import ViewItemPage from "./pages/view-item/view-item.component";
 import Header from "./components/core/header/header.component";
 import NotFound from "./pages/not-found/not-found.component";
 import './index.css';
@@ -11,9 +12,10 @@ function App() {
             <BrowserRouter>
                 <Header />
                 <Routes>
-                    <Route path="/add" element={<AddPage/>}/>
-                    <Route path="/view" element={<ViewPage/>}/>
-                    <Route path="/*" element={<NotFound/>}/>
+                    <Route path="/add" element={<AddPage />} />
+                    <Route path="/view" element={<ViewPage />} />
+                    <Route path="/*" element={<NotFound />} />
+                    <Route path="/view/:id" element={<ViewItemPage />} />
                 </Routes>
             </BrowserRouter>
 
