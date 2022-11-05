@@ -7,20 +7,6 @@ import NotFoundPage from "./pages/add/not_found/not-found";
 import ViewItemPage from "./common/view/view-item/item.component";
 
 function App() {
-  // const [currentPage,setCurrentPage]=useState('add');
-  // const changePage=(nwePage)=>{
-  //     setCurrentPage(nwePage);
-  // }
-  // const pathname = window.location.pathname;
-  // let page = '';
-  // if (pathname === '/add') {
-  //   page = <AddPage />;
-  // } else if (pathname === '/view') {
-  //   page = <ViewPage />;
-  // }else{
-  //   page=<NotFoundPage/>
-  // }
-
   return (
     <div>
       <BrowserRouter>
@@ -28,8 +14,8 @@ function App() {
         <Routes>
           <Route path="/add/*" element={<AddPage />} />
           <Route path="/view" element={<ViewPage />} />
+          <Route path="/view/:id" element={ <ViewItemPage/>} />
           <Route path="/*" element={ <NotFoundPage/>} />
-          <Route path="/view/id:" element={ <ViewItemPage/>} />
         </Routes>
       </BrowserRouter>
     </div>

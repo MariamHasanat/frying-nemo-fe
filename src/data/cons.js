@@ -1,11 +1,12 @@
 const CATEGORY=[
  
   "Fish",
-  "Drink",
-  "Salade",
+  "Drinks",
+  "Salads",
   "Sandwiches",
   "Ice Cream",
-  "Sweet",
+  "Sweets",
+  "Main Dishes",
 ];
 export{
   CATEGORY
