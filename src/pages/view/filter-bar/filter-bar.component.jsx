@@ -6,38 +6,38 @@ import Input from '../../../components/common/input/input.component';
 /**
  * 
  * @param {{
- * searchTerms:string ;
- * categories:string[];
- * setParms:(name :string , value : string | string[]) => void
+ * searchTerms: string ;
+ * categories: string[];
+ * setParams:(name :string , value : string | string[]) => void
  * }} props 
  */
 
 const FilterBar = (props) => {
   return (
     <div className="filter-bar">
-     <Input 
-     type="search"
-     label="search for item"
-     value={props.searchTerms}
-     onChange={ e =>props.setParms('searchTerms', e.target.value)}
-     placeholder="search"
-     />
-     {
-      CATEGORIES.map(cat => 
-      <CheckBox key={cat } label={cat } checked={props.categories||[].includes(cat)}
-      onChange={e => {
-        const updated = e.target.checked
-          ? [...props.categories, cat]
-          : props.categories.filter(category => category !== cat);
-
-        props.setParms('category', updated);
-      }}
+      <Input
+        type="search"
+        label="search for item"
+        value={props.searchTerms}
+        onChange={e => props.setParams('searchTerms', e.target.value)}
+        placeholder="search"
       />
-      )
-    }
+      {
+        CATEGORIES.map(cat =>
+          <CheckBox key={cat}
+            label={cat}
+            checked={props.categories.includes(cat)}
+            onChange={e => {
+              const updated = e.target.checked
+                ? [...props.categories, cat]
+                : props.categories.filter(category => category !== cat);
+
+              props.setParams('category', updated);
+            }}
+          />
+        )
+      }
     </div>
-  )
-}
-
-
+  );
+};
 export default FilterBar;

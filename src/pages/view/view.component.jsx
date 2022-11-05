@@ -22,8 +22,7 @@ const ViewPage = (props) => {
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
   const searchTermsFromURL = params.getAll('searchTerms') || '';
-  const categoryFromURL =params.getAll('category') || '';
-
+  const categoryFromURL = params.getAll('category') || '';
 
   console.debug('searchTerms =', searchTermsFromURL);
   const getMenuItems = () => {
@@ -49,7 +48,7 @@ const ViewPage = (props) => {
      */
     const DoesItMatch = str =>
       str.toLowerCase().includes(
-        searchTermsFromURL.toLowerCase().trim()
+        searchTermsFromURL
       );
 
     let Match = (
@@ -57,41 +56,41 @@ const ViewPage = (props) => {
       DoesItMatch(item.Description) ||
       item.Ingredients.some(Ingredient => DoesItMatch(Ingredient))
     );
-    if(categoryFromURL){
-      Match=Match && (item.category ===categoryFromURL)
+    if (categoryFromURL) {
+      Match = Match && (item.category === categoryFromURL);
     }
 
     return Match;
   });
-/**
-   * Set query string parameter.
-   * @param {string} name Parameter name.
-   * @param {string | string[]} value Parameter value.
-   */
- const setParam = (name, value) => {
-  const newParams = new URLSearchParams(params);
+  /**
+     * Set query string parameter.
+     * @param {string} name Parameter name.
+     * @param {string | string[]} value Parameter value.
+     */
+  const setParam = (name, value) => {
+    const newParams = new URLSearchParams(params);
 
-  newParams.delete(name);
+    newParams.delete(name);
 
-  if (Array.isArray(value)) {
-    value.forEach(item => newParams.append(name, item));
-  } else if (value.trim()) {
-    newParams.set(name, value.trim());
-  }
+    if (Array.isArray(value)) {
+      value.forEach(item => newParams.append(name, item));
+    } else if (value.trim()) {
+      newParams.set(name, value.trim());
+    }
 
-  setParams(newParams);
-};
+    setParams(newParams);
+  };
 
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
-      <FilterBar 
-      searchTermsFromURL={searchTermsFromURL} 
-      categoryFromURL={categoryFromURL}
-      setParams={setParams}
+      <FilterBar
+        searchTermsFromURL={searchTermsFromURL}
+        categories={categoryFromURL}
+        setParams={setParam}
       />
 
-     
+
 
       {loading
         ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
