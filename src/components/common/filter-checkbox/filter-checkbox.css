@@ -1,0 +1,31 @@
+.filter-checkbox-group>label {
+    user-select: none;
+    font-size: 17px;
+}
+
+.filter-checkbox-group>input {
+    display: none;
+}
+
+.filter-checkbox-group>label {
+    margin: 15px 0;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #007bfd;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 1.25rem;
+    background-color: #007bfd;
+    color: white;
+    transition: color .20s ease-in-out, background-color .20s ease-in-out, border-color .20s ease-in-out, box-shadow .20s ease-in-out;
+}
+
+.filter-checkbox-group>label.checked,
+.filter-checkbox-group>label:hover {
+    color: #212529;
+    background-color: #dee5ec;
+    border-color: #dae0e5;
+}

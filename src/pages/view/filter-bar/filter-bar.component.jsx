@@ -1,9 +1,7 @@
 import './filter-bar.css';
 import Input from '../../../components/common/input/input.component';
-import Checkbox from '../../../components/common/checkbox/checkbox.component';
+import FilterCheckbox from '../../../components/common/filter-checkbox/filter-checkbox.component';
 import { CATEGORIES } from '../../../data/constants';
-import Select from '../../../components/common/select/select.component';
-
 
 const FilterBar = (props) => {
     return (
@@ -26,7 +24,7 @@ const FilterBar = (props) => {
             <div className="category-checkboxes">
                 {CATEGORIES
                     .map(item =>
-                        <Checkbox
+                        <FilterCheckbox
                             value={item}
                             label={item}
                             key={'item_' + item}
