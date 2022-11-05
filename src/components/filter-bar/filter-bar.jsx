@@ -1,40 +1,46 @@
 import React from 'react';
 import { CATEGORIES } from '../add/form/data/constant';
+import CheckBox from '../common/cheackebox/check-box';
 import Input from '../common/input/input';
-import Select from '../common/select/select';
-import './filter-bar.css'
-const FilterBar = (props) => {
-  
-  const handelitem=( fiterName,inputvalue)=>{
-     const newParam = new URLSearchParams(props.param);
-    if (inputvalue) {
-      newParam.set(fiterName, inputvalue);
-    }
-    else {
-      newParam.delete(fiterName);
-    }
+import './filter-bar.css';
+/**
+ * Renders a filters bar.
+ * @param {{
+ *  searchFromUrl: string;
+ *  categoriesFromURL: string[];
+ *  setParam: (name: string, value: string | string[]) => void
+ * }} props Component properties object.
+ */
 
-    props.SetParam(newParam);
-  } 
+const FilterBar = (props) => {
+
   return (
-    <div className='bar'> <Input
+    <div className="filter-bar"> <Input
       type="search"
       value={props.searchFromUrl}
       placeholder="Search"
-      onChange={e => handelitem('search',e.target.value)}
-    ></Input>
-      <Select
-        label=""
-        name='category'
-        value={props.catogeryFromUrl}
-        onChange={e=>handelitem('catogery',e.target.value)}
-      >\
-      <option value="">ALL</option>
-        {CATEGORIES.map(item => {
-          return <option key={item} value={item}>{item}</option>;
-        })}
-      </Select></div>
+      onChange={e => props.setParam('searchTerms', e.target.value)}
 
+    ></Input>
+      <div className="categories">
+        {CATEGORIES.map(cat => (
+          <CheckBox
+            key={cat}
+            value={cat}
+            label={cat}
+            checked={props.categoriesFromURL.includes(cat)}
+            onChange={e => {
+              const updated = e.target.checked
+                ? [...props.categoriesFromURL, cat]
+                : props.categoriesFromURL.filter(category => category !== cat);
+              props.setParam('category', updated);
+            }}
+          />
+        ))}
+
+      </div>
+
+    </div>
   );
 };
 

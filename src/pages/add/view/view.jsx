@@ -22,9 +22,9 @@ const View = (props) => {
   const [menuItem, setMenuItem] = useState(initialItems);
   const [loading, setLoading] = useState(true);
   // const [Search, SetSearch] = useState('');
-  const [param,SetParam]= useSearchParams(); 
-  const searchFromUrl=param.get('search')||'';
-  const catogeryFromUrl=param.get('catogery')||'';
+  const [param, SetParam] = useSearchParams();
+  const searchFromUrl = param.get('search') || '';
+  const categoriesFromURL = param.getAll('category') || '';
   console.log(searchFromUrl);
   // const setItemSearchInLocalStoreg=(value)=>{
   //   localStorage.setItem("the informathion search",value);
@@ -34,22 +34,39 @@ const View = (props) => {
 
 
   const filterItem = menuItem.filter(item => {
-    console.log(item)
-    const dose = str=>str.toLowerCase().includes(searchFromUrl.toLowerCase().trim());//function ببعت الو يلي جواتو اخنصار
-    
-    let match=(
-      dose(item.name)||//ممكن اكتب هيك بختصر 
-      item.description.toLowerCase().includes(searchFromUrl.toLowerCase().trim())||
-      item.ingredients.some(ingredient=>ingredient.toLowerCase().includes(searchFromUrl.toLowerCase().trim()))
-    )
-    if(catogeryFromUrl){
-      match=match&&(item.category==catogeryFromUrl);
-      // true or false?
+    console.log(item);
+    const dose = str => str.toLowerCase().includes(searchFromUrl.toLowerCase().trim());//function ببعت الو يلي جواتو اخنصار
+
+    let match = (
+      dose(item.name) ||//ممكن اكتب هيك بختصر 
+      item.description.toLowerCase().includes(searchFromUrl.toLowerCase().trim()) ||
+      item.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchFromUrl.toLowerCase().trim()))
+    );
+    if (categoriesFromURL.length) {
+      match = match && (categoriesFromURL.includes(item.category));
     }
     return match;
-  }
+  });
+  /**
+  * Set query string parameter.
+  * @param {string} name Parameter name.
+  * @param {string | string[]} value Parameter value.
+  */
+  const setParam = (name, value) => {
+    const newParams = new URLSearchParams(param);
 
-  );
+    newParams.delete(name);
+
+    if (Array.isArray(value)) {
+      value.forEach(item => newParams.append(name, item));
+    } else if (value.trim()) {
+      newParams.set(name, value.trim());
+    }
+
+    SetParam(newParams);
+  };
+
+
   const getMenuItem = () => {
     setLoading(true);
 
@@ -66,19 +83,32 @@ const View = (props) => {
   return (
     <div className='view-page'>
       <h1>View menu item </h1>
-      <FilterBar  
-      searchFromUrl={searchFromUrl} 
-      param={param} 
-      SetParam={SetParam} 
-      catogeryFromUrl={catogeryFromUrl}
+      <FilterBar
+        searchFromUrl={searchFromUrl}
+        param={param}
+        setParam={setParam}
+        categoriesFromURL={categoriesFromURL}
       >
       </FilterBar >
-      {loading ?
-        <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
-        :
-        <div className='view-container'>
-          {filterItem.map((item, i) => <Item data={item} key={item.name + i} />)}
-        </div>
+      {
+        loading
+          ? <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Spinner /></div>
+          : (
+            <div className="items-container">
+              {
+                filterItem.length
+                  ? filterItem.map((item, index) => <Item data={item} key={item.name + index} />)
+                  : (
+                    <div className="no-results">
+                      <img src="./frustrated-realistic.jpg" alt="No results" />
+                      <p>No results found</p>
+                    </div>
+                  )
+              }
+            </div>
+
+          )
+
 
       }
     </div>
