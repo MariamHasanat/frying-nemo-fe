@@ -7,7 +7,6 @@ import React from 'react';
  */
 const CheckBox = (props) => {
   const { label , ...inputProps } = props;
-  console.log(label , props.checked);
   return (
     <div className='checkbox-group'>
       <input id = {label} type="checkbox" {...inputProps} />

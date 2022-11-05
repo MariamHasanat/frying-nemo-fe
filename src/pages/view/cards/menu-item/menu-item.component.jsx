@@ -1,4 +1,5 @@
 import React from 'react' ;
+import { Link } from 'react-router-dom';
 import './menu-item.css' ;
 /**
  * 
@@ -17,7 +18,7 @@ const MenuItem = (props) => {
   return (
     <div className='item-card'>
       <div className='img'><img src={props.item.image} alt="" /></div>
-      <h2>Name : {props.item.name}</h2>
+      <Link to = {`/view/${props.item.id}`}> <h2> {props.item.name}</h2> </Link>
       <div className="info">
         <span>Its a : {props.item.catigory}</span>
         <p> {props.item.discription}</p>
@@ -31,8 +32,6 @@ const MenuItem = (props) => {
           <button> + </button>
         </div>
       </div>
-           
-      
     </div>
   )
 }

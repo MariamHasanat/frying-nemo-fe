@@ -5,6 +5,7 @@ import { useState } from "react";
 import './common.css' ;
 import NotFound from "./pages/not-found/notFound.component";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SingleItem from "./pages/view/cards/single-item/single-item.component";
 function App() {
   const [currentPage , setCurrentPage] = useState ('add') ;
   const changePage = (newPage) => {
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/add" element = {<AddPage onAdd = {addItem} />} />
           <Route path="/view" element = {<ViewPage />} />
+          <Route path="/view/:id" element = {<SingleItem />} />
           <Route path="/*" element = {<NotFound  />} />
         </Routes> 
       </BrowserRouter>
