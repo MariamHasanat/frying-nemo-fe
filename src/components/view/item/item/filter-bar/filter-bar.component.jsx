@@ -1,45 +1,47 @@
 import React from "react";
 import Input from "../../../../common/input/input.component";
-import Select from "../../../../common/select/select.component";
+import './filter-bar.css';
 import CATEGORIES from "../../../../data/constant";
-
-const FilterBar =(props) =>{
-
-    const handleFilterChange = (firstName, inputValue) => {
-        
-        const newParams = new URLSearchParams(props.params);
-    
-     
-        if (inputValue) {
-          newParams.set('searchTerms', inputValue);
-        } else {
-          newParams.delete('searchTerms');
-        }
-     
-       props .setParams(newParams);
-    };
-    return(
-        <div>
-<Input
- type="search"
- value={props.searchTermsFromURL}
- onChange={e => handleFilterChange('searchTerms', e.target.value)}
-
- placeholder="Search"
-/>
-<Select
-name="category"
-label="Category"
-value={props.categoryFromURL}
-onChange={e => handleFilterChange('category', e.target.value)}
-/>
-<option value="">All</option>
+import CheckBox from "../../../../common/toggle-bullets/check-box.component";
 
 
 
-</div>
-    );
-}
+/**
+ * Renders a filters bar.
+ * @param {{
+ *  searchTerms: string;
+ *  categories: string[];
+ *  setParam: (name: string, value: string | string[]) => void
+ * }} props Component properties object.
+ */
+const FilterBar = (props) => {
+  return (
+    <div className="filter-bar">
+      <Input
+        type="search"
+        label="Search for Item"
+        value={props.searchTerms}
+        onChange={e => props.setParam('searchTerms', e.target.value)}
+        placeholder="Search"
+      />
+      <div className="categories">
+        {CATEGORIES.map(cat => (
+          <CheckBox
+            key={cat}
+            label={cat}
+            checked={props.categories.includes(cat)}
+            onChange={e => {
+              const updated = e.target.checked
+                ? [...props.categories, cat]
+                : props.categories.filter(category => category !== cat);
 
+              props.setParam('category', updated);
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
-export default FilterBar
+export default FilterBar;

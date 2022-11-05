@@ -8,7 +8,6 @@ import { useSearchParams } from 'react-router-dom';
 
 
 
-
 /**
  * @type {Array<{
  * name: string;
@@ -21,41 +20,27 @@ import { useSearchParams } from 'react-router-dom';
  */
 const initialItems = [];
 
-const ViewPage = () => {
- // const [searchTerms,setSearchTerms] = useState('');
+const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
   const searchTermsFromURL = params.get('searchTerms') || '';
-  const categoryFromURL = params.get('searchTerms') || '';
- 
+  const categoriesFromURL = params.getAll('category') || '';
 
-
-  const getMenueItem = () => {
+  const getMenuItems = () => {
     setLoading(true);
 
-    setTimeout( () =>{
+    // Run the code inside after 1000 milliseconds (1 Second)
+    setTimeout(() => {
       const items = JSON.parse(localStorage.menuItems || '[]');
       setMenuItems(items);
       setLoading(false);
     }, 1000);
-
   };
 
-  useEffect(() =>{
-    getMenueItem();
+  useEffect(() => {
+    getMenuItems();
   }, []);
-
- /* const filteredItems = menueItems.filter(item => {
-
-    const match =(
-      item.name.toString().toLowerCase().includes(searchTerms.toLowerCase().trim()) 
-    //  item.description.toLowerCase().includes(searchTerms.toLowerCase().trim()) ||
-    //  item.ingredients.toLowerCase().includes(searchTerms.toLowerCase().trim()) 
-
-    );
-    return match;
-  })*/
 
   const filteredItems = menuItems.filter(item => {
     /**
@@ -64,44 +49,68 @@ const ViewPage = () => {
      */
     const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
 
-    const match = (
+    let match = (
       doesItMatch(item.name) ||
       doesItMatch(item.description) ||
       item.ingredients.some(ingredient => doesItMatch(ingredient))
     );
-if(categoryFromURL ){
-  match = match && (item.category === categoryFromURL);
-}
+
+    if (categoriesFromURL.length) {
+      match = match && (categoriesFromURL.includes(item.category));
+    }
+
     return match;
   });
 
+  /**
+   * Set query string parameter.
+   * @param {string} name Parameter name.
+   * @param {string | string[]} value Parameter value.
+   */
+  const setParam = (name, value) => {
+    const newParams = new URLSearchParams(params);
 
+    newParams.delete(name);
 
+    if (Array.isArray(value)) {
+      value.forEach(item => newParams.append(name, item));
+    } else if (value.trim()) {
+      newParams.set(name, value.trim());
+    }
 
-
- 
-
-
-
+    setParams(newParams);
+  };
 
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
-    <FilterBar/>
-
-       {loading
-        ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
-        : <div className="items-container">
-          {
-            filteredItems.map((item, index) => <Item data={item} key={item.name + index} />)
-          }
-        </div>
+      <FilterBar
+        searchTerms={searchTermsFromURL}
+        categories={categoriesFromURL}
+        setParam={setParam}
+      />
+      {
+        loading
+          ? <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Spinner /></div>
+          : (
+            <div className="items-container">
+              {
+                filteredItems.length
+                  ? filteredItems.map((item, index) => <Item data={item} key={item.name + index} />)
+                  : (
+                    <div className="no-results">
+                      <img src="./frustrated-realistic.png" alt="No results" />
+                      <p>No results found</p>
+                    </div>
+                  )
+              }
+            </div>
+          )
       }
-
-
     </div>
   );
 };
 
-export default ViewPage;
+export default ViewPage;;
+
 

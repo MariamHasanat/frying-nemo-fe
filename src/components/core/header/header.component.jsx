@@ -2,7 +2,7 @@ import React from 'react';
 import './header.css';
 import { Link , useLocation} from "react-router-dom";
 
-const Header = (props) => {
+const Header = () => {
   const location = useLocation();
   return (
     <header className="webisteHeader">
