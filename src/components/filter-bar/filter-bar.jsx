@@ -22,11 +22,11 @@ const FilterBar = (props) => {
       onChange={e => props.setParam('searchTerms', e.target.value)}
 
     ></Input>
+    
       <div className="categories">
         {CATEGORIES.map(cat => (
           <CheckBox
             key={cat}
-            value={cat}
             label={cat}
             checked={props.categoriesFromURL.includes(cat)}
             onChange={e => {

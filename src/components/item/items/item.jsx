@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './item.css';
+import{Link}from 'react-router-dom'
 
 const Item = (props) => {
   return (
@@ -8,7 +9,7 @@ const Item = (props) => {
         <img src={props.data.image} alt="FOOD"/>
       </div>
       <div className='info'>
-         <h2>{props.data.name}</h2>
+      <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
          <p>{props.data.description}</p>
          <p className='ingredients'> {props.data.ingredients.join(", ")} </p>
          <hr/>

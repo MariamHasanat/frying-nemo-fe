@@ -25,6 +25,7 @@ const Form = (props) => {
     const menuItem = {
       name: name,
       image,
+      // id,
       description: description,
       price: price,
       category: category,

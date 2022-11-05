@@ -8,6 +8,7 @@ import View from "./pages/add/view/view";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Start from "./pages/start/start ";
+import ViewItemPage from "./pages/add/viewitembage/viewitempage";
 function App() {
   // const path = window.location.pathname;
   // console.log(path);
@@ -28,6 +29,7 @@ function App() {
           <Route path="/*" element={<Start/>} />
           <Route path="/add" element={<AddPage />} />
           <Route path="/view" element={<View />} />
+          <Route  path="/view/:id" element={<ViewItemPage  />} />
         </Routes>
       </BrowserRouter>,
     </div>

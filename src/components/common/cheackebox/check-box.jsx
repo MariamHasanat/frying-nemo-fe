@@ -12,10 +12,10 @@ const CheckBox = props => {
 
   return (
     <div className="checkbox-group">
-      <input {...inputProps} type="checkbox" />
+      <input {...inputProps} type="checkbox" id={`chk-lbl-${label}`}/>
       {
         label ? (
-          <label>
+          <label htmlFor={`chk-lbl-${label}`} className={props.checked ? "checked" : ''}>
             <span>{label}</span>
             &nbsp;
             {inputProps.required && <span>*</span>}
