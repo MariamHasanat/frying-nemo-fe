@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import './view-item.css';
 import { useParams } from 'react-router-dom';
+import './view-item.css';
 import { getItem } from '../../services/items';
-import Item from '../../components/view/item/item.component';
 import Spinner from '../../components/core/spinner/spinner.component';
 
 /**
  * @type {Array<{
+ * id: number;
  * name: string;
  * description: string;
  * ingredients: string[];
@@ -24,20 +24,35 @@ const ViewItemPage = () => {
   useEffect(() => {
     setLoading(true);
     const item = getItem(params.id);
-    if (params.id) {
-      setCurrentItem(item);
-      setLoading(false);
-    }
-  }, [params.id]);
+    setCurrentItem(item);
+    setLoading(false);
+  }, []);
 
 
   return (
     <div className="view-item-page">
-      <h1>View Menu Item</h1>
       {loading && <Spinner />}
       {
         !loading && currentItem !== null
-          ? <Item data={currentItem} />
+          ? <div className="item-details">
+            <h1>{currentItem.name}</h1>
+            <div className="img">
+              <img src={currentItem.image} alt="food" />
+            </div>
+            <div className="info">
+              <p><b>Item Description: </b> {currentItem.description}</p>
+              <p className="ingredients"><b>Ingredients:</b>
+              <br/>{currentItem.ingredients.join(", ")}</p>
+            </div>
+            <div className="price">
+              <span><b>Price: </b>${currentItem.price}</span>
+              <div className="add-cart">
+                <button>+</button>
+                <input type="number" max={500} />
+                <button>-</button>
+              </div>
+            </div>
+          </div>
           : <span>Item Not Found!</span>
       }
     </div>

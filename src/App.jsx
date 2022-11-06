@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/add" element={<AddPage />} />
           <Route path="/view" element={<ViewPage />} />
-          <Route path="/view/:id" element={<ViewItemPage />} />
+          <Route path="/view-details/:id" element={<ViewItemPage />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

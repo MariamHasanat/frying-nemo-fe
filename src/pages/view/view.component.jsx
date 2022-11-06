@@ -7,6 +7,7 @@ import './view.css';
 
 /**
  * @type {Array<{
+ * id: number;
  * name: string;
  * description: string;
  * ingredients: string[];
