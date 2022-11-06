@@ -1,0 +1,9 @@
+.add-page {
+  padding: 30px 20px;
+}
+h1{
+  margin-left: 20px;
+    background-color: rgb(241, 226, 226);
+    width: fit-content;
+    padding: 8px;
+}

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./item.css";
 /**
  * render a single menu item based on the data
@@ -14,20 +15,21 @@ import "./item.css";
  * }
  * }props
  */
-const Item = (props) => {
+const Item = ({data}) => {
+  console.log(data)
   return (
     <div className="item-card">
       <div className="img">
-        <img src={props.data.image} alt="food" />
+        <img src={data.image} alt="food" />
       </div>
       <div className="info">
-        <h2>{props.data.name}</h2>
-        <p>{props.data.description}</p>
-        <p className="ingredients">{props.data.ingredients.join(",")}</p>
+      <Link to={`/view-details/${data.id}`} ><h2>{data.name}</h2></Link>
+        <p>{data.description}</p>
+        <p className="ingredients">{data.ingredients.join(",")}</p>
         <hr />
       </div>
       <div className="price">
-        <span>{props.data.price}</span>
+        <span>{data.price}</span>
         <div className="add-cart">
           <button>+</button>
           <input type="number" max={500} />
