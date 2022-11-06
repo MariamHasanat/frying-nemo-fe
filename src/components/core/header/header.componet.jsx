@@ -1,21 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './header.css';
 
-const Header = (props) => {
+import { Link, useLocation } from 'react-router-dom';
+
+const Header = () => {
+  const location = useLocation();  
+  
   return (
-    <header className="webisteHeader">
+    <header className="websiteHeader">
       <div className="left">
         <h1>
-          <img src="./nemo.svg" alt="Nemo" />
           Frying Nemo
         </h1>
       </div>
       <div className="right">
         <nav>
-         <Link to ="/add" >Add</Link>
-         <Link to = "/view">View</Link>
-         
+          <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
+            Add
+          </Link>
+          <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
+            View
+          </Link>
         </nav>
       </div>
     </header>

@@ -3,7 +3,8 @@ import Header from "./components/core/header/header.componet";
 import AddPage from "./pages/add/add.component";
 import ViewPage from "./pages/view/view.component";
 import NotFoundPage from "./pages/not-found/not-found.component";
-import { BrowserRouter , Routes, Route } from 'react-router-dom';
+import { BrowserRouter , Routes, Route, Navigate } from 'react-router-dom';
+import ViewItemPage from "./pages/view-item/view-item.component";
 
 function App() {
 
@@ -12,8 +13,10 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
+          <Route path="/" element={<Navigate to ='/view' replace />}/>
           <Route path="/add" element={<AddPage />} />
           <Route path="/view" element={<ViewPage />} />
+          <Route path="/view-details/ : id" element ={<ViewItemPage />}/>
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
