@@ -2,6 +2,7 @@ import './filter-bar.css';
 import Input from "../../common/input/input-component";
 import Select from '../../common/select/select-component';
 import CATEGORIES from '../../../data/categories';
+import CheckBox from '../../common/toggle-bullets/checkbox.component';
 
 
 const FilterBar = (props) => {
@@ -25,7 +26,7 @@ const FilterBar = (props) => {
         onChange={(e) => handelFilterChange('searchTerms', e.target.value)}
         placeholder="Search"
       />
-      <Select
+      {/* <Select
         className='select'
         name='category'
         label='Category'
@@ -37,7 +38,24 @@ const FilterBar = (props) => {
         {CATEGORIES.map(item => {
           return <option key={item} value={item}>{item}</option>;
         })}
-      </Select>
+      </Select> */}
+      <div className="categories">
+        {CATEGORIES.map(cat => (
+          <CheckBox
+            key={cat}
+            label={cat}
+            checked={props.categories.includes(cat)}
+            onChange={e => {
+              const updated = e.target.checked
+                ? [...props.categories, cat]
+                : props.categories.filter(category => category !== cat);
+
+              props.setParam('category', updated);
+            }}
+          />
+        ))}
+      </div>
+
     </div>
   );
 };

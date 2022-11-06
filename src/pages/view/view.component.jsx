@@ -1,7 +1,7 @@
 import "./view.css";
 import { useEffect, useState } from "react";
 import FilterBar from "../../components/view/filter-bar/filter-bar.component";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 /**
  * @type {Array<{
@@ -18,7 +18,7 @@ const initialItems = [];
 const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(true);
-  // const [searchTerms, setSearchTerms] = useState("");
+  const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
 
   const searchTerms = params.get("searchTerms") || "";
@@ -43,11 +43,11 @@ const ViewPage = (props) => {
   return (
     <div>
       <h1>View Menu Items</h1>
-      <FilterBar 
-      searchTerms={searchTerms} 
-      categoryFromURL={categoryFromURL}
-      params={params} 
-      setParams={setParams} />
+      <FilterBar
+        searchTerms={searchTerms}
+        categoryFromURL={categoryFromURL}
+        params={params}
+        setParams={setParams} />
       {loading && (
         <div className="loading">
           <div className="lds-spinner">

@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import "./header.css";
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = (props) => {
+
+  // const location = useLocation();
+
   return (
     <div className="main-class">
       <div className="logo">
