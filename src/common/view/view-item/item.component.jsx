@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import './item.css';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Items from '../item/item.component';
 import {getItem }from '../../../data/items';
 import "../../header/header.css";
+import NotFoundPage from '../../../pages/add/not_found/not-found';
 
 
 /**
@@ -20,16 +21,18 @@ import "../../header/header.css";
 
 const ViewItemPage = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
    const item =getItem(params.id);
-    if (params.id) {
+   if (item === null) {
+    navigate('/404')
+   }
       setCurrentItem(item);
       setLoading(false);
-    }
   }, [params.id]);
 
 
@@ -40,7 +43,7 @@ const ViewItemPage = () => {
       {
         !loading && currentItem !== null
           ? <Items data={currentItem}/>
-          : <span>Item Not Found!</span>
+          : null
       }
     </div>
   );
