@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './viewItemStyle.css';
 import { useParams } from 'react-router-dom';
-//import { getItem } from '../../services/items';
+import { getItem } from '../../services/items';
 import Item from '../view/item/item';
 import Spinner from '../../components/spinner/spinner';
 
