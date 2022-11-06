@@ -25,7 +25,7 @@ const Form = (props) => {
     const menuItem = {
       name: name,
       image,
-      // id,
+      id: Date.now(),
       description: description,
       price: price,
       category: category,
@@ -38,7 +38,7 @@ const Form = (props) => {
     items.push(menuItem);
     localStorage.setItem('menuItem', JSON.stringify(items));
 
-    navigate("/View")
+    navigate("/View");
   };
   const onNameChange = (e) => {
     let value = e.target.value;
@@ -49,7 +49,7 @@ const Form = (props) => {
     if (/find/ig.test(value)) {
       value = value.replace(/find/ig, 'fry');
     }
-    if (value.lenght >= 20) {
+    if (value.length >= 20) {
       value = value.substring(0, 18);
     }
     setname(value);

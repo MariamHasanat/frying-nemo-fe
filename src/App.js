@@ -5,10 +5,10 @@ import AddPage from "./pages/add/add/add.component";
 
 import NotFound from "./pages/add/not-found/not-found";
 import View from "./pages/add/view/view";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Start from "./pages/start/start ";
-import ViewItemPage from "./pages/add/viewitembage/viewitempage";
+import ViewItemPage from "./pages/add/viewitempage/viewitempage";
 function App() {
   // const path = window.location.pathname;
   // console.log(path);
@@ -26,7 +26,8 @@ function App() {
       <BrowserRouter >
         <Handel />
         <Routes>
-          <Route path="/*" element={<Start/>} />
+        <Route path="/" element={<Navigate to="view"/>} />
+          <Route path="/*" element={<NotFound/>} />
           <Route path="/add" element={<AddPage />} />
           <Route path="/view" element={<View />} />
           <Route  path="/view/:id" element={<ViewItemPage  />} />
