@@ -6,7 +6,7 @@ import NotFound from "./pages/not-found/notfound";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ViewPage from "./pages/view/view";
 import ViewItemPage from "./pages/veiw-item/view-item";
-import './App.css'
+import './App.css';
 function App() {
 
   return (
@@ -15,11 +15,11 @@ function App() {
         <Head />
         <Routes>
           <Route path="/add" element={<AddPage />} />
-
+          <Route path="/*" element={<NotFound /> } />
           <Route path="/view/:id" element={<ViewItemPage />} />
-          
           <Route path="/view" element={<ViewPage />} />
-          <Route path="/*" element={<Navigate to='/add' />} />
+          <Route path="/" element={<Navigate to='/view' replace />} />
+          {/* <Route path="/*" element={<Navigate to='/add' />} /> */}
         </Routes>
       </BrowserRouter>
     </div >

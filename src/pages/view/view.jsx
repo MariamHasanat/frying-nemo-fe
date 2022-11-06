@@ -8,7 +8,11 @@ import { FilterBar } from './filter-bar/filter-bar';
 import { CATEGORIES } from '../../data/data';
 
 /**
-   * @type {Array<{name: string;description: string;
+   * @type {Array<
+   * 
+   * {
+   * id :number
+   * name: string;description: string;
    * ingredients: string[];
    * price: number;
    * category: string;
@@ -78,7 +82,7 @@ const ViewPage = (props) => {
 
     }
     if (price) {
-      match = match && (item.price >= price && item.price <= parseInt(price, 0));
+      match = match && (item.price >= price );
     }
 
     return match;

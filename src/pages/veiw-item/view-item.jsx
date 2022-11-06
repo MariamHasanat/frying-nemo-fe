@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 // import './viewitem.css';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getItem } from '../../components/services/items';
 import Card from '../view/card';
 
 /**
  * @type {Array<{
+ * id :number
  * name: string;
  * description: string;
  * ingredients: string[];
@@ -18,18 +19,16 @@ import Card from '../view/card';
 const ViewItemPage = () => {
   const params = useParams();
   const [currentItem, setCurrentItem] = useState(null);
-  const [loading, setLoading] = useState(true);
 
-
+  const navigate = useNavigate();
 
   useEffect(() => {
-    setLoading(true);
     const item = getItem(params.id);
-    if (params.id) {
-      setCurrentItem(item);
-      setLoading(true);
-    }
-  }, [params.id]);
+    setCurrentItem(item);
+    if (item === null)
+      navigate('/404', { replace: true });
+
+  }, []);
 
 
   return (

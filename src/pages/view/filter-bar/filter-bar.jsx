@@ -97,7 +97,7 @@ export const FilterBar = (props) => {
 
 
       <div className="priceFilter">
-        <span className='disc'> Pleas note the Min price is <b>10</b> and the max is <b>500</b></span>
+        <span className='disc'> Please note the Min price is <b>10</b> and the max is <b>500</b></span>
         <Input
           label='min price : '
           type="number"

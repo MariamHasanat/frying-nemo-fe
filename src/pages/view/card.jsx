@@ -22,7 +22,7 @@ const Card = (props) => {
     <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
 
       <div className="imgs">
-        <img src="./burg.png" alt="burger" />
+        <img src="/burg.png" alt="burger" />
       </div>
       <div className="description">
         {props.data.description}
