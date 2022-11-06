@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../../assets/nemo.svg'
 import './header.css';
 import {Link , useLocation} from 'react-router-dom'
 const Header = props => {
@@ -8,7 +9,7 @@ const Header = props => {
     <header className="webisteHeader">
       <div className="classWhichHaveHeaderContent">
         <h1>
-          <img src="./nemo.svg" alt="Nemo" />
+          <img src={logo} alt="Nemo" />
           Frying Nemo
         </h1>
       </div>
