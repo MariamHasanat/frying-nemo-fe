@@ -28,7 +28,7 @@ function App() {
         <Routes>
           <Route path="/add" element = {<AddPage onAdd = {addItem} />} />
           <Route path="/view" element = {<ViewPage />} />
-          <Route path="/view/:id" element = {<SingleItem />} />
+          <Route path="/view-details/:id" element = {<SingleItem />} />
           <Route path="/*" element = {<NotFound  />} />
         </Routes> 
       </BrowserRouter>

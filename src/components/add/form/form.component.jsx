@@ -24,6 +24,7 @@ const Form = (props) => {
     const catigory = e.target.catigory.value;
     const image = e.target.image.value;
     const menueItem = {
+      id : Date.now(),
       name: name,
       price: price,
       discription: discription,
@@ -42,7 +43,7 @@ const Form = (props) => {
   };
   /**
    * 
-   * @param {(React.ChangeEvent<HTMLInputElement>} e 
+   * @param {React.ChangeEvent<HTMLInputElement>} e 
    */
   const nameChange = e => {
     let val = e.target.value;

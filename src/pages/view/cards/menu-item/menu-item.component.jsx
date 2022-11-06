@@ -4,6 +4,7 @@ import './menu-item.css' ;
 /**
  * 
  * @param {
+ * id : number;
  * name : string ;
  * price : number ;
  * discription : string ;
@@ -18,7 +19,7 @@ const MenuItem = (props) => {
   return (
     <div className='item-card'>
       <div className='img'><img src={props.item.image} alt="" /></div>
-       <h2> <Link to = {`/view/${props.item.id}`}>{props.item.name}</Link></h2> 
+       <h2> <Link to = {`/view-details/${props.item.id}`}>{props.item.name}</Link></h2> 
       <div className="info">
         <span>Its a : {props.item.catigory}</span>
         <p> {props.item.discription}</p>
