@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, navigate} from 'react';
 import './viewItemStyle.css';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getItem } from '../../services/items';
 import Item from '../view/item/item';
 import Spinner from '../../components/spinner/spinner';
@@ -18,16 +18,19 @@ import Spinner from '../../components/spinner/spinner';
 
 const ViewItemPage = () => {
   const params = useParams();
+  navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
     const item = getItem(params.id);
-    if (params.id) {
-      setCurrentItem(item);
-      setLoading(false);
+
+    if (item === null ) {
+      navigate("/404")
     }
+    setCurrentItem(item);
+    setLoading(false);
   }, [params.id]);
 
 
