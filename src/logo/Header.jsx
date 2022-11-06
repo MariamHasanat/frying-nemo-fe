@@ -22,7 +22,7 @@ const Header = props => {
              >Add</Link >
             <Link
              to='/view'
-             className={location.pathname === '/view' ? 'current' : ''}
+             className={location.pathname.includes('/view') ? 'current' : ''}
              >View</Link >
           </nav>
         </div>

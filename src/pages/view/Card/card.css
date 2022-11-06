@@ -25,7 +25,7 @@
   flex-grow: 1;
 }
 
-.Card>.inf>h2 {
+.Card>.inf>a {
   margin: 0;
   font-size: 24px;
   color: #333;
@@ -111,4 +111,12 @@
 input::-webkit-inner-spin-button {
   appearance: none;
   margin: 0;
+}
+
+.Card .inf a {
+  background: unset;
+  border: unset;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
 }
