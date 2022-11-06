@@ -8,6 +8,7 @@ import "../../header/header.css";
 
 /**
  * @type {Array<{
+ * id:number;
  * name: string;
  * description: string;
  * ingredients: string[];

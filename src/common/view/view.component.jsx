@@ -6,6 +6,7 @@ import FilterBar from './filture/filter-bar.companent';
 const ViewPage = () => {
   /**
  * @type {Array<{
+ * id:number;
  * name: string;
    * description: string;
    * ingredients: string[];
