@@ -1,5 +1,6 @@
 import Item from './item/item.jsx';
 import './viewContainerStyle.css';
+import Spinner from '../../components/spinner/spinner.jsx';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Filter from './filter-bar/filter.bar.component.jsx';
@@ -52,8 +53,8 @@ const ViewPage = (props) => {
       )
     );
 
-    if(categoriesFromURL){
-      match = match && (item.category === categoriesFromURL)
+    if (categoriesFromURL) {
+      match = match && (item.category === categoriesFromURL);
     }
     return match;
   }
@@ -66,16 +67,28 @@ const ViewPage = (props) => {
       <Filter
         params={params}
         setParams={setParams}
-        searchParams={searchParams} 
+        searchParams={searchParams}
         categoriesFromURL={categoriesFromURL}
-        />
+      />
 
-      <div className='items-container'>
-        {
-          filteredItem
-            .map((item, index) => <Item data={item} key={item.name + index} />)
-        }
-      </div>
+      {
+        loading
+          ? <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Spinner /></div>
+          : (
+            <div className="items-container">
+              {
+                filteredItem.length
+                  ? filteredItem.map((item, index) => <Item data={item} key={item.name + index} />)
+                  : (
+                    <div className="no-results">
+                      <img src="./frustrated-realistic.png" alt="No results" />
+                      <p>No results found</p>
+                    </div>
+                  )
+              }
+            </div>
+          )
+      }
 
     </div>
   );
