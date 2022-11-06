@@ -3,7 +3,7 @@ import Counter from '../counter/counter.component'
 import burger from './images/burger.jpg'
 import { useState } from 'react';
 
-const Card = ({itemName, itemCategory, itemPrice, itemDescription, itemIngredients, image, i, ctr}) => {
+const Card = ({itemId, itemName, itemCategory, itemPrice, itemDescription, itemIngredients, image, i, ctr}) => {
   const [counter, setCounter] = useState(ctr);
 
   const incCounter = () => {
@@ -22,7 +22,7 @@ const Card = ({itemName, itemCategory, itemPrice, itemDescription, itemIngredien
     }, 50*i);}}>
       <img src={image} alt="" />
       <div className='info'>
-      <p className='itemName'>{itemName}</p>
+      <a href={`/view/${itemId}`} className='itemName'>{itemName}</a>
       <p className='itemCategory'>{itemCategory}</p>
       <p className='itemDescription'>{itemDescription}</p>
       <p className='itemIngredients'>{itemIngredients}</p>

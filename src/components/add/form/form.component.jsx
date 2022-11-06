@@ -27,12 +27,14 @@ const Form = (props) => {
     }
     
     e.preventDefault();
+    const id = Date.now().toString() + (Math.floor(Math.random()*9999)).toString()
     const description = e.target.description.value
     const price = e.target.price.value
     const category = e.target.category.value
     const image = e.target.image.value
 
     const menuItems = {
+      id,
       name,
       description,
       price,

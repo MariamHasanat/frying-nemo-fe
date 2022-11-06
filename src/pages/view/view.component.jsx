@@ -2,14 +2,13 @@ import './view.css';
 import Card from '../../components/view/common/card/card.component';
 import { useState } from 'react';
 import Input from '../../components/add/common/input/input.component';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import FilterBar from '../../components/view/common/filter/filter-bar.component';
 import { CATEGORIES } from '../../data/constants';
 
-const ViewPage = (props) => {
+const ViewPage = () => {
 
   const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1); // Helper
-
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get('search') || '');
   const categories = searchParams.getAll('category')[0] || '';
@@ -42,7 +41,7 @@ const ViewPage = (props) => {
       
       <div className='cards'>
         {
-          arr.length != 0 ? (arr.map((item, i) => <Card itemName={item.name} itemCategory={capitalizeFirstLetter(item.category)} itemDescription={item.description} itemIngredients={item.ings.toString().replaceAll(',', ', ')} itemPrice={item.price} image={item.image} i={i} ctr={0} />))
+          arr.length != 0 ? (arr.map((item, i) => <Card itemId={item.id} itemName={item.name} itemCategory={capitalizeFirstLetter(item.category)} itemDescription={item.description} itemIngredients={item.ings.toString().replaceAll(',', ', ')} itemPrice={item.price} image={item.image} i={i} ctr={0} />))
             : <div className='none'>No items found!</div>
         }
       </div>
