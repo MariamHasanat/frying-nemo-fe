@@ -3,6 +3,7 @@
 }
 
 .add-page .clock {
+  display: none;
   position: fixed;
   right: 28px;
   bottom: 50px;

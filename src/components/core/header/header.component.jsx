@@ -4,9 +4,9 @@ import logo from '../../../assets/nemo.svg';
 
 import { Link, useLocation } from 'react-router-dom';
 
-const Header = () => {
-  const location = useLocation();  
-  
+const Header = (props) => {
+  const location = useLocation();
+
   return (
     <header className="websiteHeader">
       <div className="left">
@@ -24,6 +24,13 @@ const Header = () => {
             View
           </Link>
         </nav>
+        {
+          props.user &&
+          <span className="user-badge">
+            <img src={props.user.imageUrl} alt="user logo" width={30} height={30} />
+            {props.user.fullName}
+          </span>
+        }
       </div>
     </header>
   );

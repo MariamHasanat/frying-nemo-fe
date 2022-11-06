@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './view-item.css';
 import { getItem } from '../../services/items';
 import Spinner from '../../components/core/spinner/spinner.component';

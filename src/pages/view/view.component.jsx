@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Spinner from '../../components/core/spinner/spinner.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import Item from '../../components/view/item/item.component';
@@ -22,6 +22,7 @@ const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
+  const navigate = useNavigate();
   const searchTermsFromURL = params.get('searchTerms') || '';
   const categoriesFromURL = params.getAll('category') || '';
 
@@ -35,6 +36,13 @@ const ViewPage = (props) => {
       setLoading(false);
     }, 1000);
   };
+
+  useEffect(() => {
+    // To check if the user is already logged in, send him to the view page
+    if (!props.user?.id) {
+      navigate('/login', { replace: false });
+    }
+  }, []);
 
   useEffect(() => {
     getMenuItems();
