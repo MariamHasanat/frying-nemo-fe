@@ -17,18 +17,6 @@ import CheckBox from "../check-box/check-box.component";
 
 const FilterBar = (props) => {
 
-  // const handleFilterChange = (filterName, inputValue) => {
-  //   const newParams = new URLSearchParams(props.Params);
-  //   // const inputValue = e.target.value;
-
-  //   if (inputValue) {
-  //     newParams.set(filterName, inputValue);
-  //   } else {
-  //     newParams.delete(filterName);
-  //   }
-  //   props.setParams(newParams);
-  // };
-
 
   return (
     <div className="filter-bar">
@@ -36,43 +24,10 @@ const FilterBar = (props) => {
         type='search'
         label='Search for Item'
         value={props.search}
-        onChange={e => props.setParams('searchTerms', e.target.value)}
+        onChange={e => props.setParam('searchTerms', e.target.value)}
         placeholder='Search'
       />
 
-      {/* <Select 
-      name='category' 
-      label='Category'
-      value={props.category}
-      onChange={e => handleFilterChange('category', e.target.value)}>
-        {CATEGORIES.map(item => {
-          return <option key={item} value={item}>{item}</option>;
-        })}
-        
-        <option value="">All</option>
-      </Select> */}
-
-      {/* <div className="categories">
-        {CATEGORIES.map(cat => <CheckBox
-          key={cat}
-          value={cat}
-          label={cat}
-          checked={props.categoriesFromURL.includes(cat)}
-          onChange={(e) => {
-            const newParams = new URLSearchParams(props.params);
-            const oldItems = newParams.getAll('category');
-
-            if (e.target.checked) {
-              newParams.append('category', cat);
-            } else {
-              const filteredCategories = oldItems.filter(oItem => oItem !== cat);
-              if (filteredCategories.length) {
-                newParams.delete('category');
-                filteredCategories.forEach((v) => newParams.append('category', v));
-              } else {
-                newParams.delete('category');
-              }
-            } */}
       {CATEGORIES.map(cat => (
         <CheckBox
           key={cat}

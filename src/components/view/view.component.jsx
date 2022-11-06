@@ -103,10 +103,10 @@ const ViewPage = (props) => {
       {loading
         ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
         : <div className="items-container">
-          {filteredItems.length == 0
+          {filteredItems.length === 0
             ?
             <div >
-              <img className='NFimg' src="https://media.istockphoto.com/vectors/upset-magnifying-glass-vector-illustration-vector-id1038232966?k=20&m=1038232966&s=612x612&w=0&h=32LDIxPK4zbWwukV_b1JTlzdkiLgZPPFPNNBQfvSrGU=" />
+              <img className='NFimg' alt='' src="https://media.istockphoto.com/vectors/upset-magnifying-glass-vector-illustration-vector-id1038232966?k=20&m=1038232966&s=612x612&w=0&h=32LDIxPK4zbWwukV_b1JTlzdkiLgZPPFPNNBQfvSrGU=" />
               <h2 className='NFtext'>No Menue Items Found!</h2></div>
             : filteredItems.map((item, index) => <Item data={item} key={item.name + index} />)
           }
