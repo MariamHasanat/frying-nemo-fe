@@ -1,20 +1,34 @@
+import { Link } from 'react-router-dom';
 import './item.css';
 
-const Item = (props) => {
 
+/** 
+ * Render a single menu item based on the data passed
+ * @param {{
+ *     data:{
+ *     id: number;
+ *     name: string;
+ *     image: string;
+ *     description: string;
+ *     price: number;
+ *     category: string;
+ *     ingredients: string[];
+ *    }
+ *   }} props
+ */
+const Item = (props) => {
   return (
     <div className="item-card">
       <div className="img">
-        <img src="https://i.imgur.com/eFWRUuR.jpg" alt="food" />
+        <img src={props.data.image} alt="food" />
       </div>
       <div className="info">
-        <h2>{props.data.name}</h2>
-        <p className='paragraph'>{props.data.description}</p>
-        <p className="ingredients">{props.data.ingredients.join(', ')}</p>
-        <hr />
+        <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
+        <p>{props.data.description}</p>
+        <p className="ingredients">{props.data.ingredients.join(", ")}</p>
       </div>
       <div className="price">
-        <span>25.5$</span>
+        <span>${props.data.price}</span>
         <div className="add-cart">
           <button>+</button>
           <input type="number" max={500} />
