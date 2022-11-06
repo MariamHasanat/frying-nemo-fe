@@ -40,6 +40,20 @@ const ViewPage = (props) => {
     getMenuItems();
   }, []);
 
+  const setParam = (name, value) => {
+    const newParams = new URLSearchParams(params);
+
+    newParams.delete(name);
+
+    if (Array.isArray(value)) {
+      value.forEach(item => newParams.append(name, item));
+    } else if (value.trim()) {
+      newParams.set(name, value.trim());
+    }
+
+    setParams(newParams);
+  };
+
   return (
     <div>
       <h1>View Menu Items</h1>
@@ -47,7 +61,7 @@ const ViewPage = (props) => {
         searchTerms={searchTerms}
         categoryFromURL={categoryFromURL}
         params={params}
-        setParams={setParams} />
+        setParam={setParam} />
       {loading && (
         <div className="loading">
           <div className="lds-spinner">

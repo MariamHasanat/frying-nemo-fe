@@ -1,9 +1,8 @@
 import "./header.css";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from "react-router-dom";
 
 const Header = (props) => {
-
-  // const location = useLocation();
+  const location = useLocation();
 
   return (
     <div className="main-class">
@@ -13,14 +12,34 @@ const Header = (props) => {
       </div>
       <div className="right">
         <nav>
-          {/* <button className={props.currentPage === 'add' ? 'current' : ''} onClick={() => props.onNavigate('add')}>Add</button>
-          <button onClick={() => props.onNavigate('view')}>View</button> */}
-          <Link to="/add" className='add'>Add</Link>
-          <Link to="/view" className='view'>View</Link>
+          <Link
+            to="/add"
+            className={location.pathname === "/add" ? "add" : ""}
+          >
+            Add
+          </Link>
+          <Link
+            to="/view"
+            className={location.pathname === "/view" ? "view" : ""}
+          >
+            View
+          </Link>
         </nav>
+        {props.user && (
+          <span className="user-badge">
+            <img
+              src={props.user.imageUrl}
+              alt="user logo"
+              width={30}
+              height={30}
+            />
+            {props.user.fullName}
+          </span>
+        )}
       </div>
     </div>
   );
 };
 
 export default Header;
+

@@ -1,34 +1,34 @@
-import { useState } from 'react';
-import Input from '../../common/input/input-component';
-import Textarea from '../../common/textarea/textarea-component';
-import Select from '../../common/select/select-component';
-import MultiValuInput from '../../common/multivalue-input/input-component';
-import './form.css';
-import { useNavigate } from 'react-router-dom';
-
+import { useState } from "react";
+import Input from "../../common/input/input-component";
+import Textarea from "../../common/textarea/textarea-component";
+import Select from "../../common/select/select-component";
+import MultiValuInput from "../../common/multivalue-input/input-component";
+import "./form.css";
+// import { CATEGORIES } from "../../../data/categories";
+import { useNavigate } from "react-router-dom";
 
 const categories = [
-  'Fish',
-  'Drinks',
-  'Hookah',
-  'Salads',
-  'Sandwiches',
-  'Appetizers',
-  'Main Dish',
-  'Sweet'
+  "Fish",
+  "Drinks",
+  "Hookah",
+  "Salads",
+  "Sandwiches",
+  "Appetizers",
+  "Main Dish",
+  "Sweet",
 ];
 
 const Form = (props) => {
-
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
 
   /**
-   * 
-   * @param {React.FormEvent<HTMLFormElement>} e Event Object. 
+   *
+   * @param {React.FormEvent<HTMLFormElement>} e Event Object.
    */
-  const submitHandler = e => { // this function handling the form 
+  const submitHandler = (e) => {
+    // this function handling the form
     e.preventDefault(); // don't refresh and don't take me to another page
 
     // e.target == Form
@@ -39,6 +39,7 @@ const Form = (props) => {
 
     // object
     const menuItems = {
+      id: Date.now(),
       name,
       image,
       description,
@@ -47,19 +48,17 @@ const Form = (props) => {
       ingredients,
     };
 
-    const itemsJson = localStorage.getItem('menuItems') || '[]'; // local storage take string 
+    const itemsJson = localStorage.getItem("menuItems") || "[]"; // local storage take string
     const items = JSON.parse(itemsJson); // convert string to javascript object
-
-
 
     items.push(menuItems);
 
-    localStorage.setItem('menuItems', JSON.stringify(items)); // convert javascript object to string
+    localStorage.setItem("menuItems", JSON.stringify(items)); // convert javascript object to string
 
-    navigate('/view')
+    navigate("/view");
   };
 
-  const onNameChange = e => {
+  const onNameChange = (e) => {
     let value = e.target.value;
     if (value.length > 20) {
       alert("Noooooooo Please !!!!! toooo much");
@@ -72,42 +71,34 @@ const Form = (props) => {
   };
 
   return (
-    <form className='add-form' onSubmit={submitHandler}>
+    <form className="add-form" onSubmit={submitHandler}>
       <h1>Add New Items</h1>
       <div style={{ marginTop: 20 }}>
-        <Input
-          label="Name"
-          value={name}
-          onChange={onNameChange}
-          required
-        />
-        <Textarea
-          name="description"
-          label="Description"
-        />
-        <Input
-          label="Image"
-          name="image"
-          required
-        />
-        <Input
-          name="price"
-          label="Price"
-          type="number"
-          required
-          min={0}
-        />
+        <Input label="Name" value={name} onChange={onNameChange} required />
+        <Textarea name="description" label="Description" />
+        <Input label="Image" name="image" required />
+        <Input name="price" label="Price" type="number" required min={0} />
         <Select name="category" label="Category" required>
-          {categories.map(item => {
-            return <option key={item} value={item}>{item}</option>;
+          {categories.map((item) => {
+            return (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            );
           })}
         </Select>
         <MultiValuInput
-          label='ingredients'
+          label="ingredients"
           value={ingredients}
-          onChange={newIngredients => setIngredients(newIngredients)}
+          onChange={(newIngredients) => setIngredients(newIngredients)}
         />
-        <button type='submit' className='create'>Create</button>
+        <button
+          type="submit"
+          className="create"
+          disabled={props.user?.role !== "ADMIN"}
+        >
+          Create
+        </button>
       </div>
     </form>
   );

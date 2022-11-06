@@ -9,3 +9,7 @@
 .select{
   margin-top: 0;
 } */
+.categories {
+  display: flex;
+  margin: 20px;
+}
