@@ -4,6 +4,8 @@ import Loading from '../../components/common/loading/loading.component';
 import './view.css';
 import { useSearchParams } from 'react-router-dom';
 import FilterBar from './filter-bar/filter-bar.component';
+import NotFound from '../not-found/not-found.component';
+
 
 const getMenu = () => JSON.parse(localStorage.getItem('menu') || '[]');
 
@@ -16,6 +18,7 @@ const ViewPage = (props) => {
     const categoryFilters = params.getAll('category') || '';
     const priceMin = Number(params.getAll('priceMin')) || 0;
     const priceMax = Number(params.getAll('priceMax')) || 0;
+
 
     const filteredMenu = menu
         .filter(
@@ -42,10 +45,13 @@ const ViewPage = (props) => {
                 return match;
             });
 
+
+
     setTimeout(() => {
         setLoading(false);
     }, 1000);
 
+    const len = filteredMenu.length;
 
     return (
         <div className='view-page'>
@@ -61,9 +67,14 @@ const ViewPage = (props) => {
             {loading
                 ? <Loading />
                 : <div className="main">
-                    {filteredMenu.map((item, index) => {
-                        return <ItemCard {...item} key={item + index} />;
-                    })}
+                    { 
+                        filteredMenu.map((item, index) => {
+                            return <ItemCard {...item} key={item + index} />;
+                        })
+                    }
+                        {len === 0 && <NotFound title="" />}
+                    
+
                 </div>}
         </div>
     );
