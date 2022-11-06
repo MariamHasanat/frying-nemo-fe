@@ -22,17 +22,16 @@ const ViewItemPage = () => {
     useEffect(() => {
         setLoading(true);
         const tempItem = getItem(params.id);
-        if (params.id) {
-            setItem(tempItem);
-            setLoading(false);
-        }
+        setItem(tempItem);
+        setLoading(false);
+        
     }, [params.id]);
     
     return (
         <div className='view-item-page'>
             <h1>View Item Page</h1>
             {
-                loading
+                loading && item !== null
                     ? <Spinner />
                     : <Item item={item} />
             }
