@@ -109,4 +109,4 @@ const ViewPage = (props) => {
   );
 };
 
-export default ViewPage;;
+export default ViewPage;

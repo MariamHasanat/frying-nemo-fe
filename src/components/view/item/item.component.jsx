@@ -26,7 +26,7 @@ const Item = (props) => {
 
         <Link to={`/view/${props.data.id}`}><h2>{props.data.name}</h2></Link>
 
-        <Link to={`/view-details/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
+       
 
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients.join(", ")}</p>

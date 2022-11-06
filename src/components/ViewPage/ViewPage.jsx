@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import Select from '../../common/Select/Select';
 import Filter from '../core/filter-bar/Filter';
 import Spinner from '../core/spinner/Spinner';
-import Item from '../view/item/Single';
+import Item from '../view/item/item.component';
 import './viewpage.css';
 
 
