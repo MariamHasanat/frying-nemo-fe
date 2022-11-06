@@ -14,7 +14,7 @@ import { useState } from 'react';
  */
 
 const FilterBar = (props) => {
-  const [price, setPrice] = useState(20);
+  const [price, setPrice] = useState(0);
   const handelPrice = e => {
     setPrice(e.target.value);
   };
@@ -41,8 +41,8 @@ const FilterBar = (props) => {
           label='max price : '
           type="number"
           onChange={e => props.setParams('max', e.target.value)}
-          max={100}
           min={0}
+          max={500}
 
         />
         <Input
@@ -50,10 +50,8 @@ const FilterBar = (props) => {
           type="range"
           onChange={e => {
             props.setParams('price', e.target.value);
-            handelPrice(e);
-          }
-          }
-          min={10}
+            handelPrice(e); }}
+          min={0}
           max={500}
 
         />

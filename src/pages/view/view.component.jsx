@@ -66,7 +66,7 @@ const ViewPage = (props) => {
       Match = Match && categoryFromURL.some(cat => cat === item.category);
     }
     if (maxFromURL && minFromURL) {
-      Match = Match && (item.price >= minFromURL && item.price <= maxFromURL);
+      Match = Match && ((item.price >= minFromURL) && (item.price <= maxFromURL));
     }
     if (price) {
       Match = Match && (item.price >= price && item.price <= parseInt(price, 0));
