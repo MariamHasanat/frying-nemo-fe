@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './viewitem.css'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getItem } from '../../../item';
 import Card from '../Card/Card';
 import Spinner from '../../spinner/spinner.component';
@@ -18,12 +18,17 @@ import Spinner from '../../spinner/spinner.component';
 
 const ViewItemPage = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
     const item = getItem(params.id);
+    console.log("id",params.id);
+    if(item === null) {
+      navigate('/404');
+    }
       setCurrentItem(item);
       setLoading(false);
   }, [params.id]);
