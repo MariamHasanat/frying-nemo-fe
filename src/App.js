@@ -5,6 +5,8 @@ import AddPage from "./pages/menuPageContainer/page.container";
 import Header from "./components/header/header.component";
 import ViewPage from "./pages/view/view.container";
 import NotFound from "./pages/not-found/not-found.component";
+import ViewItemPage from "./pages/view-item/view.item";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //A function App will render the components
 function App() {
@@ -17,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/add" element={<AddPage />} />
             <Route path="/view" element={<ViewPage />} />
+            <Route path="/view/:id" element={<ViewItemPage />} />
             <Route path="/*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
