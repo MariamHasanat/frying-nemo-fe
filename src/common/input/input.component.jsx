@@ -14,7 +14,6 @@ return(
    {label ? 
    <label>
     <span>{label}</span>
-    
     {inputProps.required && <span>*</span>}
    </label>:null
    }
