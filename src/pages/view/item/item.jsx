@@ -9,7 +9,7 @@ const Item = (props) => {
       </div>
       <div className="info">
         <h2>{props.data.name}</h2>
-        <p>{props.data.description}</p>
+        <p className='paragraph'>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients.join(', ')}</p>
         <hr />
       </div>
