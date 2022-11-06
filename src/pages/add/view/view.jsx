@@ -26,6 +26,8 @@ const View = (props) => {
   const searchFromUrl = param.get('search') || '';
   const categoriesFromURL = param.getAll('category') || '';
   console.log(searchFromUrl);
+  const[max,setMax]=useState();
+  const[min,setMin]=useState();
   // const setItemSearchInLocalStoreg=(value)=>{
   //   localStorage.setItem("the informathion search",value);
   //   SetSearch(value);[]F
@@ -45,6 +47,10 @@ const View = (props) => {
     if (categoriesFromURL.length) {
       match = match && (categoriesFromURL.includes(item.category));
     }
+    if(min)
+     match= match&&(item.price>= min);
+     if(max)
+     match= match&&(item.price<= max);
     return match;
   });
   /**
@@ -88,6 +94,8 @@ const View = (props) => {
         param={param}
         setParam={setParam}
         categoriesFromURL={categoriesFromURL}
+        setMax={setMax}
+        setMin={setMin}
       >
       </FilterBar >
       {

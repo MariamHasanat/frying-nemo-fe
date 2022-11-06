@@ -15,14 +15,17 @@ import './filter-bar.css';
 const FilterBar = (props) => {
 
   return (
-    <div className="filter-bar"> <Input
-      type="search"
-      value={props.searchFromUrl}
-      placeholder="Search"
-      onChange={e => props.setParam('searchTerms', e.target.value)}
+    <div className="filter-bar">
+      <Input
+        type="search"
+        value={props.searchFromUrl}
+        placeholder="Search"
+        onChange={e => props.setParam('searchTerms', e.target.value)}
 
-    ></Input>
-    
+      ></Input>
+
+  
+
       <div className="categories">
         {CATEGORIES.map(cat => (
           <CheckBox
@@ -39,7 +42,34 @@ const FilterBar = (props) => {
         ))}
 
       </div>
+      <br />
+      <Input
+      className='price'
+        type={'number'}
+        label={"Min"}
+        placeholder="Min Number"
+        onChange={e =>
+          {
+            const min = e.target.value;
+            props.setMin(min);
+          }
+        }
 
+      ></Input>
+
+      <Input
+      className='price'
+        type={'number'}
+        label={"Max"}
+        placeholder="Max Number"
+        onChange={e => {
+          const max = e.target.value;
+          props.setMax(max);
+        }
+
+        }
+
+      ></Input>
     </div>
   );
 };
