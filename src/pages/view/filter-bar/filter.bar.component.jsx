@@ -28,6 +28,7 @@ const Filter = (props) => {
 
       <Input
         type="search"
+        label='search'
         value={props.searchParams}
         onChange={e => {
           handleOnchangeOnURL('q', e.target.value);
