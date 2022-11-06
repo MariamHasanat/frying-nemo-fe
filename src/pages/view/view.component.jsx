@@ -7,6 +7,7 @@ import './view.css';
 import FilterBar from './filter-bar/filter-bar.component';
 /**
  * @type {Array<{
+ * id:number;
  * name: string;
  * Description: string;
  * Ingredients: string[];
@@ -22,10 +23,10 @@ const ViewPage = (props) => {
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
   const price = params.get("price") || '';
-  const searchTermsFromURL = params.getAll('searchTerms') || '';
+  const searchTermsFromURL = params.get('searchTerms') || '';
   const categoryFromURL = params.getAll('category') || '';
-  const[min,setMin]=useState("");
-  const[max,setMax]=useState("");
+  const [min, setMin] = useState("");
+  const [max, setMax] = useState("");
   const maxFromURL = params.get("max") || '';
   const minFromURL = params.get("min") || '';
 
@@ -53,27 +54,24 @@ const ViewPage = (props) => {
      * @param {string} str 
      */
     const DoesItMatch = str =>
-      str.toLowerCase().includes(
-        searchTermsFromURL.toString().toLowerCase().trim()
-      );
+      str.includes(searchTermsFromURL.toLowerCase().trim());
 
     let Match = (
       DoesItMatch(item.name) ||
       DoesItMatch(item.Description) ||
       item.Ingredients.some(Ingredient => DoesItMatch(Ingredient))
     );
-    if (categoryFromURL) {
-      Match = Match && (item.category === categoryFromURL);
+
+    if (categoryFromURL.length) {
+      Match = Match && categoryFromURL.some(cat => cat === item.category);
     }
     if (maxFromURL && minFromURL) {
       Match = Match && (item.price >= minFromURL && item.price <= maxFromURL);
+    }
+    if (price) {
+      Match = Match && (item.price >= price && item.price <= parseInt(price, 0));
+    }
 
-    }
-    if(price)
-    {
-      Match = Match && (item.price >= price && item.price <= parseInt(price,0));
-    }
-    
     return Match;
   });
   /**
@@ -111,13 +109,13 @@ const ViewPage = (props) => {
         : <div className="items-container">
           {
             filteredItems
-            .map((item, index) => <Item data={item} key={item.name + index} />) 
-              
+              .map((item, index) => <Item data={item} key={item.name + index} />)
+
           }
-       
+
         </div>
-      } 
-    
+      }
+
     </div>
   );
 };

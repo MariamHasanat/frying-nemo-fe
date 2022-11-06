@@ -7,6 +7,7 @@ import Spinner from '../../components/core/spinner.component';
 
 /**
  * @type {Array<{
+ * id:number;
  * name: string;
  * description: string;
  * ingredients: string[];
@@ -24,11 +25,11 @@ const ViewItemPage = () => {
   useEffect(() => {
     setLoading(true);
     const item = getItem(params.id);
-    if (params.id) {
       setCurrentItem(item);
       setLoading(false);
-    }
   }, [params.id]);
+  //ممكن تنشال
+  
 
 
   return (

@@ -18,7 +18,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
          
           <Route path="/add" element={<AddPage />} />
           <Route path="/view" element={<ViewPage />} />
-          <Route path="/view/:id" element={<ViewItemPage />} /> 
+          <Route path="/view-item-details/:id" element={<ViewItemPage />} /> 
           <Route path="/*" element={<NotFound/>} />
         </Routes>
       </BrowserRouter>

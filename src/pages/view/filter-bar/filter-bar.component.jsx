@@ -14,22 +14,22 @@ import { useState } from 'react';
  */
 
 const FilterBar = (props) => {
-  const [price,setPrice] =useState(20);
-  const handelPrice=e=>{
-    setPrice(e.target.value)
-  }
-  
+  const [price, setPrice] = useState(20);
+  const handelPrice = e => {
+    setPrice(e.target.value);
+  };
+
   return (
     <div className="filter-bar">
       <div className='inputs'>
-      <Input
-        type="search"
-        label="search for item"
-        value={props.searchTerms}
-        onChange={e => props.setParams('searchTerms', e.target.value)}
-        placeholder="search"
-      />
-       <Input
+        <Input
+          type="search"
+          label="search for item"
+          value={props.searchTerms}
+          onChange={e => props.setParams('searchTerms', e.target.value)}
+          placeholder="search"
+        />
+        <Input
           label='min price :'
           type="number"
           onChange={e => props.setParams('min', e.target.value)}
@@ -46,21 +46,22 @@ const FilterBar = (props) => {
 
         />
         <Input
-        
-        type="range"
-        onChange={e => {props.setParam('price', e.target.value)
-        handelPrice(e)
-      }
-      }
-      min={10}
-      max={500}
-        
+
+          type="range"
+          onChange={e => {
+            props.setParams('price', e.target.value);
+            handelPrice(e);
+          }
+          }
+          min={10}
+          max={500}
+
         />
         <span className='disc'>price: <b>{price}</b></span>
 
-        </div>
+      </div>
 
-{
+      {
         CATEGORIES.map(cat =>
           <CheckBox key={cat}
             label={cat}
