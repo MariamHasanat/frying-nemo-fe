@@ -1,73 +1,47 @@
-import Item from './item/item.jsx';
-import './viewContainerStyle.css';
-import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import Filter from './filter-bar/filter.bar.component.jsx';
+import { useState, useEffect } from 'react';
+import './viewItemStyle.css';
+import { useParams } from 'react-router-dom';
+import { getItem } from '../../services/items';
+import Item from '../../components/view/item/item.component';
+import Spinner from '../../components/core/spinner/spinner.component';
 
-const getMenuItem = () => JSON.parse(localStorage.menuItems || '[]');
+/**
+ * @type {Array<{
+ * name: string;
+ * description: string;
+ * ingredients: string[];
+ * price: number;
+ * category: string;
+ * image: string;
+ * }>}
+ */
 
-const ViewPage = (props) => {
-  /**
-   * @type {Array<{
-   * name: string;
-   * description: string;
-   * ingredients: string[];
-   * price: number;
-   * category: string;
-   * image: string;
-   * }>}
-   */
+const ViewItemPage = () => {
+  const params = useParams();
+  const [currentItem, setCurrentItem] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const [menuItems] = useState(getMenuItem());
-  const [params, setParams] = useSearchParams();
-  const searchParams = params.get('q') || '';
-  const categoriesFromURL = params.get('category') || '';
-
-  const filteredItem = menuItems.filter(item => {
-
-    let match = (
-      item.name.toLowerCase().includes(searchParams.toLowerCase().trim()) ||
-
-      item.description.toLowerCase().includes(searchParams.toLowerCase().trim()) ||
-
-      item.ingredients.some(ingredients =>
-        ingredients.toLowerCase().includes(searchParams.toLowerCase().trim())
-      )
-    );
-
-    if(categoriesFromURL){
-      match = match && (item.category === categoriesFromURL)
+  useEffect(() => {
+    setLoading(true);
+    const item = getItem(params.id);
+    if (params.id) {
+      setCurrentItem(item);
+      setLoading(false);
     }
-    return match;
-  }
-  );
+  }, [params.id]);
+
 
   return (
-    <div className='view-container'>
-      <h1 className='h1'>View Menu Items</h1>
-
-      <Filter
-        params={params}
-        setParams={setParams}
-        searchParams={searchParams} 
-        categoriesFromURL={categoriesFromURL}
-        />
-
-      <div className='items-container'>
-        {
-          filteredItem
-            .map((item, index) => <Item data={item} key={item.name + index} />)
-        }
-      </div>
-
+    <div className="view-item-page">
+      <h1>View Menu Item</h1>
+      {loading && <Spinner />}
+      {
+        !loading && currentItem !== null
+          ? <Item data={currentItem} />
+          : <span>Item Not Found!</span>
+      }
     </div>
   );
 };
 
-export default ViewPage;
-
-
-/*
-
-
-*/
+export default ViewItemPage;
