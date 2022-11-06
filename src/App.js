@@ -4,7 +4,7 @@ import ViewItemPage from "./pages/view-item/view-item.component";
 import Header from "./components/core/header/header.component";
 import NotFound from "./pages/not-found/not-found.component";
 import './index.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 
 function App() {
     return (
@@ -12,6 +12,7 @@ function App() {
             <BrowserRouter>
                 <Header />
                 <Routes>
+                    <Route path="/" element={<Navigate to='/view'/>} replace/>
                     <Route path="/add" element={<AddPage />} />
                     <Route path="/view" element={<ViewPage />} />
                     <Route path="/*" element={<NotFound />} />
