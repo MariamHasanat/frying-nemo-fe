@@ -1,4 +1,4 @@
-import {BrowserRouter , Route , Routes} from 'react-router-dom'
+import {BrowserRouter , Route , Routes , Navigate} from 'react-router-dom'
 import ViewItemPage from './pages/view/ViewItem/ViewItemPage';
 import Notfound from "./pages/not-found/Notfound";
 import AddPage from "./pages/add/add.component";
@@ -13,6 +13,7 @@ function App() {
       <BrowserRouter>
          <Header />
         <Routes>
+          <Route path="/" element={<Navigate to='/view' replace/>}/>
           <Route path="/add" element={<AddPage />}/>
           <Route path="/view" element={<ViewPage />}/>
           <Route path="/view/:id" element = {<ViewItemPage />} />
