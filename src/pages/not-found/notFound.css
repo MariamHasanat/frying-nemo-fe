@@ -9,7 +9,7 @@
   width: 600px;
   padding: 20px;
 }
-.notFound  > .img > h1 {
+.notFound h1 {
   text-align: center;
   color: rgb(253, 131, 44);
   font-family: 'Rubik', sans-serif;
