@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./view-item.css";
-import {Navigate, useNavigate, useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 import { getItem } from "../../services/items";
 import Select from "../../components/common/select/select.component";
 
@@ -26,7 +26,7 @@ const ViewItemPage = () => {
     if (item === null) {
       navigate("/404", { replace: true });
     }
-  }, []);
+  }, [params.id,navigate]);
 
   return (
     <div className="view-item-page">
