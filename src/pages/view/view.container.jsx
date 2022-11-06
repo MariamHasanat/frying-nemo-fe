@@ -1,14 +1,15 @@
 import Item from './item/item.jsx';
 import './viewContainerStyle.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Filter from './filter-bar/filter.bar.component.jsx';
 
-const getMenuItem = () => JSON.parse(localStorage.menuItems || '[]');
+const initialItems = [];
 
 const ViewPage = (props) => {
   /**
    * @type {Array<{
+   * id: number;
    * name: string;
    * description: string;
    * ingredients: string[];
@@ -18,10 +19,26 @@ const ViewPage = (props) => {
    * }>}
    */
 
-  const [menuItems] = useState(getMenuItem());
+  const [menuItems, setMenuItems] = useState(initialItems);
+  const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
   const searchParams = params.get('q') || '';
   const categoriesFromURL = params.get('category') || '';
+
+  const getMenuItems = () => {
+    setLoading(true);
+
+    // Run the code inside after 1000 milliseconds (1 Second)
+    setTimeout(() => {
+      const items = JSON.parse(localStorage.menuItems || '[]');
+      setMenuItems(items);
+      setLoading(false);
+    }, 1000);
+  };
+
+  useEffect(() => {
+    getMenuItems();
+  }, []);
 
   const filteredItem = menuItems.filter(item => {
 
