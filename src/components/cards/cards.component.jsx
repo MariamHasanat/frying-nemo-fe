@@ -4,9 +4,11 @@ import { useSearchParams } from "react-router-dom";
 import "./cards.css";
 import Select from "../common/select/select.component";
 import FilteredSearch from "../view/filter-search/filtered-search.component";
+import { Link } from "react-router-dom";
 import "../../common.css";
 /**
  * @type {Array<{
+ * id: number
  * name: string;
  * description: string;
  * ingredients: string[];
@@ -71,7 +73,7 @@ const Cards = (props) => {
               style={{ backgroundImage: "url(" + item.photo + ")" }}
             >
             </div>
-            <div className="card-name">{item.name}</div>
+            <Link className="card-name" to = {`/view-item/${item.id}`}>{item.name}</Link>
             <span className="card-text">Description</span>
             <div className="card-description">&nbsp;{item.description}</div>
             <div className="card-price">

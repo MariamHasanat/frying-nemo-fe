@@ -24,6 +24,7 @@ const Form = (props) => {
     let category = e.target.category.value;
     let photo = e.target.photo.value;
     const menuItem = {
+      id: Date.now(),
       name: name,
       description: description,
       price: parseInt(price),

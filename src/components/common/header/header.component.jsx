@@ -14,8 +14,7 @@ const Header = (props) => {
         <nav>
           <Link
             className={
-              location.pathname === "/add" ||
-              location.pathname === "/"
+              location.pathname === "/add" 
                 ? "active-nav-btn"
                 : "nav-btn"
                 }
@@ -25,7 +24,9 @@ const Header = (props) => {
           </Link>
           <Link
             className={
-              location.pathname === "/view"
+              location.pathname === "/view"||
+              location.pathname === "/"||
+              location.pathname.includes("/view-item")
                 ? "active-nav-btn"
                 : "nav-btn"
               }

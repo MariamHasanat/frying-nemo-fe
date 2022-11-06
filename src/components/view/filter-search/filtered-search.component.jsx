@@ -37,10 +37,10 @@ return(
   </Select>
   <Input type="number" label='Min Price'
    onChange={e=> handleFilterSearch("minprice",e.target.value)}
-    value={props.minPriceFromUrl } min={0}></Input>
+    value={props.minPriceFromUrl || 0} min={0}></Input>
   <Input type="number" label='Max Price'
    onChange={e=> handleFilterSearch("maxprice",e.target.value)}
-    value={props.maxPriceFromUrl } min={0}></Input>
+    value={props.maxPriceFromUrl || 0} min={0}></Input>
 </div>
 );};
 
