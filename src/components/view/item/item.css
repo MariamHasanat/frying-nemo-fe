@@ -114,4 +114,18 @@
     appearance: none;
     margin: 0;
   }
+  a:link { text-decoration: none; 
+  color: red;}
+
+
+  a:visited { text-decoration: none; 
+  color: red;}
+  
+  
+  a:hover { text-decoration: none;  }
+  
+  
+
+
+
   

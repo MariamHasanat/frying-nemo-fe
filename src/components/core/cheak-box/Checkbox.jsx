@@ -16,7 +16,7 @@ const Checkbox = props => {
     <div >
       <span className="check-input">  <input id={`chk-lbl-${label}`} type={"checkbox"}  {...inputProps} />
         {label ?
-          <label className={props.checked ? 'checked' : "notchecked"} htmlFor={`chk-lbl-${label}`}>
+          <label className={props.checked ? 'checked' : "not-checked"} htmlFor={`chk-lbl-${label}`}>
             <span> {label}</span>
             &nbsp;
             {inputProps.required && <span>*</span>}

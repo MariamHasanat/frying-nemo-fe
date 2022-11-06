@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import Select from '../../common/Select/Select';
 import Filter from '../core/filter-bar/Filter';
 import Spinner from '../core/spinner/Spinner';
-import Item from '../view/item/view.componets';
+import Item from '../view/item/Single';
 import './viewpage.css';
 
 
@@ -25,8 +25,7 @@ const ViewPage = (props) => {
   const [loading, setLoading] = useState(true);
   const [Params, setParams] = useSearchParams();
   const searchURL = Params.get('searchTerms') || "";
-  const categoryParams = Params.get('category') || "";
-  const SingleCategoryParams = Params.get('Single-category') || "";
+  const categoryParams = Params.getAll('category') || "";
   const MINParams = Params.get('Min') || "";
   const MAXParams = Params.get('Max') || "";
 
@@ -60,17 +59,15 @@ const ViewPage = (props) => {
 
 
     );
-    if (categoryParams) {
-      match = match && (item.category === categoryParams);
-    }
+   
 
 
-  
+
     if (MINParams && MAXParams) {
-      match = match && (item.price >= MINParams && item.price <= MAXParams)
+      match = match && (item.price >= MINParams && item.price <= MAXParams);
     }
-    if (SingleCategoryParams.length) {
-      match = match && (SingleCategoryParams.includes(item.category));
+    if (categoryParams.length) {
+      match = match && (categoryParams.includes(item.category));
     }
 
 
@@ -105,8 +102,7 @@ const ViewPage = (props) => {
         setParam={setParam}
         MAXParams={MAXParams}
         MINParams={MINParams}
-        SingleCategoryParams={SingleCategoryParams}
-
+        categories={categoryParams}
 
       >
       </Filter>

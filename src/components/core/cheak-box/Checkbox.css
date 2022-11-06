@@ -19,7 +19,7 @@
     user-select: none;
 }
 
-.check-input>.notchecked {
+.check-input>.not-checked {
     background-color:#84ff847a;;
     font-weight: bold;
     color: #666;

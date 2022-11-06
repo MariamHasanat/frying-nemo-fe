@@ -1,11 +1,11 @@
 import './item.css';
 import {Link} from "react-router-dom"
-import Singleitem from '../../../pages/singleitempage/Singleitem';
 /** 
  * Render a single menu item based on the data passed
  * @param {{
  *     data:{
  *     name: string;
+ *     id:number;
  *     image: string;
  *     description: string;
  *     price: number;
@@ -14,14 +14,14 @@ import Singleitem from '../../../pages/singleitempage/Singleitem';
  *    }
  *   }} props
  */
-const Item = (props) => {
+const Single = (props) => {
   return (
     <div className="item-card">
       <div className="img">
         <img src={props.data.image} alt="food" />
       </div>
       <div className="info">
-        <h2 onClick={()=>{<Singleitem names={"sada"}></Singleitem>}}><Link to={`/view/${10}`}>{props.data.name}</Link></h2>
+      <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients.join(", ")}</p>
         {/* instead of join you can use // map((ing, i) => ing + (i < props.data.ingredients.length - 1 ? ', ' : ' ')) */}
@@ -38,4 +38,4 @@ const Item = (props) => {
   );
 };
 
-export default Item;
+export default Single;

@@ -4,7 +4,7 @@ import Select from '../../../common/Select/Select';
 import "./filter.css";
 import { CATAGORIES } from '../../../common/data/constants.js';
 import Checkbox from '../cheak-box/Checkbox';
-import { useState } from 'react';
+
 
 
 /**
@@ -19,7 +19,7 @@ import { useState } from 'react';
 
 const Filter = (props) => {
 
-  const [categories, Setcategories] = useState([])
+
   return (
     <div>
       <div className='beside' ><Input
@@ -30,14 +30,6 @@ const Filter = (props) => {
         onChange={e => props.setParam('searchTerms', e.target.value)} ></Input>
 
 
-        <span ><Select
-          label='Category'
-          value={props.categoryParams}
-          onChange={e => props.setParam('category', e.target.value)}>
-          <option value="">ALL</option>
-          {CATAGORIES.map(item => {
-            return <option value={item} key={item}>{item}</option>;
-          })}  </Select></span>
 
 
         <span className='Minclass'><Input
@@ -62,30 +54,18 @@ const Filter = (props) => {
       <div className="flex1">{
         CATAGORIES.map(val => (
           <Checkbox
-            label={val}
-            key={val}
-            value={val}
-            onClick={(e) => {
-              if (!categories.includes(val)){
-                categories.push(e.target.value)}
-                else{
-                 categories.pop(e.target.value)
-                 }
-                
-              
-            }}
-            checked={categories.includes(val)}
-         
+          key={val}
+          label={val}
+          checked={props.categories.includes(val)}
+          onChange={e => {
+            console.log(val)
+            const updated = e.target.checked
+              ? [...props.categories, val]
+              : props.categories.filter(category => category !== val);
 
-            onChange={e => {
-            
-           
-            var  updated = e.target.checked ? [...categories,val]
-                : categories.filter(item=>item!==val)
+              props.setParam('category', updated);
+          }}
 
-                props.setParam('Single-category', updated);
-
-               }}
 
 
 
