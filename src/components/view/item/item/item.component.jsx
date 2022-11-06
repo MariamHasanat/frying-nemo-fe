@@ -1,4 +1,5 @@
 import './item.css'
+import { Link } from 'react-router-dom';
 /**
  * 
  * @param {{
@@ -22,7 +23,7 @@ const Item = (props) => {
         <img src={props.data.image} alt="food" />
       </div>
       <div className="info">
-        <h2>{props.data.name}</h2>
+      <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients.map(ing => ing + ', ')}</p>
         <hr />

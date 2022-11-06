@@ -1,6 +1,6 @@
 import './add.css';
 
-import Form from '../../components/add/form/form.component';
+import Form from '../../../components/add/form/form.component';
 
 const AddPage = (props) => {
   return (
