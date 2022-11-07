@@ -67,3 +67,18 @@ header {
   border-radius: 5px;
   color: white;
 }
+
+.Header  .user-badge {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #777777;
+}
+
+.Header  .user-badge > img {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}

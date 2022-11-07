@@ -109,7 +109,11 @@ const Form = (props) => {
           onChange={newIngredients => setIngredients(newIngredients)}
         />
         <div className="create-btn">
-          <button className="nemo-button" type="submit">Creat</button>
+          <button
+           className="nemo-button"
+            type="submit"
+            disabled={props.user?.role !== 'ADMIN'}
+            >Creat</button>
           </div>
       </div>
     </form>

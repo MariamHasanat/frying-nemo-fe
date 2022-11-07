@@ -1,6 +1,6 @@
 import './viewpage.css';
 import Card from './Card/Card';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Spinner from '../spinner/spinner.component';
 import FilterBar from './filter-bar/FilterBar';
@@ -24,6 +24,7 @@ const ViewPage = (props) => {
   const [params, setParams] = useSearchParams();
 
   const searchFromURL = params.get('search') || '';
+  const navigate = useNavigate();
   const categoriesFromURL = params.getAll('category') || '';
   const minFromURL = params.get('min') || '';
   const maxFromURL = params.get('max') || '';
@@ -38,6 +39,13 @@ const ViewPage = (props) => {
       setLoading(false);
     }, 1000);
   };
+
+  useEffect(() => {
+    // To check if the user is already logged in, send him to the view page
+    if (!props.user?.id) {
+      navigate('/login', { replace: false });
+    }
+  }, []);
 
   useEffect(() => {
     getMenuItems();
