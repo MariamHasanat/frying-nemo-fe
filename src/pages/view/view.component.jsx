@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ItemCard from './item-card/item-card.component';
+import ItemCard from '../../components/item-card/item-card.component';
 import Loading from '../../components/common/loading/loading.component';
 import './view.css';
 import { useSearchParams } from 'react-router-dom';
