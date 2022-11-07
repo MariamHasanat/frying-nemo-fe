@@ -48,4 +48,23 @@
   background-color: #627cd1;
   border-radius: 5px;
   color: white;
+  height: min-content;
+}
+.right{
+  display: flex;
+}
+.user-info{
+  display: flex;
+  margin-right: 10px;
+}
+.user-info >img{
+ width: 35px;
+ height:35px;
+ border-radius: 30px;
+}
+.user-info > h3{
+  font-size: 15px;
+  color: black;
+  margin-left: 5px;
+  margin-top: 10px;
 }

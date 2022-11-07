@@ -19,9 +19,11 @@
 .filter-bar>.price input{
   width: 50px;
   margin-top: 5px;
+      color: black;
 }
 .filter-bar>.price label{
  padding: 10px;
  font-size: 18px;
  text-align: center;
+    color: black;
 }

@@ -6,4 +6,7 @@
   flex-wrap: wrap;
   gap: 30px;
 }
+.view-page>h1{
+  color: #000;
+}
 
