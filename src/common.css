@@ -8,3 +8,6 @@
   font-size: 13px;
   cursor: pointer;
 }
+.nemo-button:disabled {
+  opacity: 0.5;
+}

@@ -6,6 +6,7 @@ import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import CATEGORIES from '../../../data/constants' ;
+import { isDisabled } from '@testing-library/user-event/dist/utils';
 
 const Form = (props) => {
   const [name, setName] = useState('');
@@ -99,6 +100,7 @@ const Form = (props) => {
         <button
           type='submit'
           className='formComp nemo-button'
+          disabled = {props.user?.role !== 'ADMIN'}
         >
           Create
         </button>

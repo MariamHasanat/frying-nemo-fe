@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Spinner from '../../components/common/spinner/spinner.componenr';
 import MenuItem from './cards/menu-item/menu-item.component';
 import FilterBar from './filter-bar/filter-bar.component';
@@ -18,6 +18,7 @@ import './view.css';
 const initialItems = [];
 
 const ViewPage = (props) => {
+  const navigate = useNavigate () ;
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState(initialItems);
   //param is an instance of complex class (URLSearchParams) so I need to use get (name) to access spesific param 
@@ -48,6 +49,8 @@ const ViewPage = (props) => {
   };
 
   useEffect(() => {
+    if (!props.user) 
+      navigate ('/login' , {replace : true}) ;
     getMenuItems();
     return (() => console.log('Im out'));
   }, []);

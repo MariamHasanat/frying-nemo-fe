@@ -6,11 +6,10 @@ import './common.css' ;
 import NotFound from "./pages/not-found/notFound.component";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import SingleItem from "./pages/view/cards/single-item/single-item.component";
+import LoginPage from "./pages/login/login.component";
 function App() {
-  const [currentPage , setCurrentPage] = useState ('add') ;
-  const changePage = (newPage) => {
-    setCurrentPage (newPage) ;
-  }
+ 
+  const [user , setUser] = useState (null) ;
   const [items , setItems] = useState ([]) ;
   const addItem = (item) => {
     const tempItems = items ;
@@ -24,11 +23,13 @@ function App() {
         <Header 
           img = "./nemo.svg.svg" 
           title = "Frying Nemo" 
+          user = {user}
         />
         <Routes>
           <Route path="/" element = {<Navigate to =  '/view' replace />} />   {/* page redirection using navigate component , which is built in react router dom library */}
-          <Route path="/add" element = {<AddPage onAdd = {addItem} />} />
-          <Route path="/view" element = {<ViewPage />} />
+          <Route path="/add" element = {<AddPage onAdd = {addItem} user = {user} />} />
+          <Route path="/login" element = {<LoginPage setUser = {setUser}/>}/>
+          <Route path="/view" element = {<ViewPage user = {user}/>} />
           <Route path="/view-details/:id" element = {<SingleItem />} />
           <Route path="/*" element = {<NotFound  />} />
         </Routes> 
