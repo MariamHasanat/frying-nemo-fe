@@ -7,9 +7,11 @@
     display: block;
     margin-top: 10px;
 }
+
 .item-card a:hover {
     text-decoration: underline;
 }
+
 .item-card>.card-wrapper {
     border-radius: 10px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.276);

@@ -8,18 +8,18 @@ import './textarea.css';
  * @returns 
  */
 const Textarea = (props) => {
-  const { label, ...textareaProps } = props;
-  return (
-    <div className='textarea-group'>
-      {label ? (
-        <label>
-          <span>{label}</span>
-          {textareaProps.required && <span>&nbsp;*</span>}
-        </label>
-      ) : null}
-      <textarea {...textareaProps} />
-    </div>
-  );
+    const { label, ...textareaProps } = props;
+    return (
+        <div className='textarea-group'>
+            {label ? (
+                <label>
+                    <span>{label}</span>
+                    {textareaProps.required && <span>&nbsp;*</span>}
+                </label>
+            ) : null}
+            <textarea {...textareaProps} />
+        </div>
+    );
 };
 
 export default Textarea;

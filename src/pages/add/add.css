@@ -1,4 +1,4 @@
-.add-page > .main{
+.add-page>.main {
     display: flex;
     justify-content: center;
 }

@@ -21,11 +21,19 @@
 
 .header>span>a {
     text-decoration: none;
+    color: black;
     margin: 0 5px;
+    background-color: transparent;
 }
 
 .header>span>a.active {
-    color: #212529;
-    background-color: #dee5ec;
-    border-color: #dae0e5;
+    color: white;
+    background-color: #007bfd;
+    ;
+    border-color: #007bfd;
+    ;
+}
+
+.header>.userProfile>div {
+    margin-right: 20px;
 }

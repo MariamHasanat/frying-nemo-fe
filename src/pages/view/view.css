@@ -4,15 +4,15 @@
     text-align: center;
 }
 
-.view-page>.main{
+.view-page>.main {
     margin: 0 5%;
 }
 
-.view-page>.main>.item-card{
+.view-page>.main>.item-card {
     margin: 20px;
     display: inline-block;
 }
 
-.view-page>.input-group{
+.view-page>.input-group {
     margin-left: 80px;
 }

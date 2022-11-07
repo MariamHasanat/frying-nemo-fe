@@ -6,7 +6,7 @@ import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import '../../../common.css';
 import { useNavigate } from 'react-router-dom';
-import {CATEGORIES} from '../../../data/constants'
+import { CATEGORIES } from '../../../data/constants';
 const Form = (props) => {
     const [name, setName] = useState('');
     const [ingredients, setIngredients] = useState([]);

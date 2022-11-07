@@ -13,11 +13,11 @@ const subtractOne = (oldVal) => {
 
 const ItemCard = (props) => {
     const getImage = () => {
-        if (/http(s)?:\/\/picsum.photos\/\d+(\/\d+)?/.test(props.image)) { 
+        if (/http(s)?:\/\/picsum.photos\/\d+(\/\d+)?/.test(props.image)) {
             // console.log('image was found')
-            return props.image; 
+            return props.image;
         }
-        else{
+        else {
             // console.log('image was NOT found')
             return 'images/default.jpg';
         }
