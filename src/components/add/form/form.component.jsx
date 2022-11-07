@@ -25,6 +25,7 @@ const Form = (props) => {
     const imageUrl = e.target.image.value;
 
     const menuItem = {
+      id: Date.now(),
       name: name,
       price: price,
       description: description,

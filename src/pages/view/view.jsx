@@ -8,6 +8,7 @@ const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]')
 
 /**
  * @type {Array<{
+ * id: number;
  * name: string;
  * description: string;
  * ingredients: string[];
