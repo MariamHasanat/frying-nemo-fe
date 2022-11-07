@@ -21,7 +21,13 @@
   margin-right: 5px;
 }
 
-.webisteHeader .right nav {
+.webisteHeader .right  {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+
+}
+.websiteHeader .right nav {
   display: flex;
 }
 
@@ -47,9 +53,17 @@
   color: #FF731D;
 }
 
-a {
-  background-color: #FF731D;
-  color: #333;
+.websiteHeader .right .user-badge {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 12px;
   font-weight: bold;
+  color: #777777;
+}
 
+.websiteHeader .right .user-badge > img {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
 }

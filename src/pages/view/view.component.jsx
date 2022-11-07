@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Spinner from '../../components/core/spinner.component';
 import Item from '../../components/item/item.component';
@@ -29,7 +29,7 @@ const ViewPage = (props) => {
   // const [max, setMax] = useState("");
   const maxFromURL = params.get("max") || '';
   const minFromURL = params.get("min") || '';
-
+  const navigate = useNavigate();
 
   console.debug('searchTerms =', searchTermsFromURL);
   const getMenuItems = () => {
@@ -46,6 +46,12 @@ const ViewPage = (props) => {
   useEffect(() => {
     getMenuItems();
   }, []);
+  useEffect(()=>{
+    if (!props.user?.id) {
+      navigate('/login', { replace: false });
+    }
+
+  })
 
   const filteredItems = menuItems.filter(item => {
 

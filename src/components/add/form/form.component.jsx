@@ -112,6 +112,13 @@ const Form = (props) => {
       <div className="addFormButtons">
 
         <button className="nemo-button" type="submit">Create</button>
+        <button
+          className="nemo-button"
+          type="submit"
+          disabled={props.user?.role !== 'ADMIN'}
+        >
+          Create
+        </button>
 
       </div>
 
