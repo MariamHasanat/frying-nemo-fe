@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams,useNavigate } from 'react-router-dom';
 import Filter from '../core/filter-bar/Filter';
 import Spinner from '../core/spinner/Spinner';
 import Item from '../view/item/item.component';
@@ -23,6 +23,7 @@ const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [Params, setParams] = useSearchParams();
+  const navigate = useNavigate();
   const searchURL = Params.get('searchTerms') || "";
   const categoryParams = Params.getAll('category') || "";
   const MINParams = Params.get('Min') || "";
@@ -39,10 +40,14 @@ const ViewPage = (props) => {
     }, 1000);
 
   };
+ 
 
   useEffect(() => {
+    
     getMenuItems();
   }, []);
+
+
   const filteredMenu = menuItems.filter((item) => {
 
     /**

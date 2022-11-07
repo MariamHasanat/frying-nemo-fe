@@ -1,0 +1,44 @@
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+  }
+  
+  .login-page>form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 30px;
+    background-color: #0b120ce0;
+    border: 1px solid #ddd;
+    padding: 73px 189px;
+    box-shadow: 7px 8px 14px 0px #122f13f7;
+  }
+  
+  .login-page>form>h1 {
+    font-size: 28px;
+    color: #be441d;
+    line-height: 1.2;  
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+.login-page>{
+  width: 200px;
+  height: 27px;
+  border-radius: 30px;
+  padding: 3px;
+  padding-right: 5px;
+  padding-left: 5px;
+  color: rgb(228, 94, 94);
+}  
+.login-page>.login-button >.button{
+  width: 200px;
+  height: 200px;
+  border-radius: 30px;
+  padding: 3px;
+  padding-right: 5px;
+  padding-left: 5px;
+  background-color: rgb(24, 26, 23);
+}

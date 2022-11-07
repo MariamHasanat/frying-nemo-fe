@@ -25,3 +25,8 @@ button{
 .point{
   cursor: pointer;
 }
+button:disabled{
+
+display: none;
+  
+}

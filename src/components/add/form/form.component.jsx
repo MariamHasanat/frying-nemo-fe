@@ -29,7 +29,6 @@ const Form = (props) => {
     const menuItem = {
       id: Date.now(),
       name: name,
-      id:Date.now(),
       image,
       description: description,
       price: price,
@@ -107,7 +106,7 @@ const Form = (props) => {
 
         />
 
-        <button className='point' type='sumbit' >Create</button>
+        <button className='point' type='sumbit'    disabled={props.user?.role !== 'ADMIN'} >Create</button>
       </div>
     </form>
   );
