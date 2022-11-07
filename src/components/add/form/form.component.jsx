@@ -96,7 +96,11 @@ const Form = (props) => {
                     }}
                 />
                 <div className='sub'>
-                    <input type="submit" className='nemo-button' />
+                    <input
+                        type="submit"
+                        className='nemo-button'
+                        disabled={props.user?.role !== "ADMIN"}
+                    />
                 </div>
             </form>
         </div >

@@ -1,25 +1,15 @@
 .nemo-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    height: 30px;
-    width: 70px;
-    font-weight: 600;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: rgb(36, 130, 253);
-    border: none;
-    border-radius: 8px;
-    color: #fff;
+    appearance: none;
+    border: 1px solid #7d2e14;
+    background: #be441d;
+    color: white;
+    padding: 10px 15px;
+    border-bottom-width: 2px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 3px;
 }
 
-.nemo-button:hover {
-    cursor: pointer;
-}
-
-.nemo-button:active {
-    cursor: pointer;
-    color: rgb(36, 130, 253);
-    background-color: #fff;
-    border: 1px solid rgb(36, 130, 253);
+.nemo-button:disabled {
+    opacity: 0.5;
 }

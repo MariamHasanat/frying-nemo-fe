@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import FilterBar from "../../components/view/filter-bar/filter-bar.component";
 import Item from "../../components/view/item/item.component";
 import Spinner from "../../core/spinner/spinner";
@@ -17,22 +17,25 @@ import './view.css';
 */
 const initialItems = [];
 
-const View = () => {
+const View = (props) => {
     const [menuItems, setMeuItems] = useState(initialItems);
     const [loading, setLoading] = useState(true);
     const [params, setParam] = useSearchParams();
     const [min, setMin] = useState(null);
     const [max, setMax] = useState(null);
-    
+    const navigate = useNavigate();
+
 
     const searchParFromURL = params.get('searchTerms') || '';
     const categoriesFromURL = params.getAll('categories') || [];
 
     useEffect(() => {
+        if (props.user === null) {
+            navigate('/log-in', { replace: true });
+        }
         getMenuItems();
-    }, []);
+    }, [navigate, props.user]);
     /**
-     * 
      * @param {string} name 
      * @param {string | string[]} value 
      */
@@ -70,11 +73,11 @@ const View = () => {
             check(item.description) ||
             item.ingredients.some(ingredient => check(ingredient))
         );
-        if(categoriesFromURL.length > 0)
+        if (categoriesFromURL.length > 0)
             match &= (categoriesFromURL.includes(item.category));
-        if(min !== null && min !== '')
+        if (min !== null && min !== '')
             match &= (item.price >= min);
-        if(max !== null && max !== '') 
+        if (max !== null && max !== '')
             match &= (item.price <= max);
         return match;
     });
@@ -90,8 +93,8 @@ const View = () => {
                 setParam={setParam}
                 searchParFromURL={searchParFromURL}
                 categoriesFromURL={categoriesFromURL}
-                setMin = {setMin}
-                setMax = {setMax}
+                setMin={setMin}
+                setMax={setMax}
             />
             {
                 loading

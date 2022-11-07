@@ -99,3 +99,14 @@
     border-radius: 5px;
     border-bottom: 5px solid #be441d;
 }
+
+.header .left .welcome {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #db4530;
+    font-weight: 500;
+}

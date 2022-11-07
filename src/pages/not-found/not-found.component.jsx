@@ -1,9 +1,9 @@
 import './not-found.css';
-
+import notFound from '../../assets/404.svg'
 const NotFound = (props) => {
   return (
     <div className="not-found-page">
-      <img src="./images/404.svg" alt="404" />
+      <img src={notFound} alt="404" />
     </div>
   );
 };
