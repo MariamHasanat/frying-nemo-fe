@@ -1,6 +1,38 @@
 import"./login.css";
 import  Input  from "../../../common/input/input.component";
-const LoginPage=()=>{
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { loginUser } from "../../../data/user";
+
+
+const LoginPage=(props)=>{
+  
+  
+  const navigate=useNavigate();
+ 
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const email = e.target.email.value.trim();
+        const password = e.target.password.value.trim();
+        console.log(email);
+        console.log(password);
+        if (email && password) {
+          const user = loginUser(email,password);
+          if (user) {
+            props.setUser(user);
+            navigate('/view', { replace: true });
+          } else {
+            alert("Email or Password are not correct! Please try again.");
+          }
+        }
+      };
+ useEffect(() => {
+    // To check if the user is already logged in, send him to the view page
+    if (props.user?.id) {
+      navigate('/view', { replace: true });
+    }
+  }, []);
+
     return(
     
       <div>
@@ -12,9 +44,12 @@ const LoginPage=()=>{
         </div>
         <br></br>
         <div className="login">
-          <Input type="email" placeholder="example@example.com" /><br></br>
-          <Input type="password" placeholder="password" /><br></br>
-          <Input type="button" value="Login" />
+          <form onSubmit={handleLogin}>
+           <Input type="email" placeholder="example@example.com" name="email" /><br></br>
+          <Input type="password" placeholder="password"  name="password"/><br></br>
+          <input type="submit" value={"Login"} />
+          </form>
+          
         </div>
 
       </div>
