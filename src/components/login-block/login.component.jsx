@@ -15,11 +15,11 @@ const LoginBlock = (props) => {
                             <label className="input_label">Full name</label>
                         </div> */}
                         <div className="input">
-                            <input type="email" placeholder='Email' className="input_field" required="" />
+                            <input name="email" type="email" placeholder='Email' className="input_field" required="" />
                             {/* <label className="input_label">Email</label> */}
                         </div>
                         <div className="input">
-                            <input type="password" placeholder='Password' className="input_field" required="" />
+                            <input name="password" type="password" placeholder='Password' className="input_field" required="" />
                             {/* <label className="input_label">Password</label> */}
                             <span className="input_eye">
                                 <svg

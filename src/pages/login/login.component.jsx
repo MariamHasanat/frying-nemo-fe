@@ -1,16 +1,29 @@
 
 import LoginBlock from '../../components/login-block/login.component';
 import { checkUser } from '../../services/checkUser';
-import './login.css'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './login.css';
 
-const submitHandler = e => {
-    e.preventDefault();
-    console.log('welcome here!')
-}
 const Login = () => {
-    return(
-        <LoginBlock onSubmit={submitHandler}/>
-    )
-}
+    const navigate = useNavigate();
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        const userEmail = e.target.email.value.trim();
+        const userPassword = e.target.password.value.trim();
+
+        if (checkUser(userEmail, userPassword)) {
+            console.log('welcome here!');
+            navigate('/view');
+        }
+        else
+            alert('email/password combination is wrong, please try again or sign up');
+    };
+
+    return (
+        <LoginBlock onSubmit={submitHandler} />
+    );
+};
 
 export default Login;
