@@ -1,8 +1,10 @@
 import './menu-item.css';
+import { Link } from 'react-router-dom';
 
 /**
  * 
   * @param {{data:{
+  * id: number;
   * name:string;
   * image: string;
   * descriptions:string;
@@ -18,13 +20,12 @@ const Item = (props) => {
   return (
     <div className="item-card">
       <div className="img">
-      <img src={props.data.image} alt="food" />
+        <img src={props.data.image} alt="food" />
       </div>
       <div className="info">
-        <h2>{props.data.name}</h2>
+      <Link to={`/view-details/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients.join(', ')}</p>
-
       </div>
       <div className="price">
         <span>{props.data.price}$</span>

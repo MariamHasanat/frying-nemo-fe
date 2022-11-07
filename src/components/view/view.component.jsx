@@ -9,6 +9,7 @@ import FilterBar from '../filter-bar/filter-bar.component';
 
 /**
  * @type {Array<{
+ *  * id: number;
  * name: string;
  * description: string;
  * ingredients: string[];
@@ -31,6 +32,9 @@ const ViewPage = (props) => {
 
   const search = params.get('search') || '';
   const categoriesFromURL = params.getAll('category') || '';
+  const minPrice = params.get('Min') || '';
+  const maxPrice = params.get('Max') || '';
+
 
   console.log('search params = ', search);
 
@@ -66,6 +70,10 @@ const ViewPage = (props) => {
       match = match && (categoriesFromURL.includes(item.category));
     }
 
+    if (minPrice && maxPrice) {
+      match = match && (item.price >= minPrice && item.price <= maxPrice);
+    }
+
 
     return match;
   });
@@ -97,6 +105,8 @@ const ViewPage = (props) => {
         searchTerms={search}
         categories={categoriesFromURL}
         setParam={setParam}
+        minPrice={minPrice}
+        maxPrice={maxPrice}
       />
       <br />
 

@@ -4,6 +4,7 @@ import AddPage from "./components/pages/add/add.component";
 import ViewPage from "./components/view/view.component";
 import Header from "./components/header/header";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import ViewItemPage from "./view-item/view-item.component";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/add" element={<AddPage />} />
           <Route path="/view" element={<ViewPage />} />
           <Route path="/*" element={<NotFoundPage />} />
+          <Route path="/view-details/:id" element={<ViewItemPage/>} />
         </Routes>
 
       </BrowserRouter>
