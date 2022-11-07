@@ -1,6 +1,6 @@
 import Input from '../common/input/input.component';
 import './login.css';
-const LoginBlock = () => {
+const LoginBlock = (props) => {
     return (
         <div className='login-page'>
             <h1>Welcome back</h1>
@@ -8,14 +8,14 @@ const LoginBlock = () => {
                 <div className="card">
                     <h1 className="card_title">Login to your account</h1>
                     {/* <p className="card_title-info">Pen By Anna Batura</p> */}
-                    <br/>
-                    <form className="card_form">
+                    <br />
+                    <form className="card_form" onSubmit={e => props.onSubmit(e)}>
                         {/* <div className="input">
                             <input type="text" className="input_field" required="" />
                             <label className="input_label">Full name</label>
                         </div> */}
                         <div className="input">
-                            <input type="text" placeholder='Email' className="input_field" required="" />
+                            <input type="email" placeholder='Email' className="input_field" required="" />
                             {/* <label className="input_label">Email</label> */}
                         </div>
                         <div className="input">
