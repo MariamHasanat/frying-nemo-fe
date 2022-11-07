@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
  * @param {{
  *     data:{
  *     name: string;
- * id:number;
+ *     id: number;
  *     image: string;
  *     Description: string;
  *     Price: number;

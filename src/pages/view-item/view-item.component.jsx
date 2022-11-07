@@ -7,7 +7,7 @@ import Spinner from '../../components/core/spinner.component';
 
 /**
  * @type {Array<{
- * id:number;
+ * id: number;
  * name: string;
  * description: string;
  * ingredients: string[];
@@ -21,20 +21,20 @@ const ViewItemPage = () => {
   const params = useParams();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
-  const navigate =useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
     const item = getItem(params.id);
-    if(item===null){
-navigate("/404",{replace :true})
+    if (item === null) {
+      navigate("/404", { replace: true });
     }
 
-      setCurrentItem(item);
-      setLoading(false);
-  }, [params.id]);
+    setCurrentItem(item);
+    setLoading(false);
+  }, []);
   //ممكن تنشال
-  
+
 
 
   return (

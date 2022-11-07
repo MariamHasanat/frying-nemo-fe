@@ -26,7 +26,7 @@ const Form = (props) => {
     const category = e.target.category.value;
 
     const menuItem = {
-      id:Date.now(),
+      id: Date.now(),
       name,
       Description,
       image,
