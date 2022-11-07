@@ -1,22 +1,18 @@
 import { Link, useLocation } from 'react-router-dom';
 import './header.css';
-
-/**
- * 
- * @param {{
- * onNavigate:(page)=>void;
- * currentPage: string
- * }} props 
- * @returns 
- */
-const Header = () => {
+import logo from '../../../assets/images/image.png'
+const Header = (props) => {
   const location = useLocation();
   return (
-    <div className='header'>
+    <div className={location.pathname === '/login' ? 'hidden' : 'header'}>
       <div>
-        <img src="images/logo.svg" alt="logo" width={60} />
+        <img src={logo} alt="logo" width={60} />
         <span id='app-title'>Frying Nemo</span>
       </div>
+      {
+        props.user !== null &&
+        <span>Welcome, {props.user.fullName} !</span>
+      }
 
       <div className='header-navigation-buttons'>
         <nav>

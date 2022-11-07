@@ -1,0 +1,65 @@
+body {
+  background-color: #F0F2F5;
+}
+
+.login-page {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.frying-nemo-title{
+  color: #be441d;
+  font-size: xxx-large;
+  margin: 0;
+}
+.side-image{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.login-page>form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 30px;
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 1em;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.login-page>form>h1 {
+  font-size: 28px;
+  color: #be441d;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.caption{
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.nemo-button:hover {
+  cursor: pointer;
+  background-color: rgba(190, 69, 29, 0.922)
+}
+
+.nemo-button:active {
+  background-color: #be441d;
+}
+
+.nemo-button {
+  width: 100%;
+  padding: 10px 50px;
+  background-color: #be441d;
+  border: none;
+  color: whitesmoke;
+  border-radius: 6px;
+}

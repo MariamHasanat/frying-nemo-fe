@@ -1,4 +1,6 @@
-
+.hidden{
+  display: none;
+}
 .header {
   padding: 16px;
   height: 2rem;

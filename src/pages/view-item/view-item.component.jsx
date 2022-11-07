@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { getItem } from '../../services/items';
 import './view-item.component.css';
-import { Navigate } from 'react-router-dom';
 const ViewItem = (props) => {
   const params = useParams();
 
+  const navigate = useNavigate();
   //   /**
   //  * @type {Array<{
   //  * id: number;
@@ -26,20 +26,30 @@ const ViewItem = (props) => {
     setLoading(true);
 
     const item = getItem(params.id);
-    if (params.id) {
-      setCurrentItem(item);
-      setLoading(false);
-
+    if (item == null) {
+      navigate('/404', { replace: true });
     }
-  }, [params.id]);
+
+    setCurrentItem(item);
+    setLoading(false);
+
+
+  }, []);
 
 
   return (
     <div className="view-item-page">
-      <h1>{currentItem.name}</h1>
-      {
-        !loading ?
-          <img className='item-image' src={currentItem.image} /> : <span>error</span>
+      {loading
+        ? <span>error</span>
+        : <div>
+          <h1>{currentItem.name}</h1>
+          <img className='item-image' src={currentItem.image} alt='item' />
+          <p>{currentItem.description}</p>
+          <p>{currentItem.ingredients.join(', ')}</p>
+          <h3>{currentItem.price} $</h3>
+
+        </div>
+
       }
     </div>
   );

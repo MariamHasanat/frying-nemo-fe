@@ -4,18 +4,23 @@ import '../src/pages/add/add.component';
 import AddPage from "../src/pages/add/add.component";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import ViewItem from "./pages/view-item/view-item.component";
+import LoginComponent from "./pages/login/login.component";
+import { useState } from "react";
+import Test from "./pages/test/test.component";
 function App() {
 
-
+  const [user, setUser] = useState(null);
   return (
     <div>
       <BrowserRouter>
-        <Header />
+        <Header user={user} />
         <Routes>
-          <Route path="/add" element={<AddPage />} />
-          <Route path="/view" element={<View />} />
+          <Route path="/" element={<Navigate to='/view' replace />} />
+          <Route path="/login" element={<LoginComponent user={user} setUser={setUser} />} />
+          <Route path="/add" element={<AddPage user={user} />} />
+          <Route path="/view" element={<View user={user} />} />
           <Route path="/view/:id" element={<ViewItem />} />
-          <Route path="/*" element={<Navigate to="/add" />} />
+          <Route path="/404" element={<Test />} />
         </Routes>
       </BrowserRouter>
 

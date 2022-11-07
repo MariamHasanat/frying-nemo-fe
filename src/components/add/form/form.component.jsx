@@ -59,7 +59,12 @@ const Form = (props) => {
 
       <div>
         <div style={{ textAlign: 'right' }}>
-          <button type='submit'>Add Item</button>
+          <button
+            type='submit'
+            disabled={props.user?.role !== 'ADMIN'}
+          >
+            Add Item
+          </button>
         </div>
 
         <Input
