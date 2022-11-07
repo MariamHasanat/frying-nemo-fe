@@ -3,9 +3,9 @@ import './header.css';
 
 import { Link, useLocation } from 'react-router-dom';
 
-const Head = () => {
-  const location = useLocation();  
-  
+const Head = (props) => {
+  const location = useLocation();
+
   return (
     <header className="websiteHeader">
       <div className="left">
@@ -23,6 +23,8 @@ const Head = () => {
             View
           </Link>
         </nav>
+        {props.user &&
+          <span>{props.user.fullName}</span>}
       </div>
     </header>
   );

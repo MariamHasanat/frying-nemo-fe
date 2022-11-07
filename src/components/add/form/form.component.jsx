@@ -130,7 +130,10 @@ const Form = (props) => {
       />
 
       <div className='btn'>
-        <button type='submit' className="nemo-button" >create</button>
+        <button type='submit'
+         className="nemo-button" 
+         disabled={props.user?.role==='ADMIN'}
+        >create</button>
       </div>
     </form>
   );

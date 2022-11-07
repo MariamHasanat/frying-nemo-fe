@@ -29,7 +29,7 @@ const AddPage = (props) => {
       <h1>Add a new item</h1>
       {/* <Form onNavigate={props.onNavigate} /> */}
 
-      <Form onNavigate={props.onNavigate} />
+      <Form onNavigate={props.onNavigate} user={props.user} />
 
     </div>
   );

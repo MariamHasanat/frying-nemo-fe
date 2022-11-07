@@ -3,9 +3,10 @@ import './view.css';
 import React, { useState } from 'react';
 // import Input from '../../components/common/input/input';
 import './view.css';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams ,useNavigate} from 'react-router-dom';
 import { FilterBar } from './filter-bar/filter-bar';
 import { CATEGORIES } from '../../data/data';
+import { useEffect } from 'react';
 
 /**
    * @type {Array<
@@ -23,6 +24,7 @@ const ViewPage = (props) => {
   const initial = [];
   const GetmenuItems = () => JSON.parse(localStorage.menuitems || '[]');
   const [menuitems, setMenuItems] = useState(GetmenuItems());
+  const navigate = useNavigate();
 
 
   //instance of class 
@@ -51,7 +53,12 @@ const ViewPage = (props) => {
   //   setSearch(value);
   // };
 
+useEffect(()=>{
+  if (!props.user?.id) {
+    navigate('/login', { replace: false });
+  }
 
+},[])
   const filterItems = menuitems.filter(item => {
 
     /**
