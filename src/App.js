@@ -9,13 +9,13 @@ import './index.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
-    const [userName, setuserName] = useState(null);
+    const [userName, setUserName] = useState(null);
     return (
         <div>
             <BrowserRouter>
                 <Header userName={userName} />
                 <Routes>
-                    <Route path="/login" element={<Login userName={userName} setuserName={setuserName} />} replace />
+                    <Route path="/login" element={<Login userName={userName} setUserName={setUserName} />} replace />
                     <Route path="/" element={<Navigate to='/view' />} replace />
                     <Route path="/add" element={<AddPage />} />
                     <Route path="/view" element={<ViewPage />} />
@@ -23,7 +23,6 @@ function App() {
                     <Route path="/view/:id" element={<ViewItemPage />} />
                 </Routes>
             </BrowserRouter>
-
         </div>
     );
 };

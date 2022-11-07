@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
 
-const Login = () => {
+const Login = (props) => {
     const navigate = useNavigate();
 
     const submitHandler = (e) => {
@@ -13,8 +13,10 @@ const Login = () => {
         const userEmail = e.target.email.value.trim();
         const userPassword = e.target.password.value.trim();
 
-        if (checkUser(userEmail, userPassword)) {
+        const user = checkUser(userEmail, userPassword)
+        if (user) {
             console.log('welcome here!');
+            props.setUserName(user.fullName);
             navigate('/view');
         }
         else

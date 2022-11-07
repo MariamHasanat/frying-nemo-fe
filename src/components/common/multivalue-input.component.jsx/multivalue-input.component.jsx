@@ -5,7 +5,7 @@ import './multivalue-input.css';
 /**
  * 
  * @param {{
- * lable?: string
+ * label?: string
  * value: string[]
  * onChange (value: string) => void
  * }} props 
