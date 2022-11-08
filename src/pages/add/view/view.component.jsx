@@ -4,7 +4,7 @@ import { useState } from 'react';
 import FilterBar from '../../../components/view/item/item/filter-bar/filter-bar.component';
 import { useEffect } from 'react';
 import Spinner from '../../../components/core/header/spinner/spinner.component';
-import { useSearchParams } from 'react-router-dom';
+import { Navigate, useSearchParams } from 'react-router-dom';
 
 
 
@@ -41,6 +41,9 @@ const ViewPage = (props) => {
   };
 
   useEffect(() => {
+    if (!props.user?.id){
+      Navigate('/login', {replace: false});
+    }
     getMenuItems();
   }, []);
 
