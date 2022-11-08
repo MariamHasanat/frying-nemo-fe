@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import Input from '../../components/common/input/input.component';
 import { loginUser } from '../../services/users';
 import './login.css';
-
+const userContext = userContext(userContext);
 const LoginPage=(props)=>{
   const navigate =useNavigate();
   useEffect(()=>{
-    if(props.user?.id){
+    if(userContext?.id){
       navigate('/view',{replace:true});
     }
   },[]

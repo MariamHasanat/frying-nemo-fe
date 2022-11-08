@@ -8,7 +8,7 @@ import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import { CATEGORIES } from '../../../data/constant';
 
-
+const userContext = userContext(userContext);
 const Form = (props) => {
   const [name, setName] = useState('yara');
   const [Ingredients, setIngredients] = useState([]);
@@ -113,7 +113,7 @@ const Form = (props) => {
         <button
           className="nemo-button"
           type="submit"
-          disabled={props.user?.role !== 'ADMIN'}
+          disabled={userContext?.role !== 'ADMIN'}
         >
           Create
         </button>
