@@ -7,8 +7,8 @@ import { USERS } from '../data/users';
  * @returns 
  */
 const checkUser = (email, password) => {
-    const user = USERS.filter(user => user.email === email && user.password === password);
-    return user[0] || null;
+    const user = USERS.find(user => user.email === email && user.password === password);
+    return user || null;
 };
 
 export { checkUser };

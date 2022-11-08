@@ -16,7 +16,7 @@ const Login = (props) => {
         const user = checkUser(userEmail, userPassword)
         if (user) {
             console.log('welcome here!');
-            props.setUserName(user.fullName);
+            props.setUser(user);
             navigate('/view');
         }
         else

@@ -15,10 +15,10 @@ const Header = (props) => {
                     <NavLink to="/view" className={(location.pathname === '/view' || location.pathname === '/view/') ? 'active nemo-button' : 'nemo-button'}>view</NavLink>
                 </span>
                 <span className='userProfile'>
-                    {/* <div>{(<img src={profilePic}/> &&  props.userName) || <Link className='nemo-button' to='/login'>login</Link>}</div> */}
+                    {/* <div>{(<img src={profilePic}/> &&  props.user.fullName) || <Link className='nemo-button' to='/login'>login</Link>}</div> */}
                     <div>{
-                        props.userName
-                            ? props.userName
+                        props.user?.fullName
+                            ? props.user.fullName
                             : <Link className='nemo-button' to='/login'>login</Link>}</div>
                 </span>
             </div>
