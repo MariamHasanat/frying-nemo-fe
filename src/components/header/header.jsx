@@ -23,15 +23,15 @@ const Handel = (props) => {
           props.user &&
           <span className="user-badge">
             <img src={props.user.imageUrl} alt="user logo" width={30} height={30} />
-            {props.user.fullName} <button  
-            onClick={()=>{
-              props.setUser=null;
-                navigate='/login';
-            }}
+            {props.user.fullName} <button
+              onClick={() => {
+                props.setUser(null);
+                navigate ('/login') ;
+              }}
             > Logout
             </button>
-          </span> 
-          
+          </span>
+
         }
 
 

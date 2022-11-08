@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../../App';
 import Input from '../../common/input/input';
 import Multiinput from '../../common/maltiinput-value/multiinput';
 import Select from '../../common/select/select';
@@ -11,13 +13,14 @@ const Form = (props) => {
   const [ingredients, setIngredients] = useState([]);
   const [name, setname] = useState('Sajeda');
   const navigate = useNavigate();
+   const userContext = useContext(UserContext)
   /**
    * 
    * @param {React.FormEvent<HTMLFormElement>} e 
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-
+   
     const image = e.target.image.value;
     const price = Number(e.target.price.value);
     const description = e.target.description.value;
@@ -101,7 +104,7 @@ const Form = (props) => {
       <button
       type="submit"
       className="nemo" 
-      disabled={props.user?.role !== 'ADMIN'}
+      disabled={userContext.user?.role !== 'ADMIN'}
       >Create</button>
     </form>
   );

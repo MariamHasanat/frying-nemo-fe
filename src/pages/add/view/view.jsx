@@ -7,6 +7,8 @@ import Spinner from '../../../components/spinner/spinner';
 import './view.css';
 import Select from '../../../components/common/select/select';
 import FilterBar from '../../../components/filter-bar/filter-bar';
+import { useContext } from 'react';
+import { UserContext } from '../../../App';
 /**
  * @type {Array<{
  * name: string;
@@ -21,6 +23,7 @@ const initialItems = [];
 const View = (props) => {
   const [menuItem, setMenuItem] = useState(initialItems);
   const [loading, setLoading] = useState(true);
+  const userContext = useContext(UserContext)
   // const [Search, SetSearch] = useState('');
   const [param, SetParam] = useSearchParams();
   const searchFromUrl = param.get('search') || '';
@@ -35,7 +38,7 @@ const View = (props) => {
 
   // }
  useEffect(()=>{
-  if(!props.user?.id){
+  if(!userContext.user?.id){
     navigate ('/login');
   }
  },[])
