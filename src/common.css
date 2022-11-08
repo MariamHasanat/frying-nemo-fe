@@ -11,5 +11,6 @@
 }
 
 .nemo-button:disabled {
-  opacity: 0.5;
+  background: #a66b57;
+  cursor: not-allowed;
 }
