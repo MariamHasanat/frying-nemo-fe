@@ -1,10 +1,11 @@
 import React from 'react';
 import './header.css';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const Header = () => {
+const Header = (props) => {
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <header className="webisteHeader">
@@ -29,6 +30,22 @@ const Header = () => {
           </Link>
 
         </nav>
+        {
+          props.user &&
+          <span className="user-badge">
+            <img src={props.user.imageUrl} alt="user logo" width={30} height={30} />
+            {props.user.fullName}
+            <button
+              onClick={() => {
+                props.setUser(null);
+                navigate('/login');
+              }}
+            >
+              Logout
+            </button>
+          </span>
+        }
+
       </div>
     </header>
   );

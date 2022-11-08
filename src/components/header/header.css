@@ -75,3 +75,9 @@
   border-radius: 5px;
   color: white;
 }
+
+.websiteHeader .right .user-badge > button:hover,
+.websiteHeader .right .user-badge > button:active,
+.websiteHeader .right .user-badge > button:focus {
+  color: #666;
+}
