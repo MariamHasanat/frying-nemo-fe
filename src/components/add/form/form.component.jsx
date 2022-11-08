@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './form.css';
 import Input from '../common/input/input.component';
 import Button from '../common/button/button.component';
@@ -8,9 +8,10 @@ import MultivalueInput from '../common/multivalue-input/multivalue-input.compone
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/constants';
 import { getRandom } from '../../../services/utilities';
+import { UserContext } from '../../../App';
 
-const Form = (props) => {
-
+const Form = () => {
+  const {user} = useContext(UserContext)
   const navigate = useNavigate();
 
   const [name, setName] = useState(``)
@@ -77,7 +78,7 @@ const Form = (props) => {
         <Input name="image" label="Image" type="text" required></Input>
         <Select name='category' items={CATEGORIES} required></Select>
         <MultivalueInput onChange={updateIngs} name='ingredients' label='Ingredients'/>
-        <Button name="SUBMIT" type="submit"></Button>
+        <Button disabled={user.role !== 'ADMIN'} name="SUBMIT" type="submit"></Button>
       </div>
     </form>
   );

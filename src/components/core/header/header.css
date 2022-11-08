@@ -32,6 +32,21 @@
   font-weight: 700;
 }
 
+.page-header .btns .user-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 10px;
+}
+
+.page-header .btns .user-info img {
+  width: 30px;
+  height: 30px;
+  border-radius: 1000px;
+  border: 1px solid black;
+  margin-right: 10px;
+}
+
 
 .page-header .btns a {
   text-decoration: none;
@@ -40,14 +55,20 @@
   font-weight: 600;
   outline: none;
   border: none;
-  min-width: 4.7rem;
-  height: 2.4rem;
+  width: fit-content;
+  height: fit-content;
   margin: 0px 5px;
-  padding: 7px 20px;
+  padding: 8px 20px;
   border-radius: .4rem;
   cursor: pointer;
   transition: .2s all;
   color: black;
+}
+
+.page-header .btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .page-header .btns .logout {
