@@ -1,26 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import {useNavigate, useSearchParams } from 'react-router-dom';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import Spinner from '../../components/core/spinner/spinner.component';
 import Item from '../../components/view/item/item.component';
 import './view.css';
 
-/**
- * @type {Array<{
- * name: string;
- * description: string;
- * ingredients: string[];
- * price: number;
- * category: string;
- * image: string;
- * }>}
- */
+
 const initialItems = [];
 
 const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
+  const navigate = useNavigate();
   const searchTermsFromURL = params.get('searchTerms') || '';
   const categoriesFromURL = params.getAll('category') || '';
 
@@ -36,14 +28,18 @@ const ViewPage = (props) => {
   };
 
   useEffect(() => {
+    // To check if the user is already logged in, send him to the view page
+    if (!props.user?.id) {
+      navigate('/login', { replace: false });
+    }
+  }, []);
+
+  useEffect(() => {
     getMenuItems();
   }, []);
 
   const filteredItems = menuItems.filter(item => {
-    /**
-     * Check if search terms are somewhere inside given string.
-     * @param {string} str 
-     */
+
     const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
 
     let match = (
@@ -59,11 +55,7 @@ const ViewPage = (props) => {
     return match;
   });
 
-  /**
-   * Set query string parameter.
-   * @param {string} name Parameter name.
-   * @param {string | string[]} value Parameter value.
-   */
+
   const setParam = (name, value) => {
     const newParams = new URLSearchParams(params);
 

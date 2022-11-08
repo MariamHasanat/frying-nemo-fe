@@ -2,14 +2,6 @@ import { useState } from 'react';
 import Input from '../input/input.component';
 import './multivalue-input.css';
 
-/**
- * Renders an input component and a list of values.
- * @param {{
- *  label?: string;
- *  value: string[];
- *  onChange: (value: string[]) => void;
- * }} props 
- */
 const MultivalueInput = props => {
   const [newItemValue, setNewItemValue] = useState('');
 
