@@ -69,3 +69,6 @@ label{
   font-size: 13px;
   cursor: pointer;
 }
+.nemo-button:disabled{
+  background-color: #94b0db;
+  cursor: not-allowed;}

@@ -10,8 +10,8 @@ import { useState } from "react";
 function App() {
   const initialUser =JSON.parse(sessionStorage.getItem('user'));
   const [user, setUser] = useState(initialUser);
-  const setUserOverride =user=>{
-    setUser=(user);
+  const setUserOverride = user =>{
+    setUser(user);
     sessionStorage.setItem('user',JSON.stringify(user));
   }
   return (
