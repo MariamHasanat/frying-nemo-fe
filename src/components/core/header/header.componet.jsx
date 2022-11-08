@@ -12,7 +12,7 @@ const Header = (props) => {
       </div>
       <div className="right">
         <nav>
-          <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
+          <Link to="/add" className= 'button'>
             Add
           </Link>
           <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>

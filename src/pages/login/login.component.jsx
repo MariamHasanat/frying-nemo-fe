@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../components/common/input/input.component';
-import { loginUser } from '../../services/users';
+import { loginUser } from '../../services/user';
+import './login.css'
 
 const LoginPage = (props) => {
   const navigate = useNavigate();
@@ -29,16 +30,16 @@ const LoginPage = (props) => {
   };
 
   return (
-    <div className="login-page">
+    <div className='container'>
       <form onSubmit={handleLogin}>
         <h1>Welcome Back</h1>
-        <Input
+        <Input className='inputs'
           label="Email"
           name="email"
           type="email"
-          placeholder="ahmad@example.com"
+          placeholder="yasmin@example.com"
         />
-        <Input
+        <Input className='inputs'
           label="Password"
           name="password"
           type="password"

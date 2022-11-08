@@ -1,4 +1,4 @@
-import { USERS } from '../data/tmp_data';
+import { USERS } from '../data/tmp-data';
 
 const loginUser = (email, password) => {
   const user = USERS.filter(user => 
@@ -10,3 +10,4 @@ const loginUser = (email, password) => {
 export {
   loginUser
 };
+
