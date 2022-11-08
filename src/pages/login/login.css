@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 188px;
 }
 
 .login-page>form {
@@ -11,15 +11,20 @@
   justify-content: center;
   align-items: center;
   row-gap: 30px;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background: rgb(0 0 0 / 24%);
+  border: 1px solid #f15a29;
   padding: 60px 40px;
 }
 
 .login-page>form>h1 {
   font-size: 28px;
-  color: #be441d;
+  color: #fff;
   line-height: 1.2;  
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+/* .login-page>form>button {
+  font-size: 28px;
+  background-color: #be441d;
+
+} */
