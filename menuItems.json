@@ -1,0 +1,91 @@
+[
+  {
+    "id":"1",
+    "name": "Maqluba ",
+    "image": "https://static01.nyt.com/images/2017/01/08/magazine/08eat/08eat-articleLarge-v2.jpg",
+    "description": "A Palestinian tradition, maqluba means “upside down” in Arabic and is a pot of stewed meat, rice and fried vegetables, cooked and flipped onto a serving dish to form an impressive tower.",
+    "price": "20",
+    "category": "Main Dish",
+    "ingredients": [
+      "chicken",
+      "rice",
+      "vegetables"
+    ]
+  },
+  {
+    "id":"2",
+    "name": "Fattoush",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/93/Fattoush_mixed-salad.jpg",
+    "description": "is an authentic Lebanese salad, featuring a combination of sweet and tangy flavors, a bright, minty dressing, and crunchy textures of fresh veggies, and crisp pita chips.",
+    "price": "5",
+    "category": "Salads",
+    "ingredients": [
+      "lettuce",
+      "cucumber",
+      "tomatoes",
+      "green onions",
+      "sliced radish",
+      "parsley",
+      "lime juice"
+    ]
+  },
+  {
+    "id":"3",
+    "name": "Falafel ",
+    "image": "https://downshiftology.com/wp-content/uploads/2019/07/Falafel-7-500x500.jpg",
+    "description": "a staple Middle Eastern dish—and a popular street food around the world",
+    "price": "10",
+    "category": "Sandwiches",
+    "ingredients": [
+      "fava beans",
+      "herbs",
+      "spices"
+    ]
+  },
+  {
+    "id":"4",
+    "name": "Knafeh",
+    "image": "https://alkaramahdough.com/wp-content/uploads/2019/09/grounded-kunafa5.png",
+    "description": "is a sugar-soaked pastry that is common in a number of Arabic countries",
+    "price": "15",
+    "category": "Sweet",
+    "ingredients": [
+      "milk",
+      "cheese",
+      "cream",
+      "Pistachio",
+      "Kataifi"
+    ]
+  },
+  {
+    "id":"5",
+    "name": "Salmon ",
+    "image": "https://healthyfitnessmeals.com/wp-content/uploads/2018/04/honey-garlic-salmon-3.jpg",
+    "description": "Salmon is a mild-flavored fish with a rich and slightly oily taste to it",
+    "price": "16",
+    "category": "Fish",
+    "ingredients": [
+      "Brown sugar.",
+      "Lemon zest",
+      "Parsley leaves",
+      "Minced garlic",
+      "Salt",
+      "Freshly cracked pepper"
+    ]
+  },
+  {
+    "id":"6",
+    "name": "Margarita",
+    "image": "https://i3.wp.com/whatagirleats.com/wp-content/uploads/2012/07/IMG_3535-600x454.jpg",
+    "description": "The drink is served shaken with ice, blended with ice, or without ice",
+    "price": "6",
+    "category": "Drinks",
+    "ingredients": [
+      "lime juice",
+      "sugar",
+      "salt",
+      "Cointreau",
+      "citric acid"
+    ]
+  }
+]

@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import "./header.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { UserContext } from "../../../App";
 
 const Header = (props) => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const userContext = useContext(UserContext);
 
   return (
     <div className="main-class">
@@ -25,15 +29,20 @@ const Header = (props) => {
             View
           </Link>
         </nav>
-        {props.user && (
+        {userContext.user && (
           <span className="user-badge">
-            <img
+            {/* <img
               src={props.user.imageUrl}
               alt="user logo"
               width={30}
               height={30}
-            />
-            {props.user.fullName}
+            /> */}
+            <span className="user-name">{userContext.user.fullName}</span>
+            <button className="logout" onClick={() => {
+              userContext.setUser(null);
+              navigate('/login');
+            }
+            }>Logout</button>
           </span>
         )}
       </div>

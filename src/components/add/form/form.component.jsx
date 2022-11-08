@@ -6,6 +6,8 @@ import MultiValuInput from "../../common/multivalue-input/input-component";
 import "./form.css";
 // import { CATEGORIES } from "../../../data/categories";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../../App";
 
 const categories = [
   "Fish",
@@ -22,6 +24,7 @@ const Form = (props) => {
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
+  const userContext = useContext(UserContext);
 
   /**
    *
@@ -95,7 +98,7 @@ const Form = (props) => {
         <button
           type="submit"
           className="create"
-          disabled={props.user?.role !== "ADMIN"}
+          disabled={userContext.user?.role !== "ADMIN"}
         >
           Create
         </button>

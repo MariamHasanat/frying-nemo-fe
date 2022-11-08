@@ -1,11 +1,16 @@
 import "./add.css";
 import Form from "../../components/add/form/form.component";
-import { useState } from "react";
+import { useState ,useContext} from "react";
 import { useEffect} from "react";
+import { UserContext } from "../../App";
+
 
 
 const AddPage = (props) => {
   const [time, setTime] = useState(new Date());
+  const userContext = useContext(UserContext);
+
+  
 
   // useEffet will be called on function deadmount
   useEffect(() => {
@@ -25,7 +30,7 @@ const AddPage = (props) => {
   return (
     <div className="add-page">
       <span className="clock">&#x1F562; {time.toLocaleTimeString()}</span>
-      <Form onNavigate={props.onNavigate} user={props.user}/>
+      <Form onNavigate={props.onNavigate} user={userContext.user}/>
     </div>
   );
 };

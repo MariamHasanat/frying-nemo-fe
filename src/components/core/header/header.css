@@ -10,7 +10,7 @@
 }
 .main-class .right{
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-end;
   margin-right: 20px;
 }
@@ -28,4 +28,16 @@
 .main-class .right a:focus{
   background-color: brown;
   color: #fff;
+}
+.user-badge{
+  display: flex;
+  gap:20px;
+}
+.user-badge .user-name{
+  border: 1px solid #b70f0f;
+  background-color: #eee;
+  padding: 10px;
+}
+.user-badge .logout:focus{
+  cursor: pointer;
 }

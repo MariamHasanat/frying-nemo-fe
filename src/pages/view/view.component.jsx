@@ -1,7 +1,8 @@
 import "./view.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import FilterBar from "../../components/view/filter-bar/filter-bar.component";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams, Link } from "react-router-dom";
+import { UserContext } from "../../App";
 
 /**
  * @type {Array<{
@@ -20,6 +21,8 @@ const ViewPage = (props) => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
+  const userContext = useContext(UserContext);
+
 
   const searchTerms = params.get("searchTerms") || "";
   const categoryFromURL = params.getAll("categoryFromURL") || "";
@@ -39,6 +42,9 @@ const ViewPage = (props) => {
   // When the page rendered for the first time
   // if the array is empty will not be executed again
   useEffect(() => {
+    if (!userContext.user?.id) {
+      navigate('/login', { replace: false });
+    }
     getMenuItems();
   }, []);
 
@@ -121,7 +127,7 @@ const ViewPage = (props) => {
                   <img src={item.image} alt="food" height={400} />
                 </div>
                 <div>
-                  <span>Name :</span> {item.name}
+                  <Link to={`/view-details/${item.id}`} ><h2>{item.name}</h2></Link>
                 </div>
                 <div className="desc">
                   <span>Description :</span> {item.description}
