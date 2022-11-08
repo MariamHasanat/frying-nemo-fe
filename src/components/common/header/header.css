@@ -1,6 +1,7 @@
-.hidden{
+.hidden {
   display: none;
 }
+
 .header {
   padding: 16px;
   height: 2rem;
@@ -10,7 +11,7 @@
   align-content: flex-start;
 }
 
-.header>div {
+.header>.logo {
   display: flex;
   justify-content: space-between;
   width: 12rem;
@@ -46,7 +47,47 @@ a {
 
 .header-navigation-buttons>nav>.current-page {
   box-sizing: border-box;
-  /* border-bottom: 1px solid orangered; */
-  border-radius: 3px;
+  border-bottom: 2px solid orangered;
+  /* border-radius: 3px; */
   color: orangered;
+  font-weight: bold;
+
+}
+
+.user-profile>img {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 15em;
+}
+
+.logout {
+  width: 8em;
+  padding: 0.7em 1em;
+  border: none;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 5px;
+}
+
+.logout:hover {
+  cursor: pointer;
+  background-color: #ea4f5e;
+}
+
+.logout-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logout-button img {
+  width: 20px;
 }

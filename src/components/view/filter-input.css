@@ -6,12 +6,14 @@
   justify-content: space-between;
 }
 
-.item-input {
+.item-input>input {
   margin: 0;
 }
 
 .categories {
   display: flex;
+  flex-grow: 1;
+  justify-content: space-evenly;
 }
 
 .price-filter {
