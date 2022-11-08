@@ -2,7 +2,7 @@ import Item from './item/item.jsx';
 import './viewContainerStyle.css';
 import Spinner from '../../components/spinner/spinner.jsx';
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Filter from './filter-bar/filter.bar.component.jsx';
 
 const initialItems = [];
@@ -19,12 +19,13 @@ const ViewPage = (props) => {
    * image: string;
    * }>}
    */
-
+  
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
   const searchParams = params.get('q') || '';
   const categoriesFromURL = params.get('category') || '';
+  const navigate = useNavigate();
 
   const getMenuItems = () => {
     setLoading(true);
@@ -38,6 +39,10 @@ const ViewPage = (props) => {
   };
 
   useEffect(() => {
+    if (!props.user) {
+      navigate('/login');
+    }
+
     getMenuItems();
   }, []);
 
