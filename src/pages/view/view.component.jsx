@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import './view.css';
 import Item from '../../components/view/item/item.component';
 import Spinner from '../../components/spinner/spinner.component';
-import FilterBar from '../../components/filter-bar/filter-bar.component';
+import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 
 
 
