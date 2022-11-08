@@ -20,7 +20,7 @@ const AddPage = (props) => {
             <h3 className='clock'>time now: {time.toLocaleTimeString()}</h3>
             <h1>Add a new item</h1>
             <div className="main">
-                <Form setCurrentPage={props.setCurrentPage} />
+                <Form />
             </div>
         </div >
 

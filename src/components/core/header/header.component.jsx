@@ -2,9 +2,12 @@ import './header.css';
 import nemo from '../../../images/nemo.png';
 // import profilePic from '../../../images/profile.png';
 import { Link, useNavigate, useLocation, NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../../../App';
 const Header = (props) => {
     const navigate = useNavigate();
     const location = useLocation();
+    const userContext = useContext(UserContext);
     return (
         <div>
             <div className='header'>
@@ -15,15 +18,15 @@ const Header = (props) => {
                     <NavLink to="/view" className={(location.pathname === '/view' || location.pathname === '/view/') ? 'active nemo-button' : 'nemo-button'}>view</NavLink>
                 </span>
                 <span className='userProfile'>
-                    {/* <div>{(<img src={profilePic}/> &&  props.user.fullName) || <Link className='nemo-button' to='/login'>login</Link>}</div> */}
+                    {/* <div>{(<img src={profilePic}/> &&  useContext.user.fullName) || <Link className='nemo-button' to='/login'>login</Link>}</div> */}
                     <div>{
-                        props.user?.fullName
+                        userContext.user?.fullName
                             ? <div className="user-badge">
-                                <p>{props.user.fullName}</p>
+                                <p>{userContext.user.fullName}</p>
                                 <button
                                     className='logout-button'
                                     onClick={() => {
-                                        props.setUser(null);
+                                        userContext.setUser(null);
                                         navigate('/login');
                                     }}>
                                     logout

@@ -3,9 +3,12 @@ import LoginBlock from '../../components/login-block/login.component';
 import { checkUser } from '../../services/checkUser';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
+import { UserContext } from '../../App';
+import { useContext } from 'react';
 
 const Login = (props) => {
     const navigate = useNavigate();
+    const userContext = useContext(UserContext);
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -15,7 +18,7 @@ const Login = (props) => {
         const user = checkUser(userEmail, userPassword)
         if (user) {
             console.log('welcome here!');
-            props.setUser(user);
+            userContext.setUser(user);
             navigate('/view');
         }
         else
