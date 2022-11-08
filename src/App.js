@@ -36,8 +36,8 @@ function App() {
         <Routes>
           <Route path="/" element = {<Navigate to =  '/view' replace />} />   {/* page redirection using navigate component , which is built in react router dom library */}
           <Route path="/add" element = {<AddPage onAdd = {addItem} />} />
-          <Route path="/login" element = {<LoginPage user = {user} setUser = {setUserOverride}/>}/>
-          <Route path="/view" element = {<ViewPage user = {user}/>} />
+          <Route path="/login" element = {<LoginPage />}/>
+          <Route path="/view" element = {<ViewPage />} />
           <Route path="/view-details/:id" element = {<SingleItem />} />
           <Route path="/*" element = {<NotFound  />} />
         </Routes> 

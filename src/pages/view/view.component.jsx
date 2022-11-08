@@ -51,7 +51,7 @@ const ViewPage = (props) => {
   };
 
   useEffect(() => {
-    if (!props.user) 
+    if (!userContext.user) 
       navigate ('/login' , {replace : true}) ;
     getMenuItems();
     return (() => console.log('Im out'));
