@@ -3,7 +3,7 @@ import './view.css';
 import React, { useState } from 'react';
 // import Input from '../../components/common/input/input';
 import './view.css';
-import { useSearchParams ,useNavigate} from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { FilterBar } from './filter-bar/filter-bar';
 import { CATEGORIES } from '../../data/data';
 import { useEffect } from 'react';
@@ -34,7 +34,7 @@ const ViewPage = (props) => {
   //my query 
   const searchFromURL = params.get("searchTerms") || '';
   const categoriesFromURL = params.getAll("categories") || '';
-  const  categoriesURL= params.get("categoriess") || '';
+  const categoriesURL = params.get("categoriess") || '';
 
   const maxFromURL = params.get("max") || '';
   const minFromURL = params.get("min") || '';
@@ -53,12 +53,12 @@ const ViewPage = (props) => {
   //   setSearch(value);
   // };
 
-useEffect(()=>{
-  if (!props.user?.id) {
-    navigate('/login', { replace: false });
-  }
+  useEffect(() => {
+    if (!props.user?.id) {
+      navigate('/login', { replace: false });
+    }
 
-},[])
+  }, []);
   const filterItems = menuitems.filter(item => {
 
     /**
@@ -79,17 +79,17 @@ useEffect(()=>{
       match = match && (categoriesFromURL.includes(item.categories));
     }
 
-    if  (categoriesURL ){
-      match = match && (item.categories===categoriesURL)
-     }
-    
-    
+    if (categoriesURL) {
+      match = match && (item.categories === categoriesURL);
+    }
+
+
     if (maxFromURL && minFromURL) {
       match = match && (item.price >= minFromURL && item.price <= maxFromURL);
 
     }
     if (price) {
-      match = match && (item.price >= price );
+      match = match && (item.price >= price);
     }
 
     return match;

@@ -32,6 +32,7 @@ const Form = (props) => {
     const categories = e.target.categories.value;
 
     const menuItem = {
+      //or we can use random id 
       id : Date.now(),
       name: name,
       description: description,

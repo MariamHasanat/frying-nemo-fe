@@ -10,7 +10,19 @@ import './App.css';
 import Login from "./pages/login/login";
 import { useState } from "react";
 function App() {
-const [user,setUser]=useState(null);
+
+const initialUser=JSON.parse(sessionStorage.getItem('user'));
+const [user, setUser] = useState(initialUser);
+
+
+const saveUser = user => {
+  setUser(user);
+  sessionStorage.setItem("user", JSON.stringify(user));
+
+
+};
+
+
   return (
     <div>
       
@@ -22,7 +34,7 @@ const [user,setUser]=useState(null);
           <Route path="/view/:id" element={<ViewItemPage   />} />
           <Route path="/view" element={<ViewPage user={user}/>} />
           <Route path="/" element={<Navigate to='/view' replace />} />
-          <Route path="/login" element={<Login  user={user} setuser={setUser} />}  />
+          <Route path="/login" element={<Login  user={user} setUser={saveUser} />}  />
           {/* <Route path="/*" element={<Navigate to='/add' />} /> */}
         </Routes>
       </BrowserRouter>

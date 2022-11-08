@@ -17,8 +17,10 @@ const Login = (props) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const email = e.target.email.value.trim();
-    const password = e.target.password.value.trim();
+
+    const email=e.target.email.value.trim();
+    const password=e.target.password.value.trim();
+
     if (email && password) {
       const user = LoginUser(email, password);
       if (email && password) {
@@ -33,39 +35,40 @@ const Login = (props) => {
 
       }
     }
-    };
+  };
 
 
-    return (
-      <div className="login-page">
-        <form onSubmit={handleLogin}>
+  return (
+    <div className="login-page">
+      <form onSubmit={handleLogin}>
         <div className="cover">
           <h1>Hi :) </h1>
           <h3>Login In with your email and password to see our menu ! </h3>
           <img src="" alt="" />
         </div>
 
-          <div className="inputs">
-            <Input
-              label="Enter Your Email"
-              name="Email"
-              placeholder="email@Example.com"
-              type="email"
+        <div className="inputs">
+          <Input
+            label="Enter Your Email"
+            name="email"
+            placeholder="email@Example.com"
+            type="email"
+            required
 
-            />
-            <Input
-              label="Enter Your password "
-              name="password"
-              type="password"
-            />
-          </div>
-          <div className="LOGIN" >
-          <button className="nemo-button" type="button
-          "  onClick={handleLogin}>submit</button>
-          </div>
-        </form>
-      </div >
-    );
+          />
+          <Input
+            label="Enter Your password "
+            name="password"
+            type="password"
+            required
+          />
+        </div>
+        <div className="LOGIN" >
+          <button className="nemo-button" type="submit" >Login</button>
+        </div>
+      </form>
+    </div >
+  );
 
-  };
-  export default Login;
+};
+export default Login;
