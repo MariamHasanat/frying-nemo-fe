@@ -1,11 +1,11 @@
 import './header.css';
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
 const Header = (props) => {
-  const location = useLocation () ;
-  const user = props.user ;
+  const location = useLocation();
+  const navigate = useNavigate();
   return (
     <div className='webisteHeader'>
       <div className='left'>
@@ -16,8 +16,32 @@ const Header = (props) => {
         <nav>
           <Link to='/add' className={location.pathname === '/add' ? 'current' : ''}> Add </Link>
           {/* <a href='/add'> Add </a> */}
-          <Link to='/view' className={location.pathname.includes ('/view') ? 'current' : ''}> View </Link>
-          {props.user ? <p>Hello {props.user.fullName}</p> : ''}
+          <Link to='/view' className={location.pathname.includes('/view') ? 'current' : ''}> View </Link>
+          {
+          props.user &&
+          <span className="user-badge">
+            <img src={props.user.imageUrl} alt="user logo" width={30} height={30} />
+            {props.user.fullName}
+            <button
+              onClick={() => {
+                props.setUser(null);
+                navigate('/login');
+              }}
+            >
+              Logout
+            </button>
+          </span>
+        }
+
+          {/* {props.user ? <p>Hello {props.user.fullName}</p> : ''}
+          <button
+            onClick={() => {
+              props.setUser(null);
+              navigate('/login');
+            }}
+          >
+            Logout
+          </button> */}
         </nav>
       </div>
     </div>

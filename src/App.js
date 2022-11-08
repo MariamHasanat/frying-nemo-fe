@@ -29,6 +29,7 @@ function App() {
           img = "./nemo.svg.svg" 
           title = "Frying Nemo" 
           user = {user}
+          setUser = {setUserOverride}
         />
         <Routes>
           <Route path="/" element = {<Navigate to =  '/view' replace />} />   {/* page redirection using navigate component , which is built in react router dom library */}

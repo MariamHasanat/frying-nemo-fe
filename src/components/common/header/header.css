@@ -59,3 +59,32 @@
   border-radius: 5px;
   color: white;
 }
+.webisteHeader .right .user-badge {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #777777;
+}
+
+.webisteHeader .right .user-badge > img {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.webisteHeader .right .user-badge > button {
+  appearance: none;
+  background: none;
+  border: none;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+}
+
+.webisteHeader .right .user-badge > button:hover,
+.webisteHeader .right .user-badge > button:active,
+.webisteHeader .right .user-badge > button:focus {
+  color: #666;
+}
