@@ -4,12 +4,13 @@ import { useState } from 'react';
 import FilterBar from '../../../components/view/item/item/filter-bar/filter-bar.component';
 import { useEffect } from 'react';
 import Spinner from '../../../components/core/header/spinner/spinner.component';
-import { useSearchParams } from 'react-router-dom';
+import { Navigate, useSearchParams } from 'react-router-dom';
 
 
 
 /**
  * @type {Array<{
+ * id: number;
  * name: string;
  * description: string;
  * ingredients: string[];
@@ -39,6 +40,12 @@ const ViewPage = (props) => {
   };
 
   useEffect(() => {
+<<<<<<< HEAD
+=======
+    if (!props.user?.id){
+      Navigate('/login', {replace: false});
+    }
+>>>>>>> faaaeb0c0852ef2f9ceb9ef1565401db2796dff2
     getMenuItems();
   }, []);
 
@@ -112,5 +119,6 @@ const ViewPage = (props) => {
 };
 
 export default ViewPage;;
+
 
 
