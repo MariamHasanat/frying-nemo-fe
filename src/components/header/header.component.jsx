@@ -3,6 +3,7 @@ import logo from '../../assets/nemo.svg';
 import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
+import { UserContext } from '../../App';
 
 const Header = props => {
 
