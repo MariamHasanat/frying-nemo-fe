@@ -1,9 +1,10 @@
 // import React, { useState } from 'react';
 import './Header.css';
-import { Link , useLocation } from 'react-router-dom'
+import { Link , useLocation, useNavigate } from 'react-router-dom'
 
 const Header = props => {
  const location = useLocation()
+ const navigate = useNavigate();
 
   return (
     <header >
@@ -15,7 +16,7 @@ const Header = props => {
           </h1>
         </div>
         <div className="right">
-          
+
           <nav>
             <Link
              to='/add'
@@ -32,9 +33,15 @@ const Header = props => {
           <span className="user-badge">
             <img src={props.user.imageUrl} alt="user logo" width={30} height={30} />
             {props.user.fullName}
+            <button 
+            onClick={() => {
+              props.setUser(null)
+              navigate('/login')
+            } }
+            >Logout</button>
           </span>
         }
-
+     
       </div>
 
     </header>
