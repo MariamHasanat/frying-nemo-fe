@@ -38,10 +38,11 @@ const ViewItemPage = (props) => {
   return (
     <div className="view-item-page">
 
-      {loading && <Spinner />}
-      {
-        !loading && currentItem !== null
-          ? <div className="item-details">
+      {loading
+      ? <Spinner />
+      
+        
+         : <div className="item-details">
 
             <h1>{currentItem.name}</h1>
 
@@ -63,9 +64,7 @@ const ViewItemPage = (props) => {
               </div>
             </div>
           </div>
-
-
-          : <span>Item Not Found!</span>
+          
       }
     </div>
 

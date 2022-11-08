@@ -97,7 +97,12 @@ const Form = (props) => {
 
 
       </div>
-      <input className='nemo' type='submit' value="Create" />
+      <input  value="Create" />
+      <button
+      type="submit"
+      className="nemo" 
+      disabled={props.user?.role !== 'ADMIN'}
+      >Create</button>
     </form>
   );
 };

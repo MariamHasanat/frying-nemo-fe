@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as React from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Input from '../../../components/common/input/input';
 import Item from '../../../components/item/items/item';
 import Spinner from '../../../components/spinner/spinner';
@@ -28,12 +28,17 @@ const View = (props) => {
   console.log(searchFromUrl);
   const[max,setMax]=useState();
   const[min,setMin]=useState();
+  const navigate = useNavigate();
   // const setItemSearchInLocalStoreg=(value)=>{
   //   localStorage.setItem("the informathion search",value);
   //   SetSearch(value);[]F
 
   // }
-
+ useEffect(()=>{
+  if(!props.user?.id){
+    navigate ('/login');
+  }
+ },[])
 
   const filterItem = menuItem.filter(item => {
     console.log(item);

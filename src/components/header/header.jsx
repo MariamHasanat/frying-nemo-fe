@@ -18,6 +18,14 @@ const Handel = (props) => {
           <Link to="/add" className={location.pathname === "/add" ? 'current' : ""}>Add</Link>
         </div>
         <div>< Link to="/view" className={location.pathname.includes("view") ? 'current' : ""}>View</Link ></div>
+        {
+          props.user &&
+          <span className="user-badge">
+            <img src={props.user.imageUrl} alt="user logo" width={30} height={30} />
+            {props.user.fullName}
+          </span>
+        }
+
 
       </div>
     </header>

@@ -21,7 +21,10 @@
   align-items: center;
    color: rgb(80, 147, 205);
   font-weight: bolder;
+
+  column-gap: 20px;
   
+
 }
 .handel-group>div{
   background-color: none;
@@ -64,3 +67,17 @@
   background-color:rgb(95, 169, 234);
   box-shadow: 5px 4px 10px white;
 }
+.user-badge {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #777777;
+}
+.user-badge > img {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+

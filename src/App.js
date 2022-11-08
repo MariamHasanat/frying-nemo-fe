@@ -9,6 +9,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Start from "./pages/start/start ";
 import ViewItemPage from "./pages/add/viewitempage/viewitempage";
+import LoginPage from "./pages/add/login/login";
 function App() {
   // const path = window.location.pathname;
   // console.log(path);
@@ -19,18 +20,19 @@ function App() {
   //   page = <View />
   // else page = <NotFound />
 
-
+  const [user, Setuser] = useState(null);
   return (
     <div>
 
       <BrowserRouter >
-        <Handel />
+        <Handel  user = {user}/>
         <Routes>
-        <Route path="/" element={<Navigate to="view"/>} />
-          <Route path="/*" element={<NotFound/>} />
-          <Route path="/add" element={<AddPage />} />
-          <Route path="/view" element={<View />} />
-          <Route  path="/view/:id" element={<ViewItemPage  />} />
+          <Route path="/login" element={<LoginPage user={user} Setuser={Setuser} />} />
+          <Route path="/" element={<Navigate to="view" />} />
+          <Route path="/*" element={<NotFound />} />
+          <Route path="/add" element={<AddPage user={user} />} />
+          <Route path="/view" element={<View user={user} />} />
+          <Route path="/view/:id" element={<ViewItemPage />} />
         </Routes>
       </BrowserRouter>,
     </div>
