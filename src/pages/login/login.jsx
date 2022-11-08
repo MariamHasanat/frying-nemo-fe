@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../components/common/input';
-//import { loginUser } from '../../';
+import { loginUser } from '../../services/users';
 import './login.css';
 
 const LoginPage = (props) => {
