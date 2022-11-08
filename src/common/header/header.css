@@ -61,10 +61,25 @@
  width: 35px;
  height:35px;
  border-radius: 30px;
+ margin-left: 5px;
 }
 .user-info > h3{
   font-size: 15px;
   color: black;
   margin-left: 5px;
   margin-top: 10px;
+}
+.websiteHeader .right .user-info > button {
+  appearance: none;
+  background: none;
+  border: none;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+}
+
+.websiteHeader .right .user-info > button:hover,
+.websiteHeader .right .user-info > button:active,
+.websiteHeader .right .user-info > button:focus {
+  color: #666;
 }

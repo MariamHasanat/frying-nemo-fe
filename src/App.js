@@ -18,7 +18,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Header user={user} />
+        <Header user={user} setUser={setUserOverride} />
         <Routes>
           <Route path="/" element={<Navigate to ="/view" replace/>} />
           <Route path="/add/*" element={<AddPage user={user} />} />
