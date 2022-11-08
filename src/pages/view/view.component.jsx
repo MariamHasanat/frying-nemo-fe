@@ -22,7 +22,9 @@ const ViewPage = (props) => {
   const [params, setParams] = useSearchParams();
 
   const searchTerms = params.get("searchTerms") || "";
-  const categoryFromURL = params.get("categoryFromURL") || "";
+  const categoryFromURL = params.getAll("categoryFromURL") || "";
+  const minValue = params.get("minValue") || "";
+  const maxValue = params.get("maxValue") || "";
 
   const getMenuItems = () => {
     setLoading(true);
@@ -59,6 +61,8 @@ const ViewPage = (props) => {
       <h1>View Menu Items</h1>
       <FilterBar
         searchTerms={searchTerms}
+        minValue={minValue}
+        maxValue={maxValue}
         categoryFromURL={categoryFromURL}
         params={params}
         setParam={setParam} />
@@ -97,8 +101,15 @@ const ViewPage = (props) => {
                   .includes(searchTerms.toLowerCase().trim());
               });
 
-            if (categoryFromURL) {
-              match = match && (item.category === categoryFromURL);
+            if (categoryFromURL.length) {
+              match = match && (categoryFromURL.includes(item.category));
+            }
+
+            if (minValue) {
+              match = match && item.price >= parseInt(minValue);
+            }
+            if (maxValue) {
+              match = match && item.price <= parseInt(maxValue);
             }
 
             return match;

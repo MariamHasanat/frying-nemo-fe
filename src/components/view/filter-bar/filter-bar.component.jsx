@@ -15,6 +15,18 @@ const FilterBar = (props) => {
         onChange={e => props.setParam('searchTerms', e.target.value)}
         placeholder="Search"
       />
+      <Input
+        type="number"
+        value={props.minValue}
+        onChange={e => props.setParam('minValue', e.target.value)}
+        placeholder="Min Value"
+      />
+      <Input
+        type="number"
+        value={props.maxValue}
+        onChange={e => props.setParam('maxValue', e.target.value)}
+        placeholder="Max Value"
+      />
       <div className="categories">
         {CATEGORIES.map(cat => (
           <CheckBox
