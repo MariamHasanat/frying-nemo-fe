@@ -4,7 +4,7 @@ import AddPage from "./pages/add/add.component";
 import NotFound from "./pages/page not found/page-not-found.component";
 import ViewPage from "./pages/view/view.component";
 import ViewItemPage from "./pages/view-item/view-item.component";
-import { BrowserRouter, Routes, Route, Navigate, json } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import LoginPage from "./pages/login/login.component";
 import { useState } from "react";
 function App() {
@@ -19,7 +19,7 @@ function App() {
     <div>
 
       <BrowserRouter>
-        <Header user={user} />
+        <Header user={user} setUser={setUserOverride} />
         <Routes>
           <Route path="/" element={<Navigate to="/view" replace />} />
           <Route path="/view/:id" element={<ViewItemPage />} />

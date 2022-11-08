@@ -1,5 +1,6 @@
 import React from 'react';
 import './header.css';
+import { Navigate } from 'react-router-dom';
 
 import { Link  , useLocation } from 'react-router-dom';
 
@@ -31,6 +32,11 @@ const Header =( props) => {
           <span className="user-badge">
             <img src={props.user.imageUrl} alt="user logo" width={30} height={30} />
             {props.user.fullName}
+            <button
+             onClick={()=>{
+              props.setUser(null);
+              Navigate('/login');
+             }}>logout</button>
           </span>
         }
 
