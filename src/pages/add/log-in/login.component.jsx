@@ -14,8 +14,7 @@ const LoginPage=(props)=>{
         e.preventDefault();
         const email = e.target.email.value.trim();
         const password = e.target.password.value.trim();
-        console.log(email);
-        console.log(password);
+
         if (email && password) {
           const user = loginUser(email,password);
           if (user) {
@@ -40,7 +39,7 @@ const LoginPage=(props)=>{
         <div className="body"></div>
         <div className="grad"></div>
         <div className="header">
-          <h1>Welcom Back</h1>
+          <h1>Welcome Back</h1>
         </div>
         <br></br>
         <div className="login">
