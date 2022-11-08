@@ -110,3 +110,18 @@
     color: #db4530;
     font-weight: 500;
 }
+
+.header .right nav .log-out {
+    appearance: none;
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+}
+
+.header .right nav .log-out:hover,
+.header .right nav .log-out:active,
+.header .right nav .log-out:focus {
+    color: #666;
+}

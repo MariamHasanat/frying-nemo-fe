@@ -1,23 +1,22 @@
 import React from 'react';
+import './login.css';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Input from '../../components/common/input/input.component';
 import { loginUser } from '../../services/users';
-import './login.css';
+
+import Input from '../../components/common/input/input.component';
 
 /**
  * 
- * @type {props{
+ * @type {Array<{
  * id:string;
  * email:string;
  * password:string;
  * fullName:string;
  * imageUrl:string;
  * role:string?|null;
- * }} 
- * @returns 
+ * }>} 
  */
-
 const LogIn = (props) => {
     const navigate = useNavigate();
     useEffect(() => {

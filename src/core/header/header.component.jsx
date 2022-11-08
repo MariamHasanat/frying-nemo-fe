@@ -1,10 +1,11 @@
 import './header.css';
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/nemoInHeader.png';
 const Header = (props) => {
     const [time, setTime] = useState(new Date());
     const location = useLocation();
+    const navigate = useNavigate();
     useEffect(() => {
         const timer = setInterval(() => {
             setTime(new Date());
@@ -43,6 +44,18 @@ const Header = (props) => {
                         <Link className={`but ${location.pathname === '/view' ? 'current' : ''}`} to='/view'>
                             view
                         </Link>
+                    }
+                    {
+                        (location.pathname !== '/log-in') && 
+                        <button 
+                            className='log-out'
+                            onClick={() => {
+                                props.setUser(null);
+                                navigate('/log-in');
+                            }}
+                        >
+                            Logout
+                        </button>
                     }
                 </nav>
             </div>
