@@ -3,7 +3,7 @@ import Item from '../menu-item/menu-item.component';
 import './view.css';
 import { useEffect } from 'react';
 import Spinner from '../spinner/spinner.component';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import FilterBar from '../filter-bar/filter-bar.component';
 
 
@@ -32,6 +32,7 @@ const ViewPage = (props) => {
 
   const search = params.get('search') || '';
   const categoriesFromURL = params.getAll('category') || '';
+  const navigate = useNavigate();
   const minPrice = params.get('Min') || '';
   const maxPrice = params.get('Max') || '';
 
@@ -48,6 +49,12 @@ const ViewPage = (props) => {
       setLoading(false);
     }, 1000);
   };
+
+  useEffect (() => {
+    if (!props.user?.id){
+      navigate('/login', {replace: false});
+    }
+  },[])
 
   useEffect(() => {
     getMenuItems();
@@ -78,25 +85,25 @@ const ViewPage = (props) => {
     return match;
   });
 
-   /**
-   * Set query string parameter.
-   * @param {string} name Parameter name.
-   * @param {string | string[]} value Parameter value.
-   */
-    const setParam = (name, value) => {
-      const newParams = new URLSearchParams(params);
-  
-      newParams.delete(name);
-  
-      if (Array.isArray(value)) {
-        value.forEach(item => newParams.append(name, item));
-      } else if (value.trim()) {
-        newParams.set(name, value.trim());
-      }
-  
-      setParams(newParams);
-    };
-  
+  /**
+  * Set query string parameter.
+  * @param {string} name Parameter name.
+  * @param {string | string[]} value Parameter value.
+  */
+  const setParam = (name, value) => {
+    const newParams = new URLSearchParams(params);
+
+    newParams.delete(name);
+
+    if (Array.isArray(value)) {
+      value.forEach(item => newParams.append(name, item));
+    } else if (value.trim()) {
+      newParams.set(name, value.trim());
+    }
+
+    setParams(newParams);
+  };
+
 
   return (
     <div className="view-page">

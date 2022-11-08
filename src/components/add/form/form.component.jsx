@@ -6,20 +6,14 @@ import Select from '../../select/select.component';
 import MultivalueInput from '../../multivalue-input/multivalue-input.component';
 import { Navigate, useNavigate } from 'react-router-dom';
 import CATEGORIES from '../../data/categories';
+import { useContext } from 'react';
+import {userContext} from '../../../App'
 
-// const categories = [
-//   'fish',
-//   'salad',
-//   'juice',
-//   'meat',
-//   'chicken',
-//   'bread'
-// ];
-
-const Form = (props) => {
+const Form = () => {
   const [name, setName] = useState('Huda');
   const [ingredients, setIngredients] = useState([]);
   const Navigate = useNavigate();
+  const user = useContext(userContext);
 
   /**
    * Handler function for the form onSubmit event.
@@ -100,7 +94,14 @@ const Form = (props) => {
           value={ingredients}
           onChange={newIngredients => setIngredients(newIngredients)}
         />
-        <button className='addFormButtons' type="submit">Create</button>
+         <button
+          className="nemo-button"
+          type="submit"
+          disabled={user.user?.role !== 'ADMIN'}
+        >
+          Create
+        </button>
+
       </div>
     </form>
   );

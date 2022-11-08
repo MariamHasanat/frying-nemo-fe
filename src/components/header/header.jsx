@@ -1,12 +1,14 @@
 import React from 'react';
 import './header.css';
-import { Link , useLocation} from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
 
-const Header = () => {
+const Header = (props) => {
 
-  const location =useLocation();
+  const location = useLocation();
+  const navigate = useNavigate();
+
   return (
     <header className="webisteHeader">
       <div className="left">
@@ -18,14 +20,25 @@ const Header = () => {
       <div className="right">
         <nav>
           <Link to="/add" className={location.pathname === '/add' ? 'current' : ''}>
-            Add          </Link >
+            Add
+          </Link >
 
           <Link to="/view" className={location.pathname === '/view' ? 'current' : ''}>
-            view          </Link >
-
-          {/* <button className={props.currentPage === 'add' ? 'current' : ''} onClick={() => props.onNavigate('add')}>Add</button>
-          <button className={props.currentPage === 'view' ? 'current' : ''} onClick={() => props.onNavigate('view')}>View</button> */}
+            view
+          </Link >
         </nav>
+        {
+          props.user &&
+          <span className="user-badge">
+            <img src={props.user.imageUrl} alt="user logo" width={30} height={30} />
+            {props.user.fullName}
+            <button onClick={()=>{
+              props.setUser(null);
+              navigate('/login')
+            }}>log out</button>
+          </span>
+        }
+
       </div>
     </header>
   );

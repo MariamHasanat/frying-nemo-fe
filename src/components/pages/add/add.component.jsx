@@ -25,7 +25,7 @@ const AddPage = (props) => {
     <div className='add-page'>
       <span className='clock'>{time.toLocaleTimeString()}</span>
       <h1>Add a new item</h1>
-      <Form onNavigate={props.onNavigate} />
+      <Form onNavigate={props.onNavigate} user={props.user} />
     </div>
   );
 };
