@@ -1,10 +1,11 @@
 import React from 'react';
 import './header.css';
 
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Head = (props) => {
   const location = useLocation();
+  const navigate=useNavigate();
 
   return (
     <header className="websiteHeader">
@@ -23,8 +24,17 @@ const Head = (props) => {
             View
           </Link>
         </nav>
-        {props.user &&
-          <span>{props.user.fullName}</span>}
+        {
+        props.user &&
+        <span>{props.user.fullName}</span>
+        }
+        <button onClick={()=>{
+            props.setUser(null);
+            navigate('/login'); 
+          }
+        }
+        >LogOut</button>
+
       </div>
     </header>
   );

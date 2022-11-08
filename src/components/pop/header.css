@@ -58,3 +58,17 @@
   border-radius: 5px;
   color: white;
 }
+.websiteHeader .right  > button {
+  appearance: none;
+  background: none;
+  border: none;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+}
+
+.websiteHeader .right  > button:hover,
+.websiteHeader .right  > button:active,
+.websiteHeader .right  > button:focus {
+  color: #666;
+}

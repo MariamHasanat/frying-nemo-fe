@@ -27,7 +27,7 @@ const saveUser = user => {
     <div>
       
       <BrowserRouter>
-        <Head user={user}/>
+        <Head user={user} setUser={saveUser}/>
         <Routes>
           <Route path="/add" element={<AddPage user={user} />} />
           <Route path="/*" element={<NotFound /> } />
