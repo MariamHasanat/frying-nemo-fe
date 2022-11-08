@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './form.css';
 import { CATEGORIES } from '../../../data/constants';
+import './form.css';
+
+import { UserContext } from '../../../App';
 
 import Input from '../../common/input/input.component';
 import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
@@ -12,6 +14,7 @@ const Form = (props) => {
   const [name, setName] = useState('Sajeda');
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
+  const userContext = useContext(UserContext);
 
   /**
    * Handler function for the form onSubmit event.
@@ -102,7 +105,7 @@ const Form = (props) => {
         <button
           className="nemo-button"
           type="submit"
-          disabled={props.user?.role !== 'ADMIN'}
+          disabled={userContext.user?.role !== 'ADMIN'}
         >
           Create
         </button>
