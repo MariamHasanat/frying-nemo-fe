@@ -8,9 +8,15 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import SingleItem from "./pages/view/cards/single-item/single-item.component";
 import LoginPage from "./pages/login/login.component";
 function App() {
- 
-  const [user , setUser] = useState (null) ;
+  const initialUser = sessionStorage.getItem ('user') ;
+  const [user , setUser] = useState (initialUser) ;
   const [items , setItems] = useState ([]) ;
+
+  const setUserOverride = user => {
+    setUser (user) ;
+    sessionStorage.setItem ('user' , JSON.stringify (user)) ;
+  }
+  // console.log(user);
   const addItem = (item) => {
     const tempItems = items ;
     tempItems.push (item) ;
@@ -28,7 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element = {<Navigate to =  '/view' replace />} />   {/* page redirection using navigate component , which is built in react router dom library */}
           <Route path="/add" element = {<AddPage onAdd = {addItem} user = {user} />} />
-          <Route path="/login" element = {<LoginPage setUser = {setUser}/>}/>
+          <Route path="/login" element = {<LoginPage user = {user} setUser = {setUserOverride}/>}/>
           <Route path="/view" element = {<ViewPage user = {user}/>} />
           <Route path="/view-details/:id" element = {<SingleItem />} />
           <Route path="/*" element = {<NotFound  />} />
