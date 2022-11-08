@@ -1,20 +1,38 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../components/common/input/input.component';
 import { loginUser } from '../../services/users';
 import './login.css';
 
+/**
+ * 
+ * @type {props{
+ * id:string;
+ * email:string;
+ * password:string;
+ * fullName:string;
+ * imageUrl:string;
+ * role:string?|null;
+ * }} 
+ * @returns 
+ */
+
 const LogIn = (props) => {
     const navigate = useNavigate();
+    useEffect(() => {
+        if (props.user)
+            navigate('/view', { replace: true });
+    }, [navigate, props]);
+
     /**
      * Handler function for the form onSubmit event.
      * @param {React.FormEvent<HTMLFormElement>} e Event object.
      */
     const handleSubmit = (e) => {
         e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        console.log(password)
+        const email = e.target.email.value.trim();
+        const password = e.target.password.value.trim();
         if (email && password) {
             const user = loginUser(email, password);
             if (user) {
