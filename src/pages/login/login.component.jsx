@@ -17,7 +17,7 @@ const LoginPage = (props) => {
     const email = e.target.email.value.trim() ; 
     const password = e.target.password.value.trim() ;
     if (email && password) {
-      const tempUser = USERS.find (element => (element.email === email && element.password == password)) ;
+      const tempUser = USERS.find (element => (element.email === email && element.password === password)) ;
     const user = tempUser || null ;
     if (user) {
       props.setUser (user) ;

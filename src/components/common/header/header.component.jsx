@@ -20,7 +20,6 @@ const Header = (props) => {
           {props.user ? <p>Hello {props.user.fullName}</p> : ''}
         </nav>
       </div>
-
     </div>
   );
 };

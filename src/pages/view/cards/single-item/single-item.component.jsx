@@ -2,6 +2,7 @@ import React from 'react' ;
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import Spinner from '../../../../components/common/spinner/spinner.componenr';
 import MenuItem from '../menu-item/menu-item.component';
 import './single-item.css' ;
 
@@ -24,7 +25,8 @@ const SingleItem = () => {
   } , [param.id])
   return (
     <div className='singleItem'>
-      {currentItem? <MenuItem item = {currentItem[0]}/> : <img src='./sad-crab.svg' alt='sad-crab'/>}
+      {loading ? <Spinner/> : currentItem? <MenuItem item = {currentItem[0]}/> : <img src='./sad-crab.svg' alt='sad-crab'/>}
+      
       
     </div>
   )
