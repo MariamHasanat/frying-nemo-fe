@@ -7,11 +7,14 @@ import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import CATEGORIES from '../../../data/constants' ;
 import { isDisabled } from '@testing-library/user-event/dist/utils';
+import { useContext } from 'react';
+import { UserContext } from '../../../App';
 
 const Form = (props) => {
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate() ;
+  const userContext = useContext (UserContext) ;
   /*
    * calls JSDoc
    * @param {React.ChangeEvent<HTMLInputElement>} e   //Event object
@@ -24,6 +27,7 @@ const Form = (props) => {
     const discription = e.target.discription.value;
     const catigory = e.target.catigory.value;
     const image = e.target.image.value;
+    
     const menueItem = {
       id : Date.now(),
       name: name,
@@ -100,7 +104,7 @@ const Form = (props) => {
         <button
           type='submit'
           className='formComp nemo-button'
-          disabled = {props.user?.role !== 'ADMIN'}
+          disabled = {userContext.user?.role !== 'ADMIN'}
         >
           Create
         </button>

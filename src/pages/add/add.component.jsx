@@ -24,7 +24,7 @@ const AddPage = (props) => {
     <div className='add'>
       <h1>Add a new item</h1>
       <span>{time.toLocaleTimeString()}</span>
-      <Form onAdd={props.onAdd} user = {props.user} />
+      <Form onAdd={props.onAdd}/>
     </div>
   );
 };

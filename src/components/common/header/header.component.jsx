@@ -1,11 +1,13 @@
 import './header.css';
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 
 
 const Header = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const userContext = useContext (useContext) ;
   return (
     <div className='webisteHeader'>
       <div className='left'>
@@ -18,7 +20,7 @@ const Header = (props) => {
           {/* <a href='/add'> Add </a> */}
           <Link to='/view' className={location.pathname.includes('/view') ? 'current' : ''}> View </Link>
           {
-          props.user &&
+          user.user &&
           <span className="user-badge">
             <img src={props.user.imageUrl} alt="user logo" width={30} height={30} />
             {props.user.fullName}

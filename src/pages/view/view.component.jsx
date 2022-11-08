@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { UserContext } from '../../App';
 import Spinner from '../../components/common/spinner/spinner.componenr';
 import MenuItem from './cards/menu-item/menu-item.component';
 import FilterBar from './filter-bar/filter-bar.component';
@@ -27,7 +29,7 @@ const ViewPage = (props) => {
   const categoryUsingURL = param.getAll('category') || '';
   const minPrice = param.get ('min') || '' ;
   const maxPrice = param.get ('max') || '' ;
-  console.log('category param = ', categoryUsingURL);
+  const userContext = useContext (UserContext) ;
 
   const setParams = (addTo, value) => {
     let newParam = new URLSearchParams(param);
