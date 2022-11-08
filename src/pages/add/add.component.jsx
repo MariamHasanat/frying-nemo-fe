@@ -9,7 +9,7 @@ const AddPage = (props) => {
         if (props.user === null) {
             navigate('/log-in', { replace: true });
         }
-    }, [navigate, props.user]);
+    }, []);
     return (
         <div className='add-form'>
             <h1>Add a new item</h1>

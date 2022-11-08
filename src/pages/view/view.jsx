@@ -34,7 +34,7 @@ const View = (props) => {
             navigate('/log-in', { replace: true });
         }
         getMenuItems();
-    }, [navigate, props.user]);
+    }, []);
     /**
      * @param {string} name 
      * @param {string | string[]} value 

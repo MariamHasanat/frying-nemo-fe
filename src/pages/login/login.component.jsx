@@ -23,7 +23,7 @@ const LogIn = (props) => {
     useEffect(() => {
         if (props.user)
             navigate('/view', { replace: true });
-    }, [navigate, props]);
+    }, []);
 
     /**
      * Handler function for the form onSubmit event.
