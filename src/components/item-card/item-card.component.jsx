@@ -12,16 +12,16 @@ const subtractOne = (oldVal) => {
 };
 
 const ItemCard = (props) => {
-    const getImage = () => {
-        if (/http(s)?:\/\/picsum.photos\/\d+(\/\d+)?/.test(props.image)) {
-            // console.log('image was found')
-            return props.image;
-        }
-        else {
-            // console.log('image was NOT found')
-            return 'images/default.jpg';
-        }
-    };
+    // const getImage = () => {
+    //     if (/http(s)?:\/\/picsum.photos\/\d+(\/\d+)?/.test(props.image)) {
+    //         // console.log('image was found')
+    //         return props.image;
+    //     }
+    //     else {
+    //         // console.log('image was NOT found')
+    //         return 'images/default.jpg';
+    //     }
+    // };
     const [quantity, setQuantity] = useState(0);
     return (
         <div className='item-card'>

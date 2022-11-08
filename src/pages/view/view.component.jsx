@@ -76,6 +76,7 @@ const ViewPage = (props) => {
                         <div className='no-results'>
                             <h2>
                                 <img
+                                    alt=''
                                     src="https://64.media.tumblr.com/718c1fbf3a9359e96ddd1174a41a2720/tumblr_opfl1y9hKn1tile93o1_540.gif"
                                 />
                                 <br />

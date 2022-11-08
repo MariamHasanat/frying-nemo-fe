@@ -1,6 +1,6 @@
 import './header.css';
 import nemo from '../../../images/nemo.png';
-import profilePic from '../../../images/profile.png';
+// import profilePic from '../../../images/profile.png';
 import { Link, useNavigate, useLocation, NavLink } from 'react-router-dom';
 const Header = (props) => {
     const navigate = useNavigate();

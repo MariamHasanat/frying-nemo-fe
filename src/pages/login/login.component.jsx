@@ -1,7 +1,6 @@
 
 import LoginBlock from '../../components/login-block/login.component';
 import { checkUser } from '../../services/checkUser';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
 

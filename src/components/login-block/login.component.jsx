@@ -1,4 +1,3 @@
-import Input from '../common/input/input.component';
 import './login.css';
 const LoginBlock = (props) => {
     return (
@@ -39,7 +38,7 @@ const LoginBlock = (props) => {
                     </form>
                     <div className="card_info">
                         <p>
-                            Not registered? <a href="#">Create an account</a>
+                            {/* Not registered? <a href="#">Create an account</a> */}
                         </p>
                     </div>
                 </div>
