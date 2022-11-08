@@ -26,13 +26,7 @@
   margin-right: 5px;
 }
 
-
-.webisteHeader .right nav {
-  display: flex;
-
-
-}
-.webisteHeadert  {
+header>.webisteHeadert {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,7 +38,14 @@
   cursor: pointer;
   font-size: 14px;
   padding: 9px 20px;
-  
+
+}
+
+div>.right {
+  display: flex;
+  width: max-content;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .webisteHeader .right nav a:hover {
