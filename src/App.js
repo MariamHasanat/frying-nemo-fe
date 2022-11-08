@@ -20,14 +20,20 @@ function App() {
   //   page = <View />
   // else page = <NotFound />
 
-  const [user, Setuser] = useState(null);
+  
+  const initialUser = JSON.parse(sessionStorage.getItem('user'));
+  const [user, setUser] = useState(initialUser);
+  const setUserOver=(user)=>{
+    setUser(user)
+    sessionStorage.setItem('user',JSON.stringify(user))
+  }
   return (
     <div>
 
       <BrowserRouter >
-        <Handel  user = {user}/>
+        <Handel  user = {user} setUser={setUserOver}/>
         <Routes>
-          <Route path="/login" element={<LoginPage user={user} Setuser={Setuser} />} />
+          <Route path="/login" element={<LoginPage user={user} setUser={setUserOver} />} />
           <Route path="/" element={<Navigate to="view" />} />
           <Route path="/*" element={<NotFound />} />
           <Route path="/add" element={<AddPage user={user} />} />

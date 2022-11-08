@@ -1,8 +1,9 @@
 import './header.css';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/fish-removebg-preview.png';
 const Handel = (props) => {
   const location = useLocation();
+  const navigate = useNavigate();
   return (
     <header className='handel-group'>
       <img className='img' src={logo} alt="Nemo" />
@@ -22,8 +23,15 @@ const Handel = (props) => {
           props.user &&
           <span className="user-badge">
             <img src={props.user.imageUrl} alt="user logo" width={30} height={30} />
-            {props.user.fullName}
-          </span>
+            {props.user.fullName} <button  
+            onClick={()=>{
+              props.setUser=null;
+                navigate='/login';
+            }}
+            > Logout
+            </button>
+          </span> 
+          
         }
 
 

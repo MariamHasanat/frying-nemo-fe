@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../../components/add/form/data/users";
 import Input from "../../../components/common/input/input";
 import './login.css'
+
 const LoginPage=(props)=>{
  const navigate = useNavigate();
  useEffect(()=>{
@@ -40,11 +41,13 @@ return (
       name="email"
       type="email"
       placeholder="ahmad@example.com"
+      required
     />
     <Input
       label="Password"
       name="password"
       type="password"
+      required
     />
     <div>
       <input className="nemo-button" type="submit" value="Login" />
