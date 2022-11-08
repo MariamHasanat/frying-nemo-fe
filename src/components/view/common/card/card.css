@@ -19,6 +19,11 @@
   transition: .3s all;
 }
 
+.card-wrapper a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .card-wrapper:hover {
   transform: scale(1.05)
 }

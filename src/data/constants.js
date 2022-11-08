@@ -2,7 +2,8 @@ const CATEGORIES = [
   `Fish`,
   `Drink`,
   `Chicken`,
-  `Salad`
+  `Salad`,
+  'Sweet'
 ]
 
 export {CATEGORIES};

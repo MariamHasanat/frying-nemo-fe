@@ -13,7 +13,7 @@ const Header = () => {
       </div>
       <div className='btns'>
         <a href='/add' className={pathname == 'add' ? `selected` : undefined}>Add</a>
-        <a href='/view' className={pathname == 'view' ? `selected` : undefined}>View</a>
+        <a href='/view' className={pathname.includes('view') ? `selected` : undefined}>View</a>
       </div>
     </div>
   )

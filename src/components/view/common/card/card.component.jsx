@@ -2,6 +2,7 @@ import './card.css'
 import Counter from '../counter/counter.component'
 import burger from './images/burger.jpg'
 import { useState } from 'react';
+import { capitalizeFirstLetter } from '../../../../services/utilities';
 
 const Card = ({itemId, itemName, itemCategory, itemPrice, itemDescription, itemIngredients, image, i, ctr}) => {
   const [counter, setCounter] = useState(ctr);
@@ -22,7 +23,7 @@ const Card = ({itemId, itemName, itemCategory, itemPrice, itemDescription, itemI
     }, 50*i);}}>
       <img src={image} alt="" />
       <div className='info'>
-      <a href={`/view/${itemId}`} className='itemName'>{itemName}</a>
+      <a href={`/view/${itemId}`} className='itemName'>{capitalizeFirstLetter(itemName)}</a>
       <p className='itemCategory'>{itemCategory}</p>
       <p className='itemDescription'>{itemDescription}</p>
       <p className='itemIngredients'>{itemIngredients}</p>

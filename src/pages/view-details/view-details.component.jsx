@@ -20,13 +20,12 @@ const ViewDetailsPage = () => {
       <p>Item Details</p>
       <p className='itemName'>{item.name}</p>
     </div>
-    <p className='itemName'>{item.name}</p>
     <div className='details'>
       <img src={item.image} alt="Item Image"/>
       <div className='info'>
         <h3><h2>Item Description:</h2> {item.description}</h3>
         <h2>Ingredients:</h2>
-        <h3>{item.ings.toString().replaceAll(`,`, `, `)}</h3>
+        <h3>{item.ingredients.toString().replaceAll(`,`, `, `)}</h3>
       </div>
     </div>
   </div>

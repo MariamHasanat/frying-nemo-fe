@@ -13,9 +13,9 @@ const Form = (props) => {
   const navigate = useNavigate();
 
   const [name, setName] = useState(``)
-  let ings = [] // Ingredients
+  let ingredients = [] // Ingredients
   const updateIngs = (newIngs) => {
-    ings = newIngs;
+    ingredients = newIngs;
   }
 
   const submitHandler = e => {
@@ -40,7 +40,7 @@ const Form = (props) => {
       price,
       category,
       image,
-      ings
+      ingredients
     }
     let arr = JSON.parse(localStorage.getItem('menuItems')) || [];
     arr.push(menuItems)
