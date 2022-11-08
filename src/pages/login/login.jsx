@@ -9,6 +9,7 @@ const LoginPage = (props) => {
 
   useEffect(() => {
     // To check if the user is already logged in, send him to the view page
+    console.log(props.user);
     if (props.user?.id) {
       navigate('/view', { replace: true });
     }
