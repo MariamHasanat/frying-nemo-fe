@@ -8,14 +8,14 @@ import Input from '../../components/common/input/input.component';
 
 /**
  * 
- * @type {Array<{
+ * @param {
  * id:string;
  * email:string;
  * password:string;
  * fullName:string;
  * imageUrl:string;
  * role:string?|null;
- * }>} 
+ * } props 
  */
 const LogIn = (props) => {
     const navigate = useNavigate();
