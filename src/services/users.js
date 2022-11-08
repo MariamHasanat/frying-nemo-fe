@@ -1,4 +1,4 @@
-import { USERS } from '../data/tmp_data';
+import { USERS } from '../data/tmp-data';
 
 /**
  * Fake Fetching of single item
