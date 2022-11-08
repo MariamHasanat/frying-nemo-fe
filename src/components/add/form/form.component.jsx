@@ -6,12 +6,17 @@ import MultivalueInput from '../../common/multivalue-input/multivalue-input.comp
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
+import { useContext } from 'react';
 
 
 const Form = (props) => {
   const [name, setName] = useState('Sajeda');
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
+const userContext = useContext(UseContext);
+console.debug ('userContext from Form', userContext);
+
+
   const submitHandler = e => {
     e.preventDefault();
     const description = e.target.description.value;

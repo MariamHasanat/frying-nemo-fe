@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Form } from "react-router-dom";
+import './add.css'
 
 
 const AddPage = (props) => {
