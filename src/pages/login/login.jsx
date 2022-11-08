@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect,UserContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../../components/common/input/input";
 import { LoginUser } from "../../components/services/user";
@@ -6,9 +6,11 @@ import { LoginUser } from "../../components/services/user";
 
 const Login = (props) => {
   const navigate = useNavigate();
+  const userContext =userContext(UserContext);
+
   useEffect(() => {
 
-    if (props.user?.id) {
+    if (userContext.user?.id) {
       navigate('/login', { replace: true });
     }
   }, []);
@@ -27,7 +29,7 @@ const Login = (props) => {
         const user = LoginUser(email, password);
         // If Successful login, go to view page
         if (user) {
-          props.setUser(user);
+          userContext.setUser(user);
           navigate('/view', { replace: true });
         } else {
           alert("Invalid Email or password ! try again please ");

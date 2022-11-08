@@ -1,6 +1,6 @@
 import Card from './card';
 import './view.css';
-import React, { useState } from 'react';
+import React, { useState,UserContext } from 'react';
 // import Input from '../../components/common/input/input';
 import './view.css';
 import { useSearchParams, useNavigate } from 'react-router-dom';
@@ -26,6 +26,7 @@ const ViewPage = (props) => {
   const [menuitems, setMenuItems] = useState(GetmenuItems());
   const navigate = useNavigate();
 
+  const userContext =useContext(UserContext);
 
   //instance of class 
   const [search, setSearch] = useState('');
@@ -54,7 +55,7 @@ const ViewPage = (props) => {
   // };
 
   useEffect(() => {
-    if (!props.user?.id) {
+    if (!UserContext.user?.id) {
       navigate('/login', { replace: false });
     }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,UserContext} from 'react';
 import Input from '../../common/input/input';
 import MySelect from '../../common/select/select';
 import Textarea from '../../common/textarea/textarea/Tarea';
@@ -13,7 +13,7 @@ const Form = (props) => {
   const [name, setName] = useState('ayat');
   const [ingrediant, setIngrediant] = useState([]);
   const navigate = useNavigate();
-
+const userContext =useContext(UserContext);
 
 
   /**
@@ -133,7 +133,7 @@ const Form = (props) => {
       <div className='btn'>
         <button type='submit'
          className="nemo-button" 
-         disabled={props.user?.role==='ADMIN'}
+         disabled={UserContext.user?.role==='ADMIN'}
         >create</button>
       </div>
     </form>

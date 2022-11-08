@@ -1,11 +1,12 @@
 import React from 'react';
 import './header.css';
 
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate} from 'react-router-dom';
 
 const Head = (props) => {
   const location = useLocation();
   const navigate=useNavigate();
+  const userContext =useContext(UserContext);
 
   return (
     <header className="websiteHeader">
@@ -25,11 +26,11 @@ const Head = (props) => {
           </Link>
         </nav>
         {
-        props.user &&
-        <span>{props.user.fullName}</span>
+        userContext.user &&
+        <span>{userContext.user.fullName}</span>
         }
         <button onClick={()=>{
-            props.setUser(null);
+            userContext.setUser(null);
             navigate('/login'); 
           }
         }
