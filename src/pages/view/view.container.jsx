@@ -1,7 +1,7 @@
 import Item from './item/item.jsx';
 import './viewContainerStyle.css';
 import Spinner from '../../components/spinner/spinner.jsx';
-import { useState, useEffect } from 'react';
+import { useState, useEffect ,useContext } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Filter from './filter-bar/filter.bar.component.jsx';
 
@@ -26,6 +26,7 @@ const ViewPage = (props) => {
   const searchParams = params.get('q') || '';
   const categoriesFromURL = params.get('category') || '';
   const navigate = useNavigate();
+  const userContext = useContext(UserContext);
 
   const getMenuItems = () => {
     setLoading(true);
@@ -39,7 +40,7 @@ const ViewPage = (props) => {
   };
 
   useEffect(() => {
-    if (!props.user) {
+    if (!userContext.user) {
       navigate('/login');
     }
 

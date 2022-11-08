@@ -1,9 +1,14 @@
 import React from 'react';
-import logo from '../../assets/nemo.svg'
+import logo from '../../assets/nemo.svg';
 import './header.css';
-import {Link , useLocation} from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+
 const Header = props => {
+
   const location = useLocation();
+  const navigate = useNavigate();
+  const userContext = useContext(UserContext);
 
   return (
     <header className="webisteHeader">
@@ -15,11 +20,18 @@ const Header = props => {
       </div>
       <div className="right" >
         <nav>
-          <Link to='/add' className={location.pathname === '/add' ? 'current' : ''}  
+          <Link to='/add' className={location.pathname === '/add' ? 'current' : ''}
           >Add</Link>
           <Link to='/view' className={location.pathname === '/view' ? 'current' : ''}
           >View</Link>
         </nav>
+        <button
+          onClick={() => {
+            userContext.setUser(null);
+            navigate('/login');
+          }}
+
+        >Log out </button>
       </div>
     </header>
   );
