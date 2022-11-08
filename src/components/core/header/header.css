@@ -78,3 +78,18 @@
   width: 30px;
   height: 30px;
 }
+
+.websiteHeader .right .user-badge > button {
+  appearance: none;
+  background: none;
+  border: none;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+}
+
+.websiteHeader .right .user-badge > button:hover,
+.websiteHeader .right .user-badge > button:active,
+.websiteHeader .right .user-badge > button:focus {
+  color: #666;
+}
