@@ -1,4 +1,4 @@
-import { USERS } from '../data/tmp_data';
+import { USERS } from '../components/data/temp';
 /**
  * Fake Fetching of single item
  * @param {string} email
