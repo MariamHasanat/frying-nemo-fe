@@ -31,8 +31,6 @@ const ViewPage = (props) => {
 
   const getMenuItems = () => {
     setLoading(true);
-
-    // Run the code inside after 1000 milliseconds (1 Second)
     setTimeout(() => {
       const items = JSON.parse(localStorage.getItem('menuItems') || '[]');
       setMenuItems(items);
@@ -41,7 +39,7 @@ const ViewPage = (props) => {
   };
 
   useEffect(() => {
-    // To check if the user is already logged in, send him to the view page
+   
     if (!props.user?.id) {
       navigate('/login', { replace: false });
     }

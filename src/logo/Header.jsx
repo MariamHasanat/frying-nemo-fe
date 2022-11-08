@@ -15,6 +15,7 @@ const Header = props => {
           </h1>
         </div>
         <div className="right">
+          
           <nav>
             <Link
              to='/add'

@@ -9,7 +9,7 @@ const Result = (props) => {
     if(props.counter >= 10) {
       setWin(true);
     }
-    setColor();
+    setColor(color);
   }, [props.counter]);
 
   return (

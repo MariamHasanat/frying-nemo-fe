@@ -9,14 +9,20 @@ import { useState } from 'react';
 import './common.css';
 
 function App() {
-  const [user, setUser] = useState(null);
+  const initial = JSON.parse(sessionStorage.getItem('user'));
+  const [user, setUser] = useState(initial);
+
+  const setUserOverride = user => {
+    setUser(user);
+    sessionStorage.setItem('user' , JSON.stringify(user));
+  }
   return (
     <div>
       <BrowserRouter>
          <Header user={user}/>
         <Routes>
           <Route path="/" element={<Navigate to='/view' replace/>} />
-          <Route path="/login" element={<LoginPage user={user} setUser={setUser} />}  />
+          <Route path="/login" element={<LoginPage user={user} setUser={setUserOverride} />}  />
           <Route path="/add" element={<AddPage user={user} />}/>
           <Route path="/view" element={<ViewPage user={user}/>}/>
           <Route path="/view/:id" element = {<ViewItemPage />} />
