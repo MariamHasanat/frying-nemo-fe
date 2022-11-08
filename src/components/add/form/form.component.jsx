@@ -7,6 +7,7 @@ import Select from '../common/select/select.component';
 import MultivalueInput from '../common/multivalue-input/multivalue-input.component';
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/constants';
+import { getRandom } from '../../../services/utilities';
 
 const Form = (props) => {
 
@@ -27,7 +28,7 @@ const Form = (props) => {
     }
     
     e.preventDefault();
-    const id = Date.now().toString() + (Math.floor(Math.random()*9999)).toString()
+    const id = getRandom()
     const description = e.target.description.value
     const price = e.target.price.value
     const category = e.target.category.value

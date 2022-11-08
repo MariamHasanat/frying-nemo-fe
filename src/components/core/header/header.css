@@ -50,6 +50,14 @@
   color: black;
 }
 
+.page-header .btns .logout {
+  background-color: #e6394728;
+}
+
+.page-header .btns .logout:hover {
+  background-color: #e63947;
+}
+
 .page-header .btns a:hover {
   background-color: #ffd29f;
 }

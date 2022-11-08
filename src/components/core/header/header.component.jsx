@@ -14,6 +14,7 @@ const Header = () => {
       <div className='btns'>
         <a href='/add' className={pathname == 'add' ? `selected` : undefined}>Add</a>
         <a href='/view' className={pathname.includes('view') ? `selected` : undefined}>View</a>
+        <a href='/login' className='logout' onClick={() => sessionStorage.clear()}>Logout</a>
       </div>
     </div>
   )

@@ -44,14 +44,16 @@ const LoginPage = (props) => {
           name="email"
           type="email"
           placeholder="ahmad@example.com"
+          required
         />
         <Input
           label="Password"
           name="password"
           type="password"
+          required
         />
         <div>
-          <input className="nemo-button" type="submit" value="Login" />
+          <button className="nemo-button" type="submit">Login</button>
         </div>
       </form >
     </div >

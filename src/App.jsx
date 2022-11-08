@@ -8,7 +8,13 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from "./pages/login/login.component";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(JSON.parse(sessionStorage.getItem('user')));
+
+  const updateUser = (user) => {
+    setUser(user)
+    sessionStorage.setItem('user', JSON.stringify(user))
+  }
+
   console.log(user)
   return (
     <div>
@@ -16,7 +22,7 @@ function App() {
         <Header user={user} />
         <Routes>
           <Route path="/" element={<Navigate to="/view" replace />} />
-          <Route path="/login" element={<LoginPage user={user} setUser={setUser} />} />
+          <Route path="/login" element={<LoginPage user={user} setUser={updateUser} />} />
           <Route path="/add" element={<AddPage user={user} />} />
           <Route path="/view" element={<ViewPage user={user} />} />
           <Route path="/view/:id" element={<ViewDetailsPage />} />
