@@ -18,7 +18,17 @@ const Header = (props) => {
                     {/* <div>{(<img src={profilePic}/> &&  props.user.fullName) || <Link className='nemo-button' to='/login'>login</Link>}</div> */}
                     <div>{
                         props.user?.fullName
-                            ? props.user.fullName
+                            ? <div className="user-badge">
+                                <p>{props.user.fullName}</p>
+                                <button
+                                    className='logout-button'
+                                    onClick={() => {
+                                        props.setUser(null);
+                                        navigate('/login');
+                                    }}>
+                                    logout
+                                </button>
+                            </div>
                             : <Link className='nemo-button' to='/login'>login</Link>}</div>
                 </span>
             </div>

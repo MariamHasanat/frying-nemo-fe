@@ -13,11 +13,11 @@ function App() {
     const setUserOverride = user => {
         setUser(user);
         sessionStorage.setItem('user', JSON.stringify(user));
-    }
+    };
     return (
         <div>
             <BrowserRouter>
-                <Header user={user} />
+                <Header user={user} setUser={setUserOverride} />
                 <Routes>
                     <Route path="/login" element={<Login user={user} setUser={setUserOverride} />} replace />
                     <Route path="/" element={<Navigate to='/view' />} replace />
