@@ -24,9 +24,9 @@ const ViewItemPage = () => {
         const tempItem = getItem(params.id);
         setItem(tempItem);
         setLoading(false);
-        
+
     }, [params.id]);
-    
+
     return (
         <div className='view-item-page'>
             <h1>View Item Page</h1>
