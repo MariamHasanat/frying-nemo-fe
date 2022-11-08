@@ -8,15 +8,14 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import SingleItem from "./pages/view/cards/single-item/single-item.component";
 import LoginPage from "./pages/login/login.component";
 function App() {
-  const initialUser = sessionStorage.getItem ('user') ;
+  const initialUser =  JSON.parse(sessionStorage.getItem ('user')) ;
   const [user , setUser] = useState (initialUser) ;
-  const [items , setItems] = useState ([]) ;
+  const [items , setItems] = useState([]) ;
 
   const setUserOverride = user => {
     setUser (user) ;
     sessionStorage.setItem ('user' , JSON.stringify (user)) ;
   }
-  // console.log(user);
   const addItem = (item) => {
     const tempItems = items ;
     tempItems.push (item) ;

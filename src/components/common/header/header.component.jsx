@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Header = (props) => {
   const location = useLocation () ;
+  const user = props.user ;
   return (
     <div className='webisteHeader'>
       <div className='left'>
