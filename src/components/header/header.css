@@ -6,7 +6,7 @@
   padding: 10px 20px;
   border-bottom: 1px solid #ddd;
   background-color: rgba(201, 218, 233, 0.726);
-
+  color: #4a4746;
 }
 
 .webisteHeader>.classWhichHaveHeaderContent>h1 {
@@ -59,5 +59,4 @@ div>.right {
 .webisteHeader .right nav a.current {
   background-color: #be441d;
   border-radius: 5px;
-  color: white;
 }
