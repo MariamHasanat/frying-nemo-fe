@@ -6,7 +6,7 @@ import Header from "./components/header/header.component";
 import ViewPage from "./pages/view/view.container";
 import NotFound from "./pages/not-found/not-found.component";
 import ViewItemPage from "./pages/view-item/view.item";
-
+import LoginPage from "./pages/login/login";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 //A function App will render the components
 function App() {
@@ -18,6 +18,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Navigate to="/view" replace/>} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/add" element={<AddPage />} />
             <Route path="/view" element={<ViewPage />} />
             <Route path="/view/:id" element={<ViewItemPage />} />
