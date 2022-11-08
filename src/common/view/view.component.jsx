@@ -1,8 +1,10 @@
 import './view.css';
 import Items from '../view/item/item.component';
-import { useState, useEffect } from "react";
+import React,{ useState, useEffect,useContext } from "react";
 import { useSearchParams,useNavigate } from 'react-router-dom';
 import FilterBar from './filture/filter-bar.companent';
+import { UserContext } from '../../App';
+
 const ViewPage = (props) => {
   /**
  * @type {Array<{
@@ -19,6 +21,8 @@ const ViewPage = (props) => {
   const [loading, setLoading] = useState(false);
   const [menuItems, setMenuItems] = useState(initialItems);
   const navigate = useNavigate();
+  const userContext=useContext(UserContext);
+
   const [params, setParams] = useSearchParams();
   const searchTerm = params.get('searchFood') || "";
   const categoryFromURL = params.getAll('category') || [];
@@ -43,7 +47,7 @@ const ViewPage = (props) => {
     getMenuItems();
   }, []);
   useEffect(() => {
-    if (!props.user?.id) {
+    if (!userContext.user?.id) {
       navigate('/login', { replace: false });
     }
   }, []);

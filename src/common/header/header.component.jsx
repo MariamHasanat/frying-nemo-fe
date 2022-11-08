@@ -1,12 +1,15 @@
 
 import nemo from '../../image/nemo.png';
-import React from 'react';
+import React,{useContext} from 'react';
 import './header.css';
 import { Link,  useLocation, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../App';
 
 const Header = (props) => {
   const location = useLocation();
   const navigate=useNavigate();
+  const userContext=useContext(UserContext);
+
   return (
     <header className="websiteHeader">
       <div className="left">
@@ -23,14 +26,14 @@ const Header = (props) => {
           <Link to='/view' className={location.pathname.startsWith('/view') ? "current" : ""}>View</Link>
         </nav>
          {
-          props.user &&
+          userContext.user &&
           <span className="user-info">
-            <img src={props.user.imageUrl} alt="user logo" width={30} height={30} />
+            <img src={userContext.user.imageUrl} alt="user logo" width={30} height={30} />
            
-            <h3>{props.user.fullName}</h3> 
+            <h3>{userContext.user.fullName}</h3> 
             <button
               onClick={() => {
-                props.setUser(null);
+                userContext.setUser(null);
                 navigate('/login');
               }}
             >

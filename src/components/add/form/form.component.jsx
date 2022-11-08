@@ -5,10 +5,13 @@ import Textarea from '../../../common/textarea/textarea.component';
 import Select from '../../../common/select/select.component';
 import MultivalueInput from '../../../common/Multivalue-input/multivalue-input.component';
 import { useNavigate } from 'react-router-dom';
+import React,{ useContext } from 'react';
+import { UserContext } from '../../../App';
 
 const Form = (props) => {
   const [name, setName] = useState('Nadeen');
   const [ingredients, setIngredients] = useState([]);
+  const userContext=useContext(UserContext);
   const navigate = useNavigate();
   /**
    * 
@@ -103,7 +106,7 @@ const Form = (props) => {
       />
 
       <div>
-        <button type='submit' className='submit' disabled={props.user?.role !== 'ADMIN'} >Create</button>
+        <button type='submit' className='submit' disabled={userContext.user?.role !== 'ADMIN'} >Create</button>
       </div>
     </form>
   );
