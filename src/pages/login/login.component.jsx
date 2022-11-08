@@ -37,11 +37,13 @@ if (email && password){
           name="email"
           type="email"
           placeholder="ahmad@example.com"
+          required
         />
         <Input
           label="Password"
           name="password"
           type="password"
+          required
         />
         <div>
           <input className="nemo-button" type="submit" value="Login" />
