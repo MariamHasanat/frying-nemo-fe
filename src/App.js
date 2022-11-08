@@ -5,9 +5,13 @@ import AddPage from "../src/pages/add/add.component";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import ViewItem from "./pages/view-item/view-item.component";
 import LoginComponent from "./pages/login/login.component";
-import { useState } from "react";
+import React, { useState } from "react";
 import Test from "./pages/test/test.component";
+
+export const UserContext = React.createContext(null);
+
 function App() {
+
 
 
   const initialUser = JSON.parse(sessionStorage.getItem('user'));
@@ -17,18 +21,24 @@ function App() {
     setUser(user);
     sessionStorage.setItem('user', JSON.stringify(user));
   };
+
+
   return (
     <div>
       <BrowserRouter>
         <Header user={user} setUser={setOverrideUser} />
-        <Routes>
-          <Route path="/" element={<Navigate to='/view' replace />} />
-          <Route path="/login" element={<LoginComponent user={user} setUser={setOverrideUser} />} />
-          <Route path="/add" element={<AddPage user={user} />} />
-          <Route path="/view" element={<View user={user} />} />
-          <Route path="/view/:id" element={<ViewItem />} />
-          <Route path="/404" element={<Test />} />
-        </Routes>
+
+        <UserContext>
+
+          <Routes>
+            <Route path="/" element={<Navigate to='/view' replace />} />
+            <Route path="/login" element={<LoginComponent user={user} setUser={setOverrideUser} />} />
+            <Route path="/add" element={<AddPage user={user} />} />
+            <Route path="/view" element={<View user={user} />} />
+            <Route path="/view/:id" element={<ViewItem />} />
+            <Route path="/404" element={<Test />} />
+          </Routes>
+        </UserContext>
       </BrowserRouter>
 
 
