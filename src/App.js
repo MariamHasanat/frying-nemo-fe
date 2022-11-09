@@ -7,7 +7,7 @@ import Login from "./pages/login/login.component";
 import { useState } from "react";
 import './index.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import React, { useContext } from "react";
+import React from "react";
 
 export const UserContext = React.createContext(null);
 

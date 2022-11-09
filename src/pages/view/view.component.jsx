@@ -1,24 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import ItemCard from '../../components/item-card/item-card.component';
 import Loading from '../../components/common/loading/loading.component';
 import './view.css';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import FilterBar from './filter-bar/filter-bar.component';
+import { UserContext } from '../../App';
 // import NotFound from '../not-found/not-found.component';
 
 
 const getMenu = () => JSON.parse(localStorage.getItem('menu') || '[]');
 
 const ViewPage = (props) => {
+    const navigate = useNavigate();
     const [menu] = useState(getMenu);
     const [loading, setLoading] = useState(true);
     const [params, setParams] = useSearchParams();
+    const userContext = useContext(UserContext);
 
     const searchTerms = params.get('searchTerms') || '';
     const categoryFilters = params.getAll('category') || '';
     const priceMin = Number(params.getAll('priceMin')) || 0;
     const priceMax = Number(params.getAll('priceMax')) || 0;
 
+    useEffect(() => {
+        if (!userContext.user)
+            navigate('/login');
+    }, []);
 
     const filteredMenu = menu
         .filter(

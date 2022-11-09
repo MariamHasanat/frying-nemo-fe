@@ -4,10 +4,16 @@ import { checkUser } from '../../services/checkUser';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
 import { UserContext } from '../../App';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
-const Login = (props) => {
+const Login = () => {
     const navigate = useNavigate();
+    useEffect(() => {
+        if(userContext.user){
+            navigate('/')
+        }
+    }, []);
+
     const userContext = useContext(UserContext);
 
     const submitHandler = (e) => {
