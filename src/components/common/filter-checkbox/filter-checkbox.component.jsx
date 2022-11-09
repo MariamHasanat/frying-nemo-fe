@@ -22,7 +22,7 @@ const FilterCheckbox = (props) => {
 
             <label
                 {...inputProps}
-                className={props.checked ? 'checked' : ''}
+                className={props.checked ? 'checked nemo-button' : 'nemo-button'}
                 htmlFor={`filter-checkbox_id_for_${props.label}`}
             >
                 {props.label}

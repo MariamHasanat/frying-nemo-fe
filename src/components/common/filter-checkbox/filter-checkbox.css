@@ -8,24 +8,16 @@
 }
 
 .filter-checkbox-group>label {
-    margin: 15px 0;
-    display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    cursor: pointer;
-    border: 1px solid #007bfd;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: var(--border-radius);
-    background-color: #007bfd;
+    text-decoration: none;
     color: white;
-    transition: color .20s ease-in-out, background-color .20s ease-in-out, border-color .20s ease-in-out, box-shadow .20s ease-in-out;
+    margin: 0 5px;
+    background-color: #007bfd;
+    border: 1px solid#007bfd;
 }
 
 /* .filter-checkbox-group>label:hover, */
 .filter-checkbox-group>label.checked {
-    color: #212529;
-    background-color: #dee5ec;
-    border-color: #dae0e5;
+    color: black;
+    background-color: transparent;
+    border: 1px solid #ced4da;
 }
