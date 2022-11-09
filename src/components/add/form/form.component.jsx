@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import CATEGORIES from '../../../data/constant.js';
 import Input from '../../common/input/input.component';
 import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
+import { UserContext } from '../../../App';
+
 
 const Form = (props) => {
   const [name, setName] = useState('Ruba');
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
+  const userContext = useContext(UserContext);
 
   /**
    * Handler function for the form onSubmit event.
@@ -24,6 +28,7 @@ const Form = (props) => {
     const image = e.target.image.value;
 
     const menuItem = {
+      id: Date.now(),
       name: name,
       description: description,
       price: price,
@@ -61,16 +66,7 @@ const Form = (props) => {
     setName(value);
   };
 
-  const categories = [
-    'Fish',
-    'Drinks',
-    'Hookah',
-    'Salads',
-    'Sandwiches',
-    'Main Dish',
-    'Appetizers',
-    'Ice Cream'
-  ];
+  
 
   return (
     <form className="addForm" onSubmit={submitHandler}>
@@ -98,7 +94,7 @@ const Form = (props) => {
         required
       />
       <Select name="category" label="Category" required>
-        {categories.map(item => {
+        {CATEGORIES.map(item => {
           return <option key={item} value={item}>{item}</option>;
         })}
       </Select>

@@ -1,4 +1,4 @@
-import USERS from "../components/data/tmp_data";
+import USERS from "../data/tmp_data";
 
 /**
  * Fake Fetching of single item

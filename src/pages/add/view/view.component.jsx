@@ -4,8 +4,9 @@ import { useState } from 'react';
 import FilterBar from '../../../components/view/item/item/filter-bar/filter-bar.component';
 import { useEffect } from 'react';
 import Spinner from '../../../components/core/header/spinner/spinner.component';
-import { Navigate, useSearchParams } from 'react-router-dom';
-
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../../../App';
 
 
 /**
@@ -25,6 +26,8 @@ const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
+  const userContext = useContext(UserContext);
+  const navigate = useNavigate();
   const searchTermsFromURL = params.get('searchTerms') || '';
   const categoriesFromURL = params.getAll('category') || '';
 
@@ -40,12 +43,11 @@ const ViewPage = (props) => {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
-=======
-    if (!props.user?.id){
-      Navigate('/login', {replace: false});
+    // To check if the user is already logged in, send him to the view page
+    if (!userContext.user?.id) {
+      navigate('/login', { replace: false });
     }
->>>>>>> faaaeb0c0852ef2f9ceb9ef1565401db2796dff2
+
     getMenuItems();
   }, []);
 
@@ -118,7 +120,8 @@ const ViewPage = (props) => {
   );
 };
 
-export default ViewPage;;
+export default ViewPage;
+
 
 
 

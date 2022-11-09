@@ -5,7 +5,10 @@ import NotFound from "./pages/add/not-found/not-found.component";
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import ViewItemPage from "./pages/add/view/view-item/view-item.component";
 import LoginPage from "./pages/add/login/login.component";
-import { useState } from "react";
+import React, { useState } from "react";
+
+
+export const UserContext = React.createContext(null);
 
 
 
@@ -18,21 +21,24 @@ setUser(user);
 sessionStorage.setItem('user', JSON.stringify(user))
 }
   return (
+    <UserContext.Provider value={{user, setUser: setUserOverride}}>
     <div>
       <BrowserRouter>
         <Header />
           <Routes >
-            <Route path="/" element={<Navigate to="/view" />}></Route>
-            <Route path="/add" element={<AddPage />}></Route>
+            <Route path="/" element={<Navigate to="/view" replace/>}/>
+            <Route path="/add" element={<AddPage />} />
             <Route path="/view" element={<ViewPage user={user} />}></Route>
-            <Route path="/view-details/:id" element={<ViewItemPage user={user}/>}></Route>
-            <Route path="/login" element={<LoginPage user={user} setUser={setUserOverride}/>}></Route>
-            <Route path="/*" element={<NotFound/>}></Route>
+            <Route path="/view-details/:id" element={<ViewItemPage />} />
+            <Route path="/login" element={<LoginPage/>} />
+            <Route path="/*" element={<NotFound/>}/>
             
           </Routes>
-      </BrowserRouter>
+          </BrowserRouter>
+      </div>
+      </UserContext.Provider>
+    
 
-    </div>
   );
 }
 export default App;

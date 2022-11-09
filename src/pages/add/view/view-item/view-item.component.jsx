@@ -33,9 +33,9 @@ const ViewItemPage = () => {
 
   return (
     <div className="view-item-page">
-      {loading && <Spinner />}
-      {
-        !loading && currentItem !== null
+      {loading ?<Spinner />
+      
+        :loading && currentItem !== null
           ? <div className="item-details">
             <h1>{currentItem.name}</h1>
             <div className="img">
