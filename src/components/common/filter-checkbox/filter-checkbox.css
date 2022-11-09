@@ -17,7 +17,7 @@
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: 1.25rem;
+    border-radius: var(--border-radius);
     background-color: #007bfd;
     color: white;
     transition: color .20s ease-in-out, background-color .20s ease-in-out, border-color .20s ease-in-out, box-shadow .20s ease-in-out;

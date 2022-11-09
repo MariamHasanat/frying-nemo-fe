@@ -7,8 +7,8 @@
 .multivalue-input-group>.input-button-wrapper>button {
     margin-left: -6px;
     margin-top: 27px;
-    border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     height: 38px;
@@ -25,7 +25,7 @@
     margin-top: 10px;
     padding: 5px 10px;
     border: 1px solid #ddd;
-    border-radius: 0.25rem;
+    border-radius: var(--border-radius);
     ;
     background-color: white;
 
@@ -52,5 +52,6 @@
 
 .multivalue-input-group>ul>li>button:hover {
     background-color: #dee5ec;
-    border-radius: 0.25rem;
+    border-radius: var(--border-radius);
+    ;
 }

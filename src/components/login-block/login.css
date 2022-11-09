@@ -195,7 +195,7 @@ a:hover {
 .container {
     position: relative;
     background-color: #fafafe;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     margin: 40px;
     padding: 25px 20px 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -211,7 +211,7 @@ a:hover {
     right: 0;
     height: 60%;
     background-color: #fafafe;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     z-index: 2;
 }
 
@@ -231,7 +231,7 @@ a:hover {
 }
 
 .card_button {
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     border: none;
     outline: none;
     width: 100%;

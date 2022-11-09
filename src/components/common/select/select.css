@@ -12,7 +12,7 @@
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
-    border-radius: 0.25rem;
+    border-radius:  var(--border-radius);
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     min-width: 223px;
 }

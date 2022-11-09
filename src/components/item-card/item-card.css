@@ -13,9 +13,9 @@
 }
 
 .item-card>.card-wrapper {
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.276);
-    width: 300px;
+    width: 350px;
     height: 450px;
     box-sizing: border-box;
 
@@ -29,8 +29,8 @@
 }
 
 .item-card>.card-wrapper>img {
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
+    border-top-right-radius: var(--border-radius);
+    border-top-left-radius: var(--border-radius);
 }
 
 .item-card>.card-wrapper>.item-description {

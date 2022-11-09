@@ -26,7 +26,7 @@ const ItemCard = (props) => {
     return (
         <div className='item-card'>
             <div className="card-wrapper">
-                <img src={props.img} width={300} height={200} alt={props.name} />
+                <img src={props.img} width={350} height={230} alt={props.name} />
                 <div className="item-description">
                     <Link to={`/view/${props.id}`}>{props.name}</Link >
                     <p>{props.description}</p>
