@@ -1,10 +1,11 @@
+import { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import { useSearchParams,useNavigate } from 'react-router-dom';
 import Filter from '../core/filter-bar/Filter';
 import Spinner from '../core/spinner/Spinner';
 import Item from '../view/item/item.component';
 import './viewpage.css';
-
+import { UserContext } from '../../App';
 
 
 const ViewPage = (props) => {
@@ -28,7 +29,7 @@ const ViewPage = (props) => {
   const categoryParams = Params.getAll('category') || "";
   const MINParams = Params.get('Min') || "";
   const MAXParams = Params.get('Max') || "";
-
+  const ContextUser=useContext(UserContext)
   const getMenuItems = () => {
     setLoading(true);
 
@@ -43,7 +44,8 @@ const ViewPage = (props) => {
  
 
   useEffect(() => {
-    
+    if(!ContextUser.user?.id){
+      navigate("/login",{replace:false})}
     getMenuItems();
   }, []);
 

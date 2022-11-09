@@ -1,5 +1,6 @@
+import { useContext } from 'react';
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Spinner from '../../components/core/spinner/spinner.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import Item from '../../components/view/item/item.component';
@@ -24,7 +25,8 @@ const ViewPage = (props) => {
   const [params, setParams] = useSearchParams();
   const searchTermsFromURL = params.get('searchTerms') || '';
   const categoriesFromURL = params.getAll('category') || '';
-
+  navigator=useNavigate();
+  const ContextUser=useContext(UserContext)
   const getMenuItems = () => {
     setLoading(true);
 
@@ -37,6 +39,8 @@ const ViewPage = (props) => {
   };
 
   useEffect(() => {
+    if(ContextUser.user?.id){
+    navigator("/login",{replace:false})}
     getMenuItems();
   }, []);
 

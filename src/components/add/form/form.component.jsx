@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Select from '../../../common/Select/Select';
 import Textarea from '../../../common/textarea/textarea';
 import Input from '../../../common/input/input';
@@ -6,7 +6,7 @@ import './form.css';
 import MultivalueInput from '../../../common/multivalue-input/multivalue-input.component';
 import Image from '../../../common/image/Image';
 import { useNavigate } from 'react-router-dom'
-
+import { UserContext } from '../../../App';
 
 
 
@@ -18,6 +18,7 @@ const Form = (props) => {
   const navigate = useNavigate()
   const [name, SetName] = useState('Add item');
   const [ingredients, setIngredients] = useState([]);
+  const ContextUser=useContext(UserContext)
   const submitHandler = e => {
     e.preventDefault();
 
@@ -106,7 +107,7 @@ const Form = (props) => {
 
         />
 
-        <button className='point' type='sumbit'    disabled={props.user?.role !== 'ADMIN'} >Create</button>
+        <button className='point' type='sumbit'    disabled={ContextUser.user?.role !== 'ADMIN'} >Create</button>
       </div>
     </form>
   );

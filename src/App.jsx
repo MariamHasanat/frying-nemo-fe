@@ -6,25 +6,34 @@ import { BrowserRouter, Routes, Route ,Navigate} from 'react-router-dom'
 import { useState } from "react";
 import ViewItemPage from "./pages/view-item/view-item.component";
 import LoginPage from "./pages/login/login.compent";
+import React from "react";
 
+export const UserContext = React.createContext(null);
 function App() {
 
-  const [user, setUser] = useState(null);
+
+ const initialization=JSON.parse(sessionStorage.getItem("user"));
+ const [user, setUser] = useState(initialization);
+ const setUserOverride = user => {
+  setUser(user);
+  sessionStorage.setItem('user', JSON.stringify(user));
+};
 
   return (
     <div>
       <BrowserRouter>
-        <Header user={user}  />
+        < Header  user={user} />
         <div className="flex"> 
+        <UserContext.Provider value={{user,setUser:setUserOverride}}>
         <Routes>
-
             <Route path="/*" element={<NotFoundPage></NotFoundPage>}></Route>
-            <Route path="/add" element={<AddPage user={user}>></AddPage>} ></Route>
+            <Route path="/add" element={<AddPage ></AddPage> } ></Route>
             <Route path="/" element={<Navigate to="/view"></Navigate>} ></Route>
-            <Route path="/view" element={<ViewPage user={user}>></ViewPage>}></Route>
+            <Route path="/view" element={<ViewPage  ></ViewPage>}></Route>
             <Route path="/view/:id" element={<ViewItemPage></ViewItemPage>}></Route>
-            <Route path="/login" element={<LoginPage user={user} setUser={setUser} />} />
+            <Route path="/login" element={<LoginPage  />} />
         </Routes>
+        </UserContext.Provider>
         </div>
       </BrowserRouter>
     </div>
