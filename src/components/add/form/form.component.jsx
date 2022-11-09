@@ -40,6 +40,7 @@ const Form = (props) => {
     items.push(menuItem);
     localStorage.setItem('menuItems', JSON.stringify(items));
     navigate('/view');
+    console.log('form Submitted')
 
   };
   
@@ -113,7 +114,7 @@ const Form = (props) => {
         <button
           className="nemo-button"
           type="submit"
-          disabled={userContext?.role !== 'ADMIN'}
+          disabled={userContext.user?.role !== 'ADMIN'}
         >
           Create
         </button>
