@@ -1,8 +1,7 @@
 
-
 :root {
   --select-border: #777;
-  --select-focus: blue;
+  --select-focus: purple;
   --select-arrow: var(--select-border);
 }
 *,
@@ -11,10 +10,8 @@
   box-sizing: border-box;
 }
 select {
-  /* //A reset of styles, including removing the default dropdown arrow */
-  appearance: none;
-  /* // Additional resets for further consistency */
-  background-color: transparent;
+  /* appearance: none; */
+  /* background-color: transparent; */
   border: none;
   padding: 0 1em 0 0;
   margin: 0;
@@ -26,12 +23,11 @@ select {
   outline: none;
 
 
-
-
 }
 select::-ms-expand {
   display: none;
 }
+
 .select {
   width: 100%;
   min-width: 15ch;
@@ -39,7 +35,7 @@ select::-ms-expand {
   border: 1px solid var(--select-border);
   border-radius: 0.25em;
   padding: 0.25em 0.5em;
-  font-size: 1.25rem;
+  font-size: 1rem;
   cursor: pointer;
   line-height: 1.1;
   background-color: #fff;
@@ -65,7 +61,6 @@ select::-ms-expand {
 select,
 .select:after {
   grid-area: select;
-
 }
 select:focus + .focus {
   position: absolute;
@@ -79,18 +74,8 @@ select:focus + .focus {
 select[multiple] {
   padding-right: 0;
   height: 6rem;
-
 }
+
 select[multiple] option {
   white-space: normal;
-}
-.select--disabled {
-  cursor: not-allowed;
-  background-color: #eee;
-  background-image: linear-gradient(to top, #ddd, #eee 33%);
-}
-*::selection{
-  background-color: purple;
-   color: #fff;
-   
 }
