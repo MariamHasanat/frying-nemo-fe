@@ -1,13 +1,13 @@
 import Card from './card';
 import './view.css';
-import React, { useState,UserContext } from 'react';
+import React, { useState,useContext  } from 'react';
 // import Input from '../../components/common/input/input';
 import './view.css';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { FilterBar } from './filter-bar/filter-bar';
 import { CATEGORIES } from '../../data/data';
 import { useEffect } from 'react';
-
+import { UserContext } from '../../App';
 /**
    * @type {Array<
    * 
@@ -26,7 +26,7 @@ const ViewPage = (props) => {
   const [menuitems, setMenuItems] = useState(GetmenuItems());
   const navigate = useNavigate();
 
-  const userContext =useContext(UserContext);
+  const userContext =useContext (UserContext);
 
   //instance of class 
   const [search, setSearch] = useState('');
@@ -55,7 +55,7 @@ const ViewPage = (props) => {
   // };
 
   useEffect(() => {
-    if (!UserContext.user?.id) {
+    if (!userContext.user?.id) {
       navigate('/login', { replace: false });
     }
 

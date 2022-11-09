@@ -30,11 +30,11 @@ function App() {
 
 
   return (
+    <UserContext.Provider value={{ user, setUser: saveUser }}>
     <div>
 
       <BrowserRouter>
         <Head user={user} setUser={saveUser} />
-        <UserContext.provider value={{ user, setUser: saveUser }}>
           <Routes>
             <Route path="/add" element={<AddPage  />} />
             <Route path="/*" element={<NotFound />} />
@@ -44,9 +44,9 @@ function App() {
             <Route path="/login" element={<Login  />} />
             {/* <Route path="/*" element={<Navigate to='/add' />} /> */}
           </Routes>
-        </UserContext.provider>
       </BrowserRouter>
     </div >
+        </UserContext.Provider>
   );
 }
 

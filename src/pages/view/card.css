@@ -10,14 +10,14 @@ flex-direction: row;
     /* background-color: rgb(250, 225, 229); */
     padding: .5rem;
     align-items: center;
-    border: 3px solid #f15a29;
-    box-shadow: 2px 2px 2px 2px rgb(224, 160, 160);
+    border: 3px solid purple;
+    box-shadow: 2px 2px 2px 2px rgb(192, 164, 192);
     margin: .5rem;
     flex-wrap: wrap;
 }
 .card h2 {
-    color: #f15a29;
-    text-shadow: 1px 2px 1px rgb(73, 65, 50) ;
+    color: purple;
+    text-shadow: 1px 2px 1px rgb(177, 118, 177) ;
 }
 .imgs {
 
@@ -34,7 +34,7 @@ flex-direction: row;
 .discreption {
     text-align: left;
     padding: 1rem;
-    border-top: 1px solid rgb(102, 52, 52);
+    border-top: 1px solid rgb(177, 118, 177);
     margin: 1px;
     font-weight: bolder;
 }
@@ -43,7 +43,7 @@ flex-direction: row;
     display: flex;
     justify-content: space-between;
     margin: 1px;
-    color: #f15a29;
+    color: purple;
     font-weight: bolder;
 
 
@@ -56,7 +56,7 @@ flex-direction: row;
 
 .price {
     font-size: xx-large;
-    color: #f15a29;
+    color: plum;
     font-weight: bolder;
     padding: 5px;
 }

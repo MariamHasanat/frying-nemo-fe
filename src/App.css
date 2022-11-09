@@ -2,10 +2,5 @@ button{
 cursor: pointer;
 }
 button:active{
-  box-shadow: -2px -1px 5px 0px orangered;
-}
-body{
-
-
-  background-color: rgb(255, 242, 238);
+  box-shadow: -2px -1px 5px 0px purple;
 }

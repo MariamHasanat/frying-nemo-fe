@@ -16,7 +16,7 @@ const MySelect = props => {
   const { label, ...selectProps } = props;
 
   return (
-    <div className="select-group">
+    <div>
       {
         label ? (
           <label>
@@ -26,7 +26,7 @@ const MySelect = props => {
           </label>
         ) : null
       }
-      <select {...selectProps} />
+      <select  className="select" id="standard-select" {...selectProps} />
     </div>
   );
 };

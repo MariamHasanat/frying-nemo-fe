@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import Form from '../../components/add/form/form.component';
 import './add.css';
-
 const AddPage = (props) => {
 
-  const userContext =userContext(UserContext);
 
 
   const [time, setTime] = useState(new Date());
@@ -26,9 +24,9 @@ const AddPage = (props) => {
     setTime(new Date());
   };
   return (
-    <div className='wrapper'>
+    <div className='wrapper-addPage'>
 <span>{time.toLocaleTimeString()}</span>
-      <h1>Add a new item</h1>
+      {/* <h1>Add a new item</h1> */}
       {/* <Form onNavigate={props.onNavigate} /> */}
 
       <Form onNavigate={props.onNavigate}  />
