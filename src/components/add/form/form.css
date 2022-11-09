@@ -1,4 +1,4 @@
-form {
+.add-wapper>form {
   background-color: "";
   width: 900px;
   display: flex;
@@ -6,16 +6,16 @@ form {
   justify-content: space-between;
   padding: 20px;
   /* margin: 10px; */
-  border: 2px #f15a29 solid;
-color: #f15a29;
+  border: 2px purple solid;
+color: plum;
   display: flex;
   justify-content: center;
 }
 
-.btn >button {
+.add-wapper>.btn >button {
   background-color: non;
   border: none;
-  color: #f15a29;
+  color: purple;
 padding: .5rem ;
 margin-top: 5px;
 font-weight: bolder;

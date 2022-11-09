@@ -20,16 +20,16 @@
   border-radius: 7px;
   cursor: pointer;
   border: 1px solid #e1cbc4;
-  color: #f15a29;
+  color: purple;
   text-shadow: 1px 1px 1px #492d23;
   font-weight: 10px;
 }
 
 .checkbox-group>label>span:nth-child(2) {
-  color: #f15a29;
+  color: purple;
 }
 
 .checkbox-group>label.checked {
-  background-color: #f15a29;  
+  background-color: purple;  
   color: #fff;
 }

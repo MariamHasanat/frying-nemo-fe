@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './header.css';
-
-import { Link, useLocation, useNavigate} from 'react-router-dom';
+import { UserContext } from '../../App';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Head = (props) => {
   const location = useLocation();
-  const navigate=useNavigate();
-  const userContext =useContext(UserContext);
+  const navigate = useNavigate();
+  const userContext = useContext(UserContext);
 
   return (
     <header className="websiteHeader">
@@ -26,13 +26,13 @@ const Head = (props) => {
           </Link>
         </nav>
         {
-        userContext.user &&
-        <span>{userContext.user.fullName}</span>
+          userContext.user &&
+          <span>{userContext.user.fullName}</span>
         }
-        <button onClick={()=>{
-            userContext.setUser(null);
-            navigate('/login'); 
-          }
+        <button onClick={() => {
+          userContext.setUser(null);
+          navigate('/login');
+        }
         }
         >LogOut</button>
 

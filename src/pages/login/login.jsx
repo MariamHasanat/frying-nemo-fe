@@ -1,12 +1,12 @@
-import { useEffect,UserContext } from "react";
+import { useEffect,useContext  } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../../components/common/input/input";
 import { LoginUser } from "../../components/services/user";
-
-
+import { UserContext } from "../../App";
+import './login.css';
 const Login = (props) => {
   const navigate = useNavigate();
-  const userContext =userContext(UserContext);
+  const userContext =useContext (UserContext);
 
   useEffect(() => {
 
@@ -44,7 +44,6 @@ const Login = (props) => {
     <div className="login-page">
       <form onSubmit={handleLogin}>
         <div className="cover">
-          <h1>Hi :) </h1>
           <h3>Login In with your email and password to see our menu ! </h3>
           <img src="" alt="" />
         </div>
@@ -66,7 +65,7 @@ const Login = (props) => {
           />
         </div>
         <div className="LOGIN" >
-          <button className="nemo-button" type="submit" >Login</button>
+          <button  type="submit" >Login</button>
         </div>
       </form>
     </div >

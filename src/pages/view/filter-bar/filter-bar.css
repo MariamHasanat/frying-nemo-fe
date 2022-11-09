@@ -7,7 +7,7 @@
 .input-bar {
   display: flex;
   /* flex-direction: column; */
-  flex-direction: row;
+  /* flex-direction: row; */
 }
 
 .categories {
@@ -31,7 +31,7 @@
 }
 .wrapper>.priceFilter>.disc>b {
   margin-top: 1rem;
-  color: #f15a29;
+  color: purple;
   margin-bottom: 1rem;
   /* background-color: red; */
 }
@@ -59,7 +59,7 @@
   width: 15px;
   height: 20px;
   border-radius: 50%;
-  background: #f15a29;
+  background: purple;
   cursor: pointer;
 }
 
@@ -67,6 +67,6 @@
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #f15a29;
+  background: purple;
   cursor: pointer;
 }

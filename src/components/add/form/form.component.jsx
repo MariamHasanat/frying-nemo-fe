@@ -1,4 +1,4 @@
-import React, { useState ,UserContext} from 'react';
+import React, { useState,useContext  } from 'react';
 import Input from '../../common/input/input';
 import MySelect from '../../common/select/select';
 import Textarea from '../../common/textarea/textarea/Tarea';
@@ -6,6 +6,7 @@ import MultivalueInput from '../../common/multi-value-input/multi-value-input';
 import './form.css';
 import { useNavigate } from 'react-router-dom';
 import {CATEGORIES } from '../../../data/data';
+import {UserContext } from '../../../App'
 
 
 
@@ -87,6 +88,8 @@ const userContext =useContext(UserContext);
 
 
   return (
+    <div className='add-wapper'>
+
     <form onSubmit={submitHandeller} >
 
       <h1>Add to the menu !</h1>
@@ -133,10 +136,11 @@ const userContext =useContext(UserContext);
       <div className='btn'>
         <button type='submit'
          className="nemo-button" 
-         disabled={UserContext.user?.role==='ADMIN'}
+         disabled={userContext.user?.role==='ADMIN'}
         >create</button>
       </div>
     </form>
+        </div>
   );
 };
 

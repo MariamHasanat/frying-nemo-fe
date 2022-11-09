@@ -20,7 +20,7 @@
   letter-spacing: 0.5px;
   margin: 0;
   margin-right: 20px;
-  color: #f15a29;
+  color: purple;
   text-shadow: 1px 1px 1px #301c16;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .websiteHeader .right nav a.current {
-  background-color: #f15a29;
+  background-color: purple;
   border-radius: 5px;
   color: white;
 }
