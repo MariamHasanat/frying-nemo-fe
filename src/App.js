@@ -8,6 +8,7 @@ import LoginPage from './pages/login/LoginPage';
 import Header from "./logo/Header";
 import { useState } from 'react';
 import './common.css';
+
 //null is default value
 export const UserContext = React.createContext(null);
 
@@ -21,9 +22,9 @@ function App() {
   }
   return (
     <div>
+         <UserContext.Provider  value={{user , setUser: setUserOverride}}>
       <BrowserRouter>
-         <UserContext.Provider>
-           <Header value={{user , setUser : setUserOverride}}/>
+           <Header/>
                   <Routes>
                       <Route path="/" element={<Navigate to='/view' replace/>} />
                       <Route path="/login" element={<LoginPage  />}  />
@@ -32,8 +33,8 @@ function App() {
                       <Route path="/view/:id" element = {<ViewItemPage />} />
                       <Route path="/*" element={<Notfound />}/>
                    </Routes>
-         </UserContext.Provider>
       </BrowserRouter>
+         </UserContext.Provider>
     
     </div>
   );

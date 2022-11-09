@@ -4,6 +4,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Spinner from '../spinner/spinner.component';
 import FilterBar from './filter-bar/FilterBar';
+import { useContext } from 'react';
+import { UserContext } from '../../App';
 
 // const getMenuItems = () => JSON.parse(localStorage.getItem('menuItem') || '[]');
 /**
@@ -22,6 +24,7 @@ const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
+  const userContext = useContext(UserContext);
 
   const searchFromURL = params.get('search') || '';
   const navigate = useNavigate();
@@ -40,7 +43,7 @@ const ViewPage = (props) => {
 
   useEffect(() => {
    
-    if (!props.user?.id) {
+    if (userContext.user?.id) {
       navigate('/login', { replace: false });
     }
   }, []);
