@@ -25,3 +25,10 @@
 .select-group {
     margin-bottom: 20px
 }
+
+.add-form-button:disabled {
+    cursor: not-allowed;
+    color: #212529;
+    background-color: #dee5ec;
+    border-color: #dae0e5;
+}

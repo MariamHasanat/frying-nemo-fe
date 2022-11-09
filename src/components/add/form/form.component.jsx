@@ -5,12 +5,15 @@ import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import '../../../common.css';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/constants';
-const Form = (props) => {
+import { UserContext } from '../../../App';
+const Form = () => {
     const [name, setName] = useState('');
     const [ingredients, setIngredients] = useState([]);
     const navigate = useNavigate();
+    const userContext = useContext(UserContext);
     /**
      * Form Submit Handler 
      * @param e{React.ChangeEvent<HTMLInputElement>} event
@@ -100,7 +103,13 @@ const Form = (props) => {
             <Input name="image" label='Image link' />
 
             <div>
-                <input className='nemo-button' type='submit' label='Create' />
+                <button
+                    className='nemo-button add-form-button'
+                    disabled={userContext.user?.role !== 'ADMIN'}
+                >
+                    Create
+                </button>
+
             </div>
         </form>
     );
