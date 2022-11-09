@@ -1,7 +1,7 @@
 import './add.css';
 
-import { React, useContext } from 'react';
-import { UserContext } from '../../App';
+import { React } from 'react';
+
 import Form from '../../components/add/form/form.component';
 
 const AddPage = (props) => {

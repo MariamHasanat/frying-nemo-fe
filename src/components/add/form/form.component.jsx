@@ -1,6 +1,7 @@
 
 import { useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../../../App';
 import Input from '../../common/input/input.component';
 import MultivalueInput from '../../common/multivalueinput/multi-value-input';
 import Select from '../../common/select/select.component';
@@ -12,7 +13,7 @@ const Form = (props) => {
   const [name, setName] = useState('yara');
   const [Ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
-  const userContext = userContext(userContext);
+  const userContext = useContext(UserContext);
   /**
    * Handler function for the form onSubmit event.
    * @param {React.FormEvent<HTMLFormElement>} e Event object.
