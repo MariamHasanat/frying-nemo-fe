@@ -1,3 +1,6 @@
+.add-wapper{
+  background-color: rgb(252, 224, 252);
+}
 .add-wapper>form {
   background-color: "";
   width: 900px;
@@ -7,7 +10,7 @@
   padding: 20px;
   /* margin: 10px; */
   border: 2px purple solid;
-color: plum;
+color: purple;
   display: flex;
   justify-content: center;
 }

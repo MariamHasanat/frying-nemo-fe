@@ -16,7 +16,7 @@ const MySelect = props => {
   const { label, ...selectProps } = props;
 
   return (
-    <div  >
+    <div >
       {
         label ? (
           <label>
