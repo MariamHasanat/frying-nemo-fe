@@ -1,9 +1,12 @@
 import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/fish-removebg-preview.png';
-const Handel = (props) => {
+import { useContext } from 'react';
+import { UserContext } from '../../App';
+const Handel = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const userContext = useContext(UserContext)
   return (
     <header className='handel-group'>
       <img className='img' src={logo} alt="Nemo" />
@@ -20,12 +23,12 @@ const Handel = (props) => {
         </div>
         <div>< Link to="/view" className={location.pathname.includes("view") ? 'current' : ""}>View</Link ></div>
         {
-          props.user &&
+          userContext.user &&
           <span className="user-badge">
-            <img src={props.user.imageUrl} alt="user logo" width={30} height={30} />
-            {props.user.fullName} <button
+            <img src={userContext.user.imageUrl} alt="user logo" width={30} height={30} />
+            {userContext.user.fullName} <button
               onClick={() => {
-                props.setUser(null);
+                userContext.setUser(null);
                 navigate ('/login') ;
               }}
             > Logout
