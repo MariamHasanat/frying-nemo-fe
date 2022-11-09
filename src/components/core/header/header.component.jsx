@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './header.css';
-import { Navigate } from 'react-router-dom';
-import { Link, useLocation } from 'react-router-dom';
-import 
-const userContext = userContext(userContext);
-const Header = (props) => { const location = useLocation();
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../../App';
+
+
+
+  const Header = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const userContext = useContext(UserContext);
+  
+  
   return (
     <header className="webisteHeader">
       <div className="left">
@@ -33,8 +39,8 @@ const Header = (props) => { const location = useLocation();
             {userContext.fullName}
             <button
               onClick={() => {
-                props.setUser(null);
-                Navigate('/login');
+              userContext.setUser(null);
+                navigate('/login');
               }}>logout</button>
           </span>
         }

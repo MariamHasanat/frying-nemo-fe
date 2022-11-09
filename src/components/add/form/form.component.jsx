@@ -8,12 +8,11 @@ import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import { CATEGORIES } from '../../../data/constant';
 
-const userContext = userContext(userContext);
 const Form = (props) => {
   const [name, setName] = useState('yara');
   const [Ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
-
+  const userContext = userContext(userContext);
   /**
    * Handler function for the form onSubmit event.
    * @param {React.FormEvent<HTMLFormElement>} e Event object.

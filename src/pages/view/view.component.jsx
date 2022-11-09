@@ -1,10 +1,11 @@
-import React from 'react';
+import { useContext ,React} from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Spinner from '../../components/core/spinner.component';
 import Item from '../../components/item/item.component';
 import './view.css';
 import FilterBar from './filter-bar/filter-bar.component';
+import { UserContext } from '../../App';
 /**
  * @type {Array<{
  * id:number;
@@ -22,6 +23,7 @@ const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
+  const userContext = useContext(UserContext);
   const price = params.get("price") || '';
   const searchTermsFromURL = params.get('searchTerms') || '';
   const categoryFromURL = params.getAll('category') || '';

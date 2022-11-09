@@ -1,13 +1,15 @@
 import './add.css';
-import React from 'react';
 
+import { React, useContext } from 'react';
+import { UserContext } from '../../App';
 import Form from '../../components/add/form/form.component';
-const userContext = userContext(userContext);
+
 const AddPage = (props) => {
+
   return (
     <div className="add-page">
       <h1>Add Menu Item</h1>
-      <Form  onNavigate={props.onNavigate} user={userContext}/>
+      <Form  onNavigate={props.onNavigate}/>
     </div>
   );
 };
