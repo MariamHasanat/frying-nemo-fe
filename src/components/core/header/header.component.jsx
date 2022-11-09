@@ -18,10 +18,10 @@ const Header = (props) => {
                     <NavLink to="/view" className={(location.pathname === '/view' || location.pathname === '/view/') ? 'active nemo-button' : 'nemo-button'}>view</NavLink>
                 </span>
                 <span className='userProfile'>
-                    {/* <div>{(<img src={profilePic}/> &&  useContext.user.fullName) || <Link className='nemo-button' to='/login'>login</Link>}</div> */}
                     <div>{
                         userContext.user?.fullName
                             ? <div className="user-badge">
+                                <img src={userContext.user.imageUrl} alt="" />
                                 <p>{userContext.user.fullName}</p>
                                 <button
                                     className='logout-button'
