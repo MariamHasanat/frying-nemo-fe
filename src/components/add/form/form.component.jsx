@@ -136,7 +136,8 @@ const userContext =useContext(UserContext);
       <div className='btn'>
         <button type='submit'
          className="nemo-button" 
-         disabled={userContext.user?.role==='ADMIN'}
+         disabled={userContext.user?.role !== 'ADMIN'}
+
         >create</button>
       </div>
     </form>
