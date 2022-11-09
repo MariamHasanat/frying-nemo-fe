@@ -5,22 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../services/users';
 
 import Input from '../../components/common/input/input.component';
+import { useContext } from 'react';
+import { UserContext } from '../../App';
 
-/**
- * 
- * @param {
- * id:string;
- * email:string;
- * password:string;
- * fullName:string;
- * imageUrl:string;
- * role:string?|null;
- * } props 
- */
-const LogIn = (props) => {
+const LogIn = () => {
+    const userContext = useContext(UserContext);
     const navigate = useNavigate();
     useEffect(() => {
-        if (props.user)
+        if (userContext.user)
             navigate('/view', { replace: true });
     }, []);
 
@@ -35,7 +27,7 @@ const LogIn = (props) => {
         if (email && password) {
             const user = loginUser(email, password);
             if (user) {
-                props.setUser(user);
+                userContext.setUser(user);
                 navigate('/view', { replace: true });
             }
             else

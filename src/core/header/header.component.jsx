@@ -2,8 +2,11 @@ import './header.css';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/nemoInHeader.png';
-const Header = (props) => {
+import React, { useContext } from 'react';
+import { UserContext } from '../../App';
+const Header = () => {
     const [time, setTime] = useState(new Date());
+    const userContext = useContext(UserContext);
     const location = useLocation();
     const navigate = useNavigate();
     useEffect(() => {
@@ -23,8 +26,8 @@ const Header = (props) => {
                 </h2>
                 <span className='clock'>{time.toLocaleTimeString()}</span>
                 {
-                    props.user
-                        ? <span className='welcome'>Welcome {props.user.fullName}</span>
+                    userContext.user
+                        ? <span className='welcome'>Welcome {userContext.user.fullName}</span>
                         : ""
                 }
 
@@ -50,7 +53,7 @@ const Header = (props) => {
                         <button 
                             className='log-out'
                             onClick={() => {
-                                props.setUser(null);
+                                userContext.setUser(null);
                                 navigate('/log-in');
                             }}
                         >

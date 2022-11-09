@@ -4,7 +4,8 @@ import FilterBar from "../../components/view/filter-bar/filter-bar.component";
 import Item from "../../components/view/item/item.component";
 import Spinner from "../../core/spinner/spinner";
 import './view.css';
-
+import { useContext } from 'react';
+import { UserContext } from '../../App';
 /**
 * @type {Array<{
 * name: string;
@@ -17,20 +18,21 @@ import './view.css';
 */
 const initialItems = [];
 
-const View = (props) => {
+const View = () => {
     const [menuItems, setMeuItems] = useState(initialItems);
     const [loading, setLoading] = useState(true);
     const [params, setParam] = useSearchParams();
     const [min, setMin] = useState(null);
     const [max, setMax] = useState(null);
     const navigate = useNavigate();
+    const userContext = useContext(UserContext);
 
 
     const searchParFromURL = params.get('searchTerms') || '';
     const categoriesFromURL = params.getAll('categories') || [];
 
     useEffect(() => {
-        if (props.user === null) {
+        if (userContext.user === null) {
             navigate('/log-in', { replace: true });
         }
         getMenuItems();
