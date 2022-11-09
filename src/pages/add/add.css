@@ -1,20 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
-
 .add-page {
-  display: flex;
   padding: 30px 20px;
-  flex-direction: column;
-  align-items: center;
 }
 
-.menu-header {
-  display: flex;
-  font-family: 'Dancing Script', cursive;
-  padding: 8px;
-  background-image: radial-gradient(circle, #ffcce1cb, #ffd5e7, #ffc3dc, #ffbfda, #ffbad8);
-  border-radius:  0px 7px 0px 7px;
-  border: none;
-  width: 43%;
-  justify-content: center;
-  border-bottom: 1px solid #ffcce1cb;
+.add-page .clock {
+  display: none;
+  position: fixed;
+  right: 28px;
+  bottom: 50px;
+  background-color: #ecdcd6;
+  padding: 6px 18px;
+  border-radius: 19px 36px;
+  border-bottom: 3px solid #a44a2a;
+  z-index: 10;
 }

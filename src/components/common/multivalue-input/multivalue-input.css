@@ -46,27 +46,23 @@
   cursor: pointer;
 }
 
-.btn{
-  border-radius: 7px;
-  border: 0.01em whitesmoke solid;
-  margin-left: 2px;
-  padding: 5px;
-  background-color: #CDC4EA;
-  width: 50px;
-  height: 30px;
-  transition: height,width, 1s;
+.btn {
+  appearance: none;
+  border: 1px solid #87D6C2;
+  background: #8cb9f8bc;
+  color: antiquewhite;
+  padding: 5px 10px 5px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  height: 40px;
+  width: 70px;
+  transition: transform .2s;
+  margin-top: 10px
 }
 
 .btn:hover{
-  border: 0.01em solid teal;
-  color: cadetblue;
-  cursor: pointer;
-  width: 15%;
-  height: 32px;
+  transform: scale(1.2); 
+  border: solid 0.1em #fff;
+  color: #fff;
 }
-
-
-/* .controls> :nth-child(2){
-    height: 32px;
-} */
-

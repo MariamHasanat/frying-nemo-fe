@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Input from '../../common/input/input.component';
-import MultivalueInput from '../../common/multivalue-input/mulitvalue-input.component';
+import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import { useNavigate, useParams } from "react-router-dom";
 import { CATEGORIES } from '../../../data/constants';
+import { UserContext } from '../../../App';
 import './form.css';
 
 
@@ -12,6 +13,7 @@ const Form = (props) => {
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
+  // const userContext = useContext(UserContext);
 
   /**
    * Handler function for the form onSubmit event.
