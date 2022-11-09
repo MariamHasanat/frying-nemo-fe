@@ -58,7 +58,7 @@ const Filter = (props) => {
           label={val}
           checked={props.categories.includes(val)}
           onChange={e => {
-            console.log(val)
+        
             const updated = e.target.checked
               ? [...props.categories, val]
               : props.categories.filter(category => category !== val);

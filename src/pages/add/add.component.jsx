@@ -18,7 +18,6 @@ return ()=>(
   }, [])
 
   const Updatetime = () => {{
-    console.log("time change")
  Settime(new Date())
 
   

@@ -21,10 +21,11 @@ function App() {
 
   return (
     <div>
-      <BrowserRouter>
-        < Header  user={user} />
-        <div className="flex"> 
         <UserContext.Provider value={{user,setUser:setUserOverride}}>
+      <BrowserRouter>
+        < Header   />
+        <div className="flex"> 
+      
         <Routes>
             <Route path="/*" element={<NotFoundPage></NotFoundPage>}></Route>
             <Route path="/add" element={<AddPage ></AddPage> } ></Route>
@@ -33,9 +34,10 @@ function App() {
             <Route path="/view/:id" element={<ViewItemPage></ViewItemPage>}></Route>
             <Route path="/login" element={<LoginPage  />} />
         </Routes>
-        </UserContext.Provider>
+     
         </div>
       </BrowserRouter>
+      </UserContext.Provider>
     </div>
   );
 }

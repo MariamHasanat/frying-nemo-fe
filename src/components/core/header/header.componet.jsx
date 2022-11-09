@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './header.css';
-import { Link } from "react-router-dom"
-import { useState } from 'react';
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { UserContext } from '../../../App';
 
 const Header = (props) => {
-
-  const [button, setButton] = useState("add")
+  const ContextUser = useContext(UserContext);
+  const navigator=useNavigate()
+let location=useLocation()
   return (
     <header className="webisteHeader">
       <div className="left">
@@ -16,18 +16,17 @@ const Header = (props) => {
       </div>
       <div className="right">
         {<nav>
-          {button === "add" ?  
-          <Link to="/add">
-            <img onClick={() => setButton("view")} className='add' src="https://th.bing.com/th/id/OIP.1TOk33fReQL3_tEO7VcKngHaHa?pid=ImgDet&w=159&h=159&c=7"></img>
-          </Link> : ""}
-          {button === "view" ?
-            <Link to="/view">
-           
-              <img onClick={() => setButton("add")} className='view' src='https://th.bing.com/th/id/OIP.3XkYPHZ4zrcvQuJjfjY0cAAAAA?pid=ImgDet&w=150&h=150&c=7'></img>
-            </Link>: ""}
+          <span  className='header'><Link  className={location.pathname ==="/add"?"add":"default"} to="/add"> ADD</Link> </span>
 
+          <span  className='header' >  <Link className={location.pathname ==="/view"?"add":"default"} to="/view"> View</Link></span>
+          <button className='button-header'onClick={()=>{
+          ContextUser.setUser(null)
+        navigator("login")}}>logout</button>
         </nav>}
-    {    props.user && <span>{props.user.fullName}</span>}
+        <div >
+        {ContextUser.user && <span className='header-flex'><span>{ContextUser.user.role}:</span>{ContextUser.user.fullName}</span> }
+      
+        </div>
       </div>
     </header>
   );

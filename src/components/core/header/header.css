@@ -35,36 +35,47 @@
   cursor: pointer;
   font-size: 14px;
   padding: 9px 20px;
-  background-color: darkslategrey;
+  background-color: #1b2f31;
   margin: 6px;
 }
 
 .webisteHeader .right nav button:hover {
-  text-shadow: -1px 2px 3px #777777;
+  text-shadow: -1px 2px 3px hwb(156 4% 46%);
 }
 
-.webisteHeader .right nav button:active {
-  text-shadow: -1px 2px 3px #333;
+
+
+.webisteHeader .right nav >.header>.add {
+
+  color: #1cc49d;
+  border-radius: 13px;
+  background-color: #1b2f31;
+  padding: 15px;
+  margin: 3px;
 }
 
-.webisteHeader .right nav button.current {
-  background-color: #be441d;
-  border-radius: 3px;
-  color: white;
+.webisteHeader .right nav >.header>.view {
+  color: #1cc49d;
+  border-radius: 13px;
+padding: 10px;
+  margin: 5px;
+  background-color: #1b2f31;
 }
-
-.add {
-
-
-  width: 50px;
-  height:50px;
-  border-radius: 24px;
+.webisteHeader .right nav >.header>.default{
+  color: #1cc49d;
+  border-radius: 13px;
+  padding: 15px;
+  margin: 3px;
 
 }
+.button-header{
+  width: 98px;
+  height: 38px;
+  position: relative;
+bottom: 15px;
 
-.view {
-
-  border-radius: 24px;
-  width: 50px;
-  height:50px;
+}
+.header-flex{
+  color: #be441d;
+  display: inline-block;
 }

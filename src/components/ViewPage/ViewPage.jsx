@@ -45,7 +45,7 @@ const ViewPage = (props) => {
 
   useEffect(() => {
     if(!ContextUser.user?.id){
-      navigate("/login",{replace:false})}
+      navigate("/login",{replace:true})}
     getMenuItems();
   }, []);
 
