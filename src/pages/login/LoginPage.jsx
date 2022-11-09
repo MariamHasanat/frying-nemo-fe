@@ -12,10 +12,10 @@ const LoginPage = (props) => {
 
   useEffect(() => {
     // To check if the user is already logged in, send him to the view page
-    if (userContext.user?.id) {
+    if (useContext.user?.id) {
       navigate('/view', { replace: true });
     }
-  }, [userContext.user]);
+  }, []);
 
   /**
  * Handler function for the form onSubmit event.

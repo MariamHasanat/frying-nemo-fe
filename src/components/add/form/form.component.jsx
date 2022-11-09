@@ -7,14 +7,14 @@ import MultivalueInput from '../../../common/multivalue-input/multivalue-input.c
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/category';
 import { useContext } from 'react';
-import { UserContext } from '../../../App';
+// import { UserContext } from '../../../App';
 
 
 const Form = (props) => {
   const [name, setName] = useState('dala');
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
-  const useContext = useContext(UserContext);
+  // const useContext = useContext(UserContext);
 
   /**
    * Handles on change events on the name field.

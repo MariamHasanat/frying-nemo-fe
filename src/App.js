@@ -21,9 +21,9 @@ function App() {
     sessionStorage.setItem('user' , JSON.stringify(user));
   }
   return (
-    <div>
-         <UserContext.Provider  value={{user , setUser: setUserOverride}}>
-      <BrowserRouter>
+    <UserContext.Provider  value={{user , setUser: setUserOverride}}>
+           <div>
+           <BrowserRouter>
            <Header/>
                   <Routes>
                       <Route path="/" element={<Navigate to='/view' replace/>} />
@@ -33,10 +33,10 @@ function App() {
                       <Route path="/view/:id" element = {<ViewItemPage />} />
                       <Route path="/*" element={<Notfound />}/>
                    </Routes>
-      </BrowserRouter>
+           </BrowserRouter>
+    </div>
          </UserContext.Provider>
     
-    </div>
   );
 }
 
