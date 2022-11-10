@@ -26,13 +26,24 @@ const Header = props => {
           <Link to='/view' className={location.pathname === '/view' ? 'current' : ''}
           >View</Link>
         </nav>
-        <button
-          onClick={() => {
-            userContext.setUser(null);
-            navigate('/login');
-          }}
 
-        >Log out </button>
+        {
+          userContext.user &&
+          <span className="user-badge">
+            <img src={userContext.user.imageUrl} alt="user logo" width={30} height={30} />
+            {userContext.user.fullName}
+            <button
+              onClick={() => {
+                userContext.setUser(null);
+                navigate('/login');
+              }}
+            >
+              Logout
+            </button>
+          </span>
+        }
+
+
       </div>
     </header>
   );
