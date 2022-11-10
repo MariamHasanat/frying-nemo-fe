@@ -5,7 +5,9 @@
 }
 
 .view-page>.main {
+    display: flex;
     margin: 0 5%;
+    flex-wrap: wrap;
 }
 
 .view-page>.main>.item-card {
