@@ -23,7 +23,7 @@ const navigate =useNavigate();
   useEffect(() => {
   const item = getItem(params.id);
   setCurrentItem(item);
-  if(item === null)
+  if(item == null)
   navigate('/404')
  }, []
 );

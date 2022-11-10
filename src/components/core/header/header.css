@@ -18,6 +18,11 @@
   letter-spacing: 0.5px;
   margin: 0;
 }
+.websiteHeader .right {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+}
 
 
 .webisteHeader > .left > h1 > img {
@@ -27,6 +32,9 @@
 }
 .right{
   justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 .right a{
   border: unset;
@@ -45,8 +53,37 @@
 .right button:active{
   text-shadow: -1px 2px 3px rgb(102, 101, 101);
 }
-.right > a {
-  background-color: #ffb397;
+
+.right nav a.current {
+  background-color: #be441d;
   border-radius: 5px;
   color: white;
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #777777;
+}
+
+.user-badge > img {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+ .right .user-badge > button {
+  appearance: none;
+  background: none;
+  border: none;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+}
+.right .user-badge > button:hover,
+ .right .user-badge > button:active,
+ .right .user-badge > button:focus {
+  color: #666;
 }

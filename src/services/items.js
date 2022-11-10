@@ -4,8 +4,8 @@
  */
  const getItem = (id) => {
   const items = JSON.parse(localStorage.menuItems || '[]');
-  const item = items.filter(item => item.id.toString() == id);
-  return item[0] || null;
+  const item = items.find(item => item.id == id);
+  return item;
 };
 
 export {

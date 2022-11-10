@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { UserContext } from '../../components/providers/user.provider.component';
 import FilterBar from './filter-bar/filter-bar.component';
 import Item from '../../components/item/item.component';
 import './veiw.css';
+import { useContext } from 'react';
 
 /**
  * @type {Array<{
@@ -21,8 +22,10 @@ const Addveiw = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
+  const navigate = useNavigate();
   const searchTermsFromURL = params.get('searchTerms') || '';
   const categoriesFromURL = params.getAll('category') || '';
+  const userContext = useContext(UserContext);
 
   const getMenuItems = () => {
     setLoading(true);
@@ -34,6 +37,12 @@ const Addveiw = (props) => {
       setLoading(false);
     }, 1000);
   };
+  useEffect(() => {
+    // To check if the user is already logged in, send him to the view page
+    if (!userContext.user?.id) {
+      navigate('/login', { replace: false });
+    }
+  }, []);
 
   useEffect(() => {
     getMenuItems();
@@ -48,7 +57,7 @@ const Addveiw = (props) => {
 
     let match = (
       doesItMatch(item.name) ||
-      doesItMatch(item.descreption) ||
+      doesItMatch(item.description) ||
       item.ingredients.some(ingredient => doesItMatch(ingredient))
     );
 

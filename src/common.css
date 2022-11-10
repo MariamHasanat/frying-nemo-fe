@@ -1,9 +1,14 @@
 .nemo-button{
   padding: 7px;
-  background-color: rgb(197, 204, 202);
-  border: 2px solid rgb(101, 228, 211);
+  background-color: rgb(232, 240, 231);
+  border: 2px solid rgb(212, 243, 238);
   border-radius: 5px;
   margin: 5px 6px;
   position: relative;
   bottom: 15px;
+}
+.nemo-button:disabled {
+  opacity: 0.5;
+  background: #fcf9f9;
+  cursor: not-allowed;
 }
