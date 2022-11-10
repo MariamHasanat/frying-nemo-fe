@@ -1,4 +1,4 @@
-import Header from "./components/common/header/header.component";
+import Header from "./components/core/header/header.component";
 import AddPage from "./pages/add/add.component";
 import ViewPage from "./pages/view/view.component";
 import './common.css';

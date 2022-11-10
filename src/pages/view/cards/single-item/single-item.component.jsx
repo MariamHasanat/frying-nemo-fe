@@ -2,7 +2,7 @@ import React from 'react' ;
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Spinner from '../../../../components/common/spinner/spinner.componenr';
+import Spinner from '../../../../components/core/spinner/spinner.componenr';
 import MenuItem from '../menu-item/menu-item.component';
 import './single-item.css' ;
 
