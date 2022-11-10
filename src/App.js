@@ -7,12 +7,12 @@ import Login from "./pages/login/login.component";
 import './index.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import React from "react";
-import UserContextProvider from "./components/providers/userContextProvider.component";
+import UserProvider from "./components/providers/user-provider.component";
 
 function App() {
     return (
         <div>
-            <UserContextProvider>
+            <UserProvider>
                 <BrowserRouter>
                     <Header />
                     <Routes>
@@ -24,7 +24,7 @@ function App() {
                         <Route path="/view/:id" element={<ViewItemPage />} />
                     </Routes>
                 </BrowserRouter>
-            </UserContextProvider>
+            </UserProvider>
         </div >
     );
 };

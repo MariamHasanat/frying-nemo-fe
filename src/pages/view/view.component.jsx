@@ -4,7 +4,7 @@ import Loading from '../../components/common/loading/loading.component';
 import './view.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import FilterBar from './filter-bar/filter-bar.component';
-import { UserContext } from '../../components/providers/userContextProvider.component';
+import { UserContext } from '../../components/providers/user-provider.component';
 // import NotFound from '../not-found/not-found.component';
 
 
@@ -79,21 +79,21 @@ const ViewPage = (props) => {
                             return <ItemCard {...item} key={item + index} />;
                         })
                     }
-                    {len === 0 &&
-                        <div className='no-results'>
-                            <h2>
-                                <img
-                                    alt=''
-                                    src="https://64.media.tumblr.com/718c1fbf3a9359e96ddd1174a41a2720/tumblr_opfl1y9hKn1tile93o1_540.gif"
-                                />
-                                <br />
-                                sorry, nothing was found
-                            </h2>
-                        </div>
-                    }
+                </div>
+            }
+            {len === 0 &&
+                <div className='no-results'>
+                    <h2>
+                        <img
+                            alt=''
+                            src="https://64.media.tumblr.com/718c1fbf3a9359e96ddd1174a41a2720/tumblr_opfl1y9hKn1tile93o1_540.gif"
+                        />
+                        <br />
+                        sorry, nothing was found
+                    </h2>
+                </div>
+            }
 
-
-                </div>}
         </div>
     );
 };

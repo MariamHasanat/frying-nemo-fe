@@ -1,8 +1,8 @@
 
-import React, {useState, useContext } from "react";
+import React, { useState } from "react";
 
 export const UserContext = React.createContext(null);
-const UserContextProvider = (props) => {
+const UserProvider = (props) => {
     const [user, setUser] = useState(JSON.parse(sessionStorage.getItem('user')));
     const setUserOverride = user => {
         setUser(user);
@@ -16,4 +16,4 @@ const UserContextProvider = (props) => {
     );
 };
 
-export default UserContextProvider;
+export default UserProvider;

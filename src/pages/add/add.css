@@ -3,6 +3,10 @@
     justify-content: center;
 }
 
+.add-page>.main>.styled-form {
+    margin-left: 50px;
+}
+
 .add-page h1,
 .add-page h2,
 .add-page h3 {
