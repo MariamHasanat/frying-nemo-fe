@@ -8,6 +8,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import ViewItemPage from "./pages/add/viewitempage/viewitempage";
 import LoginPage from "./pages/add/login/login";
 import Providers from "./components/provider/provider";
+import Guard from "./components/guard/guard";
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/" element={<Navigate to="view" />} />
             <Route path="/*" element={<NotFound />} />
-            <Route path="/add" element={<AddPage />} />
+            <Route path="/add" element={<Guard  permittedRole={permittedRole} ><AddPage /></Guard>} />
             <Route path="/view" element={<View />} />
             <Route path="/view/:id" element={<ViewItemPage />} />
           </Routes>
