@@ -1,8 +1,6 @@
 import './add.css';
 import { useState , useEffect} from 'react';
 import Form from '../../components/add/form/form.component';
-// import { useContext } from 'react';
-
 
 const AddPage = (props) => {
   const [time, setTime] = useState(new Date());

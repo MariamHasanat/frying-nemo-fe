@@ -7,7 +7,8 @@ import MultivalueInput from '../../../common/multivalue-input/multivalue-input.c
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/category';
 import { useContext } from 'react';
-import { UserContext } from '../../../App';
+import { UserContext } from './provider/UserProvider';
+import WithBorder from './with-border/WithBorder';
 
 
 const Form = (props) => {
@@ -83,6 +84,8 @@ const Form = (props) => {
           onChange={onNamechange}
           required
           />
+          <WithBorder>
+
         <Input
           name ="price"
           label="Price"
@@ -90,6 +93,7 @@ const Form = (props) => {
           min={0}
           required
         />
+          </WithBorder>
           <Input
         label="Image"
         name="image"
