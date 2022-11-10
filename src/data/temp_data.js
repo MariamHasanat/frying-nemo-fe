@@ -70,4 +70,4 @@ const USERS = [{
   "role": null
 }];
 
-export {USERS} ;
+export { USERS };

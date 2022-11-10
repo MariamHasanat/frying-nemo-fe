@@ -13,15 +13,15 @@ import './multivalue-input.css';
 const MultivalueInput = props => {
   // Define a state for your input component.
   // this state will store the item to be added to the list.
-  const [ingredient , setIngredient] = useState ('') ;
+  const [ingredient, setIngredient] = useState('');
 
   const addItem = () => {
     // Add new item to existing array and call inform parent of change
     // Validate new item is not empty and does not exist in the original array
-    if (ingredient.trim().length && !props.value.includes (ingredient)) {
-      const valueAfterAddition = [...props.value , ingredient] ;
-      props.onChange (valueAfterAddition) ;
-      setIngredient ('') ;
+    if (ingredient.trim().length && !props.value.includes(ingredient)) {
+      const valueAfterAddition = [...props.value, ingredient];
+      props.onChange(valueAfterAddition);
+      setIngredient('');
     }
   };
 
@@ -29,15 +29,15 @@ const MultivalueInput = props => {
     <div className="multivalueInputWrapper">
       <div className="controls">
         {/* Input goes here */}
-        <Input  
-        label={props.label}
-        onChange = {e => setIngredient (e.target.value)}
-        value = {ingredient}
+        <Input
+          label={props.label}
+          onChange={e => setIngredient(e.target.value)}
+          value={ingredient}
         />
         <button
           className="nemo-button"
           type="button"
-        // Handel addition of new item (On click)
+          // Handel addition of new item (On click)
           onClick={addItem}
         >
           Add
@@ -48,23 +48,23 @@ const MultivalueInput = props => {
       {
         props.value.length && (
           <ul>
-            {props.value.map (item => {
-              return (<li key = {item}>
+            {props.value.map(item => {
+              return (<li key={item}>
                 <span>{item}</span>
                 <button type='button' className='addIngredient'
-                onClick = {() => {
-                  const valueAfterRemoval = props.value.filter (elt => elt != item) ;
-                  props.onChange (valueAfterRemoval) ;
-                }} 
+                  onClick={() => {
+                    const valueAfterRemoval = props.value.filter(elt => elt != item);
+                    props.onChange(valueAfterRemoval);
+                  }}
                 >
                   &times;
                 </button>
-                </li>)
+              </li>);
             })}
           </ul>
         )
       }
-      
+
     </div>
   );
 };

@@ -2,6 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 
 export const UserContext = React.createContext(null); // provider (context definition object)
+
+/**
+ * 
+ * @param {children : React.reactNodes} props 
+ * @returns 
+ */
 const UserProvider = (props) => {
   const initialUser = JSON.parse(sessionStorage.getItem('user'));
   const [user, setUser] = useState(initialUser);
