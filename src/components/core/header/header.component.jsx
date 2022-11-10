@@ -1,8 +1,9 @@
 import { useContext } from 'react';
-import { UserContext } from '../../../App';
+import { UserContext } from '../providers/user-provider.component';
 import './header.css'
 import logo from './images/logo.png'
 import Timer from './timer/timer.component'
+import WithBorders from '../with-borders/with-borders.copmonent';
 
 const Header = () => {
   const {user} = useContext(UserContext)
@@ -12,7 +13,7 @@ const Header = () => {
       <div className='logo'>
         <img src={logo} alt="Logo" />
         <p>FRYING NEMO</p>
-        <Timer></Timer>
+        <WithBorders><Timer></Timer></WithBorders>
       </div>
       <div className='btns'>
         <a href='/add' className={pathname == 'add' ? `selected` : undefined}>Add</a>

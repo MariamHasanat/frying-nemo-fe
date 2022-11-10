@@ -8,7 +8,7 @@ import MultivalueInput from '../common/multivalue-input/multivalue-input.compone
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/constants';
 import { getRandom } from '../../../services/utilities';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../core/providers/user-provider.component';
 
 const Form = () => {
   const {user} = useContext(UserContext)
@@ -78,7 +78,7 @@ const Form = () => {
         <Input name="image" label="Image" type="text" required></Input>
         <Select name='category' items={CATEGORIES} required></Select>
         <MultivalueInput onChange={updateIngs} name='ingredients' label='Ingredients'/>
-        <Button disabled={user.role !== 'ADMIN'} name="SUBMIT" type="submit"></Button>
+        <Button disabled={user?.role !== 'ADMIN'} name="SUBMIT" type="submit"></Button>
       </div>
     </form>
   );

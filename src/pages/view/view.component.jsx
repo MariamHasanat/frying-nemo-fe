@@ -40,7 +40,7 @@ const ViewPage = () => {
   return (
     <div className='view-page'>
       <div className='header'>
-        <p>OUR MENU</p>
+        <p>OUR MEUN</p>
         <FilterBar searchParams={searchParams} updateParam={updateParam} search={search} setSearch={setSearch} categories={categories}></FilterBar>
       </div>
       <div className='cards'>

@@ -16,7 +16,7 @@ const Timer = () => {
   const getCurrentTime = () => `${getLengthPadding(hours)}:${getLengthPadding(minutes)}:${getLengthPadding(seconds)}`;
   const [time, setTime] = useState(getCurrentTime());
   useEffect(() => {
-    setTimeout(() => {
+    setInterval(() => {
       setTime(getCurrentTime());
     }, 1000);
   });
