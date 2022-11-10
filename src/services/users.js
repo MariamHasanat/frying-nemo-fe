@@ -5,8 +5,8 @@ import { USERS } from '../data/temp_data';
  * @returns 
  */
 const loginUser = (email, password) => {
-    let user = USERS.filter(user => user.email === email && user.password === password);
-    return user[0] || null;
+    let user = USERS.find(user => user.email.trim() === email.trim() && user.password === password);
+    return user || null;
 };
 
 export {
