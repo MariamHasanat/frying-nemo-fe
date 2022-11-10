@@ -25,9 +25,3 @@
 .addForm>.textarea-group {
   margin-bottom: 20px;
 }
-.addForm>div >button .submit{
-  background-color: brown;
-  width: 75px;
-  height: 35px;
-  margin-top: 15px;
-}
