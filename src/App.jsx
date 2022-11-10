@@ -1,17 +1,18 @@
+import React from "react";
 import AddPage from "./pages/add/add.component";
 import Header from "./components/common/header/header.component";
 import ViewPage from "./components/view/view.component";
 import ErorrPage from "./components/error/error.compopnent";
 import { BrowserRouter, Routes, Route,Navigate } from "react-router-dom";
 import ViewItemPage from "./pages/view-item/view-item.component";
+export const UserContext = React.createContext(null);
 
 function App() {
-
 
   return (
     <div>
       <BrowserRouter>
-        <Header />
+        <Header />  
         <Routes>
           <Route path="/view" element={<ViewPage />} />
           <Route path="/view-item/:id" element={<ViewItemPage />} />

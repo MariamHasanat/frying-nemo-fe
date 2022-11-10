@@ -1,9 +1,9 @@
 .nemo-button {
   appearance: none;
-  border: 1px solid #134694;
-  background: #165fc9;
+  border: 1px solid #7d2e14;
+  background: #be441d;
   color: white;
-  padding: 5px 10px;
+  padding: 10px 15px;
   border-bottom-width: 2px;
   font-size: 13px;
   margin-left: 5px;
@@ -12,9 +12,13 @@
 }
 
 .nemo-button:hover{
-  border: 1px solid #113e83;
-  background: #1451ad;
+  border: 1px solid #8b2f11;
+  background: #a03c1b;
 }
 .nemo-button:active{
   transform: scale(0.95);
+}
+
+.nemo-button:disabled {
+  opacity: 0.5;
 }
