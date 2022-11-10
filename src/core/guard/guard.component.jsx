@@ -9,7 +9,7 @@ import './guard.css';
  * 
  * @param {{
  * children:React.ReactNode;
- * premmitedRoles: string[];
+ * premmitedRoles?: string[];
  * }} props 
  * @returns 
  */
