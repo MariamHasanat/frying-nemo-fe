@@ -7,6 +7,7 @@ import ViewItemPage from "./pages/view-item-page/view-item-page";
 import LogIn from "./pages/login/login.component";
 import React from "react";
 import UserProvider from './components/providers/user-provider.component.jsx';
+import Guard from "./core/guard/guard.component";
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Navigate to={"/log-in"} replace />} />
                         <Route path="/log-in" element={<LogIn />} />
-                        <Route path="/add" element={<AddPage />} />
+                        <Route path="/add" element={<Guard premmitedRoles={['ADMIN']}><AddPage /></Guard>} />
                         <Route path="/view" element={<View />} />
                         <Route path="/view-details/:id" element={<ViewItemPage />} />
                         <Route path="/*" element={<NotFound />} />
