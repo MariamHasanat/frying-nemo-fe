@@ -24,9 +24,6 @@
     justify-content: space-evenly;
 }
 
-.item-card>.card-wrapper:hover {
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.276);
-}
 
 .item-card>.card-wrapper>img {
     border-top-right-radius: var(--border-radius);
