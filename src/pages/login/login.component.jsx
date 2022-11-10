@@ -1,14 +1,17 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../components/common/input/input.component';
+import { UserContext } from '../../App';
 import { loginUser } from '../../services/user';
+import { useContext } from 'react';
 import './login.css'
 
 const LoginPage = (props) => {
   const navigate = useNavigate();
+  const userContext = useContext(UserContext);
 
   useEffect(() => {
-    if (props.user?.id) {
+    if (userContext.user?.id) {
       navigate('/view', { replace: true });
     }
   }, []);
@@ -21,7 +24,9 @@ const LoginPage = (props) => {
     if (email && password) {
       const user = loginUser(email, password);
       if (user) {
-        props.setUser(user);
+
+        userContext.setUser(user);
+
         navigate('/view', { replace: true });
       } else {
         alert("Email or Password are not correct! Please try again.");

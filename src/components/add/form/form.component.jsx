@@ -7,13 +7,15 @@ import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import { useContext } from 'react';
+import { UserContext } from '../../../App';
 
 
 const Form = (props) => {
   const [name, setName] = useState('Sajeda');
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
-const userContext = useContext(UseContext);
+  const userContext = useContext(UserContext);
+
 console.debug ('userContext from Form', userContext);
 
 
@@ -84,8 +86,15 @@ console.debug ('userContext from Form', userContext);
         onChange={newIngredients => setIngredients(newIngredients)}
       />
       <div className="addFormButtons">
-        <button className="nemo-button" type="submit">Create</button>
+        <button
+          className="nemo-button"
+          type="submit"
+          disabled={userContext.user?.role !== 'ADMIN'}
+        >
+          Create
+        </button>
       </div>
+
     </form>
   );
 };

@@ -1,10 +1,11 @@
 import { Link, useLocation , useNavigate} from 'react-router-dom';
 import { UserContext } from '../../../App';
-
+import{useContext } from 'react'
 const Header = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const userContext = userContext (UserContext);
+  const userContext = useContext(UserContext);
+
 
   return (
     <header className='webisteHeader'>
@@ -23,18 +24,19 @@ const Header = (props) => {
           </Link>
         </nav>
         {
-          props.user &&
-          <span>
-            {/* <img src={props.user.imageUrl} alt="user logo" width={30} height={30} /> */}
-            {props.user.fullName}
-
-            <button
-            onClick={()=>{
-              props.setUser(null);
-              navigate('/login');
-            }}
-             >Logout</button>
-          </span>
+         userContext.user &&
+         <span className="user-badge">
+           <img src={userContext.user.imageUrl} alt="user logo" width={30} height={30} />
+           {userContext.user.fullName}
+           <button
+             onClick={() => {
+              userContext.setUser(null);
+               navigate('/login');
+             }}
+           >
+             Logout
+           </button>
+         </span>
         }
       </div>
     </header>
