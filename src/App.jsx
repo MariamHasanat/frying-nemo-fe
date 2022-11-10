@@ -31,7 +31,7 @@ function App() {
           <Route path="/" element={<Navigate to="/view" replace />} />
           <Route path="/login" element={<LoginPage user={user} setUser={setUserOverride} />} />
           <Route path="/add" element={<AddPage />} />
-          <Route path="/view" element={<ViewPage />} />
+          <Route path="/view" element={<ViewPage user={user}/>} />
           <Route path="/view-details/:id" element={<ViewItemPage />} />
           <Route path="/*" element={<NotFoundPage />} />
 
