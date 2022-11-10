@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './login.css';
 import Input from '../../components/common/input/input.component.jsx';
 import { loginUser } from '../../services/users';
 import { useNavigate } from 'react-router';
 
+import { UserContext } from '../../App';
 const LoginComponent = (props) => {
   const navigate = useNavigate();
-
+  const userContext = useContext(UserContext);
   useEffect(() => {
     // To check if the user is already logged in, send him to the view page
-    if (props.user?.id) {
+    if (userContext.user?.id) {
       navigate('/view', { replace: true });
     }
   });
@@ -28,7 +29,7 @@ const LoginComponent = (props) => {
       const user = loginUser(email, password);
 
       if (user) {
-        props.setUser(user);
+        userContext.setUser(user);
         navigate('/view', { replace: true });
       } else {
         alert('email or password are not correct, try again !');

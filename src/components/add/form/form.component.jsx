@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './form.css';
 import Input from '../../common/input/input.component';
 import Textarea from '../../common/textarea/textarea.component';
@@ -6,13 +6,13 @@ import Select from '../../common/select/select.component';
 import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/constants';
-
+import { UserContext } from '../../../App';
 const Form = (props) => {
   const navigate = useNavigate();
 
   const [name, setName] = useState('abd');
   const [ingredients, setNewIngredients] = useState([]);
-
+  const userContext = useContext(UserContext);
   /**
    *
    * @param {React.FormEvent<HTMLFormElement>} e
@@ -61,7 +61,7 @@ const Form = (props) => {
         <div style={{ textAlign: 'right' }}>
           <button
             type='submit'
-            disabled={props.user?.role !== 'ADMIN'}
+            disabled={userContext.user?.role !== 'ADMIN'}
           >
             Add Item
           </button>

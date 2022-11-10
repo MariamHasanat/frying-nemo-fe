@@ -4,8 +4,9 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import ItemCard from '../../components/item-card/item-card.component';
 import FilterBar from '../../components/view/filter-input.component';
 import './view.css';
+import { useContext } from 'react';
+import { UserContext } from '../../App';
 const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]');
-
 /**
  * @type {Array<{
  * id: number;
@@ -21,6 +22,7 @@ const initialItems = [];
 
 const View = (props) => {
 
+  const userContext = useContext(UserContext);
   const [menuItems, setMenuItems] = useState(initialItems);
   const [params, setParams] = useSearchParams();
   const searchParamFromURl = params.get('search') || '';
@@ -33,7 +35,7 @@ const View = (props) => {
 
   useEffect(() => {
     // To check if the user is already logged in, send him to the view page
-    if (!props.user?.id) {
+    if (!userContext.user?.id) {
       navigate('/login', { replace: false });
     }
   });

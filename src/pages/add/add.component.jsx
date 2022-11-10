@@ -7,7 +7,7 @@ const AddPage = (props) => {
     <>
       <div className='add-page'>
         <h1>Add new item form</h1>
-        <Form user={props.user} />
+        <Form />
       </div>
     </>
   );

@@ -26,19 +26,18 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Header user={user} setUser={setOverrideUser} />
 
-        <UserContext>
-
+        <UserContext.Provider value={{ user, setUser: setOverrideUser }}>
+          <Header  />
           <Routes>
             <Route path="/" element={<Navigate to='/view' replace />} />
-            <Route path="/login" element={<LoginComponent user={user} setUser={setOverrideUser} />} />
-            <Route path="/add" element={<AddPage user={user} />} />
-            <Route path="/view" element={<View user={user} />} />
+            <Route path="/login" element={<LoginComponent />} />
+            <Route path="/add" element={<AddPage />} />
+            <Route path="/view" element={<View />} />
             <Route path="/view/:id" element={<ViewItem />} />
             <Route path="/404" element={<Test />} />
           </Routes>
-        </UserContext>
+        </UserContext.Provider>
       </BrowserRouter>
 
 

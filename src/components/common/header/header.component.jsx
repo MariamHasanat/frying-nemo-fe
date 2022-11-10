@@ -3,8 +3,10 @@ import './header.css';
 import logo from '../../../assets/images/image.png';
 import profile from '../../../assets/images/profile-user.png';
 import logout from '../../../assets/images/logout.png';
-
+import { useContext } from 'react';
+import { UserContext } from '../../../App';
 const Header = (props) => {
+  const userContext = useContext(UserContext);
   const location = useLocation();
   return (
     <div className={location.pathname === '/login' ? 'hidden' : 'header'}>
@@ -24,16 +26,16 @@ const Header = (props) => {
       </div>
 
       {
-        props.user !== null &&
+        userContext.user !== null &&
         <div className='user-info'>
-          <span>{props.user.fullName}</span>
+          <span>{userContext.user?.fullName}</span>
           <div className='user-profile'>
             <img src={profile} alt="user" />
           </div>
 
 
 
-          <button className='logout' onClick={() => props.setUser(null)}>
+          <button className='logout' onClick={() => userContext.setUser(null)}>
             <div className='logout-button'>
               <span>Logout</span>
               <img src={logout} alt="logout" />
