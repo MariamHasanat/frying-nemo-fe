@@ -7,7 +7,7 @@ import MultivalueInput from '../../common/multivalue-input/multivalue-input.comp
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/constants';
 import { UserContext } from '../../../components/providers/user-provider';
-const Form = (props) => {
+const Form = () => {
   const navigate = useNavigate();
 
   const [name, setName] = useState('abd');
@@ -41,15 +41,7 @@ const Form = (props) => {
 
     localStorage.setItem('menuItems', JSON.stringify(items));
 
-
-    /**
-     * @type {HTMLFormElemfent}
-     */
-    const target = e.target;
-    console.log("menu item: ", menuItem);
     navigate('/view');
-
-    console.log("image: " + menuItem.image);
 
   };
 

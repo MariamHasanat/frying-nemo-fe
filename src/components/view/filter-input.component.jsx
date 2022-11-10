@@ -2,7 +2,7 @@ import { CATEGORIES } from '../../data/constants';
 import Input from '../common/input/input.component';
 import './filter-input.css';
 import CheckBox from '../toggle-bullets/check-box.component';
-
+import search from '../../assets/images/search.png';
 
 /**
  * Renders a filters bar.
@@ -18,31 +18,38 @@ const FilterBar = props => {
 
     <div className='filter-bar-container'>
 
-      <Input
-        value={props.searchParamFromURl}
-        type='Search'
-        placeholder='search'
-        onChange={e => props.setParam('search', e.target.value)}
-      />
+      <div className='search-bar'>
+
+        <div className='search'>
+
+          <Input
+            value={props.searchParamFromURl}
+            type='Search'
+            placeholder='search'
+            onChange={e => props.setParam('search', e.target.value)}
+          />
+          <img src={search} width='30' height='30' />
+        </div>
+      </div>
 
       <div className='categories'>
-
         {
-          CATEGORIES.map((categoryItem) => {
-            return <CheckBox
-              key={categoryItem}
-              label={categoryItem}
-              checked={props.categories.includes(categoryItem)}
-              onChange={e => {
-                console.log(typeof props.categories);
-                const updated = e.target.checked
-                  ? [...props.categories, categoryItem]
-                  : props.categories.filter(category => category !== categoryItem);
-                console.log(typeof props.categories);
-                props.setParam('category', updated);
-              }}
-            />;
-          })
+          CATEGORIES.map(
+            (categoryItem) => {
+              return <CheckBox
+                key={categoryItem}
+                label={categoryItem}
+                checked={props.categories.includes(categoryItem)}
+                onChange={e => {
+                  console.log(typeof props.categories);
+                  const updated = e.target.checked
+                    ? [...props.categories, categoryItem]
+                    : props.categories.filter(category => category !== categoryItem);
+                  console.log(typeof props.categories);
+                  props.setParam('category', updated);
+                }}
+              />;
+            })
         }
       </div>
 

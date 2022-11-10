@@ -5,28 +5,16 @@ import AddPage from "../src/pages/add/add.component";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import ViewItem from "./pages/view-item/view-item.component";
 import LoginComponent from "./pages/login/login.component";
-import React, { useState } from "react";
+import React from "react";
 import Test from "./pages/test/test.component";
 import UserProvider from "./components/providers/user-provider";
 
 
 function App() {
 
-
-
-  const initialUser = JSON.parse(sessionStorage.getItem('user'));
-  const [user, setUser] = useState(initialUser);
-
-  const setOverrideUser = user => {
-    setUser(user);
-    sessionStorage.setItem('user', JSON.stringify(user));
-  };
-
-
   return (
     <div>
       <BrowserRouter>
-
         <UserProvider>
           <Header />
           <Routes>
@@ -39,8 +27,6 @@ function App() {
           </Routes>
         </UserProvider>
       </BrowserRouter>
-
-
     </div>
   );
 }

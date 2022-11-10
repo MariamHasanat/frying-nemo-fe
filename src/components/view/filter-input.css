@@ -6,7 +6,7 @@
   justify-content: space-between;
 }
 
-.item-input>input {
+.item-input input {
   margin: 0;
 }
 
@@ -38,4 +38,17 @@
   padding: 4px 8px;
   outline: none;
   height: fit-content;
+}
+
+.search {
+  display: flex;
+  width: 50%;
+  justify-content: flex-start;
+  
+}
+
+.search > img{
+  background-color: orangered;
+  padding: 0.2em;
+  border-radius: 3px;
 }
