@@ -1,18 +1,30 @@
-.webisteHeader {
+/* .websiteHeader {
   position: fixed;
   top: 0px;
   left: 0px;
   width: 100%;
   padding: 10px 20px;
-  border-bottom: 1px solid #ddd;
-  background-color: rgba(201, 218, 233, 0.726);
-  color: #4a4746;
+  
   display: flex;
   align-items: center;
   justify-content: space-between;
+} */
+.websiteHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  background-color: rgba(201, 218, 233, 0.726);
+  color: #4a4746;
 }
 
-.webisteHeader>.classWhichHaveHeaderContent>h1 {
+.websiteHeader>.left {
+  display: flex;
+  align-items: center;
+}
+
+.websiteHeader>.left>h1 {
   font-size: 18px;
   color: #be441d;
   line-height: 1.2;
@@ -24,65 +36,12 @@
   margin-right: 20px;
 }
 
-.webisteHeader>.classWhichHaveHeaderContent>h1>img {
+
+.websiteHeader>.left>h1>img {
   height: 35px;
   width: auto;
   margin-right: 5px;
 }
-
-header>.webisteHeadert {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.webisteHeader .right nav a {
-  background: unset;
-  border: unset;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 9px 20px;
-
-}
-
-div>.right {
-  display: flex;
-  width: max-content;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.webisteHeader .right nav a:hover {
-  text-shadow: -1px 2px 3px #777777;
-}
-
-.webisteHeader .right nav a:active {
-  text-shadow: -1px 2px 3px #333;
-}
-
-.webisteHeader .right nav a.current {
-  background-color: #be441d;
-  border-radius: 5px;
-}
-
-
-.websiteHeader .right .user-badge > button {
-  appearance: none;
-  background: none;
-  border: none;
-  font-weight: bold;
-  color: #999;
-  cursor: pointer;
-}
-
-.websiteHeader .right .user-badge > button:hover,
-.websiteHeader .right .user-badge > button:active,
-.websiteHeader .right .user-badge > button:focus {
-  color: #666;
-}
-/*************************************************/
-
-
 
 .websiteHeader .right {
   display: flex;
@@ -131,4 +90,19 @@ div>.right {
   border-radius: 50%;
   width: 30px;
   height: 30px;
+}
+
+.websiteHeader .right .user-badge > button {
+  appearance: none;
+  background: none;
+  border: none;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+}
+
+.websiteHeader .right .user-badge > button:hover,
+.websiteHeader .right .user-badge > button:active,
+.websiteHeader .right .user-badge > button:focus {
+  color: #666;
 }
