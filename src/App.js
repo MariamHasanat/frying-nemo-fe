@@ -22,9 +22,9 @@ function App() {
   }
   return (
     <UserContext.Provider  value={{user , setUser: setUserOverride}}>
-           <div>
+    <div>
            <BrowserRouter>
-           <Header/>
+             <Header/>
                   <Routes>
                       <Route path="/" element={<Navigate to='/view' replace/>} />
                       <Route path="/login" element={<LoginPage  />}  />
