@@ -5,6 +5,7 @@
 }
 
 .checkbox-group>input {
+  
   display: none;
 }
 
@@ -20,6 +21,7 @@
   cursor: pointer;
   border: 1px solid #e1cbc4;
   color: #be441d;
+  margin-top: 31px;
 }
 
 .checkbox-group>label>span:nth-child(2) {
