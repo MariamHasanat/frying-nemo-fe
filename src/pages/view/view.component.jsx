@@ -4,7 +4,8 @@ import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import Spinner from '../../components/core/spinner/spinner.component';
 import Item from '../../components/view/item/item.component';
 import './view.css';
-
+import { UserContext } from '../../components/provider/provider.component';
+import { useContext } from 'react';
 
 const initialItems = [];
 
@@ -15,11 +16,12 @@ const ViewPage = (props) => {
   const navigate = useNavigate();
   const searchTermsFromURL = params.get('searchTerms') || '';
   const categoriesFromURL = params.getAll('category') || '';
+  const userContext = useContext(UserContext);
+
 
   const getMenuItems = () => {
     setLoading(true);
 
-    // Run the code inside after 1000 milliseconds (1 Second)
     setTimeout(() => {
       const items = JSON.parse(localStorage.menuItems || '[]');
       setMenuItems(items);
@@ -28,8 +30,7 @@ const ViewPage = (props) => {
   };
 
   useEffect(() => {
-    // To check if the user is already logged in, send him to the view page
-    if (!props.user?.id) {
+    if (!userContext.user?.id) {
       navigate('/login', { replace: false });
     }
   }, []);

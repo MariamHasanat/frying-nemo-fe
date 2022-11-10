@@ -1,5 +1,5 @@
 import { Link, useLocation , useNavigate} from 'react-router-dom';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../provider/provider.component';
 import{useContext } from 'react'
 const Header = (props) => {
   const location = useLocation();

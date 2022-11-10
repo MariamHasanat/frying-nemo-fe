@@ -1,0 +1,9 @@
+
+.item-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 7px;
+  overflow: hidden;
+  max-width: 300px;
+  width: 300px;
+}

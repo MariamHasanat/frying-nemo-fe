@@ -1,9 +1,12 @@
 import './item.css';
 import { Link } from 'react-router-dom';
+import Card from '../../common/card/card.component';
 
 const Item = (props) => {
   return (
-    <div className="item-card">
+
+
+    <Card>
       <div className="img">
         <img src={props.data.image} alt="food" />
       </div>
@@ -15,11 +18,6 @@ const Item = (props) => {
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients.join(", ")}</p>
       </div>
-
-
-
-
-
       <div className="price">
         <span>{props.data.price}$</span>
         <div className="add-cart">
@@ -28,7 +26,7 @@ const Item = (props) => {
           <button>-</button>
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 

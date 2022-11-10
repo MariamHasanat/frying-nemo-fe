@@ -7,11 +7,10 @@ import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import { useContext } from 'react';
-import { UserContext } from '../../../App';
-
+import { UserContext } from '../../provider/provider.component';
 
 const Form = (props) => {
-  const [name, setName] = useState('Sajeda');
+  const [name, setName] = useState('yasmin');
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
   const userContext = useContext(UserContext);

@@ -8,12 +8,10 @@ const AddPage = (props) => {
 
   useEffect(() => {
     console.debug('Use effect executing. Starting timer.');
-    // On Component mount=> Start the interval
     const timer = setInterval(updateTime, 1000);
 
     return () => {
       console.debug('Use effect cleaning up. Clearing timer.');
-      // Code to stop interval timer, on component unmount => Stop the interval
       clearInterval(timer);
     };
   }, []);
