@@ -33,10 +33,10 @@ import { UserContext } from '../../../App';
 
         </nav>
         {
-          userContext &&
+          userContext.user &&
           <span className="user-badge">
-            <img src={userContext.imageUrl} alt="user logo" width={30} height={30} />
-            {userContext.fullName}
+            <img src={userContext.user.imageUrl} alt="user logo" width={30} height={30} />
+            {userContext.user.fullName}
             <button
               onClick={() => {
               userContext.setUser(null);

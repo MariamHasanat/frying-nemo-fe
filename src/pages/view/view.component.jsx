@@ -50,7 +50,7 @@ const ViewPage = (props) => {
   }, []);
   
   useEffect(()=>{
-    if (!useContext.user?.id) {
+    if (!userContext.user?.id) {
       navigate('/login', { replace: false });
     }
 
