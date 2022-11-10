@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/constants';
 import './form.css';
 
-import { UserContext } from '../../../App';
+import { UserContext } from '../../providers/user-provider.component';
 
 import Input from '../../common/input/input.component';
 import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';

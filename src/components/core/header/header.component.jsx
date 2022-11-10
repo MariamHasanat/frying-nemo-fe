@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './header.css';
 import logo from '../../../assets/nemo.svg';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../providers/user-provider.component';
 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 

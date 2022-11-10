@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { UserContext } from '../../App';
+import { UserContext } from '../../components/providers/user-provider.component';
 import Spinner from '../../components/core/spinner/spinner.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import Item from '../../components/view/item/item.component';
