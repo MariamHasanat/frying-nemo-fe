@@ -32,14 +32,16 @@ const removeitem= (item)=>{
       <Input
           label={props.label}
           value={props.newItemValue}
-          onChange={e => setNewItemValue(e.target.value)}
+          onChange={e => {setNewItemValue(e.target.value) 
+           }}
        required />
         <button
           className='bou'
           type="button"
-          onClick={addItem}
-        >
-        +
+          onClick={(e)=>{addItem()
+            e.Ingredients.value=null}}
+            >
+            +
         </button>
       </div>
       {

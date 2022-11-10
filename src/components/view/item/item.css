@@ -7,6 +7,10 @@
     max-width: 300px;
     width: 300px;
     background-color: #00000070;
+    box-shadow: 4px 7px 15px 0px rgb(0 0 0 / 50%);
+  }
+  .item-card:hover{
+    box-shadow: 4px 5px 10px 0px rgb(0 0 0 / 100%);
   }
   
 
