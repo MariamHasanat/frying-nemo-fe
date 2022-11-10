@@ -6,6 +6,7 @@ import Spinner from '../../components/spinner/spinner.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import { useContext } from 'react';
 import { UserContext } from '../../App';
+import pic from '../../assets/illustrations/frustrated-realistic .png';
 
 /**
  * @type {Array<{
@@ -106,7 +107,7 @@ const ViewPage = (props) => {
                   ? filteredItems.map((item, index) => <Item data={item} key={item.name + index} />)
                   : (
                     <div className="no-results">
-                      <img src="./frustrated-realistic.png" alt="No results" />
+                      <img src={pic} alt="No results" />
                       <p>No results found</p>
                     </div>
                   )
