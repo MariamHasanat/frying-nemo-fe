@@ -1,0 +1,4 @@
+.withBorder {
+    border: 1px solid #007bfd;
+    border-radius: var(--border-radius);
+}

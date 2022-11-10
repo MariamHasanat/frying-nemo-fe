@@ -8,6 +8,7 @@ import { useState } from "react";
 import './index.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import React from "react";
+import WithBorders from './components/common/with-borders/with-borders.components'
 
 export const UserContext = React.createContext(null);
 
@@ -20,19 +21,21 @@ function App() {
 
     return (
         <div>
-            <UserContext.Provider value={{ user, setUser: setUserOverride }}>
-                <BrowserRouter>
-                    <Header />
-                    <Routes>
-                        <Route path="/login" element={<Login />} replace />
-                        <Route path="/" element={<Navigate to='/view' />} replace />
-                        <Route path="/add" element={<AddPage />} />
-                        <Route path="/view" element={<ViewPage />} />
-                        <Route path="/*" element={<NotFound />} />
-                        <Route path="/view/:id" element={<ViewItemPage />} />
-                    </Routes>
-                </BrowserRouter>
-            </UserContext.Provider>
+            <WithBorders>
+                <UserContext.Provider value={{ user, setUser: setUserOverride }}>
+                    <BrowserRouter>
+                        <Header />
+                        <Routes>
+                            <Route path="/login" element={<Login />} replace />
+                            <Route path="/" element={<Navigate to='/view' />} replace />
+                            <Route path="/add" element={<AddPage />} />
+                            <Route path="/view" element={<ViewPage />} />
+                            <Route path="/*" element={<NotFound />} />
+                            <Route path="/view/:id" element={<ViewItemPage />} />
+                        </Routes>
+                    </BrowserRouter>
+                </UserContext.Provider>
+            </WithBorders>
         </div >
     );
 };
