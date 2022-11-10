@@ -5,7 +5,7 @@ import ItemCard from '../../components/item-card/item-card.component';
 import FilterBar from '../../components/view/filter-input.component';
 import './view.css';
 import { useContext } from 'react';
-import { UserContext } from '../../App';
+import { UserContext } from '../../components/providers/user-provider';
 const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]');
 /**
  * @type {Array<{

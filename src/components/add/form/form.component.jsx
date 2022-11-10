@@ -6,7 +6,7 @@ import Select from '../../common/select/select.component';
 import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/constants';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../../components/providers/user-provider';
 const Form = (props) => {
   const navigate = useNavigate();
 

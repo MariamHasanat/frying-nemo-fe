@@ -4,8 +4,8 @@ import logo from '../../../assets/images/image.png';
 import profile from '../../../assets/images/profile-user.png';
 import logout from '../../../assets/images/logout.png';
 import { useContext } from 'react';
-import { UserContext } from '../../../App';
-const Header = (props) => {
+import { UserContext } from '../../../components/providers/user-provider';
+const Header = () => {
   const userContext = useContext(UserContext);
   const location = useLocation();
   return (

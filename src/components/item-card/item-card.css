@@ -6,6 +6,18 @@
   background-color: white;
   box-shadow: 0px 0px 20px 0px #cfcfcf;
   margin: 1em;
+  transition: transform .2s;
+  border-radius: 0.2em;
+}
+
+.card-container:hover {
+  -ms-transform: scale(1.5);
+  /* IE 9 */
+  -webkit-transform: scale(1.5);
+  /* Safari 3-8 */
+  transform: scale(1.1);
+  cursor: pointer;
+  border: 1px solid rgb(255, 145, 105);
 }
 
 .card-container>img {
@@ -26,7 +38,7 @@
 
 .card-container>.item-ingredients {
   font-size: smaller;
- box-sizing: border-box;
+  box-sizing: border-box;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;

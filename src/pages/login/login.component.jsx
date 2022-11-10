@@ -4,10 +4,11 @@ import Input from '../../components/common/input/input.component.jsx';
 import { loginUser } from '../../services/users';
 import { useNavigate } from 'react-router';
 
-import { UserContext } from '../../App';
-const LoginComponent = (props) => {
+import { UserContext } from '../../components/providers/user-provider';
+const LoginComponent = () => {
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
+  
   useEffect(() => {
     // To check if the user is already logged in, send him to the view page
     if (userContext.user?.id) {

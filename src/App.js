@@ -7,8 +7,8 @@ import ViewItem from "./pages/view-item/view-item.component";
 import LoginComponent from "./pages/login/login.component";
 import React, { useState } from "react";
 import Test from "./pages/test/test.component";
+import UserProvider from "./components/providers/user-provider";
 
-export const UserContext = React.createContext(null);
 
 function App() {
 
@@ -27,8 +27,8 @@ function App() {
     <div>
       <BrowserRouter>
 
-        <UserContext.Provider value={{ user, setUser: setOverrideUser }}>
-          <Header  />
+        <UserProvider>
+          <Header />
           <Routes>
             <Route path="/" element={<Navigate to='/view' replace />} />
             <Route path="/login" element={<LoginComponent />} />
@@ -37,7 +37,7 @@ function App() {
             <Route path="/view/:id" element={<ViewItem />} />
             <Route path="/404" element={<Test />} />
           </Routes>
-        </UserContext.Provider>
+        </UserProvider>
       </BrowserRouter>
 
 
