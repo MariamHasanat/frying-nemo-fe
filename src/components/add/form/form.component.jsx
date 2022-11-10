@@ -1,20 +1,20 @@
 import { useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Input from '../../common/input/input.component';
 import MultivalueInput from '../../common/multivalue-input/multivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
-import CATEGORIES from '../../../data/constants' ;
-import { isDisabled } from '@testing-library/user-event/dist/utils';
+import CATEGORIES from '../../../data/constants';
 import { useContext } from 'react';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../../components/providers/user-provider.component';
+import WithBorders from '../../common/with-borders/with-borders.component';
 
 const Form = (props) => {
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState([]);
-  const navigate = useNavigate() ;
-  const userContext = useContext (UserContext) ;
+  const navigate = useNavigate();
+  const userContext = useContext(UserContext);
   /*
    * calls JSDoc
    * @param {React.ChangeEvent<HTMLInputElement>} e   //Event object
@@ -27,9 +27,9 @@ const Form = (props) => {
     const discription = e.target.discription.value;
     const catigory = e.target.catigory.value;
     const image = e.target.image.value;
-    
+
     const menueItem = {
-      id : Date.now(),
+      id: Date.now(),
       name: name,
       price: price,
       discription: discription,
@@ -43,8 +43,7 @@ const Form = (props) => {
     items.push(menueItem);
     console.log("after", items);
     localStorage.setItem('menuItems', JSON.stringify(items));
-    props.onAdd(menueItem);
-    navigate ('/view') ;   // to change url without link , without needing to render it as a link component
+    navigate('/view');   // to change url without link , without needing to render it as a link component
   };
   /**
    * 
@@ -74,11 +73,13 @@ const Form = (props) => {
         required
         onChange={nameChange}
       />
-      <Textarea
-        name='discription'
-        label="Discription"
-        className='textarea-group'
-      />
+      <WithBorders>
+        <Textarea
+          name='discription'
+          label="Discription"
+          className='textarea-group'
+        />
+      </WithBorders>
       <Input label='Enter image link' type="text" name="image" />
       <Input
         className='input-group'
@@ -104,7 +105,7 @@ const Form = (props) => {
         <button
           type='submit'
           className='formComp nemo-button'
-          disabled = {userContext.user?.role !== 'ADMIN'}
+          disabled={userContext.user?.role !== 'ADMIN'}
         >
           Create
         </button>

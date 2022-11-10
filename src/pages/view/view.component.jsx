@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { UserContext } from '../../App';
+import { UserContext } from '../../components/providers/user-provider.component';
 import Spinner from '../../components/common/spinner/spinner.componenr';
 import MenuItem from './cards/menu-item/menu-item.component';
 import FilterBar from './filter-bar/filter-bar.component';
@@ -20,16 +20,16 @@ import './view.css';
 const initialItems = [];
 
 const ViewPage = (props) => {
-  const navigate = useNavigate () ;
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState(initialItems);
   //param is an instance of complex class (URLSearchParams) so I need to use get (name) to access spesific param 
   const [param, setParam] = useSearchParams();
   const searchUsingURL = param.get('searchTerms') || '';
   const categoryUsingURL = param.getAll('category') || '';
-  const minPrice = param.get ('min') || '' ;
-  const maxPrice = param.get ('max') || '' ;
-  const userContext = useContext (UserContext) ;
+  const minPrice = param.get('min') || '';
+  const maxPrice = param.get('max') || '';
+  const userContext = useContext(UserContext);
 
   const setParams = (addTo, value) => {
     let newParam = new URLSearchParams(param);
@@ -51,8 +51,8 @@ const ViewPage = (props) => {
   };
 
   useEffect(() => {
-    if (!userContext.user) 
-      navigate ('/login' , {replace : true}) ;
+    if (!userContext.user)
+      navigate('/login', { replace: true });
     getMenuItems();
     return (() => console.log('Im out'));
   }, []);
@@ -69,10 +69,10 @@ const ViewPage = (props) => {
       // match = match && element.catigory == categoryUsingURL ;   => for a single category filter :) 
       match = match && categoryUsingURL.includes(element.catigory);  // for a multiple category filter :)
     }
-    if (minPrice) 
-      match = match && element.price >= minPrice ;
-    if (maxPrice) 
-      match = match && element.price <= maxPrice ;
+    if (minPrice)
+      match = match && element.price >= minPrice;
+    if (maxPrice)
+      match = match && element.price <= maxPrice;
     return match;
   });
 
@@ -82,8 +82,8 @@ const ViewPage = (props) => {
       <FilterBar
         searchUsingURL={searchUsingURL}
         categoryUsingURL={categoryUsingURL}
-        maxPrice = {maxPrice}
-        minPrice = {minPrice}
+        maxPrice={maxPrice}
+        minPrice={minPrice}
         param={param}
         setParam={setParam}
         setParams={setParams}
@@ -94,13 +94,13 @@ const ViewPage = (props) => {
         </div>
         : <div className='items'>
           {
-            filteredIetems.length 
-            ? filteredIetems.map((item, index) => <div key={item.name + index}>
-              <MenuItem item={item} />
-            </div>)
-            : <div className="img">
-              <h5>No such item satisfies your requerments!</h5>
-              <img src="./sad-crab.svg" alt="" />
+            filteredIetems.length
+              ? filteredIetems.map((item, index) => <div key={item.name + index}>
+                <MenuItem item={item} />
+              </div>)
+              : <div className="img">
+                <h5>No such item satisfies your requirements!</h5>
+                <img src="./sad-crab.svg" alt="" />
               </div>
           }
         </div>

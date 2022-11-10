@@ -2,13 +2,13 @@ import './header.css';
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../../components/providers/user-provider.component';
 
 
 const Header = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const userContext = useContext (UserContext) ;
+  const userContext = useContext(UserContext);
   return (
     <div className='webisteHeader'>
       <div className='left'>
@@ -21,20 +21,20 @@ const Header = (props) => {
           {/* <a href='/add'> Add </a> */}
           <Link to='/view' className={location.pathname.includes('/view') ? 'current' : ''}> View </Link>
           {
-          userContext.user &&
-          <span className="user-badge">
-            <img src={userContext.user.imageUrl} alt="user logo" width={30} height={30} />
-            {userContext.user.fullName}
-            <button
-              onClick={() => {
-                userContext.setUser(null);
-                navigate('/login');
-              }}
-            >
-              Logout
-            </button>
-          </span>
-        }
+            userContext.user &&
+            <span className="user-badge">
+              <img src={userContext.user.imageUrl} alt="user logo" width={30} height={30} />
+              {userContext.user.fullName}
+              <button
+                onClick={() => {
+                  userContext.setUser(null);
+                  navigate('/login');
+                }}
+              >
+                Logout
+              </button>
+            </span>
+          }
 
           {/* {props.user ? <p>Hello {props.user.fullName}</p> : ''}
           <button
