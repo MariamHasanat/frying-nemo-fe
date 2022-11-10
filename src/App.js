@@ -7,40 +7,26 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ViewItemPage from "./components/view-item/view-item.component";
 import LoginPage from "./components/login-page/login-page.componen";
 import React from "react";
-
-const userContext = React.createContext(null);
+import UserProvider from "./components/provider/provider.component";
 
 function App() {
 
-  const initializeUser = JSON.parse(sessionStorage.getItem('user'));
-  const [user, setUser] = useState(initializeUser);
-
-  const overrideSetUser = user => {
-    setUser(user);
-    sessionStorage.setItem('user', JSON.stringify(user));
-  };
-
   return (
     <div>
+      <UserProvider>
       <BrowserRouter>
-        <Header user={user} setUser={setUser} />
-        <userContext.Provider value={{user, setUser:overrideSetUser}}>
+        <Header />
         <Routes>
           <Route path="/" element={<Navigate to='/view' replace />} />
-          <Route path="/login" element={<LoginPage user={user} setUser={overrideSetUser} />} />
-          <Route path="/add" element={<AddPage user={user} />} />
-          <Route path="/view" element={<ViewPage user={user} />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/add" element={<AddPage />} />
+          <Route path="/view" element={<ViewPage />} />
           <Route path="/*" element={<NotFoundPage />} />
           <Route path="/view-details/:id" element={<ViewItemPage />} />
         </Routes>
-        </userContext.Provider>
       </BrowserRouter>
-
+      </UserProvider>
     </div>
   );
 }
 export default App;
-
-export {
-  userContext
-};
