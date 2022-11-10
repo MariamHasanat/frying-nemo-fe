@@ -7,14 +7,14 @@ import MultivalueInput from '../../../common/multivalue-input/multivalue-input.c
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/category';
 import { useContext } from 'react';
-// import { UserContext } from '../../../App';
+import { UserContext } from '../../../App';
 
 
 const Form = (props) => {
   const [name, setName] = useState('dala');
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
-  // const useContext = useContext(UserContext);
+  const userContext = useContext(UserContext);
 
   /**
    * Handles on change events on the name field.
@@ -117,7 +117,7 @@ const Form = (props) => {
           <button
            className="nemo-button"
             type="submit"
-            disabled={useContext.user?.role !== 'ADMIN'}
+            disabled={userContext.user?.role !== 'ADMIN'}
             >Creat</button>
           </div>
       </div>
