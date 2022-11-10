@@ -6,20 +6,16 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import NotFoundPage from "./pages/add/not_found/not-found";
 import ViewItemPage from "./common/view/view-item/item.component";
 import LoginPage from "./pages/add/log-in/login.component";
+import WithBorder from "./common/with-borders/with-borders.component";
+import UserProvider from "./components/provider/provider.component";
 
-export const UserContext = React.createContext(null);
 
 function App() {
-  const initialUser = JSON.parse(sessionStorage.getItem('user'));
-  const [user, setUser] = useState(initialUser);
 
-  const setUserOverride = user => {
-    setUser(user);
-    sessionStorage.setItem('user', JSON.stringify(user));
-  }
   return (
     <div>
-      <UserContext.Provider value={{ user, setUser: setUserOverride }}>
+     <UserProvider>
+        <WithBorder>
         <BrowserRouter>
           <Header />
           <Routes>
@@ -31,7 +27,8 @@ function App() {
             <Route path="/*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
-      </UserContext.Provider>
+        </WithBorder>
+        </UserProvider>
     </div>
   );
 }
