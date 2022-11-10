@@ -3,7 +3,7 @@ import nemo from '../../../images/nemo.png';
 // import profilePic from '../../../images/profile.png';
 import { Link, useNavigate, useLocation, NavLink } from 'react-router-dom';
 import { useContext } from 'react';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../providers/userContextProvider.component';
 const Header = (props) => {
     const navigate = useNavigate();
     const location = useLocation();

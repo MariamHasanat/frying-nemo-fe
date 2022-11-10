@@ -3,7 +3,7 @@ import LoginBlock from '../../components/login-block/login.component';
 import { checkUser } from '../../services/checkUser';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
-import { UserContext } from '../../App';
+import { UserContext } from '../../components/providers/userContextProvider.component';
 import { useContext, useEffect } from 'react';
 
 const Login = () => {

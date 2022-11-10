@@ -4,7 +4,7 @@ import Loading from '../../components/common/loading/loading.component';
 import './view.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import FilterBar from './filter-bar/filter-bar.component';
-import { UserContext } from '../../App';
+import { UserContext } from '../../components/providers/userContextProvider.component';
 // import NotFound from '../not-found/not-found.component';
 
 

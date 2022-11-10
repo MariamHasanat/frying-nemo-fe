@@ -8,7 +8,7 @@ import '../../../common.css';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/constants';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../providers/userContextProvider.component';
 const Form = () => {
     const [name, setName] = useState('');
     const [ingredients, setIngredients] = useState([]);
