@@ -3,7 +3,7 @@ import logo from '../../assets/nemo.svg';
 import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { UserContext } from '../../App';
+import { UserContext } from '../../components/user-provider/user-provider';
 
 const Header = props => {
 
@@ -12,8 +12,8 @@ const Header = props => {
   const userContext = useContext(UserContext);
 
   return (
-    <header className="webisteHeader">
-      <div className="classWhichHaveHeaderContent">
+    <header className="websiteHeader">
+      <div className="left">
         <h1>
           <img src={logo} alt="Nemo" />
           Frying Nemo

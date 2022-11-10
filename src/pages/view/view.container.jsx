@@ -4,7 +4,7 @@ import Spinner from '../../components/spinner/spinner.jsx';
 import { useState, useEffect ,useContext } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Filter from './filter-bar/filter.bar.component.jsx';
-import { UserContext } from '../../App.js';
+import { UserContext } from '../../components/user-provider/user-provider';
 //import UserContext from '../../App';
 
 const initialItems = [];
