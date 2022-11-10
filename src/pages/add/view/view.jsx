@@ -8,7 +8,8 @@ import './view.css';
 import Select from '../../../components/common/select/select';
 import FilterBar from '../../../components/filter-bar/filter-bar';
 import { useContext } from 'react';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../../components/provider/provider';
+
 /**
  * @type {Array<{
  * name: string;

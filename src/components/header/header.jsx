@@ -2,11 +2,12 @@ import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/fish-removebg-preview.png';
 import { useContext } from 'react';
-import { UserContext } from '../../App';
+import { UserContext } from '../provider/provider';
+
 const Handel = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const userContext = useContext(UserContext)
+  const userContext = useContext(UserContext);
   return (
     <header className='handel-group'>
       <img className='img' src={logo} alt="Nemo" />
@@ -29,19 +30,15 @@ const Handel = () => {
             {userContext.user.fullName} <button
               onClick={() => {
                 userContext.setUser(null);
-                navigate ('/login') ;
+                navigate('/login');
               }}
-            > Logout
+            >
+              Logout
             </button>
           </span>
-
         }
-
-
       </div>
     </header>
   );
-
-
 };
-export default Handel; 
+export default Handel;

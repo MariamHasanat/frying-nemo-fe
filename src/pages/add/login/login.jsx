@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../../App";
+
 import { loginUser } from "../../../components/add/form/data/users";
 import Input from "../../../components/common/input/input";
+import { UserContext } from "../../../components/provider/provider";
 import './login.css';
 
 const LoginPage = (props) => {

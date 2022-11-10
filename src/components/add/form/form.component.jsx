@@ -1,11 +1,13 @@
 import { useContext } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../../../App';
+
 import Input from '../../common/input/input';
 import Multiinput from '../../common/maltiinput-value/multiinput';
 import Select from '../../common/select/select';
 import Textarea from '../../common/textarea/textarea.component';
+import { UserContext } from '../../provider/provider';
+import Withborder from '../../withborder/withborder';
 import { CATEGORIES } from './data/constant';
 
 import './form.css';
@@ -20,7 +22,7 @@ const Form = (props) => {
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-   
+   debugger
     const image = e.target.image.value;
     const price = Number(e.target.price.value);
     const description = e.target.description.value;
@@ -61,12 +63,14 @@ const Form = (props) => {
   return (
     <form className='form' onSubmit={handleSubmit}>
       <div className='input'>
+        <Withborder>
         <Input
           label='name'
           value={name}
-          onChange={onNameChange}
+          onChange={(e) => onNameChange(e)}
           required
         />
+        </Withborder>
         <Textarea
           label="Description"
           name='description'
@@ -100,7 +104,6 @@ const Form = (props) => {
 
 
       </div>
-      <input  value="Create" />
       <button
       type="submit"
       className="nemo" 
