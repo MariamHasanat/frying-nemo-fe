@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
 import './form.css';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CATEGORIES } from '../../../data/constants';
 import Input from '../../common/input/input.component';
 import MultivalueInput from '../../common/mutivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
+import { UserContext } from '../../../App';
+
 
 
 const Form = (props) => {
   const [name, setName] = useState('Lana');
   const [ingredients, setIngredients] = useState([]);
+  const navigate = useNavigate();
+  const userContext = useContext(UserContext);
+
   /**
    * Handler fn for the form onSubmit event .
    * @param {React.FormEvent<HTMLFormElement>}e Event object.
@@ -23,8 +30,8 @@ const Form = (props) => {
     const category = e.target.category.value;
 
 
-    const menueItems = {
-
+    const menuItem = {
+      id: Date.now(),
       name: name,
       description: description,
       image,
@@ -34,10 +41,10 @@ const Form = (props) => {
     };
 
     // console.debug('Form submitted', menueItems);
-    const itemsJson = localStorage.getItem('menueItems') || '[]';
+    const itemsJson = localStorage.getItem('menuItems') || '[]';
     const items = JSON.parse(itemsJson);
 
-    items.push(menueItems);
+    items.push(menuItem);
     localStorage.setItem('menueItems', JSON.stringify(items));
     props.onNavigate('view');
   };
@@ -64,18 +71,6 @@ const Form = (props) => {
 
     setName(value);
   };
-
-
-  const categories = [
-    'Fish',
-    'Drinks',
-    'Hookah',
-    'Salads',
-    'Sandwiches',
-    'Main Dish',
-    'Appetizers',
-    'Ice Cream'
-  ];
 
 
   return (
@@ -110,7 +105,7 @@ const Form = (props) => {
 
 
         <Select name='category' label="Category" required>
-          {categories.map(item => {
+          {CATEGORIES.map(item => {
             return <option key={item} value={item}>{item}</option>;
           })}
         </Select>
@@ -121,7 +116,7 @@ const Form = (props) => {
           onChange={newIngredients => setIngredients(newIngredients)}
         />
 
-        <div><button type="submit">Create </button></div>
+        <div><button type="submit" disabled={userContext.user?.role !== 'ADMIN'}>Create </button></div>
 
 
       </div>
