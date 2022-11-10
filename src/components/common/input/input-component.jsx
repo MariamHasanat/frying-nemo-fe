@@ -5,7 +5,7 @@ const Input = props => {
   const { label, ...inputProps } = props;
 
   return (
-    <div className="input-group">
+      <div className="input-group">
       {
         label ? (
           <label>

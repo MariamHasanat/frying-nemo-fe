@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './item.css';
+import Card from '../../common/card/card.component'
 
 
 /** 
@@ -18,7 +19,7 @@ import './item.css';
  */
 const Item = (props) => {
   return (
-    <div className="item-card">
+    <Card>
       <div className="img">
         <img src={props.data.image} alt="food" />
       </div>
@@ -35,7 +36,7 @@ const Item = (props) => {
           <button>-</button>
         </div>
       </div>
-    </div>
+      </Card>
   );
 };
 

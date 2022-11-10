@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import "./header.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { UserContext } from "../../../App";
+import { UserContext } from "../../user-provider/user-provider";
 
 const Header = (props) => {
   const location = useLocation();

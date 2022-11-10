@@ -1,6 +1,6 @@
 import { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../../App';
+import { UserContext } from '../../components/user-provider/user-provider';
 import Input from '../../components/common/input/input-component';
 import { loginUser } from '../../services/users';
 import './login.css';
