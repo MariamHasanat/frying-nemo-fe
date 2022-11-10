@@ -11,7 +11,8 @@ const LoginPage = (props) => {
   const userContext = useContext(UserContext);
   const navigate = useNavigate();
   useEffect(() => {
-    if (userContext.user?.id) {
+    if (userContext.user?.id) {      
+      
       navigate('/view');
     }
   }, []);
