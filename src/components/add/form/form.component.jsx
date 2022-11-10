@@ -1,14 +1,13 @@
+import MultivalueInput from '../../../common/multivalue-input/multivalue-input.component';
+import Textarea from '../../../common/textarea/textarea.component';
+import Input from '../../../common/input/input.component';
+import { UserContext } from './provider/UserProvider';
+import { CATEGORIES } from '../../../data/category';
+import Select from '../../../common/Select/Select';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 import { useState } from 'react';
 import './form.css';
-import Input from '../../../common/input/input.component';
-import Textarea from '../../../common/textarea/textarea.component';
-import Select from '../../../common/Select/Select';
-import MultivalueInput from '../../../common/multivalue-input/multivalue-input.component';
-import { useNavigate } from 'react-router-dom';
-import { CATEGORIES } from '../../../data/category';
-import { useContext } from 'react';
-import { UserContext } from './provider/UserProvider';
-import WithBorder from './with-border/WithBorder';
 
 
 const Form = (props) => {
@@ -29,13 +28,13 @@ const Form = (props) => {
      * @type {HTMLformElement}
      */
 
-     const description = e.target.description.value;
+    const description = e.target.description.value;
     // const image = e.target.image.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
     const image = e.target.image.value;
 
-     
+
     const menuItem = {
       name: name,
       // image,
@@ -46,34 +45,34 @@ const Form = (props) => {
       ingredients: ingredients
     };
 
-    
+
     const itemJson = localStorage.getItem('menuItems') || '[]';
     const items = JSON.parse(itemJson);
     items.push(menuItem);
-    localStorage.setItem('menuItems' , JSON.stringify(items));
+    localStorage.setItem('menuItems', JSON.stringify(items));
 
-   navigate('/view');
+    navigate('/view');
   };
-  
+
   const onNamechange = e => {
-    
+
     let val = e.target.value;
-    
+
     if (val.includes('.')) {
       val = val.replace('.', '');
     }
-    
+
     if (/find/ig.test(val)) {
       val = val.replace(/find/ig, 'fry');
     }
-    
+
     if (val.length > 20) {
       alert('charecter limit excedded');
       val = val.substring(0, 20);
     }
     setName(val);
   };
-  
+
   return (
     <form className='add-form' onSubmit={handler}>
       <div style={{ margintop: 20 }}>
@@ -83,47 +82,44 @@ const Form = (props) => {
           value={name}
           onChange={onNamechange}
           required
-          />
-          <WithBorder>
-
+        />
         <Input
-          name ="price"
+          name="price"
           label="Price"
           type="number"
           min={0}
           required
         />
-          </WithBorder>
-          <Input
-        label="Image"
-        name="image"
-        required
-      />
+        <Input
+          label="Image"
+          name="image"
+          required
+        />
         <Textarea
           name="description"
           label="Description"
-          // value={props.description}
+        // value={props.description}
         />
-        <Select 
-        name="category"
-        label="Category" 
-        required>
-        {CATEGORIES.map(item =>  {
-          return <option key={item} value={item}>{item}</option>
-        })}
+        <Select
+          name="category"
+          label="Category"
+          required>
+          {CATEGORIES.map(item => {
+            return <option key={item} value={item}>{item}</option>;
+          })}
         </Select>
-        <MultivalueInput 
+        <MultivalueInput
           label="Ingrediants"
           value={ingredients}
           onChange={newIngredients => setIngredients(newIngredients)}
         />
         <div className="create-btn">
           <button
-           className="nemo-button"
+            className="nemo-button"
             type="submit"
             disabled={userContext.user?.role !== 'ADMIN'}
-            >Creat</button>
-          </div>
+          >Creat</button>
+        </div>
       </div>
     </form>
   );

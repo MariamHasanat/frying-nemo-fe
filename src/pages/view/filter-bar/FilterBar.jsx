@@ -1,8 +1,6 @@
-// import React from 'react'
-import Input from '../../../common/input/input.component';
-// import Select from '../../../common/Select/Select';
-import { CATEGORIES } from '../../../data/category';
 import CheckBox from '../../../common/check-box/check-box.component';
+import Input from '../../../common/input/input.component';
+import { CATEGORIES } from '../../../data/category';
 import './filterBar.css';
 
 /**

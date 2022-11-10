@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import WithBorder from './components/add/form/with-border/WithBorder';
 import UserProvider from './components/add/form/provider/UserProvider';
 import ViewItemPage from './pages/view/ViewItem/ViewItemPage';
 import Notfound from "./pages/not-found/Notfound";
@@ -13,7 +12,6 @@ import './common.css';
 function App() {
   return (
     <UserProvider>
-      <WithBorder>
         <BrowserRouter>
           <Header />
           <Routes>
@@ -25,7 +23,6 @@ function App() {
             <Route path="/*" element={<Notfound />} />
           </Routes>
         </BrowserRouter>
-      </WithBorder>
     </UserProvider>
 
   );

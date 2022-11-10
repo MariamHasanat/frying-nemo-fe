@@ -1,6 +1,6 @@
-import './add.css';
-import { useState , useEffect} from 'react';
 import Form from '../../components/add/form/form.component';
+import { useState , useEffect} from 'react';
+import './add.css';
 
 const AddPage = (props) => {
   const [time, setTime] = useState(new Date());
