@@ -5,6 +5,7 @@ import { useState, useEffect ,useContext } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Filter from './filter-bar/filter.bar.component.jsx';
 import { UserContext } from '../../App.js';
+//import UserContext from '../../App';
 
 const initialItems = [];
 
