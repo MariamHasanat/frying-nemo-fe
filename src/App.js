@@ -25,31 +25,25 @@ function App() {
   const saveUser = user => {
     setUser(user);
     sessionStorage.setItem("user", JSON.stringify(user));
-
-
   };
-
 
   return (
     <UserProvider>
-    {/* //<UserContext.Provider value={{ user, setUser: saveUser }}> */}
-    <div>
-
-      <BrowserRouter>
-        <Head user={user} setUser={saveUser} />
+      <div>
+        <BrowserRouter>
+          <Head user={user} setUser={saveUser} />
           <Routes>
-            <Route path="/add" element={<AddPage  />} />
+            <Route path="/add" element={<AddPage />} />
             <Route path="/*" element={<NotFound />} />
             <Route path="/view/:id" element={<ViewItemPage />} />
             <Route path="/view" element={<ViewPage />} />
             <Route path="/" element={<Navigate to='/view' replace />} />
-            <Route path="/login" element={<Login  />} />
+            <Route path="/login" element={<Login />} />
             {/* <Route path="/*" element={<Navigate to='/add' />} /> */}
           </Routes>
-      </BrowserRouter>
-    </div >
-        {/* //</UserContext.Provider> */}
-        </UserProvider>
+        </BrowserRouter>
+      </div >
+    </UserProvider>
   );
 }
 
