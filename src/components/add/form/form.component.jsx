@@ -40,12 +40,12 @@ const Form = (props) => {
       ingredients: ingredients
     };
 
-    // console.debug('Form submitted', menueItems);
+    // console.debug('Form submitted', menuItem);
     const itemsJson = localStorage.getItem('menuItems') || '[]';
     const items = JSON.parse(itemsJson);
 
     items.push(menuItem);
-    localStorage.setItem('menueItems', JSON.stringify(items));
+    localStorage.setItem('menuItem', JSON.stringify(items));
     props.onNavigate('view');
   };
 
