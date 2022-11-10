@@ -1,6 +1,7 @@
 import './item.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Card from '../../common/card/card.component';
 
 /** 
  * Render a single menu item based on the data passed
@@ -33,7 +34,7 @@ const Item = (props) => {
     };
 
     return (
-        <div className='item'>
+        <Card>
             <Link to={`/view-details/${props.item.id}`}>
                 <img alt="food" src={props.item.image} />
             </Link>
@@ -63,7 +64,7 @@ const Item = (props) => {
                 </div>
 
             </div>
-        </div >
+        </Card>
     );
 };
 

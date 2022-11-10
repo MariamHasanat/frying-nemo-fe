@@ -6,7 +6,7 @@ import { loginUser } from '../../services/users';
 
 import Input from '../../components/common/input/input.component';
 import { useContext } from 'react';
-import { UserContext } from '../../App';
+import { UserContext } from '../../components/providers/user-provider.component';
 
 const LogIn = () => {
     const userContext = useContext(UserContext);

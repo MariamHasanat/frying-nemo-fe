@@ -5,20 +5,14 @@ import NotFound from "./pages/not-found/not-found.component";
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import ViewItemPage from "./pages/view-item-page/view-item-page";
 import LogIn from "./pages/login/login.component";
-import React, { useState } from "react";
-
-export const UserContext = React.createContext(null);
+import React from "react";
+import UserProvider from './components/providers/user-provider.component.jsx';
 
 function App() {
-    const initialUser = JSON.parse(sessionStorage.getItem('user'));
-    const [user, setUser] = useState(initialUser);
-    const setUserOverride = (user) => {
-        setUser(user);
-        sessionStorage.setItem('user', JSON.stringify(user));
-    };
+
     return (
-        <UserContext.Provider value={{ user, setUser: setUserOverride }}>
-            <div>
+        <div>
+            <UserProvider>
                 <BrowserRouter>
                     <Header />
                     <Routes>
@@ -30,8 +24,9 @@ function App() {
                         <Route path="/*" element={<NotFound />} />
                     </Routes>
                 </BrowserRouter>
-            </div>
-        </UserContext.Provider>
+
+            </UserProvider>
+        </div>
     );
 }
 

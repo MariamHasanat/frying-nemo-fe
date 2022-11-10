@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/nemoInHeader.png';
 import React, { useContext } from 'react';
-import { UserContext } from '../../App';
+import { UserContext } from '../../components/providers/user-provider.component';
 const Header = () => {
     const [time, setTime] = useState(new Date());
     const userContext = useContext(UserContext);

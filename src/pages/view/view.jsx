@@ -5,7 +5,7 @@ import Item from "../../components/view/item/item.component";
 import Spinner from "../../core/spinner/spinner";
 import './view.css';
 import { useContext } from 'react';
-import { UserContext } from '../../App';
+import { UserContext } from '../../components/providers/user-provider.component';
 /**
 * @type {Array<{
 * name: string;

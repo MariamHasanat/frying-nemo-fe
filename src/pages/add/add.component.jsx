@@ -3,7 +3,7 @@ import Form from '../../components/add/form/form.component';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { UserContext } from '../../App';
+import { UserContext } from '../../components/providers/user-provider.component';
 const AddPage = () => {
     const userContext = useContext(UserContext); 
     const navigate = useNavigate();
