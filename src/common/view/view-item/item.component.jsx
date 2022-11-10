@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Items from '../item/item.component';
 import {getItem }from '../../../data/items';
 import "../../header/header.css";
-import NotFoundPage from '../../../pages/add/not_found/not-found';
 
 
 /**

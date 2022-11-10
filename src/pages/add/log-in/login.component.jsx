@@ -3,7 +3,7 @@ import  Input  from "../../../common/input/input.component";
 import { useNavigate } from 'react-router-dom';
 import React,{ useEffect,useContext } from 'react';
 import { loginUser } from "../../../data/user";
-import { UserContext } from "../../../App";
+import { UserContext } from "../../../components/provider/provider.component";
 
 const LoginPage=(props)=>{
   const navigate=useNavigate();
@@ -17,7 +17,7 @@ const LoginPage=(props)=>{
         if (email && password) {
           const user = loginUser(email,password);
           if (user) {
-            props.setUser(user);
+            userContext.setUser(user);
             navigate('/view', { replace: true });
           } else {
             alert("Email or Password are not correct! Please try again.");

@@ -2,11 +2,11 @@ import './add.css';
 import React,{ useEffect, useState } from 'react';
 import Form from '../../components/add/form/form.component';
 import { useContext } from 'react';
-const UserContext = React.createContext(null);
+
 
 const AddPage = (props) => {
   const [time, setTime] = useState(new Date());
-  const userContext=useContext(UserContext);
+
 
   useEffect(() => {
     console.debug('Use effect executing. Starting timer.');
