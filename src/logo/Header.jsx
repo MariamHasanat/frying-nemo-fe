@@ -1,6 +1,7 @@
 // import React, { useState } from 'react';
 import { UserContext } from '../components/add/form/provider/UserProvider.jsx';
 import { Link , useLocation, useNavigate } from 'react-router-dom'
+import picture from '../assests/imges.jpg'
 import { useContext } from 'react';
 import './Header.css';
 
@@ -34,7 +35,7 @@ const Header = props => {
         {
           userContext.user &&
           <span className="user-badge">
-            <img src={userContext.user.imageUrl} alt="user logo" width={30} height={30} />
+            <img src={picture} alt="user logo" width={30} height={30} />
             {userContext.user.fullName}
             <button 
             onClick={() => {
