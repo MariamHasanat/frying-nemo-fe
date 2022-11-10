@@ -9,6 +9,7 @@ import ViewItemPage from "./pages/veiw-item/view-item";
 import './App.css';
 import Login from "./pages/login/login";
 import React, { useState } from "react";
+import UserProvider from "./components/providers/user-provider";
 
 
 //tp pass the user to all routes without send  it as props to all children 
@@ -30,7 +31,8 @@ function App() {
 
 
   return (
-    <UserContext.Provider value={{ user, setUser: saveUser }}>
+    <UserProvider>
+    {/* //<UserContext.Provider value={{ user, setUser: saveUser }}> */}
     <div>
 
       <BrowserRouter>
@@ -46,7 +48,8 @@ function App() {
           </Routes>
       </BrowserRouter>
     </div >
-        </UserContext.Provider>
+        {/* //</UserContext.Provider> */}
+        </UserProvider>
   );
 }
 

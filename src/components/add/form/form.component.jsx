@@ -1,12 +1,12 @@
-import React, { useState,useContext  } from 'react';
+import React, { useState, useContext } from 'react';
 import Input from '../../common/input/input';
 import MySelect from '../../common/select/select';
 import Textarea from '../../common/textarea/textarea/Tarea';
 import MultivalueInput from '../../common/multi-value-input/multi-value-input';
 import './form.css';
 import { useNavigate } from 'react-router-dom';
-import {CATEGORIES } from '../../../data/data';
-import {UserContext } from '../../../App'
+import { CATEGORIES } from '../../../data/data';
+import { UserContext } from '../../../App';
 
 
 
@@ -14,7 +14,7 @@ const Form = (props) => {
   const [name, setName] = useState('ayat');
   const [ingrediant, setIngrediant] = useState([]);
   const navigate = useNavigate();
-const userContext =useContext(UserContext);
+  const userContext = useContext(UserContext);
 
 
   /**
@@ -34,7 +34,7 @@ const userContext =useContext(UserContext);
 
     const menuItem = {
       //or we can use random id 
-      id : Date.now(),
+      id: Date.now(),
       name: name,
       description: description,
       price: price,
@@ -90,58 +90,59 @@ const userContext =useContext(UserContext);
   return (
     <div className='add-wapper'>
 
-    <form onSubmit={submitHandeller} >
+      <form onSubmit={submitHandeller} >
 
-      <h1>Add to the menu !</h1>
-      <Input
-        label="Name"
-        value={name}
-        onChange={onNameChange}
-        required
-      />
-      <Textarea
-        label="Decription"
-        name='description'
-      />
-  <Input
-        label="Image"
-        name="image"
-        
-      />
-      <MySelect
-        name="categories"
-        label='categories' required>
-        {
-          CATEGORIES.map(item => {
+        <h1>Add to the menu !</h1>
+        <Input
+          label="Name"
+          value={name}
+          onChange={onNameChange}
+          required
+        />
+        <Textarea
+          label="Decription"
+          name='description'
+        />
+        <Input
+          label="Image"
+          name="image"
 
-            return <option value={item} key={item}>{item}</option>;
-          })
-        }
-      </MySelect>
+        />
+        <MySelect
+          name="categories"
+          label='categories' required>
+          {
+            CATEGORIES.map(item => {
 
-      <Input
-        name="price"
-        label="price"
-        type="number"
-        min={0}
-        required
-      />
-      <MultivalueInput
-        label="Ingradiant"
-        value={ingrediant}
-        onChange={newI => setIngrediant(newI)}
+              return <option value={item} key={item}>{item}</option>;
+            })
+          }
+        </MySelect>
 
-      />
+        <Input
+          name="price"
+          label="price"
+          type="number"
+          min={0}
+          required
+        />
+        <MultivalueInput
+          label="Ingradiant"
+          value={ingrediant}
+          onChange={newI => setIngrediant(newI)}
 
-      <div className='btn'>
-        <button type='submit'
-         className="nemo-button" 
-         disabled={userContext.user?.role !== 'ADMIN'}
+        />
 
-        >create</button>
-      </div>
-    </form>
+        <div className='btn'>
+          <button type='submit'
+            className="nemo-button"
+            disabled={
+              userContext.user?.role !== 'ADMIN'
+            }
+          >create</button>
         </div>
+      </form>
+    </div>
   );
 };
 

@@ -27,7 +27,7 @@ const MySelect = props => {
         ) : null
       }
       <select className="select" id="standard-select" {...selectProps} />
-      <span class="focus"></span>
+      <span className='focus'></span>
 
     </div>
   );
