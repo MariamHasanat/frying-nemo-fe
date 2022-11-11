@@ -10,24 +10,25 @@ import LoginPage from "./pages/login/login";
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import UserProvider from "./components/user-provider/user-provider";
+import Guard from "./components/core/guard/guard";
 
 //A function App will render the components
 function App() {
-  
+
   return (
     <div className="pages-container">
       <div className="consistancy-between-pages">
         <UserProvider>
-          <BrowserRouter>  
-              <Header />
-              <Routes>
-                <Route path="/" element={<Navigate to="/view" replace />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/add" element={<AddPage />} />
-                <Route path="/view" element={<ViewPage />} />
-                <Route path="/view/:id" element={<ViewItemPage />} />
-                <Route path="/*" element={<NotFound />} />
-              </Routes>
+          <BrowserRouter>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Navigate to="/view" replace />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/add" element={<Guard permittedRoles={["ADMIN"]}><AddPage /></Guard>} />
+              <Route path="/view" element={<ViewPage />} />
+              <Route path="/view/:id" element={<ViewItemPage />} />
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
           </BrowserRouter>
         </UserProvider>
       </div>
