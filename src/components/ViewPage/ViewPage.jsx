@@ -6,6 +6,7 @@ import Spinner from '../core/spinner/Spinner';
 import Item from '../view/item/item.component';
 import './viewpage.css';
 import { UserContext } from '../../App';
+import Test from '../../common/Provider/Provider-commponet';
 
 
 const ViewPage = (props) => {
@@ -99,7 +100,7 @@ const ViewPage = (props) => {
 
   return (
     <div className="view-page">
-      <h1>View Menu Items</h1>
+      <Test><h1>View Menu Items</h1></Test>
 
       <Filter
         categoryParams={categoryParams}
@@ -112,10 +113,11 @@ const ViewPage = (props) => {
 
       >
       </Filter>
+      
 
 
 
-      <br />
+
       {loading
         ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
         : <div className="items-container">

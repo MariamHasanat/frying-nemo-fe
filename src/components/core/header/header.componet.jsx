@@ -11,22 +11,29 @@ let location=useLocation()
     <header className="webisteHeader">
       <div className="left">
         <h1>
-          <div ><img className="img1" src="https://th.bing.com/th/id/OIP.tQeCr2wfItAJ6TtT45cd9QAAAA?w=171&h=180&c=7&r=0&o=5&pid=1.7"></img> </div>
+          <span ><img className="img1" src="https://cdn-icons-png.flaticon.com/512/2276/2276931.png"></img></span>
+          <span style={{padding:"0px 0px 0px 5px"}}>Saving-Nemo</span>
         </h1>
       </div>
       <div className="right">
+       
         {<nav>
-          <span  className='header'><Link  className={location.pathname ==="/add"?"add":"default"} to="/add"> ADD</Link> </span>
+  
+          <span  className='header'><Link  className={location.pathname.includes("/add")?"add":"default"} to="/add"> ADD</Link> </span>
 
-          <span  className='header' >  <Link className={location.pathname ==="/view"?"add":"default"} to="/view"> View</Link></span>
+          <span  className='header' >  <Link className={location.pathname.includes("/view")?"add":"default"} to="/view"> View</Link></span>
           <button className='button-header'onClick={()=>{
           ContextUser.setUser(null)
         navigator("login")}}>logout</button>
         </nav>}
-        <div >
-        {ContextUser.user && <span className='header-flex'><span>{ContextUser.user.role}:</span>{ContextUser.user.fullName}</span> }
+        <span >
+    
+        {ContextUser.user && <span className='header-flex'>    <span>
+
+<img className='account' src="https://cdn-icons-png.flaticon.com/128/1144/1144709.png" alt="account" />
+</span><span>{ContextUser.user.role}:</span>{ContextUser.user.fullName}</span> }
       
-        </div>
+        </span>
       </div>
     </header>
   );

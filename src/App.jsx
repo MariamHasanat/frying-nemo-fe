@@ -3,25 +3,21 @@ import ViewPage from "./components/ViewPage/ViewPage";
 import NotFoundPage from "./components/notfound/NotFound ";
 import Header from "./components/core/header/header.componet";
 import { BrowserRouter, Routes, Route ,Navigate} from 'react-router-dom'
-import { useState } from "react";
+
 import ViewItemPage from "./pages/view-item/view-item.component";
 import LoginPage from "./pages/login/login.compent";
 import React from "react";
-
+import Provider from "./common/Provider/Provider-commponet";
 export const UserContext = React.createContext(null);
+
 function App() {
 
 
- const initialization=JSON.parse(sessionStorage.getItem("user"));
- const [user, setUser] = useState(initialization);
- const setUserOverride = user => {
-  setUser(user);
-  sessionStorage.setItem('user', JSON.stringify(user));
-};
+
 
   return (
     <div>
-        <UserContext.Provider value={{user,setUser:setUserOverride}}>
+    <Provider>
       <BrowserRouter>
         < Header   />
         <div className="flex"> 
@@ -37,7 +33,7 @@ function App() {
      
         </div>
       </BrowserRouter>
-      </UserContext.Provider>
+      </Provider>
     </div>
   );
 }

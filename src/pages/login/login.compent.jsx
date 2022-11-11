@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Input from '../../components/common/input/input.component';
 import { loginUser } from '../../services/loginuser'; 
 import './login.css';
@@ -41,7 +41,7 @@ const LoginPage = (props) => {
   return (
     <div className="login-page">
       <form onSubmit={handleLogin}>
-        <h1>Welcome Back</h1>
+        <h1>LogIN</h1>
         <Input
           label="Email"
           name="email"
@@ -55,9 +55,16 @@ const LoginPage = (props) => {
           type="password"
           required
         />
+    
         <div className="login-button">
           <input className="button" type="submit" value="Login" />
         </div>
+      
+<span>
+
+        <Link  to="Sign-in">Sign-in</Link>  <span>/</span>  <Link  to="Sign-in">Forget-my-Password</Link> 
+</span>
+      
       </form >
     </div >
   );

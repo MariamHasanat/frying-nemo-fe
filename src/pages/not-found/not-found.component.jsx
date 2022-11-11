@@ -6,6 +6,7 @@ const NotFound = (props) => {
     <div className="not-found-page">
       <div className="main">
         <Burger />
+
       </div>
     </div>
   );
