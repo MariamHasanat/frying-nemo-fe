@@ -8,7 +8,6 @@ import './form.css';
 import CATEGORIES from '../../../data/constants';
 import { useContext } from 'react';
 import { UserContext } from '../../../components/providers/user-provider.component';
-import WithBorders from '../../common/with-borders/with-borders.component';
 
 const Form = (props) => {
   const [name, setName] = useState('');
@@ -73,13 +72,11 @@ const Form = (props) => {
         required
         onChange={nameChange}
       />
-      <WithBorders>
-        <Textarea
-          name='discription'
-          label="Discription"
-          className='textarea-group'
-        />
-      </WithBorders>
+      <Textarea
+        name='discription'
+        label="Discription"
+        className='textarea-group'
+      />
       <Input label='Enter image link' type="text" name="image" />
       <Input
         className='input-group'

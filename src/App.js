@@ -7,9 +7,10 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import SingleItem from "./pages/view/cards/single-item/single-item.component";
 import LoginPage from "./pages/login/login.component";
 import UserProvider from "./components/providers/user-provider.component";
+import Guard from "./components/providers/guard-provider.component";
 
 function App() {
-  
+
   return (
     <div>
       <BrowserRouter >
@@ -20,7 +21,7 @@ function App() {
           />
           <Routes>
             <Route path="/" element={<Navigate to='/view' replace />} />   {/* page redirection using navigate component , which is built in react router dom library */}
-            <Route path="/add" element={<AddPage />} />
+            <Route path="/add" element={<Guard permittedRoles= {['ADMIN']} ><AddPage /></Guard>} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/view" element={<ViewPage />} />
             <Route path="/view-details/:id" element={<SingleItem />} />
