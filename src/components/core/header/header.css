@@ -4,7 +4,7 @@
   justify-content: space-between;
   padding: 10px 20px;
   border-bottom: 1px solid #ddd;
-  background-color: #000000ab;
+  background-color: #070707ad;
 }
 
 .webisteHeader>.left>h1 {
@@ -27,16 +27,14 @@
 
 .webisteHeader .right nav {
   display: flex;
+  flex-direction: column;
 }
 
 .webisteHeader .right nav button {
-  background: unset;
+ 
+  margin-left: 5px;
+  position: revert;
   border: unset;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 9px 20px;
-  background-color: #1b2f31;
-  margin: 6px;
 }
 
 .webisteHeader .right nav button:hover {
@@ -45,7 +43,7 @@
 
 
 
-.webisteHeader .right nav >.header>.add {
+.webisteHeader .right nav>.right-click>.header>.add {
 
   color: #1cc49d;
   border-radius: 13px;
@@ -54,32 +52,39 @@
   margin: 3px;
 }
 
-.webisteHeader .right nav >.header>.view {
+
+.webisteHeader .right nav div>.right-click>.header>.view {
   color: #1cc49d;
   border-radius: 13px;
-padding: 10px;
+  padding: 10px;
   margin: 5px;
   background-color: #1b2f31;
 }
-.webisteHeader .right nav >.header>.default{
+
+.webisteHeader .right nav>.right-click>.header>.default {
   color: #1cc49d;
   border-radius: 13px;
   padding: 15px;
-  margin: 3px; 
+  margin: 3px;
 
 }
-.button-header{
+
+.button-header {
   width: 98px;
   height: 38px;
   position: relative;
-bottom: 15px;
+  bottom: 15px;
 
 }
-.header-flex{
+
+.header-flex {
   color: #be441d;
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 }
-.account{
+
+.account {
   height: 30px;
   width: 34px;
   border-radius: 30px;
@@ -87,4 +92,7 @@ bottom: 15px;
   top: 10px;
   right: 2px
 }
+.account-flex{
 
+  display: flex;
+}

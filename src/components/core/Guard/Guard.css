@@ -1,0 +1,44 @@
+div>.access{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: -59px;
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  justify-content: center;
+  gap: 25px;
+
+}
+.access>h1>img{
+  width: 125px;
+  height: 100px;
+  position: relative;
+  top: 25px;
+}
+.access>h1{
+  color: black;
+}
+.access>button{
+  border-radius: 0px;
+  display: inline-block;
+  background-color: #f44336;
+  color: #FFFFFF;
+  font-size: 16px;
+  border: unset;
+  opacity: 0.9;
+  
+}
+.access>button:hover{
+  background-color: #ff1100;
+}
+.access>a{
+  color: #2e31c6c2;
+  text-decoration: underline;
+  
+}
+.access>a:hover{
+  color: #0004ec;;
+ 
+  
+}
