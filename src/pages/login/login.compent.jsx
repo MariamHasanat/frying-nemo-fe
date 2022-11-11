@@ -47,11 +47,13 @@ const LoginPage = (props) => {
           name="email"
           type="email"
           placeholder="ahmad@example.com"
+          required
         />
         <Input
           label="Password"
           name="password"
           type="password"
+          required
         />
         <div className="login-button">
           <input className="button" type="submit" value="Login" />
