@@ -16,10 +16,16 @@ import Select from "../../components/common/select/select.component";
  * }>}
  */
 
-const ViewItemPage = () => {
+const ViewItemPage = (props) => {
   const params = useParams();
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
+  useEffect(() => {
+    // To check if the user is already logged in, send him to the view page
+    if (!props.user?.id) {
+      navigate('/login', { replace: false });
+    }
+  }, []);
   useEffect(() => {
     const item = getItem(params.id);
     setCurrentItem(item);

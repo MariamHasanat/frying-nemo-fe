@@ -35,6 +35,13 @@ const Header = (props) => {
             View
           </Link>
         </nav>
+        {
+          props.user &&
+          <span className="user-badge">
+            <img src={props.user.imageUrl} alt="user logo" width={30} height={30} />
+            {props.user.fullName}
+          </span>
+        }
       </div>
     </div>
   );

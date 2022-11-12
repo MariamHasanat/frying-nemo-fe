@@ -86,7 +86,7 @@ const Form = (props) => {
         />
         <Input name="photo" label="insert photo link" type="text"/>
         <div className="addFormButtons">
-          <button type="submit">Create</button>
+          <button type="submit" disabled={props.user?.role !== 'ADMIN'}>Create</button>
         </div>
       </form>
     </div>
