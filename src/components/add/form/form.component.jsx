@@ -6,12 +6,12 @@ import Select from '../../../common/select/select.component';
 import MultivalueInput from '../../../common/Multivalue-input/multivalue-input.component';
 import { useNavigate } from 'react-router-dom';
 import React,{ useContext } from 'react';
-import UserProvider from '../../provider/provider.component';
+import  { UserContext } from '../../provider/provider.component';
 
 const Form = () => {
   const [name, setName] = useState('Nadeen');
   const [ingredients, setIngredients] = useState([]);
-  const userContext=useContext(UserProvider);
+  const userContext=useContext(UserContext);
   const navigate = useNavigate();
   /**
    * 
