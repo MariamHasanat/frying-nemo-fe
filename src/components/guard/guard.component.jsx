@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import Access from "../../pages/add/access/access.componant";
+import Access from "../../pages/add/access/not-access.componant";
 import { UserContext } from "../provider/provider.component";
 
 const Guard=(props)=>{
