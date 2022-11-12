@@ -2,7 +2,7 @@ const USERS = [{
     "id": "f59586ca-98d7-42f8-88d1-94ea62c1aff4",
     "email": "admin@admin.com",
     "password": '123456',
-    "fullName": "Maddie Cotterell",
+    "fullName": "Maddie Admin",
     "imageUrl": "http://dummyimage.com/139x114.png/ff4444/ffffff",
     "role": 'ADMIN'
 }, {

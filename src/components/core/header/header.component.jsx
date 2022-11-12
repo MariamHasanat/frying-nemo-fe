@@ -13,7 +13,7 @@ const Header = (props) => {
             <div className='header'>
                 <img src={nemo} alt='logo' width={100} onClick={() => navigate('/')} />  {/* go to home page when clicking on logo */}
                 {props.text ? <span>{props.text}</span> : null}
-                <span style={{"marginLeft": 100}}>
+                <span style={userContext.user?{"marginLeft": 100}:{marginRight: 50}}>
                     <Link to="/add" className={location.pathname === '/add' ? 'active nemo-button' : 'nemo-button'}>add</Link>
                     <NavLink to="/view" className={(location.pathname === '/view' || location.pathname === '/view/') ? 'active nemo-button' : 'nemo-button'}>view</NavLink>
                 </span>
