@@ -521,6 +521,7 @@ const LoginBlock = (props) => {
                     </g>
                 </svg>
             </div>
+            <h1>&nbsp;</h1>
         </div>
     );
 };
