@@ -7,6 +7,7 @@ import NotFoundPage from "./pages/not-found/not-found.component";
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from "./pages/login/login.component";
 import UserProvider from "./components/provider/provider.component";
+import Guard from "./components/core/Guard/guard.component";
 
 
 
@@ -16,9 +17,9 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
+        <Route path="/add" element={<Guard permittedRoles={['ADMIN']}><AddPage /></Guard>} />
           <Route path="/" element={<Navigate to="/view" replace />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/add" element={<AddPage />} />
           <Route path="/view" element={<ViewPage />} />
           <Route path="/view-details/:id" element={<ViewItemPage />} />
           <Route path="/*" element={<NotFoundPage />} />
