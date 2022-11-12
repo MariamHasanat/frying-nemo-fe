@@ -1,0 +1,10 @@
+.jiji {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.jiji > h2{
+    text-align: center;
+
+}

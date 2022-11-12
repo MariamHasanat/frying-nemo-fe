@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
+import Jiji from "../common/jiji-the-cat/jiji.component";
 import { UserContext } from "../providers/user-provider.component";
 
 
@@ -9,9 +10,7 @@ const Guard = props => {
         return (props.children);
     }
     else if (userContext.user) { // logged in
-        return <h2>
-            you do not have access to this page
-        </h2>;
+        return <Jiji message="you do not have access to this page"/>
     }
     else { // not logged in
         return <Navigate to='/login' />;
