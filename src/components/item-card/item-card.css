@@ -10,55 +10,50 @@
 
 .item-card a:hover {
     text-decoration: underline;
+    color: #007bfd;
 }
 
-.item-card>.card-wrapper {
-    border-radius: var(--border-radius);
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.276);
+.item-card {
     width: 350px;
-    height: 450px;
+    height: 470px;
     box-sizing: border-box;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
 }
 
 
-.item-card>.card-wrapper>img {
+.item-card img {
     border-top-right-radius: var(--border-radius);
     border-top-left-radius: var(--border-radius);
 }
 
-.item-card>.card-wrapper>.item-description {
+.item-card .item-description {
     flex-grow: 1;
 }
 
-.item-card>.card-wrapper>.item-description p {
+.item-card .item-description p {
     text-align: left;
     padding: 0 10px;
     margin: 10px
 }
 
-.item-card>.card-wrapper>.buy-item {
+.item-card .buy-item {
     border-top: 1px solid rgba(69, 69, 69, 0.18);
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.item-card>.card-wrapper>.buy-item>.price {
+.item-card .buy-item>.price {
     display: inline-block;
     font-weight: bold;
 }
 
-.item-card>.card-wrapper>.buy-item>.item-quantity>button {
+.item-card .buy-item>.item-quantity>button {
     width: 30px;
     height: 30px;
     line-height: 0px;
 }
 
-.item-card>.card-wrapper>.buy-item>.item-quantity>.quant {
+.item-card .buy-item>.item-quantity>.quant {
     display: inline-block;
     text-align: center;
     width: 30px;
