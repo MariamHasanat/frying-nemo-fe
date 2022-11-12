@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import Spinner from '../spinner/spinner.component';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import FilterBar from '../filter-bar/filter-bar.component';
+import { UserContext } from '../provider/provider.component';
+import { useContext } from 'react';
 
 
 /**
@@ -22,13 +24,14 @@ const initialItems = [];
 
 const getMenuItems = () => JSON.parse(localStorage.menuItem || '[]');
 
-const ViewPage = (props) => {
+const ViewPage = () => {
   /**
    * @type {[Array, Function]} Loading
    */
   const [menuItems, setMenuItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [params, setParams] = useSearchParams();
+  const userContext=useContext(UserContext);
 
   const search = params.get('search') || '';
   const categoriesFromURL = params.getAll('category') || '';
@@ -51,7 +54,7 @@ const ViewPage = (props) => {
   };
 
   useEffect (() => {
-    if (!props.user?.id){
+    if (!userContext.user?.id){
       navigate('/login', {replace: false});
     }
   },[])

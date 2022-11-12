@@ -7,13 +7,13 @@ import MultivalueInput from '../../multivalue-input/multivalue-input.component';
 import { Navigate, useNavigate } from 'react-router-dom';
 import CATEGORIES from '../../data/categories';
 import { useContext } from 'react';
-import { userContext } from '../../provider/provider.component';
+import { UserContext } from '../../provider/provider.component';
 
 const Form = () => {
   const [name, setName] = useState('Huda');
   const [ingredients, setIngredients] = useState([]);
   const Navigate = useNavigate();
-  const user = useContext(userContext);
+  const user = useContext(UserContext);
 
   /**
    * Handler function for the form onSubmit event.
