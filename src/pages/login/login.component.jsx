@@ -2,7 +2,7 @@ import { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../components/providers/user-provider.component';
 import Input from '../../components/common/input/input.component';
-import { loginUser } from '../../services/users';
+import {loginUser} from '../../services/users'
 import './login.css';
 
 const LoginPage = (props) => {
@@ -12,7 +12,7 @@ const LoginPage = (props) => {
   useEffect(() => {
     // To check if the user is already logged in, send him to the view page
     if (props.user?.id) {
-      navigate('/view', { replace: true });
+      navigate('/view', { replace: false });
     }
   }, []);
 
@@ -24,13 +24,12 @@ const LoginPage = (props) => {
     e.preventDefault();
     const email = e.target.email.value.trim();
     const password = e.target.password.value.trim();
-
     if (email && password) {
       const user = loginUser(email, password);
       // If Successful login, go to view page
       if (user) {
-        userContext.setUser(user);
-        navigate('/view', { replace: true });
+        props.setUser(user);
+        navigate('/view', { replace: false });
       } else {
         alert("Email or Password are not correct! Please try again.");
       }
@@ -62,4 +61,4 @@ const LoginPage = (props) => {
   );
 };
 
-export default LoginPage;;
+export default LoginPage;

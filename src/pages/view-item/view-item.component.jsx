@@ -20,19 +20,14 @@ const ViewItemPage = (props) => {
   const params = useParams();
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
-  useEffect(() => {
-    // To check if the user is already logged in, send him to the view page
-    if (!props.user?.id) {
-      navigate('/login', { replace: false });
-    }
-  }, []);
+  
   useEffect(() => {
     const item = getItem(params.id);
     setCurrentItem(item);
     if (item === null) {
       navigate("/404", { replace: true });
     }
-  }, [params.id,navigate]);
+  }, []);
 
   return (
     <div className="view-item-page">

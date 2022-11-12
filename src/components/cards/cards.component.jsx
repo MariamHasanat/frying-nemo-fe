@@ -58,7 +58,7 @@ const Cards = (props) => {
     if (!props.user?.id) {
       navigate('/login', { replace: false });
     }
-  }, []);
+  }, [props.user?.id,navigate]);
 
   
   return (
