@@ -8,6 +8,7 @@ import './index.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import React from "react";
 import UserProvider from "./components/providers/user-provider.component";
+import Guard from "./components/guard/guard.component";
 
 function App() {
     return (
@@ -18,7 +19,7 @@ function App() {
                     <Routes>
                         <Route path="/login" element={<Login />} replace />
                         <Route path="/" element={<Navigate to='/view' />} replace />
-                        <Route path="/add" element={<AddPage />} />
+                        <Route path="/add" element={<Guard authorized={['ADMIN']}><AddPage /></Guard>} />
                         <Route path="/view" element={<ViewPage />} />
                         <Route path="/*" element={<NotFound />} />
                         <Route path="/view/:id" element={<ViewItemPage />} />
