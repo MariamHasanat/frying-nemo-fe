@@ -1,4 +1,4 @@
-import './access.css';
+import './not-access.css';
 const Access = () => {
   return (
     <div className="access-body">
