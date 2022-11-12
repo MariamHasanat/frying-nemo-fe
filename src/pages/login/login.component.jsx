@@ -1,18 +1,15 @@
-import { useEffect, useContext } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../../components/providers/user-provider.component';
 import Input from '../../components/common/input/input.component';
-import {loginUser} from '../../services/users'
+import { loginUser } from '../../services/users';
 import './login.css';
 
 const LoginPage = (props) => {
   const navigate = useNavigate();
-  const userContext = useContext(UserContext);
-
   useEffect(() => {
     // To check if the user is already logged in, send him to the view page
     if (props.user?.id) {
-      navigate('/view', { replace: false });
+      navigate('/view', { replace: true });
     }
   }, []);
 
@@ -24,12 +21,13 @@ const LoginPage = (props) => {
     e.preventDefault();
     const email = e.target.email.value.trim();
     const password = e.target.password.value.trim();
+
     if (email && password) {
       const user = loginUser(email, password);
       // If Successful login, go to view page
       if (user) {
         props.setUser(user);
-        navigate('/view', { replace: false });
+        navigate('/view', { replace: true });
       } else {
         alert("Email or Password are not correct! Please try again.");
       }
@@ -45,16 +43,14 @@ const LoginPage = (props) => {
           name="email"
           type="email"
           placeholder="ahmad@example.com"
-          required
         />
         <Input
           label="Password"
           name="password"
           type="password"
-          required
         />
         <div>
-          <button className="nemo-button" type="submit">Login</button>
+          <input className="nemo-button" type="submit" value="Login" />
         </div>
       </form >
     </div >
