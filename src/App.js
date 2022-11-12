@@ -8,6 +8,7 @@ import ViewPage from "./pages/view/ViewPage";
 import Header from "./logo/Header";
 import React from 'react';
 import './common.css';
+import Guard from './pages/Guard/Guard';
 
 function App() {
   return (
@@ -17,7 +18,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Navigate to='/view' replace />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/add" element={<AddPage />} />
+            <Route path="/add" element={
+            <Guard  permittedRole={['ADMIN']}>
+              <AddPage />
+            </Guard>
+            } />
             <Route path="/view" element={<ViewPage />} />
             <Route path="/view/:id" element={<ViewItemPage />} />
             <Route path="/*" element={<Notfound />} />
