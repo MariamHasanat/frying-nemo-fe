@@ -66,7 +66,7 @@ const LoginComponent = () => {
         </div>
       </form >
     </div >
-          color: 'orangered',
+         
   );
 };
 

@@ -9,7 +9,7 @@ const Header = () => {
   const userContext = useContext(UserContext);
   const location = useLocation();
   return (
-    <div className={location.pathname === '/login' ? 'hidden' : 'header'}>
+    <div className={'header'}>
       <div className='logo'>
         <img src={logo} alt="logo" width={60} />
         <span id='app-title'>Frying Nemo</span>

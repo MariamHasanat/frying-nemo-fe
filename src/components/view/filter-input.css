@@ -44,7 +44,10 @@
   display: flex;
   width: 50%;
   justify-content: flex-start;
-  
+}
+.search-bar{
+  display: flex;
+  align-items: center;
 }
 
 .search > img{
