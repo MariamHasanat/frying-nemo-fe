@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './item.css';
 import{Link}from 'react-router-dom'
+import PriceBox from '../../common/price/price';
 
 const Item = (props) => {
   return (
@@ -15,14 +16,7 @@ const Item = (props) => {
          <hr/>
       </div>
     
-      <div className='price'>
-        <span>{props.data.price}$</span>
-        <div className='add-cart'>
-          <button>+</button>
-          <input type='number' max={400}/>
-          <button>-</button>
-        </div>
-      </div>
+      <PriceBox  item = {props.data}   dispatch  = {props.dispatch}/>
     </div>
   );
 };

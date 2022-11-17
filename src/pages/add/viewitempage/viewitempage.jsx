@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getItem } from '../../../components/add/form/data/items';
+import PriceBox from '../../../components/common/price/price';
 import Item from '../../../components/item/items/item';
 import Spinner from '../../../components/spinner/spinner';
 import './viewitempage.css';
@@ -55,14 +56,7 @@ const ViewItemPage = (props) => {
                 <br />{currentItem.ingredients.join(", ")}</p>
 
             </div>
-            <div className="price">
-              <span><b>Price: </b>${currentItem.price}</span>
-              <div className="add-cart">
-                <button>+</button>
-                <input type="number" max={500} />
-                <button>-</button>
-              </div>
-            </div>
+          <PriceBox  item={currentItem}/>
           </div>
           
       }

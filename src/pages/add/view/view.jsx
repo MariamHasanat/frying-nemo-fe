@@ -114,7 +114,7 @@ const View = (props) => {
             <div className="items-container">
               {
                 filterItem.length
-                  ? filterItem.map((item, index) => <Item data={item} key={item.name + index} />)
+                  ? filterItem.map((item, index) => <Item   data={item} key={item.name + index} dispatch={props.dispatch} />)
                   : (
                     <div className="no-results">
                       <img src="./frustrated-realistic.jpg" alt="No results" />

@@ -4,10 +4,14 @@ import logo from '../../assets/fish-removebg-preview.png';
 import { useContext } from 'react';
 import { UserContext } from '../provider/provider';
 
-const Handel = () => {
+const Handel = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
+  let itemCount = 0;
+  for (let i = 0 ; i < props.cart.length ; i++){
+    itemCount+=props.cart[i].quantity;
+  }
   return (
     <header className='handel-group'>
       <img className='img' src={logo} alt="Nemo" />
@@ -15,10 +19,15 @@ const Handel = () => {
 
       <div>
 
-        {/* <div>
+        {/* 
+        
+        <div>
           <a href="/add" >Add</a>
           </div>
         <div>< a href = "/view">View</a></div> */}
+       
+          <span className='yourcart'> Your Cart { itemCount}</span>
+      
         <div>
           <Link to="/add" className={location.pathname === "/add" ? 'current' : ""}>Add</Link>
         </div>
