@@ -122,7 +122,7 @@ const ViewPage = (props) => {
         ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
         : <div className="items-container">
           {
-            filteredMenu.map((item, index) => <Item data={item} key={item.name + index} />)
+            filteredMenu.map((item, index) => <Item dispatch={props.dispatch} data={item} key={item.name + index} />)
           }
         </div>
       }

@@ -96,3 +96,21 @@
 
   display: flex;
 }
+.cart{
+  display: flex;
+  color: orange;
+  height: 50px;
+  width: 50px;
+  align-items: center;}
+.cart>img{
+  width: 20px;
+  height: 20px;
+}
+.left-header{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  position: relative;
+  top: 19px;
+}

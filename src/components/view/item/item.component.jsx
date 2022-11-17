@@ -32,7 +32,7 @@ const Item = (props) => {
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients.join(", ")}</p>
       </div>
-     <PriceBar data={props.data}/>
+     <PriceBar dispatch={props.dispatch} data={props.data}/>
     </div>
   );
 };

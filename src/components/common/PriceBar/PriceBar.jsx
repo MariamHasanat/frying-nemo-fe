@@ -1,16 +1,25 @@
 import React from 'react'
 import "./pricebar.css"
-function PriceBar(props) {
+const PriceBar = (props) => {
+  const handleIncrement = () => {
+    props.dispatch({ type: 'INCREMENT_CART_QUANTITY', meal: props.data });
+  };
+
+  const handleDecrement = () => {
+    props.dispatch({ type: 'DECREMENT_CART_QUANTITY', meal: props.data });
+  };
+
   return (
     <div className="price">
-    <span>${props.data.price}</span>
-    <div className="add-cart">
-      <button>+</button>
-      <input type="number" max={500} />
-      <button>-</button>
+      <span>${props.data.price}</span>
+      <div className="add-cart">
+        <button onClick={handleIncrement}>+</button>
+        <input type="number" max={500} value={0} disabled />
+        <button onClick={handleDecrement}>-</button>
+      </div>
     </div>
-  </div>
-  )
-}
+  );
+};
+
 
 export default PriceBar
