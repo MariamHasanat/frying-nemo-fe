@@ -1,5 +1,6 @@
 import './menu-item.css';
 import { Link } from 'react-router-dom';
+import PriceBar from '../price-bar/price-bar.component';
 
 /**
  * 
@@ -29,11 +30,7 @@ const Item = (props) => {
       </div>
       <div className="price">
         <span>{props.data.price}$</span>
-        <div className="add-cart">
-          <button>+</button>
-          <input type="number" max={500} />
-          <button>-</button>
-        </div>
+        <PriceBar item ={props.data}/>
       </div>
     </div>
   );
