@@ -20,7 +20,7 @@ function App() {
   // actions : add, delete and update
   // Cart is an array of items
   // each item : meal + quantity 
-  const reducer = (state, action) => {
+  const reducer = (cart, action) => {
     switch (action.type) {
       case "ADD_TO_CART":
         return [...cart, { meal: action.meal, quantity: 1 }];

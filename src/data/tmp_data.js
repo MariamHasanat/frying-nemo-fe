@@ -28,9 +28,9 @@ const USERS = [{
   "role": null
 }, {
   "id": "f7543072-9c7e-4063-9822-6fd6680c47dd",
-  "email": "pdi4@networkadvertising.org",
+  "email": "asia@gmail.com",
   "password": '123456',
-  "fullName": "Paquito Di Franceschi",
+  "fullName": "Asia Shalaldeh",
   "imageUrl": "http://dummyimage.com/206x249.png/dddddd/000000",
   "role": null
 }, {
