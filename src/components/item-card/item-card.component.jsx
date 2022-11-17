@@ -26,7 +26,16 @@ function ItemCard(props) {
       <p className='item-ingredients'>{props.item.ingredients.join(', ')}</p>
       <br />
       <hr />
-      <h4 className='item-price'>{props.item.price} $</h4>
+
+      <div className='card-footer'>
+
+        <h4 className='item-price'>{props.item.price} $</h4>
+        <div className='card-buttons'>
+          <button className='card-button'>-</button>
+          <span className='item-quantity'></span>
+          <button className='card-button'>+</button>
+        </div>
+      </div>
     </div>
   );
 }

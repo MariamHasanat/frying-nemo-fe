@@ -5,7 +5,7 @@ import profile from '../../../assets/images/profile-user.png';
 import logout from '../../../assets/images/logout.png';
 import { useContext } from 'react';
 import { UserContext } from '../../../components/providers/user-provider';
-const Header = () => {
+const Header = (props) => {
   const userContext = useContext(UserContext);
   const location = useLocation();
   return (
@@ -25,6 +25,7 @@ const Header = () => {
         </nav>
       </div>
 
+      <span>Your Cart: {props.cart.length}</span>
       {
         userContext.user !== null &&
         <div className='user-info'>
