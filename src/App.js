@@ -27,8 +27,12 @@ function App() {
 
       case "Add-to-cart ":
         return [...cart, action.meal];
+
+      /*                ***********INCREMENT*********              */
+
       case "Increment-cart-Quantity": {
         const newCart = cart.map(CartItem => {
+
 
           if (CartItem.meal.id === action.meal.id)
             return { ...CartItem, quantity: CartItem.quantity + 1 };
@@ -39,8 +43,11 @@ function App() {
         return newCart;
       }
 
+      /*                ***********DECREMENT*********              */
+      
       case "Decrement-cart-Quantity": {
         const newCart = cart.map(CartItem => {
+
 
           if (CartItem.meal.id === action.meal.id)
             return { ...CartItem, quantity: CartItem.quantity - 1 };
@@ -50,6 +57,7 @@ function App() {
 
         return newCart;
       }
+      /*                ***********DELETE*********              */
       case "Delete-cart": {
         return cart.filter(CartItem => CartItem.meal.id !== action.meal.id);
       }
@@ -84,7 +92,7 @@ function App() {
             <Route path="/add" element={<AddPage />} />
             <Route path="/*" element={<NotFound />} />
             <Route path="/view/:id" element={<ViewItemPage />} />
-            <Route path="/view" element={<ViewPage />}  dispatch={dispatch} />
+            <Route path="/view" element={<ViewPage />} dispatch={dispatch} />
             <Route path="/" element={<Navigate to='/view' replace />} />
             <Route path="/login" element={<Login />} />
             {/* <Route path="/*" element={<Navigate to='/add' />} /> */}
@@ -96,3 +104,4 @@ function App() {
 }
 
 export default App;
+
