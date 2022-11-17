@@ -91,7 +91,7 @@ const ViewPage = (props) => {
       <div className="item" >
         {
           filterItem
-            .map((item, index) => <Items data={item} key={item.name + index} />)
+            .map((item, index) => <Items data={item} key={item.name + index} dispatch={props.dispatch} />)
         }
       </div>
     </div>

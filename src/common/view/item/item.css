@@ -54,5 +54,12 @@
   font-size: 28px;
   font-weight: 500;
   color: #be441d;
-  margin-left: 20px;
+  margin:8px 8px;
 }
+
+.price {
+  font-size: xx-large;
+  padding: 0px;
+  display: flex;
+}
+

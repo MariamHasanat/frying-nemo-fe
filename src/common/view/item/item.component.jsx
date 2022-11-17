@@ -1,5 +1,6 @@
 import '.././item/item.css';
 import { Link } from 'react-router-dom';
+import Price from '../filture/price-par/price-par';
 
 /**
  * 
@@ -31,7 +32,8 @@ const Items = (props) => {
 
       </div>
       <div className="price">
-        <h3>{props.data.price}</h3>
+        <h3>${props.data.price}</h3>
+        <Price item={props.data} dispatch={props.dispatch}/>
       </div>
     </div>
   );
