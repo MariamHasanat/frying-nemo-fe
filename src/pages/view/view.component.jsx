@@ -1,8 +1,9 @@
 import "./view.css";
-import { useEffect, useState,useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import FilterBar from "../../components/view/filter-bar/filter-bar.component";
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { UserContext } from "../../components/user-provider/user-provider";
+import AddDeleteItem from "./add-delete/add-delete.componenet";
 
 /**
  * @type {Array<{
@@ -142,6 +143,7 @@ const ViewPage = (props) => {
                   <span>Ingredients : </span>
                   {item.ingredients.join(" | ")}
                 </div>
+                <AddDeleteItem item={props.data} dispatch={props.dispatch} />
               </div>
             );
           })}

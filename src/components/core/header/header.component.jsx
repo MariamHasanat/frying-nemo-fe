@@ -8,6 +8,11 @@ const Header = (props) => {
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
 
+  let itemsCount = 0;
+  for (let i = 0; i < props.cart.length; i++) {
+    itemsCount += props.cart[i].quantity;
+  }
+
   return (
     <div className="main-class">
       <div className="logo">
@@ -15,6 +20,7 @@ const Header = (props) => {
         <p>Frying Nemo</p>
       </div>
       <div className="right">
+        <span className="cart">Your Cart {itemsCount}</span>
         <nav>
           <Link
             to="/add"
@@ -31,12 +37,6 @@ const Header = (props) => {
         </nav>
         {userContext.user && (
           <span className="user-badge">
-            {/* <img
-              src={props.user.imageUrl}
-              alt="user logo"
-              width={30}
-              height={30}
-            /> */}
             <span className="user-name">{userContext.user.fullName}</span>
             <button className="logout" onClick={() => {
               userContext.setUser(null);

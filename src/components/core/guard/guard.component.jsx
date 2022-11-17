@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { UserContext } from '../../user-provider';
+import { useContext, Navigate } from "react";
+import { UserContext } from '../../user-provider/user-provider';
 
 
 const Guard = (props) => {
@@ -16,7 +16,7 @@ const Guard = (props) => {
     </div>;
   }
   else {
-    props.children;
+    return props.children;
   }
 };
 

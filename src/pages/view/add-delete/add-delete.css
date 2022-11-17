@@ -1,0 +1,25 @@
+.add-del{
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center; */
+  margin-top: 30px;
+}
+.add-del button:hover{
+  
+}
+.add-del .add{
+  padding: 15px 15px;
+  border: none;
+  background-color: green;
+  color: #fff;
+  cursor: pointer;
+}
+.add-del .del{
+  padding: 15px 15px;
+  border: none;
+  background-color: red;
+  color: #fff;
+  margin-left: 20px;
+  cursor: pointer;
+
+}

@@ -13,6 +13,11 @@
   align-items: center;
   justify-content: flex-end;
   margin-right: 20px;
+  flex-grow: 1;
+
+}
+.right .cart{
+  margin-right: 30PX;
 }
 .main-class .right a{
   color: #000;
