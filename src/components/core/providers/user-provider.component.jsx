@@ -20,10 +20,11 @@ const UserProvider = ({ children }) => {
           if (cartItem.item.id == action.item.id) {
             found = true;
             return { ...cartItem, quantity: cartItem.quantity + 1 };
-          }
+          } else return cartItem;
         });
         const newItem = { item: action.item, quantity: action.quantity };
         if (!found) {
+          console.log('ct', newCart)
           console.log('add new card', [...newCart, newItem])
           newCart = [...newCart, newItem];
         }
@@ -32,6 +33,7 @@ const UserProvider = ({ children }) => {
       case `DECREMENT`: {
         let newCart = cart.map((cartItem) => {
           if (cartItem.item.id == action.item.id) return { ...cartItem, quantity: cartItem.quantity - 1 }
+          else return cartItem;
         });
         newCart = newCart.filter(cartItem => cartItem.quantity != 0)
         return newCart;
