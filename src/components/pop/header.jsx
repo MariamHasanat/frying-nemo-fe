@@ -17,6 +17,7 @@ const Head = (props) => {
         </h1>
       </div>
       <div className="right">
+        <span>Your cart : {props.cart.length}</span>
         <nav>
           <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
             Add

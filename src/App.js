@@ -8,15 +8,63 @@ import ViewPage from "./pages/view/view";
 import ViewItemPage from "./pages/veiw-item/view-item";
 import './App.css';
 import Login from "./pages/login/login";
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import UserProvider from "./components/providers/user-provider";
 
 
-//tp pass the user to all routes without send  it as props to all children 
 
+const initial = [];
+//tp pass the user to all routes without send  it as props to all children 
 export const UserContext = React.createContext(null);
 
+
 function App() {
+
+  // reducer function 
+  const reducer = (cart, action) => {
+
+    switch (action.type) {
+
+      case "Add-to-cart ":
+        return [...cart, action.meal];
+      case "Increment-cart-Quantity": {
+        const newCart = cart.map(CartItem => {
+
+          if (CartItem.meal.id === action.meal.id)
+            return { ...CartItem, quantity: CartItem.quantity + 1 };
+          else return CartItem;
+
+        });
+
+        return newCart;
+      }
+
+      case "Decrement-cart-Quantity": {
+        const newCart = cart.map(CartItem => {
+
+          if (CartItem.meal.id === action.meal.id)
+            return { ...CartItem, quantity: CartItem.quantity - 1 };
+          else return CartItem;
+
+        });
+
+        return newCart;
+      }
+      case "Delete-cart": {
+        return cart.filter(CartItem => CartItem.meal.id !== action.meal.id);
+      }
+
+
+    }
+
+    return cart;
+
+  };
+
+
+  ///add reducer 
+  const [cart, dispatch] = useReducer(reducer, initial);
+
 
   const initialUser = JSON.parse(sessionStorage.getItem('user'));
   const [user, setUser] = useState(initialUser);
@@ -31,12 +79,12 @@ function App() {
     <UserProvider>
       <div>
         <BrowserRouter>
-          <Head user={user} setUser={saveUser} />
+          <Head user={user} setUser={saveUser} cart={cart} />
           <Routes>
             <Route path="/add" element={<AddPage />} />
             <Route path="/*" element={<NotFound />} />
             <Route path="/view/:id" element={<ViewItemPage />} />
-            <Route path="/view" element={<ViewPage />} />
+            <Route path="/view" element={<ViewPage />}  dispatch={dispatch} />
             <Route path="/" element={<Navigate to='/view' replace />} />
             <Route path="/login" element={<Login />} />
             {/* <Route path="/*" element={<Navigate to='/add' />} /> */}
