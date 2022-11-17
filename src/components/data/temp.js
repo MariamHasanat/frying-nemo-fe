@@ -7,7 +7,7 @@ const USERS = [{
   "role": 'ADMIN'
 }, {
   "id": "e1610f07-55b9-4d44-ab32-607d78ca7cca",
-  "email": "user@wp.com",
+  "email": "mariam@mariam.com",
   "password": '123456',
   "fullName": "Jenny Gulliford",
   "imageUrl": "http://dummyimage.com/162x181.png/ff4444/ffffff",
