@@ -1,4 +1,8 @@
-
+form {
+  background-color: rgb(220, 219, 219);
+  padding: 1em 2em;
+  border-radius: 0.5em;
+}
 
 .add-item-form>div>div>button {
   padding: 8px 16px;
