@@ -1,3 +1,4 @@
+import React, { useReducer } from "react";
 import AddPage from "./pages/add/add.component";
 import View from "./pages/view/view";
 import Header from "./core/header/header.component";
@@ -5,17 +6,19 @@ import NotFound from "./pages/not-found/not-found.component";
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import ViewItemPage from "./pages/view-item-page/view-item-page";
 import LogIn from "./pages/login/login.component";
-import React from "react";
 import UserProvider from './components/providers/user-provider.component.jsx';
 import Guard from "./core/guard/guard.component";
+import { reduce } from "./services/reducer-for-edit-item";
 
-function App() {
+const App = (props) => {
+    
+    const [cart, patcher] = useReducer(reduce, []);
 
     return (
         <div>
             <UserProvider>
                 <BrowserRouter>
-                    <Header />
+                    <Header cart={cart} />
                     <Routes>
                         <Route path="/" element={<Navigate to={"/log-in"} replace />} />
                         <Route path="/log-in" element={<LogIn />} />
@@ -29,6 +32,6 @@ function App() {
             </UserProvider>
         </div>
     );
-}
+};
 
 export default App;
