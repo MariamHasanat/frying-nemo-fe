@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Card from '../../common/card/card.component';
+import PriceBar from '../price-bar/price-bar.component';
 import './item.css';
 
 
@@ -14,7 +15,8 @@ import './item.css';
  *     price: number;
  *     category: string;
  *     ingredients: string[];
- *    }
+ *    },
+ *    dispatch: React.DispatchWithoutAction
  *   }} props
  */
 const Item = (props) => {
@@ -28,14 +30,7 @@ const Item = (props) => {
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients.join(", ")}</p>
       </div>
-      <div className="price">
-        <span>${props.data.price}</span>
-        <div className="add-cart">
-          <button>+</button>
-          <input type="number" max={500} />
-          <button>-</button>
-        </div>
-      </div>
+      <PriceBar item={props.data} dispatch={props.dispatch} />
     </Card>
   );
 };
