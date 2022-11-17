@@ -8,6 +8,7 @@ import { useContext } from 'react';
 import { UserContext } from '../../components/providers/user-provider.component';
 /**
 * @type {Array<{
+* id:string;
 * name: string;
 * description: string;
 * Ingredients: string[];
@@ -18,7 +19,7 @@ import { UserContext } from '../../components/providers/user-provider.component'
 */
 const initialItems = [];
 
-const View = () => {
+const View = (props) => {
     const [menuItems, setMeuItems] = useState(initialItems);
     const [loading, setLoading] = useState(true);
     const [params, setParam] = useSearchParams();
@@ -111,7 +112,11 @@ const View = () => {
                             (filteredItems.length > 0)
                                 ? filteredItems
                                     .map((item, index) => {
-                                        return <Item item={item} key={item.name + index} />;
+                                        return <Item
+                                            item={item}
+                                            key={item.name + index}
+                                            dispatcher = {props.dispatcher}
+                                        />;
                                     })
                                 : <div className="empty">The is no any meal</div>
 

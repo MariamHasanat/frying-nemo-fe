@@ -14,7 +14,8 @@ import Card from '../../common/card/card.component';
  *     price: number;
  *     category: string;
  *     ingredients: string[];
- *    }
+ *    }, 
+ *     dispatcher:React.DispatchWithoutAction;
  *   }} props
  */
 
