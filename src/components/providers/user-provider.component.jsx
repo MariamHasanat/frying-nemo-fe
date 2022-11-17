@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-
 export const UserContext = React.createContext(null); // provider (context definition object)
 
 /**

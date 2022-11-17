@@ -1,5 +1,6 @@
 import React from 'react' ;
 import { Link } from 'react-router-dom';
+import PriceBar from '../../../../components/view/price-bar/price-bar.component';
 import './menu-item.css' ;
 /**
  * 
@@ -25,14 +26,7 @@ const MenuItem = (props) => {
         <p> {props.item.discription}</p>
         <p className="ingredients"> {props.item.ingredients.join(", ")}</p>
       </div>
-      <div className='price'>
-        <span >{props.item.price} $</span>
-        <div className='add-cart'> 
-          <button> - </button>
-          <input type="number" className='ordersCount' />
-          <button> + </button>
-        </div>
-      </div>
+      <PriceBar item = {props.item}/>
     </div>
   )
 }

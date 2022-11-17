@@ -8,9 +8,14 @@ import SingleItem from "./pages/view/cards/single-item/single-item.component";
 import LoginPage from "./pages/login/login.component";
 import UserProvider from "./components/providers/user-provider.component";
 import Guard from "./components/providers/guard-provider.component";
+import { useReducer } from "react";
+const initialState = [] ;
 
 function App() {
+  const reducer = (cart , action) => {
 
+  }
+  const [cart , dispatch] = useReducer (reducer , initialState) ;
   return (
     <div>
       <BrowserRouter >
