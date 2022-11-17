@@ -13,7 +13,7 @@ const Header = () => {
       <div className='logo'>
         <img src={logo} alt="Logo" />
         <p>FRYING NEMO</p>
-        <WithBorders><Timer></Timer></WithBorders>
+        <Timer></Timer>
       </div>
       <div className='btns'>
         <a href='/add' className={pathname == 'add' ? `selected` : undefined}>Add</a>
