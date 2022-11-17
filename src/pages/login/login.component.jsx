@@ -8,7 +8,7 @@ import { UserContext } from '../../components/providers/user.provider.component'
 const LoginPage = (props) => {
   const navigate = useNavigate();
  const userContext = useContext(UserContext);
-
+console.log(userContext);
   useEffect(() => {
     // To check if the user is already logged in, send him to the view page
     if (userContext.user?.id) {

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import "./header.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import UserContext from '../../../components/providers/user.provider.component';
-const Header = () => {
+import { UserContext } from "../../providers/user.provider.component";
+const Header = (props) => {
   const locatoin = useLocation();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
@@ -13,6 +13,7 @@ const Header = () => {
         <h1>Frying Nemo</h1>
       </div>
       <div className="right">
+        <span>number of cart</span>
         <nav>
         <Link to="/add" className={locatoin.pathname === "/add"?"current" : ""}>Add</Link>
         <Link to="/view" className={locatoin.pathname === "/view"?"current" : ""}>View</Link>

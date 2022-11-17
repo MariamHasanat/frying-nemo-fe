@@ -41,14 +41,7 @@ const navigate =useNavigate();
             <p className="ingredients"><b>Ingredients:</b>
               <br />{currentItem.ingredients.join(", ")}</p>
           </div>
-          <div className="price">
-            <span><b>Price: </b>${currentItem.price}</span>
-            <div className="add-cart">
-              <button>+</button>
-              <input type="number" max={500} />
-              <button>-</button>
-            </div>
-          </div>
+         
         </div> : navigate('/error')}
 
   </div>

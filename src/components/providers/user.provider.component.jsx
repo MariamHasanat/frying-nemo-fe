@@ -14,6 +14,7 @@ const initalUser = JSON.parse(sessionStorage.getItem("user"));
   const setUserOverride = (user) => {
     setUser(user);
     sessionStorage.setItem("user", JSON.stringify(user));
+    console.log(user);
   };
   return(
   <UserContext.Provider value={{ user, setUser: setUserOverride }}>

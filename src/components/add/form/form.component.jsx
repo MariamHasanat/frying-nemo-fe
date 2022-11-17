@@ -5,7 +5,7 @@ import MultivalueInput from "../../common/multivalue-input/multivalue-input.comp
 import Select from "../../common/select/select.component";
 import Textarea from "../../common/textarea/textarea/textarea.component";
 import "./form.css";
-import UserContext from "../../../components/providers/user.provider.component";
+import { UserContext } from "../../providers/user.provider.component";
 import { CATEGORIES } from "../../../data/constant";
 
 const Form = (props) => {
