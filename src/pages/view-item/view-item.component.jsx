@@ -3,6 +3,7 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import './view-item.css';
 import { getItem } from '../../services/items';
 import Spinner from '../../components/core/spinner/spinner.component';
+import PriceBar from '../../components/common/PriceBar/PriceBar';
 
 /**
  * @type {Array<{
@@ -16,7 +17,7 @@ import Spinner from '../../components/core/spinner/spinner.component';
  * }>}
  */
 
-const ViewItemPage = () => {
+const ViewItemPage = (props) => {
   const params = useParams();
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
@@ -47,14 +48,7 @@ const ViewItemPage = () => {
             <p className="ingredients"><b>Ingredients:</b>
               <br />{currentItem.ingredients.join(", ")}</p>
           </div>
-          <div className="price">
-            <span><b>Price: </b>${currentItem.price}</span>
-            <div className="add-cart">
-              <button>+</button>
-              <input type="number" max={500} />
-              <button>-</button>
-            </div>
-          </div>
+          <PriceBar data={currentItem}/>
         </div>
       }
     </div>

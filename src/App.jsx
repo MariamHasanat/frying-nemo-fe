@@ -24,7 +24,7 @@ function App() {
       
         <Routes>
             <Route path="/*" element={<NotFoundPage></NotFoundPage>}></Route>
-            <Route path="/add" element={<Guard permittedRoles={["ADMIN"]}><AddPage ></AddPage></Guard> } ></Route>
+            <Route path="/add" element={<Guard Allowed={["ADMIN"]}><AddPage ></AddPage></Guard> } ></Route>
             <Route path="/" element={<Navigate to="/view"></Navigate>} ></Route>
             <Route path="/view" element={<ViewPage  ></ViewPage>}></Route>
             <Route path="/view/:id" element={<ViewItemPage></ViewItemPage>}></Route>

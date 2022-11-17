@@ -15,7 +15,7 @@ const Guard = props => {
   if (!ContextUser.user) {
     return <Navigate to="/login"></Navigate>;
   }
-  else if (props.permittedRoles && !props.permittedRoles.includes(ContextUser.user.role))
+  else if (props.AL && !props.Allowed.includes(ContextUser.user.role))
    {
     return (
     <div className="access">
