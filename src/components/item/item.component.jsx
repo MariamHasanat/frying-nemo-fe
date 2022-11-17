@@ -1,6 +1,7 @@
 import './item.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PriceBar from '../price-bar/price-bar.component';
 
 /** 
  * Render a single menu item based on the data passed
@@ -29,14 +30,7 @@ const Item = (props) => {
         <p className="ingredients">{ props.data.Ingredients && props.data.Ingredients.join(",")}</p>
         {/* instead of join you can use // map((ing, i) => ing + (i < props.data.ingredients.length - 1 ? ', ' : ' ')) */}
       </div>
-      <div className="price">
-        <span>{props.data.Price} $</span>
-        <div className="add-cart">
-          <button>+</button>
-          <input type="number" max={500} />
-          <button>-</button>
-        </div>
-      </div>
+     <PriceBar />
     </div>
   );
 };

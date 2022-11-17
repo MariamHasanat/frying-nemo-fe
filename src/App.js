@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import Header from "./components/core/header/header.component";
 import AddPage from "./pages/add/add.component";
 import NotFound from "./pages/page not found/page-not-found.component";
@@ -9,8 +9,9 @@ import LoginPage from "./pages/login/login.component";
 import UserProvider from "./components/user-provider/user-provider.component";
 
 export const UserContext = React.createContext(null);
+const initalState=[];
 function App() {
-
+const [cart,dispatch]=useReducer(reducer,initalState);
   return (
 
 
