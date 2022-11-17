@@ -143,7 +143,7 @@ const ViewPage = (props) => {
                   <span>Ingredients : </span>
                   {item.ingredients.join(" | ")}
                 </div>
-                <AddDeleteItem item={props.data} dispatch={props.dispatch} />
+                <AddDeleteItem item={item} dispatch={props.dispatch} />
               </div>
             );
           })}
