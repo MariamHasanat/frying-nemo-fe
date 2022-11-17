@@ -1,6 +1,6 @@
 const withBorder = (props) =>{
   return (
-    <div className="wothborder">
+    <div className="withborder">
       {props.children}
     </div>
   );
