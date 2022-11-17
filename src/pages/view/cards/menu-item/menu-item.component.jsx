@@ -26,7 +26,7 @@ const MenuItem = (props) => {
         <p> {props.item.discription}</p>
         <p className="ingredients"> {props.item.ingredients.join(", ")}</p>
       </div>
-      <PriceBar item = {props.item}/>
+      <PriceBar item = {props.item} dispatch = {props.dispatch}/>
     </div>
   )
 }

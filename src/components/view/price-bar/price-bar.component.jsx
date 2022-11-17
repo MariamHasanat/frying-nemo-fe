@@ -1,13 +1,19 @@
 import React from 'react'
 
 const PriceBar = (props) => {
+  const incrementHandler = () => {
+    props.dispatch ({type : "INCREMENT" , meal : props.item}) ;
+  }
+  const decrementHandler = () => {
+    props.dispatch ({type : "DECREMENT" , meal : props.item}) ;
+  }
   return (
     <div className='price'>
         <span >{props.item.price} $</span>
         <div className='add-cart'> 
-          <button> - </button>
+          <button onClick={decrementHandler}> - </button>
           <input type="number" className='ordersCount' />
-          <button> + </button>
+          <button onClick={incrementHandler}> + </button>
         </div>
       </div>
   )

@@ -96,7 +96,7 @@ const ViewPage = (props) => {
           {
             filteredIetems.length
               ? filteredIetems.map((item, index) => <div key={item.name + index}>
-                <MenuItem item={item} />
+                <MenuItem item={item} dispatch = {props.dispatch}/>
               </div>)
               : <div className="img">
                 <h5>No such item satisfies your requirements!</h5>

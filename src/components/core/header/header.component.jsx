@@ -9,12 +9,15 @@ const Header = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
+  let cartCounter = 0 ;
+  props.cart.forEach (item => cartCounter += item.quantity) ;
   return (
     <div className='webisteHeader'>
       <div className='left'>
         <img src={props.img} alt="" />
         <h1>{props.title}</h1>
       </div>
+      <span>cart : {cartCounter}</span>
       <div className="right">
         <nav>
           <Link to='/add' className={location.pathname === '/add' ? 'current' : ''}> Add </Link>
