@@ -37,7 +37,7 @@ const View = (props) => {
         if (userContext.user === null) {
             navigate('/log-in', { replace: true });
         }
-        getMenuItems(setLoading, setMeuItems);
+        getMenuItems(setLoading, setMeuItems); // exists in the function.js
     }, []);
 
     /**
