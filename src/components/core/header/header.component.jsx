@@ -1,10 +1,29 @@
 import './header.css';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logo from '../../assets/nemoInHeader.png';
+import logo from '../../../assets/nemoInHeader.png';
 import React, { useContext } from 'react';
-import { UserContext } from '../../components/providers/user-provider.component';
-const Header = () => {
+import { UserContext } from '../../providers/user-provider.component';
+
+/**
+* 
+* @param {{
+*   cart: Array<{
+*       item:{
+*       id: string;
+*       name: string;
+*       image: string;
+*       description: string;
+*       price: number;
+*       category: string;
+*       ingredients: string[];
+*       }
+*       quantity: number; 
+*   }>}} props
+* @returns 
+*/
+
+const Header = (props) => {
     const [time, setTime] = useState(new Date());
     const userContext = useContext(UserContext);
     const location = useLocation();
@@ -17,6 +36,12 @@ const Header = () => {
             clearInterval(timer);
         };
     }, []);
+
+    let itemsCount = 0;
+    for (let i = 0; i < props.cart.length; i++) {
+        itemsCount += props.cart[i].quantity;
+    }
+
     return (
         <header className='header'>
             <div className='left'>
@@ -27,13 +52,19 @@ const Header = () => {
                 <span className='clock'>{time.toLocaleTimeString()}</span>
                 {
                     userContext.user
-                        ? <span className='welcome'>Welcome {userContext.user.fullName}</span>
+                        ? <div className='welcome-div'>
+                            <span className='circle'></span>
+                            <span className='welcome'> {userContext.user.fullName}</span>
+                        </div>
                         : ""
                 }
 
 
             </div>
             <div className='right'>
+                <span className='count-items'>
+                    Your Cart {itemsCount}
+                </span>
                 <nav>
                     {
                         location.pathname !== '/log-in' &&
@@ -49,8 +80,8 @@ const Header = () => {
                         </Link>
                     }
                     {
-                        (location.pathname !== '/log-in') && 
-                        <button 
+                        (location.pathname !== '/log-in') &&
+                        <button
                             className='log-out'
                             onClick={() => {
                                 userContext.setUser(null);

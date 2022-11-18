@@ -5,6 +5,7 @@
     "javascript.format.semicolons": "insert",
     "cSpell.words": [
         "Nemo",
-        "premmitedroles"
+        "premmitedroles",
+        "TTFB"
     ]
 }

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import FilterBar from "../../components/view/filter-bar/filter-bar.component";
 import Item from "../../components/view/item/item.component";
-import Spinner from "../../core/spinner/spinner";
+import Spinner from "../../components/core/spinner/spinner";
 import './view.css';
 import { useContext } from 'react';
 import { UserContext } from '../../components/providers/user-provider.component';
+import { getMenuItems } from "./functions";
 /**
 * @type {Array<{
 * id:string;
@@ -36,8 +37,9 @@ const View = (props) => {
         if (userContext.user === null) {
             navigate('/log-in', { replace: true });
         }
-        getMenuItems();
+        getMenuItems(setLoading, setMeuItems);
     }, []);
+
     /**
      * @param {string} name 
      * @param {string | string[]} value 
@@ -59,14 +61,7 @@ const View = (props) => {
 
         setParam(newParam);
     };
-    const getMenuItems = () => {
-        setLoading(true);
-        setTimeout(() => {
-            const items = JSON.parse(localStorage.menuItems || '[]');
-            setMeuItems(items);
-            setLoading(false);
-        }, 100);
-    };
+
 
     const filteredItems = menuItems.filter((item) => {
         let match = true;
@@ -115,7 +110,7 @@ const View = (props) => {
                                         return <Item
                                             item={item}
                                             key={item.name + index}
-                                            dispatcher = {props.dispatcher}
+                                            dispatcher={props.dispatcher}
                                         />;
                                     })
                                 : <div className="empty">The is no any meal</div>

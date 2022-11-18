@@ -1,19 +1,19 @@
 import React, { useReducer } from "react";
 import AddPage from "./pages/add/add.component";
 import View from "./pages/view/view";
-import Header from "./core/header/header.component";
+import Header from "./components/core/header/header.component";
 import NotFound from "./pages/not-found/not-found.component";
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import ViewItemPage from "./pages/view-item-page/view-item-page";
 import LogIn from "./pages/login/login.component";
 import UserProvider from './components/providers/user-provider.component.jsx';
-import Guard from "./core/guard/guard.component";
+import Guard from "./components/core/guard/guard.component";
 import { reduce } from "./services/reducer-for-edit-item";
 
 const App = () => {
 
+   
     const [cart, dispatcher] = useReducer(reduce, []);
-
     return (
         <div>
             <UserProvider>
@@ -24,7 +24,7 @@ const App = () => {
                         <Route path="/log-in" element={<LogIn />} />
                         <Route path="/add" element={<Guard premmitedRoles={['ADMIN']}><AddPage /></Guard>} />
                         <Route path="/view" element={<View dispatcher={dispatcher} />} />
-                        <Route path="/view-details/:id" element={<ViewItemPage dispatcher={dispatcher} />} />
+                        <Route path="/view-details/:id" element={<ViewItemPage />} />
                         <Route path="/*" element={<NotFound />} />
                     </Routes>
                 </BrowserRouter>

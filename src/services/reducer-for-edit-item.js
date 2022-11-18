@@ -1,69 +1,72 @@
-
-/** the reduces function
+ /** the reduces function
     * @param {Array<{
- *    item:{
- *     id: string;
- *     name: string;
- *     image: string;
- *     description: string;
- *     price: number;
- *     category: string;
- *     ingredients: string[];
- *      }
- *     quantity: number; 
- *   }>} cart 
- * @param {{
- *  type:string;
- *  item:{
- *     id: string;
- *     name: string;
- *     image: string;
- *     description: string;
- *     price: number;
- *     category: string;
- *     ingredients: string[];
- *      }
- * }} action 
- */
-const reduce = (cart, action) => {
-    switch (action.type) {
-        case "ADD_ITEM":
-            return [...cart, action.item];
-        case "DELETE_ITEM":
-            return cart.filter(item => item.item.id !== action.item.id);
-        case "INCREMENT_QUANTITY":
-            let found = false;
-            const newCart1 = cart.map(cartElement => {
-                if (cartElement.item.id === action.item.id) {
-                    found = true;
-                    return { ...cartElement, quantity: cartElement.quantity + 1 };
-                }
-                else
-                    return cartElement;
-            });
-            if (!found)
-                return [...cart, action.item];
-            else
-                return newCart1;
-        case "DECREMENT_QUANTITY":
-            let shouldDelete = false;
-            const newCart2 = cart.map(cartElement => {
-                if (cartElement.item.id === action.item.id) {
-                    shouldDelete |= (cartElement.quantity === 1);
-                    return { ...cartElement, quantity: cartElement.quantity - 1 };
-                }
-                else
-                    return cartElement;
-            });
-            if (shouldDelete)
-                return cart.filter(cartElement => cartElement.item.id !== action.item.id);
-            else
-                return newCart2;
-        default:
-            return cart;
-    }
-};
-
-export {
-    reduce,
-};
+  *       quantity: number;
+  *       item:{
+  *           id: string;
+  *           name: string;
+  *           image: string;
+  *           description: string;
+  *           price: number;
+  *           category: string;
+  *           ingredients: string[];
+  *       }
+  * }>} cart 
+  * 
+  * @param {{
+  *      type:string;
+  *      item:{
+  *          id: string;
+  *          name: string;
+  *          image: string;
+  *          description: string;
+  *          price: number;
+  *          category: string;
+  *          ingredients: string[];
+  *      }
+  * }} action 
+   */
+  const reduce = (cart, action) => {
+      switch (action.type) {
+          case "ADD_CART_ITEM": {
+              return [...cart, { item: action.item, quantity: 1 }];
+          }
+          case "DELETE_CART_ITEM": {
+              return cart.filter(cartItem => cartItem.item.id !== action.item.id);
+          }
+          case "INCREMENT_CART_QUANTITY": {
+              let found = false;
+              const newCart1 = cart.map(cartItem => {
+                  if (cartItem.item.id === action.item.id) {
+                      found = true;
+                      return { ...cartItem, quantity: cartItem.quantity + 1 };
+                  }
+                  else
+                      return cartItem;
+              });
+              if (!found)
+                  return [...cart, { item: action.item, quantity: 1 }];
+              else
+                  return newCart1;
+          }
+          case "DECREMENT_CART_QUANTITY": {
+              let shouldDelete = false;
+              const newCart2 = cart.map(cartItem => {
+                  if (cartItem.item.id === action.item.id) {
+                      shouldDelete |= (cartItem.quantity === 1);
+                      return { ...cartItem, quantity: cartItem.quantity - 1 };
+                  }
+                  else
+                      return cartItem;
+              });
+              if (shouldDelete)
+                  return cart.filter(cartItem => cartItem.item.id !== action.item.id);
+              else
+                  return newCart2;
+          }
+          default:
+              return cart;
+      }
+  };
+  export{
+    reduce
+  }

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Item from '../../components/view/item/item.component';
 import { getItem } from '../../services/some-functions';
-import Spinner from '../../core/spinner/spinner';
+import Spinner from '../../components/core/spinner/spinner';
 /**
  * @type {Array<{
  * name: string;
@@ -15,7 +15,7 @@ import Spinner from '../../core/spinner/spinner';
  * image: string;
  * }>}
  */
-const ViewItemPage = () => {
+const ViewItemPage = (props) => {
     const params = useParams();
     const [loading, setLoading] = useState(true);
     const [item, setItem] = useState();

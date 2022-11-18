@@ -1,7 +1,8 @@
 import './item.css';
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Card from '../../common/card/card.component';
+import PriceBar from '../price-bar/price-bar.component';
 
 /** 
  * Render a single menu item based on the data passed
@@ -21,18 +22,6 @@ import Card from '../../common/card/card.component';
 
 
 const Item = (props) => {
-    const [value, setValue] = useState(0);
-
-    const add = () => {
-        let v = value;
-        v += 1;
-        setValue(v);
-    };
-    const remove = () => {
-        let v = value;
-        v -= (v > 0);
-        setValue(v);
-    };
 
     return (
         <Card>
@@ -53,18 +42,9 @@ const Item = (props) => {
                         props.item.ingredients.join(', ')
                     }
                 </div>
-                <div className='price'>
-                    <span className='the-price'>
-                        {props.item.price}&nbsp;$
-                    </span>
-                    <div className='number-of-items'>
-                        <span onClick={add}>+</span>
-                        <input readOnly type="number" value={value} name="numberOfItems" min={0} max={500} />
-                        <span onClick={remove}>-</span>
-                    </div>
-                </div>
 
             </div>
+            <PriceBar item={props.item} dispatcher={props.dispatcher} />
         </Card>
     );
 };

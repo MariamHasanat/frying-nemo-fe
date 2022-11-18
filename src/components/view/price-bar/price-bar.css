@@ -1,0 +1,65 @@
+.price {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid gray;
+    user-select: none;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.the-price {
+    font-size: 30px;
+    font-weight: 600;
+    height: 45px;
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+    color: #be441d;
+}
+
+.number-of-items {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.number-of-items>button {
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    border: 1px solid#be441d;
+    align-items: center;
+    height: 44px;
+    width: 50px;
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: #be441d;
+    color: white;
+    font-size: 30px;
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.number-of-items>button:active {
+    background-color: #fff;
+    color: #be441d;
+}
+
+.price .number-of-items .show-the-quantity {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid#be441d;
+    border-top: 1px solid#be441d;
+    height: 42px;
+    width: 50px;
+    background-color: #fff;
+    color: black;
+    font-weight: 600;
+    font-size: 25px;
+}
