@@ -32,10 +32,10 @@ const Form = (props) => {
             image: image,
         };
 
-        let items = localStorage.getItem('categoriesArray');
+        let items = localStorage.getItem('menuItems');
         items = JSON.parse(items) || [];
         items.push(item);
-        localStorage.setItem('categoriesArray', JSON.stringify(items));
+        localStorage.setItem('menuItems', JSON.stringify(items));
 
         navigate('/view');
     };

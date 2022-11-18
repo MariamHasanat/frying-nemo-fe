@@ -62,7 +62,7 @@ const View = (props) => {
     const getMenuItems = () => {
         setLoading(true);
         setTimeout(() => {
-            const items = JSON.parse(localStorage.categoriesArray || '[]');
+            const items = JSON.parse(localStorage.menuItems || '[]');
             setMeuItems(items);
             setLoading(false);
         }, 100);

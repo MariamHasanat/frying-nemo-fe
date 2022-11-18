@@ -10,9 +10,9 @@ import UserProvider from './components/providers/user-provider.component.jsx';
 import Guard from "./core/guard/guard.component";
 import { reduce } from "./services/reducer-for-edit-item";
 
-const App = (props) => {
-    
-    const [cart, patcher] = useReducer(reduce, []);
+const App = () => {
+
+    const [cart, dispatcher] = useReducer(reduce, []);
 
     return (
         <div>
@@ -23,8 +23,8 @@ const App = (props) => {
                         <Route path="/" element={<Navigate to={"/log-in"} replace />} />
                         <Route path="/log-in" element={<LogIn />} />
                         <Route path="/add" element={<Guard premmitedRoles={['ADMIN']}><AddPage /></Guard>} />
-                        <Route path="/view" element={<View />} />
-                        <Route path="/view-details/:id" element={<ViewItemPage />} />
+                        <Route path="/view" element={<View dispatcher={dispatcher} />} />
+                        <Route path="/view-details/:id" element={<ViewItemPage dispatcher={dispatcher} />} />
                         <Route path="/*" element={<NotFound />} />
                     </Routes>
                 </BrowserRouter>
