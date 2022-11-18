@@ -1,4 +1,4 @@
-// import ViewItemPage from '../ViewItem/ViewItemPage';
+import Price from '../../../common/price/Price';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import './card.css'
@@ -26,16 +26,7 @@ const Card = (props) => {
         <p>describtion : <br/>{props.data.description}</p>
         <p className="ingredients">ingredients : {props.data.ingredients.join(", ")}</p>
       </div>
-
-      <div className="price">
-        <span>${props.data.price}</span>
-        <div className="add-cart">
-          <button>+</button>
-          <input type="number" max={500} />
-          <button>-</button>
-        </div>
-      </div>
-
+       <Price item={props.data} dispatch={props.dispatch}/>
     </div>
   );
 };

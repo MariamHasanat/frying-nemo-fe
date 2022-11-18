@@ -6,16 +6,69 @@ import AddPage from "./pages/add/add.component";
 import LoginPage from './pages/login/LoginPage';
 import ViewPage from "./pages/view/ViewPage";
 import Header from "./logo/Header";
-import React from 'react';
+import React, { useReducer } from 'react';
 import './common.css';
 import Guard from './pages/Guard/Guard';
 
+let intialState = [];
 
 function App() {
+
+  const reducer = (action , cart) => {
+    switch (action.type) {
+
+      case 'Increment': {
+        let found = false;
+        const newCart = cart.map(cartItem => {
+          console.log(cartItem)
+          if (cartItem.meal.id === action.meal.id) {
+            found = true;
+            return { ...cartItem, quantity: cartItem.quantity + 1 };
+          } else {
+            return cartItem;
+          }
+        });
+
+        if (!found) {
+          return [...cart, { meal: action.meal, quantity: 1 }];
+        }
+        else {
+          return newCart;
+        }
+
+      }
+      case 'Decrement':{
+        let shouldDelete = false;
+        const newCart = cart.map((cartItem) => {
+          if (cartItem.meal.id === action.meal.id) {
+            if (cartItem.quantity === 1) {
+              shouldDelete = true;
+            }
+            return { ...cartItem, quantity: cartItem.quantity - 1 };
+          } else {
+            return cartItem;
+          }
+        });
+
+        if (shouldDelete) {
+          return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
+        }
+      else {
+        return newCart;
+
+      }
+       }
+       default : break;
+      }
+      
+    }
+  
+  const [cart , dispatch] = useReducer(reducer , intialState);
+
   return (
     <UserProvider>
         <BrowserRouter>
-          <Header />
+          <Header cart={cart} />
           <Routes>
             <Route path="/" element={<Navigate to='/view' replace />} />
             <Route path="/login" element={<LoginPage />} />
@@ -24,8 +77,8 @@ function App() {
               <AddPage />
             </Guard>
             } />
-            <Route path="/view" element={<ViewPage />} />
-            <Route path="/view/:id" element={<ViewItemPage />} />
+            <Route path="/view" element={<ViewPage dispatch={dispatch}/>} />
+            <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch}/>} />
             <Route path="/*" element={<Notfound />} />
           </Routes>
         </BrowserRouter>

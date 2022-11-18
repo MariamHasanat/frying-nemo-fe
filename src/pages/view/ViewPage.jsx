@@ -105,12 +105,17 @@ const ViewPage = (props) => {
         max={maxFromURL}
         params={params}
         setParam={setParam}
+        dispatch={props.dispatch}
       />
       {loading
         ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
         : <div className="items-container">
           {
-            filteredItems.map((item, index) => <Card data={item} key={item.name + index} />)
+            filteredItems.map((item, index) => <Card 
+             data={item}
+             key={item.name + index} 
+             dispatch={props.dispatch}
+             />)
           }
 
         </div>

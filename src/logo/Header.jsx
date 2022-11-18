@@ -5,11 +5,17 @@ import picture from '../assests/imges.jpg'
 import { useContext } from 'react';
 import './Header.css';
 
+
+
 const Header = props => {
  const location = useLocation()
  const navigate = useNavigate();
  const userContext = useContext(UserContext);
-
+ 
+ let itemsCount = 0;
+ for (let i = 0; i < props.cart.length; i++) {
+   itemsCount += props.cart[i].quantity;
+ }
   return (
     <header >
       <div className="Header">
@@ -20,7 +26,7 @@ const Header = props => {
           </h1>
         </div>
         <div className="right">
-
+            <span>No of Cart{itemsCount}</span>
           <nav>
             <Link
              to='/add'

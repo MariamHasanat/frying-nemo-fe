@@ -16,7 +16,7 @@ import Spinner from '../../spinner/spinner.component';
  * }>}
  */
 
-const ViewItemPage = () => {
+const ViewItemPage = (props) => {
   const params = useParams();
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
