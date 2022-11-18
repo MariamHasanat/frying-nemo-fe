@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../../components/common/input/input.component';
 import loginUser from '../../../services/users';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../../components/provider/user-provider.component';
 import './login.css'
 import { useContext } from 'react';
 

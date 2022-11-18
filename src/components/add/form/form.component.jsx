@@ -6,7 +6,7 @@ import MultivalueInput from '../../common/multivalue-input/multivalue-input.comp
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../provider/user-provider.component.jsx';
 
 
 const Form = (props) => {

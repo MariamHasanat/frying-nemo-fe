@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../provider/user-provider.component.jsx';
 
 
 const Header = () => {
