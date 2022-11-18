@@ -13,46 +13,55 @@ const initial = [];
 
 function App() {
 
-  const reducer = (cart, action) => {
+    const reducer = (cart, action) => {
+      // eslint-disable-next-line default-case
+      switch (action.type) {
+        case "ADD_CART_ITEM":
+          return [...cart, { meal: action.meal, quantity: 1 }];
+        case "INCREMENT_CART_QUANTITY": {
+          let found = false;
+          const newCart = cart.map(cartItem => {
+            if (cartItem.meal.id === action.meal.id) {
+              found = true;
+              return { ...cartItem, quantity: cartItem.quantity + 1 };
+            } else {
+              return cartItem;
+            }
+          });
 
-    switch (action.type) {
+          if (!found) {
+            return [...cart, { meal: action.meal, quantity: 1 }];
+          }
+          return newCart;
+        }
+        case "DECREMENT_CART_QUANTITY": {
+          let shouldDelete = false;
+          const newCart = cart.map(cartItem => {
+            if (cartItem.meal.id === action.meal.id) {
+              if (cartItem.quantity === 1) {
+                shouldDelete = true;
+              }
+              return { ...cartItem, quantity: cartItem.quantity - 1 };
+            } else {
+              return cartItem;
+            }
+          });
 
-      case "Add-to-cart ":
-        return [...cart, action.meal];
-      case "Increment-cart-Quantity": {
-        const newCart = cart.map(CartItem => {
+          if (shouldDelete) {
+            return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
+          }
 
-          if (CartItem.meal.id === action.meal.id)
-            return { ...CartItem, quantity: CartItem.quantity + 1 };
-          else return CartItem;
-
-        });
-
-        return newCart;
+          return newCart;
+        }
+        case "DELETE_CART_ITEM": {
+          return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
+        }
       }
 
-      case "Decrement-cart-Quantity": {
-        const newCart = cart.map(CartItem => {
+      return cart;
+    };
 
-          if (CartItem.meal.id === action.meal.id)
-            return { ...CartItem, quantity: CartItem.quantity - 1 };
-          else return CartItem;
-
-        });
-
-        return newCart;
-      }
-      case "Delete-cart": {
-        return cart.filter(CartItem => CartItem.meal.id !== action.meal.id);
-      }
-
-
-    }
-
-    return cart;
-
-  }; 
-   const [cart, dispatch] = useReducer(reducer, initial);
+    const [cart, dispatch] = useReducer(reducer, initial);
 
   return (
     <div>
