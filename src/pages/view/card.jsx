@@ -18,28 +18,28 @@ import Price from './price-bar';
  */
 const Card = (props) => {
   return (
-<div className="wrapper">
-    <div className="card">
-    <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
+    <div className="wrapper">
+      <div className="card">
+        <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
 
-      <div className="imgs">
-        <img src="/burg.png" alt="burger" />
-      </div>
-      <div className="description">
-        {props.data.description}
-      </div>
-      <div className="info-details">
-        <div className="price">
-          { "$"+props.data.price}
+        <div className="imgs">
+          <img src="/burg.png" alt="burger" />
         </div>
-       
+        <div className="description">
+          {props.data.description}
+        </div>
+        <div className="info-details">
+          <div className="price">
+            {"$" + props.data.price}
+          </div>
+
+        </div>
+
+        <div className="description">
+          {props.data.ingrediant.join(" " + "," + " ")}
+        </div>
+        <Price item={props.data} dispatch={props.dispatch} />
       </div>
-     
-      <div className="description">
-        {props.data.ingrediant.join( " "+ ","+" ")}
-      </div>
-      <Price item={props.data} dispatch={props.dispatch}/>
-    </div>
 
     </div>
   );

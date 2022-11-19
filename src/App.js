@@ -27,40 +27,51 @@ function App() {
     switch (action.type) {
 
       case "Add-to-cart ":
-        return [...cart, action.meal];
+        return [...cart, { meal: action.meal, quantity: 1 }];
 
       /*                ***********INCREMENT*********              */
 
       case "Increment-cart-Quantity": {
-        const newCart = cart.map(CartItem => {
-
-
-          if (CartItem.meal.id === action.meal.id)
-            return { ...CartItem, quantity: CartItem.quantity + 1 };
-          else return CartItem;
-
+        let found = false;
+        const newCart = cart.map(cartItem => {
+          if (cartItem.meal.id === action.meal.id) {
+            found = true;
+            return { ...cartItem, quantity: cartItem.quantity + 1 };
+          } else {
+            return cartItem;
+          }
         });
 
+        if (!found) {
+          return [...cart, { meal: action.meal, quantity: 1 }];
+        }
         return newCart;
       }
 
       /*                ***********DECREMENT*********              */
-      
+
       case "Decrement-cart-Quantity": {
-        const newCart = cart.map(CartItem => {
-
-
-          if (CartItem.meal.id === action.meal.id)
-            return { ...CartItem, quantity: CartItem.quantity - 1 };
-          else return CartItem;
-
+        let shouldDelete = false;
+        const newCart = cart.map(cartItem => {
+          if (cartItem.meal.id === action.meal.id) {
+            if (cartItem.quantity === 1) {
+              shouldDelete = true;
+            }
+            return { ...cartItem, quantity: cartItem.quantity - 1 };
+          } else {
+            return cartItem;
+          }
         });
+
+        if (shouldDelete) {
+          return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
+        }
 
         return newCart;
       }
       /*                ***********DELETE*********              */
       case "Delete-cart": {
-        return cart.filter(CartItem => CartItem.meal.id !== action.meal.id);
+        return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
       }
 
 
@@ -83,7 +94,7 @@ function App() {
     setUser(user);
     sessionStorage.setItem("user", JSON.stringify(user));
   };
-  
+
 
   return (
     <UserProvider>
@@ -91,7 +102,7 @@ function App() {
         <BrowserRouter>
           <Head user={user} setUser={saveUser} cart={cart} />
           <Routes>
-            <Route na/>
+            <Route na />
             <Route path="/add" element={<Guard component='add' permittedRoles={['ADMIN']}><AddPage /></Guard>} />
             <Route path="/*" element={<NotFound />} />
             <Route path="/view/:id" element={<ViewItemPage />} />
