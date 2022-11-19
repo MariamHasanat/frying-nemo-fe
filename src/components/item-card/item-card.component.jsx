@@ -2,15 +2,13 @@ import { useState } from 'react';
 import './item-card.css';
 import { Link } from 'react-router-dom';
 import Card from '../common/card/card.component';
+import PlusMinusButtons from '../plusMinusButtons/plusMinusButtons.component';
 
 /**
  * 
  * @param {}
  */
 
-const subtractOne = (oldVal) => {
-    return (oldVal > 0) ? (oldVal - 1) : oldVal;
-};
 
 const ItemCard = (props) => {
     // const getImage = () => {
@@ -37,24 +35,8 @@ const ItemCard = (props) => {
                     <div className="price">
                         <h3>${props.price}</h3>
                     </div>
-
-                    <div className="item-quantity">
-                        <button
-                            className='nemo-button'
-                            onClick={() => setQuantity(oldVal => oldVal + 1)}
-                        >
-                            <b>+</b>
-                        </button>
-                        <span className='quant'>{quantity}</span>
-                        <button
-                            className='nemo-button'
-                            onClick={() => setQuantity((oldVal) => subtractOne(oldVal))}>
-                            <b>-</b>
-                        </button>
-                    </div>
-
+                    <PlusMinusButtons quantity={quantity} setQuantity={setQuantity} />
                 </div>
-
             </Card>
         </div>
     );

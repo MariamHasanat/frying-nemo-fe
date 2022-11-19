@@ -18,7 +18,9 @@ const Header = (props) => {
                     <NavLink to="/view" className={(location.pathname === '/view' || location.pathname === '/view/') ? 'active nemo-button' : 'nemo-button'}>view</NavLink>
                 </span>
                 <span className='userProfile'>
-                    <div>{
+                    <div>
+                        <p>Cart: {props.cart || 0}&nbsp;&nbsp;</p>
+                        {
                         userContext.user?.fullName
                             ? <div className="user-badge">
                                 <img src={userContext.user.imageUrl} alt="" />

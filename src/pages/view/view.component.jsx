@@ -5,7 +5,7 @@ import './view.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import FilterBar from './filter-bar/filter-bar.component';
 import { UserContext } from '../../components/providers/user-provider.component';
-import Jiji from '../../components/common/jiji-the-cat/jiji.component'
+import Jiji from '../../components/common/jiji-the-cat/jiji.component';
 // import NotFound from '../not-found/not-found.component';
 
 
@@ -83,7 +83,7 @@ const ViewPage = (props) => {
                 </div>
             }
             {len === 0 &&
-                <Jiji message="sorry, nothing was found"/>
+                <Jiji message="sorry, nothing was found" />
             }
 
         </div>
