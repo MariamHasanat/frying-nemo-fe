@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import './view-item.css';
 import Spinner from "../../../../components/core/header/spinner/spinner.component";
+import PriceBar from "../../../../components/view/item/item/price-bar/price-bar.cpmponent";
 
 
 /**
@@ -46,14 +47,7 @@ const ViewItemPage = () => {
               <p className="ingredients"><b>Ingredients:</b>
               <br/>{currentItem.ingredients.join(", ")}</p>
             </div>
-            <div className="price">
-              <span><b>Price: </b>${currentItem.price}</span>
-              <div className="add-cart">
-                <button>+</button>
-                <input type="number" max={500} />
-                <button>-</button>
-              </div>
-            </div>
+            <PriceBar item={currentItem} />
           </div>
           : <span>Item Not Found!</span>
       }

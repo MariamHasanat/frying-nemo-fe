@@ -18,9 +18,10 @@
   
   .login-page>form>h1 {
     font-size: 28px;
-    color: #be441d;
-    line-height: 1.2;  
+    color: #7877a7;
+    line-height: 1.2;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    font-family: cursive;
   }
   

@@ -4,11 +4,16 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../provider/user-provider.component.jsx';
 
 
-const Header = () => {
+const Header = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
 
+
+  let itemsCount=0;
+  for(let i=0; i<props.cart.length;i++){
+    itemsCount += props.cart[i].quantity;
+  }
   return (
     <header className="websiteHeader">
       <div className="left">
@@ -18,6 +23,7 @@ const Header = () => {
         </h1>
       </div>
       <div className="right">
+        <span className='Cart'>Cart {itemsCount}</span>
         <nav>
           <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
             Add
