@@ -10,6 +10,7 @@ import './App.css';
 import Login from "./pages/login/login";
 import React, { useState } from "react";
 import UserProvider from "./components/providers/user-provider";
+import Guard from "./pages/guard-page/guard";
 
 
 //tp pass the user to all routes without send  it as props to all children 
@@ -26,6 +27,7 @@ function App() {
     setUser(user);
     sessionStorage.setItem("user", JSON.stringify(user));
   };
+  
 
   return (
     <UserProvider>
@@ -33,7 +35,8 @@ function App() {
         <BrowserRouter>
           <Head user={user} setUser={saveUser} />
           <Routes>
-            <Route path="/add" element={<AddPage />} />
+            <Route na/>
+            <Route path="/add" element={<Guard component='add' permittedRoles={['ADMIN']}><AddPage /></Guard>} />
             <Route path="/*" element={<NotFound />} />
             <Route path="/view/:id" element={<ViewItemPage />} />
             <Route path="/view" element={<ViewPage />} />
