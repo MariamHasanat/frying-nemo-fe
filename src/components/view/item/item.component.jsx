@@ -1,6 +1,7 @@
-import './item.css';
 import React from 'react';
+import './item.css';
 import { Link } from 'react-router-dom';
+
 import Card from '../../common/card/card.component';
 import PriceBar from '../price-bar/price-bar.component';
 
@@ -19,8 +20,6 @@ import PriceBar from '../price-bar/price-bar.component';
  *     dispatcher:React.DispatchWithoutAction;
  *   }} props
  */
-
-
 const Item = (props) => {
 
     return (

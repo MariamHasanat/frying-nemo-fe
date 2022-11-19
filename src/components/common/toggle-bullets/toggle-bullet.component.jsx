@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import './toggle-bullet.css';
+import { useSearchParams } from 'react-router-dom';
+
 /**
  * 
  * @param {{

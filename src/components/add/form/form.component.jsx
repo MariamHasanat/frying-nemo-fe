@@ -7,7 +7,21 @@ import MultivalueInput from '../../common/multivalue-input/multivalueInput';
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/constants';
 
-
+/**
+* 
+* @param {{
+*       user: {
+*           id: string;
+*           email: string;
+*           password: string;
+*           fullName: string;
+*           imageUrl: string;
+*           role: string | null;
+*       }   
+*           | null
+ * }} props 
+ * @returns 
+ */
 const Form = (props) => {
     const [name, setName] = useState('');
     const [ingredients, setIngredients] = useState([]);

@@ -1,7 +1,8 @@
 import React from 'react';
 import './filter-bar.css';
-import Input from '../../common/input/input.component';
+
 import { CATEGORIES } from '../../../data/constants';
+import Input from '../../common/input/input.component';
 import ToggleBullet from '../../common/toggle-bullets/toggle-bullet.component';
 
 const FilterBar = (props) => {
@@ -28,7 +29,7 @@ const FilterBar = (props) => {
                 className='price-filter'
                 type={'number'}
                 label={'Min'}
-                onChange = {(e) => {
+                onChange={(e) => {
                     const min = e.target.value;
                     props.setMin(min);
                 }}
@@ -37,7 +38,7 @@ const FilterBar = (props) => {
                 className='price-filter'
                 type={'number'}
                 label={'Max'}
-                onChange = {(e) => {
+                onChange={(e) => {
                     const max = e.target.value;
                     props.setMax(max);
                 }}

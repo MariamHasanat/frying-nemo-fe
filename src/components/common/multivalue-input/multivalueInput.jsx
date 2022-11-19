@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import Input from '../input/input.component';
+import React,{ useState } from 'react';
 import './multivalueInput.component.css';
 
+import Input from '../input/input.component';
 
 /**
  * component receive values and make list of them

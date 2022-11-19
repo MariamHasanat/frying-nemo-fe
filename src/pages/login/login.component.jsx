@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import './login.css';
-import { useEffect } from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../services/users';
 
 import Input from '../../components/common/input/input.component';
-import { useContext } from 'react';
 import { UserContext } from '../../components/providers/user-provider.component';
 
 const LogIn = () => {

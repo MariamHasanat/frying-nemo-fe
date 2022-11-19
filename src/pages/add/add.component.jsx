@@ -1,11 +1,12 @@
+import { useEffect, useContext } from 'react';
 import './add.css';
-import Form from '../../components/add/form/form.component';
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+
+import Form from '../../components/add/form/form.component';
 import { UserContext } from '../../components/providers/user-provider.component';
+
 const AddPage = () => {
-    const userContext = useContext(UserContext); 
+    const userContext = useContext(UserContext);
     const navigate = useNavigate();
     useEffect(() => {
         if (userContext.user === null) {

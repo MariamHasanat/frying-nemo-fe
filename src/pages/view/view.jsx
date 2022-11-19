@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import './view.css';
 import { useNavigate, useSearchParams } from "react-router-dom";
+
+import Spinner from "../../components/core/spinner/spinner";
 import FilterBar from "../../components/view/filter-bar/filter-bar.component";
 import Item from "../../components/view/item/item.component";
-import Spinner from "../../components/core/spinner/spinner";
-import './view.css';
-import { useContext } from 'react';
 import { UserContext } from '../../components/providers/user-provider.component';
 import { getMenuItems } from "./functions";
+
 /**
 * @type {Array<{
 * id:string;
@@ -29,7 +30,6 @@ const View = (props) => {
     const navigate = useNavigate();
     const userContext = useContext(UserContext);
 
-
     const searchParFromURL = params.get('searchTerms') || '';
     const categoriesFromURL = params.getAll('categories') || [];
 
@@ -37,7 +37,7 @@ const View = (props) => {
         if (userContext.user === null) {
             navigate('/log-in', { replace: true });
         }
-        getMenuItems(setLoading, setMeuItems); // exists in the function.js
+        getMenuItems(setLoading, setMeuItems); // exists in the function.js in the same file
     }, []);
 
     /**

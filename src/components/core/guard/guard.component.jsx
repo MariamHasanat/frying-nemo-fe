@@ -1,9 +1,8 @@
-import React from 'react';
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../../providers/user-provider.component';
+import React, { useContext } from 'react';
 import './guard.css';
+import { useNavigate } from 'react-router-dom';
 
+import { UserContext } from '../../providers/user-provider.component';
 
 /**
  * 

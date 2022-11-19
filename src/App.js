@@ -12,8 +12,7 @@ import { reduce } from "./services/reducer-for-edit-item";
 
 const App = () => {
 
-   
-    const [cart, dispatcher] = useReducer(reduce, []);
+    const [cart, dispatcher] = useReducer(reduce, []); // reduce function in the reducer-for-edit-item.js
     return (
         <div>
             <UserProvider>

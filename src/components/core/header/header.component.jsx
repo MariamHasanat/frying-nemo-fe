@@ -1,9 +1,9 @@
+import React, { useEffect, useState, useContext } from 'react';
 import './header.css';
-import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logo from '../../../assets/nemoInHeader.png';
-import React, { useContext } from 'react';
+
 import { UserContext } from '../../providers/user-provider.component';
+import logo from '../../../assets/nemoInHeader.png';
 
 /**
 * 
