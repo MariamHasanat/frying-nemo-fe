@@ -141,7 +141,9 @@ const ViewPage = (props) => {
           filterItems.length
             ?
 
-            (filterItems.map((item, index) => <Card data={item} key={item.name + index} />)
+            (filterItems.map((item, index) => 
+            <Card data={item} key={item.name + index} 
+            dispatch={props.dispatch}/>)
 
 
             )

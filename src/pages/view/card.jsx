@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './card.css';
+import Price from './price-bar';
 
 /**
  * 
@@ -37,13 +38,7 @@ const Card = (props) => {
       <div className="description">
         {props.data.ingrediant.join( " "+ ","+" ")}
       </div>
-      <div className="price">
-        <div className="add-cart">
-          <button>+</button>
-          <input type="number" max={500} min={50} />
-          <button>-</button>
-        </div>
-      </div>
+      <Price item={props.data} dispatch={props.dispatch}/>
     </div>
 
     </div>
