@@ -1,35 +1,66 @@
-import React from 'react' ;
+import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Spinner from '../../../../components/core/spinner/spinner.componenr';
-import MenuItem from '../menu-item/menu-item.component';
-import './single-item.css' ;
+import PriceBar from '../../../../components/view/price-bar/price-bar.component';
+import { getCartQuantity } from '../../../../util/cart';
+import './single-item.css';
 
-const SingleItem = () => {
-  const [currentItem , setCurrentitem] = useState (null) ;
-  const [loading , setLoading] = useState (false) ;
-  const param  = useParams () ;
-  const navigate = useNavigate () ;
-  useEffect (() => {
-    setLoading (true)
-    const items = JSON.parse (localStorage.getItem ('menuItems') || '[]') ;
-    const item = items.filter (element => element.id.toString() === param.id)
-    
-    setCurrentitem (item)
-    setLoading (false)
-    console.log(item);
-    if (item.length === 0) {
-      navigate ('/404') ;
+/**
+ * @type {Array<{
+ * id: number;
+ * name: string;
+ * description: string;
+ * ingredients: string[];
+ * price: number;
+ * category: string;
+ * image: string;
+ * }>}
+ */
+
+const SingleItem = (props) => {
+  const params = useParams();
+  const navigate = useNavigate();
+  const [currentItem, setCurrentItem] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    const item = getItem(params.id);
+    if (item === null) {
+      navigate("/404", { replace: true });
     }
-  } , [param.id])
+    setCurrentItem(item);
+    setLoading(false);
+  }, []);
+
+
+  const getItem = (id) => {
+    const items = JSON.parse(localStorage.menuItems || '[]');
+    const item = items.filter(it => it.id.toString() === id);
+    return item[0] || null;
+  };
+
   return (
     <div className='singleItem'>
-      {loading ? <Spinner/> : currentItem? <MenuItem item = {currentItem[0]}/> : <img src='./sad-crab.svg' alt='sad-crab'/>}
-      
-      
+      {loading
+        ? <Spinner />
+        : <div className="item-details">
+          <h1>{currentItem.name}</h1>
+          <div className="img">
+            <img src={currentItem.image} alt="food" />
+          </div>
+          <div className="info">
+            <p><b>Item Description: </b> {currentItem.description}</p>
+            <p className="ingredients"><b>Ingredients:</b>
+              <br />{currentItem.ingredients.join(", ")}</p>
+          </div>
+          <PriceBar item={currentItem} dispatch = {props.dispatch} cartQuantity = {getCartQuantity(currentItem.id , props.cart)}/>
+        </div>
+      }
     </div>
-  )
-}
+  );
+};
 
-export default SingleItem ;
+export default SingleItem;

@@ -5,6 +5,7 @@ import { UserContext } from '../../components/providers/user-provider.component'
 import Spinner from '../../components/core/spinner/spinner.componenr';
 import MenuItem from './cards/menu-item/menu-item.component';
 import FilterBar from './filter-bar/filter-bar.component';
+import { getCartQuantity } from '../../util/cart';
 import './view.css';
 
 /**
@@ -76,14 +77,6 @@ const ViewPage = (props) => {
     return match;
   });
 
-  const getCartQuantity = (id) => {
-    const cartItem = props.cart.find (item => item.meal.id === id) ;
-    if (cartItem) 
-      return cartItem.quantity ;
-    else
-      return 0 ;
-  }
-
   return (
     <div className='view'>
       <h1 align='center'>View Menu Items</h1>
@@ -104,7 +97,7 @@ const ViewPage = (props) => {
           {
             filteredIetems.length
               ? filteredIetems.map((item, index) => <div key={item.name + index}>
-                <MenuItem item={item} dispatch = {props.dispatch} cartQuantity = {getCartQuantity(item.id)}/>
+                <MenuItem item={item} dispatch = {props.dispatch} cartQuantity = {getCartQuantity(item.id , props.cart)}/>
               </div>)
               : <div className="img">
                 <h5>No such item satisfies your requirements!</h5>
