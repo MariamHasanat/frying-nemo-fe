@@ -73,7 +73,7 @@ function App() {
       <div className="consistancy-between-pages">
         <UserProvider>
           <BrowserRouter>
-            <Header />
+            <Header cart={cart}/>
             <Routes>
               <Route path="/" element={<Navigate to="/view" replace />} />
               <Route path="/login" element={<LoginPage />} />
