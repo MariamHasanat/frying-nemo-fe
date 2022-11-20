@@ -35,7 +35,7 @@ const ItemCard = (props) => {
                     <div className="price">
                         <h3>${props.price}</h3>
                     </div>
-                    <PlusMinusButtons quantity={quantity} setQuantity={setQuantity} />
+                    <PlusMinusButtons item={props.name} quantity={quantity} setQuantity={setQuantity} dispatch={props.dispatch}/>
                 </div>
             </Card>
         </div>

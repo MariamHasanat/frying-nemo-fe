@@ -40,18 +40,31 @@
     margin-right: 20px;
 }
 
-.user-badge{
+.header>.userProfile>div>.cart {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    background-color: #efefef;
+    height: 40px;
+    margin-top: 15px;
+    border-radius: var(--border-radius);
+
+}
+
+.user-badge {
     display: flex
 }
-.user-badge>img{
+
+.user-badge>img {
     display: flex;
     width: 40px;
     height: 40px;
-    margin-right:5px;
+    margin-right: 5px;
     border-radius: 100px;
     align-self: center;
 
 }
+
 .logout-button {
     margin-left: 10px;
     appearance: none;
@@ -65,5 +78,5 @@
 .logout-button:hover,
 .logout-button:active,
 .logout-button:focus {
-  color: #666;
+    color: #666;
 }

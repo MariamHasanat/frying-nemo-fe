@@ -77,7 +77,7 @@ const ViewPage = (props) => {
                 : <div className="main">
                     {
                         filteredMenu.map((item, index) => {
-                            return <ItemCard {...item} key={item + index} />;
+                            return <ItemCard {...item} key={item + index} dispatch={props.dispatch} />;
                         })
                     }
                 </div>
