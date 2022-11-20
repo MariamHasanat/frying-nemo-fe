@@ -6,8 +6,6 @@ const PlusMinusButtons = (props) => {
     const handleDecrement = () => {
         props.dispatch({ type: 'DECREMENT_CART_QUANTITY', meal: props.item });
       };
-    
-  
 
     return (
         <div className="item-quantity">

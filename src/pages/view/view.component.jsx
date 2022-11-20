@@ -53,13 +53,19 @@ const ViewPage = (props) => {
                 return match;
             });
 
-
-
     setTimeout(() => {
         setLoading(false);
     }, 1000);
 
     const len = filteredMenu.length;
+
+    const getItemQuantity = (id) => {
+        const currentItem = props.cart.find(item => item.meal.id === id);
+        if (currentItem) {
+            return currentItem.quantity;
+        }
+        return 0;
+    };
 
     return (
         <div className='view-page'>
@@ -77,7 +83,12 @@ const ViewPage = (props) => {
                 : <div className="main">
                     {
                         filteredMenu.map((item, index) => {
-                            return <ItemCard {...item} key={item + index} dispatch={props.dispatch} />;
+                            return <ItemCard
+                                item={item}
+                                key={item + index}
+                                dispatch={props.dispatch}
+                                itemQuantity={getItemQuantity(item.id)}
+                            />;
                         })
                     }
                 </div>

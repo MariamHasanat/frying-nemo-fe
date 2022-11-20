@@ -21,21 +21,20 @@ const ItemCard = (props) => {
     //         return 'images/default.jpg';
     //     }
     // };
-    const [quantity, setQuantity] = useState(0);
     return (
         <div className='item-card'>
             <Card>
-                <img src={props.img} width={350} height={230} alt={props.name} />
+                <img src={props.item.img} width={350} height={230} alt={props.item.name} />
                 <div className="item-description">
-                    <Link to={`/view/${props.id}`}>{props.name}</Link >
-                    <p>{props.description}</p>
-                    <p><b>{props.ingredients.join(', ')}</b></p>
+                    <Link to={`/view/${props.item.id}`}>{props.item.name}</Link >
+                    <p>{props.item.description}</p>
+                    <p><b>{props.item.ingredients.join(', ')}</b></p>
                 </div>
                 <div className="buy-item">
                     <div className="price">
-                        <h3>${props.price}</h3>
+                        <h3>${props.item.price}</h3>
                     </div>
-                    <PlusMinusButtons item={props.name} quantity={quantity} setQuantity={setQuantity} dispatch={props.dispatch}/>
+                    <PlusMinusButtons item={props.item} quantity={props.itemQuantity} dispatch={props.dispatch}/>
                 </div>
             </Card>
         </div>
