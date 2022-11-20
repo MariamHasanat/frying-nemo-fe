@@ -5,13 +5,13 @@
 const Price = (props) => {
   const handelIcrement = () => {
 
-    props.dispatch({ type: 'INCREMENT_CART_QUANTITY', meal: props.item });
+    props.dispatch({ type: 'Increment-cart-Quantity', meal: props.item });
 
   };
 
 
   const handelDecrement = () => {
-    props.dispatch({ type: 'DECREMENT_CART_QUANTITY', meal: props.item });
+    props.dispatch({ type: 'Decrement-cart-Quantity', meal: props.item });
 
   };
 
