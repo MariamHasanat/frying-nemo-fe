@@ -23,7 +23,7 @@ const Header = (props) => {
         </h1>
       </div>
       <div className="right">
-        <span> Your Cart {itemsCount}</span>
+        <span > Your Cart {itemsCount}</span>
         <nav>
 
           <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
@@ -40,13 +40,15 @@ const Header = (props) => {
         {
           userContext.user &&
           <span className="user-badge">
-            <img src={userContext.user.imageUrl} alt="user logo" width={30} height={30} />
+            <img src={userContext.user.imageUrl} alt="user logo" width={30} height={30} className ="orange" />
             {userContext.user.fullName}
             <button
               onClick={() => {
                 userContext.setUser(null);
                 navigate('/login');
+                
               }}
+              className= "padding-right: 50px;"
             >
               Logout
             </button>

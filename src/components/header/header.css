@@ -21,6 +21,7 @@
   height: 65px;
   width: auto;
   margin-right: 15px;
+
 }
 
 
@@ -46,9 +47,20 @@
 
 
 
-.webisteHeader .right nav {
+.webisteHeader .right> nav {
   display: flex;
-  margin-right: 100px
+  margin-right: 50px;
+}
+
+.webisteHeader .right {
+  display: flex;
+  margin-right: 50px;
+  margin-top: 20px;
+}
+
+.webisteHeader .right >span {
+
+  padding-top: 9px;
 }
 
 .webisteHeader .right nav a {
@@ -85,4 +97,10 @@
 button {
 
   margin-left: 10px;
+}
+
+.orange {
+  border-radius: 50%;
+  padding-right: 7px;
+  padding-top: 5px;
 }
