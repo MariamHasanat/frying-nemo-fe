@@ -22,6 +22,14 @@ const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]')
  */
 const initialItems = [];
 
+
+/**
+ * 
+ * @param {{cart: []; 
+ * dispatch: React.DispatchWithoutAction;
+ * }} props 
+ * @returns 
+ */
 const View = (props) => {
 
   const userContext = useContext(UserContext);
@@ -41,15 +49,6 @@ const View = (props) => {
       navigate('/login', { replace: false });
     }
   });
-
-  // const getItemQuantity = (id) => {
-  //   const currentItem = props.cart.find(item => item.meal.id === id);
-  //   if (currentItem) {
-  //     return currentItem.quantity;
-  //   }
-  //   return 0;
-  // };
-
 
   const filteredItems = menuItems.filter(e => {
 
@@ -114,7 +113,7 @@ const View = (props) => {
                   item={item}
                   key={item + index}
                   dispatch={props.dispatch}
-                  getItemQuantity={getItemQuantity(props.cart, item.id)}
+                  itemQuantity={getItemQuantity(props.cart, item.id)}
                 />
               );
 

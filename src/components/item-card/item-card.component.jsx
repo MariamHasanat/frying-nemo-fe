@@ -12,7 +12,9 @@ import './item-card.css';
  * category: string,
  * ingredients: string[],
  * image: string
- * };
+ * },
+ * dispatch: React.DispatchWithoutAction;
+ * itemQuantity: number
  * }} props 
  * @returns 
  */
@@ -44,7 +46,7 @@ function ItemCard(props) {
         <h4 className='item-price'>{props.item.price} $</h4>
         <div className='card-buttons'>
           <button className='card-button' onClick={handleDecrement}>-</button>
-          <span className='item-quantity'>{props.getItemQuantity}</span>
+          <span className='item-quantity'>{props.itemQuantity}</span>
           <button className='card-button' onClick={handleIncrement}>+</button>
         </div>
       </div>

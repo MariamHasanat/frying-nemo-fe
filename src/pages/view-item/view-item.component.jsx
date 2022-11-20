@@ -4,6 +4,12 @@ import { useNavigate, useParams } from 'react-router';
 import { getItem } from '../../services/items';
 import './view-item.component.css';
 import { getItemQuantity } from '../../utilities/getItemQuantity';
+
+/**
+ * 
+ * @param {{cart: []}} props 
+ * @returns 
+ */
 const ViewItem = (props) => {
   const params = useParams();
 
@@ -24,7 +30,6 @@ const ViewItem = (props) => {
     setCurrentItem(item);
     setLoading(false);
 
-
   }, []);
 
 
@@ -42,7 +47,9 @@ const ViewItem = (props) => {
           <h2 className='quantity'>Quantity: <span>{getItemQuantity(props.cart, currentItem.id)}</span></h2>
         </div>
 
+
       }
+
     </div>
   );
 };
