@@ -1,17 +1,23 @@
 import './item.css'
 import { Link } from 'react-router-dom';
-/**
- * 
+import PriceBar from './price-bar/price-bar.cpmponent';
+
+
+
+/** 
+ * Render a single menu item based on the data passed
  * @param {{
- * data:{
- * name: string;
- * description: string;
- * price: number;
- * category: string;
- * ingredients: string[];
- * }
- * }} props 
- * @returns 
+ *     data:{
+ *     id: number;
+ *     name: string;
+ *     image: string;
+ *     description: string;
+ *     price: number;
+ *     category: string;
+ *     ingredients: string[];
+ *    },
+ *    dispatch: React.DispatchWithoutAction
+ *   }} props
  */
 
 const Item = (props) => {
@@ -28,14 +34,7 @@ const Item = (props) => {
         <p className="ingredients">{props.data.ingredients.map(ing => ing + ', ')}</p>
         <hr />
       </div>
-      <div className="price">
-        <span>{props.data.price}</span>
-        <div className="add-cart">
-          <button>+</button>
-          <input type="number" max={5} />
-          <button>-</button>
-        </div>
-      </div>
+     <PriceBar item={props.data}  dispatch={props.dispatch} />
     </div>
   );
 };
