@@ -6,7 +6,7 @@ import Input from '../../common/input/input.component';
 import MultivalueInput from '../../common/mutivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../providers/user-provider.component';
 
 
 

@@ -5,7 +5,7 @@ import Item from '../../components/view/item/item.component';
 import Spinner from '../../components/spinner/spinner.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import { useContext } from 'react';
-import { UserContext } from '../../App';
+import { UserContext } from '../../components/providers/user-provider.component';
 import pic from '../../assets/illustrations/frustrated-realistic .png';
 
 /**
