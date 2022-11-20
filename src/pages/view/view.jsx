@@ -40,6 +40,14 @@ const View = (props) => {
     }
   });
 
+  const getItemQuantity = (id) => {
+    const currentItem = props.cart.find(item => item.meal.id === id);
+    if (currentItem) {
+      return currentItem.quantity;
+    }
+    return 0;
+  };
+
 
 
   const filteredItems = menuItems.filter(e => {
@@ -101,7 +109,12 @@ const View = (props) => {
           filteredItems.map(
             (item, index) => {
               return (
-                <ItemCard item={item} key={item + index} dispatch={props.dispatch} />
+                <ItemCard
+                  item={item}
+                  key={item + index}
+                  dispatch={props.dispatch}
+                  getItemQuantity={getItemQuantity(item.id)}
+                />
               );
 
             })

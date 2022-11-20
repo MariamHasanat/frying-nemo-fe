@@ -7,17 +7,7 @@ const ViewItem = (props) => {
   const params = useParams();
 
   const navigate = useNavigate();
-  //   /**
-  //  * @type {Array<{
-  //  * id: number;
-  //    * name: string;
-  //    * description: string;
-  //    * ingredients: string[];
-  //    * price: number;
-  //    * category: string;
-  //    * image: string;
-  //    * }>}
-  //    */
+
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -36,6 +26,13 @@ const ViewItem = (props) => {
 
   }, []);
 
+  const getItemQuantity = (id) => {
+    const item = props.cart.find(item => item.meal.id === id);
+    if (item) {
+      return item.quantity;
+    }
+    return 0;
+  };
 
   return (
     <div className="view-item-page">
@@ -48,6 +45,7 @@ const ViewItem = (props) => {
           <p>{currentItem.ingredients.join(', ')}</p>
           <h3>{currentItem.price} $</h3>
 
+          <h2>Quantity: {getItemQuantity(currentItem.id)}</h2>
         </div>
 
       }

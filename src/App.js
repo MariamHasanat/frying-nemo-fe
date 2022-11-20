@@ -9,8 +9,8 @@ import React, { useReducer } from "react";
 import Test from "./pages/test/test.component";
 import UserProvider from "./components/providers/user-provider";
 import Guard from "./components/core/guard/guard.component";
+import { reducer, initialState } from './components/reducers/cart';
 
-const initialState = [];
 function App() {
 
   /**
@@ -27,54 +27,6 @@ function App() {
    * }>} cart 
    * @param {*} action 
    */
-  const reducer = (cart, action) => {
-    // This function updates the state
-    // eslint-disable-next-line default-case
-    switch (action.type) {
-      case "ADD_CART_ITEM":
-        return [...cart, { meal: action.meal, quantity: 1 }];
-      case "INCREMENT_CART_QUANTITY": {
-        let found = false;
-        const newCart = cart.map(cartItem => {
-          if (cartItem.meal.id === action.meal.id) {
-            found = true;
-            return { ...cartItem, quantity: cartItem.quantity + 1 };
-          } else {
-            return cartItem;
-          }
-        });
-
-        if (!found) {
-          return [...cart, { meal: action.meal, quantity: 1 }];
-        }
-        return newCart;
-      }
-      case "DECREMENT_CART_QUANTITY": {
-        let shouldDelete = false;
-        const newCart = cart.map(cartItem => {
-          if (cartItem.meal.id === action.meal.id) {
-            if (cartItem.quantity === 1) {
-              shouldDelete = true;
-            }
-            return { ...cartItem, quantity: cartItem.quantity - 1 };
-          } else {
-            return cartItem;
-          }
-        });
-
-        if (shouldDelete) {
-          return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
-        }
-
-        return newCart;
-      }
-      case "DELETE_CART_ITEM": {
-        return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
-      }
-    }
-
-    return cart;
-  };
 
 
   const [cart, dispatch] = useReducer(reducer, initialState);
@@ -88,8 +40,8 @@ function App() {
             <Route path="/" element={<Navigate to='/view' replace />} />
             <Route path="/login" element={<LoginComponent />} />
             <Route path="/add" element={<Guard component='add' permittedRoles={['ADMIN']}><AddPage /></Guard>} />
-            <Route path="/view" element={<View dispatch={dispatch} />} />
-            <Route path="/view/:id" element={<ViewItem />} />
+            <Route path="/view" element={<View dispatch={dispatch} cart={cart} />} />
+            <Route path="/view/:id" element={<ViewItem cart={cart} />} />
             <Route path="/404" element={<Test />} />
           </Routes>
         </UserProvider>
