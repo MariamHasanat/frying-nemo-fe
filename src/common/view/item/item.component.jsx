@@ -33,7 +33,7 @@ const Items = (props) => {
       </div>
       <div className="price">
         <h3>${props.data.price}</h3>
-        <Price item={props.data} dispatch={props.dispatch}/>
+        <Price item={props.data} dispatch={props.dispatch} cartQuantity = {props.cartQuantity} />
       </div>
     </div>
   );

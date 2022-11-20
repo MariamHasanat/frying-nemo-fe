@@ -30,7 +30,7 @@ const reducer =(state , action)=>{
   <div className="price">
     <div className="add-cart">
       <button onClick={handleIncrement } >+</button>
-      <input type="number" max={500} value={state.count} />
+      <input type="number" max={500} value={props.cartQuantity} />
       <button onClick={handleDecrement}>-</button>
     </div>
   </div>);

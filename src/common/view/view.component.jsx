@@ -3,7 +3,7 @@ import Items from '../view/item/item.component';
 import React,{ useState, useEffect,useContext } from "react";
 import { useSearchParams,useNavigate } from 'react-router-dom';
 import FilterBar from './filture/filter-bar.companent';
-
+import {getCartQuantity} from '../../utilit/cart';
 import { UserContext } from '../../components/provider/provider.component';
 
 const ViewPage = (props) => {
@@ -78,6 +78,14 @@ const ViewPage = (props) => {
     }
     return match;
   });
+  // const  getCartQuantity= (id,cart)=>{
+  //   const cartItem=props.cart.find(cartItem=> cartItem.meal.id === id );
+  //   if (cartItem) {
+  //     return cartItem.quantity;
+  //   }else{
+  //     return 0;
+  //   }
+  // }
 
   return (
     <div className="view-page">
@@ -91,7 +99,7 @@ const ViewPage = (props) => {
       <div className="item" >
         {
           filterItem
-            .map((item, index) => <Items data={item} key={item.name + index} dispatch={props.dispatch} />)
+            .map((item, index) => <Items data={item} key={item.name + index} dispatch={props.dispatch} cartQuantity = {getCartQuantity(item.id,props.cart)} />)
         }
       </div>
     </div>

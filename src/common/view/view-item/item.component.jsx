@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Items from '../item/item.component';
 import {getItem }from '../../../data/items';
 import "../../header/header.css";
+import { getCartQuantity } from '../../../utilit/cart';
 
 
 /**
@@ -18,7 +19,7 @@ import "../../header/header.css";
  * }>}
  */
 
-const ViewItemPage = () => {
+const ViewItemPage = (props) => {
   const params = useParams();
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
@@ -41,7 +42,7 @@ const ViewItemPage = () => {
       {loading }
       {
         !loading && currentItem !== null
-          ? <Items data={currentItem}/>
+          ? <Items data={currentItem} dispatch={props.dispatch} CartQuantity={getCartQuantity(currentItem.id,props.cart)} />
           : null
       }
     </div>
