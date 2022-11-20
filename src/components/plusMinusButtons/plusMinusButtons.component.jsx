@@ -13,7 +13,7 @@ const PlusMinusButtons = (props) => {
         <div className="item-quantity">
             <button
                 className='nemo-button'
-                onClick={() => handleIncrement}
+                onClick={handleIncrement}
             >
                 <b>+</b>
             </button>
