@@ -1,6 +1,6 @@
 import Card from './card';
 import './view.css';
-import React, { useState,useContext  } from 'react';
+import React, { useState, useContext } from 'react';
 // import Input from '../../components/common/input/input';
 import './view.css';
 import { useSearchParams, useNavigate } from 'react-router-dom';
@@ -26,7 +26,7 @@ const ViewPage = (props) => {
   const [menuitems, setMenuItems] = useState(GetmenuItems());
   const navigate = useNavigate();
 
-  const userContext =useContext (UserContext);
+  const userContext = useContext(UserContext);
 
   //instance of class 
   const [search, setSearch] = useState('');
@@ -119,7 +119,13 @@ const ViewPage = (props) => {
   };
 
 
-
+  const getCartQuantity = (id) => {
+    const currentCartItme = props.cart.find(CartItem => CartItem.meal.id === id);
+    if (currentCartItme)
+      return currentCartItme.quantity;
+    else
+      return 0;
+  };
   return (
 
     <div className='wrapper' >
@@ -141,9 +147,15 @@ const ViewPage = (props) => {
           filterItems.length
             ?
 
-            (filterItems.map((item, index) => 
-            <Card data={item} key={item.name + index} 
-            dispatch={props.dispatch}/>)
+            (filterItems.map((item, index) =>
+              <Card data={item} key={item.name + index}
+                dispatch={props.dispatch}
+                // cartQuantity={props.cart}
+                cartQuantity={getCartQuantity(item.id)}
+
+
+
+              />)
 
 
             )

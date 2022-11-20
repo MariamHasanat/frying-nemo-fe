@@ -11,75 +11,17 @@ import Login from "./pages/login/login";
 import React, { useReducer, useState } from "react";
 import UserProvider from "./components/providers/user-provider";
 import Guard from "./pages/guard-page/guard";
+import {reducer , initial} from './components/reducers/cart'
 
 
-
-const initial = [];
 //tp pass the user to all routes without send  it as props to all children 
 export const UserContext = React.createContext(null);
 
 
 function App() {
 
-  // reducer function 
-  const reducer = (cart, action) => {
+  // reducer function >> moved to a new folder 
 
-    switch (action.type) {
-
-      case "Add-to-cart ":
-        return [...cart, { meal: action.meal, quantity: 1 }];
-
-      /*                ***********INCREMENT*********              */
-
-      case "Increment-cart-Quantity": {
-        let found = false;
-        const newCart = cart.map(cartItem => {
-          if (cartItem.meal.id === action.meal.id) {
-            found = true;
-            return { ...cartItem, quantity: cartItem.quantity + 1 };
-          } else {
-            return cartItem;
-          }
-        });
-
-        if (!found) {
-          return [...cart, { meal: action.meal, quantity: 1 }];
-        }
-        return newCart;
-      }
-
-      /*                ***********DECREMENT*********              */
-
-      case "Decrement-cart-Quantity": {
-        let shouldDelete = false;
-        const newCart = cart.map(cartItem => {
-          if (cartItem.meal.id === action.meal.id) {
-            if (cartItem.quantity === 1) {
-              shouldDelete = true;
-            }
-            return { ...cartItem, quantity: cartItem.quantity - 1 };
-          } else {
-            return cartItem;
-          }
-        });
-
-        if (shouldDelete) {
-          return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
-        }
-
-        return newCart;
-      }
-      /*                ***********DELETE*********              */
-      case "Delete-cart": {
-        return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
-      }
-
-
-    }
-
-    return cart;
-
-  };
 
 
   ///add reducer 
@@ -106,7 +48,7 @@ function App() {
             <Route path="/add" element={<Guard component='add' permittedRoles={['ADMIN']}><AddPage /></Guard>} />
             <Route path="/*" element={<NotFound />} />
             <Route path="/view/:id" element={<ViewItemPage />} />
-            <Route path="/view" element={<ViewPage />} dispatch={dispatch} />
+            <Route path="/view" element={<ViewPage  dispatch={dispatch}  cart={cart}/>} />
             <Route path="/" element={<Navigate to='/view' replace />} />
             <Route path="/login" element={<Login />} />
             {/* <Route path="/*" element={<Navigate to='/add' />} /> */}

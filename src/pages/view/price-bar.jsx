@@ -20,7 +20,7 @@ const Price = (props) => {
     <div className="price">
       <div className="add-cart">
         <button onClick={handelIcrement}>+</button>
-        <input type="number" max={500} value={0} />
+        <input type="number" max={500} value={props.cartQuantity} />
         <button onClick={handelDecrement}>-</button>
       </div>
     </div>);
