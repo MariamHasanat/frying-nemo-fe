@@ -11,7 +11,7 @@ import Login from "./pages/login/login";
 import React, { useReducer, useState } from "react";
 import UserProvider from "./components/providers/user-provider";
 import Guard from "./pages/guard-page/guard";
-import {reducer , initial} from './components/reducers/cart'
+import { reducer, initial } from './components/reducers/cart';
 
 
 //tp pass the user to all routes without send  it as props to all children 
@@ -37,6 +37,11 @@ function App() {
     sessionStorage.setItem("user", JSON.stringify(user));
   };
 
+  /*TODO:
+  *
+  * test !
+  *
+  */
 
   return (
     <UserProvider>
@@ -47,8 +52,8 @@ function App() {
             <Route na />
             <Route path="/add" element={<Guard component='add' permittedRoles={['ADMIN']}><AddPage /></Guard>} />
             <Route path="/*" element={<NotFound />} />
-            <Route path="/view/:id" element={<ViewItemPage />} />
-            <Route path="/view" element={<ViewPage  dispatch={dispatch}  cart={cart}/>} />
+            <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart} />} />
+            <Route path="/view" element={<ViewPage dispatch={dispatch} cart={cart} />} />
             <Route path="/" element={<Navigate to='/view' replace />} />
             <Route path="/login" element={<Login />} />
             {/* <Route path="/*" element={<Navigate to='/add' />} /> */}
