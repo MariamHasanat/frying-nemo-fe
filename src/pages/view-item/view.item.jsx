@@ -16,7 +16,7 @@ import Spinner from '../../components/spinner/spinner';
  * }>}
  */
 
-const ViewItemPage = () => {
+const ViewItemPage = (props) => {
   const params = useParams();
   navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
@@ -40,7 +40,7 @@ const ViewItemPage = () => {
       {loading && <Spinner />}
       {
         !loading && currentItem !== null
-          ? <Item data={currentItem} />
+          ? <Item data={currentItem} dispatch={props.dispatch} />
           : <span>Item Not Found!</span>
       }
     </div>
