@@ -6,7 +6,9 @@ import FilterBar from '../../components/view/filter-input.component';
 import './view.css';
 import { useContext } from 'react';
 import { UserContext } from '../../components/providers/user-provider';
+import { getItemQuantity } from '../../utilities/getItemQuantity';
 const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]');
+
 /**
  * @type {Array<{
  * id: number;
@@ -40,14 +42,13 @@ const View = (props) => {
     }
   });
 
-  const getItemQuantity = (id) => {
-    const currentItem = props.cart.find(item => item.meal.id === id);
-    if (currentItem) {
-      return currentItem.quantity;
-    }
-    return 0;
-  };
-
+  // const getItemQuantity = (id) => {
+  //   const currentItem = props.cart.find(item => item.meal.id === id);
+  //   if (currentItem) {
+  //     return currentItem.quantity;
+  //   }
+  //   return 0;
+  // };
 
 
   const filteredItems = menuItems.filter(e => {
@@ -113,7 +114,7 @@ const View = (props) => {
                   item={item}
                   key={item + index}
                   dispatch={props.dispatch}
-                  getItemQuantity={getItemQuantity(item.id)}
+                  getItemQuantity={getItemQuantity(props.cart, item.id)}
                 />
               );
 

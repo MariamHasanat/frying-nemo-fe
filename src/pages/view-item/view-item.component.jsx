@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { getItem } from '../../services/items';
 import './view-item.component.css';
+import { getItemQuantity } from '../../utilities/getItemQuantity';
 const ViewItem = (props) => {
   const params = useParams();
 
@@ -26,13 +27,6 @@ const ViewItem = (props) => {
 
   }, []);
 
-  const getItemQuantity = (id) => {
-    const item = props.cart.find(item => item.meal.id === id);
-    if (item) {
-      return item.quantity;
-    }
-    return 0;
-  };
 
   return (
     <div className="view-item-page">
@@ -45,7 +39,7 @@ const ViewItem = (props) => {
           <p>{currentItem.ingredients.join(', ')}</p>
           <h3>{currentItem.price} $</h3>
 
-          <h2>Quantity: {getItemQuantity(currentItem.id)}</h2>
+          <h2 className='quantity'>Quantity: <span>{getItemQuantity(props.cart, currentItem.id)}</span></h2>
         </div>
 
       }

@@ -1,8 +1,13 @@
-.item-image{
+.item-image {
   height: 40vh;
-  
+
 }
 
-.view-item-page{
+.view-item-page {
   padding: 1em;
+}
+
+.quantity>span {
+  color: orangered;
+  font-weight: bold;
 }
