@@ -3,7 +3,7 @@ import './view-item.css';
 import { useParams } from 'react-router-dom';
 import { getItem } from '../../services/items';
 import Item from '../../components/view/item/item.component';
-// import Spinner from '../../components/core/spinner/spinner.component';
+import { getCartQuantity } from '../../utility/cart';
 
 /**
  * @type {Array<{
@@ -16,7 +16,7 @@ import Item from '../../components/view/item/item.component';
  * }>}
  */
 
-const ViewItemPage = () => {
+const ViewItemPage = (props) => {
   const params = useParams();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -29,7 +29,6 @@ const ViewItemPage = () => {
       setLoading(false);
     }
   }, [params.id]);
-
 
   return (
     <div className="view-item-page">
@@ -55,7 +54,7 @@ const ViewItemPage = () => {
       )}
       {
         !loading && currentItem !== null
-          ? <Item data={currentItem} />
+          ? <Item data={currentItem} item={currentItem} dispatch={props.dispatch} cartQuantity={getCartQuantity(currentItem.id, props.cart)} />
           : <span>Item Not Found!</span>
       }
     </div>

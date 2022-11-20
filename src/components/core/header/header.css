@@ -17,7 +17,8 @@
 
 }
 .right .cart{
-  margin-right: 30PX;
+  margin-right: 23PX;
+  margin-left: 10px;
 }
 .main-class .right a{
   color: #000;
@@ -45,4 +46,7 @@
 }
 .user-badge .logout:focus{
   cursor: pointer;
+}
+.cart-click:focus{
+  color: #fff;
 }

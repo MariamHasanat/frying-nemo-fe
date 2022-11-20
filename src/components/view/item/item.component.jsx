@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './item.css';
-import Card from '../../common/card/card.component'
+import Card from '../../common/card/card.component';
+import AddDeleteItem from '../../../pages/view/add-delete/add-delete.componenet';
 
 
 /** 
@@ -30,13 +31,9 @@ const Item = (props) => {
       </div>
       <div className="price">
         <span>${props.data.price}</span>
-        <div className="add-cart">
-          <button>+</button>
-          <input type="number" max={500} />
-          <button>-</button>
-        </div>
+        <AddDeleteItem dispatch={props.dispatch} item={props.item} cartQuantity={props.cartQuantity} />
       </div>
-      </Card>
+    </Card>
   );
 };
 

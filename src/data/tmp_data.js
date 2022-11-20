@@ -32,7 +32,7 @@ const USERS = [{
   "password": '123456',
   "fullName": "Asia Shalaldeh",
   "imageUrl": "http://dummyimage.com/206x249.png/dddddd/000000",
-  "role": null
+  "role": 'ADMIN'
 }, {
   "id": "abd42304-521c-4ae2-95a0-aaf9ee7fd9e5",
   "email": "lcastilljo5@wufoo.com",

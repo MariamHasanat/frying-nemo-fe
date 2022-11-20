@@ -20,7 +20,10 @@ const Header = (props) => {
         <p>Frying Nemo</p>
       </div>
       <div className="right">
-        <span className="cart">Your Cart {itemsCount}</span>
+      <Link className="cart-click" to="/cart">
+      <img src={process.env.PUBLIC_URL + "/shopping-cart.png"} alt="" width={30} />
+        <span className="cart">{itemsCount}</span>
+      </Link>
         <nav>
           <Link
             to="/add"

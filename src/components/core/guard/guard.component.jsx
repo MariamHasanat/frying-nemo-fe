@@ -10,7 +10,7 @@ const Guard = (props) => {
     return <Navigate to='/login' />;
   }
   // if user login but not allowed to access the page
-  else if (props.permittedRoles && !props.permittedRoles.include(userContext.user.role)) {
+  else if (props.permittedRoles && !props.permittedRoles.includes(userContext.user.role)) {
     return <div>
       <p>You Are Not Allowed To Access This Page !</p>
     </div>;

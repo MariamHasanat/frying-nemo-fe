@@ -4,6 +4,7 @@ import FilterBar from "../../components/view/filter-bar/filter-bar.component";
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { UserContext } from "../../components/user-provider/user-provider";
 import AddDeleteItem from "./add-delete/add-delete.componenet";
+import { getCartQuantity } from "../../utility/cart";
 
 /**
  * @type {Array<{
@@ -62,6 +63,7 @@ const ViewPage = (props) => {
 
     setParams(newParams);
   };
+
 
   return (
     <div>
@@ -143,7 +145,7 @@ const ViewPage = (props) => {
                   <span>Ingredients : </span>
                   {item.ingredients.join(" | ")}
                 </div>
-                <AddDeleteItem item={item} dispatch={props.dispatch} />
+                <AddDeleteItem item={item} dispatch={props.dispatch} cartQuantity={getCartQuantity(item.id, props.cart)} />
               </div>
             );
           })}
