@@ -1,10 +1,10 @@
-import { useContext, Navigate } from "react";
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 import { UserContext } from '../../user-provider/user-provider';
 
 
 const Guard = (props) => {
   const userContext = useContext(UserContext);
-
   // if user not exist
   if (!userContext.user) {
     return <Navigate to='/login' />;
