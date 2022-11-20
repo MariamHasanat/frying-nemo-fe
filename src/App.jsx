@@ -6,7 +6,7 @@ import ViewItemPage from "./pages/view-item/view-item.component";
 import NotFoundPage from "./pages/not-found/not-found.component";
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from "./pages/login/login.component";
-
+import UserProvider from './components/providers/user-provider.component';
 
 
 const initialState = [];
