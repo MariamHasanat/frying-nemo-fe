@@ -2,9 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Spinner from '../../../../components/core/spinner/spinner.componenr';
-import PriceBar from '../../../../components/view/price-bar/price-bar.component';
-import { getCartQuantity } from '../../../../util/cart';
+import Spinner from '../../components/core/spinner/spinner.componenr';
+import PriceBar from '../../components/view/price-bar/price-bar.component';
+import { getCartQuantity } from '../../util/cart';
 import './single-item.css';
 
 /**

@@ -1,7 +1,8 @@
-.view-item-page {
+.item-details {
   padding: 30px 20px;
   max-width: 80vw;
   margin: 0 auto;
+  margin: 30px;
 }
 
 .item-details > h1 {

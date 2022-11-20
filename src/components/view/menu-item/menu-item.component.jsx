@@ -1,6 +1,6 @@
 import React from 'react' ;
 import { Link } from 'react-router-dom';
-import PriceBar from '../../../../components/view/price-bar/price-bar.component';
+import PriceBar from '../price-bar/price-bar.component';
 import './menu-item.css' ;
 /**
  * 

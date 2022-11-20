@@ -4,7 +4,7 @@ import ViewPage from "./pages/view/view.component";
 import './common.css';
 import NotFound from "./pages/not-found/notFound.component";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import SingleItem from "./pages/view/cards/single-item/single-item.component";
+import SingleItem from "./pages/single-item/single-item.component";
 import LoginPage from "./pages/login/login.component";
 import UserProvider from "./components/providers/user-provider.component";
 import Guard from "./components/providers/guard-provider.component";
