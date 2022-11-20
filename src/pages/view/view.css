@@ -9,7 +9,7 @@
 }
 
 
-.view-page .items-container .no-results{
+.no-results{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -17,11 +17,11 @@
   margin-top: 100px;
 }
 
-.view-page .items-container > .no-results > img {
+.no-results > img {
   width: 280px;
 }
 
-.view-page .items-container > .no-results > p {
+.no-results > p {
   font-size: 30px;
   font-weight: bold;
   color: #999;
