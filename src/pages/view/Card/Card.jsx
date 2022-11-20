@@ -26,7 +26,7 @@ const Card = (props) => {
         <p>describtion : <br/>{props.data.description}</p>
         <p className="ingredients">ingredients : {props.data.ingredients.join(", ")}</p>
       </div>
-       <Price item={props.data} dispatch={props.dispatch}/>
+       <Price item={props.data} dispatch={props.dispatch} getCartQuntity={props.getCartQuntity}/>
     </div>
   );
 };

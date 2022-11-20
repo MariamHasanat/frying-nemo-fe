@@ -21,6 +21,7 @@ import './viewpage.css';
 const initialItems = [];
 
 const ViewPage = (props) => {
+
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
@@ -31,6 +32,15 @@ const ViewPage = (props) => {
   const categoriesFromURL = params.getAll('category') || '';
   const minFromURL = params.get('min') || '';
   const maxFromURL = params.get('max') || '';
+
+  const getCartQuntity = (id) => {
+    const currentItem = props.cart.find(element => (id === element.meal.id))
+    if(currentItem) {
+      return currentItem.quantity;
+    } else {
+      return 0;
+    }
+  }
 
   const getMenuItems = () => {
     setLoading(true);
@@ -115,6 +125,7 @@ const ViewPage = (props) => {
              data={item}
              key={item.name + index} 
              dispatch={props.dispatch}
+             getCartQuntity={getCartQuntity(item.id)}
              />)
           }
 

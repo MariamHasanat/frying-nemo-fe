@@ -22,6 +22,15 @@ const ViewItemPage = (props) => {
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const getCartQuntity = (id) => {
+    const currentItem = props.cart.find(element => (id === element.meal.id))
+    if(currentItem) {
+      return currentItem.quantity;
+    } else {
+      return 0;
+    }
+  }
+
   useEffect(() => {
     setLoading(true);
     const item = getItem(params.id);
@@ -40,7 +49,7 @@ const ViewItemPage = (props) => {
       {loading && <Spinner />}
       {
         !loading && currentItem !== null
-          ? <Card data={currentItem} />
+          ? <Card data={currentItem} dispatch={props.dispatch} getCartQuntity={getCartQuntity(currentItem.id)}/>
           : <span>Item Not Found!</span>
       }
     </div>

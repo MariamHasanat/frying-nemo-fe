@@ -26,8 +26,8 @@ const Header = props => {
           </h1>
         </div>
         <div className="right">
-            <span>No of Cart{itemsCount}</span>
           <nav>
+            <span>&#128722; : {itemsCount}</span>
             <Link
              to='/add'
              className={location.pathname === '/add' ? 'current' : ''}
