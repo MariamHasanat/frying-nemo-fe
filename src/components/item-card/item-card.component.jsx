@@ -17,6 +17,15 @@ import './item-card.css';
  * @returns 
  */
 function ItemCard(props) {
+
+  const handleIncrement = () => {
+    props.dispatch({ type: 'INCREMENT_CART_QUANTITY', meal: props.item });
+  };
+
+  const handleDecrement = () => {
+    props.dispatch({ type: 'DECREMENT_CART_QUANTITY', meal: props.item });
+  };
+  
   return (
     <div className='card-container'>
       <img src={props.item.image} alt='food' />
@@ -28,12 +37,11 @@ function ItemCard(props) {
       <hr />
 
       <div className='card-footer'>
-
         <h4 className='item-price'>{props.item.price} $</h4>
         <div className='card-buttons'>
-          <button className='card-button'>-</button>
+          <button className='card-button' onClick={handleDecrement}>-</button>
           <span className='item-quantity'></span>
-          <button className='card-button'>+</button>
+          <button className='card-button' onClick={handleIncrement}>+</button>
         </div>
       </div>
     </div>

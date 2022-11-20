@@ -15,7 +15,7 @@ const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]')
  * ingredients: string[];
  * price: number;
  * category: string;
- * image: string;
+ * image: string; 
  * }>}
  */
 const initialItems = [];
@@ -84,7 +84,6 @@ const View = (props) => {
   };
 
 
-
   return (
     <div className="view-page">
       <h1>All Menu Items</h1>
@@ -102,7 +101,7 @@ const View = (props) => {
           filteredItems.map(
             (item, index) => {
               return (
-                <ItemCard item={item} key={item + index} />
+                <ItemCard item={item} key={item + index} dispatch={props.dispatch} />
               );
 
             })

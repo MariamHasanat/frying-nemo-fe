@@ -5,11 +5,12 @@
 .header {
   padding: 16px;
   height: 2rem;
-  background-color: rgba(0, 0, 0, 0.12);
+  background-color: #0000001f;
   display: flex;
   justify-content: space-between;
   align-content: flex-start;
   align-items: center;
+    
 }
 
 .header>.logo {

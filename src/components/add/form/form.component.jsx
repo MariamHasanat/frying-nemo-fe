@@ -58,7 +58,7 @@ const Form = () => {
 
         <Textarea name="description" label="description" />
 
-        <Select name="category" label="menu" options={CATEGORIES} />
+        <Select name="category" label="category" options={CATEGORIES} />
 
         <MultivalueInput
           label="ingredients"

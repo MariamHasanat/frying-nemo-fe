@@ -8,6 +8,10 @@ import { UserContext } from '../../../components/providers/user-provider';
 const Header = (props) => {
   const userContext = useContext(UserContext);
   const location = useLocation();
+
+  let itemsCounter = 0;
+  props.cart.forEach(item => itemsCounter += item.quantity);
+
   return (
     <div className={'header'}>
       <div className='logo'>
@@ -25,7 +29,7 @@ const Header = (props) => {
         </nav>
       </div>
 
-      <span>Your Cart: {props.cart.length}</span>
+      <span>Your Cart: {itemsCounter}</span>
       {
         userContext.user !== null &&
         <div className='user-info'>
