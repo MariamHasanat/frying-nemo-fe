@@ -23,7 +23,14 @@
   column-gap: 20px;
   align-items: center;
 }
-
+.count{
+  font-family: ui-rounded;
+    font-size: smaller;
+    box-shadow: 1px 1px 1px 1px #97979730;
+    padding: 3px;
+    background: unset;
+    background-color: #f1efef6e;
+}
 
 .webisteHeader > .left > h1 > img {
   height: 35px;

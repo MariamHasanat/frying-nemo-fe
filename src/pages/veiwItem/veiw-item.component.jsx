@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getItem } from '../../services/items';
 import { useNavigate } from 'react-router-dom';
-import Item from '../../components/item/item.component';
 import './veiw-item.css';
+import PriceBar from '../veiw/price-bar/price-bar.component';
 
 /**
  * @type {Array<{
@@ -15,7 +15,7 @@ import './veiw-item.css';
  * image: string;
  * }>}
  */
-
+ 
 const AddveiwItem = (props) => {
  const params = useParams();
  const [currentItem,setCurrentItem] = useState(null);
@@ -27,7 +27,13 @@ const navigate =useNavigate();
   navigate('/404')
  }, []
 );
-
+const getCartQuantity = (id) => {
+  const currentCartItem = props.cart.find((cartItem) => cartItem.meal.id === id);
+  if (currentCartItem)
+     return currentCartItem.quantity;
+  else 
+    return 0;
+};
 
  return (
   <div className="view-item-page">
@@ -41,7 +47,7 @@ const navigate =useNavigate();
             <p className="ingredients"><b>Ingredients:</b>
               <br />{currentItem.ingredients.join(", ")}</p>
           </div>
-         
+          <PriceBar item={currentItem} dispatch={props.dispatch} cartQuantitiy={getCartQuantity(currentItem.id, props.cart)}/>
         </div> : navigate('/error')}
 
   </div>

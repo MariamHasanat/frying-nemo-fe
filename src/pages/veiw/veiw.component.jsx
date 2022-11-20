@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { UserContext } from '../../components/providers/user.provider.component';
-import FilterBar from './filter-bar/filter-bar.component';
-import Item from '../../components/item/item.component';
-import './veiw.css';
-import { useContext } from 'react';
+import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { UserContext } from "../../components/providers/user.provider.component";
+import FilterBar from "./filter-bar/filter-bar.component";
+import Item from "../../components/item/item.component";
+import "./veiw.css";
+import { useContext } from "react";
 
 /**
  * @type {Array<{
@@ -23,8 +23,8 @@ const Addveiw = (props) => {
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
   const navigate = useNavigate();
-  const searchTermsFromURL = params.get('searchTerms') || '';
-  const categoriesFromURL = params.getAll('category') || '';
+  const searchTermsFromURL = params.get("searchTerms") || "";
+  const categoriesFromURL = params.getAll("category") || "";
   const userContext = useContext(UserContext);
 
   const getMenuItems = () => {
@@ -32,7 +32,7 @@ const Addveiw = (props) => {
 
     // Run the code inside after 1000 milliseconds (1 Second)
     setTimeout(() => {
-      const items = JSON.parse(localStorage.menuItems || '[]');
+      const items = JSON.parse(localStorage.menuItems || "[]");
       setMenuItems(items);
       setLoading(false);
     }, 1000);
@@ -40,7 +40,7 @@ const Addveiw = (props) => {
   useEffect(() => {
     // To check if the user is already logged in, send him to the view page
     if (!userContext.user?.id) {
-      navigate('/login', { replace: false });
+      navigate("/login", { replace: false });
     }
   }, []);
 
@@ -48,21 +48,21 @@ const Addveiw = (props) => {
     getMenuItems();
   }, []);
 
-  const filteredItems = menuItems.filter(item => {
+  const filteredItems = menuItems.filter((item) => {
     /**
      * Check if search terms are somewhere inside given string.
-     * @param {string} str 
+     * @param {string} str
      */
-    const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
+    const doesItMatch = (str) =>
+      str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
 
-    let match = (
+    let match =
       doesItMatch(item.name) ||
       doesItMatch(item.description) ||
-      item.ingredients.some(ingredient => doesItMatch(ingredient))
-    );
+      item.ingredients.some((ingredient) => doesItMatch(ingredient));
 
     if (categoriesFromURL.length) {
-      match = match && (categoriesFromURL.includes(item.category));
+      match = match && categoriesFromURL.includes(item.category);
     }
 
     return match;
@@ -79,14 +79,20 @@ const Addveiw = (props) => {
     newParams.delete(name);
 
     if (Array.isArray(value)) {
-      value.forEach(item => newParams.append(name, item));
+        value.forEach((item) => newParams.append(name, item));
     } else if (value) {
-      newParams.set(name, value.trim());
+        newParams.set(name, value.trim());
     }
 
     setParams(newParams);
   };
-
+  const getCartQuantity = (id) => {
+    const currentCartItem = props.cart.find((cartItem) => cartItem.meal.id === id);
+    if (currentCartItem)
+       return currentCartItem.quantity;
+    else 
+      return 0;
+  };
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
@@ -96,19 +102,22 @@ const Addveiw = (props) => {
         setParam={setParam}
       />
       {
-       
-            <div className="items-container">
-              {
-                filteredItems.length
-                  ? filteredItems.map((item, index) => <Item data={item} key={item.name + index} />)
-                  : (
-                    <div className="no-results">
-                      <p>No results found</p>
-                    </div>
-                  )
-              }
+        <div className="items-container">
+          {filteredItems.length ? (
+            filteredItems.map((item, index) => (
+              <Item
+                data={item}
+                key={item.name + index}
+                dispatch={props.dispatch}
+                cartQuantity={getCartQuantity(item.id)}
+              />
+            ))
+          ) : (
+            <div className="no-results">
+              <p>No results found</p>
             </div>
-          
+          )}
+        </div>
       }
     </div>
   );

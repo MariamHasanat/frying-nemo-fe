@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import "./item.css";
+import PriceBar from "../../pages/veiw/price-bar/price-bar.component";
+
 /**
  * render a single menu item based on the data
  * @param {
@@ -12,30 +14,25 @@ import "./item.css";
  * image:string;
  * ingredients: string[];
  * }
- * }
+ * },
+ * dispatch: React.DispatchWithoutAction
  * }props
  */
-const Item = ({data}) => {
+const Item = (props) => {
 
   return (
     <div className="item-card">
       <div className="img">
-        <img src={data.image} alt="food" />
+        <img src={props.data.image} alt="food" />
       </div>
       <div className="info">
-      <Link to={`/view-details/${data.id}`} ><h2>{data.name}</h2></Link>
-        <p>{data.description}</p>
-        <p className="ingredients">{data.ingredients.join(",")}</p>
+      <Link to={`/view-details/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
+        <p>{props.data.description}</p>
+        <p className="ingredients">{props.data.ingredients.join(",")}</p>
         <hr />
       </div>
-      <div className="price">
-        <span>{data.price}</span>
-        <div className="add-cart">
-          <button>+</button>
-          <input type="number" max={500} />
-          <button>-</button>
-        </div>
-      </div>
+      <PriceBar item={props.data} dispatch={props.dispatch} />
+
     </div>
   );
 };

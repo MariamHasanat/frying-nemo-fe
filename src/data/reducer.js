@@ -1,16 +1,10 @@
 /* eslint-disable default-case */
-import AddPage from "./pages/add/add.component";
-import "./common.css";
-import React, { useReducer } from "react";
-import Addveiw from "./pages/veiw/veiw.component";
-import Header from "./components/core/header/header.component";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import AddveiwItem from "./pages/veiwItem/veiw-item.component";
-import LoginPage from "./pages/login/login.component";
-import UseProvider from "./components/providers/user.provider.component";
+import { useReducer } from 'react';
 
 const initialState = [];
-function App() {
+
+const useMyReducer = () => {
+
   const reducer = (cart, action) => {
     // This function updates the state
     switch (action.type) {
@@ -61,22 +55,5 @@ function App() {
 
   const [cart, dispatch] = useReducer(reducer, initialState);
 
-  return (
-    <UseProvider>
-      <div>
-        <BrowserRouter>
-          <Header cart={cart}/>
-          <Routes>
-            <Route path="/" element={<Navigate to="/view" replace />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/add" element={<AddPage />} />
-            <Route path="/view" element={<Addveiw dispatch={dispatch} cart={cart}/>} />
-            <Route path="/view-details/:id" element={<AddveiwItem dispatch={dispatch} cart={cart}/>} />
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </UseProvider>
-  );
-}
-
-export default App;
+  return { cart, dispatch };
+};
