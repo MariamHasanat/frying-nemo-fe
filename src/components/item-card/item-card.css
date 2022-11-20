@@ -71,6 +71,7 @@
   background-color: rgb(255, 126, 80);
   border: none;
   line-height: 0;
+  color: white;
 }
 
 .card-buttons .card-button:hover {

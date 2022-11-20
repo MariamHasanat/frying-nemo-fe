@@ -22,14 +22,16 @@ const Header = (props) => {
       <div className='header-navigation-buttons'>
         <nav>
 
-          <Link to='/add' className={location.pathname === '/add' ? 'current-page' : ''}>Add</Link>
+          <Link to='/add' className={location.pathname === '/add' ? 'current-page' : 'unselected-page'}>Add</Link>
 
-          <Link to='/view' className={location.pathname === '/view' ? 'current-page' : ''}> View</Link>
+          <Link to='/view' className={location.pathname === '/view' ? 'current-page' : 'unselected-page'}> View</Link>
+
+          <Link to='/cart' className={location.pathname === '/cart' ? 'current-page' : 'unselected-page'}>Cart</Link>
 
         </nav>
       </div>
 
-      <span>Your Cart: {itemsCounter}</span>
+      <span>Your Cart: <span className='items-counter'>{itemsCounter}</span></span>
       {
         userContext.user !== null &&
         <div className='user-info'>

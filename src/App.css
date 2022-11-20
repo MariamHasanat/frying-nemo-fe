@@ -1,0 +1,11 @@
+.header {
+  position: fixed;
+  width: 100%;
+  padding: 20px 0;
+  background-color: whitesmoke;
+  border-bottom: 0.2px solid grey;
+}
+
+.body{
+  padding-top: 80px;
+}

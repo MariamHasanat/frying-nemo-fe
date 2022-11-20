@@ -5,12 +5,12 @@
 .header {
   padding: 16px;
   height: 2rem;
-  background-color: #0000001f;
+  /* background-color: #4c4c4c1f; */
   display: flex;
   justify-content: space-between;
   align-content: flex-start;
   align-items: center;
-  
+
 }
 
 .header>.logo {
@@ -47,13 +47,34 @@ a {
   cursor: pointer;
 }
 
+
+.unselected-page {
+  min-width: 100px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.unselected-page:hover {
+  transition: background-color 0.4s ease-out;
+  border-bottom: 2px solid orangered;
+  /* background-color: rgba(255, 68, 0, 0.798); */
+  /* color: white; */
+  /* border-radius: 4px; */
+}
+
 .header-navigation-buttons>nav>.current-page {
   box-sizing: border-box;
   border-bottom: 2px solid orangered;
-  /* border-radius: 3px; */
   color: orangered;
   font-weight: bold;
+  min-width: 100px;
+  text-align: center;
+  padding-bottom: 10px;
+}
 
+.items-counter {
+  color: orangered;
+  font-weight: bold;
 }
 
 .user-profile>img {
