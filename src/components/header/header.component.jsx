@@ -11,6 +11,13 @@ const Header = props => {
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
 
+  let itemsCount = 0;
+  for (let i = 0; i < props.cart.length; i++) {
+    itemsCount += props.cart[i].quantity;
+  }
+
+
+
   return (
     <header className="websiteHeader">
       <div className="left">
@@ -20,6 +27,8 @@ const Header = props => {
         </h1>
       </div>
       <div className="right" >
+
+        <span>Your Cart {itemsCount}</span>
         <nav>
           <Link to='/add' className={location.pathname === '/add' ? 'current' : ''}
           >Add</Link>
