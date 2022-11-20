@@ -1,9 +1,9 @@
-import AddPage from "./pages/add/add.component";
-import ViewPage from "./pages/view/view.component";
-import ViewItemPage from "./pages/view-item/view-item.component";
+import AddPage from "./pages/add/add.page";
+import ViewPage from "./pages/view/view.page";
+import ViewItemPage from "./pages/view-item/view-item.page";
 import Header from "./components/core/header/header.component";
-import NotFound from "./pages/not-found/not-found.component";
-import Login from "./pages/login/login.component";
+import NotFound from "./pages/not-found/not-found.page";
+import Login from "./pages/login/login.page";
 import './index.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import React from "react";
