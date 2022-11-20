@@ -10,13 +10,9 @@ import React from "react";
 import UserProvider from "./components/providers/user-provider.component";
 import Guard from "./components/guard/guard.component";
 import { useReducer } from "react";
+import { reducer } from './reducers/cart';
 
 function App() {
-    const reducer = (cart, action) => {
-        // if (action.type === 'add_new_item')
-        return [...cart, { meal: action.meal, quantity: 1 }];
-
-    };
 
     const [cart, dispatch] = useReducer(reducer, []);
 

@@ -1,13 +1,13 @@
 const PlusMinusButtons = (props) => {
 
     const handleIncrement = () => {
-        console.log('handling increment')
-        props.dispatch({ type: 'add_new_item', meal: props.item });
+        props.dispatch({ type: 'INCREMENT_CART_QUANTITY', meal: props.item });
+      };
+    const handleDecrement = () => {
+        props.dispatch({ type: 'DECREMENT_CART_QUANTITY', meal: props.item });
       };
     
-    const subtractOne = (oldVal) => {
-        return (oldVal > 0) ? (oldVal - 1) : oldVal;
-    };
+  
 
     return (
         <div className="item-quantity">
@@ -20,7 +20,7 @@ const PlusMinusButtons = (props) => {
             <span className='quant'>{props.quantity}</span>
             <button
                 className='nemo-button'
-                onClick={() => props.setQuantity((oldVal) => subtractOne(oldVal))}>
+                onClick={handleDecrement}>
                 <b>-</b>
             </button>
         </div>
