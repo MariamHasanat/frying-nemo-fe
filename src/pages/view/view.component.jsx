@@ -104,7 +104,13 @@ const ViewPage = (props) => {
             <div className="items-container">
               {
                 filteredItems.length
-                  ? filteredItems.map((item, index) => <Item data={item} key={item.name + index} />)
+                  ? filteredItems.map((item, index) => (
+                    <Item
+                      data={item}
+                      key={item.name + index}
+                      dispatch={props.dispatch}
+                    />
+                  ))
                   : (
                     <div className="no-results">
                       <img src={pic} alt="No results" />

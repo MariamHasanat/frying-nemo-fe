@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PriceBar from '../price-bar/price-bar.component';
 import './item.css';
 /**
  * Render a single menu item based on the data passed
@@ -11,7 +12,8 @@ import './item.css';
  *  price: number;
  *  category: string;
  *  ingredients: string[];
- * }
+ * },
+ * dispatch: React.DispatchWithoutAction;
  * }} props 
  */
 const Item = (props) => {
@@ -29,14 +31,10 @@ const Item = (props) => {
         {/* instead of join you can use // map((ing, i) => ing + (i < props.data.ingredients.length - 1 ? ', ' : ' ')) */}
         <hr />
       </div>
-      <div className="price">
-        <span>{props.data.price}$</span>
-        <div className="add-cart">
-          <button>+</button>
-          <input type="number" max={500} />
-          <button>-</button>
-        </div>
-      </div>
+
+      <PriceBar item={props.data} dispatch={props.dispatch} />
+      
+
     </div>
   );
 };
