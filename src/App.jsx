@@ -29,7 +29,7 @@ function App() {
                         <Route path="/login" element={<Login />} replace />
                         <Route path="/" element={<Navigate to='/view' />} replace />
                         <Route path="/add" element={<Guard authorized={['ADMIN']}><AddPage /></Guard>} />
-                        <Route path="/view" element={<ViewPage />} dispatch={dispatch} />
+                        <Route path="/view" element={<ViewPage dispatch={dispatch} />} />
                         <Route path="/*" element={<NotFound />} />
                         <Route path="/view/:id" element={<ViewItemPage />} />
                     </Routes>
