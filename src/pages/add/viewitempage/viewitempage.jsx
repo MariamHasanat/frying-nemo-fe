@@ -6,6 +6,7 @@ import PriceBox from '../../../components/common/price/price';
 import Item from '../../../components/item/items/item';
 import Spinner from '../../../components/spinner/spinner';
 import './viewitempage.css';
+import { getQuantity } from '../../../util/util';
 /**
  * @type {Array<{
  * id: number;
@@ -36,13 +37,7 @@ const ViewItemPage = (props) => {
 
   }, []);
 
-  const getQuantity=(id)=>{
-    const currentCartItem =  props.cart.find(cartItem =>(cartItem.meal.id===id))
-    if(currentCartItem)
-    return currentCartItem.quantity;
-    else 
-    return 0;
-   }
+
   return (
     <div className="view-item-page">
 
@@ -63,7 +58,7 @@ const ViewItemPage = (props) => {
                 <br />{currentItem.ingredients.join(", ")}</p>
 
             </div>
-          <PriceBox  item={currentItem}  dispatch={props.dispatch} cartQuantity={getQuantity(currentItem.id)} />
+          <PriceBox  item={currentItem}  dispatch={props.dispatch} cartQuantity={getQuantity(currentItem.id,props.cart)} />
           </div>
           
       }

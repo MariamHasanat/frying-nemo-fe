@@ -9,6 +9,7 @@ import Select from '../../../components/common/select/select';
 import FilterBar from '../../../components/filter-bar/filter-bar';
 import { useContext } from 'react';
 import { UserContext } from '../../../components/provider/provider';
+import { getQuantity } from '../../../util/util';
 
 /**
  * @type {Array<{
@@ -95,13 +96,7 @@ const View = (props) => {
   useEffect(() => {
     getMenuItem();
   }, []);
-   const getQuantity=(id)=>{
-    const currentCartItem =  props.cart.find(cartItem =>(cartItem.meal.id===id))
-    if(currentCartItem)
-    return currentCartItem.quantity;
-    else 
-    return 0;
-   }
+ 
   return (
     <div className='view-page'>
       <h1>View menu item </h1>
@@ -126,7 +121,7 @@ const View = (props) => {
                    data={item}
                     key={item.name + index} 
                     dispatch={props.dispatch} 
-                    cartQuantity={getQuantity(item.id)}
+                    cartQuantity={getQuantity(item.id,props.cart)}
                     />
                     )
                   
