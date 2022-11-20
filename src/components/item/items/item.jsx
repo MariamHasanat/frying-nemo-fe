@@ -16,7 +16,7 @@ const Item = (props) => {
          <hr/>
       </div>
     
-      <PriceBox  item = {props.data}   dispatch  = {props.dispatch}/>
+      <PriceBox  item = {props.data}   dispatch ={props.dispatch} cartQuantity={props.cartQuantity}/>
     </div>
   );
 };

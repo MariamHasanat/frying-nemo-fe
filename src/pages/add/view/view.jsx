@@ -95,6 +95,13 @@ const View = (props) => {
   useEffect(() => {
     getMenuItem();
   }, []);
+   const getQuantity=(id)=>{
+    const currentCartItem =  props.cart.find(cartItem =>(cartItem.meal.id===id))
+    if(currentCartItem)
+    return currentCartItem.quantity;
+    else 
+    return 0;
+   }
   return (
     <div className='view-page'>
       <h1>View menu item </h1>
@@ -114,8 +121,16 @@ const View = (props) => {
             <div className="items-container">
               {
                 filterItem.length
-                  ? filterItem.map((item, index) => <Item   data={item} key={item.name + index} dispatch={props.dispatch} />)
-                  : (
+                  ? filterItem.map((item, index) => 
+                  <Item  
+                   data={item}
+                    key={item.name + index} 
+                    dispatch={props.dispatch} 
+                    cartQuantity={getQuantity(item.id)}
+                    />
+                    )
+                  
+                    : (
                     <div className="no-results">
                       <img src="./frustrated-realistic.jpg" alt="No results" />
                       <p>No results found</p>

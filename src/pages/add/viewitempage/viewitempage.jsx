@@ -36,6 +36,13 @@ const ViewItemPage = (props) => {
 
   }, []);
 
+  const getQuantity=(id)=>{
+    const currentCartItem =  props.cart.find(cartItem =>(cartItem.meal.id===id))
+    if(currentCartItem)
+    return currentCartItem.quantity;
+    else 
+    return 0;
+   }
   return (
     <div className="view-item-page">
 
@@ -56,7 +63,7 @@ const ViewItemPage = (props) => {
                 <br />{currentItem.ingredients.join(", ")}</p>
 
             </div>
-          <PriceBox  item={currentItem}/>
+          <PriceBox  item={currentItem}  dispatch={props.dispatch} cartQuantity={getQuantity(currentItem.id)} />
           </div>
           
       }
