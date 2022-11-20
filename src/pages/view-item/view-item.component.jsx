@@ -47,6 +47,7 @@ const ViewItemPage = (props) => {
             <p><b>Item Description: </b> {currentItem.description}</p>
             <p className="ingredients"><b>Ingredients:</b>
               <br />{currentItem.ingredients.join(", ")}</p>
+       
           </div>
           <PriceBar data={currentItem}   cartQuantity={getCartQuantity(currentItem.id,props.cart)} dispatch={props.dispatch} />
         </div>
