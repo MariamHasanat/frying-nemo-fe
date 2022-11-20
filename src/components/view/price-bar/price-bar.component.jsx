@@ -12,7 +12,7 @@ const PriceBar = (props) => {
         <span >{props.item.price} $</span>
         <div className='add-cart'> 
           <button onClick={decrementHandler}> - </button>
-          <input type="number" className='ordersCount' />
+          <input type="number" className='ordersCount' disabled value={props.cartQuantity}/>
           <button onClick={incrementHandler}> + </button>
         </div>
       </div>

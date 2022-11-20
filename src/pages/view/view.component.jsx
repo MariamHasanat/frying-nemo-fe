@@ -23,7 +23,7 @@ const ViewPage = (props) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState(initialItems);
-  //param is an instance of complex class (URLSearchParams) so I need to use get (name) to access spesific param 
+  //param is an instance of complex class (URLSearchParams) so I need to use get (name) to access specific param 
   const [param, setParam] = useSearchParams();
   const searchUsingURL = param.get('searchTerms') || '';
   const categoryUsingURL = param.getAll('category') || '';
@@ -76,6 +76,14 @@ const ViewPage = (props) => {
     return match;
   });
 
+  const getCartQuantity = (id) => {
+    const cartItem = props.cart.find (item => item.meal.id === id) ;
+    if (cartItem) 
+      return cartItem.quantity ;
+    else
+      return 0 ;
+  }
+
   return (
     <div className='view'>
       <h1 align='center'>View Menu Items</h1>
@@ -96,7 +104,7 @@ const ViewPage = (props) => {
           {
             filteredIetems.length
               ? filteredIetems.map((item, index) => <div key={item.name + index}>
-                <MenuItem item={item} dispatch = {props.dispatch}/>
+                <MenuItem item={item} dispatch = {props.dispatch} cartQuantity = {getCartQuantity(item.id)}/>
               </div>)
               : <div className="img">
                 <h5>No such item satisfies your requirements!</h5>
