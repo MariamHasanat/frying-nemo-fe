@@ -23,6 +23,14 @@ const ViewItemPage = (props) => {
         setLoading(false);
     }, [params.id]);
 
+    const getItemQuantity = (id) => {
+        const currentItem = props.cart.find(item => item.meal.id === id);
+        if (currentItem) {
+            return currentItem.quantity;
+        }
+        return 0;
+    };
+
     return (
         <div className='view-item-page'>
             {loading
@@ -31,7 +39,11 @@ const ViewItemPage = (props) => {
                     <>
                         <h2>One-Item-ViewPage</h2>
                         {currentItem
-                            ? <ItemCard {...currentItem} />
+                            ? <ItemCard
+                                item={currentItem}
+                                dispatch={props.dispatch}
+                                itemQuantity={getItemQuantity(currentItem.id)}
+                            />
                             : <NotFound />
                         }
                     </>

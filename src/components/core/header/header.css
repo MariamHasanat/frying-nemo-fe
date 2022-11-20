@@ -1,23 +1,22 @@
 @import url('http://fonts.cdnfonts.com/css/new-walt-disney-font');
 
 .header {
-    /* background-color: #f8f9fb; */
+    position: sticky;
+    top: 0;
+    background-color: white;
     padding: 0 5px;
     font-family: new new-walt-disney-font, sans-serif;
     margin: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #666;
 }
 
 .header>img {
     margin-left: 5px;
     vertical-align: middle;
     border-radius: var(--border-radius);
-}
-
-.header>hr {
-    margin: 0;
 }
 
 .header>span>a {
@@ -46,7 +45,7 @@
     margin-right: 15px;
     background-color: #efefef;
     height: 40px;
-    margin-top: 15px;
+    margin-top: 6px;
     border-radius: var(--border-radius);
 
 }

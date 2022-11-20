@@ -27,7 +27,7 @@ function App() {
                         <Route path="/add" element={<Guard authorized={['ADMIN']}><AddPage /></Guard>} />
                         <Route path="/view" element={<ViewPage dispatch={dispatch} cart={cart}/>} />
                         <Route path="/*" element={<NotFound />} />
-                        <Route path="/view/:id" element={<ViewItemPage />} />
+                        <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart}/>} />
                     </Routes>
                 </BrowserRouter>
             </UserProvider>

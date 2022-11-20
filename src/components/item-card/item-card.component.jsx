@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './item-card.css';
 import { Link } from 'react-router-dom';
 import Card from '../common/card/card.component';
@@ -11,16 +10,6 @@ import PlusMinusButtons from '../plusMinusButtons/plusMinusButtons.component';
 
 
 const ItemCard = (props) => {
-    // const getImage = () => {
-    //     if (/http(s)?:\/\/picsum.photos\/\d+(\/\d+)?/.test(props.image)) {
-    //         // console.log('image was found')
-    //         return props.image;
-    //     }
-    //     else {
-    //         // console.log('image was NOT found')
-    //         return 'images/default.jpg';
-    //     }
-    // };
     return (
         <div className='item-card'>
             <Card>
@@ -34,7 +23,7 @@ const ItemCard = (props) => {
                     <div className="price">
                         <h3>${props.item.price}</h3>
                     </div>
-                    <PlusMinusButtons item={props.item} quantity={props.itemQuantity} dispatch={props.dispatch}/>
+                    <PlusMinusButtons item={props.item} quantity={props.itemQuantity} dispatch={props.dispatch} />
                 </div>
             </Card>
         </div>
