@@ -43,10 +43,10 @@ const Item = (props) => {
                 </div>
 
             </div>
-            <PriceBar 
-            cartQuantity = {props.cartQuantity} 
-            item={props.item} 
-            dispatch={props.dispatch} />
+            <PriceBar
+                cartQuantity={props.cartQuantity}
+                item={props.item}
+                dispatch={props.dispatch} />
         </Card>
     );
 };
