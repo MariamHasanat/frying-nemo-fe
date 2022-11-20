@@ -13,7 +13,7 @@ export const UserContext = React.createContext(null);
 
 
 function App() {
-  
+
   const [cart, dispatch] = useReducer(reduce, initializationState);
   console.log(reduce);
   return (
@@ -28,7 +28,7 @@ function App() {
               <Route path="/add" element={<Guard Allowed={["ADMIN"]}><AddPage ></AddPage></Guard>} ></Route>
               <Route path="/" element={<Navigate to="/view"></Navigate>} ></Route>
               <Route path="/view" element={<ViewPage cart={cart} dispatch={dispatch} ></ViewPage>}></Route>
-              <Route path="/view/:id" element={<ViewItemPage></ViewItemPage>}></Route>
+              <Route path="/view/:id" element={<ViewItemPage cart={cart} dispatch={dispatch} ></ViewItemPage>}></Route>
               <Route path="/login" element={<LoginPage />} />
             </Routes>
 

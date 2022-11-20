@@ -4,7 +4,7 @@ import './view-item.css';
 import { getItem } from '../../services/items';
 import Spinner from '../../components/core/spinner/spinner.component';
 import PriceBar from '../../components/common/PriceBar/PriceBar';
-
+import { getCartQuantity } from '../../data/getCartQuantity';
 /**
  * @type {Array<{
  * id: number;
@@ -48,7 +48,7 @@ const ViewItemPage = (props) => {
             <p className="ingredients"><b>Ingredients:</b>
               <br />{currentItem.ingredients.join(", ")}</p>
           </div>
-          <PriceBar data={currentItem}/>
+          <PriceBar data={currentItem}   cartQuantity={getCartQuantity(currentItem.id,props.cart)} dispatch={props.dispatch} />
         </div>
       }
     </div>

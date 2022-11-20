@@ -8,6 +8,9 @@ const PriceBar = (props) => {
   const handleDecrement = () => {
     props.dispatch({ type: 'DECREMENT_CART_QUANTITY', meal: props.data });
   };
+  const handleDelete= () => {
+    props.dispatch({ type: "DELETE_CART_ITEM", meal: props.data });
+  };
 
   return (
     <div className="price">
@@ -15,7 +18,9 @@ const PriceBar = (props) => {
       <div className="add-cart">
         <button onClick={handleIncrement}>+</button>
         <input type="number" max={500} value={props.cartQuantity} disabled />
+      
         <button onClick={handleDecrement}>-</button>
+     
       </div>
     </div>
   );
