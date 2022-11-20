@@ -13,7 +13,7 @@
 
 .websiteHeader>.left>h1 {
   font-size: 18px;
-  color: #be441d;
+  color: #63358d;
   line-height: 1.2;
   display: flex;
   align-items: center;
@@ -21,6 +21,7 @@
   letter-spacing: 0.5px;
   margin: 0;
   margin-right: 20px;
+  font-family: cursive;
 }
 
 
@@ -53,7 +54,7 @@
 }
 
 .websiteHeader .right nav a.current {
-  background-color: #be441d;
+  background-color: #63358d;
   border-radius: 5px;
   color: white;
 }

@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import Spinner from '../../../components/core/header/spinner/spinner.component';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useContext } from 'react';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../../components/providers/user-provider.component';
 
 
 /**
