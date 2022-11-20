@@ -1,7 +1,7 @@
 .view-page {
   padding: 0px 32px;
   height: 100vh;
-
+  padding-top: 80px;
 }
 
 .items-container {

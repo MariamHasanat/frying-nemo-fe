@@ -6,7 +6,7 @@ const CartPage = () => {
 
   return (
     <div className='wrapper'>
-      <h1>Cart Page</h1>
+      <h1>Cart</h1>
     </div>
   );
 };

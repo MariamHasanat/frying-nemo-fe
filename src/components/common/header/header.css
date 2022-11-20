@@ -1,15 +1,20 @@
+
 .hidden {
   display: none;
 }
 
 .header {
-  padding: 16px;
+  top: 0;
   height: 2rem;
-  /* background-color: #4c4c4c1f; */
   display: flex;
   justify-content: space-between;
   align-content: flex-start;
   align-items: center;
+  position: fixed;
+  width: 100%;
+  padding: 20px 0;
+  background-color: whitesmoke;
+  border-bottom: 0.2px solid grey;
 
 }
 
@@ -52,14 +57,12 @@ a {
   min-width: 100px;
   text-align: center;
   box-sizing: border-box;
+  color: black;
 }
 
 .unselected-page:hover {
   transition: background-color 0.4s ease-out;
   border-bottom: 2px solid orangered;
-  /* background-color: rgba(255, 68, 0, 0.798); */
-  /* color: white; */
-  /* border-radius: 4px; */
 }
 
 .header-navigation-buttons>nav>.current-page {

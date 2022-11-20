@@ -7,11 +7,10 @@ import AddPage from "./pages/add/add.page";
 import ViewItem from "./pages/view-item/view-item.page";
 import LoginComponent from "./pages/login/login.page";
 import Test from "./pages/test/test.page";
-import Cart from "./pages/cart/cart.page";
 import UserProvider from "./components/providers/user-provider";
 import Guard from "./components/core/guard/guard.component";
-import './App.css';
 import CartPage from "./pages/cart/cart.page";
+// import './App.css';
 function App() {
 
   /**
@@ -36,7 +35,6 @@ function App() {
       <BrowserRouter>
         <UserProvider>
           <div className="header">
-
             <Guard component='header'><Header cart={cart} /></Guard>
           </div>
           <div className="body">
