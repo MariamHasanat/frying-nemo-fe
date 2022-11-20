@@ -17,11 +17,11 @@ import PriceBar from '../price-bar/price-bar.component';
  *     category: string;
  *     ingredients: string[];
  *    }, 
- *     dispatcher:React.DispatchWithoutAction;
+ *     dispatch:React.DispatchWithoutAction;
+ *     cartQuantity:number;
  *   }} props
  */
 const Item = (props) => {
-
     return (
         <Card>
             <Link to={`/view-details/${props.item.id}`}>
@@ -43,7 +43,10 @@ const Item = (props) => {
                 </div>
 
             </div>
-            <PriceBar item={props.item} dispatcher={props.dispatcher} />
+            <PriceBar 
+            cartQuantity = {props.cartQuantity} 
+            item={props.item} 
+            dispatch={props.dispatch} />
         </Card>
     );
 };
