@@ -19,7 +19,9 @@ const ViewPage = (props) => {
    * price: number;
    * category: string;
    * image: string;
-   * }>}
+   * },
+   * dispatch: React.DispatchWithoutAction
+   * >}
    */
   
   const [menuItems, setMenuItems] = useState(initialItems);
@@ -86,7 +88,12 @@ const ViewPage = (props) => {
             <div className="items-container">
               {
                 filteredItem.length
-                  ? filteredItem.map((item, index) => <Item data={item} key={item.name + index} />)
+                  ? filteredItem.map((item, index) => 
+                  <Item 
+                  data={item} 
+                  key={item.name + index} 
+                  dispatch={props.dispatch} 
+                  />)
                   : (
                     <div className="no-results">
                       <img src="./frustrated-realistic.png" alt="No results" />

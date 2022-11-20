@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './item.css';
+import PriceBar from './priceBar/priceBar';
 
 
 /** 
@@ -27,14 +28,7 @@ const Item = (props) => {
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients.join(", ")}</p>
       </div>
-      <div className="price">
-        <span>${props.data.price}</span>
-        <div className="add-cart">
-          <button>+</button>
-          <input type="number" max={500} />
-          <button>-</button>
-        </div>
-      </div>
+      <PriceBar item={props.data} dispatch={props.dispatch} />
     </div>
   );
 };
