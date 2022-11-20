@@ -31,6 +31,17 @@ const ViewPage = (props) => {
   const MINParams = Params.get('Min') || "";
   const MAXParams = Params.get('Max') || "";
   const ContextUser=useContext(UserContext)
+ const getCartQuantity= (id)=>{
+const currentCartQun=props.cart.find((cartItem)=>{
+ if(cartItem.meal.id===id)
+  return props.cart;
+})
+if(currentCartQun){
+return currentCartQun.quantity
+}
+
+else return 0
+  }
   const getMenuItems = () => {
     setLoading(true);
 
@@ -122,7 +133,7 @@ const ViewPage = (props) => {
         ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
         : <div className="items-container">
           {
-            filteredMenu.map((item, index) => <Item dispatch={props.dispatch} data={item} key={item.name + index} />)
+            filteredMenu.map((item, index) => <Item  cartQuantity={getCartQuantity(item.id)} dispatch={props.dispatch} data={item} key={item.name + index} />)
           }
         </div>
       }
