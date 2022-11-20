@@ -4,20 +4,9 @@ import './view-item.css';
 import { getItem } from '../../services/items';
 import Spinner from '../../components/core/spinner/spinner.component';
 import PriceBar from '../../components/view/price-bar/price-bar.component';
+import { getCartQuantity } from '../../utils/cart';
 
-/**
- * @type {Array<{
- * id: number;
- * name: string;
- * description: string;
- * ingredients: string[];
- * price: number;
- * category: string;
- * image: string;
- * }>}
- */
-
-const ViewItemPage = () => {
+const ViewItemPage = (props) => {
   const params = useParams();
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
@@ -33,7 +22,6 @@ const ViewItemPage = () => {
     setLoading(false);
   }, []);
 
-
   return (
     <div className="view-item-page">
       {loading
@@ -48,7 +36,11 @@ const ViewItemPage = () => {
             <p className="ingredients"><b>Ingredients:</b>
               <br />{currentItem.ingredients.join(", ")}</p>
           </div>
-          <PriceBar item={currentItem} />
+          <PriceBar
+            item={currentItem}
+            dispatch={props.dispatch}
+            cartQuantity={getCartQuantity(currentItem.id, props.cart)}
+          />
         </div>
       }
     </div>

@@ -6,6 +6,7 @@ import Spinner from '../../components/core/spinner/spinner.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import Item from '../../components/view/item/item.component';
 import './view.css';
+import { getCartQuantity } from '../../utils/cart';
 
 /**
  * @type {Array<{
@@ -88,15 +89,6 @@ const ViewPage = (props) => {
     setParams(newParams);
   };
 
-  const getCartQuantity = (id) => {
-    const currentCartItem = props.cart.find(cartItem => (cartItem.meal.id === id));
-    if (currentCartItem) {
-      return currentCartItem.quantity;
-    } else {
-      return 0;
-    }
-  };
-
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
@@ -117,7 +109,7 @@ const ViewPage = (props) => {
                       data={item}
                       key={item.name + index}
                       dispatch={props.dispatch}
-                      cartQuantity={getCartQuantity(item.id)}
+                      cartQuantity={getCartQuantity(item.id, props.cart)}
                     />
                   ))
                   : (

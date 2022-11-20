@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import './header.css';
 import logo from '../../../assets/nemo.svg';
+import cartIcon from '../../../assets/cart.svg';
 import { UserContext } from '../../providers/user-provider.component';
 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -24,7 +25,6 @@ const Header = (props) => {
         </h1>
       </div>
       <div className="right">
-        <span>Your Cart {itemsCount}</span>
         <nav>
           <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
             Add
@@ -33,6 +33,10 @@ const Header = (props) => {
             View
           </Link>
         </nav>
+        <Link className="cart" to="cart">
+          <img src={cartIcon} alt="cart icon" />
+          <span className="count">{itemsCount}</span>
+        </Link>
         {
           userContext.user &&
           <span className="user-badge">
