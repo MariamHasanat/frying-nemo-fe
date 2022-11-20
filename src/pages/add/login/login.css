@@ -1,27 +1,26 @@
 .login-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 50px;
-  }
-  
-  .login-page>form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    row-gap: 30px;
-    background-color: #fafafa;
-    border: 2px solid #943e8d;
-    padding: 60px 40px;
-  }
-  
-  .login-page>form>h1 {
-    font-size: 28px;
-    color: rgb(99 53 141);
-    line-height: 0.2;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-family: cursive;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.login-page>form {
+  display: flex;  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 30px;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  padding: 60px 40px;
+}
+
+.login-page>form>h1 {
+  font-size: 28px;
+  color: #7877a7;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: cursive;
+}

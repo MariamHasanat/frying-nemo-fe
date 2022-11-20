@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import Spinner from '../../../components/core/header/spinner/spinner.component';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useContext } from 'react';
-import { UserContext } from '../../../components/providers/user-provider.component';
+import { UserContext } from '../../../components/provider/user-provider.component';
 
 
 /**
@@ -105,7 +105,7 @@ const ViewPage = (props) => {
             <div className="items-container">
               {
                 filteredItems.length
-                  ? filteredItems.map((item, index) => <Item data={item} key={item.name + index} />)
+                  ? filteredItems.map((item, index) => <Item data={item} key={item.name + index}  dispatch={props.dispatch}/>)
                   : (
                     <div className="no-results">
                       <img src="./frustrated-realistic.png" alt="No results" />
@@ -121,6 +121,7 @@ const ViewPage = (props) => {
 };
 
 export default ViewPage;
+
 
 
 
