@@ -2,6 +2,7 @@
 import { UserContext } from '../components/add/form/provider/UserProvider.jsx';
 import { Link , useLocation, useNavigate } from 'react-router-dom'
 import picture from '../assests/imges.jpg'
+import cartIcon from '../assests/cart1.svg'
 import { useContext } from 'react';
 import './Header.css';
 
@@ -27,10 +28,13 @@ const Header = props => {
         </div>
         <div className="right">
           <nav>
-            <Link 
-              to='/cart'>
-              &#128722; : {itemsCount}
-            </Link>
+            <div className="cart-icon">
+              <Link
+                to='/cart'>
+                  <img src={cartIcon} alt=""/>
+                <span>{itemsCount}</span>
+              </Link>
+            </div>
             <Link
              to='/add'
              className={location.pathname === '/add' ? 'current' : ''}
