@@ -53,14 +53,7 @@ const Cards = (props) => {
   }
     return(match);
   });
-  useEffect(() => {
-    // To check if the user is already logged in, send him to the view page
-    if (!props.user?.id) {
-      navigate('/login', { replace: false });
-    }
-  }, [props.user?.id,navigate]);
 
-  
   return (
     <div>
         <FilteredSearch

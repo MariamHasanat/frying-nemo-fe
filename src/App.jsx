@@ -16,11 +16,11 @@ function App() {
       <BrowserRouter>
       <Header user={user} /> 
         <Routes>
-          <Route path="/view" element={<ViewPage user={user} />} />
           <Route path="/view-item/:id" element={<ViewItemPage />} />
-          <Route path="/add" element={<AddPage user={user} />} />
           <Route path="/login" element={<LoginPage user={user} setUser={setUser} />} />
-          <Route path="/" element={<Navigate to="/view" />} />
+          <Route path="/add" element={<AddPage user={user} />} />
+          <Route path="/view" element={<ViewPage user={user} />} />
+          <Route path="/" element={<Navigate to="/view" replace />} />
           <Route path="/*" element={<ErorrPage />} />
         </Routes>
       </BrowserRouter>

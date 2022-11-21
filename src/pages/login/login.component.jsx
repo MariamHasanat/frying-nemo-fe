@@ -6,6 +6,7 @@ import './login.css';
 
 const LoginPage = (props) => {
   const navigate = useNavigate();
+
   useEffect(() => {
     // To check if the user is already logged in, send him to the view page
     if (props.user?.id) {
@@ -57,4 +58,4 @@ const LoginPage = (props) => {
   );
 };
 
-export default LoginPage;
+export default LoginPage;;
