@@ -39,10 +39,21 @@
   min-width: 200px;
   display: flex; 
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: flex-end;
   margin-bottom: 5px;
+  margin: 10px;
 }
 .row > .total-price > img{
   width: 25px;
+}
+.row > .cart-info > .quantity-selector{
+  border: 3px solid #DDD;
+  display: inline;
+  max-width: 159px;
+  border-radius: 15px;
+}
+.In-Stock {
+  color: rgb(33, 171, 33);
+  font-weight: 700;
 }

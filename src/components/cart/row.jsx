@@ -11,10 +11,10 @@ const CartRow = (props) => {
         <span className="item-price">
           ${props.item.meal.price}
           &nbsp; &nbsp;| &nbsp; &nbsp;
-          <span>In Stock</span>
+          <span className='In-Stock'>In Stock</span>
         </span>
         <div className="quantity-selector">
-          + {props.item.quantity} -
+          + &nbsp; {props.item.quantity} &nbsp; -
         </div>
       </div>
       <div className="total-price">
