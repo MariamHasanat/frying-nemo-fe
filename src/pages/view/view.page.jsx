@@ -1,8 +1,8 @@
 
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import ItemCard from '../../components/item-card/item-card.component';
-import FilterBar from '../../components/view/filter-input.component';
+import ItemCard from '../../components/view/item-card/item-card.component';
+import FilterBar from '../../components/view/filter-bar/filter-input.component';
 import './view.css';
 import { useContext } from 'react';
 import { UserContext } from '../../components/providers/user-provider';

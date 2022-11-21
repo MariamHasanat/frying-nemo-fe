@@ -1,8 +1,8 @@
-import { CATEGORIES } from '../../data/constants';
-import Input from '../common/input/input.component';
+import { CATEGORIES } from '../../../data/constants';
+import Input from '../../common/input/input.component';
 import './filter-input.css';
 import CheckBox from '../toggle-bullets/check-box.component';
-import search from '../../assets/images/search.png';
+import search from '../../../assets/images/search.png';
 
 /**
  * Renders a filters bar.
@@ -28,7 +28,7 @@ const FilterBar = props => {
             placeholder='search'
             onChange={e => props.setParam('search', e.target.value)}
           />
-          <img src={search} width='30' height='30' />
+          <img src={search} width='30' height='30' alt='search-icon'/>
         </div>
       </div>
 
