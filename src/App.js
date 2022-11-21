@@ -10,6 +10,7 @@ import React, { useReducer } from 'react';
 import './common.css';
 import Guard from './pages/Guard/Guard';
 import {reducer , intialState} from '../src/reducer/reducer'
+import ListCartpage from './pages/cart/ListCartpage';
 
 function App() {
 
@@ -23,11 +24,9 @@ function App() {
             <Route path="/" element={<Navigate to='/view' replace />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/add" element={
-            <Guard  permittedRole={['ADMIN']}>
-              <AddPage />
-            </Guard>
-            } />
+            <Guard  permittedRole={['ADMIN']}> <AddPage /> </Guard>} />
             <Route path="/view" element={<ViewPage dispatch={dispatch} cart={cart}/>} />
+            <Route path="/cart" element={<ListCartpage dispatch={dispatch} cart={cart}/>} />
             <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart}/>} />
             <Route path="/*" element={<Notfound />} />
           </Routes>
