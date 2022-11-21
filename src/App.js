@@ -19,25 +19,23 @@ case "ADD_CART_ITEM":
 
 
 
- case "INCREMENT_CART_QUANTITY": {
+ case "INCREMENT_CART_QUANTITY": 
         {
           let found = false;
-          const newCart = cart.map(cartItem = () => {
+          const newCart = cart.map(cartItem => {
             if (cartItem.meal.id === action.meal.id) {
+              found = true;
               return { ...cartItem, quantity: cartItem.quantity + 1 };
-            }
-            else {
+            } else {
               return cartItem;
             }
+          });
+  
+          if (!found) {
+            return [...cart, { meal: action.meal, quantity: 1 }];
           }
-          );
-
+          return newCart;
         }
-        if (!found) {
-          return [...cart, { meal: action.meal, quantity: 1 }];
-        }
-        return newCart;
-      }
 
 
 
@@ -56,7 +54,7 @@ case "ADD_CART_ITEM":
           }
         });
 
-        if (shouldDelete) {
+        if (shouldDelet) {
           return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
         }
 
