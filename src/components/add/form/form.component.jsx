@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { UserContext } from "../../../App";
 import { useNavigate } from "react-router-dom";
 import Input from "../../common/input/input.component";
 import Textarea from "../../common/textarea/textarea.component";
@@ -57,6 +58,7 @@ const Form = (props) => {
 
     setName(value);
   };
+  const userContext = useContext(UserContext);
   return (
     <div className="form-container">
       <h1>Add Menu Item</h1>
@@ -86,7 +88,7 @@ const Form = (props) => {
         />
         <Input name="photo" label="insert photo link" type="text"/>
         <div className="addFormButtons">
-          <button type="submit" disabled={props.user?.role !== 'ADMIN'}>Create</button>
+          <button type="submit" disabled={UserContext.user?.role !== 'ADMIN'}>Create</button>
         </div>
       </form>
     </div>

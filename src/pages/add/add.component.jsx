@@ -5,7 +5,7 @@ const AddPage = (props) => {
 
   return (
     <div className="head">
-      <Form onNavigate={props.onNavigate} user={props.user} />
+      <Form onNavigate={props.onNavigate} />
     </div>
   );
 };

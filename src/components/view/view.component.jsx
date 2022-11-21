@@ -1,14 +1,15 @@
 import "./view.css";
 import Cards from "../cards/cards.component";
 import { useNavigate} from 'react-router-dom';
-import { useEffect } from "react";
-
+import { useContext,useEffect } from 'react';
+import { UserContext } from '../../App';
 
 const ViewPage = (props) => {
   const navigate = useNavigate();
+  const userContext = useContext(UserContext);
   useEffect(() => {
     // To check if the user is already logged in, send him to the view page
-    if (!props.user?.id) {
+    if (!userContext.user?.id) {
       navigate('/login', { replace: false });
     }
   }, []);
