@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getItem } from '../../services/item';
 import Item from '../../components/item/item.component';
 import Spinner from '../../components/core/spinner.component';
+import PriceBar from '../../components/price-bar/price-bar.component';
 
 /**
  * @type {Array<{
@@ -39,14 +40,24 @@ const ViewItemPage = () => {
 
   return (
     <div className="view-item-page">
-      <h1>View Menu Item</h1>
-      {loading && <Spinner />}
-      {
-        !loading && currentItem !== null
-          ? <Item data={currentItem} />
-          : <span>Item Not Found!</span>
-      }
-    </div>
+    {loading
+      ? <Spinner />
+      : <div className="item-details">
+        <h1>{currentItem.name}</h1>
+        <div className="img">
+          <img src={currentItem.image} alt="food" />
+        </div>
+        <div className="info">
+          <p><b>Item Description: </b> {currentItem.description}</p>
+          <p className="ingredients"><b>Ingredients:</b>
+            <br />{currentItem.ingredients.join(", ")}</p>
+        </div>
+        <PriceBar item={currentItem}/>
+        
+      </div>
+    }
+  </div>
+
   );
 };
 

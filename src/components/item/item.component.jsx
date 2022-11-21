@@ -30,7 +30,7 @@ const Item = (props) => {
         <p className="ingredients">{ props.data.Ingredients && props.data.Ingredients.join(",")}</p>
         {/* instead of join you can use // map((ing, i) => ing + (i < props.data.ingredients.length - 1 ? ', ' : ' ')) */}
       </div>
-     <PriceBar />
+     <PriceBar item={props.data} dispatch={props.dispatch} />
     </div>
   );
 };
