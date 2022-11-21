@@ -37,17 +37,26 @@
 .header>.userProfile>div {
     display: flex;
     margin-right: 20px;
+    margin-top: 5px;
 }
 
-.header>.userProfile>div>.cart {
+.header>.userProfile>div>.cartBtn {
+    outline: none;
+    border: none;
     display: flex;
     align-items: center;
-    margin-right: 15px;
     background-color: #efefef;
     height: 40px;
-    margin-top: 6px;
     border-radius: var(--border-radius);
+    margin: 4px 10px 0 0;
+    border: 1px solid transparent; 
+    white-space: nowrap;
+}
 
+.header>.userProfile>div>.cartBtn:hover {
+    background-color: transparent;
+    border: 1px solid #ced4da;
+    box-sizing: border-box;
 }
 
 .user-badge {

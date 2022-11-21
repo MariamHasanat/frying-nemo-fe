@@ -11,6 +11,7 @@ import UserProvider from "./components/providers/user-provider.component";
 import Guard from "./components/guard/guard.component";
 import { useReducer } from "react";
 import { reducer } from './reducers/cart';
+import Cart from "./pages/cart/cart.page";
 
 function App() {
 
@@ -25,9 +26,10 @@ function App() {
                         <Route path="/login" element={<Login />} replace />
                         <Route path="/" element={<Navigate to='/view' />} replace />
                         <Route path="/add" element={<Guard authorized={['ADMIN']}><AddPage /></Guard>} />
-                        <Route path="/view" element={<ViewPage dispatch={dispatch} cart={cart}/>} />
+                        <Route path="/view" element={<ViewPage dispatch={dispatch} cart={cart} />} />
                         <Route path="/*" element={<NotFound />} />
-                        <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart}/>} />
+                        <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart} />} />
+                        <Route path="/cart" element={<Cart />} />
                     </Routes>
                 </BrowserRouter>
             </UserProvider>

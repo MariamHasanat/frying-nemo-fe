@@ -25,9 +25,12 @@ const Header = (props) => {
             </span>
             <span className='userProfile'>
                 <div>
-                    <div className='cart'>
+                    <button className='cartBtn'
+                        onClick={() => navigate('/cart')}
+                    >
                         <img src={cart} alt='cart' width={30} />
-                        {itemsCount || 0}&nbsp;&nbsp;</div>
+                        {itemsCount || 0}&nbsp;&nbsp;
+                    </button>
                     {
                         userContext.user?.fullName
                             ? <div className="user-badge">
