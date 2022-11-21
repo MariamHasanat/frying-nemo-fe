@@ -16,7 +16,6 @@ import Cart from "./pages/cart/cart.page";
 function App() {
 
     const [cart, dispatch] = useReducer(reducer, []);
-
     return (
         <div>
             <UserProvider>
@@ -29,7 +28,7 @@ function App() {
                         <Route path="/view" element={<ViewPage dispatch={dispatch} cart={cart} />} />
                         <Route path="/*" element={<NotFound />} />
                         <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart} />} />
-                        <Route path="/cart" element={<Cart />} />
+                        <Route path="/cart" element={<Cart cart={cart} />} />
                     </Routes>
                 </BrowserRouter>
             </UserProvider>
