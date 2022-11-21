@@ -5,6 +5,7 @@ import Select from "../common/select/select.component";
 import FilteredSearch from "../view/filter-search/filtered-search.component";
 import { Link } from "react-router-dom";
 import "../../common.css";
+
 /**
  * @type {Array<{
  * id: number
@@ -66,7 +67,7 @@ const Cards = (props) => {
     <div className="card-container">
       {searchList.map((item, index) => {
         return (
-          
+
             <div className="card" key={index}>
               <div
                 className="card-image"
@@ -88,15 +89,15 @@ const Cards = (props) => {
                 <span className="card-text">Ingredients</span>
               </div>
               <div className="card-buttom-container">
-              <Select name="category" label="" className="card-Ingredients" >
+              <ul name="category" className="card-Ingredients" >
                 {item.ingredients.map((current) => {
                   return (
-                    <option key={current} value={current} disabled>
+                    <li key={current} value={current} disabled>
                       {current}
-                    </option>
+                    </li>
                   );
                 })}
-              </Select>
+              </ul>
               </div>
             </div>
         );

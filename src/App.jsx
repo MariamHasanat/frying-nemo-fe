@@ -1,4 +1,4 @@
-import React ,{ useState } from "react";
+import React ,{ useState} from "react";
 import AddPage from "./pages/add/add.component";
 import Header from "./components/common/header/header.component";
 import ViewPage from "./components/view/view.component";
@@ -12,7 +12,6 @@ import Guard from "./components/core/guard/guard.component";
 export const UserContext = React.createContext(null);
 
 function App() {
-
   return (
     <UserProvider>
       <div>
