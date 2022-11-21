@@ -10,7 +10,7 @@ const CartList = (props) => {
                 <Jiji message='no items were added to cart'/>
                 :
                 props.cart.map((item) =>
-                    <CartRow {...item} />
+                    <CartRow key={item.meal.id} {...item} />
                 )
             }
 
