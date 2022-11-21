@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { getItem } from '../../services/items';
 import './view-item.css';
-import { getItemQuantity } from '../../utilities/getItemQuantity';
+import { getItemQuantity } from '../../utilities/get-item-quantity';
 
 /**
  * 

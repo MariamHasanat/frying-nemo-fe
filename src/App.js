@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { reducer, initialState } from './components/reducers/cart';
 import React, { useReducer } from "react";
-import Header from "./components/common/header/header.component";
+import Header from "./components/core/header/header.component";
 import View from "./pages/view/view.page";
 import AddPage from "./pages/add/add.page";
 import ViewItem from "./pages/view-item/view-item.page";
@@ -34,9 +34,9 @@ function App() {
     <div>
       <BrowserRouter>
         <UserProvider>
-          <div className="header">
+          {/* <div className="header"> */}
             <Guard component='header'><Header cart={cart} /></Guard>
-          </div>
+          {/* </div> */}
           <div className="body">
 
             <Routes>

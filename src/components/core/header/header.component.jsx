@@ -15,7 +15,7 @@ const Header = (props) => {
   props.cart.forEach(item => itemsCounter += item.quantity);
 
   return (
-    <div className={'header'}>
+    <div className='header'>
       <div className='logo'>
         <img src={logo} alt="logo" width={60} />
         <span id='app-title'>Frying Nemo</span>

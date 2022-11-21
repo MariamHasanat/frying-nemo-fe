@@ -6,7 +6,7 @@ import FilterBar from '../../components/view/filter-bar/filter-input.component';
 import './view.css';
 import { useContext } from 'react';
 import { UserContext } from '../../components/providers/user-provider';
-import { getItemQuantity } from '../../utilities/getItemQuantity';
+import { getItemQuantity } from '../../utilities/get-item-quantity';
 const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]');
 
 /**
