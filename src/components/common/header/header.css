@@ -44,6 +44,19 @@
   color: #777777;
 }
 
+.user-badge > button{
+  appearance: none;
+  background: none;
+  border: none;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+}
+
+.user-badge > button:hover,.user-badge > button:active,.user-badge > button:focus{
+  color: #666;
+}
+
 .user-badge > img {
   border-radius: 50%;
   width: 30px;

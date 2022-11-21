@@ -1,9 +1,9 @@
 import "./header.css";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Link,useLocation,useNavigate } from "react-router-dom";
 
 const Header = (props) => {
   const location = useLocation();
+  const navigate = useNavigate();
   return (
     <div className="header-container">
       <div className="left-header">
@@ -40,6 +40,14 @@ const Header = (props) => {
           <span className="user-badge">
             <img src={props.user.imageUrl} alt="user logo" width={30} height={30} />
             {props.user.fullName}
+            <button
+              onClick={() => {
+                props.setUser(null);
+                navigate('/login');
+              }}
+            >
+              Logout
+            </button>
           </span>
         }
       </div>

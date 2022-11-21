@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useEffect } from "react";
 import { useNavigate,useSearchParams } from "react-router-dom";
 import "./cards.css";
 import Select from "../common/select/select.component";
@@ -20,7 +19,6 @@ import "../../common.css";
 const Cards = (props) => {
   const menuItems = localStorage.getItem("menuItems").length ? [...JSON.parse(localStorage.getItem("menuItems"))]: [];
   const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
   const searchTermsFromURL = searchParams.get('q') || '';
   const categoryFromURL = searchParams.get('category') || '';
   let minPriceFromUrl= parseInt(searchParams.get('minprice'));
