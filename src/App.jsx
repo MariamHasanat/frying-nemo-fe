@@ -7,6 +7,7 @@ import LoginPage from "./pages/login/login.component";
 import { BrowserRouter, Routes, Route,Navigate } from "react-router-dom";
 import ViewItemPage from "./pages/view-item/view-item.component";
 import UserProvider from "./components/providers/user-provider.component";
+import Guard from "./components/core/guard/guard.component";
 
 export const UserContext = React.createContext(null);
 
@@ -20,7 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Navigate to="/view" replace />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/add" element={<AddPage />} />
+            <Route path="/add" element={<Guard permittedRoles={['ADMIN']}><AddPage /></Guard>} />
             <Route path="/view" element={<ViewPage />} />
             <Route path="/view-details/:id" element={<ViewItemPage />} />
             <Route path="/*" element={<ErorrPage />} />

@@ -11,7 +11,7 @@ const USERS = [{
   "password": '123456',
   "fullName": "Jenny Gulliford",
   "imageUrl": "http://dummyimage.com/162x181.png/ff4444/ffffff",
-  "role": null
+  "role": "user"
 }, {
   "id": "75835b79-cbda-466c-8230-b81279f49c12",
   "email": "ndeniscke2@multiply.com",
