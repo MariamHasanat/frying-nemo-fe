@@ -10,7 +10,7 @@ import React, { useReducer } from 'react';
 import './common.css';
 import Guard from './pages/Guard/Guard';
 import {reducer , intialState} from '../src/reducer/reducer'
-import ListCartpage from './pages/cart/ListCartpage';
+import ListCartpage from './pages/cart/cart-page/ListCartpage';
 
 function App() {
 

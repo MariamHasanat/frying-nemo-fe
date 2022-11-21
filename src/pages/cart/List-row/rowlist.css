@@ -1,0 +1,22 @@
+.row-group {
+  display: flex;
+  flex-direction: row;
+  border-bottom:1px solid  rgb(171, 171, 158);
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.row-group > .image > img {
+  width: 130px;
+  height: 160px;
+  border-radius: 7px;
+  margin-right: 20px;
+}
+.row-group > .item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: 450px;
+}
+.row-group > .total {
+  align-self: flex-end;
+}
