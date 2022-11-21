@@ -31,7 +31,7 @@ function App() {
             <Route path="/" element={<Navigate to='/view' replace />} />   {/* page redirection using navigate component , which is built in react router dom library */}
             <Route path="/add" element={<Guard permittedRoles= {['ADMIN']} ><AddPage /></Guard>} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/cart" element={<Cart />} />
+            <Route path="/cart" element={<Cart cart = {cart}/>} />
             <Route path="/view" element={<ViewPage dispatch = {dispatch} cart = {cart}/>} />
             <Route path="/view-details/:id" element={<SingleItem  dispatch = {dispatch} cart = {cart}/>} />
             <Route path="/*" element={<NotFound />} />

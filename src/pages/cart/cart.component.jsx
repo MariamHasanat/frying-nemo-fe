@@ -1,10 +1,14 @@
-import React from 'react'
-import './cart.css'
+import React from 'react';
+import CartList from '../../components/cart/list';
+import './cart.css';
 
-const Cart = () => {
+const Cart = (props) => {
   return (
-    <div>Cart</div>
-  )
-}
+    <div className='cart'>
+      <h2>Cart</h2>
+      <CartList cart = {props.cart} />
+    </div>
+  );
+};
 
-export default Cart
+export default Cart;

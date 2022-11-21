@@ -39,7 +39,7 @@
   /* justify-self: flex-end; */
 }
 
-.webisteHeader .right nav a {
+.webisteHeader .right nav> a {
   background: unset;
   border: unset;
   cursor: pointer;
