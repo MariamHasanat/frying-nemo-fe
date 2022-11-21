@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../../App';
+import cartIcon from '.\cart.svg';
 
 
 
@@ -38,6 +39,11 @@ import { UserContext } from '../../../App';
           <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>view</Link>
 
         </nav>
+        <Link className="cart" to="cart">
+          <img src={cartIcon} alt="cart icon" />
+          <span className="count">{itemsCount}</span>
+        </Link>
+
         {
           userContext.user &&
           <span className="user-badge">

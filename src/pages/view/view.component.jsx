@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Spinner from '../../components/core/spinner.component';
 import Item from '../../components/item/item.component';
+import { getCartQuantity } from '../../utils/cart';
 import './view.css';
 import FilterBar from './filter-bar/filter-bar.component';
 import { UserContext } from '../../App';
@@ -131,7 +132,7 @@ const ViewPage = (props) => {
                 <Item data={item}
                   key={item.name + index}
                   dispatch={props.dispatch}
-                  cartQuantity={getCartQuantity(item.id)} />)
+                  cartQuantity={getCartQuantity(item.id, props.cart)} />)
 
           }
 

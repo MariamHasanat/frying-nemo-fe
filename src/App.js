@@ -13,7 +13,8 @@ export const UserContext = React.createContext(null);
 
 function App() {
 
- 
+  const [cart, dispatch] = useReducer(reducer, initialState);
+
   return (
 
 
@@ -27,7 +28,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/add" element={<AddPage />} />
             <Route path="/view" element={<ViewPage dispatch ={dispatch}  cart={cart}/>} />
-            <Route path="/view/:id" element={<ViewItemPage />} />
+            <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart} />}/>
             <Route path="/*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
