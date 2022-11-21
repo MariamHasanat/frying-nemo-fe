@@ -1,4 +1,4 @@
-import { useContext ,React} from 'react';
+import { useContext, React } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Spinner from '../../components/core/spinner.component';
@@ -48,13 +48,13 @@ const ViewPage = (props) => {
   useEffect(() => {
     getMenuItems();
   }, []);
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     if (!userContext.user?.id) {
       navigate('/login', { replace: false });
     }
 
-  })
+  });
 
   const filteredItems = menuItems.filter(item => {
 
@@ -101,6 +101,14 @@ const ViewPage = (props) => {
 
     setParams(newParams);
   };
+  const getCartQuantity = (id) => {
+    const currentCartItem = props.cart.find(cartItem => (cartItem.meal.id === id));
+    if (currentCartItem) {
+      return currentCartItem.quantity;
+    } else {
+      return 0;
+    }
+  };
 
   return (
     <div className="view-page">
@@ -109,6 +117,7 @@ const ViewPage = (props) => {
         searchTermsFromURL={searchTermsFromURL}
         categories={categoryFromURL}
         setParams={setParam}
+
       />
 
 
@@ -118,7 +127,11 @@ const ViewPage = (props) => {
         : <div className="items-container">
           {
             filteredItems
-              .map((item, index) => <Item data={item} key={item.name + index} dispatch ={props.dispatch} />)
+              .map((item, index) =>
+                <Item data={item}
+                  key={item.name + index}
+                  dispatch={props.dispatch}
+                  cartQuantity={getCartQuantity(item.id)} />)
 
           }
 

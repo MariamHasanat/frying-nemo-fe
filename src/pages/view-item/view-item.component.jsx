@@ -5,7 +5,7 @@ import { getItem } from '../../services/item';
 import Item from '../../components/item/item.component';
 import Spinner from '../../components/core/spinner.component';
 import PriceBar from '../../components/price-bar/price-bar.component';
-
+import { getCartQuantity } from '../../utils/cart';
 /**
  * @type {Array<{
  * id: number;
@@ -18,7 +18,7 @@ import PriceBar from '../../components/price-bar/price-bar.component';
  * }>}
  */
 
-const ViewItemPage = () => {
+const ViewItemPage = (props) => {
   const params = useParams();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -52,7 +52,10 @@ const ViewItemPage = () => {
           <p className="ingredients"><b>Ingredients:</b>
             <br />{currentItem.ingredients.join(", ")}</p>
         </div>
-        <PriceBar item={currentItem}/>
+        <PriceBar   item={currentItem}
+            dispatch={props.dispatch}
+            cartQuantity={getCartQuantity(currentItem.id, props.cart)}
+/>
         
       </div>
     }
