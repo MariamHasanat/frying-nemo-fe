@@ -78,14 +78,7 @@ const ViewPage = (props) => {
     }
     return match;
   });
-  // const  getCartQuantity= (id,cart)=>{
-  //   const cartItem=props.cart.find(cartItem=> cartItem.meal.id === id );
-  //   if (cartItem) {
-  //     return cartItem.quantity;
-  //   }else{
-  //     return 0;
-  //   }
-  // }
+
 
   return (
     <div className="view-page">

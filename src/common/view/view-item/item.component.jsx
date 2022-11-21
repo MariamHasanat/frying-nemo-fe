@@ -5,6 +5,7 @@ import Items from '../item/item.component';
 import {getItem }from '../../../data/items';
 import "../../header/header.css";
 import { getCartQuantity } from '../../../utilit/cart';
+import Price from '../filture/price-par/price-par';
 
 
 /**
@@ -42,7 +43,23 @@ const ViewItemPage = (props) => {
       {loading }
       {
         !loading && currentItem !== null
-          ? <Items data={currentItem} dispatch={props.dispatch} CartQuantity={getCartQuantity(currentItem.id,props.cart)} />
+          ? <div className="item-details">
+            <h1>{currentItem.name}</h1>
+            <div className="img">
+              <img src={currentItem.image} alt="food" />
+            </div>
+            <div className="info">
+              <p><b>Item Description: </b> {currentItem.description}</p>
+              <p className="ingredients"><b>Ingredients:</b>
+                <br />{currentItem.ingredients.join(", ")}</p>
+            </div>
+            <Price
+              item={currentItem}
+              dispatch={props.dispatch}
+              cartQuantity={getCartQuantity(currentItem.id, props.cart)}
+            />
+          </div>
+
           : null
       }
     </div>

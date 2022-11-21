@@ -9,6 +9,7 @@ import LoginPage from "./pages/add/log-in/login.component";
 import UserProvider from "./components/provider/provider.component";
 import Guard from './components/guard/guard.component';
 import {reducer , initial} from './reducer/cart';
+import CartPage from "./components/cart/cart-page";
  function App() {
 
 
@@ -26,6 +27,7 @@ import {reducer , initial} from './reducer/cart';
             <Route path="/view" element={<ViewPage dispatch={dispatch} cart={cart}/>} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart}/>} />
+            <Route path="/cart" element={<CartPage dispatch={dispatch} cart={cart} />} />
             <Route path="/*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
