@@ -2,7 +2,7 @@ import "./view.css";
 import Cards from "../cards/cards.component";
 import { useNavigate} from 'react-router-dom';
 import { useContext,useEffect } from 'react';
-import { UserContext } from '../../App';
+import { UserContext } from "../providers/user-provider.component";
 
 const ViewPage = (props) => {
   const navigate = useNavigate();

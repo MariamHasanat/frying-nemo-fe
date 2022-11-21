@@ -1,5 +1,5 @@
 import { useState,useContext } from "react";
-import { UserContext } from "../../../App";
+import { UserContext } from "../../providers/user-provider.component";
 import { useNavigate } from "react-router-dom";
 import Input from "../../common/input/input.component";
 import Textarea from "../../common/textarea/textarea.component";

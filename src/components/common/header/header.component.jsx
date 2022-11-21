@@ -1,6 +1,6 @@
 import "./header.css";
 import { Link,useLocation,useNavigate } from "react-router-dom";
-import { UserContext } from "../../../App";
+import { UserContext } from "../../providers/user-provider.component";
 import { useContext } from "react";
 
 const Header = () => {
