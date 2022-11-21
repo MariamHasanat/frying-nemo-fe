@@ -49,6 +49,25 @@
   text-decoration: none;
   font-weight: 500;
 }
+.webisteHeader .right nav >.cartWrapper {
+  position :relative ;
+}
+.webisteHeader .right nav >.cartWrapper>a> img {
+  padding: 9px 20px;  
+  width: 30px;
+}
+.webisteHeader .right nav >.cartWrapper> span {
+  position: absolute;
+  background-color: #ff5023;
+  border-radius: 10px;
+  color: #fff;
+  min-width: 15px;
+  text-align: center;
+  right: 34px;
+  top: 5px;
+  z-index: 3;
+  font-size: 12px;
+}
 
 .webisteHeader .right nav a:hover {
   text-shadow: -1px 2px 3px #777777;
@@ -87,7 +106,6 @@
   color: #999;
   cursor: pointer;
 }
-
 .webisteHeader .right .user-badge > button:hover,
 .webisteHeader .right .user-badge > button:active,
 .webisteHeader .right .user-badge > button:focus {

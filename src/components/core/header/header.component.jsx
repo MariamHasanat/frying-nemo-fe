@@ -9,8 +9,8 @@ const Header = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
-  let cartCounter = 0 ;
-  props.cart.forEach (item => cartCounter += item.quantity) ;
+  let cartCounter = 0;
+  props.cart.forEach(item => cartCounter += item.quantity);
   return (
     <div className='webisteHeader'>
       <div className='left'>
@@ -23,10 +23,14 @@ const Header = (props) => {
           <Link to='/add' className={location.pathname === '/add' ? 'current' : ''}> Add </Link>
           {/* <a href='/add'> Add </a> */}
           <Link to='/view' className={location.pathname.includes('/view') ? 'current' : ''}> View </Link>
+          <div className="cartWrapper">
+            <Link to={'/cart'}><img src="./cart.svg" alt="cart icone" /></Link>
+            <span>{cartCounter}</span>
+          </div>
           {
             userContext.user &&
             <span className="user-badge">
-              <img src={userContext.user.imageUrl} alt="user logo" width={30} height={30} />
+              <img src={userContext.user.imageUrl} alt="user  logo" width={30} height={30} />
               {userContext.user.fullName}
               <button
                 onClick={() => {
