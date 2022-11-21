@@ -10,14 +10,21 @@ import ViewItemPage from "./pages/view-item/view-item.component";
 export const UserContext = React.createContext(null);
 
 function App() {
-  const [user, setUser] = useState(null);
+  const initialUser = JSON.parse(sessionStorage.getItem('user'));
+  const [user, setUser] = useState(initialUser);
+
+  const setUserOverride = user => {
+    setUser(user);
+    sessionStorage.setItem('user', JSON.stringify(user));
+  };
+
   return (
     <div>
       <BrowserRouter>
       <Header user={user} /> 
         <Routes>
           <Route path="/view-item/:id" element={<ViewItemPage />} />
-          <Route path="/login" element={<LoginPage user={user} setUser={setUser} />} />
+          <Route path="/login" element={<LoginPage user={user} setUser={setUserOverride} />} />
           <Route path="/add" element={<AddPage user={user} />} />
           <Route path="/view" element={<ViewPage user={user} />} />
           <Route path="/" element={<Navigate to="/view" replace />} />
