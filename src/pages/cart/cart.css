@@ -1,0 +1,7 @@
+.cart-page {
+    background-color: #e8e8e8;
+    height: 1000px;
+    display:flex;
+    /* align-items: center; */
+    justify-content: center;
+}

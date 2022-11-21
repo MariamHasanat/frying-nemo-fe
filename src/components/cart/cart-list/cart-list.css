@@ -1,0 +1,14 @@
+.cart-list {
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+    height: fit-content;
+}
+
+.cart-list>h1{
+    padding: 20px 0  0 20px;
+    font-weight: 600;
+    color: rgb(55, 55, 55)
+}

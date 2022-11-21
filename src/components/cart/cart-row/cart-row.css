@@ -1,0 +1,8 @@
+li.cart-row {
+    background-color: #fff;
+    margin: 0 20px;
+    list-style: none;
+    border-bottom: 1px solid #efefef;
+    border-top: 1px solid #efefef;
+    padding: 10px 0;
+}
