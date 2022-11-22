@@ -2,17 +2,18 @@ import React, { useContext } from 'react';
 import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../provider/user-provider.component.jsx';
+import CartProvider, { CartContext } from '../../provider/cart.provider';
 
 
 const Header = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
-
+  const CartContext = useContext(CartContext);
 
   let itemsCount=0;
-  for(let i=0; i<props.cart.length;i++){
-    itemsCount += props.cart[i].quantity;
+  for(let i=0; i<CartContext.cart.length;i++){
+    itemsCount += CartContext.cart[i].quantity;
   }
   return (
     <header className="websiteHeader">
