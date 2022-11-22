@@ -7,7 +7,6 @@ const reducer = (cart , action) => {
     case 'Increment': {
       let found = false;
       const newCart = cart.map(cartItem => {
-        console.log(cartItem)
         if (cartItem.meal.id === action.meal.id) {
           found = true;
           return { ...cartItem, quantity: cartItem.quantity + 1 };
