@@ -29,12 +29,18 @@ const Header = (props) => {
       </div>
       <div className="right">
         <nav>
-          <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
-            Add
-          </Link>
-          <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
-            View
-          </Link>
+          {
+            userContext.user ? (
+              <>
+                <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
+                  Add
+                </Link>
+                <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
+                  View
+                </Link>
+              </>
+            ) : null
+          }
         </nav>
         <Link className="cart" to="cart">
           <img src={cartIcon} alt="cart icon" />
