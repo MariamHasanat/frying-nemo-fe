@@ -72,7 +72,7 @@ const Cards = (props) => {
               <div
                 className="card-image"
                 key={index + item.price}
-                style={{ backgroundImage: "url(" + item.photo + ")" }}
+                style={{ backgroundImage: "url(" + item.image + ")" }}
               >
               </div>
               <Link className="card-name" to = {`/view-item/${item.id}`}>{item.name}</Link>
@@ -89,15 +89,17 @@ const Cards = (props) => {
                 <span className="card-text">Ingredients</span>
               </div>
               <div className="card-buttom-container">
-              <ul name="category" className="card-Ingredients" >
-                {item.ingredients.map((current) => {
-                  return (
-                    <li key={current} value={current} disabled>
-                      {current}
-                    </li>
-                  );
-                })}
-              </ul>
+              <div className="card-Ingredients-container">
+                <ul name="category" className="card-Ingredients" >
+                  {item.ingredients.map((current) => {
+                    return (
+                      <li key={current} value={current} disabled>
+                        {current}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
               </div>
             </div>
         );

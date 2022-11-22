@@ -14,7 +14,7 @@ export const UserContext = React.createContext(null);
 function App() {
   return (
     <UserProvider>
-      <div>
+      <div className="app-body">
         <BrowserRouter>
           <Header />
           <Routes>
@@ -26,6 +26,35 @@ function App() {
             <Route path="/*" element={<ErorrPage />} />
           </Routes>
         </BrowserRouter>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
       </div>
     </UserProvider>
   );
