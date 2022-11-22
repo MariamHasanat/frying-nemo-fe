@@ -1,82 +1,4 @@
-/* .inputs{
-  caret-color: red;
-}
 
-body {
-  margin: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #ecf0f3;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  place-items: center;
-  overflow: hidden;
-  font-family: poppins;
-}
-
-.container {
-  position: relative;
-  width: 350px;
-  height: 500px;
-  border-radius: 20px;
-  padding: 40px;
-  box-sizing: border-box;
-  background: #ecf0f3;
-  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
-}
-
-
-.inputs {
-  text-align: left;
-  margin-top: 30px;
-}
-
-label, 
-.inputs, .nemo-button {
-  display: block;
-  width: 100%;
-  padding: 0;
-  border: none;
-  outline: none;
-  box-sizing: border-box;
-}
-
-label {
-  margin-bottom: 2px;
-}
-
-
-.inputs::placeholder {
-  color: gray;
-}
-
-.inputs{
-  background: #ecf0f3;
-  padding: 10px;
-  padding-left: 20px;
-  height: 50px;
-  font-size: 14px;
-  border-radius: 50px;
-  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
-}
-
-.nemo-button {
-  color: white;
-  margin-top: 20px;
-  background: #b8a7b8;
-  height: 60px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 900;
-  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
-  transition: 0.5s;
-}
-
-.nemo-button {
-  box-shadow: none;
-} */
 .login-page {
   display: flex;
   justify-content: center;
@@ -92,12 +14,13 @@ label {
   row-gap: 30px;
   background-color: #fafafa;
   border: 1px solid #ddd;
-  padding: 60px 40px;
+  padding: 50px 20px;
+  border-radius: 20px
 }
 
 .login-page>form>h1 {
   font-size: 28px;
-  color: #be441d;
+  color: #be1db1;
   line-height: 1.2;  
   text-transform: uppercase;
   letter-spacing: 0.5px;

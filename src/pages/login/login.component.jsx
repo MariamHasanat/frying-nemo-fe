@@ -40,7 +40,7 @@ const LoginPage = (props) => {
   return (
     <div className="login-page">
       <form onSubmit={handleLogin}>
-        <h1>Welcome Back</h1>
+        <h1>Welcome to Yasmin App</h1>
         <Input
           label="Email"
           name="email"

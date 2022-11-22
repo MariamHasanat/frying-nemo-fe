@@ -18,15 +18,16 @@
 }
 
 .no-results > img {
-  width: 280px;
+  width: 200px;
 }
 
 .no-results > p {
   font-size: 30px;
   font-weight: bold;
-  color: #999;
+  color: rgb(204, 191, 207);
   margin-top: 40px;
   width: 100%;
   text-align: center;
   text-transform: uppercase;
 }
+

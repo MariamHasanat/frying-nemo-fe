@@ -45,3 +45,14 @@
   font-size: 15px;
   cursor: pointer;
 }
+
+.nemo-button {
+  appearance: none;
+  border: 1px solid #bb25b1;
+  background: #d34184;
+  color: white;
+  padding: 5px 10px;
+  border-bottom-width: 2px;
+  font-size: 13px;
+  cursor: pointer;
+}

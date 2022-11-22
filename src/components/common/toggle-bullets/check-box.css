@@ -18,15 +18,15 @@
   padding: 8px 10px;
   border-radius: 7px;
   cursor: pointer;
-  border: 1px solid #e1cbc4;
-  color: #be441d;
+  border: 1px solid #e1c4e1;
+  color: #c49bc2;
 }
 
 .checkbox-group>label>span:nth-child(2) {
-  color: rgb(210, 21, 21);
+  color: rgb(210, 21, 185);
 }
 
 .checkbox-group>label.checked {
-  background-color: #be441d;  
+  background-color: #d869b3;  
   color: #fff;
 }
