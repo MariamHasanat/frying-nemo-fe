@@ -3,6 +3,7 @@ import "./view-item.css";
 import {useNavigate, useParams } from "react-router-dom";
 import { getItem } from "../../services/items";
 import Select from "../../components/common/select/select.component";
+import PriceBar from "../../components/view/price-bar/price-bar.component";
 
 /**
  * @type {Array<{
@@ -66,6 +67,7 @@ const ViewItemPage = (props) => {
                   })}
                 </Select>
               </div>
+              <PriceBar item={currentItem} />
             </div>
           </div>
         </div>

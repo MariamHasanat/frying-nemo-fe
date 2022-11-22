@@ -17,7 +17,7 @@ const ViewPage = (props) => {
   return (
     <div>
       <h1 className="view-page-header">&nbsp;</h1>
-      <Cards />
+      <Cards dispatch={props.dispatch} cart={props.cart} />
     </div>
   );
 };

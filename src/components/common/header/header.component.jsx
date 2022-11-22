@@ -3,7 +3,12 @@ import { Link,useLocation,useNavigate } from "react-router-dom";
 import { UserContext } from "../../providers/user-provider.component";
 import { useContext } from "react";
 
-const Header = () => {
+const Header = (props) => {
+  let itemsCount = 0;
+  for (let i = 0; i < props.cart.length; i++) {
+    itemsCount += props.cart[i].quantity;
+  }
+
   const location = useLocation();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
@@ -14,6 +19,7 @@ const Header = () => {
         <span className="resturant-name">Frying Nemo</span>
       </div>
       <div className="right-header">
+      <span>Your Cart {itemsCount}</span>
         <nav>
           <Link
             className={

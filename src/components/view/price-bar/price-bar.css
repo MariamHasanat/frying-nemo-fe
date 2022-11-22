@@ -1,3 +1,15 @@
 div.price{
-  display: none;
+  color: green;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+
+
+.quantity{
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 25px;
 }

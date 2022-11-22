@@ -4,7 +4,7 @@ import "./cards.css";
 import FilteredSearch from "../view/filter-search/filtered-search.component";
 import { Link } from "react-router-dom";
 import "../../common.css";
-
+import PriceBar from "../view/price-bar/price-bar.component";
 /**
  * @type {Array<{
  * id: number
@@ -51,6 +51,14 @@ const Cards = (props) => {
   }
     return(match);
   });
+  const getCartQuantity = (id) => {
+    const currentCartItem = props.cart.find(cartItem => (cartItem.meal.id === id));
+    if (currentCartItem) {
+      return currentCartItem.quantity;
+    } else {
+      return 0;
+    }
+  };
 
   return (
     <div>
@@ -88,19 +96,19 @@ const Cards = (props) => {
                 <span className="card-text">Ingredients</span>
               </div>
               <div className="card-buttom-container">
-              <div className="card-Ingredients-container">
-                <ul name="category" className="card-Ingredients" >
-                  {item.ingredients.map((current) => {
-                    return (
-                      <li key={current} value={current} disabled>
-                        {current}
-                      </li>
-                    );
-                  })}
-                </ul>
+                <div className="card-Ingredients-container">
+                  <ul name="category" className="card-Ingredients" >
+                    {item.ingredients.map((current) => {
+                      return (
+                        <li key={current} value={current} disabled>
+                          {current}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </div>
-              </div>
-
+              <PriceBar item={item} dispatch={props.dispatch} cartQuantity={getCartQuantity(item.id)} />
             </div>
         );
       })}
