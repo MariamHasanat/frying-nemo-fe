@@ -1,12 +1,13 @@
 import React from 'react';
 import trashIcon from '../../../assets/trash.svg';
-import './row.css'
+import './row.css';
 
 const CartRow = (props) => {
   const { meal, quantity } = props.item;
 
   const increment = () => props.dispatch({ type: 'INCREMENT_CART_QUANTITY', meal });
   const decrement = () => props.dispatch({ type: 'DECREMENT_CART_QUANTITY', meal });
+  const deleteItem = () => props.dispatch({ type: 'DELETE_CART_ITEM', meal });
 
   return (
     <li className="cart-row">
@@ -25,7 +26,7 @@ const CartRow = (props) => {
       </div>
       <div className="total-price">
         <h3>${meal.price * quantity}</h3>
-        <button>
+        <button onClick={deleteItem}>
           <img src={trashIcon} alt="delete" />Delete
         </button>
       </div>
