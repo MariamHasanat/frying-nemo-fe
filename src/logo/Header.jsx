@@ -28,13 +28,15 @@ const Header = props => {
         </div>
         <div className="right">
           <nav>
-            <div className="cart-icon">
+            { (location.pathname.includes('/view') ||  location.pathname.includes('/cart')) &&
+              <div className="cart-icon">
               <Link
                 to='/cart'>
                   <img src={cartIcon} alt=""/>
                 <span>{itemsCount}</span>
               </Link>
             </div>
+            }
             <Link
              to='/add'
              className={location.pathname === '/add' ? 'current' : ''}
