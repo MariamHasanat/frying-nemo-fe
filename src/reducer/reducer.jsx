@@ -1,6 +1,7 @@
 let intialState = [];
 
 const reducer = (cart , action) => {
+
   switch (action.type) {
 
     case 'Increment': {
@@ -44,7 +45,11 @@ const reducer = (cart , action) => {
 
     }
      }
-     default : break;
+     case "Delete": {
+       return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
+      }
+      default : break;
+
     }
     
   }
