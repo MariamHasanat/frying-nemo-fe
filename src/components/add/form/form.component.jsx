@@ -7,7 +7,7 @@ import "./form.css";
 // import { CATEGORIES } from "../../../data/categories";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { UserContext } from "../../user-provider/user-provider";
+import { UserContext } from "../../providers/user-provider";
 
 const categories = [
   "Fish",

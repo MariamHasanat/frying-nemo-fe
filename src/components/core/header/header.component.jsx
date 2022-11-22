@@ -1,16 +1,18 @@
 import { useContext } from "react";
 import "./header.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { UserContext } from "../../user-provider/user-provider";
+import { UserContext } from "../../providers/user-provider";
+import { CartContext } from '../../providers/cart-provider.component';
 
 const Header = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
+  const cartContext = useContext(CartContext);
 
-  let itemsCount = 0;
-  for (let i = 0; i < props.cart.length; i++) {
-    itemsCount += props.cart[i].quantity;
+  let totalCartQuantity = 0;
+  for (let i = 0; i < cartContext.cart.length; i++) {
+    totalCartQuantity += cartContext.cart[i].quantity;
   }
 
   return (
@@ -20,10 +22,10 @@ const Header = (props) => {
         <p>Frying Nemo</p>
       </div>
       <div className="right">
-      <Link className="cart-click" to="/cart">
-      <img src={process.env.PUBLIC_URL + "/shopping-cart.png"} alt="" width={30} />
-        <span className="cart">{itemsCount}</span>
-      </Link>
+        <Link className="cart-click" to="/cart">
+          <img src={process.env.PUBLIC_URL + "/shopping-cart.png"} alt="" width={30} />
+          <span className="cart">{totalCartQuantity}</span>
+        </Link>
         <nav>
           <Link
             to="/add"

@@ -1,8 +1,12 @@
+import { useContext } from 'react';
+import {CartContext} from '../../../components/providers/cart-provider.component';
 import './add-delete.css';
 
 
 
 const AddDeleteItem = (props) => {
+
+  const cartContext = useContext(CartContext);
 
   const handleIncrement = () => {
     props.dispatch({ type: "INCREMENT_CART_QUANTITY", meal: props.item });

@@ -2,9 +2,10 @@ import "./view.css";
 import { useEffect, useState, useContext } from "react";
 import FilterBar from "../../components/view/filter-bar/filter-bar.component";
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
-import { UserContext } from "../../components/user-provider/user-provider";
+import { UserContext } from "../../components/providers/user-provider";
 import AddDeleteItem from "./add-delete/add-delete.componenet";
 import { getCartQuantity } from "../../utility/cart";
+import {CartContext} from "../../components/providers/cart-provider.component";
 
 /**
  * @type {Array<{
@@ -24,6 +25,7 @@ const ViewPage = (props) => {
   const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
   const userContext = useContext(UserContext);
+  const cartContext = useContext(CartContext);
 
 
   const searchTerms = params.get("searchTerms") || "";
@@ -145,7 +147,7 @@ const ViewPage = (props) => {
                   <span>Ingredients : </span>
                   {item.ingredients.join(" | ")}
                 </div>
-                <AddDeleteItem item={item} dispatch={props.dispatch} cartQuantity={getCartQuantity(item.id, props.cart)} />
+                <AddDeleteItem  dispatch={cartContext.dispatch} item={item} cartQuantity={getCartQuantity(item.id, cartContext.cart)} />
               </div>
             );
           })}

@@ -10,6 +10,13 @@ const UserProvider = (props) => {
   const setUserOverride = user => {
     setUser(user);
     sessionStorage.setItem('user', JSON.stringify(user));
+
+    if (user === null) {
+      localStorage.removeItem('cart');
+      localStorage.removeItem('user');
+    } else {
+      localStorage.setItem('user', JSON.stringify(user));
+    }
   };
 
   return (

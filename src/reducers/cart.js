@@ -1,7 +1,12 @@
 
 const initialState = [];
 
+// action is an object : meal
+// sometimes many action : so, use action.type
+
 const reducer = (cart, action) => {
+
+  // this function updates the state of cart
   switch (action.type) {
     case "ADD_TO_CART":
       return [...cart, { meal: action.meal, quantity: 1 }];
@@ -16,6 +21,7 @@ const reducer = (cart, action) => {
             return cartItem;
           }
         });
+        // if not found, add the new item to the cart
         if (!found) {
           return [...cart, { meal: action.meal, quantity: 1 }];
         }
@@ -43,8 +49,10 @@ const reducer = (cart, action) => {
       {
         return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
       }
+      default:
+        return cart; // no updates
   }
-  return cart; // no updates
+  
 };
 
 export {

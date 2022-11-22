@@ -108,3 +108,10 @@
 .cart-page>ul.cart-list>.cart-row>.total-price button:active {
   color: #555555;
 }
+
+.empty-cart img{
+  width: 462px;
+}
+.empty-cart p{
+  font-size: 41px;
+}
