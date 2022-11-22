@@ -1,5 +1,5 @@
 import React from 'react';
-import './view-item-page.css';
+import './view-item.css';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Item from '../../components/view/item/item.component';
