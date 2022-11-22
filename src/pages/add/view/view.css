@@ -15,7 +15,7 @@
 justify-content: space-between;
 flex-wrap: wrap
 }
-.view-page .items-container .no-results{
+ .no-results{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -23,11 +23,11 @@ flex-wrap: wrap
   margin-top: 100px;
 }
 
-.view-page .items-container > .no-results > img {
+ img {
   width: 280px;
 }
 
-.view-page .items-container > .no-results > p {
+.no-results > p {
   font-size: 30px;
   font-weight: bold;
   color: #999;

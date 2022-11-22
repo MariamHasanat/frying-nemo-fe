@@ -12,6 +12,7 @@ import Guard from "./components/guard/guard";
 import userEvent from "@testing-library/user-event";
 import { useReducer } from "react";
 import{initialState,reducer} from './reduce/cart'
+import CartPage from "./pages/cart/cart/cart";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
             <Route path="/add" element={<Guard  permittedRoles={['ADMIN']} ><AddPage /></Guard>} />
             <Route path="/view" element={<View  dispatch={dispatch} cart={cart}/>} />
             <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch}  cart={cart} />} />
+            <Route path="/cart" element={<CartPage dispatch={dispatch}  cart={cart} />} />
           </Routes>
         </Providers>
       </BrowserRouter>
