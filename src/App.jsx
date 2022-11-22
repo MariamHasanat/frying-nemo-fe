@@ -1,4 +1,4 @@
-import React ,{ useState} from "react";
+import React from "react";
 import AddPage from "./pages/add/add.component";
 import Header from "./components/common/header/header.component";
 import ViewPage from "./components/view/view.component";

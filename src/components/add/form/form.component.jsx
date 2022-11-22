@@ -61,9 +61,9 @@ const Form = (props) => {
   const userContext = useContext(UserContext);
   return (
     <div className="form-container">
-      <h1></h1>
-      <h1></h1>
-      <h1></h1>
+      <br/>
+      <br/>
+      <br/>
       <form className="addForm" onSubmit={submitHandler}>
         <h1>Add Menu Item</h1>
         <Input
@@ -91,7 +91,7 @@ const Form = (props) => {
         />
         <Input name="photo" label="insert photo link" type="text"/>
         <div className="addFormButtons">
-          <button type="submit" disabled={UserContext.user?.role !== 'ADMIN'}>Create</button>
+          <button type="submit" disabled={userContext.user?.role !== 'ADMIN'}>Create</button>
         </div>
       </form>
     </div>

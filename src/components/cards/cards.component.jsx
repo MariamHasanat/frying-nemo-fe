@@ -1,7 +1,6 @@
 import * as React from "react";
-import { useNavigate,useSearchParams } from "react-router-dom";
+import {useSearchParams } from "react-router-dom";
 import "./cards.css";
-import Select from "../common/select/select.component";
 import FilteredSearch from "../view/filter-search/filtered-search.component";
 import { Link } from "react-router-dom";
 import "../../common.css";
@@ -101,7 +100,7 @@ const Cards = (props) => {
                 </ul>
               </div>
               </div>
-              
+
             </div>
         );
       })}
