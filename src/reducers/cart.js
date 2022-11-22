@@ -1,5 +1,3 @@
-const initialState = [];
-
 const reducer = (cart, action) => {
   // This function updates the state
   switch (action.type) {
@@ -39,6 +37,5 @@ const reducer = (cart, action) => {
 };
 
 export {
-  reducer,
-  initialState
+  reducer
 };
