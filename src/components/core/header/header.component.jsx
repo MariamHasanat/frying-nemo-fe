@@ -5,14 +5,16 @@ import profile from '../../../assets/images/profile-user.png';
 import logout from '../../../assets/images/logout.png';
 import { useContext } from 'react';
 import { UserContext } from '../../../components/providers/user-provider';
+import { CartContext } from '../../providers/cart-provider';
 
 
 const Header = (props) => {
+  const cartContext = useContext(CartContext);
   const userContext = useContext(UserContext);
   const location = useLocation();
 
   let itemsCounter = 0;
-  props.cart.forEach(item => itemsCounter += item.quantity);
+  cartContext.cart.forEach(item => itemsCounter += item.quantity);
 
   return (
     <div className='header'>

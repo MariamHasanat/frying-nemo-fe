@@ -7,6 +7,7 @@ import './view.css';
 import { useContext } from 'react';
 import { UserContext } from '../../components/providers/user-provider';
 import { getItemQuantity } from '../../utilities/get-item-quantity';
+import { CartContext } from '../../components/providers/cart-provider';
 const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]');
 
 /**
@@ -31,6 +32,7 @@ const initialItems = [];
  * @returns 
  */
 const View = (props) => {
+  const cartContext = useContext(CartContext);
 
   const userContext = useContext(UserContext);
   const [menuItems, setMenuItems] = useState(initialItems);
@@ -112,8 +114,8 @@ const View = (props) => {
                 <ItemCard
                   item={item}
                   key={item + index}
-                  dispatch={props.dispatch}
-                  itemQuantity={getItemQuantity(props.cart, item.id)}
+                  dispatch={cartContext.dispatch}
+                  itemQuantity={getItemQuantity(cartContext.cart, item.id)}
                 />
               );
 

@@ -5,6 +5,8 @@ import { getItem } from '../../services/items';
 import './view-item.css';
 import { getItemQuantity } from '../../utilities/get-item-quantity';
 import PriceBar from '../../components/price-bar/price-bar.component';
+import { useContext } from 'react';
+import { CartContext } from '../../components/providers/cart-provider';
 
 /**
  * 
@@ -33,7 +35,7 @@ const ViewItem = (props) => {
 
   }, []);
 
-
+  const cartContext = useContext(CartContext);
   return (
     <div className="view-item-page">
       {loading
@@ -43,15 +45,18 @@ const ViewItem = (props) => {
           <img className='item-image' src={currentItem.image} alt='item' />
           <p>{currentItem.description}</p>
           <p>{currentItem.ingredients.join(', ')}</p>
-          <h3>{currentItem.price} $</h3>
+          {/* <h3>{currentItem.price} $</h3> */}
 
-          <h2 className='quantity'>Quantity: <span>{getItemQuantity(props.cart, currentItem.id)}</span></h2>
+          <div className="price-bar">
 
-          <PriceBar
-            dispatch={props.dispatch}
-            item={currentItem}
-            itemQuantity={getItemQuantity(props.cart, currentItem.id)}
-          />
+            {/* <h2 className='quantity'>Quantity: <span>{getItemQuantity(props.cart, currentItem.id)}</span></h2> */}
+
+            <PriceBar
+              dispatch={cartContext.dispatch}
+              item={currentItem}
+              itemQuantity={getItemQuantity(cartContext.cart, currentItem.id)}
+            />
+          </div>
         </div>
 
       }
