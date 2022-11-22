@@ -1,0 +1,11 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.block >.Blok-img{
+  display: flex;
+  
+}

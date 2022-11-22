@@ -39,24 +39,23 @@ const MultivalueInput = props => {
 
   };
 
-///another way is to use the function filter its return array using true / false 
+  ///another way is to use the function filter its return array using true / false 
 
-//filter function return new  copy from the original  without change on the  props.value(array)
+  //filter function return new  copy from the original  without change on the  props.value(array)
 
 
 
   return (
     <div className="multivalue">
 
-      <div className="wrapper">
-        <Input
-          label={props.label}
-          value={newItem}
-          onChange={e => setNewItem(e.target.value)}
-        ></Input>
+      <Input
+        label={props.label}
+        value={newItem}
+        onChange={e => setNewItem(e.target.value)}
+      >
+      </Input>
 
-        <button className="nemo-button" onClick={addItem} type="button" >Add</button>
-      </div>
+      <button className="nemo-button" onClick={addItem} type="button" >Add</button>
       {
 
         props.value.length > 0 && (
@@ -65,7 +64,7 @@ const MultivalueInput = props => {
               return (
                 <li key={item} >
                   <span>{item}</span>
-                  <button type="button"  onClick={() => deleted(item)}>&times;</button>
+                  <button type="button" onClick={() => deleted(item)}>&times;</button>
                 </li>
               );
             })}

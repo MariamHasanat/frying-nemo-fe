@@ -11,7 +11,9 @@ import Price from './price-bar';
  *      price: number;
  *     categories:string;
  *     ingrediant: string[];
- * }
+ *       image: string;
+ * },
+ *  dispatch: React.DispatchWithoutAction
  * 
  * }} props 
  *  
@@ -20,11 +22,13 @@ const Card = (props) => {
   return (
     <div className="wrapper">
       <div className="card">
+        <div className="imgs">
+          {/* <img src="./burg.png" alt="burger" /> */}
+          <img src={props.data.image} alt="food" />
+
+        </div>
         <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
 
-        <div className="imgs">
-          <img src="/burg.png" alt="burger" />
-        </div>
         <div className="description">
           {props.data.description}
         </div>
@@ -38,7 +42,9 @@ const Card = (props) => {
         <div className="description">
           {props.data.ingrediant.join(" " + "," + " ")}
         </div>
-        <Price item={props.data} dispatch={props.dispatch} cartQuantity={props.cartQuantity}/>
+        <Price item={props.data} 
+        dispatch={props.dispatch}
+         cartQuantity={props.cartQuantity}/>
       </div>
 
     </div>

@@ -1,19 +1,37 @@
 import React from 'react';
-import CartRow from '../list/list';
+import trashIcon from '../../../assets/trash.svg';
+import './row.css';
 
-const CartList = (props) => {
+const CartRow = (props) => {
+  const { meal, quantity } = props.item;
+
+  const increment = () => props.dispatch({ type: 'Increment-cart-Quantity', meal });
+  const decrement = () => props.dispatch({ type: 'Decrement-cart-Quantity', meal });
+  const deleteItem = () => props.dispatch({ type: 'Delete-cart', meal });
+
   return (
-    props.cart.length
-      ? <ul className="cart-list">
-        {
-          props.cart.map((cartItem, index) => <CartRow cartItem={cartItem} key={"r_" + index} />)
-        }
-      </ul>
-      : <div className="no-results">
-        <img src="./empty_cart.webp" alt="empty cart" width={300} />
-        <p>Your Cart is Empty!</p>
+    <li className="cart-row">
+      <img src={meal.image} alt="meal" />
+      <div className="main-info">
+        <h2>{meal.name}</h2>
+        <span className="item-price">
+          ${meal.price}
+          &nbsp;&nbsp;|&nbsp;&nbsp;
+          <span>In Stock</span></span>
+        <div className="quantity-selector">
+          <button onClick={increment}>&#43;</button>
+          {quantity}
+          <button onClick={decrement}>&#8722;</button>
+        </div>
       </div>
+      <div className="total-price">
+        <h3>${meal.price * quantity}</h3>
+        <button onClick={deleteItem}>
+          <img src={trashIcon} alt="delete" />Delete
+        </button>
+      </div>
+    </li>
   );
 };
 
-export default CartList;
+export default CartRow;

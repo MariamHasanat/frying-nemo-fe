@@ -1,5 +1,5 @@
 .add-wapper{
-  background-color: rgb(252, 224, 252);
+  background-color: rgb(240, 234, 240);
 }
 .add-wapper>form {
   background-color: "";
@@ -24,5 +24,11 @@ margin-top: 5px;
 font-weight: bolder;
 
 
+
+}
+.add-wapper >form> .form-design{
+  display: flex;
+  justify-content: space-evenly;
+  
 
 }

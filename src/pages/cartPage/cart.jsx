@@ -1,17 +1,13 @@
-import React , {useContext}from 'react';
-import CartList from '../../components/cart.component/row/row';
-import { CartContext } from '../../components/providers/cart-provider';
+import React from 'react';
+import CartList from '../../components/cart.component/list/list';
 import './cart.css';
+// import CartList from '../../components/cart/list/list.component';
 
 const CartPage = (props) => {
-
-  
-  const cartContext = useContext(CartContext);
-
-
   return (
     <div className="cart-page">
-      <CartList cart={props.cart}  />
+      {/* <CartList /> */}
+    <CartList/>
     </div>
   );
 };

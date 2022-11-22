@@ -2,18 +2,20 @@ import React, { useContext } from 'react';
 import './header.css';
 import { UserContext } from '../../App';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-// import cartIcon from '../../../public/trash.svg';
+import { CartContext } from '../providers/cart-provider';
+import cartIcon from '../../assets/cart.svg';
 
 
 const Head = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
+  const cartContext = useContext(CartContext);
 
   
   let itemsCount = 0;
-  for (let i = 0; i < props.cart.length; i++) {
-    itemsCount += props.cart[i].quantity;
+  for (let i = 0; i < cartContext.cart.length; i++) {
+    itemsCount += cartContext.cart[i].quantity;
   }
 
   return (
@@ -25,7 +27,7 @@ const Head = (props) => {
         </h1>
       </div>
       <div className="right">
-        <span>Your Cart {itemsCount}</span>
+        {/* <span>Your Cart {itemsCount}</span> */}
         <nav>
           <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
             Add
@@ -34,7 +36,7 @@ const Head = (props) => {
             View
           </Link>
           <Link className="cart" to="cart">
-          {/* <img src={cartIcon} alt="cart icon" /> */}
+          <img src={cartIcon} alt="cart icon" />
           <span className="count">{itemsCount}</span>
         </Link>
         </nav>

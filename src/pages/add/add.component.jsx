@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import Form from '../../components/add/form/form.component';
 import './add.css';
 const AddPage = (props) => {
@@ -29,8 +30,7 @@ const AddPage = (props) => {
       {/* <h1>Add a new item</h1> */}
       {/* <Form onNavigate={props.onNavigate} /> */}
 
-      <Form onNavigate={props.onNavigate}  />
-
+<Form onNavigate={props.onNavigate}/>
     </div>
   );
 };

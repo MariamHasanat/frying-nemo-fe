@@ -123,8 +123,8 @@ const ViewPage = (props) => {
   };
 
 
-  const getCartQuantity = (id) => {
-    const currentCartItme = props.cart.find(CartItem => CartItem.meal.id === id);
+  const getCartQuantity = (id,cart) => {
+    const currentCartItme = cart.find(CartItem => CartItem.meal.id === id);
     if (currentCartItme)
       return currentCartItme.quantity;
     else
@@ -152,13 +152,12 @@ const ViewPage = (props) => {
             ?
 
             (filterItems.map((item, index) =>
-              <Card data={item} key={item.name + index}
+              <Card data={item} 
+              key={item.name + index}
                 dispatch={cartContext.dispatch}
                 // cartQuantity={props.cart}
-                /**TODO:
-                 * handel all buttons 
-                 */
-                // cartQuantity={getCartQuantity(item.id)}
+            
+                cartQuantity={getCartQuantity(item.id, cartContext.cart)}
 
 
               />)

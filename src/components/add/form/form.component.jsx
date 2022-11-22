@@ -31,6 +31,7 @@ const Form = (props) => {
     const description = e.target.description.value;
     const price = Number(e.target.price.value);
     const categories = e.target.categories.value;
+    const image = e.target.image.value;
 
     const menuItem = {
       //or we can use random id 
@@ -39,7 +40,8 @@ const Form = (props) => {
       description: description,
       price: price,
       categories: categories,
-      ingrediant: ingrediant
+      ingrediant: ingrediant,
+      image,
 
     };
 
@@ -99,14 +101,15 @@ const Form = (props) => {
           onChange={onNameChange}
           required
         />
+    <Input
+      label="Image"
+      name="image"
+
+    />
+    
         <Textarea
           label="Decription"
           name='description'
-        />
-        <Input
-          label="Image"
-          name="image"
-
         />
         <MySelect
           name="categories"
@@ -133,7 +136,9 @@ const Form = (props) => {
 
         />
 
-        <div className='btn'>
+        {/* <div className='btn'> */}
+        <div className="submit-form-btn">
+
           <button type='submit'
             className="nemo-button"
             disabled={

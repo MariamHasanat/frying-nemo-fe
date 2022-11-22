@@ -13,7 +13,7 @@
 
 .websiteHeader>.left>h1 {
   font-size: 18px;
-  line-height: 1.2;
+  line-height: 1.5;
   display: flex;
   align-items: center;
   text-transform: uppercase;
@@ -40,9 +40,12 @@
   border: unset;
   cursor: pointer;
   font-size: 14px;
-  padding: 9px 20px;
+  padding: 10px 20px;
   text-decoration: none;
   color: inherit;
+  display: flex;
+  align-items: center;
+
 }
 
 .websiteHeader .right nav a:hover {
@@ -71,4 +74,30 @@
 .websiteHeader .right  > button:active,
 .websiteHeader .right  > button:focus {
   color: #666;
+}
+
+
+.websiteHeader .right>.cart {
+  position: relative;
+}
+
+.websiteHeader .right>.cart>img {
+  width: 50px;
+  height:50px;
+}
+
+.websiteHeader .right>.cart>.count {
+  position: absolute;
+  color: #fff;
+  top: -8px;
+  right: -11px;
+  z-index: 2;
+  font-weight: bold;
+  background: red;
+  padding: 2px;
+  border-radius: 50%;
+  font-size: 12px;
+  min-width: 15px;
+  min-height: 15px;
+  text-align: center;
 }
