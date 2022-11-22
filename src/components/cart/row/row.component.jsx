@@ -7,6 +7,8 @@ const CartRow = (props) => {
   const { meal, quantity } = props.item;
   const increment = () => props.dispatch({ type: 'INCREMENT_CART_QUANTITY', meal });
   const decrement = () => props.dispatch({ type: 'DECREMENT_CART_QUANTITY', meal });
+  const deleteItem = () => props.dispatch({ type: 'DELETE_CART_ITEM', meal });
+
 
   return (
     <li className="cart-row">
@@ -26,7 +28,7 @@ const CartRow = (props) => {
       <div className="total-price">
         <h3>${meal.price * quantity}</h3>
         <button>
-          <img src={trashIcon} alt="delete" />Delete
+          <img src={trashIcon} alt="delete" onClick={deleteItem} />Delete
         </button>
       </div>
     </li>

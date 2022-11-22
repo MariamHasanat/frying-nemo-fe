@@ -39,9 +39,13 @@ const reducer = (cart, action) => {
 
       return newCart;
     }
+
+    case "DELETE_CART_ITEM":{
+      return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
+    }
   }
 
-  return cart;
+  return cart.filter();
 };
 export {
   reducer, initialState
