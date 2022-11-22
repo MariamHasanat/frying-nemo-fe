@@ -9,11 +9,11 @@ import { UserContext } from '../../App';
  * @returns
  */
 function Provider(pro) {
-  const initialization=JSON.parse(sessionStorage.getItem("user"));
+  const initialization=JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(initialization);
   const setUserOverride = user => {
    setUser(user);
-   sessionStorage.setItem('user', JSON.stringify(user));
+   localStorage.setItem('user', JSON.stringify(user));
  };
  
  return(

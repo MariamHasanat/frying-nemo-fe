@@ -18,6 +18,8 @@ import './item.css';
  *   }} props
  */
 const Item = (props) => {
+
+
   return (
     <div className="item-card">
       <div className="img">
@@ -32,7 +34,7 @@ const Item = (props) => {
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients.join(", ")}</p>
       </div>
-     <PriceBar  cartQuantity={props.cartQuantity} dispatch={props.dispatch} data={props.data}/>
+     <PriceBar  cartQuantity={props.cartQuantity} data={props.data}/>
     </div>
   );
 };

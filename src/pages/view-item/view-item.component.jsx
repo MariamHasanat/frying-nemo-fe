@@ -5,6 +5,8 @@ import { getItem } from '../../services/items';
 import Spinner from '../../components/core/spinner/spinner.component';
 import PriceBar from '../../components/common/PriceBar/PriceBar';
 import { getCartQuantity } from '../../data/getCartQuantity';
+import { CartContext } from '../../common/Provider/cart-provider-component';
+import { useContext } from 'react';
 /**
  * @type {Array<{
  * id: number;
@@ -22,7 +24,7 @@ const ViewItemPage = (props) => {
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const ContextCart = useContext(CartContext);
   useEffect(() => {
     setLoading(true);
     const item = getItem(params.id);
@@ -49,7 +51,7 @@ const ViewItemPage = (props) => {
               <br />{currentItem.ingredients.join(", ")}</p>
        
           </div>
-          <PriceBar data={currentItem}   cartQuantity={getCartQuantity(currentItem.id,props.cart)} dispatch={props.dispatch} />
+          <PriceBar data={currentItem}   cartQuantity={getCartQuantity(currentItem.id,ContextCart.cart)}  />
         </div>
       }
     </div>

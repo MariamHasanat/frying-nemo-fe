@@ -1,11 +1,12 @@
 import { useContext } from 'react';
 import { useEffect, useState } from 'react';
-import { useSearchParams,useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import Filter from '../core/filter-bar/Filter';
 import Spinner from '../core/spinner/Spinner';
 import Item from '../view/item/item.component';
 import './viewpage.css';
 import { UserContext } from '../../App';
+import { CartContext } from '../../common/Provider/cart-provider-component';
 import Test from '../../common/Provider/Provider-commponet';
 import { getCartQuantity } from '../../data/getCartQuantity';
 
@@ -30,7 +31,8 @@ const ViewPage = (props) => {
   const categoryParams = Params.getAll('category') || "";
   const MINParams = Params.get('Min') || "";
   const MAXParams = Params.get('Max') || "";
-  const ContextUser=useContext(UserContext)
+  const ContextUser = useContext(UserContext);
+  const ContextCart = useContext(CartContext);
 
   const getMenuItems = () => {
     setLoading(true);
@@ -43,11 +45,12 @@ const ViewPage = (props) => {
     }, 1000);
 
   };
- 
+
 
   useEffect(() => {
-    if(!ContextUser.user?.id){
-      navigate("/login",{replace:true})}
+    if (!ContextUser.user?.id) {
+      navigate("/login", { replace: true });
+    }
     getMenuItems();
   }, []);
 
@@ -67,7 +70,7 @@ const ViewPage = (props) => {
 
 
     );
-   
+
 
 
 
@@ -114,7 +117,7 @@ const ViewPage = (props) => {
 
       >
       </Filter>
-      
+
 
 
 
@@ -123,7 +126,7 @@ const ViewPage = (props) => {
         ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
         : <div className="items-container">
           {
-            filteredMenu.map((item, index) => <Item  cartQuantity={getCartQuantity(item.id,props.cart)} dispatch={props.dispatch} data={item} key={item.name + index} />)
+            filteredMenu.map((item, index) => <Item cartQuantity={getCartQuantity(item.id, ContextCart.cart)} data={item} key={item.name + index} />)
           }
         </div>
       }

@@ -37,6 +37,7 @@
   margin-left: 5px;
   position: revert;
   border: unset;
+  background-color: rgb(52 78 72);
 }
 
 .webisteHeader .right nav button:hover {
@@ -49,7 +50,7 @@
 
   color: #1cc49d;
   border-radius: 13px;
-  background-color: #1b2f31;
+    background-color: #be441d;
   padding: 15px;
   margin: 3px;
 }
@@ -60,7 +61,7 @@
   border-radius: 13px;
   padding: 10px;
   margin: 5px;
-  background-color: #1b2f31;
+  background-color: #be441d;
 }
 
 .webisteHeader .right nav>.right-click>.header>.default {
@@ -105,8 +106,8 @@
   width: 50px;
   align-items: center;}
 .cart>img{
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 30px;
 }
 .left-header{
   display: flex;
@@ -115,4 +116,12 @@
   justify-content: flex-end;
   position: relative;
   top: 19px;
+}
+.cart>span{
+  position: relative;
+  bottom: 15px;
+  right: 5px;
+  background-color: #be441d;
+  padding: 0px 5px 0px 5px;
+  border-radius:30px ;
 }
