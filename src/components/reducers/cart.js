@@ -1,5 +1,5 @@
 const initialState = [] ;
-
+ // it updates the object state and returns the updated state 
 const reducer = (cart , action) => {
   switch (action.type) {
     case "INCREMENT": {
