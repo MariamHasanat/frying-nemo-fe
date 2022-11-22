@@ -3,14 +3,17 @@ import CartList from '../../components/cart.component/list/list';
 import { CartContext } from '../../components/providers/cart-provider';
 import './cart.css';
 import { useContext } from 'react';
+import { UserContext } from '../../App';
+import { Link } from 'react-router-dom';
 
 const CartPage = (props) => {
   const cartContext = useContext(CartContext);
+  const userContext = useContext(UserContext);
 
   const Empty=()=>{
   
 
-    
+
   }
 
   let totalCount = 0;
@@ -20,7 +23,11 @@ const CartPage = (props) => {
   
 
   return (
-    <div className="cart-page">
+<>
+   {
+    userContext.user 
+    ?
+    (<div className="cart-page">
     <CartList/>
     <span className='total-price'> Total Price : {totalCount}</span>
     <br />
@@ -28,7 +35,14 @@ const CartPage = (props) => {
     onClick={Empty}
     >
       Empty Cart</button>
-    </div>
+    </div>):
+    (<span>You Are Not Loged In , Please Sign-In to Continue !
+      
+      <Link to={'/login'}>Click Here</Link>
+    </span>)
+}
+</>
+
   );
 };
 

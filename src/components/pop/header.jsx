@@ -46,6 +46,8 @@ const Head = (props) => {
         }
         <button onClick={() => {
           userContext.setUser(null);
+          localStorage.removeItem('cart');
+
           navigate('/login');
         }
         }
