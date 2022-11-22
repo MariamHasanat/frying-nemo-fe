@@ -5,15 +5,14 @@ import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import { useNavigate, useParams } from "react-router-dom";
 import { CATEGORIES } from '../../../data/constants';
-import { UserContext } from '../../../App';
 import './form.css';
+import { UserContext } from '../../providers/user-provider.component';
 
-
-const Form = (props) => {
+const Form = () => {
+  const props = useContext(UserContext);
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
-  // const userContext = useContext(UserContext);
 
   /**
    * Handler function for the form onSubmit event.
@@ -41,12 +40,12 @@ const Form = (props) => {
 
     items.push(menuItem);
 
-    localStorage.setItem('menuItems', JSON.stringify(items))
-    navigate('/view'); 
+    localStorage.setItem('menuItems', JSON.stringify(items));
+    navigate('/view');
 
   };
 
-  
+
 
   /**
    * Handles on change events on the name field.
@@ -90,7 +89,7 @@ const Form = (props) => {
         min={0}
         required
       />
-       <Input
+      <Input
         name="photo"
         label="image"
         type="text"
@@ -107,9 +106,11 @@ const Form = (props) => {
         value={ingredients}
         onChange={newIngredients => setIngredients(newIngredients)}
       />
-      <div className="addFormButtons">
-        <button className="btn" type="submit" onSubmit={submitHandler}>Create</button>
-      </div>
+
+        <div className="addFormButtons">
+          <button className="btn" type="submit" onSubmit={submitHandler}>Create</button>
+        </div>
+
     </form>
   );
 };

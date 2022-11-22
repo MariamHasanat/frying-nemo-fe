@@ -3,6 +3,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import Item from '../../components/view/item/item.component';
 import './view.css';
+import { useContext } from 'react';
+import { UserContext } from '../../components/providers/user-provider.component';
 
 /**
  * @type {Array<{
@@ -17,9 +19,9 @@ import './view.css';
  */
 const initialItems = [];
 
-const ViewPage = (props) => {
+const ViewPage = () => {
+  const props = useContext(UserContext);
   const [menuItems, setMenuItems] = useState(initialItems);
-  const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
   const navigate = useNavigate();
   const searchTermsFromURL = params.get('searchTerms') || '';

@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import Input from '../../components/common/input/input.component';
 import { loginUser } from '../../services/users';
 import './login.css';
+import { useContext } from 'react';
+import { UserContext } from '../../components/providers/user-provider.component';
 
-const LoginPage = (props) => {
+const LoginPage = () => {
+  const props = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -1,43 +1,13 @@
-// import React from 'react';
-// import './header.css';
-// import logo from '../../../assets/nemo.svg';
 
-// import { Link, useLocation } from 'react-router-dom';
-
-// const Header = (props) => {
-//   const location = useLocation();
-
-//   return (
-//     <header className="websiteHeader">
-//       <div className="left">
-//         <h1>
-//           <img src={logo} alt="Nemo" />
-//           Frying Nemo
-//         </h1>
-//       </div>
-//       <div className="right">
-//         <nav>
-//           <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
-//             Add
-//           </Link>
-//           <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
-//             View
-//           </Link>
-//         </nav>
-//       </div>
-//     </header>
-//   );
-// };
-
-
-
-
-// export default Header;
 import React from 'react';
 import './header.css';
-import { useLocation,useNavigate } from 'react-router-dom';
-const Header = (props) => {
-  const location = useLocation();
+import { UserContext } from '../../providers/user-provider.component';
+import { useContext } from 'react';
+import {useNavigate } from 'react-router-dom';
+import cartIcon from '../../../assets/illustrations/shopping-cart.svg';
+
+const Header = () => {
+  const props = useContext(UserContext);
   const navigate = useNavigate();
   return (
     <header className="websiteHeader">
@@ -60,7 +30,13 @@ const Header = (props) => {
           </a>
         </nav>
         {
-          <button onClick={() => { 
+          <button className='btn'>
+            <img src={cartIcon} alt='shopping-cart'></img>
+          </button>
+        }
+
+        {
+          <button className='logout-button' onClick={() => { 
 
             props.setUser(null);
             navigate('/login');

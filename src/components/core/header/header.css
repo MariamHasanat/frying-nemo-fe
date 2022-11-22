@@ -1,92 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
 
-/* 
-.websiteHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  border-bottom: 1px solid #ddd;
-}
-
-.websiteHeader>.left {
-  display: flex;
-  align-items: center;
-}
-
-.websiteHeader>.left>h1 {
-  font-size: 18px;
-  color: #be441d;
-  line-height: 1.2;
-  display: flex;
-  align-items: center;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin: 0;
-  margin-right: 20px;
-}
-
-
-.websiteHeader>.left>h1>img {
-  height: 35px;
-  width: auto;
-  margin-right: 5px;
-}
-
-.websiteHeader .right {
-  display: flex;
-  column-gap: 20px;
-  align-items: center;
-}
-
-.websiteHeader .right nav {
-  display: flex;
-}
-
-.websiteHeader .right nav a {
-  background: unset;
-  border: unset;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 9px 20px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.websiteHeader .right nav a:hover {
-  text-shadow: -1px 2px 3px #777777;
-}
-
-.websiteHeader .right nav a:active {
-  text-shadow: -1px 2px 3px #333;
-}
-
-.websiteHeader .right nav a.current {
-  background-color: #be441d;
-  border-radius: 5px;
-  color: white;
-}
-
-.websiteHeader .right .user-badge {
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #777777;
-}
-
-.websiteHeader .right .user-badge > img {
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-}
-
- */
-
-
-
-
 .websiteHeader {
   display: flex;
   align-items: center;
@@ -118,15 +31,17 @@
 
 .websiteHeader > .right{
   display: flex;
-  justify-content: flex-end;
-  width: 200px;
+  justify-content: space-around;
+  align-items: center;
+  width: 20%;
+  min-width: 15%;
 }
 
-.websiteHeader >.right > .add-button, .websiteHeader >.right > .view-button{
+.websiteHeader >.right > .add-button, .websiteHeader >.right > .view-button, .websiteHeader >.right > .logout-button{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: aliceblue;
+  background-color: rgb(169, 192, 212);
   height: 40px;
   width: 65px;
   margin-right: 8px;
@@ -146,11 +61,10 @@
 }
 
 
-  .websiteHeader >.right > .add-button:hover, .websiteHeader >.right > .view-button:hover{
+  .websiteHeader >.right > .add-button:hover, .websiteHeader >.right > .view-button:hover , .websiteHeader >.right >.logout-button:hover{
     cursor: pointer;
     border: 0.001rem inset ;
-
-    
+    color: black;
   }
 
   .add-button{
@@ -198,4 +112,34 @@
     background-color: #be441d;
     border-radius: 5px;
     color: white;
+  }
+
+
+
+  .websiteHeader >.right > .logout-button {
+    background-color: #a6b9e260;
+   color: #777777;
+   margin-left: 0.1rem;
+  }
+
+
+
+  .websiteHeader > .right > .cart-button{
+    height: auto;
+    width: 40px;
+    border-radius: 50%;
+    border: transparent 1px solid;
+  }
+
+
+  .websiteHeader > .right > .btn{
+    background-color: #eca38db6;
+    border-color: #DDE5F4;
+    width: 40px;
+    height: 40px;
+     border-radius: 50%;
+    text-align: center;
+    margin: 0;
+
+    
   }

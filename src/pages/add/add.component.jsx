@@ -1,8 +1,11 @@
 import './add.css';
-
+import { UserContext } from '../../components/providers/user-provider.component';
+import { useContext } from 'react';
 import Form from '../../components/add/form/form.component';
 
-const AddPage = (props) =>{
+
+const AddPage = () =>{
+  const props = useContext(UserContext);
 
   return (
     <div className="add-page">
