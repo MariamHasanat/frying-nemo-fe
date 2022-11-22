@@ -5,11 +5,16 @@ import { UserContext } from '../provider/provider.component';
 import { useContext } from 'react';
 
 
-const Header = () => {
+const Header = (props) => {
 
   const location = useLocation();
   const navigate = useNavigate();
   const userContext = useContext(UserContext)
+
+  let itemsCount = 0;
+  for (let i = 0; i < props.cart.length; i++) {
+    itemsCount += props.cart[i].quantity;
+  }
 
   return (
     <header className="webisteHeader">
@@ -20,6 +25,7 @@ const Header = () => {
         </h1>
       </div>
       <div className="right">
+        <span>your cart {itemsCount}</span>
         <nav>
           <Link to="/add" className={location.pathname === '/add' ? 'current' : ''}>
             Add

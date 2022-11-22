@@ -10,7 +10,7 @@ export const UserContext = React.createContext(null);
  */
 
 const UserProvider = (props) => {
-  const initialUser = JSON.parse(sessionStorage.getItem('user'));
+  const initialUser = JSON.parse(localStorage.getItem('user'));
   const [user, setUser] = useState(initialUser);
 
   const setUserOverride = user => {

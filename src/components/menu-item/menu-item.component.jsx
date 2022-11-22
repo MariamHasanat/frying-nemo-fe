@@ -1,6 +1,7 @@
 import './menu-item.css';
 import { Link } from 'react-router-dom';
 import PriceBar from '../price-bar/price-bar.component';
+import React from 'react';
 
 /**
  * 
@@ -12,7 +13,8 @@ import PriceBar from '../price-bar/price-bar.component';
   * price:number;
   * category:sring;
   * ingredients:string[];
-  * }}} props 
+  * },
+  * dispatch:React.DispatchWithoutAction}} props 
  * @returns 
  */
 
@@ -30,7 +32,7 @@ const Item = (props) => {
       </div>
       <div className="price">
         <span>{props.data.price}$</span>
-        <PriceBar item ={props.data}/>
+        <PriceBar item ={props.data} dispatch={props.dispatch} cartQuantity={props.cartQuantity}/>
       </div>
     </div>
   );

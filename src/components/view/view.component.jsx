@@ -24,14 +24,14 @@ const initialItems = [];
 
 const getMenuItems = () => JSON.parse(localStorage.menuItem || '[]');
 
-const ViewPage = () => {
+const ViewPage = (props) => {
   /**
    * @type {[Array, Function]} Loading
    */
   const [menuItems, setMenuItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [params, setParams] = useSearchParams();
-  const userContext=useContext(UserContext);
+  const userContext = useContext(UserContext);
 
   const search = params.get('search') || '';
   const categoriesFromURL = params.getAll('category') || '';
@@ -53,11 +53,11 @@ const ViewPage = () => {
     }, 1000);
   };
 
-  useEffect (() => {
-    if (!userContext.user?.id){
-      navigate('/login', {replace: false});
+  useEffect(() => {
+    if (!userContext.user?.id) {
+      navigate('/login', { replace: false });
     }
-  },[])
+  }, []);
 
   useEffect(() => {
     getMenuItems();
@@ -107,6 +107,14 @@ const ViewPage = () => {
     setParams(newParams);
   };
 
+  const getCartQuantity = (id) => {
+    const currentCartItem = props.cart.find(cartItem => (cartItem.meal.id === id));
+    if (currentCartItem) {
+      return currentCartItem.quantity;
+    } else {
+      return 0;
+    }
+  };
 
   return (
     <div className="view-page">
@@ -128,7 +136,11 @@ const ViewPage = () => {
             <div >
               <img className='NFimg' alt='' src="https://media.istockphoto.com/vectors/upset-magnifying-glass-vector-illustration-vector-id1038232966?k=20&m=1038232966&s=612x612&w=0&h=32LDIxPK4zbWwukV_b1JTlzdkiLgZPPFPNNBQfvSrGU=" />
               <h2 className='NFtext'>No Menue Items Found!</h2></div>
-            : filteredItems.map((item, index) => <Item data={item} key={item.name + index} />)
+            : filteredItems.map((item, index) => <Item 
+            data={item}
+              key={item.name + index} 
+              dispatch={props.dispatch}
+              cartQuantity={getCartQuantity(item.id)} />)
           }
         </div>
       }
