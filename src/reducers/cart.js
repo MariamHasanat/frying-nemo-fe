@@ -22,30 +22,24 @@ const reducer = (cart, action) => {
       return newCart;
     }
     case "DECREMENT_CART_QUANTITY": {
-      let shouldDelete = false;
+
       const newCart = cart.map(cartItem => {
-        if (cartItem.meal.id === action.meal.id) {
-          if (cartItem.quantity === 1) {
-            shouldDelete = true;
-          }
-          return { ...cartItem, quantity: cartItem.quantity - 1 };
-        } else {
-          return cartItem;
-        }
+        return cartItem.meal.id === action.meal.id
+          ? { ...cartItem, quantity: cartItem.quantity - 1 }
+          : cartItem;
       });
 
-      if (shouldDelete) {
-        return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
-      }
+      return newCart.filter(cartItem => cartItem.meal.quantity > 0);
 
-      return newCart;
     }
     case "DELETE_CART_ITEM": {
       return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
     }
+    default:
+      return cart;
   }
 
-  return cart;
+
 };
 
 export {

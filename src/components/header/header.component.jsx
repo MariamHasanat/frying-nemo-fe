@@ -10,9 +10,9 @@ const Header = (props) => {
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
 
-  let itemsCount = 0;
+  let totalCartQuantity = 0;
   for (let i = 0; i < props.cart.length; i++) {
-    itemsCount += props.cart[i].quantity;
+    totalCartQuantity += props.cart[i].quantity;
   }
 
   return (
@@ -24,7 +24,7 @@ const Header = (props) => {
         </h1>
       </div>
       <div className="right">
-        <span > Your Cart {itemsCount}</span>
+        <span > Your Cart {totalCartQuantity}</span>
         <nav>
 
           <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
@@ -42,7 +42,7 @@ const Header = (props) => {
         <Link className="cart" to="cart">
 
           <img src={cartIcon} alt="cart icon" />
-          <span className="count">{itemsCount}</span>
+          <span className="count">{totalCartQuantity}</span>
 
         </Link>
 
