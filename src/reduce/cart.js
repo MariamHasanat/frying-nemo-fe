@@ -1,5 +1,5 @@
 
-const initialState = [];
+
 const reducer = (cart, action)=>{
   switch(action.type){
     case "ADD_CART_ITEM":
@@ -42,5 +42,5 @@ const reducer = (cart, action)=>{
   
 };
 export{
-  initialState,reducer
+ reducer
 }

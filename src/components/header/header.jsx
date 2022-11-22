@@ -16,7 +16,7 @@ const Handel = (props) => {
   let itemCount = 0;
   for (let i = 0; i < cartContext.cart.length; i++) {
     itemCount += cartContext.cart[i].quantity;
-  }console.log(itemCount)
+  } console.log(itemCount);
   return (
     <header className='websiteHeader'>
       <div className='left'>
@@ -26,15 +26,22 @@ const Handel = (props) => {
 
       <div className='right'>
         <nav>
-          <Link to="/add" className={location.pathname === "/add" ? 'current' : ""}>Add</Link>
+          {
+            useContext.user ? (
+              <>
+                <Link to="/add" className={location.pathname === "/add" ? 'current' : ""}>Add</Link>
 
-          < Link to="/view" className={location.pathname.includes("view") ? 'current' : ""}>View</Link >
+                < Link to="/view" className={location.pathname.includes("view") ? 'current' : ""}>View</Link >
+              </>
+            ) : null
+          }
+
         </nav>
         <Link className="cart" to="cart">
           <img src={cartIcon} alt="cart icon" />
           <span className="count">{itemCount}</span>
         </Link>
-        
+
 
         {
           userContext.user &&

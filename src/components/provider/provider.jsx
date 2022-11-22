@@ -10,6 +10,11 @@ const Providers = (props) => {
   const [user, setUser] = useState(initialUser);
   const setUserOver = (user) => {
     setUser(user);
+    if(user === null){
+      localStorage.removeItem('user');
+      localStorage.removeItem('cart');
+    }
+    else
     sessionStorage.setItem('user', JSON.stringify(user));
   };
   return (
