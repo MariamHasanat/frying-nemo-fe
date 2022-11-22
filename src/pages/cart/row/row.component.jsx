@@ -1,4 +1,5 @@
 import React from 'react';
+import './row.css';
 import trashIcon from '../../../assets/trash.svg';
 
 const CartRow = (props) => {
