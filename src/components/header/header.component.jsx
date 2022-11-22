@@ -16,7 +16,7 @@ const Header = (props) => {
   }
 
   return (
-    <header className="webisteHeader">
+    <header className="websiteHeader">
       <div className="left">
         <h1>
           <img src="./nemo.svg" alt="Nemo" />
