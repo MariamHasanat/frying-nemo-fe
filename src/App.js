@@ -12,10 +12,15 @@ import React, { useReducer, useState } from "react";
 import UserProvider from "./components/providers/user-provider";
 import Guard from "./pages/guard-page/guard";
 import { reducer, initial } from './components/reducers/cart';
+import CartPage from "./pages/cartPage/cart";
+import CartProvider from "./components/providers/cart-provider";
 
 
 //tp pass the user to all routes without send  it as props to all children 
 export const UserContext = React.createContext(null);
+
+
+
 
 
 function App() {
@@ -45,6 +50,7 @@ function App() {
 
   return (
     <UserProvider>
+      <CartProvider>
       <div>
         <BrowserRouter>
           <Head user={user} setUser={saveUser} cart={cart} />
@@ -52,14 +58,17 @@ function App() {
             <Route na />
             <Route path="/add" element={<Guard component='add' permittedRoles={['ADMIN']}><AddPage /></Guard>} />
             <Route path="/*" element={<NotFound />} />
-            <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart} />} />
-            <Route path="/view" element={<ViewPage dispatch={dispatch} cart={cart} />} />
+            <Route path="/view/:id" element={<ViewItemPage />} />
+            <Route path="/view" element={<ViewPage  />} />
             <Route path="/" element={<Navigate to='/view' replace />} />
+            <Route path="/cart" element={<CartPage  />} />
+
             <Route path="/login" element={<Login />} />
             {/* <Route path="/*" element={<Navigate to='/add' />} /> */}
           </Routes>
         </BrowserRouter>
       </div >
+      </CartProvider>
     </UserProvider>
   );
 }

@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useContext } from 'react';
 // import './viewitem.css';
 import { useNavigate, useParams } from 'react-router-dom';
+import { CartContext } from '../../components/providers/cart-provider';
 import { getItem } from '../../components/services/items';
 import Card from '../view/card';
 
@@ -16,7 +17,7 @@ import Card from '../view/card';
  * }>}
  */
 
-const ViewItemPage = () => {
+const ViewItemPage = (props) => {
   const params = useParams();
   const [currentItem, setCurrentItem] = useState(null);
 
@@ -30,6 +31,7 @@ const ViewItemPage = () => {
 
   }, []);
 
+  const cartContext = useContext(CartContext);
 
   return (
     <div className="view-item-page">

@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import './header.css';
 import { UserContext } from '../../App';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+// import cartIcon from '../../../public/trash.svg';
+
 
 const Head = (props) => {
   const location = useLocation();
@@ -31,6 +33,10 @@ const Head = (props) => {
           <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
             View
           </Link>
+          <Link className="cart" to="cart">
+          {/* <img src={cartIcon} alt="cart icon" /> */}
+          <span className="count">{itemsCount}</span>
+        </Link>
         </nav>
         {
           userContext.user &&

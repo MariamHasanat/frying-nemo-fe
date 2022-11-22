@@ -1,17 +1,20 @@
+import { CartContext } from "../../components/providers/cart-provider";
+import React, { useContext } from 'react';
 
 
 
+const Price = (props) => { 
 
-const Price = (props) => {
+  const cartContext = useContext(CartContext);
   const handelIcrement = () => {
 
-    props.dispatch({ type: 'Increment-cart-Quantity', meal: props.item });
+    cartContext.dispatch({ type: 'Increment-cart-Quantity', meal: props.item });
 
   };
 
 
   const handelDecrement = () => {
-    props.dispatch({ type: 'Decrement-cart-Quantity', meal: props.item });
+    cartContext.dispatch({ type: 'Decrement-cart-Quantity', meal: props.item });
 
   };
 

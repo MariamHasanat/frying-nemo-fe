@@ -8,6 +8,7 @@ import { FilterBar } from './filter-bar/filter-bar';
 import { CATEGORIES } from '../../data/data';
 import { useEffect } from 'react';
 import { UserContext } from '../../App';
+import { CartContext } from '../../components/providers/cart-provider';
 /**
    * @type {Array<
    * 
@@ -21,7 +22,9 @@ import { UserContext } from '../../App';
    */
 const ViewPage = (props) => {
 
-  const initial = [];
+  // const initial = [];
+  const cartContext = useContext(CartContext);
+
   const GetmenuItems = () => JSON.parse(localStorage.menuitems || '[]');
   const [menuitems, setMenuItems] = useState(GetmenuItems());
   const navigate = useNavigate();
@@ -41,6 +44,7 @@ const ViewPage = (props) => {
   const minFromURL = params.get("min") || '';
   const price = params.get("price") || '';
   // const [price,setPrice] =useState(10)
+
 
 
   console.log(params.get("search"));
@@ -149,10 +153,12 @@ const ViewPage = (props) => {
 
             (filterItems.map((item, index) =>
               <Card data={item} key={item.name + index}
-                dispatch={props.dispatch}
+                dispatch={cartContext.dispatch}
                 // cartQuantity={props.cart}
-                cartQuantity={getCartQuantity(item.id)}
-
+                /**TODO:
+                 * handel all buttons 
+                 */
+                // cartQuantity={getCartQuantity(item.id)}
 
 
               />)
