@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router';
 import { getItem } from '../../services/items';
 import './view-item.css';
 import { getItemQuantity } from '../../utilities/get-item-quantity';
+import PriceBar from '../../components/price-bar/price-bar.component';
 
 /**
  * 
@@ -45,10 +46,16 @@ const ViewItem = (props) => {
           <h3>{currentItem.price} $</h3>
 
           <h2 className='quantity'>Quantity: <span>{getItemQuantity(props.cart, currentItem.id)}</span></h2>
+
+          <PriceBar
+            dispatch={props.dispatch}
+            item={currentItem}
+            itemQuantity={getItemQuantity(props.cart, currentItem.id)}
+          />
         </div>
 
-
       }
+
 
     </div>
   );

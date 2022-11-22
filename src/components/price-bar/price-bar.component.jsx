@@ -1,4 +1,5 @@
 import React from 'react';
+import './price-bar.css';
 
 const PriceBar = (props) => {
   const handleIncrement = () => {

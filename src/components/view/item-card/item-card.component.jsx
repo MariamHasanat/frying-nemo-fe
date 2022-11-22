@@ -21,8 +21,6 @@ import './item-card.css';
  */
 function ItemCard(props) {
 
-
-
   return (
     <div className='card-container'>
       <img src={props.item.image} alt='food' />

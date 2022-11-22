@@ -10,6 +10,7 @@ import Test from "./pages/test/test.page";
 import UserProvider from "./components/providers/user-provider";
 import Guard from "./components/core/guard/guard.component";
 import CartPage from "./pages/cart/cart.page";
+import CartProvider from "./components/providers/cart-provider";
 // import './App.css';
 function App() {
 
@@ -33,25 +34,26 @@ function App() {
   return (
     <div>
       <BrowserRouter>
+
         <UserProvider>
-
-          <Guard component='header'><Header cart={cart} /></Guard>
-
-          <div className="body">
-
-            <Routes>
-              <Route path="/" element={<Navigate to='/view' replace />} />
-              <Route path="/login" element={<LoginComponent />} />
-              <Route path="/add" element={<Guard component='add' permittedRoles={['ADMIN']}><AddPage /></Guard>} />
-              <Route path="/view" element={<View dispatch={dispatch} cart={cart} />} />
-              <Route path="/view/:id" element={<ViewItem cart={cart} />} />
-              <Route path="/cart" element={<CartPage />} />
-              <Route path="/404" element={<Test />} />
-            </Routes>
-          </div>
+          <CartProvider>
+            <Guard component='header'><Header cart={cart} /></Guard>
+            <div className="body">
+              <Routes>
+                <Route path="/" element={<Navigate to='/view' replace />} />
+                <Route path="/login" element={<LoginComponent />} />
+                <Route path="/add" element={<Guard component='add' permittedRoles={['ADMIN']}><AddPage /></Guard>} />
+                <Route path="/view" element={<View dispatch={dispatch} cart={cart} />} />
+                <Route path="/view/:id" element={<ViewItem cart={cart} dispatch={dispatch} />} />
+                <Route path="/cart" element={<CartPage />} />
+                <Route path="/404" element={<Test />} />
+              </Routes>
+            </div>
+          </CartProvider>
         </UserProvider>
+
       </BrowserRouter>
-    </div>
+    </div >
   );
 }
 
