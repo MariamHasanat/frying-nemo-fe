@@ -34,9 +34,9 @@ function App() {
     <div>
       <BrowserRouter>
         <UserProvider>
-          {/* <div className="header"> */}
-            <Guard component='header'><Header cart={cart} /></Guard>
-          {/* </div> */}
+
+          <Guard component='header'><Header cart={cart} /></Guard>
+
           <div className="body">
 
             <Routes>
