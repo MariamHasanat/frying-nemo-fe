@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Input from "../common/input/input.component";
+import Input from "../input/input.component";
 import "./multivalue-input.css";
-import "../../common.css";
+import "../../../common.css";
 /**
  * @param {{
  *  label?: string;

@@ -24,5 +24,15 @@
   cursor: not-allowed;
 }
 div.app-body{
-  background-color: #fff1ec;
+  background-image: url("../public/background245.png");
+  background-repeat: repeat ;
+  background-attachment: fixed;
+  background-color:#fff5e9;
+}
+
+div > label > span{
+  font-weight: bolder;
+  background-color: white;
+  padding: 5px;
+  box-shadow: inset 5em 2.1em rgba(250, 228, 104, 0.685);
 }

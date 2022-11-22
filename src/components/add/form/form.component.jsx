@@ -5,7 +5,7 @@ import Input from "../../common/input/input.component";
 import Textarea from "../../common/textarea/textarea.component";
 import Select from "../../common/select/select.component";
 import "./form.css";
-import MultivalueInput from "../../multi-value-input.jsx/multivalue-input.component";
+import MultivalueInput from "../../common/multi-value-input.jsx/multivalue-input.component";
 import "../../../../src/common.css";
 import { CATEGORIES } from "../../../data/constants";
 
@@ -61,8 +61,11 @@ const Form = (props) => {
   const userContext = useContext(UserContext);
   return (
     <div className="form-container">
-      <h1>Add Menu Item</h1>
+      <h1></h1>
+      <h1></h1>
+      <h1></h1>
       <form className="addForm" onSubmit={submitHandler}>
+        <h1>Add Menu Item</h1>
         <Input
           name="name"
           label="Name"
