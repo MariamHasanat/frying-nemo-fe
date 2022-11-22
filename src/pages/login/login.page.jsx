@@ -64,6 +64,7 @@ const LoginComponent = () => {
         <div>
           <input className="nemo-button" type="submit" value="Login" />
         </div>
+          <span>new user? <a href="#" className='create-account'>create account</a> </span>
       </form >
     </div >
          

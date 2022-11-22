@@ -1,7 +1,3 @@
-body {
-  background-color: #F0F2F5;
-}
-
 .login-page {
   display: flex;
   justify-content: space-evenly;
@@ -46,20 +42,29 @@ body {
   font-weight: bold;
 }
 
+.nemo-button {
+  width: 20em;
+  padding: 10px 50px;
+  background-color: #be441d;
+  border: none;
+  color: whitesmoke;
+  border-radius: 6px;
+}
+
 .nemo-button:hover {
   cursor: pointer;
-  background-color: rgba(190, 69, 29, 0.922)
+  background-color: #ac401c;
 }
 
 .nemo-button:active {
   background-color: #be441d;
 }
 
-.nemo-button {
-  width: 100%;
-  padding: 10px 50px;
-  background-color: #be441d;
-  border: none;
-  color: whitesmoke;
-  border-radius: 6px;
+.create-account{
+  color: #be441d;
+  font-weight: bold;
+}
+
+.create-account:hover{
+  text-decoration: underline;
 }
