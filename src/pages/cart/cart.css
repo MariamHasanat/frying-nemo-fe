@@ -2,3 +2,40 @@
   padding: 0px 32px;
   padding-top: 80px;
 }
+
+.cart-item {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  /* border-radius: 6px; */
+  width: 30vw;
+  height: 10vh;
+  box-sizing: border-box;
+  display: flex;
+  padding: 8px;
+  justify-content: space-between;
+}
+
+.cart-middle-section {
+  flex-grow: 1;
+  padding-left: 8px;
+}
+
+.cart-middle-section>.item-name {
+  font-size: larger;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.cart-middle-section>.item-price {
+  color: rgba(0, 0, 0, 0.38);
+  font-weight: bold;
+}
+
+.cart-right-section{
+  display: flex;
+  align-items: center;
+}
+.cart-right-section>.total-item-price {
+  color: orangered;
+  font-weight: bold;
+}

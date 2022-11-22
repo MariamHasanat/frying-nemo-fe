@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PriceBar from '../../price-bar/price-bar.component';
 import './item-card.css';
 
 /**
@@ -20,13 +21,7 @@ import './item-card.css';
  */
 function ItemCard(props) {
 
-  const handleIncrement = () => {
-    props.dispatch({ type: 'INCREMENT_CART_QUANTITY', meal: props.item });
-  };
 
-  const handleDecrement = () => {
-    props.dispatch({ type: 'DECREMENT_CART_QUANTITY', meal: props.item });
-  };
 
   return (
     <div className='card-container'>
@@ -42,14 +37,12 @@ function ItemCard(props) {
       <br />
       <hr />
 
-      <div className='card-footer'>
-        <h4 className='item-price'>{props.item.price} $</h4>
-        <div className='card-buttons'>
-          <button className='card-button' onClick={handleDecrement}>-</button>
-          <span className='item-quantity'>{props.itemQuantity}</span>
-          <button className='card-button' onClick={handleIncrement}>+</button>
-        </div>
-      </div>
+      <PriceBar
+        itemQuantity={props.itemQuantity}
+        item={props.item}
+        dispatch={props.dispatch}
+
+      />
     </div>
   );
 }
