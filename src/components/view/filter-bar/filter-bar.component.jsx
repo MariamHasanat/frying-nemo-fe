@@ -1,8 +1,16 @@
+import './filter-bar.css';
 import Input from '../../common/input/input.component';
-import CheckBox from '../../common/check-box/check-box.component';
 import { CATEGORIES } from '../../../data/data';
+import CheckBox from '../../common/toggle-bullets/check-box.component';
 
-
+/**
+ * Renders a filters bar.
+ * @param {{
+ *  searchTerms: string;
+ *  categories: string[];
+ *  setParam: (name: string, value: string | string[]) => void
+ * }} props Component properties object.
+ */
 const FilterBar = (props) => {
   return (
     <div className="filter-bar">
@@ -17,7 +25,6 @@ const FilterBar = (props) => {
         {CATEGORIES.map(cat => (
           <CheckBox
             key={cat}
-            value={cat}
             label={cat}
             checked={props.categories.includes(cat)}
             onChange={e => {

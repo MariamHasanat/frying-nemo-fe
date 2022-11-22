@@ -1,8 +1,17 @@
+import React from 'react';
+import './check-box.css';
+
+/**
+ * Renders a checkbox element.
+ * @param {React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
+ *  label?: string;
+ * }} props 
+ */
 const CheckBox = props => {
   const { label, ...inputProps } = props;
 
   return (
-    <div>            
+    <div className="checkbox-group">            
       <input {...inputProps} type="checkbox" id={`chk-lbl-${label}`} />
       {
         label ? (

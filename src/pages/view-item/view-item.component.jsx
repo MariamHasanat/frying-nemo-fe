@@ -1,12 +1,12 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import {useNavigate, useParams } from "react-router-dom";
-import { getItem } from "../../services/item";
-import Spinner from "../../components/core/spinner/spinner.component";
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import './view-item.css';
+import { getItem } from '../../services/item';
+import Spinner from '../../components/core/spinner/spinner.component';
+import PriceBar from '../../components/view/price-bar/price-bar.component';
+import { getCartQuantity } from '../../utilities/get-item-quantity';
 
-
-
-const ViewItemPage = () => {
+const ViewItemPage = (props) => {
   const params = useParams();
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
@@ -22,7 +22,6 @@ const ViewItemPage = () => {
     setLoading(false);
   }, []);
 
-
   return (
     <div className="view-item-page">
       {loading
@@ -37,14 +36,11 @@ const ViewItemPage = () => {
             <p className="ingredients"><b>Ingredients:</b>
               <br />{currentItem.ingredients.join(", ")}</p>
           </div>
-          <div className="price">
-            <span><b>Price: </b>${currentItem.price}</span>
-            <div className="add-cart">
-              <button>+</button>
-              <input type="number" max={500} />
-              <button>-</button>
-            </div>
-          </div>
+          <PriceBar
+            item={currentItem}
+            dispatch={props.dispatch}
+            cartQuantity={getCartQuantity(currentItem.id, props.cart)}
+          />
         </div>
       }
     </div>

@@ -31,4 +31,3 @@ const AddPage = (props) => {
 };
 
 export default AddPage;
-
