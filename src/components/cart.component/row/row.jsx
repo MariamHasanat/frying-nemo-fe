@@ -10,6 +10,7 @@ const CartRow = (props) => {
   const deleteItem = () => props.dispatch({ type: 'Delete-cart', meal });
 
   return (
+<>
     <li className="cart-row">
       <img src={meal.image} alt="meal" />
       <div className="main-info">
@@ -29,8 +30,10 @@ const CartRow = (props) => {
         <button onClick={deleteItem}>
           <img src={trashIcon} alt="delete" />Delete
         </button>
+
       </div>
     </li>
+    </>
   );
 };
 

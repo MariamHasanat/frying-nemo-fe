@@ -19,6 +19,7 @@ import Price from './price-bar';
  *  
  */
 const Card = (props) => {
+  
   return (
     <div className="wrapper">
       <div className="card">

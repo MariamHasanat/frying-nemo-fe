@@ -2,7 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { CartContext } from '../../providers/cart-provider';
 import CartRow from '../row/row';
-
+import { ReactComponent as Empty } from '../../../assets/empty.svg';
 const CartList = (props) => {
   const cartContext = useContext(CartContext);
   return (
@@ -14,8 +14,7 @@ const CartList = (props) => {
        }
       </ul>
       : <div className="no-results">
-        <img src="./empty_cart.webp" alt="empty cart" width={300} />
-        <p>Your Cart is Empty!</p>
+        <Empty style={{width:'500'}}/>
       </div>
   );
 };
