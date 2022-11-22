@@ -1,5 +1,6 @@
 import React from 'react';
 import trashIcon from '../../../assets/trash.svg';
+import './row.css'
 
 const CartRow = (props) => {
   const { meal, quantity } = props.item;
