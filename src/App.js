@@ -17,7 +17,7 @@ function App() {
   /**
    * @type {[]}
    */
-  const [cart , dispatch] = useReducer (reducer , initialState) ;
+  const [cart , dispatch] = useReducer (reducer , initialState) ;   // reducer must have an initial state 
   return (
     <div>
       <BrowserRouter >

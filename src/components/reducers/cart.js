@@ -1,48 +1,37 @@
-const initialState = [] ;
- // it updates the object state and returns the updated state 
-const reducer = (cart , action) => {
+const initialState = [];
+// it updates the object state and returns the updated state 
+const reducer = (cart, action) => {
+  //eslint-disable-next-line default-case 
   switch (action.type) {
     case "INCREMENT": {
-      let found = false ;
-      const newCart = cart.map (item => {
+      let found = false;
+      const newCart = cart.map(item => {
         if (item.meal.id === action.meal.id) {
-          found = true ;
-          return {meal : item.meal , quantity : item.quantity + 1} ;
+          found = true;
+          return { meal: item.meal, quantity: item.quantity + 1 };
         }
         else {
-          return item ;
+          return item;
         }
-      }) ;
+      });
       if (!found) {
-        return [...cart , {meal: action.meal , quantity: 1}] ;
+        return [...cart, { meal: action.meal, quantity: 1 }];
       }
       else {
-        return newCart ;
+        return newCart;
       }
     }
-      case "DECREMENT" :{
-        let shouldBeDeleted = false ;
-        const newCart = cart.map (item => {
-          if (item.meal.id === action.meal.id) {
-            if (item.quantity === 1) {
-              shouldBeDeleted = true ;
-            }
-            return {meal : item.meal , quantity : item.quantity - 1} ;
-          }
-          else {
-            return item;
-          }
-        }) ;
-        if (shouldBeDeleted) {
-          return newCart.filter (item => item.meal.id !== action.meal.id) ;
-        }
-        else {
-          return newCart ;
-        }
-      }
-      default : break
-  
+    case "DECREMENT": {
+      const newCart = cart.map(item => {
+        return item.meal.id === action.meal.id 
+          ?  { meal: item.meal, quantity: item.quantity - 1 }
+          : item ;
+      });
+      return newCart.filter(item => item.quantity);
+      
+    }
+    // default : return cart ;
   }
 
-}
-export {reducer , initialState} ;
+};
+export { reducer, initialState };
