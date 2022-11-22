@@ -34,15 +34,22 @@
   width: 100%;
   margin-top: 100px;
 }
+.no-results{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin-top: 100px;
+}
 
-.view-page .items-container > .no-results > img {
+ .no-results > img {
   width: 280px;
 }
 
-.view-page .items-container > .no-results > p {
+.no-results > p {
   font-size: 30px;
   font-weight: bold;
-  color: #999;
+  color: #be441d;
   margin-top: 40px;
   width: 100%;
   text-align: center;
