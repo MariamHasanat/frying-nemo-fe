@@ -7,6 +7,7 @@ import FilterBar from "../../components/view/filter-bar/filter-bar.component";
 import Item from "../../components/view/item/item.component";
 import { UserContext } from '../../components/providers/user-provider.component';
 import { getMenuItems } from "./functions";
+import { getCartQuantity } from "../../util/cart";
 
 /**
 * @type {Array<{
@@ -20,6 +21,36 @@ import { getMenuItems } from "./functions";
 * }>}
 */
 const initialItems = [];
+
+/**
+ * 
+ * @param {{
+ *      dispatch: React.Dispatch<{
+ *          type: string;
+ *          item: {
+*           id: string;
+*           name: string;
+*           image: string;
+*           description: string;
+*           price: number;
+*           category: string;
+*           ingredients: string[];
+*           };
+*       }>
+*       cart: Array<{
+*           quantity: number;
+*           item: {
+*               id: string;
+*               name: string;
+*               image: string;
+*               description: string;
+*               price: number;
+*               category: string;
+*               ingredients: string[];
+*           }>;
+ * }} props 
+ * @returns 
+ */
 
 const View = (props) => {
     const [menuItems, setMeuItems] = useState(initialItems);
@@ -110,7 +141,8 @@ const View = (props) => {
                                         return <Item
                                             item={item}
                                             key={item.name + index}
-                                            dispatcher={props.dispatcher}
+                                            dispatch={props.dispatch}
+                                            cartQuantity={getCartQuantity(item.id, props.cart)}
                                         />;
                                     })
                                 : <div className="empty">The is no any meal</div>

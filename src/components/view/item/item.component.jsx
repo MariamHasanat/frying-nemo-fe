@@ -46,7 +46,8 @@ const Item = (props) => {
             <PriceBar
                 cartQuantity={props.cartQuantity}
                 item={props.item}
-                dispatch={props.dispatch} />
+                dispatch={props.dispatch}
+            />
         </Card>
     );
 };

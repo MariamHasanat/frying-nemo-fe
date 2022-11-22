@@ -62,9 +62,12 @@ const Header = (props) => {
 
             </div>
             <div className='right'>
-                <span className='count-items'>
-                    Your Cart {itemsCount}
-                </span>
+                {
+                    location.pathname !== '/log-in' &&
+                    <span className='count-items'>
+                        Your Cart {itemsCount}
+                    </span>
+                }
                 <nav>
                     {
                         location.pathname !== '/log-in' &&
