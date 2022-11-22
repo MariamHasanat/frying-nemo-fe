@@ -38,8 +38,6 @@ function ItemCard(props) {
       <PriceBar
         itemQuantity={props.itemQuantity}
         item={props.item}
-        dispatch={props.dispatch}
-
       />
     </div>
   );

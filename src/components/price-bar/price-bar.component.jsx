@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CartContext } from '../providers/cart-provider';
 import './price-bar.css';
 
 const PriceBar = (props) => {
+
+  const cartContext = useContext(CartContext);
+
   const handleIncrement = () => {
-    props.dispatch({ type: 'INCREMENT_CART_QUANTITY', meal: props.item });
+    cartContext.dispatch({ type: 'INCREMENT_CART_QUANTITY', meal: props.item });
   };
 
   const handleDecrement = () => {
-    props.dispatch({ type: 'DECREMENT_CART_QUANTITY', meal: props.item });
+    cartContext.dispatch({ type: 'DECREMENT_CART_QUANTITY', meal: props.item });
   };
 
   return (

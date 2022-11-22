@@ -52,7 +52,6 @@ const ViewItem = (props) => {
             {/* <h2 className='quantity'>Quantity: <span>{getItemQuantity(props.cart, currentItem.id)}</span></h2> */}
 
             <PriceBar
-              dispatch={cartContext.dispatch}
               item={currentItem}
               itemQuantity={getItemQuantity(cartContext.cart, currentItem.id)}
             />
