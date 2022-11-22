@@ -6,25 +6,29 @@ import NotFoundPage from "./pages/not-found/not-found.component";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/login/login.component";
 import UserProvider from "./components/core/providers/user-provider.component";
-import { useReducer } from "react";
+import CartPage from "./pages/cart/cart.component";
+import CartProvider from "./components/core/providers/cart-provider.component";
 
 function App() {
 
   return (
     <div>
-      <UserProvider>
-        <BrowserRouter>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Navigate to="/view" replace />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/add" element={<AddPage />} />
-            <Route path="/view" element={<ViewPage />} />
-            <Route path="/view/:id" element={<ViewDetailsPage />} />
-            <Route path="/*" element={<NotFoundPage />} />
-          </Routes>
-        </BrowserRouter>
-      </UserProvider>
+      <CartProvider>
+        <UserProvider>
+          <BrowserRouter>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Navigate to="/view" replace />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/add" element={<AddPage />} />
+              <Route path="/view" element={<ViewPage />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/view/:id" element={<ViewDetailsPage />} />
+              <Route path="/*" element={<NotFoundPage />} />
+            </Routes>
+          </BrowserRouter>
+        </UserProvider>
+      </CartProvider>
     </div>
   );
 }

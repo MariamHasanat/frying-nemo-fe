@@ -5,7 +5,7 @@ const Select = ({items, ...options}) => {
   return (
     <div className="select">
       <select {...options} name="category">
-        <option value="none" selected disabled>Select a category</option>
+        <option value="none" disabled>Select a category</option>
         {listItems}
       </select>
     </div>

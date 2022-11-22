@@ -24,8 +24,6 @@ const UserProvider = ({ children }) => {
         });
         const newItem = { item: action.item, quantity: action.quantity };
         if (!found) {
-          console.log('ct', newCart)
-          console.log('add new card', [...newCart, newItem])
           newCart = [...newCart, newItem];
         }
         return newCart;
@@ -38,16 +36,23 @@ const UserProvider = ({ children }) => {
         newCart = newCart.filter(cartItem => cartItem.quantity != 0)
         return newCart;
       }
+      case `DELETE`: {
+        let newCart = [...cart]
+        newCart = newCart.filter(cartItem => cartItem.item.id != action.item.id)
+        return newCart;
+      }
+      case `CLEAR`: {
+        return [];
+      }
       default:
         throw new Error();
     }
   };
 
   const [cart, dispatch] = useReducer(reducer, initialState);
-  console.log(`cart:`, cart);
 
   return (
-    <UserContext.Provider value={{ user, setUser: updateUser, dispatch }}>
+    <UserContext.Provider value={{ user, setUser: updateUser, dispatch, cart }}>
       {children}
     </UserContext.Provider>
   );

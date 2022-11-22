@@ -11,7 +11,7 @@ const Card = ({itemId, itemName, itemCategory, itemPrice, itemDescription, itemI
   const incCounter = () => {
     if (counter >= 100) return;
     setCounter(counter + 1)
-    dispatch({type: `INCREMENT`, item: {id: itemId, price: itemPrice}, quantity: counter + 1})
+    dispatch({type: `INCREMENT`, item: {id: itemId, price: itemPrice, image}, quantity: counter + 1})
   }
 
   const decCounter = () => {

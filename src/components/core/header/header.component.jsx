@@ -1,13 +1,14 @@
 import { useContext } from 'react';
 import { UserContext } from '../providers/user-provider.component';
-import './header.css'
-import logo from './images/logo.png'
-import Timer from './timer/timer.component'
-import WithBorders from '../with-borders/with-borders.copmonent';
+import './header.css';
+import logo from './images/logo.png';
+import Timer from './timer/timer.component';
+import cartIcon from '../../../assets/cart.svg';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
-  const {user} = useContext(UserContext)
-  const pathname = window.location.pathname.replace('/', '');
+  const { user, cart } = useContext(UserContext);
+  const location = useLocation();
   return (
     <div className='page-header'>
       <div className='logo'>
@@ -16,16 +17,21 @@ const Header = () => {
         <Timer></Timer>
       </div>
       <div className='btns'>
-        <a href='/add' className={pathname == 'add' ? `selected` : undefined}>Add</a>
-        <a href='/view' className={pathname.includes('view') ? `selected` : undefined}>View</a>
+        <Link to='/add' className={location.pathname.includes('add') ? `selected` : undefined}>Add</Link>
+        <Link to='/view' className={location.pathname.includes('view') ? `selected` : undefined}>View</Link>
+        <Link className={`cart ${location.pathname.includes('cart') ? `selected` : ``}`} to="cart">
+          <img src={cartIcon} alt="cart icon" />
+          <span className="count">{cart.length}</span>
+        </Link>
+
         {user && <div className='user-info'>
           <img src="https://www.nicepng.com/png/full/137-1379898_anonymous-headshot-icon-user-png.png" alt="User Image" />
           <p>{user.fullName}</p>
         </div>}
-        {user && <a href='/login' className='logout' onClick={() => sessionStorage.clear()}>Logout</a>}
+        {user && <Link to='/login' className='logout' onClick={() => sessionStorage.clear()}>Logout</Link>}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Header;
