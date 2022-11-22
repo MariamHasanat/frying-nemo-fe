@@ -47,10 +47,11 @@ const initialItems = [];
 *               price: number;
 *               category: string;
 *               ingredients: string[];
+*               }
 *           }>;
- * }} props 
- * @returns 
- */
+*   }} props 
+* @returns 
+*/
 
 const View = (props) => {
     const [menuItems, setMeuItems] = useState(initialItems);
@@ -60,7 +61,6 @@ const View = (props) => {
     const [max, setMax] = useState(null);
     const navigate = useNavigate();
     const userContext = useContext(UserContext);
-
     const searchParFromURL = params.get('searchTerms') || '';
     const categoriesFromURL = params.getAll('categories') || [];
 

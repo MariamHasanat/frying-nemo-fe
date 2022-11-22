@@ -4,7 +4,6 @@ import './cart-list.css';
 import Row from '../row/row.component';
 
 /**
- * 
  * @param {{
  *      dispatch: React.Dispatch<{
  *          type: string;
@@ -28,11 +27,11 @@ import Row from '../row/row.component';
 *               price: number;
 *               category: string;
 *               ingredients: string[];
-*           }>
+*           }
+*       }>
  * }} props 
  * @returns 
  */
-
 const CartList = (props) => {
     return (
         <ul className='cart-list'>

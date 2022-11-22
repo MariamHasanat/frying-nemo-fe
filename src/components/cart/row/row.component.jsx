@@ -27,13 +27,12 @@ import './row.css';
 *               category: string;
 *               ingredients: string[];
 *           }
- * }} props 
+ * }}} props 
  * @returns 
  */
 
 
 const Row = (props) => {
-    console.log(props.cartItem.quantity);
     return (
         <li className='cart-row'>
             

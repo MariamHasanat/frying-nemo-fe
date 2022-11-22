@@ -4,7 +4,6 @@ import './cart.css';
 import CartList from '../../components/cart/list/cart-list.component';
 
 /**
- * 
  * @param {{
  *      dispatch: React.Dispatch<{
  *          type: string;
@@ -28,7 +27,8 @@ import CartList from '../../components/cart/list/cart-list.component';
 *               price: number;
 *               category: string;
 *               ingredients: string[];
-*           }>
+*           }
+*       }>
  * }} props 
  * @returns 
  */
@@ -36,6 +36,7 @@ import CartList from '../../components/cart/list/cart-list.component';
 const Cart = (props) => {
     return (
         <div className='cart-page'>
+            The cart page
             <CartList
                 cart={props.cart}
                 dispatch={props.dispatch}

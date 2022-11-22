@@ -62,13 +62,13 @@ const Header = (props) => {
 
             </div>
             <div className='right'>
-                {
-                    location.pathname !== '/log-in' &&
-                    <span className='count-items'>
-                        Your Cart {itemsCount}
-                    </span>
-                }
                 <nav>
+                    {
+                        location.pathname !== '/log-in' &&
+                        <Link className='count-items' to={'./cart'}>
+                            Your Cart {itemsCount}
+                        </Link>
+                    }
                     {
                         location.pathname !== '/log-in' &&
                         <Link className={`but ${location.pathname === '/add' ? 'current' : ''}`} to='/add'>

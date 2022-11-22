@@ -8,19 +8,30 @@ import PriceBar from '../price-bar/price-bar.component';
 /** 
  * Render a single menu item based on the data passed
  * @param {{
- *     item:{
- *     id: string;
- *     name: string;
- *     image: string;
- *     description: string;
- *     price: number;
- *     category: string;
- *     ingredients: string[];
- *    }, 
- *     dispatch:React.DispatchWithoutAction;
- *     cartQuantity:number;
- *   }} props
- */
+ *      item:{
+ *          id: string;
+ *          name: string;
+ *          image: string;
+ *          description: string;
+ *          price: number;
+ *          category: string;
+ *          ingredients: string[];
+ *      }
+ *      dispatch: React.Dispatch<{
+ *          type: string;
+ *          item: {
+*           id: string;
+*           name: string;
+*           image: string;
+*           description: string;
+*           price: number;
+*           category: string;
+*           ingredients: string[];
+*           };
+*       }>
+*     cartQuantity:number;
+*   }} props
+*/
 const Item = (props) => {
     return (
         <Card>
