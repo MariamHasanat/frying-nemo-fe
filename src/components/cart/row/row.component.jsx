@@ -1,5 +1,5 @@
 import React from 'react';
-// import trashIcon from '../../../assets/trash.svg';
+import trashIcon from '../../../assets/images/trash.svg';
 import './row.css';
 
 const CartRow = (props) => {
@@ -26,7 +26,7 @@ const CartRow = (props) => {
       <div className="total-price">
         <h3>${meal.price * quantity}</h3>
         <button>
-          <img src='' alt="delete" />Delete
+          <img src={trashIcon} alt="delete" />Delete
         </button>
       </div>
     </li>
