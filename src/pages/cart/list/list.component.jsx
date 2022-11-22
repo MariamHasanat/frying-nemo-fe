@@ -1,12 +1,15 @@
 import React from 'react';
+import { useContext } from 'react';
+import { CartContext } from '../../../components/providers/cart-provider.component';
 import CartRow from '../row/row.component';
 
 const CartList = (props) => {
+  const cartContext = useContext(CartContext);
   return (
-    props.cart.length
+    cartContext.cart.length
       ? <ul className="cart-list">
         {
-          props.cart.map((cartItem, index) => <CartRow cartItem={cartItem} key={"r_" + index} />)
+          cartContext.cart.map((item, index) => <CartRow item={item} dispatch={cartContext.dispatch} key={"r_" + index} />)
         }
       </ul>
       : <div className="no-results">
@@ -17,3 +20,4 @@ const CartList = (props) => {
 };
 
 export default CartList;
+

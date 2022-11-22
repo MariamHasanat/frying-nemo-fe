@@ -8,6 +8,7 @@ import { useContext } from 'react';
 import { UserContext } from '../../components/providers/user-provider.component';
 import pic from '../../assets/illustrations/frustrated-realistic .png';
 import { getCartQuantity } from '../../utils/cart';
+import { CartContext } from '../../components/providers/cart-provider.component';
 /**
  * @type {Array<{
  * id: number;
@@ -26,6 +27,7 @@ const ViewPage = (props) => {
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
   const userContext = useContext(UserContext);
+  const cartContext = useContext(CartContext);
   const navigate = useNavigate();
   const searchTermsFromURL = params.get('searchTerms') || '';
   const categoriesFromURL = params.getAll('category') || '';
@@ -109,8 +111,8 @@ const ViewPage = (props) => {
                     <Item
                       data={item}
                       key={item.name + index}
-                      dispatch={props.dispatch}
-                      cartQuantity={getCartQuantity(item.id, props.cart)}
+                      dispatch={cartContext.dispatch}
+                      cartQuantity={getCartQuantity(item.id, cartContext.cart)}
                     />
                   ))
                   : (

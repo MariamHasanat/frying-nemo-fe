@@ -3,16 +3,18 @@ import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../providers/user-provider.component';
 import cartIcon from '../../assets/cart.svg';
+import { CartContext } from '../providers/cart-provider.component';
 
 const Header = (props) => {
 
   const location = useLocation();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
+  const cartContext = useContext(CartContext);
 
   let totalCartQuantity = 0;
-  for (let i = 0; i < props.cart.length; i++) {
-    totalCartQuantity += props.cart[i].quantity;
+  for (let i = 0; i < cartContext.cart.length; i++) {
+    totalCartQuantity += cartContext.cart[i].quantity;
   }
 
   return (

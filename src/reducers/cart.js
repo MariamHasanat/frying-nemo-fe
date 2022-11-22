@@ -23,13 +23,13 @@ const reducer = (cart, action) => {
     }
     case "DECREMENT_CART_QUANTITY": {
 
-      const newCart = cart.map(cartItem => {
-        return cartItem.meal.id === action.meal.id
-          ? { ...cartItem, quantity: cartItem.quantity - 1 }
-          : cartItem;
+      const newCart = cart.map(item => {
+        return item.meal.id === action.meal.id
+          ? { ...item, quantity: item.quantity - 1 }
+          : item;
       });
 
-      return newCart.filter(cartItem => cartItem.meal.quantity > 0);
+      return newCart.filter(item => item.quantity > 0);
 
     }
     case "DELETE_CART_ITEM": {
