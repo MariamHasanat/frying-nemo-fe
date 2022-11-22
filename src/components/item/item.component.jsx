@@ -7,16 +7,18 @@ import PriceBar from '../price-bar/price-bar.component';
  * Render a single menu item based on the data passed
  * @param {{
  *     data:{
- *     name: string;
  *     id: number;
+ *     name: string;
  *     image: string;
- *     Description: string;
- *     Price: number;
+ *     description: string;
+ *     price: number;
  *     category: string;
- *     Ingredients: string[];
- *    }
+ *     ingredients: string[];
+ *    },
+ *    dispatch: React.DispatchWithoutAction
  *   }} props
  */
+
 const Item = (props) => {
   
   return (

@@ -21,7 +21,7 @@ import cartIcon from '../../../assets/cart.svg';
     <header className="webisteHeader">
       <div className="left">
         <h1>
-          <img src="./008.svg" alt="fish-pic" />
+          <img src="./008.svg" alt="fish-pic"  width={40} height={40} />
           Frying Nemo resturent
         </h1>
       </div>
@@ -40,7 +40,7 @@ import cartIcon from '../../../assets/cart.svg';
 
         </nav>
         <Link className="cart" to="cart">
-          <img src={cartIcon} alt="cart icon" />
+          <img src={cartIcon} alt="cart icon"  width={30} height={30} />
           <span className="count">{itemsCount}</span>
         </Link>
 
