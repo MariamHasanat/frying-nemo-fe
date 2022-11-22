@@ -1,10 +1,10 @@
-import { useState, useEffect, navigate} from 'react';
+import { useState, useEffect, navigate, useContext } from 'react';
 import './viewItemStyle.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getItem } from '../../services/items';
 import Item from '../view/item/item';
 import Spinner from '../../components/spinner/spinner';
-
+import { CartContext } from '../../components/providers/cart-provider';
 /**
  * @type {Array<{
  * name: string;
@@ -16,18 +16,19 @@ import Spinner from '../../components/spinner/spinner';
  * }>}
  */
 
-const ViewItemPage = (props) => {
+  const ViewItemPage = (props) => {
   const params = useParams();
   navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const cartContext = useContext(CartContext);
+  
   useEffect(() => {
     setLoading(true);
     const item = getItem(params.id);
 
-    if (item === null ) {
-      navigate("/404")
+    if (item === null) {
+      navigate("/404");
     }
     setCurrentItem(item);
     setLoading(false);
@@ -40,7 +41,7 @@ const ViewItemPage = (props) => {
       {loading && <Spinner />}
       {
         !loading && currentItem !== null
-          ? <Item data={currentItem} dispatch={props.dispatch} />
+          ? <Item data={currentItem} dispatch={cartContext.dispatch} />
           : <span>Item Not Found!</span>
       }
     </div>

@@ -3,17 +3,19 @@ import logo from '../../assets/nemo.svg';
 import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { UserContext } from '../../components/user-provider/user-provider';
+import { UserContext } from '../../components/providers/user-provider';
+import { CartContext } from '../../components/providers/cart-provider';
 
 const Header = props => {
 
   const location = useLocation();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
+  const cartContext = useContext(CartContext);
 
   let itemsCount = 0;
-  for (let i = 0; i < props.cart.length; i++) {
-    itemsCount += props.cart[i].quantity;
+  for (let i = 0; i < cartContext.cart.length; i++) {
+    itemsCount += cartContext.cart[i].quantity;
   }
 
 
