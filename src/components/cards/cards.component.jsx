@@ -5,6 +5,7 @@ import FilteredSearch from "../view/filter-search/filtered-search.component";
 import { Link } from "react-router-dom";
 import "../../common.css";
 import PriceBar from "../view/price-bar/price-bar.component";
+import { getCartQuantity } from "../../utils/cart";
 /**
  * @type {Array<{
  * id: number
@@ -108,7 +109,7 @@ const Cards = (props) => {
                   </ul>
                 </div>
               </div>
-              <PriceBar item={item} dispatch={props.dispatch} cartQuantity={getCartQuantity(item.id)} />
+              <PriceBar item={item} dispatch={props.dispatch} cartQuantity={getCartQuantity(item.id, props.cart)} />
             </div>
         );
       })}

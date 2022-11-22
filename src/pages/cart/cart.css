@@ -1,0 +1,11 @@
+.cart-page {
+  padding: 30px 20px;
+  max-width: 60vw;
+  margin: 0 auto;
+}
+
+.cart-page>ul.cart-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}

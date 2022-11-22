@@ -2,6 +2,7 @@ import "./header.css";
 import { Link,useLocation,useNavigate } from "react-router-dom";
 import { UserContext } from "../../providers/user-provider.component";
 import { useContext } from "react";
+import cartIcon from "../../../assets/cart.svg";
 
 const Header = (props) => {
   let itemsCount = 0;
@@ -19,7 +20,6 @@ const Header = (props) => {
         <span className="resturant-name">Frying Nemo</span>
       </div>
       <div className="right-header">
-      <span>Your Cart {itemsCount}</span>
         <nav>
           <Link
             className={
@@ -44,6 +44,10 @@ const Header = (props) => {
             View
           </Link>
         </nav>
+        <Link className="cart" to="cart">
+          <img src={cartIcon} alt="cart icon" />
+          <span className="count">{itemsCount}</span>
+        </Link>
         {
           userContext.user &&
           <span className="user-badge">

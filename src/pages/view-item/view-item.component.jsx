@@ -5,6 +5,7 @@ import { getItem } from "../../services/items";
 import Select from "../../components/common/select/select.component";
 import PriceBar from "../../components/view/price-bar/price-bar.component";
 
+
 /**
  * @type {Array<{
  * id: number
@@ -39,7 +40,7 @@ const ViewItemPage = (props) => {
             <div className="card">
               <div
                 className="card-image"
-                style={{ backgroundImage: "url(" + currentItem.photo + ")" }}
+                style={{ backgroundImage: "url(" + currentItem.image + ")" }}
               ></div>
               <div className="card-name">{currentItem.name}</div>
               <span className="card-text">Description</span>
