@@ -1,11 +1,14 @@
 import React from 'react';
+import { useContext } from 'react';
+import { CartContext } from '../providers/cart-provider.component';
 import CartRow from './row';
 
 const CartList = (props) => {
+  const cartContext = useContext (CartContext) ;
   return (
     <div className='list'>
       {
-        props.cart.map((cartItem, index) => 
+        cartContext.cart.map((cartItem, index) => 
         <CartRow key={"c-r" + index} item={cartItem} />
         )
       }

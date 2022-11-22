@@ -9,7 +9,7 @@ export const UserContext = React.createContext(null); // provider (context defin
  */
 const UserProvider = (props) => {
   const initialUser = JSON.parse(localStorage.getItem('user'));
-  const [user, setUser] = useState(initialUser);
+  const [user, setUser] = useState(initialUser); // reducer must have an initial state 
 
   const setUserOverride = user => {
     setUser(user);

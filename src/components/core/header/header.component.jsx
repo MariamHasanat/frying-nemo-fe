@@ -3,14 +3,16 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../../components/providers/user-provider.component';
+import { CartContext } from '../../providers/cart-provider.component';
 
 
 const Header = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const cartContext = useContext (CartContext) ;
   const userContext = useContext(UserContext);
   let cartCounter = 0;
-  props.cart.forEach(item => cartCounter += item.quantity);
+  cartContext.cart.forEach(item => cartCounter += item.quantity);
   return (
     <div className='webisteHeader'>
       <div className='left'>

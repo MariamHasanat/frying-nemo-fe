@@ -14,7 +14,9 @@ const CartRow = (props) => {
           <span className='In-Stock'>In Stock</span>
         </span>
         <div className="quantity-selector">
-          + &nbsp; {props.item.quantity} &nbsp; -
+          <button>+</button>
+           &nbsp; {props.item.quantity} &nbsp; 
+          <button>-</button>
         </div>
       </div>
       <div className="total-price">

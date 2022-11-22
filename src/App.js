@@ -8,34 +8,35 @@ import SingleItem from "./pages/single-item/single-item.component";
 import LoginPage from "./pages/login/login.component";
 import UserProvider from "./components/providers/user-provider.component";
 import Guard from "./components/providers/guard-provider.component";
-import { useReducer } from "react";
-import {reducer , initialState} from "./components/reducers/cart"
+import React, { useReducer } from "react";
+import { reducer, initialState } from "./components/reducers/cart";
 import Cart from "./pages/cart/cart.component";
+import CartProvider from "./components/providers/cart-provider.component";
 
 function App() {
-  
+
   /**
    * @type {[]}
-   */
-  const [cart , dispatch] = useReducer (reducer , initialState) ;   // reducer must have an initial state 
+   */ 
   return (
     <div>
       <BrowserRouter >
         <UserProvider>
-          <Header
-            img="./nemo.svg.svg"
-            title="Frying Nemo"
-            cart = {cart}
-          />
-          <Routes>
-            <Route path="/" element={<Navigate to='/view' replace />} />   {/* page redirection using navigate component , which is built in react router dom library */}
-            <Route path="/add" element={<Guard permittedRoles= {['ADMIN']} ><AddPage /></Guard>} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/cart" element={<Cart cart = {cart}/>} />
-            <Route path="/view" element={<ViewPage dispatch = {dispatch} cart = {cart}/>} />
-            <Route path="/view-details/:id" element={<SingleItem  dispatch = {dispatch} cart = {cart}/>} />
-            <Route path="/*" element={<NotFound />} />
-          </Routes>
+          <CartProvider>
+            <Header
+              img="./nemo.svg.svg"
+              title="Frying Nemo"
+            />
+            <Routes>
+              <Route path="/" element={<Navigate to='/view' replace />} />   {/* page redirection using navigate component , which is built in react router dom library */}
+              <Route path="/add" element={<Guard permittedRoles={['ADMIN']} ><AddPage /></Guard>} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/view" element={<ViewPage />} />
+              <Route path="/view-details/:id" element={<SingleItem  />} />
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
+          </CartProvider>
         </UserProvider>
       </BrowserRouter>
     </div>

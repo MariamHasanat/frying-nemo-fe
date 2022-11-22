@@ -7,6 +7,7 @@ import MenuItem from '../../components/view/menu-item/menu-item.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import { getCartQuantity } from '../../util/cart';
 import './view.css';
+import { CartContext } from '../../components/providers/cart-provider.component';
 
 /**
  * @type {Array<{
@@ -31,6 +32,7 @@ const ViewPage = (props) => {
   const minPrice = param.get('min') || '';
   const maxPrice = param.get('max') || '';
   const userContext = useContext(UserContext);
+  const cartContext = useContext(CartContext);
 
   const setParams = (addTo, value) => {
     let newParam = new URLSearchParams(param);
@@ -97,7 +99,7 @@ const ViewPage = (props) => {
           {
             filteredIetems.length
               ? filteredIetems.map((item, index) => <div key={item.name + index}>
-                <MenuItem item={item} dispatch = {props.dispatch} cartQuantity = {getCartQuantity(item.id , props.cart)}/>
+                <MenuItem item={item} />
               </div>)
               : <div className="img">
                 <h5>No such item satisfies your requirements!</h5>

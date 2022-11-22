@@ -1,5 +1,8 @@
 import React from 'react' ;
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { getCartQuantity } from '../../../util/cart';
+import { CartContext } from '../../providers/cart-provider.component';
 import PriceBar from '../price-bar/price-bar.component';
 import './menu-item.css' ;
 /**
@@ -16,6 +19,7 @@ import './menu-item.css' ;
  * @returns 
  */
 const MenuItem = (props) => {
+  const cartContext = useContext (CartContext) ;
   //const items = JSON.parse (localStorage.getItem ('menuItems') || '[]') ;
   return (
     <div className='item-card'>
@@ -26,7 +30,7 @@ const MenuItem = (props) => {
         <p> {props.item.discription}</p>
         <p className="ingredients"> {props.item.ingredients.join(", ")}</p>
       </div>
-      <PriceBar item = {props.item} dispatch = {props.dispatch} cartQuantity = {props.cartQuantity}/>
+      <PriceBar item = {props.item} dispatch = {cartContext.dispatch} cartQuantity = {getCartQuantity(props.item.id , cartContext.cart)}/>
     </div>
   )
 }
