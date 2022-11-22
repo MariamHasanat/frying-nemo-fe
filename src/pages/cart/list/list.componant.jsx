@@ -6,11 +6,11 @@ const CartList = (props) => {
     props.cart.length
       ? <ul className="cart-list">
         {
-          props.cart.map((cartItem, index) => <CartRow cartItem={cartItem} key={"r_" + index} />)
+          props.cart.map((cartItem, index) => <CartRow cartItem={cartItem} dispatch={props.dispatch} key={"r_" + index} />)
         }
       </ul>
       : <div className="no-results">
-        <img src="./empty_cart.webp" alt="empty cart" width={300} />
+        <img src="./angry.png" alt="empty cart" width={300} />
         <p>Your Cart is Empty!</p>
       </div>
   );

@@ -13,6 +13,7 @@ import userEvent from "@testing-library/user-event";
 import { useReducer } from "react";
 import{initialState,reducer} from './reduce/cart'
 import CartPage from "./pages/cart/cart/cart";
+import CartProviders from "./components/provider/cartprovider";
 
 function App() {
 
@@ -22,8 +23,9 @@ function App() {
   return (
     <div>
       <BrowserRouter >
+       <CartProviders>
         <Providers>
-          <Handel cart={cart}  />
+          <Handel   />
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/" element={<Navigate to="view" />} />
@@ -34,6 +36,7 @@ function App() {
             <Route path="/cart" element={<CartPage dispatch={dispatch}  cart={cart} />} />
           </Routes>
         </Providers>
+        </CartProviders>
       </BrowserRouter>
     </div>
   );
