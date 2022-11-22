@@ -22,8 +22,8 @@ const Header = () => {
     }, []);
 
     let totalQuantity = 0;
-    for (let i = 0; i < cartContext.length; i++) {
-        totalQuantity += cartContext[i].quantity;
+    for (let i = 0; i < cartContext.cart.length; i++) {
+        totalQuantity += cartContext.cart[i].quantity;
     }
 
     return (

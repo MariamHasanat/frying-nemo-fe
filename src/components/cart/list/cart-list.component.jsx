@@ -13,7 +13,7 @@ const CartList = () => {
                 cartContext.cart.map((item, ind) => {
                     return (
                         <Row
-                            key={"c_" + ind}
+                            key={"r_" + ind}
                             item={item}
                             dispatch={cartContext.dispatch}
                         />

@@ -11,7 +11,13 @@ const UserProvider = (props) => {
     const [user, setUser] = useState(initialUser);
     const setUserOverride = (user) => {
         setUser(user);
-        localStorage.setItem('user', JSON.stringify(user));
+        if(user === null)
+        {
+            localStorage.removeItem('user');
+            localStorage.removeItem('cart');
+        }
+        else
+            localStorage.setItem('user', JSON.stringify(user));
     };
     return (
         <UserContext.Provider value={{ user, setUser: setUserOverride }}>
