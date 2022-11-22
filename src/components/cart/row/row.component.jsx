@@ -16,7 +16,7 @@ import './row.css';
 *           ingredients: string[];
 *           };
 *       }>
-*       cartItem: {
+*       item: {
 *           quantity: number;
 *           item: {
 *               id: string;

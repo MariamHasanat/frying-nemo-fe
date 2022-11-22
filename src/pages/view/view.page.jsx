@@ -8,6 +8,7 @@ import Item from "../../components/view/item/item.component";
 import { UserContext } from '../../components/providers/user-provider.component';
 import { getMenuItems } from "./functions";
 import { getCartQuantity } from "../../util/cart";
+import { CartContext } from "../../components/providers/cart-provider.component";
 
 /**
 * @type {Array<{
@@ -61,6 +62,7 @@ const View = (props) => {
     const [max, setMax] = useState(null);
     const navigate = useNavigate();
     const userContext = useContext(UserContext);
+    const cartContext = useContext(CartContext);
     const searchParFromURL = params.get('searchTerms') || '';
     const categoriesFromURL = params.getAll('categories') || [];
 
@@ -141,8 +143,7 @@ const View = (props) => {
                                         return <Item
                                             item={item}
                                             key={item.name + index}
-                                            dispatch={props.dispatch}
-                                            cartQuantity={getCartQuantity(item.id, props.cart)}
+                                            cartQuantity={getCartQuantity(item.id, cartContext.cart)}
                                         />;
                                     })
                                 : <div className="empty">The is no any meal</div>

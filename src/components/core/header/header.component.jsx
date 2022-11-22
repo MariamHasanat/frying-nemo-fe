@@ -4,28 +4,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { UserContext } from '../../providers/user-provider.component';
 import logo from '../../../assets/nemoInHeader.png';
+import { CartContext } from '../../providers/cart-provider.component';
 
-/**
-* 
-* @param {{
-*   cart: Array<{
-*       item:{
-*       id: string;
-*       name: string;
-*       image: string;
-*       description: string;
-*       price: number;
-*       category: string;
-*       ingredients: string[];
-*       }
-*       quantity: number; 
-*   }>}} props
-* @returns 
-*/
-
-const Header = (props) => {
+const Header = () => {
     const [time, setTime] = useState(new Date());
     const userContext = useContext(UserContext);
+    const cartContext = useContext(CartContext);
     const location = useLocation();
     const navigate = useNavigate();
     useEffect(() => {
@@ -37,9 +21,9 @@ const Header = (props) => {
         };
     }, []);
 
-    let itemsCount = 0;
-    for (let i = 0; i < props.cart.length; i++) {
-        itemsCount += props.cart[i].quantity;
+    let totalQuantity = 0;
+    for (let i = 0; i < cartContext.length; i++) {
+        totalQuantity += cartContext[i].quantity;
     }
 
     return (
@@ -66,7 +50,7 @@ const Header = (props) => {
                     {
                         location.pathname !== '/log-in' &&
                         <Link className='count-items' to={'./cart'}>
-                            Your Cart {itemsCount}
+                            Your Cart {totalQuantity}
                         </Link>
                     }
                     {

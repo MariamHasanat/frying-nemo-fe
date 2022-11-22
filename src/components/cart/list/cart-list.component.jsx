@@ -2,46 +2,20 @@ import React from 'react';
 import './cart-list.css';
 
 import Row from '../row/row.component';
+import { useContext } from 'react';
+import { CartContext } from '../../providers/cart-provider.component';
 
-/**
- * @param {{
- *      dispatch: React.Dispatch<{
- *          type: string;
- *          item: {
-*           id: string;
-*           name: string;
-*           image: string;
-*           description: string;
-*           price: number;
-*           category: string;
-*           ingredients: string[];
-*           };
-*       }>
-*       cart: Array<{
-*           quantity: number;
-*           item: {
-*               id: string;
-*               name: string;
-*               image: string;
-*               description: string;
-*               price: number;
-*               category: string;
-*               ingredients: string[];
-*           }
-*       }>
- * }} props 
- * @returns 
- */
-const CartList = (props) => {
+const CartList = () => {
+    const cartContext = useContext(CartContext);
     return (
         <ul className='cart-list'>
             {
-                props.cart.map((cartItem, ind) => {
+                cartContext.cart.map((item, ind) => {
                     return (
                         <Row
                             key={"c_" + ind}
-                            cartItem={cartItem}
-                            dispatch={props.dispatch}
+                            item={item}
+                            dispatch={cartContext.dispatch}
                         />
 
                     );

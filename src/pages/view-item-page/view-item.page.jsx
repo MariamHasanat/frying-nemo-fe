@@ -6,41 +6,14 @@ import Item from '../../components/view/item/item.component';
 import { getItem } from '../../services/some-functions';
 import Spinner from '../../components/core/spinner/spinner';
 import { getCartQuantity } from '../../util/cart';
+import { useContext } from 'react';
+import { CartContext } from '../../components/providers/cart-provider.component';
 
-
-/**
- * 
- * @param {{
- *      dispatch: React.Dispatch<{
- *          type: string;
- *          item: {
-*           id: string;
-*           name: string;
-*           image: string;
-*           description: string;
-*           price: number;
-*           category: string;
-*           ingredients: string[];
-*           };
-*       }>
-*       cart: Array<{
-*           quantity: number;
-*           item: {
-*               id: string;
-*               name: string;
-*               image: string;
-*               description: string;
-*               price: number;
-*               category: string;
-*               ingredients: string[];
-*           }>;
- * }} props 
- * @returns 
- */
-const ViewItemPage = (props) => {
+const ViewItemPage = () => {
     const params = useParams();
     const [loading, setLoading] = useState(true);
     const [item, setItem] = useState();
+    const cartContext = useContext(CartContext);
     useEffect(() => {
         setLoading(true);
         const tempItem = getItem(params.id);
@@ -56,10 +29,9 @@ const ViewItemPage = (props) => {
                 loading && item !== null
                     ? <Spinner />
                     : <Item
-                        dispatch={props.dispatch}
-                        cart={props.cart}
+                        cart={cartContext.cart}
                         item={item}
-                        cartQuantity={getCartQuantity(item.id, props.cart)}
+                        cartQuantity={getCartQuantity(item.id, cartContext.cart)}
                     />
             }
         </div>

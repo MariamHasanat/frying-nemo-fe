@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import Card from '../../common/card/card.component';
 import PriceBar from '../price-bar/price-bar.component';
+import { CartContext } from '../../providers/cart-provider.component';
+import { useContext } from 'react';
 
 /** 
  * Render a single menu item based on the data passed
@@ -17,22 +19,11 @@ import PriceBar from '../price-bar/price-bar.component';
  *          category: string;
  *          ingredients: string[];
  *      }
- *      dispatch: React.Dispatch<{
- *          type: string;
- *          item: {
-*           id: string;
-*           name: string;
-*           image: string;
-*           description: string;
-*           price: number;
-*           category: string;
-*           ingredients: string[];
-*           };
-*       }>
 *     cartQuantity:number;
 *   }} props
 */
 const Item = (props) => {
+    const cartContext = useContext(CartContext);
     return (
         <Card>
             <Link to={`/view-details/${props.item.id}`}>
@@ -57,7 +48,7 @@ const Item = (props) => {
             <PriceBar
                 cartQuantity={props.cartQuantity}
                 item={props.item}
-                dispatch={props.dispatch}
+                dispatch={cartContext.dispatch}
             />
         </Card>
     );
