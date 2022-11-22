@@ -1,5 +1,15 @@
-.cart-page{
+.cart-page {
     display: flex;
     flex-direction: column;
     padding: 10px 20px;
+    width: 95vw;
+}
+
+.cart-page .header-in-cart {
+    margin-bottom: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #db4530;
+    text-shadow: 1px 1px 3px black;
+    font-size: 30px;
+    padding-left: 40px;
 }
