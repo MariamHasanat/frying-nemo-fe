@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getItem } from '../../../components/add/form/data/items';
@@ -7,6 +7,7 @@ import Item from '../../../components/item/items/item';
 import Spinner from '../../../components/spinner/spinner';
 import './viewitempage.css';
 import { getQuantity } from '../../../util/util';
+import { CartContext } from '../../../components/provider/cartprovider';
 /**
  * @type {Array<{
  * id: number;
@@ -23,6 +24,7 @@ const ViewItemPage = (props) => {
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
+  const cartContext = useContext(CartContext);
 
 
   useEffect(() => {
@@ -55,13 +57,13 @@ const ViewItemPage = (props) => {
             <div className="info">
               <p><b>Item Description: </b> {currentItem.description}</p>
               <p className="ingredients"><b>Ingredients:</b>
-                <br />{currentItem.ingredients.join(", ")}</p>
+                <br />{currentItem.ingredients.join(",")}</p>
 
             </div>
           <PriceBox  
-          item={currentItem} 
-           dispatch={props.dispatch} 
-           cartQuantity={getQuantity(currentItem.id,props.cart)}
+           item={currentItem} 
+           dispatch={cartContext.dispatch} 
+           cartQuantity={getQuantity(currentItem.id,cartContext.cart)}
             />
           </div>
           

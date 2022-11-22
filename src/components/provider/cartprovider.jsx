@@ -1,6 +1,6 @@
 
-import React from "react";
-import { useReducer } from "react";
+import React, { useReducer } from "react";
+
 import { initialState, reducer } from "../../reduce/cart";
 export const CartContext = React.createContext(null);
 /**

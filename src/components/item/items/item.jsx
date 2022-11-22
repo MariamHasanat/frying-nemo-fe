@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+
 import './item.css';
 import{Link}from 'react-router-dom'
 import PriceBox from '../../common/price/price';

@@ -16,7 +16,7 @@ const Handel = (props) => {
   let itemCount = 0;
   for (let i = 0; i < cartContext.cart.length; i++) {
     itemCount += cartContext.cart[i].quantity;
-  }
+  }console.log(itemCount)
   return (
     <header className='websiteHeader'>
       <div className='left'>
@@ -34,6 +34,7 @@ const Handel = (props) => {
           <img src={cartIcon} alt="cart icon" />
           <span className="count">{itemCount}</span>
         </Link>
+        
 
         {
           userContext.user &&

@@ -10,6 +10,7 @@ import FilterBar from '../../../components/filter-bar/filter-bar';
 import { useContext } from 'react';
 import { UserContext } from '../../../components/provider/provider';
 import { getQuantity } from '../../../util/util';
+import { CartContext } from '../../../components/provider/cartprovider';
 
 /**
  * @type {Array<{
@@ -23,6 +24,7 @@ import { getQuantity } from '../../../util/util';
  */
 const initialItems = [];
 const View = (props) => {
+  const cartContext = useContext(CartContext);
   const [menuItem, setMenuItem] = useState(initialItems);
   const [loading, setLoading] = useState(true);
   const userContext = useContext(UserContext)
@@ -120,8 +122,8 @@ const View = (props) => {
                   <Item  
                    data={item}
                     key={item.name + index} 
-                    dispatch={props.dispatch} 
-                    cartQuantity={getQuantity(item.id,props.cart)}
+                    dispatch={cartContext.dispatch} 
+                    cartQuantity={getQuantity(item.id,cartContext.cart)}
                     />
                     )
                   

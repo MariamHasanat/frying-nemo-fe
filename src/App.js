@@ -31,9 +31,9 @@ function App() {
             <Route path="/" element={<Navigate to="view" />} />
             <Route path="/*" element={<NotFound />} />
             <Route path="/add" element={<Guard  permittedRoles={['ADMIN']} ><AddPage /></Guard>} />
-            <Route path="/view" element={<View  dispatch={dispatch} cart={cart}/>} />
-            <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch}  cart={cart} />} />
-            <Route path="/cart" element={<CartPage dispatch={dispatch}  cart={cart} />} />
+            <Route path="/view" element={<View  />} />
+            <Route path="/view/:id" element={<ViewItemPage  />} />
+            <Route path="/cart" element={<CartPage />} />
           </Routes>
         </Providers>
         </CartProviders>

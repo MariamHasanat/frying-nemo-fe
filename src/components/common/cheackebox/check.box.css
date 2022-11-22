@@ -20,6 +20,7 @@
   text-transform: uppercase;
   color: #666;
   letter-spacing: 0.5px;
+  background-color: white;
 }
 
 .checkbox-group>label>span:nth-child(2) {
