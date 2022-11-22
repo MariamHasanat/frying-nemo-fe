@@ -28,7 +28,7 @@ function App() {
                         <Route path="/view" element={<ViewPage dispatch={dispatch} cart={cart} />} />
                         <Route path="/*" element={<NotFound />} />
                         <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart} />} />
-                        <Route path="/cart" element={<Cart cart={cart} />} />
+                        <Route path="/cart" element={<Cart dispatch={dispatch} cart={cart} />} />
                     </Routes>
                 </BrowserRouter>
             </UserProvider>

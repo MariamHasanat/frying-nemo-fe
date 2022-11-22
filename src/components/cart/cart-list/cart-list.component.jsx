@@ -6,11 +6,11 @@ const CartList = (props) => {
     return (
         <div className='cart-list'>
             <h1>Cart</h1>
-            {!props.cart.length?
-                <Jiji message='no items were added to cart'/>
+            {!props.cart.length ?
+                <Jiji message='no items were added to cart' />
                 :
                 props.cart.map((item) =>
-                    <CartRow key={item.meal.id} {...item} />
+                    <CartRow key={item.meal.id + Date.now()} item={item} dispatch={props.dispatch} />
                 )
             }
 

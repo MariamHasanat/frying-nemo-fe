@@ -4,7 +4,7 @@ import './cart.css';
 const Cart = (props) => {
     return (
         <div className='cart-page'>
-            <CartList cart={props.cart} />
+            <CartList dispatch={props.dispatch} cart={props.cart} />
         </div>
 
     );

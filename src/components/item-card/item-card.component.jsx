@@ -1,7 +1,7 @@
 import './item-card.css';
 import { Link } from 'react-router-dom';
 import Card from '../common/card/card.component';
-import PlusMinusButtons from '../plusMinusButtons/plusMinusButtons.component';
+import PlusMinusButtons from '../plus-minus-buttons/plus-minus-buttons.component';
 
 /**
  * 
@@ -23,7 +23,11 @@ const ItemCard = (props) => {
                     <div className="price">
                         <h3>${props.item.price}</h3>
                     </div>
-                    <PlusMinusButtons item={props.item} quantity={props.itemQuantity} dispatch={props.dispatch} />
+                    <PlusMinusButtons
+                        item={props.item}
+                        quantity={props.itemQuantity}
+                        dispatch={props.dispatch}
+                    />
                 </div>
             </Card>
         </div>
