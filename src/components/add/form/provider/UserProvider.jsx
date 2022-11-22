@@ -2,12 +2,12 @@ import React , { useState } from 'react'
 export const UserContext = React.createContext(null);
 
 const UserProvider = (props) => {
-  const initial = JSON.parse(sessionStorage.getItem('user'));
+  const initial = JSON.parse(localStorage.getItem('user'));
   const [user, setUser] = useState(initial);
 
   const setUserOverride = user => {
     setUser(user);
-    sessionStorage.setItem('user' , JSON.stringify(user));
+    localStorage.setItem('user' , JSON.stringify(user));
   }
 
  return(
