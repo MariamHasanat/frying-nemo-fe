@@ -1,6 +1,8 @@
 import React from 'react';
 
 const CartRow = (props) => {
+  const increment = () => props.dispatch ({type : "INCREMENT" , meal : props.item.meal})
+  const decrement = () => props.dispatch ({type : "DECREMENT" , meal : props.item.meal})
   return (
     <div className='row'>
       <div className='cart-item-img'>
@@ -14,9 +16,13 @@ const CartRow = (props) => {
           <span className='In-Stock'>In Stock</span>
         </span>
         <div className="quantity-selector">
-          <button>+</button>
+          <button 
+            onClick={increment}
+          >+</button>
            &nbsp; {props.item.quantity} &nbsp; 
-          <button>-</button>
+           <button 
+            onClick={decrement}
+          >-</button>
         </div>
       </div>
       <div className="total-price">

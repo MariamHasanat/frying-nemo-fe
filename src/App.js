@@ -8,8 +8,7 @@ import SingleItem from "./pages/single-item/single-item.component";
 import LoginPage from "./pages/login/login.component";
 import UserProvider from "./components/providers/user-provider.component";
 import Guard from "./components/providers/guard-provider.component";
-import React, { useReducer } from "react";
-import { reducer, initialState } from "./components/reducers/cart";
+import React from "react";
 import Cart from "./pages/cart/cart.component";
 import CartProvider from "./components/providers/cart-provider.component";
 

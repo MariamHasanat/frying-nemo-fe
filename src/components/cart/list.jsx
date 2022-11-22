@@ -9,7 +9,7 @@ const CartList = (props) => {
     <div className='list'>
       {
         cartContext.cart.map((cartItem, index) => 
-        <CartRow key={"c-r" + index} item={cartItem} />
+        <CartRow key={"c-r" + index} item={cartItem} dispatch = {cartContext.dispatch} />
         )
       }
     </div>
