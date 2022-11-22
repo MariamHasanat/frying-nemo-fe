@@ -4,7 +4,9 @@ import { UserContext } from "../../components/providers/user.provider.component"
 import FilterBar from "./filter-bar/filter-bar.component";
 import Item from "../../components/item/item.component";
 import "./veiw.css";
+import { getCartQuantity } from "../../utils/cart";
 import { useContext } from "react";
+import { CartContext } from '../../components/providers/cart.provider.component';
 
 /**
  * @type {Array<{
@@ -26,7 +28,7 @@ const Addveiw = (props) => {
   const searchTermsFromURL = params.get("searchTerms") || "";
   const categoriesFromURL = params.getAll("category") || "";
   const userContext = useContext(UserContext);
-
+  const cartContext = useContext(CartContext);
   const getMenuItems = () => {
     setLoading(true);
 
@@ -86,13 +88,7 @@ const Addveiw = (props) => {
 
     setParams(newParams);
   };
-  const getCartQuantity = (id) => {
-    const currentCartItem = props.cart.find((cartItem) => cartItem.meal.id === id);
-    if (currentCartItem)
-       return currentCartItem.quantity;
-    else 
-      return 0;
-  };
+ 
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
@@ -108,8 +104,8 @@ const Addveiw = (props) => {
               <Item
                 data={item}
                 key={item.name + index}
-                dispatch={props.dispatch}
-                cartQuantity={getCartQuantity(item.id)}
+                dispatch={cartContext.dispatch}
+                cartQuantity={getCartQuantity(item.id, cartContext.cart)}
               />
             ))
           ) : (

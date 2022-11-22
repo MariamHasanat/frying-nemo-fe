@@ -1,59 +1,46 @@
 /* eslint-disable default-case */
-import { useReducer } from 'react';
-
 const initialState = [];
 
-const useMyReducer = () => {
+const reducer = (cart, action) => {
+  // This function updates the state
+  switch (action.type) {
+    case "ADD_CART_ITEM":
+      return [...cart, { meal: action.meal, quantity: 1 }];
+    case "INCREMENT_CART_QUANTITY": {
+      let found = false;
+      const newCart = cart.map(cartItem => {
+        if (cartItem.meal.id === action.meal.id) {
+          found = true;
+          return { ...cartItem, quantity: cartItem.quantity + 1 };
+        } else {
+          return cartItem;
+        }
+      });
 
-  const reducer = (cart, action) => {
-    // This function updates the state
-    switch (action.type) {
-      case "ADD_CART_ITEM":
+      if (!found) {
         return [...cart, { meal: action.meal, quantity: 1 }];
-      case "INCREMENT_CART_QUANTITY": {
-        let found = false;
-        const newCart = cart.map(cartItem => {
-          if (cartItem.meal.id === action.meal.id) {
-            found = true;
-            return { ...cartItem, quantity: cartItem.quantity + 1 };
-          } else {
-            return cartItem;
-          }
-        });
-
-        if (!found) {
-          return [...cart, { meal: action.meal, quantity: 1 }];
-        }
-        return newCart;
       }
-      case "DECREMENT_CART_QUANTITY": {
-        let shouldDelete = false;
-        const newCart = cart.map(cartItem => {
-          if (cartItem.meal.id === action.meal.id) {
-            if (cartItem.quantity === 1) {
-              shouldDelete = true;
-            }
-            return { ...cartItem, quantity: cartItem.quantity - 1 };
-          } else {
-            return cartItem;
-          }
-        });
-
-        if (shouldDelete) {
-          return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
-        }
-
-        return newCart;
-      }
-      case "DELETE_CART_ITEM": {
-        return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
-      }
+      return newCart;
     }
+    case "DECREMENT_CART_QUANTITY": {
+      const newCart = cart.map(item => {
+        return item.meal.id === action.meal.id
+        ? { ...item, quantity: item.quantity - 1 }
+        : item;
 
-    return cart;
-  };
+      });
 
-  const [cart, dispatch] = useReducer(reducer, initialState);
+      return newCart.filter(item => item.quantity > 0);
 
-  return { cart, dispatch };
+    }
+    case "DELETE_CART_ITEM": {
+      return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
+    }
+  }
+  return cart;
+};
+
+export {
+  reducer,
+  initialState
 };

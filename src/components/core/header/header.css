@@ -1,64 +1,57 @@
-
-.webisteHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    padding: 10px 20px;
-    gap: 40em;
-    border-bottom: 1px solid #ddd;
-}
-.webisteHeader > .left > h1 {
-  font-size: 18px;
-  color: #333131;
-  line-height: 1.2;
+.websiteHeader {
   display: flex;
   align-items: center;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin: 0;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  background: #fff;
 }
-.websiteHeader .right {
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.left h1 {
+  font-size: 20px;
+  font-weight: 500;
+  background-image: linear-gradient(to left, #f1dd21, #f7efc5);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+
+.right {
   display: flex;
   column-gap: 20px;
   align-items: center;
-}
-.count{
-  font-family: ui-rounded;
-    font-size: smaller;
-    box-shadow: 1px 1px 1px 1px #97979730;
-    padding: 3px;
-    background: unset;
-    background-color: #f1efef6e;
+  position: absolute;
+    right: 5px;
 }
 
-.webisteHeader > .left > h1 > img {
-  height: 35px;
-  width: auto;
-  margin-right: 5px;
-}
-.right{
-  justify-content: space-evenly;
+.right nav {
   display: flex;
-  align-items: center;
-  gap: 20px;
 }
-.right a{
-  border: unset;
+
+.right nav a {
   background: unset;
-  color: #696363;
-  text-decoration: none;
-  margin: 2px;
+  border: unset;
   cursor: pointer;
   font-size: 14px;
   padding: 9px 20px;
+  text-decoration: none;
+  color: inherit;
+}
 
+.right nav a:hover {
+  text-shadow: -1px 2px 3px #777777;
 }
-.right a:hover{
-  text-shadow: 2px 1px 2px #c3c3c3;
-}
-.right button:active{
-  text-shadow: -1px 2px 3px rgb(102, 101, 101);
+
+.right nav a:active {
+  text-shadow: -1px 2px 3px #333;
 }
 
 .right nav a.current {
@@ -66,8 +59,7 @@
   border-radius: 5px;
   color: white;
 }
-
-.user-badge {
+.right .user-badge {
   display: flex;
   align-items: center;
   column-gap: 10px;
@@ -76,12 +68,13 @@
   color: #777777;
 }
 
-.user-badge > img {
+.right .user-badge>img {
   border-radius: 50%;
   width: 30px;
   height: 30px;
 }
- .right .user-badge > button {
+
+.user-badge>button {
   appearance: none;
   background: none;
   border: none;
@@ -89,8 +82,32 @@
   color: #999;
   cursor: pointer;
 }
-.right .user-badge > button:hover,
- .right .user-badge > button:active,
- .right .user-badge > button:focus {
+
+ .user-badge button:hover,
+ .user-badge button:active,
+ .user-badge button:focus {
   color: #666;
+}
+.right .cart {
+  position: relative;
+}
+.right>.cart>img {
+  width: 30px;
+  height: 30px;
+}
+
+.right>.cart>.count {
+  position: absolute;
+  color: #fff;
+  top: -8px;
+  right: -11px;
+  z-index: 2;
+  font-weight: bold;
+  background: #f15a29;
+  padding: 2px;
+  border-radius: 50%;
+  font-size: 12px;
+  min-width: 15px;
+  min-height: 15px;
+  text-align: center;
 }

@@ -4,6 +4,9 @@ import { getItem } from '../../services/items';
 import { useNavigate } from 'react-router-dom';
 import './veiw-item.css';
 import PriceBar from '../veiw/price-bar/price-bar.component';
+import { useContext } from 'react';
+import { CartContext } from '../../components/providers/cart.provider.component';
+import { getCartQuantity } from '../../utils/cart';
 
 /**
  * @type {Array<{
@@ -20,6 +23,7 @@ const AddveiwItem = (props) => {
  const params = useParams();
  const [currentItem,setCurrentItem] = useState(null);
 const navigate =useNavigate();
+const cartContext = useContext(CartContext);
   useEffect(() => {
   const item = getItem(params.id);
   setCurrentItem(item);
@@ -47,7 +51,7 @@ const getCartQuantity = (id) => {
             <p className="ingredients"><b>Ingredients:</b>
               <br />{currentItem.ingredients.join(", ")}</p>
           </div>
-          <PriceBar item={currentItem} dispatch={props.dispatch} cartQuantitiy={getCartQuantity(currentItem.id, props.cart)}/>
+          <PriceBar item={currentItem} dispatch={cartContext.dispatch} cartQuantity={getCartQuantity(currentItem.id, cartContext.cart)}/>
         </div> : navigate('/error')}
 
   </div>
