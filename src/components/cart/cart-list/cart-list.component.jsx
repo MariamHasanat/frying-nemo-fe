@@ -4,7 +4,7 @@ const CartList = (props) => {
   console.log(props.cart.length);
   return (
     props.cart.length ?
-      <ul>
+      <ul className="cart-list">
         {
           props.cart.map((cartItem, index) => <CartRow cartItem={cartItem} key={index}/>)
         }
