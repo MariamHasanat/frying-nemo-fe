@@ -1,13 +1,17 @@
 import React from 'react';
 import CartRow from '../../cart/row/row.component';
 import "./list.css";
+import { useContext } from 'react';
+import { CartContext } from '../../provider/cart-provider.component';
 
-const CartList = (props) => {
+const CartList = () => {
+  const cartContext = useContext(CartContext);
+
   return (
-    props.cart.length
+    cartContext.cart.length
       ? <ul className="cart-list">
         {
-          props.cart.map((cartItem, index) => <CartRow cartItem={cartItem} key={"r_" + index} />)
+          cartContext.cart.map((cartItem, index) => <CartRow cartItem={cartItem} key={"r_" + index} dispatch={cartContext.dispatch} />)
         }
       </ul>
       : <div className="no-results">

@@ -4,15 +4,18 @@ import React, { useContext } from 'react';
 import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../components/provider/provider.component';
+import { CartContext } from '../../components/provider/cart-provider.component';
 
 const Header = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
+  const cartContext=useContext(CartContext);
+
+
   let itemsCount = 0;
-  console.log(props.cart.length);
-  for (let i = 0; i < props.cart.length; i++) {
-    itemsCount += props.cart[i].quantity;
+  for (let i = 0; i < cartContext.cart.length; i++) {
+    itemsCount += CartContext.cart[i].quantity;
   }
   return (
     <header className="websiteHeader">

@@ -5,6 +5,7 @@ import { useSearchParams,useNavigate } from 'react-router-dom';
 import FilterBar from './filture/filter-bar.companent';
 import {getCartQuantity} from '../../utilit/cart';
 import { UserContext } from '../../components/provider/provider.component';
+import { CartContext } from '../../components/provider/cart-provider.component';
 
 const ViewPage = (props) => {
   /**
@@ -23,6 +24,7 @@ const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const navigate = useNavigate();
   const userContext=useContext(UserContext);
+  const cartContext = useContext(CartContext);
 
   const [params, setParams] = useSearchParams();
   const searchTerm = params.get('searchFood') || "";
@@ -92,7 +94,7 @@ const ViewPage = (props) => {
       <div className="item" >
         {
           filterItem
-            .map((item, index) => <Items data={item} key={item.name + index} dispatch={props.dispatch} cartQuantity = {getCartQuantity(item.id,props.cart)} />)
+            .map((item, index) => <Items data={item} key={item.name + index} dispatch={cartContext.dispatch} cartQuantity = {getCartQuantity(item.id,cartContext.cart)} />)
         }
       </div>
     </div>

@@ -6,6 +6,8 @@ import {getItem }from '../../../data/items';
 import "../../header/header.css";
 import { getCartQuantity } from '../../../utilit/cart';
 import Price from '../filture/price-par/price-par';
+import { CartContext } from '../../../components/provider/cart-provider.component';
+import { useContext } from 'react';
 
 
 /**
@@ -25,7 +27,7 @@ const ViewItemPage = (props) => {
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const cartContext = useContext(CartContext);
   useEffect(() => {
     setLoading(true);
    const item =getItem(params.id);
@@ -56,7 +58,7 @@ const ViewItemPage = (props) => {
             <Price
               item={currentItem}
               dispatch={props.dispatch}
-              cartQuantity={getCartQuantity(currentItem.id, props.cart)}
+              cartQuantity={getCartQuantity(currentItem.id, cartContext.cart)}
             />
           </div>
 

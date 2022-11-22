@@ -10,27 +10,30 @@ import UserProvider from "./components/provider/provider.component";
 import Guard from './components/guard/guard.component';
 import {reducer , initial} from './reducer/cart';
 import CartPage from "./components/cart/cart-page";
+import CartProvider from "./components/provider/cart-provider.component";
+
  function App() {
 
 
 
-    const [cart, dispatch] = useReducer(reducer, initial);
 
   return (
     <div>
      <UserProvider>
+      <CartProvider>
         <BrowserRouter>
-          <Header cart={cart} />
+          <Header />
           <Routes>
             <Route path="/" element={<Navigate to="/view" replace />} />
               <Route path="/add/*" element={<Guard permittedRoles={['ADMIN']} ><AddPage /> </Guard>} />
-            <Route path="/view" element={<ViewPage dispatch={dispatch} cart={cart}/>} />
+            <Route path="/view" element={<ViewPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart}/>} />
-            <Route path="/cart" element={<CartPage dispatch={dispatch} cart={cart} />} />
+            <Route path="/view/:id" element={<ViewItemPage />} />
+            <Route path="/cart" element={<CartPage />} />
             <Route path="/*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
+        </CartProvider>
         </UserProvider>
     </div>
   );
