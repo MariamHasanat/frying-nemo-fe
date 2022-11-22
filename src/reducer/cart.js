@@ -3,6 +3,7 @@ const initialState = [];
 
 const reducer = (cart, action) => {
   // This function updates the state
+  //eslint-disable-next-line default-case 
   switch (action.type) {
     case "ADD_CART_ITEM":
       return [...cart, { meal: action.meal, quantity: 1 }];
