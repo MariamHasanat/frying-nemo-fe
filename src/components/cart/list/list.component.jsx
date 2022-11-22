@@ -1,7 +1,11 @@
 import React from 'react';
 import CartRow from '../row/row.component';
+import { useContext } from 'react';
+import { CartContext } from '../../providers/cart-provider.component';
+
 
 const CartList = (props) => {
+  const cartContext =useContext(CartContext);
   return (
     props.cart.length
       ? <ul className="cart-list">

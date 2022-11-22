@@ -3,7 +3,7 @@ import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../../App';
 import cartIcon from '../../../assets/cart.svg';
-
+import { CartContext } from '../../providers/cart-provider.component';
 
 
   const Header = (props ) => {
@@ -11,9 +11,11 @@ import cartIcon from '../../../assets/cart.svg';
     const location = useLocation();
     const navigate = useNavigate();
     const userContext = useContext(UserContext);
-    let itemsCount = 0;
-    for (let i = 0; i < props.cart.length; i++) {
-      itemsCount += props.cart[i].quantity;
+    const cartContext = useContext(CartContext);
+
+    let totalCartQuantity = 0;
+    for (let i = 0; i < cartContext.cart.length; i++) {
+      totalCartQuantity += cartContext.cart[i].quantity;
     }
   
   
@@ -26,7 +28,7 @@ import cartIcon from '../../../assets/cart.svg';
         </h1>
       </div>
       <div className='right'>
-      <span>Your Cart {itemsCount}</span>
+      <span>Your Cart {totalCartQuantity}</span>
         <nav>
           {/* <button className={props.currentPage === 'add' ? 'current':''}  onClick = {()=>props.onNavigate('add')}>add</button> */}
           {/* <button className={props.currentPage === 'view' ? 'current':''}  onClick = {()=>props.onNavigate('view')}>view</button> */}
@@ -41,7 +43,7 @@ import cartIcon from '../../../assets/cart.svg';
         </nav>
         <Link className="cart" to="cart">
           <img src={cartIcon} alt="cart icon"  width={30} height={30} />
-          <span className="count">{itemsCount}</span>
+          <span className="count">{totalCartQuantity}</span>
         </Link>
 
         {

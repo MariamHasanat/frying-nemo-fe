@@ -6,7 +6,7 @@ import Item from '../../components/item/item.component';
 import { getCartQuantity } from '../../utils/cart';
 import './view.css';
 import FilterBar from './filter-bar/filter-bar.component';
-import { UserContext } from '../../App';
+import { CartContext } from '../../components/providers/cart-provider.component';
 /**
  * @type {Array<{
  * id:number;
@@ -24,7 +24,8 @@ const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
-  const userContext = useContext(UserContext);
+
+
   const price = params.get("price") || '';
   const searchTermsFromURL = params.get('searchTerms') || '';
   const categoryFromURL = params.getAll('category') || '';
@@ -33,7 +34,7 @@ const ViewPage = (props) => {
   const maxFromURL = params.get("max") || '';
   const minFromURL = params.get("min") || '';
   const navigate = useNavigate();
-
+  const cartContext = useContext(CartContext);
   console.debug('searchTerms =', searchTermsFromURL);
   const getMenuItems = () => {
     setLoading(true);
@@ -131,8 +132,8 @@ const ViewPage = (props) => {
               .map((item, index) =>
                 <Item data={item}
                   key={item.name + index}
-                  dispatch={props.dispatch}
-                  cartQuantity={getCartQuantity(item.id, props.cart)} />)
+                  dispatch={cartContext.dispatch}
+                  cartQuantity={getCartQuantity(item.id, cartContext.cart)} />)
 
           }
 

@@ -22,6 +22,7 @@ const ViewItemPage = (props) => {
   const params = useParams();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
+  const cartContext = useContext(CartContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -53,8 +54,8 @@ const ViewItemPage = (props) => {
             <br />{currentItem.ingredients.join(", ")}</p>
         </div>
         <PriceBar   item={currentItem}
-            dispatch={props.dispatch}
-            cartQuantity={getCartQuantity(currentItem.id, props.cart)}
+            dispatch={cartContext.dispatch}
+            cartQuantity={getCartQuantity(currentItem.id, cartContext.cart)}
 />
         
       </div>

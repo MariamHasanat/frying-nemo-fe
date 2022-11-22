@@ -1,7 +1,7 @@
 
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
-import { UserContext } from '../../../App';
+import { CartContext } from '../../providers/cart-provider.component';
 import Input from '../../common/input/input.component';
 import MultivalueInput from '../../common/multivalueinput/multi-value-input';
 import Select from '../../common/select/select.component';

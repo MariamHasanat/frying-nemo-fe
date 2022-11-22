@@ -6,14 +6,14 @@ import ViewPage from "./pages/view/view.component";
 import ViewItemPage from "./pages/view-item/view-item.component";
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from "./pages/login/login.component";
-import UserProvider from "./components/user-provider/user-provider.component";
-import { reducer, initialState } from "./reducers/cart";
-export const UserContext = React.createContext(null);
+import UserProvider from "./components/providers/user-provider.component";
+import CartProvider from "./components/providers/cart-provider.component";
+
 
 
 function App() {
 
-  const [cart, dispatch] = useReducer(reducer, initialState);
+
 
   return (
 
@@ -27,8 +27,8 @@ function App() {
             <Route path="/" element={<Navigate to="/view" replace />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/add" element={<AddPage />} />
-            <Route path="/view" element={<ViewPage dispatch ={dispatch}  cart={cart}/>} />
-            <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart} />}/>
+            <Route path="/view" element={<ViewPage/>} />
+            <Route path="/view/:id" element={<ViewItemPage  />}/>
             <Route path="/*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
