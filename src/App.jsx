@@ -24,8 +24,8 @@ function App() {
           <Route path="/" element={<Navigate to="/view" replace />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/add" element={<Guard permittedRoles={['ADMIN']}><AddPage /></Guard>} />
-          <Route path="/view" element={<ViewPage dispatch={dispatch} cart = {cart} />} />
-          <Route path="/view-details/:id" element={<ViewItemPage />} />
+          <Route path="/view" element={<ViewPage dispatch={dispatch} cart={cart} />} />
+          <Route path="/view-details/:id" element={<ViewItemPage dispatch={dispatch} cart={cart} />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

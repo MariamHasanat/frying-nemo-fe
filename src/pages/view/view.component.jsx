@@ -89,15 +89,6 @@ const ViewPage = (props) => {
     setParams(newParams);
   };
 
-  const getCartQuantity = (id) => {
-
-    const currentCartItem = props.cart.find(cartItem => (cartItem.meal.id === id));
-    if (currentCartItem) {
-      return currentCartItem.quantity;
-    } else {
-      return 0;
-    }
-  };
 
   return (
     <div className="view-page">

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../providers/user-provider.component';
+import cartIcon from '../../assets/cart.svg';
 
 const Header = (props) => {
 
@@ -37,18 +38,26 @@ const Header = (props) => {
           </Link>
 
         </nav>
+
+        <Link className="cart" to="cart">
+
+          <img src={cartIcon} alt="cart icon" />
+          <span className="count">{itemsCount}</span>
+
+        </Link>
+
         {
           userContext.user &&
           <span className="user-badge">
-            <img src={userContext.user.imageUrl} alt="user logo" width={30} height={30} className ="orange" />
+            <img src={userContext.user.imageUrl} alt="user logo" width={30} height={30} className="orange" />
             {userContext.user.fullName}
             <button
               onClick={() => {
                 userContext.setUser(null);
                 navigate('/login');
-                
+
               }}
-              className= "padding-right: 50px;"
+              className="padding-right: 50px;"
             >
               Logout
             </button>

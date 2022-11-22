@@ -32,7 +32,11 @@ const Item = (props) => {
         <hr />
       </div>
 
-      <PriceBar item={props.data} dispatch={props.dispatch} cartQuantity = {props.cartQuantity}/>
+      <PriceBar 
+      item={props.data}
+       dispatch={props.dispatch}
+        cartQuantity = {props.cartQuantity}
+        />
       
 
     </div>
