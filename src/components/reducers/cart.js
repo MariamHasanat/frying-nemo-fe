@@ -46,6 +46,12 @@ const reducer = (cart, action) => {
       localStorage.setItem('cart', JSON.stringify(newCart));
       return newCart;
     }
+
+    case "RESET":{
+      cart = [];
+      localStorage.setItem('cart', JSON.stringify(cart));
+      return cart;
+    }
   }
 
   return cart.filter();

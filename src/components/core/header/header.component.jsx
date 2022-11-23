@@ -12,7 +12,7 @@ const Header = (props) => {
   const cartContext = useContext(CartContext);
   const userContext = useContext(UserContext);
   const location = useLocation();
-
+  const resetCart = () => cartContext.dispatch({ type: "RESET" });
   let itemsCounter = 0;
   cartContext.cart.forEach(item => itemsCounter += item.quantity);
 
@@ -46,7 +46,9 @@ const Header = (props) => {
 
 
 
-          <button className='logout' onClick={() => { userContext.setUser(null); cartContext.cart = []; }}>
+          <button
+            className='logout'
+            onClick={() => { userContext.setUser(null); resetCart(); }}>
             <div className='logout-button'>
               <span>Logout</span>
               <img src={logout} alt="logout" />
