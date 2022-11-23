@@ -1,6 +1,7 @@
-const initialState = [];
+const initialState = JSON.parse (localStorage.getItem ("cart")) || [] ;
 // it updates the object state and returns the updated state 
 const reducer = (cart, action) => {
+  let finalCart = cart ; 
   //eslint-disable-next-line default-case 
   switch (action.type) {
     case "INCREMENT": {
@@ -15,11 +16,12 @@ const reducer = (cart, action) => {
         }
       });
       if (!found) {
-        return [...cart, { meal: action.meal, quantity: 1 }];
+        finalCart = [...cart, { meal: action.meal, quantity: 1 }];
       }
       else {
-        return newCart;
+        finalCart = newCart;
       }
+      break;
     }
     case "DECREMENT": {
       const newCart = cart.map(item => {
@@ -27,17 +29,20 @@ const reducer = (cart, action) => {
           ?  { meal: item.meal, quantity: item.quantity - 1 }
           : item ;
       });
-      return newCart.filter(item => item.quantity);
-      
+      finalCart = newCart.filter(item => item.quantity);
+      break ;
     }
     case "DELETE": {
-      return cart.filter(item => item.meal.id !== action.meal.id);
+      finalCart = cart.filter(item => item.meal.id !== action.meal.id);
+      break;
     }
     case "CLEAR": {
-      return [] ;
+      finalCart = [] ;
+      break;
     }
     // default : return cart ;
   }
-
+  localStorage.setItem ('cart' , JSON.stringify (finalCart));
+  return finalCart;
 };
-export { reducer, initialState };
+export { reducer , initialState };
