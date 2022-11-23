@@ -1,5 +1,4 @@
-const initialState = [];
-
+const initialState = JSON.parse(localStorage.getItem('cart') || '[]');
 const reducer = (cart, action) => {
   // This function updates the state
   // eslint-disable-next-line default-case
@@ -18,7 +17,9 @@ const reducer = (cart, action) => {
       if (!found) {
         return [...cart, { meal: action.meal, quantity: 1 }];
       }
+      localStorage.setItem('cart', JSON.stringify(newCart));
       return newCart;
+
     }
     case "DECREMENT_CART_QUANTITY": {
       let shouldDelete = false;
@@ -36,12 +37,14 @@ const reducer = (cart, action) => {
       if (shouldDelete) {
         return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
       }
-
+      localStorage.setItem('cart', JSON.stringify(newCart));
       return newCart;
     }
 
-    case "DELETE_CART_ITEM":{
-      return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
+    case "DELETE_CART_ITEM": {
+      const newCart = cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
+      localStorage.setItem('cart', JSON.stringify(newCart));
+      return newCart;
     }
   }
 
