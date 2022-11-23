@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { CartContext } from '../../providers/cart-provider';
 import CartRow from '../row/row.component';
+import emptyCart from '../../../assets/images/empty-cart.jpg';
 
 const CartList = () => {
   const cartContext = useContext(CartContext);
@@ -19,8 +20,8 @@ const CartList = () => {
           )
         }
       </ul>
-      : <div className="no-results">
-        <img src="" alt="empty cart" width={300} />
+      : <div className="no-results" style={{ textAlign: 'center' }}>
+        <img src={emptyCart} alt="empty cart" width={300} />
         <p>Your Cart is Empty!</p>
       </div>
   );
