@@ -5,16 +5,18 @@ import cart from '../../../images/cart.png';
 import { Link, useNavigate, useLocation, NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../providers/user-provider.component';
+import { CartContext } from '../../providers/cart-provider.component'
 const Header = (props) => {
-
-    let itemsCount = 0;
-    for (let i = 0; i < props.cart.length; i++) {
-        itemsCount += props.cart[i].quantity;
-    }
-
     const navigate = useNavigate();
     const location = useLocation();
     const userContext = useContext(UserContext);
+    const cartContext = useContext(CartContext);
+
+    let itemsCount = 0;
+    for (let i = 0; i < cartContext.cart?.length; i++) {
+        itemsCount += cartContext.cart[i].quantity;
+    }
+
     return (
         <div className='header'>
             <img src={nemo} alt='logo' width={100} onClick={() => navigate('/')} />  {/* navigate to home page when clicking on logo */}

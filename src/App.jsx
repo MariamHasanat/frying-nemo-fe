@@ -9,28 +9,26 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import React from "react";
 import UserProvider from "./components/providers/user-provider.component";
 import Guard from "./components/guard/guard.component";
-import { useReducer } from "react";
-import { reducer } from './reducers/cart';
-import Cart from "./pages/cart/cart.page";
+import CartProvider from "./components/providers/cart-provider.component";
 
 function App() {
-
-    const [cart, dispatch] = useReducer(reducer, []);
     return (
         <div>
             <UserProvider>
-                <BrowserRouter>
-                    <Header cart={cart} />
-                    <Routes>
-                        <Route path="/login" element={<Login />} replace />
-                        <Route path="/" element={<Navigate to='/view' />} replace />
-                        <Route path="/add" element={<Guard authorized={['ADMIN']}><AddPage /></Guard>} />
-                        <Route path="/view" element={<ViewPage dispatch={dispatch} cart={cart} />} />
-                        <Route path="/*" element={<NotFound />} />
-                        <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart} />} />
-                        <Route path="/cart" element={<Cart dispatch={dispatch} cart={cart} />} />
-                    </Routes>
-                </BrowserRouter>
+                <CartProvider>
+                    <BrowserRouter>
+                        <Header/>
+                        <Routes>
+                            <Route path="/login" element={<Login />} replace />
+                            <Route path="/" element={<Navigate to='/view' />} replace />
+                            <Route path="/add" element={<Guard authorized={['ADMIN']}><AddPage /></Guard>} />
+                            {/* <Route path="/view" element={<ViewPage cart={cart} dispatch={dispatch}/>} /> */}
+                            <Route path="/*" element={<NotFound />} />
+                            {/* <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart} />} /> */}
+                            {/* <Route path="/cart" element={<Cart dispatch={dispatch} cart={cart} />} /> */}
+                        </Routes>
+                    </BrowserRouter>
+                </CartProvider>
             </UserProvider>
         </div >
     );

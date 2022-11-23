@@ -2,14 +2,8 @@ import './item-card.css';
 import { Link } from 'react-router-dom';
 import Card from '../common/card/card.component';
 import PlusMinusButtons from '../plus-minus-buttons/plus-minus-buttons.component';
-
-/**
- * 
- * @param {}
- */
-
-
 const ItemCard = (props) => {
+
     return (
         <div className='item-card'>
             <Card>
@@ -26,7 +20,6 @@ const ItemCard = (props) => {
                     <PlusMinusButtons
                         item={props.item}
                         quantity={props.itemQuantity}
-                        dispatch={props.dispatch}
                     />
                 </div>
             </Card>
