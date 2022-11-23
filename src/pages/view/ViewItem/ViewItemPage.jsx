@@ -4,6 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getItem } from '../../../item';
 import Card from '../Card/Card';
 import Spinner from '../../spinner/spinner.component';
+import { useContext } from 'react';
+import { CartContext } from '../../../components/add/form/provider/CartProvider';
 
 /**
  * @type {Array<{
@@ -21,9 +23,10 @@ const ViewItemPage = (props) => {
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
+  const cartContext = useContext(CartContext);
 
   const getCartQuntity = (id) => {
-    const currentItem = props.cart.find(element => (id === element.meal.id))
+    const currentItem = cartContext.cart.find(element => (id === element.meal.id))
     if(currentItem) {
       return currentItem.quantity;
     } else {
@@ -49,7 +52,7 @@ const ViewItemPage = (props) => {
       {loading && <Spinner />}
       {
         !loading && currentItem !== null
-          ? <Card data={currentItem} dispatch={props.dispatch} getCartQuntity={getCartQuntity(currentItem.id)}/>
+          ? <Card data={currentItem} dispatch={cartContext.dispatch} getCartQuntity={getCartQuntity(currentItem.id)}/>
           : <span>Item Not Found!</span>
       }
     </div>

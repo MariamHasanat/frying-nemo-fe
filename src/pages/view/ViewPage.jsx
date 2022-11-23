@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import Card from './Card/Card';
 import './viewpage.css';
+import { CartContext } from '../../components/add/form/provider/CartProvider.jsx';
 
 // const getMenuItems = () => JSON.parse(localStorage.getItem('menuItem') || '[]');
 /**
@@ -20,12 +21,13 @@ import './viewpage.css';
  */
 const initialItems = [];
 
-const ViewPage = (props) => {
+const ViewPage = () => {
 
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
   const userContext = useContext(UserContext);
+  const cartContext = useContext(CartContext);
 
   const searchFromURL = params.get('search') || '';
   const navigate = useNavigate();
@@ -34,7 +36,7 @@ const ViewPage = (props) => {
   const maxFromURL = params.get('max') || '';
 
   const getCartQuntity = (id) => {
-    const currentItem = props.cart.find(element => (id === element.meal.id))
+    const currentItem = cartContext.cart.find(element => (id === element.meal.id))
     if(currentItem) {
       return currentItem.quantity;
     } else {
@@ -115,7 +117,7 @@ const ViewPage = (props) => {
         max={maxFromURL}
         params={params}
         setParam={setParam}
-        dispatch={props.dispatch}
+        dispatch={cartContext.dispatch}
       />
       {loading
         ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
@@ -124,7 +126,7 @@ const ViewPage = (props) => {
             filteredItems.map((item, index) => <Card 
              data={item}
              key={item.name + index} 
-             dispatch={props.dispatch}
+             dispatch={cartContext.dispatch}
              getCartQuntity={getCartQuntity(item.id)}
              />)
           }

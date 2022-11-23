@@ -1,21 +1,22 @@
-// import React, { useState } from 'react';
 import { UserContext } from '../components/add/form/provider/UserProvider.jsx';
+import { CartContext } from '../components/add/form/provider/CartProvider.jsx';
 import { Link , useLocation, useNavigate } from 'react-router-dom'
-import picture from '../assests/imges.jpg'
 import cartIcon from '../assests/cart1.svg'
+import picture from '../assests/imges.jpg'
 import { useContext } from 'react';
 import './Header.css';
 
 
 
 const Header = props => {
+ const cartContext = useContext(CartContext);
  const location = useLocation()
  const navigate = useNavigate();
  const userContext = useContext(UserContext);
  
  let itemsCount = 0;
- for (let i = 0; i < props.cart.length; i++) {
-   itemsCount += props.cart[i].quantity;
+ for (let i = 0; i < cartContext.cart.length; i++) {
+   itemsCount += cartContext.cart[i].quantity;
  }
   return (
     <header >

@@ -2,6 +2,8 @@ import Price from '../../../common/price/Price';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import './card.css'
+import { useContext } from 'react';
+import { CartContext } from '../../../components/add/form/provider/CartProvider';
 
 /**
  * @param {{
@@ -16,6 +18,9 @@ import './card.css'
  * @returns 
  */
 const Card = (props) => {
+
+  const cartContext = useContext(CartContext);
+
   return (
     <div className="Card">
       <div className="img">
@@ -26,7 +31,7 @@ const Card = (props) => {
         <p>describtion : <br/>{props.data.description}</p>
         <p className="ingredients">ingredients : {props.data.ingredients.join(", ")}</p>
       </div>
-       <Price item={props.data} dispatch={props.dispatch} getCartQuntity={props.getCartQuntity}/>
+       <Price item={props.data} dispatch={cartContext.dispatch} getCartQuntity={props.getCartQuntity}/>
     </div>
   );
 };
