@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import Item from '../menu-item/menu-item.component';
+import Item from '../../components/menu-item/menu-item.component';
 import './view.css';
 import { useEffect } from 'react';
-import Spinner from '../spinner/spinner.component';
+import Spinner from '../../components/spinner/spinner.component';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import FilterBar from '../filter-bar/filter-bar.component';
-import { UserContext } from '../provider/provider.component';
+import FilterBar from '../../components/filter-bar/filter-bar.component';
+import { UserContext } from '../../components/provider/provider.component';
 import { useContext } from 'react';
-import { getCartQuantity } from '../header/cart';
+import { getCartQuantity } from '../../components/header/cart';
 
 
 /**

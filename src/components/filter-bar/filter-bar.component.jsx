@@ -1,9 +1,9 @@
 import React from "react";
 import './filter-bar.css';
-import Input from "../input/input.component";
+import Input from "../../user-work/input/input.component";
 import CATEGORIES from "../data/categories";
-import Select from "../select/select.component";
-import CheckBox from "../check-box/check-box.component";
+import Select from "../../user-work/select/select.component";
+import CheckBox from "../../user-work/check-box/check-box.component";
 
 /**
  * Renders a filters bar.

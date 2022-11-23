@@ -1,11 +1,11 @@
 import { useReducer, useState } from "react";
 import NotFoundPage from "./components/not-found/not-found/not-found";
 import AddPage from "./pages/add/add.component";
-import ViewPage from "./components/view/view.component";
+import ViewPage from "./pages/view/view.component";
 import Header from "./components/header/header";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import ViewItemPage from "./components/view-item/view-item.component";
-import LoginPage from "./components/login-page/login-page.componen";
+import ViewItemPage from "./pages/view-item/view-item.component";
+import LoginPage from "./pages/login-page/login-page.componen";
 import React from "react";
 import UserProvider from "./components/provider/provider.component";
 import Guard from "./components/guard/guard.component";

@@ -1,9 +1,9 @@
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Input from '../input/input.component';
+import Input from '../../user-work/input/input.component';
 import { loginUser } from './users';
 import './login.css';
-import { UserContext } from '../provider/provider.component';
+import { UserContext } from '../../components/provider/provider.component';
 
 const LoginPage = () => {
   const navigate = useNavigate();

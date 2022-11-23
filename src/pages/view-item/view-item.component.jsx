@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import './view-item.css';
 import {useNavigate, useParams } from 'react-router-dom';
 import { getItem } from './item';
-import Item from '../menu-item/menu-item.component';
-import Spinner from '../spinner/spinner.component';
-import { getCartQuantity } from '../header/cart';
-import PriceBar from '../price-bar/price-bar.component';
+import Item from '../../components/menu-item/menu-item.component';
+import Spinner from '../../components/spinner/spinner.component';
+import { getCartQuantity } from '../../components/header/cart';
+import PriceBar from '../../components/price-bar/price-bar.component';
 
 const ViewItemPage = (props) =>{
   const params = useParams();

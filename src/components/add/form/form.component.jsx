@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Input from '../../input/input.component';
 import Textarea from '../../textarea/textarea/textarea.component';
+import Input from '../../../user-work/input/input.component.jsx';
 import './form.css';
-import Select from '../../select/select.component';
-import MultivalueInput from '../../multivalue-input/multivalue-input.component';
+import Select from '../../../user-work/select/select.component';
+import MultivalueInput from '../../../user-work/multivalue-input/multivalue-input.component';
 import { Navigate, useNavigate } from 'react-router-dom';
 import CATEGORIES from '../../data/categories';
 import { useContext } from 'react';
