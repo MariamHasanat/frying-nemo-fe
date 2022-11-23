@@ -6,6 +6,20 @@ import './cart-list.css';
 
 const CartList = (props) => {
     const cartContext = useContext(CartContext);
+    const getTotalPrice = () => {
+        let price = 0;
+        // price = cartContext.cart.map(item => price += item.price);
+        const cart = cartContext.cart;
+        for (let i = 0; i < cart.length; i++) {
+            price += (cart[i].meal.price * cart[i].quantity);
+        }
+        return price;
+    };
+
+    const deleteAll = () => {
+        cartContext.dispatch({ type: 'DELETE_ALL_ITEMS', meal: props.item });
+    };
+
     return (
         <div className='cart-list'>
             <h1>Cart</h1>
@@ -16,6 +30,10 @@ const CartList = (props) => {
                     <CartRow key={item.meal.id + Date.now()} item={item} />
                 )
             }
+            <div>
+                <p>total price: ${getTotalPrice()}</p>
+                <button onClick={deleteAll}>delete all</button>
+            </div>
 
         </div>
     );

@@ -23,7 +23,7 @@ const CartRow = (props) => {
                     <button onClick={deleteItem}>
                         <img src={trash} width={25} alt="" />
                     </button>
-                    
+                    <p>Price ${props.item.meal.price * props.item.quantity}</p>
                 </div>
             </div>
         </li>
