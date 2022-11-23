@@ -44,8 +44,6 @@ const Row = (props) => {
 
     const deleteItem = () => props.dispatch({ type: 'DELETE_CART_ITEM', item: item });
 
-    // TODO: display the total price 
-    // TODO: clear all button 
     return (
         <li className='cart-row'>
             <img src={item.image} alt="meal" />

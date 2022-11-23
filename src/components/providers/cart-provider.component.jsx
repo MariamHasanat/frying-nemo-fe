@@ -11,9 +11,13 @@ export const CartContext = React.createContext(null);
 const CartProvider = (props) => {
     const initialCart = JSON.parse(localStorage.getItem('cart')) || [];
     const [cart, dispatch] = useReducer(reduce, initialCart);
-    
+
     useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cart));
+        if (cart.length)
+            localStorage.setItem('cart', JSON.stringify(cart));
+        else
+            localStorage.removeItem('cart');
+
     }, [cart]);
 
     return (
