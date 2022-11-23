@@ -3,10 +3,12 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Spinner from '../../components/core/spinner.component';
 import Item from '../../components/item/item.component';
-import { getCartQuantity } from '../../utils/cart';
 import './view.css';
 import FilterBar from './filter-bar/filter-bar.component';
 import { CartContext } from '../../components/providers/cart-provider.component';
+import { UserContext } from '../../components/providers/user-provider.component';
+
+
 /**
  * @type {Array<{
  * id:number;
@@ -24,8 +26,8 @@ const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
- 
-
+  const cartContext = useContext(CartContext);
+  const userContext = useContext(UserContext);
   const price = params.get("price") || '';
   const searchTermsFromURL = params.get('searchTerms') || '';
   const categoryFromURL = params.getAll('category') || '';
@@ -34,7 +36,7 @@ const ViewPage = (props) => {
   const maxFromURL = params.get("max") || '';
   const minFromURL = params.get("min") || '';
   const navigate = useNavigate();
-  const cartContext = useContext(CartContext);
+ 
   console.debug('searchTerms =', searchTermsFromURL);
   const getMenuItems = () => {
     setLoading(true);

@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import CartProvider from "./components/providers/cart-provider.component";
 import LoginPage from "./pages/login/login.page";
 import CartPage from "./pages/cart/cart.page";
+import UserProvider from "./components/providers/user-provider.component";
 
 
 
@@ -18,7 +19,7 @@ function App() {
   return (
 
 
-
+<UserProvider>
  <CartProvider>
   
       <div>
@@ -36,6 +37,7 @@ function App() {
         </BrowserRouter>
       </div>
       </CartProvider>
+      </UserProvider>
   );
 }
 
