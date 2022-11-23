@@ -36,8 +36,9 @@ const RowList = (props) => {
       <div className="total">
          <span onClick={handelDelete}>x</span>
          <h3>${meal.price*quantity}</h3>
+         <h3>${totalPrice}</h3>
       </div>
-       
+      
     </div>
   )
 }
