@@ -41,7 +41,7 @@ const Card = (props) => {
         </div>
 
         <div className="description">
-          {props.data.ingrediant.join(" " + "," + " ")}
+       <small> {props.data.ingrediant.join(" " + "," + " ")}</small>
         </div>
         <Price item={props.data} 
         dispatch={props.dispatch}
