@@ -30,6 +30,12 @@ const reducer = (cart, action) => {
       return newCart.filter(item => item.quantity);
       
     }
+    case "DELETE": {
+      return cart.filter(item => item.meal.id !== action.meal.id);
+    }
+    case "CLEAR": {
+      return [] ;
+    }
     // default : return cart ;
   }
 

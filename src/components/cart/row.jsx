@@ -3,6 +3,7 @@ import React from 'react';
 const CartRow = (props) => {
   const increment = () => props.dispatch({ type: "INCREMENT", meal: props.item.meal });
   const decrement = () => props.dispatch({ type: "DECREMENT", meal: props.item.meal });
+  const deleteItem = () => props.dispatch ({ type: "DELETE" , meal: props.item.meal });
   return (
     <div className='row'>
       <div className='cart-item-img'>
@@ -19,7 +20,7 @@ const CartRow = (props) => {
           <button
             onClick={decrement}
           >&#x2212;</button>
-           <span>{props.item.quantity} </span>
+          <span>{props.item.quantity} </span>
           <button
             onClick={increment}
           >&#x2b;</button>
@@ -27,7 +28,10 @@ const CartRow = (props) => {
       </div>
       <div className="total-price">
         <span>${props.item.quantity * props.item.meal.price}</span>
-        <img src="./trash.png" alt="trash" />
+        <button onClick={deleteItem}>
+          <img src="./trash.png" alt="trash" />
+          <span>Delete</span>
+        </button>
       </div>
     </div>
   );

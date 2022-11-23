@@ -1,6 +1,9 @@
 .cart {
   margin: 10px;
 }
+.cart > .cart-header {
+  margin-bottom: 10px;
+}
 .cart > .list > .row {
   margin-bottom: 10px;
   display: flex;
@@ -44,8 +47,15 @@
   margin-bottom: 5px;
   margin: 10px;
 }
-.row > .total-price > img{
-  width: 25px;
+.row > .total-price > button { 
+  /* color: #ccc; */
+  background: none;
+  border: none;
+  font-size: 20px;
+}
+.row > .total-price > button > img{
+  width: 20px;
+  margin-right: 5px;
 }
 .row > .cart-info > .quantity-selector{
   border: 3px solid #DDD;
