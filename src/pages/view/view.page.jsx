@@ -5,6 +5,7 @@ import './view.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import FilterBar from './filter-bar/filter-bar.component';
 import { UserContext } from '../../components/providers/user-provider.component';
+import { CartContext } from '../../components/providers/cart-provider.component';
 import Jiji from '../../components/common/jiji-the-cat/jiji.component';
 // import NotFound from '../not-found/not-found.component';
 
@@ -17,6 +18,7 @@ const ViewPage = (props) => {
     const [loading, setLoading] = useState(true);
     const [params, setParams] = useSearchParams();
     const userContext = useContext(UserContext);
+    const cartContext = useContext(CartContext);
 
     const searchTerms = params.get('searchTerms') || '';
     const categoryFilters = params.getAll('category') || '';
@@ -60,7 +62,7 @@ const ViewPage = (props) => {
     const len = filteredMenu.length;
 
     const getItemQuantity = (id) => {
-        const currentItem = props.cart.find(item => item.meal.id === id);
+        const currentItem = cartContext.cart?.find(item => item.meal.id === id);
         if (currentItem) {
             return currentItem.quantity;
         }
@@ -86,7 +88,6 @@ const ViewPage = (props) => {
                             return <ItemCard
                                 item={item}
                                 key={item + index}
-                                dispatch={props.dispatch}
                                 itemQuantity={getItemQuantity(item.id)}
                             />;
                         })

@@ -1,10 +1,14 @@
+import { useContext } from "react";
+import { CartContext } from "../providers/cart-provider.component";
 const PlusMinusButtons = (props) => {
 
+    const cartContext = useContext(CartContext);
     const handleIncrement = () => {
-        props.dispatch({ type: 'INCREMENT_CART_QUANTITY', meal: props.item });
+        console.log(props.item);
+        cartContext.dispatch({ type: 'INCREMENT_CART_QUANTITY', meal: props.item});
       };
     const handleDecrement = () => {
-        props.dispatch({ type: 'DECREMENT_CART_QUANTITY', meal: props.item });
+        cartContext.dispatch({ type: 'DECREMENT_CART_QUANTITY', meal: props.item });
       };
 
     return (
