@@ -17,14 +17,14 @@ function App() {
             <UserProvider>
                 <CartProvider>
                     <BrowserRouter>
-                        <Header/>
+                        <Header />
                         <Routes>
                             <Route path="/login" element={<Login />} replace />
                             <Route path="/" element={<Navigate to='/view' />} replace />
                             <Route path="/add" element={<Guard authorized={['ADMIN']}><AddPage /></Guard>} />
                             <Route path="/view" element={<ViewPage />} />
                             <Route path="/*" element={<NotFound />} />
-                            {/* <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart} />} /> */}
+                            <Route path="/view/:id" element={<ViewItemPage />} />
                             {/* <Route path="/cart" element={<Cart dispatch={dispatch} cart={cart} />} /> */}
                         </Routes>
                     </BrowserRouter>
