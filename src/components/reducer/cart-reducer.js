@@ -1,4 +1,4 @@
-const initialState = [];
+
 
 const reducer = (cart, action) => {
   // This function updates the state
@@ -22,33 +22,29 @@ const reducer = (cart, action) => {
       return newCart;
     }
     case "DECREMENT_CART_QUANTITY": {
-      let shouldDelete = false;
-      const newCart = cart.map(cartItem => {
-        if (cartItem.meal.id === action.meal.id) {
-          if (cartItem.quantity === 1) {
-            shouldDelete = true;
-          }
-          return { ...cartItem, quantity: cartItem.quantity - 1 };
-        } else {
-          return cartItem;
-        }
+      const newCart = cart.map(item => {
+        return item.meal.id === action.meal.id
+          ? { ...item, quantity: item.quantity - 1 }
+          : item;
       });
 
-      if (shouldDelete) {
-        return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
-      }
+      return newCart.filter(item => item.quantity > 0);
 
-      return newCart;
     }
     case "DELETE_CART_ITEM": {
       return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
     }
-  }
+    case "EMPTY":{
+      cart = [];
+      localStorage.setItem('cart', JSON.stringify(cart));
+      return cart;
+    }
+    default:
+      return cart;
 
-  return cart;
+  }
 };
 
 export {
-  reducer,
-  initialState
+  reducer
 };

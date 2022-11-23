@@ -5,9 +5,10 @@ import { useEffect } from 'react';
 import Spinner from '../../components/spinner/spinner.component';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import FilterBar from '../../components/filter-bar/filter-bar.component';
-import { UserContext } from '../../components/provider/provider.component';
+import { UserContext } from '../../components/providers/provider.component';
 import { useContext } from 'react';
 import { getCartQuantity } from '../../components/header/cart';
+import { CartContext } from '../../components/providers/cart-provider.component';
 
 
 /**
@@ -33,6 +34,7 @@ const ViewPage = (props) => {
   const [loading, setLoading] = useState(true);
   const [params, setParams] = useSearchParams();
   const userContext = useContext(UserContext);
+  const cartContext = useContext(CartContext);
 
   const search = params.get('search') || '';
   const categoriesFromURL = params.getAll('category') || '';
@@ -132,8 +134,8 @@ const ViewPage = (props) => {
             : filteredItems.map((item, index) => <Item 
             data={item}
               key={item.name + index} 
-              dispatch={props.dispatch}
-              cartQuantity={getCartQuantity(item.id, props.cart)} />)
+              dispatch={cartContext.dispatch}
+              cartQuantity={getCartQuantity(item.id, cartContext.cart)} />)
           }
         </div>
       }

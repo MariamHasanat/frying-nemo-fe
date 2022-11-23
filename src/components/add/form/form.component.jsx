@@ -7,7 +7,7 @@ import MultivalueInput from '../../../user-work/multivalue-input/multivalue-inpu
 import { Navigate, useNavigate } from 'react-router-dom';
 import CATEGORIES from '../../data/categories';
 import { useContext } from 'react';
-import { UserContext } from '../../provider/provider.component';
+import { UserContext } from '../../providers/provider.component';
 
 const Form = () => {
   const [name, setName] = useState('Huda');

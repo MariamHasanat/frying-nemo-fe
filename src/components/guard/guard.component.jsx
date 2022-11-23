@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { UserContext } from '../provider/provider.component';
+import { UserContext } from '../providers/provider.component';
 import { Navigate } from 'react-router-dom';
 import './guard.css';
 
