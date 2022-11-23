@@ -5,7 +5,7 @@ import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { UserContext } from "../../components/providers/user-provider";
 import AddDeleteItem from "./add-delete/add-delete.componenet";
 import { getCartQuantity } from "../../utility/cart";
-import {CartContext} from "../../components/providers/cart-provider.component";
+import { CartContext } from "../../components/providers/cart-provider.component";
 
 /**
  * @type {Array<{
@@ -27,7 +27,6 @@ const ViewPage = (props) => {
   const userContext = useContext(UserContext);
   const cartContext = useContext(CartContext);
 
-
   const searchTerms = params.get("searchTerms") || "";
   const categoryFromURL = params.getAll("categoryFromURL") || "";
   const minValue = params.get("minValue") || "";
@@ -47,7 +46,7 @@ const ViewPage = (props) => {
   // if the array is empty will not be executed again
   useEffect(() => {
     if (!userContext.user?.id) {
-      navigate('/login', { replace: false });
+      navigate("/login", { replace: false });
     }
     getMenuItems();
   }, []);
@@ -58,14 +57,13 @@ const ViewPage = (props) => {
     newParams.delete(name);
 
     if (Array.isArray(value)) {
-      value.forEach(item => newParams.append(name, item));
+      value.forEach((item) => newParams.append(name, item));
     } else if (value.trim()) {
       newParams.set(name, value.trim());
     }
 
     setParams(newParams);
   };
-
 
   return (
     <div>
@@ -76,7 +74,8 @@ const ViewPage = (props) => {
         maxValue={maxValue}
         categoryFromURL={categoryFromURL}
         params={params}
-        setParam={setParam} />
+        setParam={setParam}
+      />
       {loading && (
         <div className="loading">
           <div className="lds-spinner">
@@ -100,7 +99,9 @@ const ViewPage = (props) => {
         {menuItems
           .filter((item) => {
             let match =
-              item.name.toLowerCase().includes(searchTerms.toLowerCase().trim()) ||
+              item.name
+                .toLowerCase()
+                .includes(searchTerms.toLowerCase().trim()) ||
               item.description
                 .toLowerCase()
                 .trim()
@@ -113,7 +114,7 @@ const ViewPage = (props) => {
               });
 
             if (categoryFromURL.length) {
-              match = match && (categoryFromURL.includes(item.category));
+              match = match && categoryFromURL.includes(item.category);
             }
 
             if (minValue) {
@@ -132,7 +133,9 @@ const ViewPage = (props) => {
                   <img src={item.image} alt="food" height={400} />
                 </div>
                 <div>
-                  <Link to={`/view-details/${item.id}`} ><h2>{item.name}</h2></Link>
+                  <Link to={`/view-details/${item.id}`}>
+                    <h2>{item.name}</h2>
+                  </Link>
                 </div>
                 <div className="desc">
                   <span>Description :</span> {item.description}
@@ -147,7 +150,12 @@ const ViewPage = (props) => {
                   <span>Ingredients : </span>
                   {item.ingredients.join(" | ")}
                 </div>
-                <AddDeleteItem  dispatch={cartContext.dispatch} item={item} cartQuantity={getCartQuantity(item.id, cartContext.cart)} />
+                <AddDeleteItem
+                  dispatch={cartContext.dispatch}
+                  item={item}
+                  cart={cartContext.cart}
+                  cartQuantity={getCartQuantity(item.id, cartContext.cart)}
+                />
               </div>
             );
           })}

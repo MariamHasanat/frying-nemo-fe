@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import './view-item.css';
-import { useParams } from 'react-router-dom';
-import { getItem } from '../../services/items';
-import Item from '../../components/view/item/item.component';
-import { getCartQuantity } from '../../utility/cart';
+import { useState, useEffect } from "react";
+import "./view-item.css";
+import { useParams } from "react-router-dom";
+import { getItem } from "../../services/items";
+import Item from "../../components/view/item/item.component";
+import { getCartQuantity } from "../../utility/cart";
 
 /**
  * @type {Array<{
@@ -52,11 +52,16 @@ const ViewItemPage = (props) => {
           <div className="loading">Loading ...</div>
         </div>
       )}
-      {
-        !loading && currentItem !== null
-          ? <Item data={currentItem} item={currentItem} dispatch={props.dispatch} cartQuantity={getCartQuantity(currentItem.id, props.cart)} />
-          : <span>Item Not Found!</span>
-      }
+      {!loading && currentItem !== null ? (
+        <Item
+          data={currentItem}
+          item={currentItem}
+          dispatch={props.dispatch}
+          cartQuantity={getCartQuantity(currentItem.id, props.cart)}
+        />
+      ) : (
+        <span>Item Not Found!</span>
+      )}
     </div>
   );
 };
