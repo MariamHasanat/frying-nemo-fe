@@ -1,5 +1,5 @@
 import './not-found.css';
-import notFound from '../../assets/404.svg';
+import notFound from '../../assets/images/404.svg';
 
 const NotFound = () => {
     return (

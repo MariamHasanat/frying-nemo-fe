@@ -1,6 +1,8 @@
 import React from 'react';
 import './row.css';
 
+import trashIcon from '../../../assets/images/trash.svg';
+
 /**
  * 
  * @param {{
@@ -62,9 +64,7 @@ const Row = (props) => {
             <div className="total-price">
                 <h3>${item.price * quantity}</h3>
                 <button onClick={deleteItem}>
-                    {/* TODO: must get the trashIcon here  */}
-                    {/* <img src={trashIcon} alt="delete" />Delete */}
-                    trash
+                    <img src={trashIcon} alt="delete" />Delete
                 </button>
             </div>
 

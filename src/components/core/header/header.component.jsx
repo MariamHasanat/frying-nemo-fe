@@ -3,7 +3,7 @@ import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { UserContext } from '../../providers/user-provider.component';
-import logo from '../../../assets/nemoInHeader.png';
+import logo from '../../../assets/images/nemoInHeader.png';
 import { CartContext } from '../../providers/cart-provider.component';
 
 const Header = () => {
@@ -71,6 +71,8 @@ const Header = () => {
                         <button
                             className='log-out'
                             onClick={() => {
+                                localStorage.removeItem('cart');
+                                cartContext.dispatch({ type: 'CLEAR_ALL' });
                                 userContext.setUser(null);
                                 navigate('/log-in');
                             }}

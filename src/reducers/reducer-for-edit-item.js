@@ -57,6 +57,9 @@ const reduce = (cart, action) => {
             return newCart2.filter(cartItem => cartItem.quantity > 0);
 
         }
+        case "CLEAR_ALL": {
+            return [];
+        }
         default:
             return cart;
     }

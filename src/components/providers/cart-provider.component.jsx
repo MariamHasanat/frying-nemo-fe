@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import { useEffect } from 'react';
 import { reduce } from '../../reducers/reducer-for-edit-item';
 
 export const CartContext = React.createContext(null);
@@ -8,8 +9,13 @@ export const CartContext = React.createContext(null);
  * @returns 
  */
 const CartProvider = (props) => {
-    // TODO: make the initial state come from the localStorage
-    const [cart, dispatch] = useReducer(reduce, []); // reduce function in the reducer-for-edit-item.js
+    const initialCart = JSON.parse(localStorage.getItem('cart')) || [];
+    const [cart, dispatch] = useReducer(reduce, initialCart);
+    
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
+
     return (
         <CartContext.Provider value={{ cart, dispatch }}>
             {props.children}

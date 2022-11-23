@@ -23,38 +23,7 @@ import { CartContext } from "../../components/providers/cart-provider.component"
 */
 const initialItems = [];
 
-/**
- * 
- * @param {{
- *      dispatch: React.Dispatch<{
- *          type: string;
- *          item: {
-*           id: string;
-*           name: string;
-*           image: string;
-*           description: string;
-*           price: number;
-*           category: string;
-*           ingredients: string[];
-*           };
-*       }>
-*       cart: Array<{
-*           quantity: number;
-*           item: {
-*               id: string;
-*               name: string;
-*               image: string;
-*               description: string;
-*               price: number;
-*               category: string;
-*               ingredients: string[];
-*               }
-*           }>;
-*   }} props 
-* @returns 
-*/
-
-const View = (props) => {
+const View = () => {
     const [menuItems, setMeuItems] = useState(initialItems);
     const [loading, setLoading] = useState(true);
     const [params, setParam] = useSearchParams();
