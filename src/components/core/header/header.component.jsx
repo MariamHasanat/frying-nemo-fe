@@ -11,6 +11,7 @@ const Header = (props) => {
   const navigate = useNavigate();
   const cartContext = useContext (CartContext) ;
   const userContext = useContext(UserContext);
+  console.log(userContext.user);
   let cartCounter = 0;
   cartContext.cart.forEach(item => cartCounter += item.quantity);
   return (
@@ -25,10 +26,12 @@ const Header = (props) => {
           <Link to='/add' className={location.pathname === '/add' ? 'current' : ''}> Add </Link>
           {/* <a href='/add'> Add </a> */}
           <Link to='/view' className={location.pathname.includes('/view') ? 'current' : ''}> View </Link>
-          <div className="cartWrapper">
-            <Link to={'/cart'}><img src="./cart.svg" alt="cart icone" /></Link>
-            <span>{cartCounter}</span>
-          </div>
+          {userContext.user && 
+            <div className="cartWrapper">
+              <Link to={'/cart'}><img src="./cart.svg" alt="cart icone" /></Link>
+              <span>{cartCounter}</span>
+            </div>
+          }
           {
             userContext.user &&
             <span className="user-badge">
@@ -37,6 +40,7 @@ const Header = (props) => {
               <button
                 onClick={() => {
                   userContext.setUser(null);
+                  localStorage.removeItem ('cart') ;
                   navigate('/login');
                 }}
               >
@@ -44,16 +48,6 @@ const Header = (props) => {
               </button>
             </span>
           }
-
-          {/* {props.user ? <p>Hello {props.user.fullName}</p> : ''}
-          <button
-            onClick={() => {
-              props.setUser(null);
-              navigate('/login');
-            }}
-          >
-            Logout
-          </button> */}
         </nav>
       </div>
     </div>
