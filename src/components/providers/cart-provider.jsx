@@ -9,10 +9,16 @@ export const CartContext = React.createContext(null);
  * @returns 
  */
 const CartProvider = (props) => {
+
+
   const [cart, dispatch] = useReducer(reducer, initialState);
+  let amount = 0;
+  for (let i = 0; i < cart.length; i++) {
+    amount += (cart[i].quantity * cart[i].meal.price);
+  }
 
   return (
-    <CartContext.Provider value={{ cart, dispatch }}>
+    <CartContext.Provider value={{ cart, dispatch, amount }}>
       {
         props.children
       }

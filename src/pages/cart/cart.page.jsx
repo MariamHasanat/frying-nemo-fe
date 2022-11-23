@@ -19,7 +19,6 @@ const CartPage = () => {
       <h1>Cart</h1>
       <div className="body">
         <CartList />
-        div.
       </div>
     </div>
   );
