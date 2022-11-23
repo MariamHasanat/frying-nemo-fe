@@ -8,7 +8,6 @@ import ViewItemPage from "./pages/view-item/view-item.component";
 import LoginPage from "./pages/login/login.compent";
 import React, { useReducer } from "react";
 import Provider from "./common/Provider/Provider-commponet";
-import { reduce, initializationState } from "./reducers/cart";
 import CartProvider from "./common/Provider/cart-provider-component";
 import CartPage from "./pages/cart/cart.page";
 export const UserContext = React.createContext(null);

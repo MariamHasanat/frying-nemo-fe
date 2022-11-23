@@ -1,6 +1,6 @@
-const initializationState = [];
 
 const reduce = (cart, action) => {
+  console.log(cart)
   switch (action.type) {
     case "ADD_CART_ITEM":
       return [...cart, { meal: action.meal, quantity: 1 }];
@@ -42,12 +42,24 @@ const reduce = (cart, action) => {
     case "DELETE_CART_ITEM": {
       return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
     }
+
+    case "DELETE_ALL_ITEM": {
+      return cart.filter((cartItem,index) => {
+
+        if(cartItem.meal.id === cart[index].id){
+cart.pop(cartItem)
+
+        }
+      }
+      );
+    }
   }
+
+
 
   return cart;
 };
 
 export {
-  initializationState,
-  reduce
+    reduce
 };

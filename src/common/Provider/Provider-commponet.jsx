@@ -13,7 +13,14 @@ function Provider(pro) {
   const [user, setUser] = useState(initialization);
   const setUserOverride = user => {
    setUser(user);
-   localStorage.setItem('user', JSON.stringify(user));
+   if (user === null) {
+    localStorage.removeItem('user');
+    localStorage.removeItem('cart');
+    
+  } else {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
  };
  
  return(

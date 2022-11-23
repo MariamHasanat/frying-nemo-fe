@@ -1,8 +1,8 @@
 import React from 'react';
 import "./Provider.css";
-import { useReducer } from 'react';
+import { useReducer,useEffect } from 'react';
 
-import { reduce, initializationState } from "../../reducers/cart";
+import {reduce} from "../../reducers/cart"
 
 export const CartContext = React.createContext(null);
 
@@ -10,8 +10,14 @@ export const CartContext = React.createContext(null);
  * @param {{children:React.ReactNode;}} props 
  */
 function CartProvider(props) {
-  const [cart, dispatch] = useReducer(reduce, initializationState);
+  const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart') || '[]');
+  const [cart, dispatch] = useReducer(reduce, cartFromLocalStorage);
 
+  useEffect(() => localStorage.setItem('cart', JSON.stringify(cart)), [cart]);
+
+
+
+  
 
   return (
     <CartContext.Provider value={{ cart, dispatch }}>

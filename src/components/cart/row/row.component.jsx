@@ -14,6 +14,9 @@ const CartRow = (props) => {
     ContextCart.dispatch({ type: 'DELETE_CART_ITEM', meal: props.cartItem.meal });
   }
   return (
+ 
+        
+
     <li className="cart-row">
       <img src={props.cartItem.meal.image} alt="meal" />
       <div className="main-info">
@@ -35,6 +38,7 @@ const CartRow = (props) => {
         </button>
       </div>
     </li>
+   
   );
 };
 
