@@ -37,7 +37,10 @@ const Head = (props) => {
           </Link>
           <Link className="cart" to="cart">
           <img src={cartIcon} alt="cart icon" />
-          <span className="count">{itemsCount}</span>
+          <span className="count">
+      
+            {itemsCount}
+            </span>
         </Link>
         </nav>
         {

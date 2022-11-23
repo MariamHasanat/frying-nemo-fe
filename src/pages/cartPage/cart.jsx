@@ -9,12 +9,13 @@ import { UserContext } from '../../App';
 import { Link } from 'react-router-dom';
 
 const CartPage = (props) => {
+  const newCart = [];
   const cartContext = useContext(CartContext);
   const userContext = useContext(UserContext);
   const DeletAll = () => {
-    localStorage.removeItem('cart');
+    // localStorage.removeItem('cart');
+    localStorage.setItem('cart',newCart);
     window.location.reload(false);
-
   };
 
   let totalCount = 0;
