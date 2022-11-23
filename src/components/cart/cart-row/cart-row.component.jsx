@@ -10,7 +10,7 @@ const CartRow = (props) => {
             <div className="center">
                 <h2>{props.item.meal.name}</h2>
                 <p>${props.item.meal.price}&nbsp;&nbsp;<span className='green-text'>In Stock</span></p>
-                <PlusMinusButtons item={props.item.meal} quantity={props.item.quantity} dispatch={props.dispatch} />
+                <PlusMinusButtons item={props.item.meal} quantity={props.item.quantity}/>
             </div>
         </li>
     );

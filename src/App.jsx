@@ -4,6 +4,7 @@ import ViewItemPage from "./pages/view-item/view-item.page";
 import Header from "./components/core/header/header.component";
 import NotFound from "./pages/not-found/not-found.page";
 import Login from "./pages/login/login.page";
+import Cart from "./pages/cart/cart.page";
 import './index.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import React from "react";
@@ -25,7 +26,7 @@ function App() {
                             <Route path="/view" element={<ViewPage />} />
                             <Route path="/*" element={<NotFound />} />
                             <Route path="/view/:id" element={<ViewItemPage />} />
-                            {/* <Route path="/cart" element={<Cart dispatch={dispatch} cart={cart} />} /> */}
+                            <Route path="/cart" element={<Cart />} />
                         </Routes>
                     </BrowserRouter>
                 </CartProvider>

@@ -4,7 +4,6 @@ const PlusMinusButtons = (props) => {
 
     const cartContext = useContext(CartContext);
     const handleIncrement = () => {
-        console.log(props.item);
         cartContext.dispatch({ type: 'INCREMENT_CART_QUANTITY', meal: props.item});
       };
     const handleDecrement = () => {
