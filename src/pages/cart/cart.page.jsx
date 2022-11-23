@@ -7,7 +7,7 @@ import { UserContext } from '../../components/providers/user-provider';
 const CartPage = () => {
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
-  
+
   useEffect(() => {
     // To check if the user is already logged in, send him to the view page
     if (!userContext.user?.id) {
@@ -17,7 +17,10 @@ const CartPage = () => {
   return (
     <div className='wrapper'>
       <h1>Cart</h1>
-      <CartList />
+      <div className="body">
+        <CartList />
+        div.
+      </div>
     </div>
   );
 };

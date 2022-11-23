@@ -46,7 +46,7 @@ const Header = (props) => {
 
 
 
-          <button className='logout' onClick={() => userContext.setUser(null)}>
+          <button className='logout' onClick={() => { userContext.setUser(null); cartContext.cart = []; }}>
             <div className='logout-button'>
               <span>Logout</span>
               <img src={logout} alt="logout" />
