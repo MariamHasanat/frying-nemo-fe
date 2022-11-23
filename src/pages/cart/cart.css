@@ -3,6 +3,12 @@
 }
 .cart > .cart-header {
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.cart > .cart-header > span {
+  font-weight: 600;
+  font-size: 18px;
 }
 .cart > .list > .row {
   margin-bottom: 10px;

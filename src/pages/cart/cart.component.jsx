@@ -7,15 +7,22 @@ import './cart.css';
 const Cart = (props) => {
   const cartContext = useContext (CartContext) ;
   const clearCart = () => {cartContext.dispatch ({ type: "CLEAR"})}
+  let totalCartPRice = 0 ;
+  cartContext.cart.forEach(cartElement => {
+    totalCartPRice += (cartElement.quantity * cartElement.meal.price);
+  });
   return (
     <div className='cart'>
-      <div className="cart-header">
+      
         <h2>Cart</h2>
         {cartContext.cart.length
-          ? <button onClick={clearCart} className = 'nemo-button'>Clear All</button>
+          ? <div className="cart-header">
+              <span>Total price : {totalCartPRice}</span>
+              <button onClick={clearCart} className = 'nemo-button'>Clear All</button>
+            </div>
           : null
         }
-      </div>
+      
       <CartList cart = {props.cart} />
     </div>
   );
