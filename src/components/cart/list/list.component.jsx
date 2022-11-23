@@ -7,10 +7,10 @@ import { CartContext } from '../../providers/cart-provider.component';
 const CartList = (props) => {
   const cartContext =useContext(CartContext);
   return (
-    props.cart.length
+    cartContext.cart.length
       ? <ul className="cart-list">
         {
-          props.cart.map((cartItem, index) => <CartRow cartItem={cartItem} key={"r_" + index} />)
+       cartContext.cart.map((cartItem, index) => <CartRow cartItem={cartItem} key={"r_" + index}  dispatch={cartContext.dispatch}/>)
         }
       </ul>
       : <div className="no-results">

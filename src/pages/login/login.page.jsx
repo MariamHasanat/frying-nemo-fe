@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import Input from '../../components/common/input/input.component';
 import { loginUser } from '../../services/users';
 import './login.css';
-import { UserContext } from '../../App';
 
 const LoginPage = (props) => {
 

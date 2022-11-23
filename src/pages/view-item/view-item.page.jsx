@@ -2,10 +2,12 @@ import {React, useState, useEffect } from 'react';
 import './view-item.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getItem } from '../../services/item';
-import Item from '../../components/item/item.component';
 import Spinner from '../../components/core/spinner.component';
 import PriceBar from '../../components/price-bar/price-bar.component';
 import { getCartQuantity } from '../../utils/cart';
+import { useContext } from 'react';
+import { CartContext } from '../../components/providers/cart-provider.component';
+
 /**
  * @type {Array<{
  * id: number;
@@ -53,7 +55,8 @@ const ViewItemPage = (props) => {
           <p className="ingredients"><b>Ingredients:</b>
             <br />{currentItem.ingredients.join(", ")}</p>
         </div>
-        <PriceBar   item={currentItem}
+        <PriceBar 
+          item={currentItem}
             dispatch={cartContext.dispatch}
             cartQuantity={getCartQuantity(currentItem.id, cartContext.cart)}
 />

@@ -1,6 +1,15 @@
 import React from "react";
 import { useState } from "react";
-import { UserContext } from '../../App';
+
+export const UserContext = React.createContext(null);
+
+/**
+ * @param {{
+ *  children: React.ReactNode;
+ * }} props Component props
+ * @returns 
+ */
+
 
 
 
@@ -8,9 +17,16 @@ const UserProvider = (props) => {
   const initialUser = JSON.parse(localStorage.getItem('user'));
   const [user, setUser] = useState(initialUser);
   const setUserOverride = user => {
-    setUser(user);
+
+    setUser( user );
+
+    if (user === null) {
+      localStorage.removeItem('user');
+      localStorage.removeItem('cart');
+    } else {
+
  localStorage.setItem('user', JSON.stringify(user));
-  };
+   } };
   return (
 
     <UserContext.Provider value={{ user, setUser: setUserOverride }}>
