@@ -7,6 +7,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import FilterBar from '../filter-bar/filter-bar.component';
 import { UserContext } from '../provider/provider.component';
 import { useContext } from 'react';
+import { getCartQuantity } from '../header/cart';
 
 
 /**
@@ -107,14 +108,6 @@ const ViewPage = (props) => {
     setParams(newParams);
   };
 
-  const getCartQuantity = (id) => {
-    const currentCartItem = props.cart.find(cartItem => (cartItem.meal.id === id));
-    if (currentCartItem) {
-      return currentCartItem.quantity;
-    } else {
-      return 0;
-    }
-  };
 
   return (
     <div className="view-page">
@@ -140,7 +133,7 @@ const ViewPage = (props) => {
             data={item}
               key={item.name + index} 
               dispatch={props.dispatch}
-              cartQuantity={getCartQuantity(item.id)} />)
+              cartQuantity={getCartQuantity(item.id, props.cart)} />)
           }
         </div>
       }

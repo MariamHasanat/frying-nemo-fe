@@ -1,5 +1,5 @@
 import './add.css';
-import Form from '../../add/form/form.component';
+import Form from '../../components/add/form/form.component';
 import { useEffect, useState } from 'react';
 
 
