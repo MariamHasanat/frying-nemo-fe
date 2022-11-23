@@ -45,6 +45,11 @@ switch (action.type){
   case 'DELETE_CART_ITEM':{
     return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
   }
+
+  case "DELETE_ALL_ITEMS": {
+    return (null);
+}
+
   
 }
 return cart;
@@ -53,4 +58,4 @@ return cart;
 
 const initialState = [];
 
-export  {reducer, initialState};
+export  {reducer};

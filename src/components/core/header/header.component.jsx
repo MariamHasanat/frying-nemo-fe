@@ -26,12 +26,19 @@ const Header = (props) => {
       <div className="right">
         <span className='Cart'>Cart {itemsCount}</span>
         <nav>
-          <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
-            Add
-          </Link>
-          <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
-            View
-          </Link>
+        {
+            userContext.user ? (
+              <>
+                <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
+                  Add
+                </Link>
+                <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
+                  View
+                </Link>
+              </>
+            ) : null
+          }
+
         </nav>
         {
           userContext.user &&

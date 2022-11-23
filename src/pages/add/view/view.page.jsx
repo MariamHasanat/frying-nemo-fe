@@ -7,7 +7,7 @@ import Spinner from '../../../components/core/header/spinner/spinner.component';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../../components/provider/user-provider.component';
-
+import { CartContext } from '../../../components/provider/cart.provider';
 
 /**
  * @type {Array<{
@@ -26,6 +26,7 @@ const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
+ const cartContext = useContext(CartContext);
   const userContext = useContext(UserContext);
   const navigate = useNavigate();
   const searchTermsFromURL = params.get('searchTerms') || '';
@@ -105,7 +106,14 @@ const ViewPage = (props) => {
             <div className="items-container">
               {
                 filteredItems.length
-                  ? filteredItems.map((item, index) => <Item data={item} key={item.name + index}  dispatch={props.dispatch}/>)
+                  ? filteredItems.map((item, index) => 
+                  <Item
+                  data={item}
+                  key={item.name + index}
+                  dispatch={cartContext.dispatch}
+                  cartQuantity={getCartQuantity(item.id, cartContext.cart)}
+                />
+                  )
                   : (
                     <div className="no-results">
                       <img src="./frustrated-realistic.png" alt="No results" />

@@ -1,9 +1,11 @@
-import getItem from "../../../../services/item";
-import { useParams } from 'react-router-dom';
+import getItem from "../../services/item";
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import './view-item.css';
-import Spinner from "../../../../components/core/header/spinner/spinner.component";
-import PriceBar from "../../../../components/view/item/item/price-bar/price-bar.cpmponent";
+import Spinner from "../../components/core/header/spinner/spinner.component";
+import PriceBar from "../../components/view/item/item/price-bar/price-bar.cpmponent";
+import { useContext } from "react";
+import { CartContext } from "../../components/provider/cart.provider";
 
 
 /**
@@ -20,9 +22,10 @@ import PriceBar from "../../../../components/view/item/item/price-bar/price-bar.
 
 const ViewItemPage = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const cartContext = useContext(CartContext)
   useEffect(() => {
     setLoading(true);
     const item = getItem(params.id);
