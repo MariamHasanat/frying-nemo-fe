@@ -7,6 +7,7 @@ import './view.css';
 import FilterBar from './filter-bar/filter-bar.component';
 import { CartContext } from '../../components/providers/cart-provider.component';
 import { UserContext } from '../../components/providers/user-provider.component';
+import { getCartQuantity } from '../../utils/cart';
 
 
 /**
@@ -105,14 +106,8 @@ const ViewPage = (props) => {
 
     setParams(newParams);
   };
-  const getCartQuantity = (id) => {
-    const currentCartItem = props.cart.find(cartItem => (cartItem.meal.id === id));
-    if (currentCartItem) {
-      return currentCartItem.quantity;
-    } else {
-      return 0;
-    }
-  };
+
+
 
   return (
     <div className="view-page">
