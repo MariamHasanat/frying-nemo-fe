@@ -50,7 +50,11 @@ switch (action.type){
     return [];
 }
 
-  
+case "SET": {
+  return action.cart
+}
+
+
 }
 return cart;
 }
