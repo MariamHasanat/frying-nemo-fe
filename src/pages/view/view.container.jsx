@@ -1,10 +1,10 @@
 import Item from './item/item.jsx';
 import './viewContainerStyle.css';
 import Spinner from '../../components/spinner/spinner.jsx';
-import { useState, useEffect ,useContext } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Filter from './filter-bar/filter.bar.component.jsx';
-import { UserContext } from '../../components/providers/user-provider';
+//import { UserContext } from '../../components/providers/user-provider';
 import { CartContext } from '../../components/providers/cart-provider';
 
 //import UserContext from '../../App';
@@ -25,15 +25,13 @@ const ViewPage = (props) => {
    * dispatch: React.DispatchWithoutAction
    * >}
    */
-  
+
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
   const searchParams = params.get('q') || '';
   const categoriesFromURL = params.get('category') || '';
-  const navigate = useNavigate();
-  const userContext = useContext(UserContext);
-  const cartContext = useContext(CartContext);
+   const cartContext = useContext(CartContext);
 
   const getMenuItems = () => {
     setLoading(true);
@@ -47,10 +45,6 @@ const ViewPage = (props) => {
   };
 
   useEffect(() => {
-    if (!userContext.user) {
-      navigate('/login');
-    }
-
     getMenuItems();
   }, []);
 
@@ -91,12 +85,12 @@ const ViewPage = (props) => {
             <div className="items-container">
               {
                 filteredItem.length
-                  ? filteredItem.map((item, index) => 
-                  <Item 
-                  data={item} 
-                  key={item.name + index} 
-                  dispatch={cartContext.dispatch} 
-                  />)
+                  ? filteredItem.map((item, index) =>
+                    <Item
+                      data={item}
+                      key={item.name + index}
+                      dispatch={cartContext.dispatch}
+                    />)
                   : (
                     <div className="no-results">
                       <img src="./frustrated-realistic.png" alt="No results" />
