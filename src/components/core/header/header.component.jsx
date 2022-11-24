@@ -11,8 +11,8 @@ const Header = (props) => {
   const userContext = useContext(UserContext);
   const cartContext = useContext(CartContext);
 
-  let itemsCount=0;
-  for(let i=0; i<cartContext.cart.length;i++){
+  let itemsCount = 0;
+  for (let i = 0; i < cartContext.cart.length; i++) {
     itemsCount += cartContext.cart[i].quantity;
   }
   return (
@@ -26,19 +26,23 @@ const Header = (props) => {
       <div className="right">
         <span className='Cart'>Cart {itemsCount}</span>
         <nav>
-        {
+          {
             userContext.user ? (
-              <>
+              
                 <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
                   Add
                 </Link>
-                <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
-                  View
+                ):(
+                <Link to="/login" className={location.pathname === "/login" ? 'current' : ''}>
+                  Login
                 </Link>
-              </>
-            ) : null
+                )
+              
+            
           }
-
+          <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
+            View
+          </Link>
         </nav>
         {
           userContext.user &&
