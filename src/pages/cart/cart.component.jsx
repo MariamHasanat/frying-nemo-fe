@@ -7,10 +7,7 @@ import './cart.css';
 const Cart = (props) => {
   const cartContext = useContext (CartContext) ;
   const clearCart = () => {cartContext.dispatch ({ type: "CLEAR"})}
-  let totalCartPRice = 0 ;
-  cartContext.cart.forEach(cartElement => {
-    totalCartPRice += (cartElement.quantity * cartElement.meal.price);
-  });
+  const totalCartPRice = cartContext.cart.reduce ((total , item)=> {return total + item.meal.price * item.quantity} , 0) ;
   return (
     <div className='cart'>
       

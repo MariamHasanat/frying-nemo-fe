@@ -11,8 +11,7 @@ const Header = (props) => {
   const navigate = useNavigate();
   const cartContext = useContext (CartContext) ;
   const userContext = useContext(UserContext);
-  let cartCounter = 0;
-  cartContext.cart.forEach(item => cartCounter += item.quantity);
+  const cartCounter = cartContext.cart.reduce ((total , item)=> {return total + item.quantity} , 0) ;
   return (
     <div className='webisteHeader'>
       <div className='left'>
