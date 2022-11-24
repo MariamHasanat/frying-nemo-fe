@@ -51,8 +51,10 @@ const reducer = (cart, action) => {
     case "Delete-cart": {
       return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
     }
-    case "Delete-All": {
-      // return  cart={ { meal: action.meal, quantity: 0}}   
+
+    /*********clear all *** */
+    case "Clear": {
+      return  [];
     }
 
   }

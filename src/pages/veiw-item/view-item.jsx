@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CartContext } from '../../components/providers/cart-provider';
 import { getItem } from '../../components/services/items';
-// import { getItemQuantity } from '../../components/common/utilities/get-item-quantity';
+import { getItemQuantity } from '../../components/common/utilities/get-item-quantity';
 import Card from '../view/card';
 
 // /**

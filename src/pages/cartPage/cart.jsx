@@ -9,13 +9,16 @@ import { UserContext } from '../../App';
 import { Link } from 'react-router-dom';
 
 const CartPage = (props) => {
-  const newCart = [];
   const cartContext = useContext(CartContext);
   const userContext = useContext(UserContext);
-  const DeletAll = () => {
+  
+  
+  const newCart = [];
+  const DeleteAll = () => {
     // localStorage.removeItem('cart');
-    localStorage.setItem('cart',newCart);
-    window.location.reload(false);
+    // localStorage.setItem('cart', newCart);
+    // window.location.reload(false);
+    cartContext.dispatch({ type: 'Clear' });
   };
 
   let totalCount = 0;
@@ -34,7 +37,7 @@ const CartPage = (props) => {
             <span className='total-price'> Total Price : {totalCount}</span>
             <br />
             <button className='empty-btn'
-              onClick={DeletAll}
+              onClick={DeleteAll}
             >
               Empty Cart</button>
           </div>) :
