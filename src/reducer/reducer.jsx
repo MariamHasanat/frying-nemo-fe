@@ -51,6 +51,10 @@ const reducer = (cart , action) => {
       case "Clear": {
         return [] ;
       }
+
+      case "Set": {
+        return action.cart;
+      }
   
       default : break;
 

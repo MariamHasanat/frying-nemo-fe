@@ -7,9 +7,7 @@ const UserProvider = (props) => {
 
   const setUserOverride = user => {
     setUser(user);
-
       localStorage.setItem('user', JSON.stringify(user));
-
   }
 
  return(
