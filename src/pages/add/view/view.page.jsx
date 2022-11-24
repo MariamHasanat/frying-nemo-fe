@@ -45,11 +45,7 @@ const ViewPage = (props) => {
   };
 
   useEffect(() => {
-    // To check if the user is already logged in, send him to the view page
-    if (!userContext.user?.id) {
-      navigate('/login', { replace: false });
-    }
-
+   
     getMenuItems();
   }, []);
 
