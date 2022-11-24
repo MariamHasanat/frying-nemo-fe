@@ -1,13 +1,15 @@
 import "./header.css";
 import { Link,useLocation,useNavigate } from "react-router-dom";
 import { UserContext } from "../../providers/user-provider.component";
+import { CartContext } from "../../providers/cart-provider.component";
 import { useContext } from "react";
 import cartIcon from "../../../assets/cart.svg";
 
 const Header = (props) => {
+  const cartContext = useContext(CartContext);
   let itemsCount = 0;
-  for (let i = 0; i < props.cart.length; i++) {
-    itemsCount += props.cart[i].quantity;
+  for (let i = 0; i < cartContext.cart.length; i++) {
+    itemsCount += cartContext.cart[i].quantity;
   }
 
   const location = useLocation();

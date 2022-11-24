@@ -5,7 +5,8 @@ import FilteredSearch from "../view/filter-search/filtered-search.component";
 import { Link } from "react-router-dom";
 import "../../common.css";
 import PriceBar from "../view/price-bar/price-bar.component";
-import { getCartQuantity } from "../../utils/cart";
+import { useContext } from "react";
+import { CartContext } from "../providers/cart-provider.component";
 /**
  * @type {Array<{
  * id: number
@@ -18,6 +19,7 @@ import { getCartQuantity } from "../../utils/cart";
  * }>}
  */
 const Cards = (props) => {
+  const cartContext = useContext(CartContext);
   const menuItems = localStorage.getItem("menuItems").length ? [...JSON.parse(localStorage.getItem("menuItems"))]: [];
   const [searchParams, setSearchParams] = useSearchParams();
   const searchTermsFromURL = searchParams.get('q') || '';
@@ -53,7 +55,7 @@ const Cards = (props) => {
     return(match);
   });
   const getCartQuantity = (id) => {
-    const currentCartItem = props.cart.find(cartItem => (cartItem.meal.id === id));
+    const currentCartItem = cartContext.cart.find(cartItem => (cartItem.meal.id === id));
     if (currentCartItem) {
       return currentCartItem.quantity;
     } else {
@@ -103,7 +105,7 @@ const Cards = (props) => {
                     })}
                 </div>
               </div>
-              <PriceBar item={item} dispatch={props.dispatch} cartQuantity={getCartQuantity(item.id, props.cart)} />
+              <PriceBar item={item} dispatch={cartContext.dispatch} cartQuantity={getCartQuantity(item.id, cartContext.cart)} />
             </div>
         );
       })}

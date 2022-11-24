@@ -1,19 +1,22 @@
 import React from 'react';
 import CartRow from '../row/row.component';
 import "./list.css";
+import { useContext } from 'react';
+import { CartContext } from '../../providers/cart-provider.component';
 
 const CartList = (props) => {
+  const cartContext= useContext(CartContext);
   let total= 0;
-  for(const element of props.cart){
+  for(const element of cartContext.cart){
     total+= element.meal.price * element.quantity
   }
-  const clear = () => props.dispatch({ type: 'CLEAR_CART' });
+  const clear = () => cartContext.dispatch({ type: 'CLEAR_CART' });
   return (
     <>
-      {props.cart.length
+      {cartContext.cart.length
         ? <ul className="cart-list">
           {
-            props.cart.map((item, index) => <CartRow item={item} dispatch={props.dispatch} key={"r_" + index} />)
+            cartContext.cart.map((item, index) => <CartRow item={item} dispatch={cartContext.dispatch} key={"r_" + index} />)
           }
         </ul>
         : <div className="no-results">
