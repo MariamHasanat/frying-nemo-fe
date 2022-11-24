@@ -13,7 +13,7 @@ const UserProvider =(props) =>{
 
   return(
     <UserContext.Provider value={{user , setUser : setUserOverride}}>
-      {props.childern}
+      {props.children}
     </UserContext.Provider>
 
   );

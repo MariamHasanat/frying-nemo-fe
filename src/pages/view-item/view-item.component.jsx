@@ -41,7 +41,7 @@ const ViewItemPage = (props) => {
           <PriceBar
             item={currentItem}
             dispatch={cartContext.dispatch}
-            cartQuantity={getCartQuantity(currentItem.id, props.cart)}
+            cartQuantity={getCartQuantity(currentItem.id, cartContext.cart)}
           />
         </div>
       }

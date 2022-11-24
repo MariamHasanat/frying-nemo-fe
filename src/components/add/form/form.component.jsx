@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CATEGORIES } from '../../../data/data'
+import { CATEGORIES } from '../../../data/data';
 import './form.css';
 
 import { UserContext } from '../../provider/user-provider.component';
 
 import Input from '../../common/input/input.component';
-import MultivalueInput from '../../common/multivalue-input/multivalue-input.component'; 
+import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 
@@ -38,9 +38,8 @@ const Form = (props) => {
       ingredients: ingredients
     };
 
-    const itemsJson = localStorage.getItem('menuItems');
-    const items = JSON.parse(itemsJson) || [];
-
+    const itemsJson = localStorage.getItem('menuItems') || '[]';
+    const items = JSON.parse(itemsJson) ;
     items.push(menuItem);
 
     localStorage.setItem('menuItems', JSON.stringify(items));

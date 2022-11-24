@@ -1,5 +1,5 @@
 const getCartQuantity = (id, cart) => {
-  const currentCartItem = cart.find(cartItem => (cartItem.meal.id === id));
+  const currentCartItem = cart.find((cartItem) => cartItem.meal.id === id);
   if (currentCartItem) {
     return currentCartItem.quantity;
   } else {

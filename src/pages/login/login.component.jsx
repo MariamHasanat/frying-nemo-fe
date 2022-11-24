@@ -45,7 +45,7 @@ const LoginPage = (props) => {
           label="Email"
           name="email"
           type="email"
-          placeholder="ahmad@example.com"
+          placeholder="yasmin@example.com"
           required
         />
         <Input

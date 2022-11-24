@@ -1,4 +1,3 @@
-const initialState = [];
 
 const reducer = (cart, action) => {
   // This function updates the state
@@ -43,12 +42,17 @@ const reducer = (cart, action) => {
     case "DELETE_CART_ITEM": {
       return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
     }
+    case "CLEAR":
+      return [];
+      case ' SET':
+         return action.cart;
+    default:
+      return cart;
+
   }
 
-  return cart;
 };
 
 export {
-  reducer,
-  initialState
+  reducer
 };

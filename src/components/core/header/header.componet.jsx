@@ -26,14 +26,22 @@ let totalCartQuantity = 0
       </div>
       <div className="right">
         <nav>
-          <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
+    {
+      userContext.user ?(
+        <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
             Add
           </Link>
+      ):(
+        <Link to="/login" className={location.pathname === "/login" ? 'current' : ''}>
+            login
+          </Link>
+      )
+    }
           <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
             View
           </Link>
         </nav>
-        <Link className="cart" to="cart">
+        <Link className="cart" to="/cart">
           <span className="count">{totalCartQuantity}</span>
         </Link>
         {
