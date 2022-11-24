@@ -11,6 +11,18 @@
   cursor: pointer;
 }
 
+
+.nemo-button.grey {
+  border: 1px solid #787878;
+  background: #9a9a9a;
+}
+
+.nemo-button.grey:hover {
+  border: 1px solid #8c8c8c;
+  background: #aaa9a9;
+}
+
+
 .margin-button-component {
   margin-bottom: 15px;
 }
