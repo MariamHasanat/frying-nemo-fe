@@ -38,16 +38,13 @@ h2 {
   display: flex;
   flex-direction: column;
   height: 6em;
-  /* justify-content: space-between; */
 }
 
 .check-out {
   padding: 8px 16px;
   border: none;
   border-radius: 6px;
-  /* border: 1px solid red; */
   background-color: rgb(243, 136, 0);
-  /* color: red; */
   font-size: larger;
   color: white;
   box-sizing: border-box;
