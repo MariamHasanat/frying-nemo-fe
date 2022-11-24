@@ -21,15 +21,17 @@ const Header = (props) => {
       <span>cart : {cartCounter}</span>
       <div className="right">
         <nav>
-          <Link to='/add' className={location.pathname === '/add' ? 'current' : ''}> Add </Link>
+          {
+            userContext.user ?
+            <Link to='/add' className={location.pathname === '/add' ? 'current' : ''}> Add </Link>
+            : <Link to='/login' className={location.pathname === '/login' ? 'current' : ''}> Login </Link>
+          }
           {/* <a href='/add'> Add </a> */}
           <Link to='/view' className={location.pathname.includes('/view') ? 'current' : ''}> View </Link>
-          {userContext.user && 
             <div className="cartWrapper">
               <Link to={'/cart'}><img src="./cart.svg" alt="cart icone" /></Link>
               <span>{cartCounter}</span>
             </div>
-          }
           {
             userContext.user &&
             <span className="user-badge">

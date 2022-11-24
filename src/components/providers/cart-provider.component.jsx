@@ -7,10 +7,9 @@ import { UserContext } from './user-provider.component';
 export const CartContext = React.createContext (null) ;
 const CartProvider = (props) => {
   const userContext = useContext (UserContext) ;
-
   const cartMap = JSON.parse (localStorage.getItem ("cartMap")) || {} ;
   const cartKey = userContext.user?.email || "anonymous" ;
-  
+
   const [cart , dispatch] = useReducer (reducer , cartMap[cartKey] || []) ;
 
   useEffect (()=> {
@@ -19,6 +18,10 @@ const CartProvider = (props) => {
     map[key] = cart ;
     localStorage.setItem ("cartMap" , JSON.stringify (map));
   } , [cart])
+
+  useEffect (() => {
+      dispatch ({type : "SET" , cart : cartMap[userContext.user?.email || "anonymous"] }) ;
+    } , [userContext.user])
 
   return (
     <CartContext.Provider value = {{cart , dispatch}}>
