@@ -36,6 +36,8 @@
         case "CLEAR_CART" :{
           return cart.cartItem=[];
         }
+        case 'SET':
+          return action.cart;
       }
 
       return cart;

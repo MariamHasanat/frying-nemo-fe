@@ -40,11 +40,12 @@ const Header = (props) => {
           <>
           
           <Link to='/add' className={location.pathname === "/add" ? "current" : ""}>Add</Link>
-          <Link to='/view' className={location.pathname.startsWith('/view') ? "current" : ""}>View</Link>
+          
           </>
-        ):null
+        ):          <Link to='/login' className={location.pathname === "/login" ? "current" : ""}>Login</Link>
+
         }
-        
+        <Link to='/view' className={location.pathname.startsWith('/view') ? "current" : ""}>View</Link>
         </nav>
 
         {

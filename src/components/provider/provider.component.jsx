@@ -9,6 +9,7 @@ export const UserContext = React.createContext(null);
  * @returns 
  */
 const UserProvider = (props) => {
+  
   const initialUser = JSON.parse(localStorage.getItem('user'));
   const [user, setUser] = useState(initialUser);
 

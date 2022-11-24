@@ -22,7 +22,7 @@ const CartList = (props) => {
   total+= currentItem.quantity * currentItem.meal.price;
  }
  
-
+ 
   return (
     <>
     <ul className="cart-list">
