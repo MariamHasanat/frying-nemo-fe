@@ -60,6 +60,9 @@ const reduce = (cart, action) => {
         case "CLEAR_ALL": {
             return [];
         }
+        case "SET": {
+            return action.item;
+        }
         default:
             return cart;
     }

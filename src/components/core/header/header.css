@@ -107,7 +107,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 500px;
+    width: 85px;
     height: 20px;
     font-weight: 600;
     text-decoration: none;
@@ -152,7 +152,7 @@
     border-radius: 50%;
 }
 
-.header .right nav .log-out {
+.header .right nav .log {
     appearance: none;
     background: none;
     border: none;
@@ -162,8 +162,8 @@
     margin-right: 5px;
 }
 
-.header .right nav .log-out:hover,
-.header .right nav .log-out:active,
-.header .right nav .log-out:focus {
+.header .right nav .log:hover,
+.header .right nav .log:active,
+.header .right nav .log:focus {
     color: #666;
 }

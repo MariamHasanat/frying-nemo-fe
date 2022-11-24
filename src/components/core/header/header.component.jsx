@@ -47,32 +47,37 @@ const Header = () => {
             </div>
             <div className='right'>
                 <nav>
+
+                    <Link className='count-items' to={'./cart'}>
+                        Your Cart {totalQuantity}
+                    </Link>
                     {
-                        location.pathname !== '/log-in' &&
-                        <Link className='count-items' to={'./cart'}>
-                            Your Cart {totalQuantity}
-                        </Link>
-                    }
-                    {
-                        location.pathname !== '/log-in' &&
+                        userContext.user &&
                         <Link className={`but ${location.pathname === '/add' ? 'current' : ''}`} to='/add'>
                             Add
                         </Link>
                     }
 
+                    <Link className={`but ${location.pathname === '/view' ? 'current' : ''}`} to='/view'>
+                        view
+                    </Link>
                     {
-                        location.pathname !== '/log-in' &&
-                        <Link className={`but ${location.pathname === '/view' ? 'current' : ''}`} to='/view'>
-                            view
-                        </Link>
+                        (!userContext.user && location.pathname !== '/log-in') &&
+                        <button
+                            className='log'
+                            onClick={() => {
+                                userContext.setUser(null);
+                                navigate('/log-in');
+                            }}
+                        >
+                            Log&nbsp;in
+                        </button>
                     }
                     {
-                        (location.pathname !== '/log-in') &&
+                        (userContext.user) &&
                         <button
-                            className='log-out'
+                            className='log'
                             onClick={() => {
-                                localStorage.removeItem('cart');
-                                cartContext.dispatch({ type: 'CLEAR_ALL' });
                                 userContext.setUser(null);
                                 navigate('/log-in');
                             }}

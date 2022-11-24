@@ -36,9 +36,6 @@ const View = () => {
     const categoriesFromURL = params.getAll('categories') || [];
 
     useEffect(() => {
-        if (userContext.user === null) {
-            navigate('/log-in', { replace: true });
-        }
         getMenuItems(setLoading, setMeuItems); // exists in the function.js in the same file
     }, []);
 

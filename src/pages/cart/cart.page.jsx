@@ -11,13 +11,7 @@ import trash from '../../assets/images/empty_cart.webp';
 
 const Cart = () => {
     const cartContext = useContext(CartContext);
-    const userContext = useContext(UserContext);
-    const navigate = useNavigate();
-    useEffect(() => {
-        if (userContext.user === null) {
-            navigate('/log-in', { replace: true });
-        }
-    }, []);
+
     if (cartContext.cart.length === 0) {
         return (
             <div className='empty-cart-page'>
