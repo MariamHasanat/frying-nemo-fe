@@ -57,7 +57,7 @@ const ViewItemPage = (props) => {
             </div>
             <Price
               item={currentItem}
-              dispatch={props.dispatch}
+              dispatch={cartContext.dispatch}
               cartQuantity={getCartQuantity(currentItem.id, cartContext.cart)}
             />
           </div>

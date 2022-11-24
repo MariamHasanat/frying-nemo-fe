@@ -3,10 +3,9 @@ import './cart.css';
 import CartList from '../cart/list/list.components';
 
 
-const CartPage = () => {
+const CartPage = (props) => {
   return (
     <div className="cart-page">
-      
       <CartList />
     </div>
   );

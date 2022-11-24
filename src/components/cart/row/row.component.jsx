@@ -1,28 +1,34 @@
 import React from 'react';
-
+import './row.css';
 
 const CartRow = (props) => {
-  const {meal,quantity} = props.item;
-const increment = ()=> props.dispatch({type: 'INCREMENT_CART_QUANTITY' ,meal});
-const decrement = ()=> props.dispatch({type: 'DECREMENT_CART_QUANTITY',meal});
+  const { meal, quantity } = props.cartItem;
+
+  const increment = () => props.dispatch({ type: 'INCREMENT_CART_QUANTITY', meal });
+  const decrement = () => props.dispatch({ type: 'DECREMENT_CART_QUANTITY', meal });
+  const delete_item = () => props.dispatch({ type: 'DELETE_CART_ITEM', meal });
+  const cartEmpty = () => props.dispatch({ type: 'CLEAR_CART', meal });
   return (
     <li className="cart-row">
       <img src={meal.image} alt="meal" />
       <div className="main-info">
-        <h2>{meal.name}</h2>
-        <span className="item-price">
-          ${meal.price}
-          &nbsp;&nbsp;|&nbsp;&nbsp;
-          <span>In Stock</span></span>
+        <div className="info">
+          <h2>{meal.name}</h2>
+          <span className="item-price">
+            ${meal.price}
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <span>In Stock</span></span>
+        </div>
         <div className="quantity-selector">
-          <button onClick={increment}>&#43</button>
-          {quantity}
-          <button onClick={decrement}>&#8722</button>
+          <button onClick={increment}>+</button>
+          <span className="price-label">{quantity}</span>
+          <button onClick={decrement}>-</button>
         </div>
       </div>
       <div className="total-price">
+        <button onClick={cartEmpty}>Clear all</button>
         <h3>${meal.price * quantity}</h3>
-        <button>
+        <button onClick={delete_item}>
           <img src="https://cdn-icons-png.flaticon.com/512/1799/1799391.png" alt="delete" />Delete
         </button>
       </div>

@@ -1,4 +1,3 @@
-const initial = [];
 
     const reducer = (cart, action) => {
       // eslint-disable-next-line default-case
@@ -22,26 +21,20 @@ const initial = [];
           return newCart;
         }
         case "DECREMENT_CART_QUANTITY": {
-          let shouldDelete = false;
           const newCart = cart.map(cartItem => {
-            if (cartItem.meal.id === action.meal.id) {
-              if (cartItem.quantity === 1) {
-                shouldDelete = true;
-              }
-              return { ...cartItem, quantity: cartItem.quantity - 1 };
-            } else {
-              return cartItem;
-            }
+            return cartItem.meal.id === action.meal.id
+              ? { ...cartItem, quantity: cartItem.quantity - 1 }
+              : cartItem;
           });
 
-          if (shouldDelete) {
-            return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
-          }
+          return newCart.filter(cartItem => cartItem.quantity > 0);
 
-          return newCart;
         }
         case "DELETE_CART_ITEM": {
           return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
+        }
+        case "CLEAR_CART" :{
+          return cart.cartItem=[];
         }
       }
 
@@ -49,5 +42,4 @@ const initial = [];
     };
     export{
       reducer ,
-      initial
     }

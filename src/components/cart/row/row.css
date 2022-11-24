@@ -1,0 +1,13 @@
+.info {
+  margin-bottom: 20px;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+}
+.price-label {
+  color: black;
+  margin: 0 20px;
+  font-size: 20px;
+}
