@@ -41,6 +41,10 @@
   justify-content: center;
   margin-bottom: 5px;
 }
+.row > .cart-info > h3{
+  display: inline;
+  margin: 20px 0px;
+}
 .row > .cart-info > .item-price{
   margin-bottom: 5px;
 }
@@ -54,10 +58,14 @@
   margin: 10px;
 }
 .row > .total-price > button { 
-  /* color: #ccc; */
+  opacity: 0.8;
   background: none;
   border: none;
   font-size: 20px;
+}
+.row > .total-price > button:hover { 
+  opacity: 1;
+  cursor: pointer;
 }
 .row > .total-price > button > img{
   width: 20px;
@@ -74,8 +82,13 @@
 .row > .cart-info > .quantity-selector > button{
   border: 0px;
   background: none;
-  font-size: 20px;
-  color: #ccc;
+  font-size: 26px;
+  font-weight: 600;
+  color: #aaa;
+}
+.row > .cart-info > .quantity-selector > button:hover{
+  color: #888;
+  cursor: pointer;
 }
 .In-Stock {
   color: rgb(33, 171, 33);
