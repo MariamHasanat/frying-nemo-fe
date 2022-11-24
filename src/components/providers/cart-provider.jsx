@@ -13,7 +13,7 @@ const CartProvider = (props) => {
 
   const userContext = useContext(UserContext);
   const cartMap = JSON.parse(localStorage.getItem('cartMap') || '{}');
-  const cartkey = useContext.user?.email || 'anonymous';
+  const cartkey = userContext.user?.email || 'anonymous';
   const user = userContext.user;
   // const cartLocalStorge= JSON.parse(localStorage.getItem('cart')||'[]')
   /*be lik :*/
@@ -29,9 +29,9 @@ const CartProvider = (props) => {
 
 
   useEffect(() => {
-    // const cartMap = JSON.parse(localStorage.getItem('cartMap') || '{}');
-    // cartMap[userContext.user?.email || 'anonymous'] = cart;
-    // dispatch({ type: 'SET', cart: cartMap });
+    const cartMap = JSON.parse(localStorage.getItem('cartMap') || '{}');
+    cartMap[userContext.user?.email || 'anonymous'] = cart;
+    dispatch({ type: 'SET', cart: cart });
   }, [user]);
 
   return (
