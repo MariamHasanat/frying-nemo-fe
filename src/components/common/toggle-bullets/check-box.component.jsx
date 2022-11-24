@@ -1,12 +1,6 @@
 import React from 'react';
 import './check-box.css';
 
-/**
- * Renders a checkbox element.
- * @param {React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
- *  label?: string;
- * }} props 
- */
 const CheckBox = props => {
   const { label, ...inputProps } = props;
 

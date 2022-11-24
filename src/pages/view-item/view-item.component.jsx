@@ -5,12 +5,14 @@ import { getItem } from '../../services/item';
 import Spinner from '../../components/core/spinner/spinner.component';
 import PriceBar from '../../components/view/price-bar/price-bar.component';
 import { getCartQuantity } from '../../utilities/get-item-quantity';
-
+import { useContext } from 'react';
+import { CartContext } from '../../components/provider/cart-provider.component';
 const ViewItemPage = (props) => {
   const params = useParams();
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
+  const cartContext = useContext(CartContext)
 
   useEffect(() => {
     setLoading(true);
@@ -38,7 +40,7 @@ const ViewItemPage = (props) => {
           </div>
           <PriceBar
             item={currentItem}
-            dispatch={props.dispatch}
+            dispatch={cartContext.dispatch}
             cartQuantity={getCartQuantity(currentItem.id, props.cart)}
           />
         </div>

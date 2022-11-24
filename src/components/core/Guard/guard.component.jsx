@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Navigate } from "react-router";
-import { UserContext } from "../../provider/provider.component";
+import { UserContext } from "../../provider/user-provider.component";
 
 const Guard = (props) => {
   const userContext = useContext(UserContext);

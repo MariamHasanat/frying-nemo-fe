@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './header.css';
-// import cartIcon from '../../../assets'
-import { UserContext } from '../../provider/provider.component'; 
+import { UserContext } from '../../provider/user-provider.component';
+import {CartContext} from '../../provider/cart-provider.component';
 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
@@ -9,17 +9,18 @@ const Header = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
+  const cartContext = useContext(CartContext);
 
-  let itemsCount = 0;
-  for (let i = 0; i < props.cart; i++) {
-    itemsCount += props.cart[i].quantity;
+
+let totalCartQuantity = 0
+  for (let i = 0; i< cartContext.cart.length; i++) {
+    totalCartQuantity += cartContext.cart[i].quantity;
   }
 
   return (
     <header className="websiteHeader">
       <div className="left">
         <h1>
-          {/* <img src={logo} alt="Nemo" /> */}
           Frying Nemo
         </h1>
       </div>
@@ -33,13 +34,11 @@ const Header = (props) => {
           </Link>
         </nav>
         <Link className="cart" to="cart">
-          {/* <img src={cartIcon} alt="cart icon" /> */}
-          <span className="count">{itemsCount}</span>
+          <span className="count">{totalCartQuantity}</span>
         </Link>
         {
           userContext.user &&
           <span className="user-badge">
-            {/* <img src={userContext.user.imageUrl} alt="user logo" width={30} height={30} /> */}
             {userContext.user.fullName}
             <button
               onClick={() => {
