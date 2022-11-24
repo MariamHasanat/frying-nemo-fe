@@ -20,6 +20,7 @@ const RowList = (props) => {
   const handelDelete = () => {
     props.dispatch({ type: 'Delete', meal});
   }
+ 
 
   return (
     <div className="row-group">
