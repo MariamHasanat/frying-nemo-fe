@@ -106,3 +106,33 @@
 .websiteHeader .right .user-badge > button:focus {
   color: #666;
 }
+
+
+
+
+/*******************************************************************/
+
+.websiteHeader .right>.cart {
+  position: relative;
+}
+
+.websiteHeader .right>.cart>img {
+  width: 30px;
+  height: 30px;
+}
+
+.websiteHeader .right>.cart>.count {
+  position: absolute;
+  color: #fff;
+  top: -8px;
+  right: -11px;
+  z-index: 2;
+  font-weight: bold;
+  background: #f15a29;
+  padding: 2px;
+  border-radius: 50%;
+  font-size: 12px;
+  min-width: 15px;
+  min-height: 15px;
+  text-align: center;
+}
