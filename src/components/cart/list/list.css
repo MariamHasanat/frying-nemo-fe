@@ -9,3 +9,15 @@
   background-position: center;
   background-size: contain;
 }
+
+.cart-list-total-clear-container{
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+span.cart-total-span{
+  font-weight: 900;
+  background-color: gold;
+  font-size: 40px;
+}

@@ -3,7 +3,11 @@
   display: flex;
   margin-bottom: 20px;
   padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   border-bottom: 2px solid #e9e9e9;
+  background-color: white;
+  width: 100%;
 }
 
 .cart-row>img {
