@@ -43,4 +43,4 @@ const RowList = (props) => {
   )
 }
 
-export default RowList
+export default RowList;
