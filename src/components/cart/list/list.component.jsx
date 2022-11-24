@@ -10,7 +10,7 @@ const CartList = (props) => {
     cartContext.cart.length
       ? <ul className="cart-list">
         {
-       cartContext.cart.map((cartItem, index) => <CartRow cartItem={cartItem} key={"r_" + index}  dispatch={cartContext.dispatch}/>)
+       cartContext.cart.map((cartItem, index) => <CartRow item={cartItem} key={"r_" + index}  dispatch={cartContext.dispatch}/>)
         }
       </ul>
       : <div className="no-results">

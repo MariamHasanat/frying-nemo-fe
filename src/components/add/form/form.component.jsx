@@ -7,7 +7,7 @@ import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import { CATEGORIES } from '../../../data/constant';
-import UserContext from '../../providers/user-provider.component';
+import {UserContext} from '../../providers/user-provider.component';
 const Form = (props) => {
   const [name, setName] = useState('yara');
   const [Ingredients, setIngredients] = useState([]);
