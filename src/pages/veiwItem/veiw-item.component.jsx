@@ -31,14 +31,6 @@ const cartContext = useContext(CartContext);
   navigate('/404')
  }, []
 );
-const getCartQuantity = (id) => {
-  const currentCartItem = props.cart.find((cartItem) => cartItem.meal.id === id);
-  if (currentCartItem)
-     return currentCartItem.quantity;
-  else 
-    return 0;
-};
-
  return (
   <div className="view-item-page">
     {currentItem? <div className="item-details">
@@ -51,7 +43,9 @@ const getCartQuantity = (id) => {
             <p className="ingredients"><b>Ingredients:</b>
               <br />{currentItem.ingredients.join(", ")}</p>
           </div>
-          <PriceBar item={currentItem} dispatch={cartContext.dispatch} cartQuantity={getCartQuantity(currentItem.id, cartContext.cart)}/>
+          <PriceBar item={currentItem} 
+          dispatch={cartContext.dispatch} 
+          cartQuantity={getCartQuantity(currentItem.id, cartContext.cart)}/>
         </div> : navigate('/error')}
 
   </div>
