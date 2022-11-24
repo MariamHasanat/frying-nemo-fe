@@ -46,6 +46,9 @@ const reducer = (cart, action) => {
     case "CLEAR_CART": {
       return cart=[];
     }
+    default:{
+      
+    }
   }
 
   return cart;
