@@ -1,4 +1,4 @@
-const initialState = [];
+
 
 const reducer = (cart, action) => {
   // This function updates the state
@@ -43,6 +43,5 @@ const reducer = (cart, action) => {
 };
 
 export {
-  reducer,
-  initialState
+  reducer
 };
