@@ -1,7 +1,7 @@
 import React , { useContext }  from 'react';
 import './header.css';
 import logo from '../../assets/nemo.svg';
-import cartIcon from '../../../assets/cart.svg';
+import cartIcon from '../../assets/cart.svg';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../components/providers/user-provider';
 import { CartContext } from '../../components/providers/cart-provider';
@@ -46,7 +46,7 @@ const Header = props => {
         </nav>
         <Link className="cart" to="cart">
           <img src={cartIcon} alt="cart icon" />
-          <span className="count">{totalCartQuantity}</span>
+          <span className="count">{itemsCount}</span>
         </Link>
         {
           userContext.user &&
