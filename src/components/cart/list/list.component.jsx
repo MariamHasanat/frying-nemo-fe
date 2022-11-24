@@ -1,5 +1,6 @@
 import React from 'react';
 import CartRow from '../row/row.component';
+import "./list.css";
 
 const CartList = (props) => {
 
@@ -11,8 +12,8 @@ const CartList = (props) => {
         }
       </ul>
       : <div className="no-results">
-        <img src="./empty_cart.webp" alt="empty cart" width={300} />
-        <p>Your Cart is Empty!</p>
+        <div className="cart-empty-image"></div>
+        <p className="cart-empty-text">Your Cart is Empty!</p>
       </div>
   );
 };

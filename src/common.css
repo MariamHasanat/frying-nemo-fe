@@ -26,8 +26,9 @@
 div.app-body{
   background-image: url("../public/background245.png");
   background-repeat: repeat ;
-  background-attachment: fixed;
   background-color:#fff5e9;
+  height: 100vh;
+  overflow: auto;
 }
 
 div > label > span{
