@@ -28,7 +28,7 @@ const CartRow = (props) => {
       <div className="total-price">
         <h3>${meal.price * quantity}</h3>
         <button>
-          <img src={trashIcon} alt="delete" />Delete
+          <img src={trashIcon} alt="delete"onClick={deleteItem} />Delete
         </button>
       </div>
     </li>
