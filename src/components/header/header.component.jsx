@@ -1,4 +1,4 @@
-import React , { useContext }  from 'react';
+import React, { useContext } from 'react';
 import './header.css';
 import logo from '../../assets/nemo.svg';
 import cartIcon from '../../assets/cart.svg';
@@ -30,19 +30,21 @@ const Header = props => {
       </div>
       <div className="right" >
 
-      <nav>
+        <nav>
           {
             userContext.user ? (
-              <>
                 <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
                   Add
                 </Link>
-                <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
-                  View
+            ) : (
+                <Link to="/login" className={location.pathname === "/login" ? 'current' : ''}>
+                  Login
                 </Link>
-              </>
-            ) : null
+            )
           }
+          <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
+            View
+          </Link>
         </nav>
         <Link className="cart" to="cart">
           <img src={cartIcon} alt="cart icon" />
@@ -64,7 +66,7 @@ const Header = props => {
           </span>
         }
 
-        
+
       </div>
     </header>
   );
