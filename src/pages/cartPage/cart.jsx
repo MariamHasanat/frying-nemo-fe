@@ -11,8 +11,8 @@ import { Link } from 'react-router-dom';
 const CartPage = (props) => {
   const cartContext = useContext(CartContext);
   const userContext = useContext(UserContext);
-  
-  
+
+
   const newCart = [];
   const DeleteAll = () => {
     // localStorage.removeItem('cart');

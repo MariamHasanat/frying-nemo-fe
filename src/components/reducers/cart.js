@@ -1,5 +1,5 @@
 const initial = [];
-
+let price = 0;
 const reducer = (cart, action) => {
 
   switch (action.type) {
@@ -52,10 +52,17 @@ const reducer = (cart, action) => {
       return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
     }
 
-    /*********clear all *** */
+
+    /*                ***************CLEAR ALL*************   */
+
     case "Clear": {
-      return  [];
+      return [];
     }
+    case "SET": 
+      return action.cart;
+    
+default : 
+return cart;
 
   }
 
@@ -66,4 +73,4 @@ const reducer = (cart, action) => {
 export {
   initial,
   reducer
-}
+};

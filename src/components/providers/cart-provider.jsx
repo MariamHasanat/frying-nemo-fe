@@ -1,5 +1,6 @@
-import React ,{ useReducer } from "react";
+import React, { useContext, useReducer } from "react";
 import { useEffect } from "react";
+import { UserContext } from "../../App";
 import { initial, reducer } from "../reducers/cart";
 
 export const CartContext = React.createContext(null);
@@ -10,11 +11,29 @@ export const CartContext = React.createContext(null);
  */
 const CartProvider = (props) => {
 
-  const cartLocalStorge= JSON.parse(localStorage.getItem('cart')||'[]')
+  const userContext = useContext(UserContext);
+  const cartMap = JSON.parse(localStorage.getItem('cartMap') || '{}');
+  const cartkey = useContext.user?.email || 'anonymous';
+  const user = userContext.user;
+  // const cartLocalStorge= JSON.parse(localStorage.getItem('cart')||'[]')
+  /*be lik :*/
+  const cartLocalStorage = cartMap[cartkey] || [];
+  const [cart, dispatch] = useReducer(reducer, cartLocalStorage);
 
-  const[cart,dispatch]=useReducer(reducer,cartLocalStorge);
-  useEffect(()=>localStorage.setItem('cart',JSON.stringify(cart)),[cart])
-  
+  useEffect(() => {
+    const cartMap = JSON.parse(localStorage.getItem('cartMap') || '{}');
+    cartMap[userContext.user?.email || 'anonymous'] = cart;
+    localStorage.setItem('cartMap', JSON.stringify(cartMap));
+  }
+    , [cart]);
+
+
+  useEffect(() => {
+    // const cartMap = JSON.parse(localStorage.getItem('cartMap') || '{}');
+    // cartMap[userContext.user?.email || 'anonymous'] = cart;
+    // dispatch({ type: 'SET', cart: cartMap });
+  }, [user]);
+
   return (
     <CartContext.Provider value={{ cart, dispatch }}>
       {props.children}
