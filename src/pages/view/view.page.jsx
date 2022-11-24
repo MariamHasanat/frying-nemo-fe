@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
 import './view.css';
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import Spinner from "../../components/core/spinner/spinner";
 import FilterBar from "../../components/view/filter-bar/filter-bar.component";
 import Item from "../../components/view/item/item.component";
-import { UserContext } from '../../components/providers/user-provider.component';
 import { getMenuItems } from "./functions";
 import { getCartQuantity } from "../../util/cart";
 import { CartContext } from "../../components/providers/cart-provider.component";
@@ -29,8 +28,6 @@ const View = () => {
     const [params, setParam] = useSearchParams();
     const [min, setMin] = useState(null);
     const [max, setMax] = useState(null);
-    const navigate = useNavigate();
-    const userContext = useContext(UserContext);
     const cartContext = useContext(CartContext);
     const searchParFromURL = params.get('searchTerms') || '';
     const categoriesFromURL = params.getAll('categories') || [];

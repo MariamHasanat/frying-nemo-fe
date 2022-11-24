@@ -1,10 +1,8 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import './cart.css';
 
-import { useNavigate } from 'react-router-dom';
 
 import CartList from '../../components/cart/list/cart-list.component';
-import { UserContext } from '../../components/providers/user-provider.component';
 import { CartContext } from '../../components/providers/cart-provider.component';
 
 import trash from '../../assets/images/empty_cart.webp';
