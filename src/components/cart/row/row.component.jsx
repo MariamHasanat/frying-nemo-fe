@@ -3,7 +3,7 @@ import trashIcon from '../../../assets/trash.svg';
 import './row.css';
 
 const CartRow = (props) => {
-  const { meal, quantity } = props.item;
+  const { meal , quantity } = props.item;
   const increment = () => props.dispatch({ type: 'INCREMENT_CART_QUANTITY', meal });
   const decrement = () => props.dispatch({ type: 'DECREMENT_CART_QUANTITY', meal });
   const deleteItem = () => props.dispatch({ type: 'DELETE_CART_ITEM', meal });
@@ -13,7 +13,7 @@ const CartRow = (props) => {
       <div className="main-info">
         <h2>{meal.name}</h2>
         <span className="item-price">
-          ${meal.price}
+          ${meal.Price}
           &nbsp;&nbsp;|&nbsp;&nbsp;
           <span>In Stock</span></span>
 
@@ -26,10 +26,9 @@ const CartRow = (props) => {
       </div>
 
       <div className="total-price">
-        <h3>${meal.price * quantity}</h3>
-        <button>
-          <img src={trashIcon} alt="delete"onClick={deleteItem} />Delete
-        </button>
+        <h3> ${meal.Price*quantity} </h3>
+        <button onClick={deleteItem} >
+          <img src={trashIcon} alt="delete"onClick={deleteItem} />Delete</button>
       </div>
     </li>
   );

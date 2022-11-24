@@ -43,6 +43,10 @@ const reducer = (cart, action) => {
     case "DELETE_CART_ITEM": {
       return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
     }
+    case "clear ":
+      {
+        return [];
+      }
   }
 
   return cart;
