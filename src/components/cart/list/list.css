@@ -16,3 +16,7 @@
   text-align: center;
   text-transform: uppercase;
 }
+.cart-details{
+  display: flex;
+  justify-content: space-between;
+}
