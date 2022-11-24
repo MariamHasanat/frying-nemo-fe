@@ -10,7 +10,6 @@ const LoginPage = (props) => {
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
   useEffect(() => {
-    // console.log(props.user);
     if (userContext.user)
       navigate('/view', { replace: true });
   }, []);

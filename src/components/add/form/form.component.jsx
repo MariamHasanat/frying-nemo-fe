@@ -20,7 +20,6 @@ const Form = (props) => {
    */
   const handle = e => {
     e.preventDefault();
-    console.debug(name);
     console.log('Form Submitted');
     const price = e.target.price.value;
     const discription = e.target.discription.value;
@@ -38,9 +37,7 @@ const Form = (props) => {
     };
     const itemsJson = localStorage.getItem('menuItems') || '[]';
     const items = JSON.parse(itemsJson);
-    console.log("before", items);
     items.push(menueItem);
-    console.log("after", items);
     localStorage.setItem('menuItems', JSON.stringify(items));
     navigate('/view');   // to change url without link , without needing to render it as a link component
   };
@@ -53,7 +50,6 @@ const Form = (props) => {
     if (/find/ig.test(val)) {
       alert('find not allowed to be included in the input !');
       val = val.replace(/find/ig, 'fry');
-      console.log(val);
     }
     if (val.length > 20) {
 

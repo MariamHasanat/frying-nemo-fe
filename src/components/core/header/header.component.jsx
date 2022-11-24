@@ -11,7 +11,6 @@ const Header = (props) => {
   const navigate = useNavigate();
   const cartContext = useContext (CartContext) ;
   const userContext = useContext(UserContext);
-  console.log(userContext.user);
   let cartCounter = 0;
   cartContext.cart.forEach(item => cartCounter += item.quantity);
   return (
