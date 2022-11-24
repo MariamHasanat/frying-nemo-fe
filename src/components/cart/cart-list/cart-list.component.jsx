@@ -26,14 +26,17 @@ const CartList = (props) => {
             {!cartContext.cart?.length ?
                 <Jiji message='no items were added to cart' />
                 :
-                cartContext.cart?.map((item) =>
+
+                <>{cartContext.cart?.map((item) =>
                     <CartRow key={item.meal.id + Date.now()} item={item} />
-                )
+                )}
+                    <div>
+                        <p>total price: ${getTotalPrice()}</p>
+                        <button onClick={deleteAll}>delete all</button>
+                    </div>
+                </>
             }
-            <div>
-                <p>total price: ${getTotalPrice()}</p>
-                <button onClick={deleteAll}>delete all</button>
-            </div>
+
 
         </div>
     );
