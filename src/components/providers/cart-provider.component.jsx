@@ -26,9 +26,12 @@ const UpdateCartInLocalStorage = (email, cart) => {
  */
 const CartProvider = (props) => {
   const userContext = useContext(UserContext);
-  const cartFromLocalStorage = getCartFromLocalStorage(userContext.user?.email);
+  const user = userContext.user;
+  const cartFromLocalStorage = getCartFromLocalStorage(user?.email);
   const [cart, dispatch] = useReducer(reducer, cartFromLocalStorage);
-  useEffect(() => UpdateCartInLocalStorage(userContext.user?.email, cart), [cart]);
+  useEffect(() => UpdateCartInLocalStorage(user?.email, cart), [cart]);
+
+  useEffect(() => dispatch({ type: 'SET', cart: getCartFromLocalStorage(user?.email) }), [user]);
 
   return (
     <CartContext.Provider value={{ cart, dispatch }}>
