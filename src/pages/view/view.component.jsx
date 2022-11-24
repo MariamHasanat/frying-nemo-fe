@@ -1,7 +1,5 @@
-import { useContext } from 'react';
 import { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { UserContext } from '../../components/providers/user-provider.component';
+import { useSearchParams } from 'react-router-dom';
 import Spinner from '../../components/core/spinner/spinner.componenr';
 import MenuItem from '../../components/view/menu-item/menu-item.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
@@ -20,7 +18,6 @@ import './view.css';
 const initialItems = [];
 
 const ViewPage = (props) => {
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState(initialItems);
   //param is an instance of complex class (URLSearchParams) so I need to use get (name) to access specific param 
@@ -29,7 +26,7 @@ const ViewPage = (props) => {
   const categoryUsingURL = param.getAll('category') || '';
   const minPrice = param.get('min') || '';
   const maxPrice = param.get('max') || '';
-  const userContext = useContext(UserContext);
+  // const userContext = useContext(UserContext);
 
   const setParams = (addTo, value) => {
     let newParam = new URLSearchParams(param);
@@ -51,8 +48,6 @@ const ViewPage = (props) => {
   };
 
   useEffect(() => {
-    if (!userContext.user)
-      navigate('/login', { replace: true });
     getMenuItems();
     return (() => console.log('Im out'));
   }, []);

@@ -1,4 +1,3 @@
-const initialState = JSON.parse (localStorage.getItem ("cart")) || [] ;
 // it updates the object state and returns the updated state 
 const reducer = (cart, action) => {
   let finalCart = cart ; 
@@ -40,9 +39,13 @@ const reducer = (cart, action) => {
       finalCart = [] ;
       break;
     }
+    case "SET": {
+      finalCart = action.cart ;
+      break;
+    }
     // default : return cart ;
   }
-  localStorage.setItem ('cart' , JSON.stringify (finalCart));
+  // localStorage.setItem ('cart' , JSON.stringify (finalCart));
   return finalCart;
 };
-export { reducer , initialState };
+export { reducer  };
