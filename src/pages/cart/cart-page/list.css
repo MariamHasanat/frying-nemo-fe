@@ -1,0 +1,8 @@
+.cartBottomRow {
+  display: flex;
+  justify-content: space-between;
+  width: 1042px;
+  height: 185px;
+  margin-left: 38px;
+  flex-direction: row;
+}

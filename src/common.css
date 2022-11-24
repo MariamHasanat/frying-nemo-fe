@@ -12,6 +12,7 @@
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;
+    height: 43px;
 }
 .nemo-button:disabled {
   background: #d2ad786d;

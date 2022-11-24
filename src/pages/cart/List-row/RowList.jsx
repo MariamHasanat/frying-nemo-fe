@@ -1,7 +1,6 @@
 import React from 'react'
 import './rowlist.css'
-import { useContext } from 'react';
-import { CartContext } from '../../../components/add/form/provider/CartProvider';
+
 
 const RowList = (props) => {
   const { meal , quantity} = props.cartItem;

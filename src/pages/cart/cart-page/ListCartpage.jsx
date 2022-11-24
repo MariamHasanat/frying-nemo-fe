@@ -1,4 +1,5 @@
 import React from 'react';
+import './list.css'
 import { useContext } from 'react';
 import { CartContext } from '../../../components/add/form/provider/CartProvider';
 import RowList from '../List-row/RowList';
@@ -10,7 +11,7 @@ const ListCartpage = (props) => {
   const handelClear = () => {
     cartContext.dispatch({ type: 'Clear', meal : cartContext.cart.meal});
   };
-  
+
   let totalPrice = 0;
   for (let i = 0; i < cartContext.cart.length; i++) {
    totalPrice += (cartContext.cart[i].quantity * cartContext.cart[i].meal.price);
@@ -24,8 +25,10 @@ const ListCartpage = (props) => {
         )
         }
       </ul>
-        <button onClick={handelClear} className="nemo-button">Clear</button>
-        <h3>The Total price : ${totalPrice}</h3>
+        <div className="cartBottomRow">
+          <button onClick={handelClear} className="nemo-button">Clear</button>
+          <h3>The Total price : ${totalPrice}</h3>
+        </div>
       </>
       :
       <p>there is no thing here</p>
