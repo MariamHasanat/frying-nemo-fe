@@ -110,3 +110,23 @@
 .cart-page>ul.cart-list>.cart-row>.total-price button:active {
   color: #555555;
 }
+
+.clear {
+  border-radius: 0px;
+  background-color: #b98079;
+  color: #00000080;
+  border: 0px;
+}
+
+.clear:hover {
+  background-color: #ab3121;
+}
+
+.cart-page > div > .right {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  width: 553px;
+}

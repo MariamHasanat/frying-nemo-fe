@@ -8,27 +8,29 @@
 }
 
 .check-input>.checked {
-    background-color: #074f07;
-    font-weight: bold;
-    color: #666;
-    padding: 8px 10px;
-    border-radius: 7px;
-    cursor: pointer;
-    border: 1px solid #aaa09c;
-    margin-right: 5px;
-    user-select: none;
+  background-color: #cf5321;
+  font-weight: bold;
+  color: #c56868;
+  padding: 8px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  border: 1px solid #c74e1e;
+  margin-right: 5px;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .check-input>.not-checked {
-    background-color:#84ff847a;;
-    font-weight: bold;
-    color: #666;
-    padding: 8px 10px;
-    border-radius: 7px;
-    cursor: pointer;
-    border: 1px solid #aaa09c;
-    margin-right: 5px;
-    user-select: none;
+  background-color: #d3a08c;
+  font-weight: bold;
+  color: #522626;
+  padding: 8px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  border: 1px solid #aaa09c;
+  margin-right: 5px;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 

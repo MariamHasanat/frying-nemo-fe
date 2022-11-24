@@ -1,6 +1,6 @@
 
 const reduce = (cart, action) => {
-  console.log(cart)
+  console.log(cart);
   switch (action.type) {
     case "ADD_CART_ITEM":
       return [...cart, { meal: action.meal, quantity: 1 }];
@@ -44,22 +44,13 @@ const reduce = (cart, action) => {
     }
 
     case "DELETE_ALL_ITEM": {
-      return cart.filter((cartItem,index) => {
 
-        if(cartItem.meal.id === cart[index].id){
-cart.pop(cartItem)
-
-        }
-      }
-      );
+      return [];
     }
   }
-
-
-
   return cart;
 };
 
 export {
-    reduce
+  reduce
 };

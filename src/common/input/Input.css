@@ -29,14 +29,14 @@ input:hover {
 }
 
 label>span:nth-child(2) {
-  color: rgb(238, 235, 42);
+  color: rgb(16 16 16);
   font-size: 20px;
   padding-right: 5px;
 
 }
 
 label>span:nth-child(1) {
-  color: rgb(72, 214, 148);
+  color: rgb(8 10 9);
   font-size: 20px;
   padding-right: 5px;
 
