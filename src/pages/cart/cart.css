@@ -18,36 +18,43 @@
     font-size: 35px;
     padding-left: 40px;
     user-select: none;
-    margin-bottom: 30px;
     margin-top: 20px;
     height: 70px;
 }
+
 .cart-page .header-in-cart>span {
     display: flex;
     align-items: center;
 }
 
-.cart-page .header-in-cart .price-and-clear {
+.cart-page .price-and-clear {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     width: 200px;
+    padding-left: 40px;
+    width: 91vw;
+    margin-bottom: 30px;
 }
-.cart-page .header-in-cart .price-and-clear>span{
+
+.cart-page .price-and-clear>span {
     color: #ec4c37;
     font-size: 20px;
     margin-bottom: 8px;
     text-shadow: none;
+    font-weight: 700;
 }
-.cart-page .header-in-cart .price-and-clear>button{
+
+.cart-page .price-and-clear>button {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 30px;
     box-shadow: 1px 1px 3px black;
 }
-.cart-page .header-in-cart .price-and-clear>button:active{
+
+.cart-page .price-and-clear>button:active {
     box-shadow: -1px -1px 3px black;
 }
 
