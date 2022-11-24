@@ -32,7 +32,6 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-
         <UserProvider>
           <CartProvider>
             <Guard component='header'><Header /></Guard>

@@ -36,7 +36,7 @@ const CartList = () => {
               <button className='clear-all' onClick={resetCart}>Clear All</button>
             </div>
             <div className="payments">
-      
+
               <img className='jawwal-pay-image' src={jawwal} alt="jawwal-logo" />
               <img className='pay-pal' src={payPal} alt="pay-pal-logo" />
             </div>
