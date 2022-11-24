@@ -26,17 +26,23 @@ const Header = (props) => {
         </h1>
       </div>
       <div className="right">
-        <span > Your Cart {totalCartQuantity}</span>
+        {/* <span > Your Cart {totalCartQuantity}</span> */}
         <nav>
+          {
+            userContext.user ? (
 
-          <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
-            Add
+              <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
+                Add
+              </Link>
+            ) : (
+              <Link to="/login" className={location.pathname === "/login" ? 'current' : ''}>
+                Login
+              </Link>
 
-          </Link>
-
+            )
+          }
           <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
             View
-
           </Link>
 
         </nav>
@@ -59,7 +65,7 @@ const Header = (props) => {
                 navigate('/login');
 
               }}
-              className="padding-right: 50px;"
+
             >
               Logout
             </button>
@@ -67,7 +73,7 @@ const Header = (props) => {
         }
 
       </div>
-    </header>
+    </header >
   );
 };
 
