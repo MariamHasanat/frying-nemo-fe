@@ -1,5 +1,5 @@
-import React, { useReducer } from 'react';
-import { reducer, initial } from '../../reducer/cart';
+import React, { useReducer,useEffect } from 'react';
+import { reducer } from '../../reducer/cart';
 export const CartContext = React.createContext(null);
 
 /**
@@ -8,7 +8,11 @@ export const CartContext = React.createContext(null);
  * }} props Component props
  */
 const CartProvider = (props) => {
-  const [cart, dispatch] = useReducer(reducer, initial);
+  const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart') || '[]');
+  const [cart, dispatch] = useReducer(reducer, cartFromLocalStorage);
+
+  useEffect(() => localStorage.setItem('cart', JSON.stringify(cart)), [cart]);
+
 
   return (
     <CartContext.Provider value={{ cart, dispatch }}>
