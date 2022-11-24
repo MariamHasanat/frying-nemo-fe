@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
-import { reducer, initialState } from '../reducers/cart';
+import { reducer } from '../reducers/cart';
 import { UserContext } from "./user-provider";
 
 export const CartContext = React.createContext(null);

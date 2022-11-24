@@ -1,21 +1,20 @@
-
 .hidden {
   display: none;
 }
 
 .header {
   top: 0;
-  height: 2rem;
+  height: 4em;
   display: flex;
   justify-content: space-between;
   align-content: flex-start;
   align-items: center;
   position: fixed;
   width: 100%;
-  padding: 20px 0;
+  padding: 20px 16px;
   background-color: whitesmoke;
   border-bottom: 0.2px solid grey;
-
+  box-sizing: border-box;
 }
 
 .header>.logo {

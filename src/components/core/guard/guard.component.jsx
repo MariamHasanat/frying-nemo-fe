@@ -5,7 +5,7 @@ import { UserContext } from '../../providers/user-provider';
 const Guard = (props) => {
   const userContext = useContext(UserContext);
 
-  if (props.component === 'add') {
+  // if (props.component === 'add') {
 
     if (!userContext.user) {
       return <Navigate to='/login' />;
@@ -18,11 +18,12 @@ const Guard = (props) => {
     else {
       return props.children;
     }
-  } else {
-    if (userContext.user) {
-      return props.children;
-    }
-  }
+  // } 
+  // else {
+  //   if (userContext.user) {
+  //     return props.children;
+  //   }
+  // }
 
 };
 

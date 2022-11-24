@@ -8,11 +8,10 @@ import { UserContext } from '../../../components/providers/user-provider';
 import { CartContext } from '../../providers/cart-provider';
 
 
-const Header = (props) => {
+const Header = () => {
   const cartContext = useContext(CartContext);
   const userContext = useContext(UserContext);
   const location = useLocation();
-  const resetCart = () => cartContext.dispatch({ type: "RESET" });
   let itemsCounter = 0;
   cartContext.cart.forEach(item => itemsCounter += item.quantity);
 

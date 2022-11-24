@@ -10,7 +10,7 @@ import UserProvider from "./components/providers/user-provider";
 import Guard from "./components/core/guard/guard.component";
 import CartPage from "./pages/cart/cart.page";
 import CartProvider from "./components/providers/cart-provider";
-
+import './App.css';
 function App() {
 
   /**
@@ -34,7 +34,7 @@ function App() {
       <BrowserRouter>
         <UserProvider>
           <CartProvider>
-            <Guard component='header'><Header /></Guard>
+            <Header />
             <div className="body">
               <Routes>
                 <Route path="/" element={<Navigate to='/view' replace />} />

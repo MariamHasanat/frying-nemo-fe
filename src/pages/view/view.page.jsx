@@ -1,11 +1,10 @@
 
 import { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import ItemCard from '../../components/view/item-card/item-card.component';
 import FilterBar from '../../components/view/filter-bar/filter-input.component';
 import './view.css';
 import { useContext } from 'react';
-import { UserContext } from '../../components/providers/user-provider';
 import { getItemQuantity } from '../../utilities/get-item-quantity';
 import { CartContext } from '../../components/providers/cart-provider';
 const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]');
@@ -34,23 +33,15 @@ const initialItems = [];
 const View = (props) => {
   const cartContext = useContext(CartContext);
 
-  const userContext = useContext(UserContext);
   const [menuItems, setMenuItems] = useState(initialItems);
   const [params, setParams] = useSearchParams();
   const searchParamFromURl = params.get('search') || '';
   const categoryFromURl = params.getAll('category') || '';
 
-  const navigate = useNavigate();
   useEffect(() => {
     setMenuItems(getMenuItems());
   }, []);
 
-  useEffect(() => {
-    // To check if the user is already logged in, send him to the view page
-    if (!userContext.user?.id) {
-      navigate('/login', { replace: false });
-    }
-  });
 
   const filteredItems = menuItems.filter(e => {
 
