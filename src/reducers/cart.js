@@ -1,4 +1,6 @@
-const initialState = [];
+// const initialState = [];
+
+import { type } from "@testing-library/user-event/dist/type";
 
 // action is an object : meal
 // sometimes many action : so, use action.type
@@ -47,9 +49,12 @@ const reducer = (cart, action) => {
     case "DELETE_CART_ITEMS": {
       return (cart = []);
     }
+    case "SET": {
+      return action.cart;
+    }
     default:
       return cart; // no updates
   }
 };
 
-export { reducer, initialState };
+export { reducer };

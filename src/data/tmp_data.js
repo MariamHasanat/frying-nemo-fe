@@ -2,7 +2,7 @@ const USERS = [{
   "id": "f59586ca-98d7-42f8-88d1-94ea62c1aff4",
   "email": "admin@admin.com",
   "password": '123456',
-  "fullName": "Maddie Cotterell",
+  "fullName": "Adam Salah",
   "imageUrl": "http://dummyimage.com/139x114.png/ff4444/ffffff",
   "role": 'ADMIN'
 }, {
@@ -35,9 +35,9 @@ const USERS = [{
   "role": 'ADMIN'
 }, {
   "id": "abd42304-521c-4ae2-95a0-aaf9ee7fd9e5",
-  "email": "lcastilljo5@wufoo.com",
+  "email": "jifara@gmail.com",
   "password": '123456',
-  "fullName": "Lilas Castilljo",
+  "fullName": "Jifara Buderi",
   "imageUrl": "http://dummyimage.com/163x168.png/dddddd/000000",
   "role": null
 }, {

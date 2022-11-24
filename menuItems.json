@@ -3,7 +3,7 @@
     "id":"1",
     "name": "Maqluba ",
     "image": "https://static01.nyt.com/images/2017/01/08/magazine/08eat/08eat-articleLarge-v2.jpg",
-    "description": "A Palestinian tradition, maqluba means “upside down” in Arabic and is a pot of stewed meat, rice and fried vegetables, cooked and flipped onto a serving dish to form an impressive tower.",
+    "description": "A Palestinian tradition, maqluba means “upside down” in Arabic.",
     "price": "20",
     "category": "Main Dish",
     "ingredients": [
@@ -16,7 +16,7 @@
     "id":"2",
     "name": "Fattoush",
     "image": "https://upload.wikimedia.org/wikipedia/commons/9/93/Fattoush_mixed-salad.jpg",
-    "description": "is an authentic Lebanese salad, featuring a combination of sweet and tangy flavors, a bright, minty dressing, and crunchy textures of fresh veggies, and crisp pita chips.",
+    "description": "is an authentic Lebanese salad, featuring a combination of sweet and tangy flavors.",
     "price": "5",
     "category": "Salads",
     "ingredients": [

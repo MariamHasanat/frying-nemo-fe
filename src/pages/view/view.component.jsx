@@ -45,9 +45,6 @@ const ViewPage = (props) => {
   // When the page rendered for the first time
   // if the array is empty will not be executed again
   useEffect(() => {
-    if (!userContext.user?.id) {
-      navigate("/login", { replace: false });
-    }
     getMenuItems();
   }, []);
 

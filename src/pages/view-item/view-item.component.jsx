@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { getItem } from "../../services/items";
 import Item from "../../components/view/item/item.component";
 import { getCartQuantity } from "../../utility/cart";
+import { useContext } from "react";
+import { CartContext } from "../../components/providers/cart-provider.component";
 
 /**
  * @type {Array<{
@@ -20,6 +22,7 @@ const ViewItemPage = (props) => {
   const params = useParams();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
+  const cartContext = useContext(CartContext);
 
   useEffect(() => {
     setLoading(true);
@@ -56,8 +59,8 @@ const ViewItemPage = (props) => {
         <Item
           data={currentItem}
           item={currentItem}
-          dispatch={props.dispatch}
-          cartQuantity={getCartQuantity(currentItem.id, props.cart)}
+          dispatch={cartContext.dispatch}
+          cartQuantity={getCartQuantity(currentItem.id, cartContext.cart)}
         />
       ) : (
         <span>Item Not Found!</span>
