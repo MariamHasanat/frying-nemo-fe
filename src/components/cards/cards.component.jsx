@@ -86,10 +86,6 @@ const Cards = (props) => {
               <Link className="card-name" to = {`/view-item/${item.id}`}>{item.name}</Link>
               <span className="card-text">Description</span>
               <div className="card-description">&nbsp;{item.description}</div>
-              <div className="card-price">
-                <span className="card-text">Price: </span>
-                {item.price} <span className="card-text-dollar">$</span>
-              </div>
               <div className="card-category">
                 <span className="card-text">Category: </span>
                 {item.category}
@@ -98,15 +94,13 @@ const Cards = (props) => {
               </div>
               <div className="card-buttom-container">
                 <div className="card-Ingredients-container">
-                  <ul name="category" className="card-Ingredients" >
                     {item.ingredients.map((current) => {
                       return (
-                        <li key={current} value={current} disabled>
-                          {current}
-                        </li>
+                        <span  className="ingredient-item" key={current} value={current} disabled>
+                          {current}, &nbsp;
+                        </span>
                       );
                     })}
-                  </ul>
                 </div>
               </div>
               <PriceBar item={item} dispatch={props.dispatch} cartQuantity={getCartQuantity(item.id, props.cart)} />

@@ -48,6 +48,9 @@
   height: 100px;
   width: 350px;
   overflow: auto;
+  margin: 13px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 span.card-text{
