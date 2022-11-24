@@ -1,7 +1,9 @@
 .cart-page {
-  padding: 30px 20px;
+  padding: 55px 20px;
   max-width: 60vw;
   margin: 0 auto;
+  /* border: 1px solid rgb(255, 253, 253);
+  background-color: #4e50b350; */
 
 }
 
@@ -10,4 +12,3 @@
   margin: 0;
   list-style-type: none;
 }
-
