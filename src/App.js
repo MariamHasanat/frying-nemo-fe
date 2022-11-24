@@ -10,9 +10,8 @@ import ViewItemPage from "./pages/view-item/view.item";
 import LoginPage from "./pages/login/login";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import UserProvider from "./components/providers/user-provider";
-import Guard from "./components/core/guard/guard";
-
 import CartProvider from "./components/providers/cart-provider";
+import Guard from "./components/core/guard/guard";
 
 //A function App will render the components
 function App() {
