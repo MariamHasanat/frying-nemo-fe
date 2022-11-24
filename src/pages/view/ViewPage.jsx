@@ -1,5 +1,5 @@
-import { UserContext } from '../../components/add/form/provider/UserProvider.jsx';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+// import { UserContext } from '../../components/add/form/provider/UserProvider.jsx';
+import {  useSearchParams } from 'react-router-dom';
 import Spinner from '../spinner/spinner.component';
 import FilterBar from './filter-bar/FilterBar';
 import { useState, useEffect } from 'react';
@@ -26,11 +26,11 @@ const ViewPage = () => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
-  const userContext = useContext(UserContext);
+  // const userContext = useContext(UserContext);
   const cartContext = useContext(CartContext);
 
   const searchFromURL = params.get('search') || '';
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const categoriesFromURL = params.getAll('category') || '';
   const minFromURL = params.get('min') || '';
   const maxFromURL = params.get('max') || '';
@@ -55,9 +55,9 @@ const ViewPage = () => {
 
   useEffect(() => {
    
-    if (!userContext.user?.id) {
-      navigate('/login' , {replace : false});
-    }
+    // if (!userContext.user?.id) {
+    //   navigate('/login' , {replace : false});
+    // }
     getMenuItems();
   }, []);
 

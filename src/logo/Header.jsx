@@ -38,10 +38,15 @@ const Header = props => {
               </Link>
             </div>
             }
-            <Link
+           { userContext.user ? <Link
              to='/add'
              className={location.pathname === '/add' ? 'current' : ''}
              >Add</Link >
+             : <Link
+             to='/login'
+             className={location.pathname === '/login' ? 'current' : ''}
+             >Login</Link >
+             }
             <Link
              to='/view'
              className={location.pathname.includes('/view') ? 'current' : ''}
