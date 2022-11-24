@@ -1,4 +1,4 @@
-import { getToPathname } from '@remix-run/router';
+//import { getToPathname } from '@remix-run/router';
 import React from 'react';
 import { useContext } from 'react';
 import { CartContext } from '../../providers/cart-provider.jsx';

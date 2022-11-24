@@ -7,6 +7,7 @@ import Header from "./components/header/header.component";
 import ViewPage from "./pages/view/view.container";
 import NotFound from "./pages/not-found/not-found.component";
 import ViewItemPage from "./pages/view-item/view.item";
+import CartPage from "./pages/cart/cart.page";
 import LoginPage from "./pages/login/login";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import UserProvider from "./components/providers/user-provider";
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/add" element={<Guard permittedRoles={["ADMIN"]}><AddPage /></Guard>} />
                 <Route path="/view" element={<ViewPage />} />
                 <Route path="/view/:id" element={<ViewItemPage />} />
+                <Route path="/cart" element={<CartPage />} />
                 <Route path="/*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
