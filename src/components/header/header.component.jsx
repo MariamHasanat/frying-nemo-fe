@@ -1,8 +1,8 @@
-import React from 'react';
-import logo from '../../assets/nemo.svg';
+import React , { useContext }  from 'react';
 import './header.css';
+import logo from '../../assets/nemo.svg';
+import cartIcon from '../../../assets/cart.svg';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
 import { UserContext } from '../../components/providers/user-provider';
 import { CartContext } from '../../components/providers/cart-provider';
 
@@ -30,14 +30,24 @@ const Header = props => {
       </div>
       <div className="right" >
 
-        <span>Your Cart {itemsCount}</span>
-        <nav>
-          <Link to='/add' className={location.pathname === '/add' ? 'current' : ''}
-          >Add</Link>
-          <Link to='/view' className={location.pathname === '/view' ? 'current' : ''}
-          >View</Link>
+      <nav>
+          {
+            userContext.user ? (
+              <>
+                <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
+                  Add
+                </Link>
+                <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
+                  View
+                </Link>
+              </>
+            ) : null
+          }
         </nav>
-
+        <Link className="cart" to="cart">
+          <img src={cartIcon} alt="cart icon" />
+          <span className="count">{totalCartQuantity}</span>
+        </Link>
         {
           userContext.user &&
           <span className="user-badge">
@@ -54,7 +64,7 @@ const Header = props => {
           </span>
         }
 
-
+        
       </div>
     </header>
   );
