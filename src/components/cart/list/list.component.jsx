@@ -21,7 +21,7 @@ const CartList = (props) => {
   if (cartContext.cart.length === 0)
     return (
       <div className="no-results">
-        <img src="./empty_cart.webp" alt="empty cart" width={300} />
+        <img src="../../../assets/trash.svg" alt="empty cart" width={300} />
         <p>Your Cart is Empty!</p>
       </div>
     );
