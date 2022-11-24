@@ -35,19 +35,24 @@ import { UserContext } from '../../providers/user-provider.component';
         <nav>{
 
         userContext.user ? (
-              <>
+           
                 <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
                   Add
                 </Link>
-                <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
-                  View
+                ):(
+                <Link to="/login" className={location.pathname === "/login" ? 'current' : ''}>
+             login
                 </Link>
-              </>
-            ) : null
-          }
-
+            
+            
+  )
+  }
+  <Link to ="/view " className={location.pathname === "/view" ? 'current' : ''} >
+    view 
+  </Link>
 
         </nav>
+        
         <Link className="cart" to="cart">
           <img src={cartIcon} alt="cart icon"  width={30} height={30} />
           <span className="count">{totalCartQuantity}</span>

@@ -47,6 +47,8 @@ const reducer = (cart, action) => {
       {
         return [];
       }
+      case "SET":
+        return action.cart;
   }
 
   return cart;
