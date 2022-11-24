@@ -25,10 +25,10 @@ const ViewPage = (props) => {
     const priceMin = Number(params.getAll('priceMin')) || 0;
     const priceMax = Number(params.getAll('priceMax')) || 0;
 
-    useEffect(() => {
-        if (!userContext.user)
-            navigate('/login');
-    }, []);
+    // useEffect(() => {
+    //     if (!userContext.user)
+    //         navigate('/login');
+    // }, []);
 
     const filteredMenu = menu
         .filter(

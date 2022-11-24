@@ -46,6 +46,9 @@ const reducer = (cart, action) => {
         case "DELETE_ALL_ITEMS": {
             return ([]);
         }
+        case "SET": {
+            return action.cart;
+        }
         default:
             return cart;
     }
