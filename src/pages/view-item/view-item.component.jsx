@@ -19,11 +19,12 @@ const ViewItemPage = (props) =>{
   useEffect(() =>{
     setLoading(true);
     const item = getItem(params.id);
-    if (item === null) {
-      navigate("/404", { replace: true });
+    if (item != null) {
+      setCurrentItem(item);
+      setLoading(false);
     }
-    setCurrentItem(item);
-    setLoading(false);
+    else{navigate("/404", { replace: true });
+  }
   },[]);
 
   return(

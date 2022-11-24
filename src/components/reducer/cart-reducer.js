@@ -39,6 +39,9 @@ const reducer = (cart, action) => {
       localStorage.setItem('cart', JSON.stringify(cart));
       return cart;
     }
+    case "SET":{
+      return action.cart;
+    }
     default:
       return cart;
 

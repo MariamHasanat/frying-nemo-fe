@@ -6,11 +6,9 @@ import { CartContext } from '../providers/cart-provider.component';
 
 const CartPage = (props) => {
   const cartContext = useContext(CartContext);
-  const emptyCart = () => cartContext.dispatch({type: 'EMPTY'});
   return (
     <div className="cart-page">
       <CartList />
-      <button onClick={emptyCart}>Empty My Cart</button>
     </div>
   );
 };

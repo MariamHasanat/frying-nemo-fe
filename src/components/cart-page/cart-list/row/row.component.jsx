@@ -1,4 +1,5 @@
 import React from 'react';
+import './row.css';
 
 const CartRow = (props) => {
   const { meal, quantity } = props.cartItem;

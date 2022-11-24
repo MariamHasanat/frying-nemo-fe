@@ -102,8 +102,8 @@
 .count {
   position: absolute;
   color: #fff;
-  top: -8px;
-  right: -11px;
+  top: 40px;
+  right: 215px;
   z-index: 2;
   font-weight: bold;
   background: #f15a29;
