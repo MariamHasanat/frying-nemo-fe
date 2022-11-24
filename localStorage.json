@@ -1,1 +1,157 @@
-[{"id":10,"name":"fatoosh","price":20,"description":"best meal ever","category":"Salads","ingredients":["tomato","cucumber","onion"],"image":"https://upload.wikimedia.org/wikipedia/commons/9/93/Fattoush_mixed-salad.jpg"},{"id":11,"name":"makloba","price":50,"description":"makloba 3kef kefak","category":"Main Dishes","ingredients":["rice","chicken"],"image":"https://www.hungrypaprikas.com/wp-content/uploads/2021/04/Maqluba-New-1-1024x1536.jpg"},{"id":12,"name":"shawermah","price":15,"description":"shawerma al haram","category":"Fish","ingredients":["chicken","garlic","fries"],"image":"https://images.alarab.com/data/news/2016/12/02/781532/20161202170922alarab87598.jpg?auto_optimize=high?auto_optimize=high"},{"id":13,"name":"Sweet crepe","price":25,"description":"chocolate crepe","category":"Main Dishes","ingredients":["banana","chocolate"],"image":"https://media-cdn.tripadvisor.com/media/photo-s/17/d3/1c/1e/sweet-crepe.jpg"},{"id":14,"name":"Hookah","price":15,"description":"أرجيلة تفاحتين رح تكيف عليها","category":"drugs","ingredients":["معسل تفاحتين"],"image":"https://arabi21.com/Content/Upload/large/920151025914369.jpg"},{"id":15,"name":"fish","price":35,"description":"healthy salmon fish with vegetables","category":"Fish","ingredients":["fresh salmon fish","vegetables","sea food sauce"],"image":"https://sharpaspirant.com/wp-content/uploads/2021/07/Baked-Fish-Recipes-4.jpg"},{"id":16,"name":"orange juice","price":7,"description":"nature orange juice","category":"Drinks","ingredients":["orange","lemon"],"image":"https://upload.wikimedia.org/wikipedia/commons/0/05/Orangejuice.jpg"},{"id":1669289812747,"name":"شوربة عدس","price":0,"description":"شوربة عدس made with love ❤","category":"Main Dishes","ingredients":["3adas","lemon","onion","bread"],"image":"https://kitchen.sayidaty.net/uploads/small/58/5874583f92ec695b8970e611108d6d3e_w750_h500.jpg"}]
+[
+  {
+    "id": 10,
+    "name": "fatoosh",
+    "price": 20,
+    "description": "best meal ever",
+    "category": "Salads",
+    "ingredients": [
+      "tomato",
+      "cucumber",
+      "onion"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/93/Fattoush_mixed-salad.jpg"
+  },
+  {
+    "id": 11,
+    "name": "makloba",
+    "price": 50,
+    "description": "makloba 3kef kefak",
+    "category": "Main Dishes",
+    "ingredients": [
+      "rice",
+      "chicken"
+    ],
+    "image": "https://www.hungrypaprikas.com/wp-content/uploads/2021/04/Maqluba-New-1-1024x1536.jpg"
+  },
+  {
+    "id": 12,
+    "name": "shawermah",
+    "price": 15,
+    "description": "shawerma al haram",
+    "category": "Main Dishes",
+    "ingredients": [
+      "chicken",
+      "garlic",
+      "fries"
+    ],
+    "image": "https://images.alarab.com/data/news/2016/12/02/781532/20161202170922alarab87598.jpg?auto_optimize=high?auto_optimize=high"
+  },
+  {
+    "id": 13,
+    "name": "Sweet crepe",
+    "price": 25,
+    "description": "chocolate crepe",
+    "category": "Sweets",
+    "ingredients": [
+      "banana",
+      "chocolate"
+    ],
+    "image": "https://media-cdn.tripadvisor.com/media/photo-s/17/d3/1c/1e/sweet-crepe.jpg"
+  },
+  {
+    "id": 14,
+    "name": "orange juice",
+    "price": 7,
+    "description": "natural orange juice",
+    "category": "Drinks",
+    "ingredients": [
+      "orange"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Orangejuice.jpg/235px-Orangejuice.jpg"
+  },
+  {
+    "id": 15,
+    "name": "classic burger",
+    "price": 25,
+    "description": "IDK what what to say :)",
+    "category": "Sandwiches",
+    "ingredients": [
+      "150 gm beef",
+      "tomato",
+      "onions",
+      "lettuce",
+      "pickles"
+    ],
+    "image": "https://cook.fnr.sndimg.com/content/dam/images/cook/fullset/2011/5/9/1/cc-web-burger_classic-burger-sarah-copeland-4166-02_s4x3.jpg.rend.hgtvcom.826.620.suffix/1357780920227.jpeg"
+  },
+  {
+    "id": 16,
+    "name": "salmon ",
+    "price": 30,
+    "description": "healty fresh seafood",
+    "category": "Fish",
+    "ingredients": [
+      "fresh salmon fish",
+      "grilled vegetables",
+      "seafood sauce"
+    ],
+    "image": "https://img.freepik.com/premium-photo/baked-fish-dorado-with-lemon-fresh-salad-white-plate-dark-rustic-background-top-view-healthy-dinner-with-fish-concept-dieting-clean-eating_2829-8164.jpg"
+  },
+  {
+    "id": 1669307228360,
+    "name": "سحلب",
+    "price": 3,
+    "description": "أطيب مشروب دافئ في الشتاء",
+    "category": "Sweets",
+    "ingredients": [
+      "حليب",
+      "نشا",
+      "جوز هند",
+      "قرفة"
+    ],
+    "image": "https://www.taabkh.com/files/styles/recipe/public/recipe/2020/02/sahlab-saudi.jpg"
+  },
+  {
+    "id": 1669289812747,
+    "name": "شوربة عدس",
+    "price": 0,
+    "description": "شوربة عدس made with love ❤",
+    "category": "Main Dishes",
+    "ingredients": [
+      "3adas",
+      "lemon",
+      "onion",
+      "bread"
+    ],
+    "image": "https://kitchen.sayidaty.net/uploads/small/58/5874583f92ec695b8970e611108d6d3e_w750_h500.jpg"
+  },
+  {
+    "id": 1669307476441,
+    "name": "كستنة",
+    "price": 10,
+    "description": "كستنة على الحطب",
+    "category": "Main Dishes",
+    "ingredients": [
+      "حبوب كستنة"
+    ],
+    "image": "https://static.webteb.net/images/content/tbl_articles_article_14991_82f5e0e32d-798d-43b8-987b-fb8f7aaa6962.jpg"
+  },
+  {
+    "id": 1669307665889,
+    "name": "ذرة مشوية",
+    "price": 5,
+    "description": "ذرة مشوية على الحطب مع إضافات لذيذة",
+    "category": "Sweets",
+    "ingredients": [
+      "ذرة",
+      "مايونيز",
+      "كاتشاب"
+    ],
+    "image": "https://img.youm7.com/large/201807180431233123.jpg"
+  },
+  {
+    "id": 1669308349953,
+    "name": "مجدرة ساجدة",
+    "price": 15,
+    "description": "مجدرة مدخنة مع البصل المحروق",
+    "category": "Main Dishes",
+    "ingredients": [
+      "رز",
+      "عدس",
+      "بصل",
+      "سلطة"
+    ],
+    "image": "https://firebasestorage.googleapis.com/v0/b/frying-nemo-51673.appspot.com/o/sajeda's-mojadarrah.jpg?alt=media&token=5afa5520-884b-446d-a251-e0302d45c20a"
+  }
+]
