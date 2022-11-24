@@ -47,7 +47,7 @@ switch (action.type){
   }
 
   case "DELETE_ALL_ITEMS": {
-    return (null);
+    return [];
 }
 
   

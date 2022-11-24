@@ -1,9 +1,26 @@
 import React from "react";
+import { useContext } from "react";
 import { useReducer } from "react";
 import { useEffect } from "react";
 import { reducer } from "../reducer/reducer.component";
+import { UserContext } from "./user-provider.component";
 export const CartContext = React.createContext(null);
 
+
+const getCartFromLocalStorage = email =>{
+  const map =JSON.parse(localStorage.getItem('cartMap') || '{}');
+  const key = email || 'anonymous';
+  const cart = map [key] || [] ; 
+  return cart;
+ 
+};
+
+const updateCartInLocalStorage = (email, cart) =>{
+  const map =JSON.parse(localStorage.getItem('cartMap') || '{}');
+  const key = email || 'anonymous';
+  map[key] = cart;
+  localStorage.setItem('cartMap', JSON.stringify(map));
+}
 /**
  * 
  * @param {{
@@ -12,15 +29,17 @@ export const CartContext = React.createContext(null);
  * @returns 
  */
 const CartProvider = (props)=>{
-  const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart') || '[]');
+  const userContext = useContext(UserContext);
+  const cartFromLocalStorage = getCartFromLocalStorage (userContext.user?.email);
+ 
   const [cart, dispatch] = useReducer(reducer, cartFromLocalStorage);
 
   useEffect(() => localStorage.setItem('cart', JSON.stringify(cart)), [cart]);
 
   return (
-    <UserContext.Provider value={{cart, dispatch}}>
+    <CartContext.Provider value={{cart, dispatch}}>
       {props.children}
-    </UserContext.Provider>
+    </CartContext.Provider>
   );
 }
 

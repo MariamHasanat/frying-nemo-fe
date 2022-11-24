@@ -5,18 +5,22 @@ import CartRow from './row/row.component';
 
 const CartList = (props) => {
   const cartContext = useContext(CartContext);
+
+
   const TotalPrice = () => {
-    let price = 0;
+    let Total = 0;
     
     const cart = cartContext.cart;
     for (let i = 0; i < cart.length; i++) {
-        price += (cart[i].meal.price * cart[i].quantity);
+        Total += (cart[i].meal.price * cart[i].quantity);
     }
     return price;
 };
 
+
+
 const deleteAll = () => {
-    cartContext.dispatch({ type: 'DELETE_ALL_ITEMS', meal: props.item });
+    cartContext.dispatch({ type: 'DELETE_ALL_ITEMS'});
 };
 
   return (
@@ -33,7 +37,7 @@ const deleteAll = () => {
       </div>
       
 <div>
-<p>total price: ${TotalPrice()}</p>
+<span>total price: ${TotalPrice()}</span>
 <button onClick={deleteAll}>delete all</button>
 </div>
 </div>

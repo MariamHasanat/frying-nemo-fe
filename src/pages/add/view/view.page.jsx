@@ -8,6 +8,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../../components/provider/user-provider.component';
 import { CartContext } from '../../../components/provider/cart.provider';
+import { getCartQuantity } from '../../../utils/cart';
 
 /**
  * @type {Array<{
