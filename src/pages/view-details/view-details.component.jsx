@@ -23,7 +23,7 @@ const ViewDetailsPage = () => {
     <div className='details'>
       <img src={item.image} alt="Item Image"/>
       <div className='info'>
-        <h3><h2>Item Description:</h2> {item.description}</h3>
+        <h3>Item Description:{item.description}</h3>
         <h2>Ingredients:</h2>
         <h3>{item.ingredients.toString().replaceAll(`,`, `, `)}</h3>
       </div>

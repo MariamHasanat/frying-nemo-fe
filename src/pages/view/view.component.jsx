@@ -13,7 +13,6 @@ const ViewPage = () => {
   let categories = searchParams.getAll("category")[0] || "";
 
   const updateParam = (key, value) => {
-    // console.log(value)
     let params = new URLSearchParams(searchParams);
     (Array.isArray(value) ? value.length != 0 : value)
       ? params.set(key, value)
@@ -59,6 +58,7 @@ const ViewPage = () => {
           arr.map((item, i) => (
             <Card
               key={item.id}
+              item={item}
               itemId={item.id}
               itemName={item.name}
               itemCategory={capitalizeFirstLetter(item.category)}

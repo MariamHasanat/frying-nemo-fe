@@ -27,8 +27,8 @@ const FilterBar = ({searchParams, updateParam, search, setSearch, categories}) =
     <div className='filter-bar'>
     <Input placeholder="Search" onChange={(e) => updateSearch(e.target.value)} value={search} style={{ backgroundColor: `white`, color: `black`, border: '1px solid black' }}></Input>
       <div className='tags'>
-      {categories && categories.split(',').map(((item, i) => (<Tag key= {item} onClick={() => {removeCategory(item)}}>{item}</Tag>)))}
-        <Tag onClick={addCategory} add={true} tba={tba}>Cinder drinks</Tag>
+      {categories && categories.split(',').map(((item, i) => (<Tag key= {item+i} onClick={() => {removeCategory(item)}}>{item}</Tag>)))}
+        <Tag  onClick={addCategory} add={true} tba={tba}>Cinder drinks</Tag>
       </div>
     </div>
   )

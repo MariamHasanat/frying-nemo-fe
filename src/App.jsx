@@ -13,8 +13,8 @@ function App() {
 
   return (
     <div>
-      <CartProvider>
-        <UserProvider>
+      <UserProvider>
+        <CartProvider>
           <BrowserRouter>
             <Header />
             <Routes>
@@ -27,8 +27,8 @@ function App() {
               <Route path="/*" element={<NotFoundPage />} />
             </Routes>
           </BrowserRouter>
-        </UserProvider>
-      </CartProvider>
+        </CartProvider>
+      </UserProvider>
     </div>
   );
 }

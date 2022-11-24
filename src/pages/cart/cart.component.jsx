@@ -6,7 +6,6 @@ import { UserContext } from '../../components/core/providers/user-provider.compo
 const CartPage = (props) => {
 
   const {cart} = useContext(UserContext);
-  console.log(`cart`, cart)
   return (
 
     <div className="cart-page">

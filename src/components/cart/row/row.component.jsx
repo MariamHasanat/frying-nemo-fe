@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import trashIcon from '../../../assets/trash.svg';
-import { UserContext } from '../../core/providers/user-provider.component';
+import { CartContext } from '../../core/providers/cart-provider.component';
 
 const CartRow = ({ cartItem }) => {
-  const { dispatch } = useContext(UserContext);
+  const { dispatch } = useContext(CartContext);
   const {item, quantity} = cartItem;
-  const incrementItem = () => dispatch({ type: `INCREMENT`, item: { id: item.id } });
-  const decrementItem = () => dispatch({ type: `DECREMENT`, item: { id: item.id } });
-  const deleteItem = () => dispatch({ type: `DELETE`, item: { id: item.id } });
+  const incrementItem = () => dispatch({ type: `INCREMENT`, item });
+  const decrementItem = () => dispatch({ type: `DECREMENT`, item });
+  const deleteItem = () => dispatch({ type: `DELETE`, item });
 
   return (
     <li className="cart-row">

@@ -1,42 +1,37 @@
-import './card.css'
-import Counter from '../counter/counter.component'
+import './card.css';
+import Counter from '../counter/counter.component';
 import { useContext, useState } from 'react';
 import { capitalizeFirstLetter } from '../../../../services/utilities';
-import { UserContext } from '../../../core/providers/user-provider.component';
+import { CartContext } from '../../../core/providers/cart-provider.component';
 
-const Card = ({itemId, itemName, itemCategory, itemPrice, itemDescription, itemIngredients, image, i, ctr}) => {
-  const {dispatch} = useContext(UserContext)
-  const [counter, setCounter] = useState(ctr);
+const Card = ({ item, itemId, itemName, itemCategory, itemPrice, itemDescription, itemIngredients, image, i, ctr }) => {
+  const { cart, dispatch } = useContext(CartContext);
 
-  const incCounter = () => {
-    if (counter >= 100) return;
-    setCounter(counter + 1)
-    dispatch({type: `INCREMENT`, item: {id: itemId, price: itemPrice, image}, quantity: counter + 1})
-  }
+  const incCounter = () => dispatch({ type: `INCREMENT`, item });
 
-  const decCounter = () => {
-    if (counter <= 0) return;
-    setCounter(counter - 1);
-    dispatch({type: `DECREMENT`, item: {id: itemId, price: itemPrice}, quantity: counter - 1})
-  }
+  const decCounter = () => dispatch({ type: `DECREMENT`, item });
+
+  const itemQuantity = cart.find(cartItem => cartItem.item.id === item.id)?.quantity || 0;
 
   return (
-    <div className='card-wrapper' onLoad={(e) => {setTimeout(() => {
-      e.target.offsetParent.style.opacity = 1
-    }, 50*i);}}>
+    <div className='card-wrapper' onLoad={(e) => {
+      setTimeout(() => {
+        e.target.offsetParent.style.opacity = 1;
+      }, 50 * i);
+    }}>
       <img src={image} alt="" />
       <div className='info'>
-      <a href={`/view/${itemId}`} className='itemName'>{capitalizeFirstLetter(itemName)}</a>
-      <p className='itemCategory'>{itemCategory}</p>
-      <p className='itemDescription'>{itemDescription}</p>
-      <p className='itemIngredients'>{itemIngredients}</p>
-      <div className='priceInfo'>
-        <p className='itemPrice'>{itemPrice}$</p>
-        <Counter counter={counter} incCounter={incCounter} decCounter={decCounter}/>
-      </div>
+        <a href={`/view/${itemId}`} className='itemName'>{capitalizeFirstLetter(itemName)}</a>
+        <p className='itemCategory'>{itemCategory}</p>
+        <p className='itemDescription'>{itemDescription}</p>
+        <p className='itemIngredients'>{itemIngredients}</p>
+        <div className='priceInfo'>
+          <p className='itemPrice'>{itemPrice}$</p>
+          <Counter counter={itemQuantity} incCounter={incCounter} decCounter={decCounter} />
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Card;

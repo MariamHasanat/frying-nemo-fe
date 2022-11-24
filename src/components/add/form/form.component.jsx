@@ -53,7 +53,6 @@ const Form = () => {
 
   const changeName = (value) => {
     const isAllowed = (char) => {
-      console.log(`char: ${char}`)
       if (char === ' ') {
       }
       const allowed = [['a', 'z'], ['A', 'Z'], [' ', ' '], ['0', '9']]

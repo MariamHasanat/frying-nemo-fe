@@ -33,7 +33,6 @@ const MultivalueInput = ({ label, onChange }) => {
 
   const changeItemNameInput = (value) => {
     setItemName(value)
-    console.log('hey')
   }
 
   return (
