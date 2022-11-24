@@ -16,20 +16,20 @@ function App() {
   return (
     <div>
       <BrowserRouter >
-       <CartProviders>
         <Providers>
-          <Handel   />
-          <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/" element={<Navigate to="view" />} />
-            <Route path="/*" element={<NotFound />} />
-            <Route path="/add" element={<Guard  permittedRoles={['ADMIN']} ><AddPage /></Guard>} />
-            <Route path="/view" element={<View  />} />
-            <Route path="/view/:id" element={<ViewItemPage  />} />
-            <Route path="/cart" element={<CartPage />} />
-          </Routes>
+          <CartProviders>
+            <Handel />
+            <Routes>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/" element={<Navigate to="view" />} />
+              <Route path="/*" element={<NotFound />} />
+              <Route path="/add" element={<Guard permittedRoles={['ADMIN']} ><AddPage /></Guard>} />
+              <Route path="/view" element={<View />} />
+              <Route path="/view/:id" element={<ViewItemPage />} />
+              <Route path="/cart" element={<CartPage />} />
+            </Routes>
+          </CartProviders>
         </Providers>
-        </CartProviders>
       </BrowserRouter>
     </div>
   );

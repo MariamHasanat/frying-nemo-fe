@@ -6,12 +6,12 @@ export const UserContext = React.createContext(null);//قراءة ااذا فش 
  * @returns 
  */
 const Providers = (props) => {
-  const initialUser = JSON.parse(sessionStorage.getItem('user'));
+  const initialUser = JSON.parse(sessionStorage.getItem('user')) || null;
   const [user, setUser] = useState(initialUser);
   const setUserOver = (user) => {
     setUser(user);
     if(user === null){
-      localStorage.removeItem('user');
+      // localStorage.removeItem('user');
       localStorage.removeItem('cart');
     }
     else

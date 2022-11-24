@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/fish-removebg-preview.png';
 import { useContext } from 'react';
 import { UserContext } from '../provider/provider';
-// 
 import cartIcon from '../../assets/illustrations/cart.svg';
 import { CartContext } from '../provider/cartprovider';
 const Handel = (props) => {
@@ -27,15 +26,15 @@ const Handel = (props) => {
       <div className='right'>
         <nav>
           {
-            useContext.user ? (
-              <>
+            userContext.user ? (
+             
                 <Link to="/add" className={location.pathname === "/add" ? 'current' : ""}>Add</Link>
-
-                < Link to="/view" className={location.pathname.includes("view") ? 'current' : ""}>View</Link >
-              </>
-            ) : null
+              
+            ) : (
+              <Link to="/login" className={location.pathname === "/login" ? 'current' : ""}>login</Link>
+            )
           }
-
+          < Link to="/view" className={location.pathname.includes("view") ? 'current' : ""}>View</Link >
         </nav>
         <Link className="cart" to="cart">
           <img src={cartIcon} alt="cart icon" />
