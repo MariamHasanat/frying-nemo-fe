@@ -49,11 +49,7 @@ const ViewPage = (props) => {
   useEffect(() => {
     getMenuItems();
   }, []);
-  useEffect(() => {
-    if (!userContext.user?.id) {
-      navigate('/login', { replace: false });
-    }
-  }, []);
+  
 
 
   const filterItem = menuItems.filter(item => {

@@ -1,38 +1,40 @@
-import React, { useReducer,useEffect,useContext } from 'react';
+import React, { useReducer } from 'react';
+import { useContext } from 'react';
+import { useEffect } from 'react';
 import { reducer } from '../../reducer/cart';
-import { UserContext } from './provider.component';
+import { UserContext } from '../../components/provider/provider.component';
+
 export const CartContext = React.createContext(null);
 
+const getCartFromLocalStorage = email => {
+  const map = JSON.parse(localStorage.getItem('cartMap') || '{}');
+  const key = email || 'anonymous';
+  const cart = map[key] || [];
+  return cart;
+};
 
-const getCardFromLocalStorage=email =>{
-    const map = JSON.parse(localStorage.getItem('cartMap')||'{}');
-    const key = email || 'ana';
-    const cart = map[key] || [];
-    return cart; 
-  }
-  const UpdateCartInLocalStorage =(email,cart) =>{
-    const map = JSON.parse(localStorage.getItem('cartMap')||'{}');
-    const key = email || 'ana';
-    map[key] = cart;
-    localStorage.setItem('cartMap',JSON.stringify(map));
-  }
+const updateCartInLocalStorage = (email, cart) => {
+  const map = JSON.parse(localStorage.getItem('cartMap') || '{}');
+  const key = email || 'anonymous';
+  map[key] = cart;
+  localStorage.setItem('cartMap', JSON.stringify(map));
+};
+
 /**
  * @param {{
  *  children: React.ReactNode;
  * }} props Component props
  */
 const CartProvider = (props) => {
-  
   const userContext = useContext(UserContext);
-  const cartFromLocalStorage = getCardFromLocalStorage(userContext.user?.email);
-
+  const user = userContext.user;
+  const cartFromLocalStorage = getCartFromLocalStorage(user?.email);
 
   const [cart, dispatch] = useReducer(reducer, cartFromLocalStorage);
 
-  useEffect(() => UpdateCartInLocalStorage(userContext.user?.email,cart), [cart]);
+  useEffect(() => updateCartInLocalStorage(user?.email, cart), [cart]);
 
-  useEffect(() => dispatch({type:'SET' , cart:getCardFromLocalStorage(userContext.user?.email)},[userContext.user]));
-
+  useEffect(() => dispatch({ type: 'SET', cart: getCartFromLocalStorage(user?.email) }), [user]);
 
   return (
     <CartContext.Provider value={{ cart, dispatch }}>

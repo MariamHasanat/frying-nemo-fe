@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import React,{ useEffect,useContext } from 'react';
 import { loginUser } from "../../../data/user";
 import { UserContext } from "../../../components/provider/provider.component";
+import Header from "../../../common/header/header.component";
 
-const LoginPage=(props)=>{
+const LoginPage=()=>{
   const navigate=useNavigate();
   const userContext=useContext(UserContext);
 
@@ -33,8 +34,7 @@ const LoginPage=(props)=>{
 
     return(
     
-      <div>
-
+      <div className="jhk">
         <div className="body"></div>
         <div className="grad"></div>
         <div className="header">

@@ -1,14 +1,13 @@
 import AddPage from "./pages/add/add.component";
 import ViewPage from "./common/view/view.component";
 import Header from './common/header/header.component';
-import React,{useReducer} from "react";
+import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import NotFoundPage from "./pages/add/not_found/not-found";
 import ViewItemPage from "./common/view/view-item/item.component";
 import LoginPage from "./pages/add/log-in/login.component";
 import UserProvider from "./components/provider/provider.component";
 import Guard from './components/guard/guard.component';
-import {reducer , initial} from './reducer/cart';
 import CartPage from "./components/cart/cart-page";
 import CartProvider from "./components/provider/cart-provider.component";
 

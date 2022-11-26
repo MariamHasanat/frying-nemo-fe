@@ -37,17 +37,17 @@ const Header = (props) => {
         <nav>
           { 
             userContext.user?(
-          <>
-          
-          <Link to='/add' className={location.pathname === "/add" ? "current" : ""}>Add</Link>
-          
-          </>
-        ):          <Link to='/login' className={location.pathname === "/login" ? "current" : ""}>Login</Link>
-
+              <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
+                Add
+              </Link>
+            ) : (
+              <Link to="/login" className={location.pathname === "/login" ? 'current' : ''}>
+                Login
+              </Link>
+            )
         }
         <Link to='/view' className={location.pathname.startsWith('/view') ? "current" : ""}>View</Link>
         </nav>
-
         {
           userContext.user &&
           <span className="user-info">

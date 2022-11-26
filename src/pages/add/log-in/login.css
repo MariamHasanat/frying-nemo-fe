@@ -9,19 +9,17 @@ body {
   font-family: Arial;
   font-size: 12px;
 }
-
-.body {
-  color: #fff;
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  right: -40px;
-  bottom: -40px;
-  width: auto;
-  height: auto;
-  background-image: url(https://cdn.shopify.com/s/files/1/0158/2189/7782/products/FNAT_1445x.jpg?v=1621549055);
-  background-size: cover;
+.jhk{
+    background: url(https://cdn.shopify.com/s/files/1/0158/2189/7782/products/FNAT_1445x.jpg?v=1621549055);
+    width: auto;
+      height: 615px;
+        background-size: cover;
+            top: -20px;
+            left: -20px;
+            right: -40px;
+            bottom: -40px;
 }
+
 
 .grad {
   position: absolute;
@@ -46,6 +44,7 @@ body {
   top: calc(50% - 35px);
   left: calc(50% - 255px);
   z-index: 2;
+  
 }
 
 .header h1 {
@@ -70,6 +69,7 @@ font-size: 45px;
   width: 350px;
   padding: 10px;
   z-index: 2;
+  
 }
 
 .login input[type="email"] {
