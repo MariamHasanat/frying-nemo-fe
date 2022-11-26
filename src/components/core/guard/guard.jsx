@@ -2,6 +2,16 @@ import React, { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { UserContext } from "../../providers/user-provider";
 import './guard.css';
+import lock from '../../../assets/lock.svg';
+
+/**
+ * Page guard component
+ * @param {{
+ *  children: React.ReactNode;
+ *  permittedRoles?: string[];
+ * }} props 
+ */
+
 
 const Guard = (props) => {
 
@@ -10,8 +20,8 @@ const Guard = (props) => {
     return <Navigate to="/login" />;
   } else if (props.permittedRoles && !props.permittedRoles.includes(userContext.user.role)) {
     return (
-      <div className="Guard">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStrwRJ0NrjDTnv_dYW3GtEnMpbEI6SGxSAvw&usqp=CAU" alt="no access" />
+      <div className="noAccess">
+        <img src={lock} alt="no access" />
         <p> you don't have permission to access this page </p>
       </div>
     );
