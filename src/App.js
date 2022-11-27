@@ -1,7 +1,4 @@
-/* never forget your friend (alt+shift+f) */
-
-// Here we import the components
-import React from "react";
+import React ,{useReducer} from "react";
 import AddPage from "./pages/menuPageContainer/page.container";
 import Header from "./components/header/header.component";
 import ViewPage from "./pages/view/view.container";
@@ -14,11 +11,12 @@ import UserProvider from "./components/providers/user-provider";
 import CartProvider from "./components/providers/cart-provider";
 import Guard from "./components/core/guard/guard";
 
-//A function App will render the components
+import { reducer, initialState } from "./reducer/cart";
+ 
 function App() {
-
-
-
+  
+  const [cart, dispatch] = useReducer(reducer, initialState);
+  
   return (
     <div className="pages-container">
       <div className="consistancy-between-pages">
@@ -30,9 +28,9 @@ function App() {
                 <Route path="/" element={<Navigate to="/view" replace />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/add" element={<Guard permittedRoles={["ADMIN"]}><AddPage /></Guard>} />
-                <Route path="/view" element={<ViewPage />} />
-                <Route path="/view/:id" element={<ViewItemPage />} />
-                <Route path="/cart" element={<CartPage />} />
+                <Route path="/view" element={<ViewPage dispatch={dispatch} cart={cart} />} />
+                <Route path="/view/:id" element={<ViewItemPage dispatch={dispatch} cart={cart} />} />
+                <Route path="/cart" element={<CartPage  dispatch={dispatch} cart={cart}/>} />
                 <Route path="/*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
