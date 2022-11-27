@@ -1,5 +1,3 @@
-const initialState = [];
-
 const reducer = (cart, action) => {
   // This function updates the state
   switch (action.type) {
@@ -22,42 +20,26 @@ const reducer = (cart, action) => {
       return newCart;
     }
     case "DECREMENT_CART_QUANTITY": {
-      let shouldDelete = false;
-      const newCart = cart.map(cartItem => {
-        if (cartItem.meal.id === action.meal.id) {
-          if (cartItem.quantity === 1) {
-            shouldDelete = true;
-          }
-          return { ...cartItem, quantity: cartItem.quantity - 1 };
-        } else {
-          return cartItem;
-        }
+      const newCart = cart.map(item => {
+        return item.meal.id === action.meal.id
+          ? { ...item, quantity: item.quantity - 1 }
+          : item;
       });
 
-      if (shouldDelete) {
-        return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
-      }
-
-      return newCart;
+      return newCart.filter(item => item.quantity > 0);
     }
     case "DELETE_CART_ITEM": {
       return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
     }
-    case "CLEAR_CART": {
-      return cart=[];
-    }
-    case "CLEAR_CART": {
+    case "CLEAR":
+      return [];
+    case 'SET':
       return action.cart;
-    }
-    default:{
-      
-    }
+    default:
+      return cart;
   }
-
-  return cart;
 };
 
 export {
-  reducer,
-  initialState
+  reducer
 };
