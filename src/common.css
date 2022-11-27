@@ -2,9 +2,9 @@
 /* never forget your friend (alt+shift+f) */
 .nemo-button {
   appearance: none;
-  border: 1px solid #134694;
-  background: #165fc9;
-  color: rgb(101, 121, 238);
+  border: 1px solid #00245a;
+    background: #2e83ff;
+    color: rgb(255 255 255);
   padding: 5px 10px;
   border-bottom-width: 2px;
   font-size: 13px;
