@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './form.css';
 import Input from '../common/input';
@@ -7,13 +7,14 @@ import Select from '../selector/selector.component';
 import MultivalueInput from '../multivalue/multivalue-input';
 import { CATEGORIES } from '../data/categories';
 
+import { UserContext } from '../providers/user-provider';
 
 const Form = (props) => {
- 
 
-  const [name, setName] = useState('Choose a dish');
+  const userContext = useContext(UserContext);
+  const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState([]);
-  let navigate = useNavigate() ;
+  let navigate = useNavigate();
   /**
    * 
    * @param {React.FormEvent<HTMLFormElement>} e event object
@@ -21,12 +22,14 @@ const Form = (props) => {
   const submitHandler = e => {
     e.preventDefault();
     const description = e.target.description.value;
+    const image = e.target.image.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
 
     const menuItem = {
       id: Date.now(),
       name: name,
+      image,
       description: description,
       price: price,
       category: category,
@@ -39,7 +42,7 @@ const Form = (props) => {
     items.push(menuItem);
 
     localStorage.setItem('menuItems', JSON.stringify(items));
-    
+
     navigate('/view');
 
   };
@@ -54,7 +57,7 @@ const Form = (props) => {
       alert('. character is not allowed');
       value = value.replace('.', '');
     }
-// here i have a question 
+    // here i have a question 
     if (/find/ig.test(value)) {
       value = value.replace(/find/ig, 'fry');
     }
@@ -104,9 +107,14 @@ const Form = (props) => {
         value={ingredients}
         onChange={newIngredients => setIngredients(newIngredients)}
       />
-
-      <div style={{ marginTop: 20 }}>
-        <button type="submit" className='nemo-button'>create</button>
+      <div className="addFormButtons">
+        <button
+          className="nemo-button"
+          type="submit"
+          disabled={userContext.user?.role !== 'ADMIN'}
+        >
+          Create
+        </button>
       </div>
 
     </form >
