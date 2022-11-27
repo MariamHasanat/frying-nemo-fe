@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './item.css';
 import PriceBar from './priceBar/priceBar';
+import Card from '../../../components/common/card/card.component';
 
 
 /** 
@@ -19,17 +20,21 @@ import PriceBar from './priceBar/priceBar';
  */
 const Item = (props) => {
   return (
-    <div className="item-card">
+    <Card>
       <div className="img">
         <img src={props.data.image} alt="food" />
       </div>
       <div className="info">
-        <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
+        <Link to={`/view-details/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients.join(", ")}</p>
       </div>
-      <PriceBar item={props.data} dispatch={props.dispatch} />
-    </div>
+      <PriceBar
+        item={props.data}
+        dispatch={props.dispatch}
+        cartQuantity={props.cartQuantity}
+      />
+    </Card>
   );
 };
 

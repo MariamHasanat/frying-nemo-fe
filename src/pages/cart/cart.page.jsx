@@ -5,7 +5,7 @@ import CartList from '../../components/cart/list/list.component';
 const CartPage = (props) => {
   return (
     <div className="cart-page">
-      <CartList />
+      <CartList  cart={props.cart} dispatch={props.dispatch} />
     </div>
   );
 };

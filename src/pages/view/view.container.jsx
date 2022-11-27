@@ -3,35 +3,19 @@ import './viewContainerStyle.css';
 import Spinner from '../../components/spinner/spinner.jsx';
 import { useState, useEffect, useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import Filter from './filter-bar/filter.bar.component.jsx';
-//import { UserContext } from '../../components/providers/user-provider';
+import FilterBar from './filter-bar/filter.bar.component.jsx';
 import { CartContext } from '../../components/providers/cart-provider';
-
+import { getCartQuantity } from '../../utils/cart';
 //import UserContext from '../../App';
-
 const initialItems = [];
 
 const ViewPage = (props) => {
-  /**
-   * @type {Array<{
-   * id: number;
-   * name: string;
-   * description: string;
-   * ingredients: string[];
-   * price: number;
-   * category: string;
-   * image: string;
-   * },
-   * dispatch: React.DispatchWithoutAction
-   * >}
-   */
-
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
-  const searchParams = params.get('q') || '';
-  const categoriesFromURL = params.get('category') || '';
-   const cartContext = useContext(CartContext);
+  const cartContext = useContext(CartContext);
+  const searchTermsFromURL = params.get('searchTerms') || '';
+  const categoriesFromURL = params.getAll('category') || '';
 
   const getMenuItems = () => {
     setLoading(true);
@@ -48,49 +32,68 @@ const ViewPage = (props) => {
     getMenuItems();
   }, []);
 
-  const filteredItem = menuItems.filter(item => {
+  const filteredItems = menuItems.filter(item => {
+    /**
+     * Check if search terms are somewhere inside given string.
+     * @param {string} str 
+     */
+    const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
 
     let match = (
-      item.name.toLowerCase().includes(searchParams.toLowerCase().trim()) ||
-
-      item.description.toLowerCase().includes(searchParams.toLowerCase().trim()) ||
-
-      item.ingredients.some(ingredients =>
-        ingredients.toLowerCase().includes(searchParams.toLowerCase().trim())
-      )
+      doesItMatch(item.name) ||
+      doesItMatch(item.description) ||
+      item.ingredients.some(ingredient => doesItMatch(ingredient))
     );
 
-    if (categoriesFromURL) {
-      match = match && (item.category === categoriesFromURL);
+    if (categoriesFromURL.length) {
+      match = match && (categoriesFromURL.includes(item.category));
     }
+
     return match;
-  }
-  );
+  });
+
+  /**
+   * Set query string parameter.
+   * @param {string} name Parameter name.
+   * @param {string | string[]} value Parameter value.
+   */
+  const setParam = (name, value) => {
+    const newParams = new URLSearchParams(params);
+
+    newParams.delete(name);
+
+    if (Array.isArray(value)) {
+      value.forEach(item => newParams.append(name, item));
+    } else if (value.trim()) {
+      newParams.set(name, value.trim());
+    }
+
+    setParams(newParams);
+  };
 
   return (
-    <div className='view-container'>
-      <h1 className='h1'>View Menu Items</h1>
-
-      <Filter
-        params={params}
-        setParams={setParams}
-        searchParams={searchParams}
-        categoriesFromURL={categoriesFromURL}
+    <div className="view-page">
+      <h1>View Menu Items</h1>
+      <FilterBar
+        searchTerms={searchTermsFromURL}
+        categories={categoriesFromURL}
+        setParam={setParam}
       />
-
       {
         loading
           ? <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Spinner /></div>
           : (
             <div className="items-container">
               {
-                filteredItem.length
-                  ? filteredItem.map((item, index) =>
+                filteredItems.length
+                  ? filteredItems.map((item, index) => (
                     <Item
                       data={item}
                       key={item.name + index}
                       dispatch={cartContext.dispatch}
-                    />)
+                      cartQuantity={getCartQuantity(item.id, cartContext.cart)}
+                    />
+                  ))
                   : (
                     <div className="no-results">
                       <img src="./frustrated-realistic.png" alt="No results" />
@@ -101,9 +104,9 @@ const ViewPage = (props) => {
             </div>
           )
       }
-
     </div>
   );
 };
+
 
 export default ViewPage;

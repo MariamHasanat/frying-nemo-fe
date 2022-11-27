@@ -77,6 +77,11 @@ const Form = (props) => {
         name='description'
         label="Description"
       />
+      <Input
+        label="Image"
+        name="image"
+        required
+      />
 
       <Input
         name="price"
