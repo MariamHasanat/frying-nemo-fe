@@ -5,34 +5,35 @@ import { initial, reducer } from "../reducers/cart";
 
 export const CartContext = React.createContext(null);
 
+const getCartFromLocalStorage = email => {
+  const map = JSON.parse(localStorage.getItem('cartMap') || '{}');
+  const key = email || 'anonymous';
+  const cart = map[key] || [];
+  return cart;
+};
+
+const updateCartInLocalStorage = (email, cart) => {
+  const map = JSON.parse(localStorage.getItem('cartMap') || '{}');
+  const key = email || 'anonymous';
+  map[key] = cart;
+  localStorage.setItem('cartMap', JSON.stringify(map));
+};
+
 /**
- * 
- * @param {{children : React.ReactNode}} props 
+ * @param {{
+ *  children: React.ReactNode;
+ * }} props Component props
  */
 const CartProvider = (props) => {
-
   const userContext = useContext(UserContext);
-  const cartMap = JSON.parse(localStorage.getItem('cartMap') || '{}');
-  const cartkey = userContext.user?.email || 'anonymous';
   const user = userContext.user;
-  // const cartLocalStorge= JSON.parse(localStorage.getItem('cart')||'[]')
-  /*be lik :*/
-  const cartLocalStorage = cartMap[cartkey] || [];
-  const [cart, dispatch] = useReducer(reducer, cartLocalStorage);
+  const cartFromLocalStorage = getCartFromLocalStorage(user?.email);
 
-  useEffect(() => {
-    const cartMap = JSON.parse(localStorage.getItem('cartMap') || '{}');
-    cartMap[userContext.user?.email || 'anonymous'] = cart;
-    localStorage.setItem('cartMap', JSON.stringify(cartMap));
-  }
-    , [cart]);
+  const [cart, dispatch] = useReducer(reducer, cartFromLocalStorage);
 
+  useEffect(() => updateCartInLocalStorage(user?.email, cart), [cart]);
 
-  useEffect(() => {
-    const cartMap = JSON.parse(localStorage.getItem('cartMap') || '{}');
-    cartMap[userContext.user?.email || 'anonymous'] = cart;
-    dispatch({ type: 'SET', cart: cart });
-  }, [user]);
+  useEffect(() => dispatch({ type: 'SET', cart: getCartFromLocalStorage(user?.email) }), [user]);
 
   return (
     <CartContext.Provider value={{ cart, dispatch }}>

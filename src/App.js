@@ -68,6 +68,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div >
+      
       </CartProvider>
     </UserProvider>
   );
