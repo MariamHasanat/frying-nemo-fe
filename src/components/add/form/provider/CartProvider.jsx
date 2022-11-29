@@ -1,7 +1,7 @@
 import React , { useReducer } from 'react'
 import { useContext } from 'react';
 import { useEffect } from 'react';
-import {reducer } from '../../../../reducer/reducer'
+import { reducer } from '../../../../reducer/reducer'
 import { UserContext } from './UserProvider';
 export const CartContext = React.createContext(null);
 

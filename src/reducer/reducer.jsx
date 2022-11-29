@@ -44,15 +44,15 @@ const reducer = (cart , action) => {
 
     }
      }
-     case "Delete": {
+     case 'Delete': {
        return cart.filter(cartItem => cartItem.meal.id !== action.meal.id);
       }
 
-      case "Clear": {
+      case 'Clear': {
         return [] ;
       }
 
-      case "Set": {
+      case 'Set': {
         return action.cart;
       }
   
