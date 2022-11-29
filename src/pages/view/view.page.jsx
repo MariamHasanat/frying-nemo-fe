@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { UserContext } from '../../components/providers/user-provider.component';
+import { useSearchParams } from 'react-router-dom';
 import Spinner from '../../components/core/spinner/spinner.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import Item from '../../components/view/item/item.component';
@@ -26,21 +25,22 @@ const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
-  const userContext = useContext(UserContext);
   const cartContext = useContext(CartContext);
-  const navigate = useNavigate();
   const searchTermsFromURL = params.get('searchTerms') || '';
   const categoriesFromURL = params.getAll('category') || '';
 
-  const getMenuItems = () => {
+  const getMenuItems = async () => {
     setLoading(true);
-
-    // Run the code inside after 1000 milliseconds (1 Second)
-    setTimeout(() => {
-      const items = JSON.parse(localStorage.menuItems || '[]');
-      setMenuItems(items);
-      setLoading(false);
-    }, 1000);
+    fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/')
+      .then(async (res) => {
+        const jsonRes = await res.json();
+        setMenuItems(jsonRes);
+      })
+      .catch((error) => {
+        alert(error.toString());
+      });
+    // const items = JSON.parse(localStorage.menuItems || '[]');
+    setLoading(false);
   };
 
   useEffect(() => {
