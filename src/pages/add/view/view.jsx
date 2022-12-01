@@ -11,6 +11,7 @@ import { useContext } from 'react';
 import { UserContext } from '../../../components/provider/provider';
 import { getQuantity } from '../../../util/util';
 import { CartContext } from '../../../components/provider/cartprovider';
+import { getItemsApi } from '../../../components/add/form/data/items';
 
 /**
  * @type {Array<{
@@ -27,25 +28,25 @@ const View = (props) => {
   const cartContext = useContext(CartContext);
   const [menuItem, setMenuItem] = useState(initialItems);
   const [loading, setLoading] = useState(true);
-  const userContext = useContext(UserContext)
+  const userContext = useContext(UserContext);
   // const [Search, SetSearch] = useState('');
   const [param, SetParam] = useSearchParams();
   const searchFromUrl = param.get('search') || '';
   const categoriesFromURL = param.getAll('category') || '';
   console.log(searchFromUrl);
-  const[max,setMax]=useState();
-  const[min,setMin]=useState();
+  const [max, setMax] = useState();
+  const [min, setMin] = useState();
   const navigate = useNavigate();
   // const setItemSearchInLocalStoreg=(value)=>{
   //   localStorage.setItem("the informathion search",value);
   //   SetSearch(value);[]F
 
   // }
- useEffect(()=>{
-  if(!userContext.user?.id){
-    navigate ('/login');
-  }
- },[])
+  useEffect(() => {
+    if (!userContext.user?.id) {
+      navigate('/login');
+    }
+  }, []);
 
   const filterItem = menuItem.filter(item => {
     console.log(item);
@@ -59,10 +60,10 @@ const View = (props) => {
     if (categoriesFromURL.length) {
       match = match && (categoriesFromURL.includes(item.category));
     }
-    if(min)
-     match= match&&(item.price>= min);
-     if(max)
-     match= match&&(item.price<= max);
+    if (min)
+      match = match && (item.price >= min);
+    if (max)
+      match = match && (item.price <= max);
     return match;
   });
   /**
@@ -85,20 +86,18 @@ const View = (props) => {
   };
 
 
-  const getMenuItem = () => {
+  const getMenuItems = async () => {
     setLoading(true);
+    const items = await getItemsApi();
+    setMenuItem(items);
+    setLoading(false);
 
-    setTimeout(() => {
-      const items = JSON.parse(localStorage.menuItem || '[]');
-      setMenuItem(items);
-      setLoading(false);
-    }, 2000);
 
   };
   useEffect(() => {
-    getMenuItem();
+    getMenuItems();
   }, []);
- 
+
   return (
     <div className='view-page'>
       <h1>View menu item </h1>
@@ -118,16 +117,16 @@ const View = (props) => {
             <div className="items-container">
               {
                 filterItem.length
-                  ? filterItem.map((item, index) => 
-                  <Item  
-                   data={item}
-                    key={item.name + index} 
-                    dispatch={cartContext.dispatch} 
-                    cartQuantity={getQuantity(item.id,cartContext.cart)}
+                  ? filterItem.map((item, index) =>
+                    <Item
+                      data={item}
+                      key={item.name + index}
+                      dispatch={cartContext.dispatch}
+                      cartQuantity={getQuantity(item.id, cartContext.cart)}
                     />
-                    )
-                  
-                    : (
+                  )
+
+                  : (
                     <div className="no-results">
                       <img src="./frustrated-realistic.jpg" alt="No results" />
                       <p>No results found</p>
