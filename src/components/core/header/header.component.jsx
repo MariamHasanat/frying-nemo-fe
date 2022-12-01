@@ -37,8 +37,7 @@ const Header = (props) => {
                   Login
                 </Link>
                 )
-              
-            
+
           }
           <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
             View

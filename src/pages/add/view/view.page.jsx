@@ -4,11 +4,13 @@ import { useState } from 'react';
 import FilterBar from '../../../components/view/item/item/filter-bar/filter-bar.component';
 import { useEffect } from 'react';
 import Spinner from '../../../components/core/header/spinner/spinner.component';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams} from 'react-router-dom';
 import { useContext } from 'react';
-import { UserContext } from '../../../components/provider/user-provider.component';
 import { CartContext } from '../../../components/provider/cart.provider';
 import { getCartQuantity } from '../../../utils/cart';
+import getItems from '../../../services/item';
+
+        
 
 /**
  * @type {Array<{
@@ -23,29 +25,37 @@ import { getCartQuantity } from '../../../utils/cart';
  */
 const initialItems = [];
 
-const ViewPage = (props) => {
+const ViewPage = () => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
  const cartContext = useContext(CartContext);
-  const userContext = useContext(UserContext);
-  const navigate = useNavigate();
   const searchTermsFromURL = params.get('searchTerms') || '';
   const categoriesFromURL = params.getAll('category') || '';
 
-  const getMenuItems = () => {
+  const getMenuItems = async () => {
     setLoading(true);
+    const items = await getItems();
+    setMenuItems(items);
+    setLoading(false);
 
     // Run the code inside after 1000 milliseconds (1 Second)
-    setTimeout(() => {
+    /*setTimeout(() => {
       const items = JSON.parse(localStorage.menuItems || '[]');
       setMenuItems(items);
       setLoading(false);
     }, 1000);
-  };
+  };*/
+ 
+
+};
 
   useEffect(() => {
-   
+    // To check if the user is already logged in, send him to the view page
+   /* if (!userContext.user?.id) {
+      navigate('/login', { replace: false });
+    }*/
+
     getMenuItems();
   }, []);
 
