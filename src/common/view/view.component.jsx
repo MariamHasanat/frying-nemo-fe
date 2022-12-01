@@ -6,6 +6,7 @@ import FilterBar from './filture/filter-bar.companent';
 import {getCartQuantity} from '../../utilit/cart';
 import { UserContext } from '../../components/provider/provider.component';
 import { CartContext } from '../../components/provider/cart-provider.component';
+import { getItems } from '../../data/items';
 
 const ViewPage = (props) => {
   /**
@@ -35,19 +36,23 @@ const ViewPage = (props) => {
   /**
     * @param {string} value
     */
-  const getMenuItems = () => {
+  const getMenuItems =async () => {
     setLoading(true);
+    const data = await getItems();
+    setMenuItems(data);
+    setLoading(false);
     // Run the code inside after 1000 milliseconds (1 Second)
-    setTimeout(() => {
-      const items = JSON.parse(localStorage.menuItems || '[]');
+    // setTimeout(() => {
+    //   const items = JSON.parse(localStorage.menuItems || '[]');
 
-      setMenuItems(items);
-      setLoading(false);
-    }, 1000);
+    //   setMenuItems(item);
+    //   setLoading(false);
+    // }, 1000);
   };
 
   useEffect(() => {
     getMenuItems();
+    
   }, []);
   
 

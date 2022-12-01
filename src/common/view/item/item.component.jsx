@@ -22,7 +22,7 @@ const Items = (props) => {
   return (
     <div className="item-page">
       <div className='image'>
-        <img src={props.data.image}  />
+        <img src={`${props.data.image}?x=${Math.random()}`}   />
       </div>
       <div className="details">
         <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>

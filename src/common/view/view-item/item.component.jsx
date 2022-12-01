@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import './item.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import Items from '../item/item.component';
 import {getItem }from '../../../data/items';
 import "../../header/header.css";
 import { getCartQuantity } from '../../../utilit/cart';
@@ -28,15 +27,20 @@ const ViewItemPage = (props) => {
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const cartContext = useContext(CartContext);
-  useEffect(() => {
+  useEffect( () => { 
+
     setLoading(true);
-   const item =getItem(params.id);
+   const item =getItem(params.id)
    if (item === null) {
     navigate('/404')
-   }
+   } 
+    item
+   .then((items)=>{
+    setCurrentItem(items);
+   });
       setCurrentItem(item);
       setLoading(false);
-  }, [params.id]);
+  }, []);
 
 
   return (
@@ -53,7 +57,7 @@ const ViewItemPage = (props) => {
             <div className="info">
               <p><b>Item Description: </b> {currentItem.description}</p>
               <p className="ingredients"><b>Ingredients:</b>
-                <br />{currentItem.ingredients.join(", ")}</p>
+                <br />{currentItem.ingredients}</p>
             </div>
             <Price
               item={currentItem}
