@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import './view-item.css';
-import { getItem } from '../../services/items';
+import { getSingleItem } from '../../services/items';
 import Spinner from '../../components/core/spinner/spinner.component';
 import PriceBar from '../../components/common/PriceBar/PriceBar';
 import { getCartQuantity } from '../../data/getCartQuantity';
@@ -21,19 +21,27 @@ import { useContext } from 'react';
 
 const ViewItemPage = (props) => {
   const params = useParams();
-  const navigate = useNavigate();
-  const [currentItem, setCurrentItem] = useState(null);
+const nav=useNavigate()
+  const [currentItem, setCurrentItem] = useState({});
   const [loading, setLoading] = useState(true);
+
+
   const ContextCart = useContext(CartContext);
   useEffect(() => {
-    setLoading(true);
-    const item = getItem(params.id);
-    if (item === null) {
-      navigate("/404", { replace: true });
-    }
-    setCurrentItem(item);
-    setLoading(false);
+
+    singleItem();
   }, []);
+
+  const singleItem =() => {
+    setLoading(true);
+    getSingleItem(params.id)
+    .then(item => {
+      setCurrentItem(item);
+       if (item === null)
+  nav("/404",{return:false})
+    });
+    setLoading(false);
+  };
 
 
   return (
@@ -47,11 +55,8 @@ const ViewItemPage = (props) => {
           </div>
           <div className="info">
             <p><b>Item Description: </b> {currentItem.description}</p>
-            <p className="ingredients"><b>Ingredients:</b>
-              <br />{currentItem.ingredients.join(", ")}</p>
-       
           </div>
-          <PriceBar data={currentItem}   cartQuantity={getCartQuantity(currentItem.id,ContextCart.cart)}  />
+          <PriceBar data={currentItem} cartQuantity={getCartQuantity(currentItem.id, ContextCart.cart)} />
         </div>
       }
     </div>

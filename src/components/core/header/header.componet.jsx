@@ -26,7 +26,7 @@ const Header = (props) => {
           </span>
 
         </h1>
-loal
+
       </div>
       <div className="right">
 

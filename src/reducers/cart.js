@@ -1,6 +1,5 @@
 
 const reduce = (cart, action) => {
-  console.log(cart);
   switch (action.type) {
     case "ADD_CART_ITEM":
       return [...cart, { meal: action.meal, quantity: 1 }];
@@ -47,7 +46,12 @@ const reduce = (cart, action) => {
 
       return [];
     }
+    case 'SET':
+      return action.cart;
+  
+
   }
+  
   return cart;
 };
 

@@ -9,6 +9,7 @@ import { UserContext } from '../../App';
 import { CartContext } from '../../common/Provider/cart-provider-component';
 import Test from '../../common/Provider/Provider-commponet';
 import { getCartQuantity } from '../../data/getCartQuantity';
+import { getItems } from '../../services/items';
 
 const ViewPage = (props) => {
   /**
@@ -26,23 +27,19 @@ const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [Params, setParams] = useSearchParams();
-  const navigate = useNavigate();
   const searchURL = Params.get('searchTerms') || "";
   const categoryParams = Params.getAll('category') || "";
   const MINParams = Params.get('Min') || "";
   const MAXParams = Params.get('Max') || "";
-  const ContextUser = useContext(UserContext);
   const ContextCart = useContext(CartContext);
 
-  const getMenuItems = () => {
+  const getMenuItems =  async () => {
     setLoading(true);
-
-    // Run the code inside after 1000 milliseconds (1 Second)
     setTimeout(() => {
-      const items = JSON.parse(localStorage.menuItems || '[]');
-      setMenuItems(items);
       setLoading(false);
     }, 1000);
+const items=await getItems()
+    setMenuItems(items);
 
   };
 
