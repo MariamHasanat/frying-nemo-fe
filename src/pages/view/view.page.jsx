@@ -7,14 +7,12 @@ import FilterBar from './filter-bar/filter-bar.component';
 import { UserContext } from '../../components/providers/user-provider.component';
 import { CartContext } from '../../components/providers/cart-provider.component';
 import Jiji from '../../components/common/jiji-the-cat/jiji.component';
-// import NotFound from '../not-found/not-found.component';
+import { getAllItems } from '../../services/fetchItem';
 
-
-const getMenu = () => JSON.parse(localStorage.getItem('menu') || '[]');
 
 const ViewPage = (props) => {
     const navigate = useNavigate();
-    const [menu] = useState(getMenu);
+    const [menu, setMenu] = useState([]);
     const [loading, setLoading] = useState(true);
     const [params, setParams] = useSearchParams();
     const userContext = useContext(UserContext);
@@ -25,10 +23,15 @@ const ViewPage = (props) => {
     const priceMin = Number(params.getAll('priceMin')) || 0;
     const priceMax = Number(params.getAll('priceMax')) || 0;
 
-    // useEffect(() => {
-    //     if (!userContext.user)
-    //         navigate('/login');
-    // }, []);
+    const getMenu = async () => {
+        const items = await getAllItems();
+        console.log(items);
+        setMenu(items);
+    };
+
+    useEffect(() => {
+        getMenu();
+    }, []);
 
     const filteredMenu = menu
         .filter(
@@ -39,7 +42,7 @@ const ViewPage = (props) => {
                     || (item.ingredients.some(element => element.toLowerCase().includes(searchTerms.trim().toLowerCase())))
                 );
 
-                if (categoryFilters) {
+                if (categoryFilters.length) {
                     match = match && (categoryFilters.includes(item.category));
                 }
                 if (priceMin && priceMax) {

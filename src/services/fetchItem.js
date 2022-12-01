@@ -7,4 +7,13 @@ const getItem = (myId) => {
     return items.filter(item => item.id.toString() === myId)[0] || null;
 };
 
-export { getItem };
+/**
+ * Fetch all items from api 
+ */
+const getAllItems = () => {
+    return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/')
+        .then(res => res.json())
+        .catch(err => console.log(err));
+};
+
+export { getItem, getAllItems };
