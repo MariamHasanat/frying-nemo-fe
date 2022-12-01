@@ -11,7 +11,7 @@ const ItemCard = (props) => {
                 <div className="item-description">
                     <Link to={`/view/${props.item.id}`}>{props.item.name}</Link >
                     <p>{props.item.description}</p>
-                    <p><b>{props.item.ingredients.join(', ')}</b></p>
+                    <p><b>{props.item.ingredients?.join(', ')}</b></p>
                 </div>
                 <div className="buy-item">
                     <div className="price">

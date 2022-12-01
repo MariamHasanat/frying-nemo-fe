@@ -14,16 +14,19 @@ const ViewItemPage = (props) => {
     const navigate = useNavigate();
     const cartContext = useContext(CartContext);
 
-    useEffect(() => {
-        // setLoading(true);
-        const item = getItem(params.id);
-        if (item) {
-            setCurrentItem(item);
-        }
-        else {
-            navigate("/404", { replace: true });
-        }
+    const getCurrentItem = async () => {
+        const item = await getItem(params.id);
+        if (item) setCurrentItem(item);
+        
+        else navigate("/404", { replace: true });
+        
         setLoading(false);
+        return item;
+    };
+
+    useEffect(() => {
+        getCurrentItem();
+       
     }, [params.id]);
 
     const getItemQuantity = (id) => {
