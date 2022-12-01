@@ -33,15 +33,8 @@ const Cards =  (props) => {
 
 
   const getMenuItems = async () => {
-  fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/')
-  .then(async (res) => {
-    const jsonRes = await res.json();
-    setMenuItems(jsonRes);
-    console.log(jsonRes);
-  })
-  .catch((error) => {
-    alert(error.toString());
-  });
+    const items = await getItems();
+    setMenuItems (items);
 };
 
 useEffect (()=>{
