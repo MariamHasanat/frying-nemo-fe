@@ -9,7 +9,7 @@ import { CATEGORIES } from '../../data/data';
 import { useEffect } from 'react';
 import { UserContext } from '../../App';
 import { CartContext } from '../../components/providers/cart-provider';
-import { getItemsFromAPI } from '../../components/services/items';
+import { getItem, getItemsFromAPI } from '../../components/services/items';
 /**
    * @type {Array<
    * 
@@ -45,24 +45,36 @@ const ViewPage = (props) => {
   const maxFromURL = params.get("max") || '';
   const minFromURL = params.get("min") || '';
   const price = params.get("price") || '';
-  // const [price,setPrice] =useState(10)
 
   /**
          * Check if search terms are somewhere inside given string.
           @param {string} value 
          */
+
   // const setSearchInLocalStorage = (value) => {
   //   localStorage.setItem("search-Terms ", value);
   //   setSearch(value);
   // };
 
+
+
+  /*TODO:
+  *
+  *return single item from the API
+  * 
+  */
+
   useEffect(() => {
+ 
     if (!userContext.user?.id) {
       navigate('/login', { replace: false });
     }
 
     getItems();
   }, []);
+
+
+
 
   const filterItems = menuitems.filter(item => {
 

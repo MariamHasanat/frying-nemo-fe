@@ -29,10 +29,11 @@ const ViewItemPage = (props) => {
 
   useEffect(() => {
     const item = getItem(params.id);
-    setCurrentItem(item);
     if (item === null)
       navigate('/404', { replace: true });
-
+    else {
+      setCurrentItem(item);
+    }
   }, []);
 
 
@@ -44,7 +45,7 @@ const ViewItemPage = (props) => {
           ? <Card data={currentItem}
           // cartQuantity={getItemQuantity(currentItem.id, cartContext.cart)}
 
-           />
+          />
           : <span>Item Not Found!</span>
       }
     </div>
