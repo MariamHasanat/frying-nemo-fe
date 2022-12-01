@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './viewitem.css'
 import { useNavigate, useParams } from 'react-router-dom';
-import { getItem } from '../../../item';
+import { fetchItem } from '../../../services/items';
 import Card from '../Card/Card';
 import Spinner from '../../spinner/spinner.component';
 import { useContext } from 'react';
@@ -33,16 +33,18 @@ const ViewItemPage = (props) => {
       return 0;
     }
   }
-
-  useEffect(() => {
-    setLoading(true);
-    const item = getItem(params.id);
-    console.log("id",params.id);
+  const getItems = async() => {
+    const item = await fetchItem(params.id);
+     
     if(item === null) {
       navigate('/404');
     }
       setCurrentItem(item);
       setLoading(false);
+  }
+
+  useEffect(() => {
+    getItems();
   }, [params.id]);
 
 

@@ -42,7 +42,8 @@ const Form = (props) => {
       image,
       price: price,
       category: category,
-      ingredients: ingredients
+      ingredients: ingredients,
+      id: new Date()
     };
 
 

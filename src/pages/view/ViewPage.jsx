@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import Card from './Card/Card';
 import './viewpage.css';
+import { getMenu } from '../../services/items';
 import { CartContext } from '../../components/add/form/provider/CartProvider.jsx';
 
 // const getMenuItems = () => JSON.parse(localStorage.getItem('menuItem') || '[]');
@@ -44,13 +45,17 @@ const ViewPage = () => {
     }
   }
 
-  const getMenuItems = () => {
+  const getMenuItems = async () => {
     setLoading(true);
-    setTimeout(() => {
-      const items = JSON.parse(localStorage.getItem('menuItems') || '[]');
-      setMenuItems(items);
-      setLoading(false);
-    }, 1000);
+    const items = await getMenu();
+    setMenuItems(items);
+    console.log(items);
+    setLoading(false);
+   
+
+      // const items = JSON.parse(localStorage.getItem('menuItems') || '[]');
+      // setMenuItems(items);
+      // setLoading(false);
   };
 
   useEffect(() => {
