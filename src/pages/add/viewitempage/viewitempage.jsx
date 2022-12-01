@@ -29,14 +29,17 @@ const ViewItemPage = (props) => {
 
   useEffect(() => {
     setLoading(true);
-    const item = getItem(params.id);
-    console.log(params.id);
-    if (item === null) {//اذا دخل id غلط 
-      navigate("/404");
-    }
-    setCurrentItem(item);
-    setLoading(false);
 
+    getItem(params.id)
+      .then((item) => {
+        console.log(item)
+        if (item === null) {//اذا دخل id غلط 
+          navigate("/404");
+        }
+        setCurrentItem(item);
+        setLoading(false);
+      })
+    console.log(params.id);
   }, []);
 
 
@@ -44,29 +47,29 @@ const ViewItemPage = (props) => {
     <div className="view-item-page">
 
       {loading
-      ? <Spinner />
-      
-        
-         : <div className="item-details">
+        ? <Spinner />
 
-            <h1>{currentItem.name}</h1>
 
-            <div className="img">
-              <img src={currentItem.image} alt="food" />
-            </div>
-            <div className="info">
-              <p><b>Item Description: </b> {currentItem.description}</p>
-              <p className="ingredients"><b>Ingredients:</b>
-                <br />{currentItem.ingredients.join(",")}</p>
+        : <div className="item-details">
 
-            </div>
-          <PriceBox  
-           item={currentItem} 
-           dispatch={cartContext.dispatch} 
-           cartQuantity={getQuantity(currentItem.id,cartContext.cart)}
-            />
+          <h1>{currentItem.name}</h1>
+
+          <div className="img">
+            <img src={currentItem.image} alt="food" />
           </div>
-          
+          <div className="info">
+            <p><b>Item Description: </b> {currentItem.description}</p>
+            <p className="ingredients"><b>Ingredients:</b>
+              <br />{currentItem.ingredients?.join(",")}</p>
+
+          </div>
+          <PriceBox
+            item={currentItem}
+            dispatch={cartContext.dispatch}
+            cartQuantity={getQuantity(currentItem.id, cartContext.cart)}
+          />
+        </div>
+
       }
     </div>
 

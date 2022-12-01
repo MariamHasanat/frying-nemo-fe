@@ -11,7 +11,7 @@ import { useContext } from 'react';
 import { UserContext } from '../../../components/provider/provider';
 import { getQuantity } from '../../../util/util';
 import { CartContext } from '../../../components/provider/cartprovider';
-import { getItemsApi } from '../../../components/add/form/data/items';
+import { fetchItemsApi, getItemsApi } from '../../../components/add/form/data/items';
 
 /**
  * @type {Array<{
@@ -88,7 +88,7 @@ const View = (props) => {
 
   const getMenuItems = async () => {
     setLoading(true);
-    const items = await getItemsApi();
+    const items = await fetchItemsApi();
     setMenuItem(items);
     setLoading(false);
 
