@@ -6,7 +6,6 @@ import { UserContext } from "./user-provider";
 
 export const CartContext = React.createContext(null);
 
-
 const updateCartInLocalStorage = (email, cart) => {
   const cartMap = JSON.parse(localStorage.getItem('cartMap') || '{}');
   cartMap[email || 'anonymous'] = cart;

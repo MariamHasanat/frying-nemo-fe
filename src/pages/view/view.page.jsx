@@ -7,7 +7,8 @@ import './view.css';
 import { useContext } from 'react';
 import { getItemQuantity } from '../../utilities/get-item-quantity';
 import { CartContext } from '../../components/providers/cart-provider';
-const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]');
+import { getItems } from '../../services/items';
+// const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]');
 
 /**
  * @type {Array<{
@@ -38,8 +39,17 @@ const View = (props) => {
   const searchParamFromURl = params.get('search') || '';
   const categoryFromURl = params.getAll('category') || '';
 
+  // useEffect(() => {
+  //   getItems().then(items => {
+  //     setMenuItems(items);
+  //   });
+  // }, []);
+
   useEffect(() => {
-    setMenuItems(getMenuItems());
+    const getData = async () => {
+      setMenuItems(await getItems());
+    };
+    getData();
   }, []);
 
 
