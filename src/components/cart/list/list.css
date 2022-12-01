@@ -1,7 +1,14 @@
 .no-results > img {
   width: 280px;
 }
-
+.cart-list{
+  width: 50%;
+  height: 90%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow: auto;
+}
 .cart-empty-image{
   background-image: url("./empty_cart.png");
   width: 300px;
