@@ -2,10 +2,21 @@
   padding: 30px 20px;
   max-width: 60vw;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
 }
 
 .cart-page>ul.cart-list {
   padding: 0;
   margin: 0;
   list-style-type: none;
+}
+.row-cart-clear{
+
+  display: flex;
+  
+  justify-content: space-between;
+  
 }
