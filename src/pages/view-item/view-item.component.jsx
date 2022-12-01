@@ -1,27 +1,34 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './view-item.css';
-import { getItem } from '../../services/item';
+import { fetchItem, getItem } from '../../services/item';
 import Spinner from '../../components/core/spinner/spinner.component';
 import PriceBar from '../../components/view/price-bar/price-bar.component';
 import { getCartQuantity } from '../../utilities/get-item-quantity';
 import { useContext } from 'react';
 import { CartContext } from '../../components/provider/cart-provider.component';
+
+
 const ViewItemPage = (props) => {
   const params = useParams();
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
-  const cartContext = useContext(CartContext)
+  const cartContext = useContext(CartContext);
 
-  useEffect(() => {
+
+  const getItem = async () => {
     setLoading(true);
-    const item = getItem(params.id);
+    const item = await fetchItem(params.id);
     if (item === null) {
       navigate("/404", { replace: true });
     }
     setCurrentItem(item);
     setLoading(false);
+  };
+
+  useEffect(() => {
+    getItem();
   }, []);
 
   return (

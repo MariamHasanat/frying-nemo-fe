@@ -8,7 +8,7 @@ import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import Item from '../../components/view/item/item.component';
 import './view.css';
 import { getCartQuantity } from '../../utilities/get-item-quantity';
-import { getItems } from '../../services/item';
+import { getItem, getItems } from '../../services/item';
 
 /**
  * @type {Array<{
@@ -36,6 +36,7 @@ const ViewPage = () => {
   const getMenuItems = async () => {
     setLoading(true);
     const items = await getItems();
+
     setMenuItems(items);
     setLoading(false);
   };
