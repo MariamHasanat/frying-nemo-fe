@@ -8,6 +8,7 @@ import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import Item from '../../components/view/item/item.component';
 import './view.css';
 import { getCartQuantity } from '../../utilities/get-item-quantity';
+import { getItems } from '../../services/item';
 
 /**
  * @type {Array<{
@@ -22,7 +23,7 @@ import { getCartQuantity } from '../../utilities/get-item-quantity';
  */
 const initialItems = [];
 
-const ViewPage = (props) => {
+const ViewPage = () => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
@@ -32,19 +33,14 @@ const ViewPage = (props) => {
   const searchTermsFromURL = params.get('searchTerms') || '';
   const categoriesFromURL = params.getAll('category') || '';
 
-  const getMenuItems = () => {
+  const getMenuItems = async () => {
     setLoading(true);
-
-    // Run the code inside after 1000 milliseconds (1 Second)
-    setTimeout(() => {
-      const items = JSON.parse(localStorage.menuItems || '[]');
-      setMenuItems(items);
-      setLoading(false);
-    }, 1000);
+    const items = await getItems();
+    setMenuItems(items);
+    setLoading(false);
   };
 
   useEffect(() => {
-    // To check if the user is already logged in, send him to the view page
     if (!userContext.user?.id) {
       navigate('/login', { replace: false });
     }

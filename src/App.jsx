@@ -22,7 +22,6 @@ function App() {
             <Route path="/" element={<Navigate to="/view" replace />} />
             <Route path="/view" element={<ViewPage />} />
             <Route path="/cart" element={< CartPage/>} />
-
             <Route path="/view-details/:id" element={<ViewItemPage />} />
             <Route path="/*" element={<NotFoundPage />} />
           </Routes>
