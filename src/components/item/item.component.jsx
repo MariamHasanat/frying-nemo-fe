@@ -13,7 +13,9 @@ import PriceBar from '../price-bar/price-bar.component';
  *     description: string;
  *     price: number;
  *     category: string;
- *     ingredients: string[];
+ *     ingredients
+
+: string[];
  *    },
  *    dispatch: React.DispatchWithoutAction
  *   }} props
@@ -28,9 +30,11 @@ const Item = (props) => {
       </div>
       <div className="info">
       <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
-        <p> desc{props.data.Description}</p>
-        <p className="ingredients">{ props.data.Ingredients && props.data.Ingredients.join(",")}</p>
-        {/* instead of join you can use // map((ing, i) => ing + (i < props.data.ingredients.length - 1 ? ', ' : ' ')) */}
+        <p> desc{props.data.description}</p>
+        <p className="ingredients">{ props.data.ingredients && props.data.ingredients.join(",")}</p>
+        {/* instead of join you can use // map((ing, i) => ing + (i < props.data.ingredients
+
+.length - 1 ? ', ' : ' ')) */}
       </div>
      <PriceBar item={props.data} dispatch={props.dispatch} cartQuantity={props.cartQuantity} />
     </div>

@@ -12,8 +12,10 @@ const CartRow = (props) => {
       <img src={meal.image} alt="meal" />
       <div className="main-info">
         <h2>{meal.name}</h2>
-        <span className="item-price">
-          ${meal.Price}
+        <span className="item-price
+">
+          ${meal.price
+}
           &nbsp;&nbsp;|&nbsp;&nbsp;
           <span>In Stock</span></span>
 
@@ -25,8 +27,10 @@ const CartRow = (props) => {
         </div>
       </div>
 
-      <div className="total-price">
-        <h3> ${meal.Price*quantity} </h3>
+      <div className="total-price
+">
+        <h3> ${meal.price
+*quantity} </h3>
         <button onClick={deleteItem} >
           <img src={trashIcon} alt="delete"onClick={deleteItem} />Delete</button>
       </div>

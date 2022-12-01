@@ -17,7 +17,8 @@ const CartList = (props) => {
   }
   let total =0;
   for(const item of cartContext.cart){
-    total += item.quantity * item.meal.Price ;
+    total += item.quantity * item.meal.price
+ ;
   }
   return (
 

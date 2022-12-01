@@ -8,6 +8,7 @@ import FilterBar from './filter-bar/filter-bar.component';
 import { CartContext } from '../../components/providers/cart-provider.component';
 import { UserContext } from '../../components/providers/user-provider.component';
 import { getCartQuantity } from '../../utils/cart';
+import { getItems } from '../../services/item';
 
 
 /**
@@ -23,7 +24,7 @@ import { getCartQuantity } from '../../utils/cart';
  */
 const initialItems = [];
 
-const ViewPage = (props) => {
+const ViewPage = (props) => {console.log("from view pGE ")
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
@@ -39,15 +40,19 @@ const ViewPage = (props) => {
   const navigate = useNavigate();
  
   console.debug('searchTerms =', searchTermsFromURL);
-  const getMenuItems = () => {
+
+  const getMenuItems = async () => {
     setLoading(true);
+    const items = await getItems();
+    setMenuItems(items);
+    setLoading(false);
 
     // Run the code inside after 1000 milliseconds (1 Second)
-    setTimeout(() => {
-      const items = JSON.parse(localStorage.menuItems || '[]');
-      setMenuItems(items);
-      setLoading(false);
-    }, 1000);
+    // setTimeout(() => {
+    //   const items = JSON.parse(localStorage.menuItems || '[]');
+    //   setMenuItems(items);
+    //   setLoading(false);
+    // }, 1000);
   };
 
   useEffect(() => {
@@ -107,7 +112,8 @@ const ViewPage = (props) => {
     setParams(newParams);
   };
 
-
+ 
+  
 
   return (
     <div className="view-page">

@@ -47,7 +47,7 @@ import { UserContext } from '../../providers/user-provider.component';
             
   )
   }
-  <Link to ="/view " className={location.pathname === "/view" ? 'current' : ''} >
+  <Link to="/view" className={location.pathname === "/view" ? 'current' : ''} >
     view 
   </Link>
 

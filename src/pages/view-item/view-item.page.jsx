@@ -1,7 +1,7 @@
-import {React, useState, useEffect } from 'react';
+import { React, useState, useEffect } from 'react';
 import './view-item.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getItem } from '../../services/item';
+import { getItem, getItems } from '../../services/item';
 import Spinner from '../../components/core/spinner.component';
 import PriceBar from '../../components/price-bar/price-bar.component';
 import { getCartQuantity } from '../../utils/cart';
@@ -29,41 +29,44 @@ const ViewItemPage = (props) => {
 
   useEffect(() => {
     setLoading(true);
-    const item = getItem(params.id);
-    if (item === null) {
-      navigate("/404", { replace: true });
+    getItem(params.id)
+    .then( (item)=>{  
+     
+      setCurrentItem(item);
+      if (item === null) {
+        navigate("/404", { replace: true });
+      }  
+       setLoading(false);
     }
 
-    setCurrentItem(item);
-    setLoading(false);
+    );
+
+
   }, []);
   //ممكن تنشال
-
-
-
   return (
     <div className="view-item-page">
-    {loading
-      ? <Spinner />
-      : <div className="item-details">
-        <h1>{currentItem.name}</h1>
-        <div className="img">
-          <img src={currentItem.image} alt="food" />
-        </div>
-        <div className="info">
-          <p><b>Item Description: </b> {currentItem.description}</p>
-          <p className="ingredients"><b>Ingredients:</b>
-            <br />{currentItem.ingredients.join(", ")}</p>
-        </div>
-        <PriceBar 
-          item={currentItem}
+      {loading
+        ? <Spinner />
+        : <div className="item-details">
+          <h1>{currentItem.name}</h1>
+          <div className="img">
+            <img src={currentItem.image} alt="food" />
+          </div>
+          <div className="info">
+            <p><b>Item Description: </b> {currentItem.description}</p>
+            <p className="ingredients"><b>Ingredients:</b>
+              <br />{currentItem.ingredients.join(" , ")}</p>
+          </div>
+          <PriceBar
+            item={currentItem}
             dispatch={cartContext.dispatch}
             cartQuantity={getCartQuantity(currentItem.id, cartContext.cart)}
-/>
-        
-      </div>
-    }
-  </div>
+          />
+
+        </div>
+      }
+    </div>
 
   );
 };
