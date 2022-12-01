@@ -26,11 +26,15 @@ const ViewItemPage = () => {
   const [loading, setLoading] = useState(true);
   const cartContext = useContext(CartContext); 
 
-  useEffect(() => {
+  const getItem = async ()  =>{
     setLoading(true);
-    const item = getItem(params.id);
+    const item = await getItem(params.id);
     setCurrentItem(item);
     setLoading(false);
+  }
+  useEffect(() => {
+    getItem()
+  
   }, []);
 
 

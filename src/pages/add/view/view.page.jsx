@@ -35,9 +35,20 @@ const ViewPage = () => {
 
   const getMenuItems = async () => {
     setLoading(true);
-    const items = await getItems();
+    fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/')
+    .then(async (res) => {
+      const jsonRes = await res.json();
+      setMenuItems(jsonRes);
+    })
+    .catch((error) => {
+      alert(error.toString());
+    });
+  // const items = JSON.parse(localStorage.menuItems || '[]');
+  setLoading(false);
+
+   /* const items = await getItems();
     setMenuItems(items);
-    setLoading(false);
+    setLoading(false);*/
 
     // Run the code inside after 1000 milliseconds (1 Second)
     /*setTimeout(() => {
