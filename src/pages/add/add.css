@@ -13,10 +13,7 @@ h1{
   position: fixed;
   right: 20px;
   bottom: 66px;
-  background-color: #a44a2a33;
+  background-color: #efc6b9;
   padding: 6px 18px;
   border-radius: 19px 36px;
-}
-.add-page span{
-  /* margin-left: 20px; */
 }

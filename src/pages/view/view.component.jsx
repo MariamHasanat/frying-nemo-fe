@@ -6,6 +6,7 @@ import { UserContext } from "../../components/providers/user-provider";
 import AddDeleteItem from "./add-delete/add-delete.componenet";
 import { getCartQuantity } from "../../utility/cart";
 import { CartContext } from "../../components/providers/cart-provider.component";
+import { fetchItems, getItem, getItems } from "../../services/items";
 
 /**
  * @type {Array<{
@@ -32,14 +33,11 @@ const ViewPage = (props) => {
   const minValue = params.get("minValue") || "";
   const maxValue = params.get("maxValue") || "";
 
-  const getMenuItems = () => {
+  const getMenuItems = async () => {
     setLoading(true);
-
-    setTimeout(() => {
-      const items = JSON.parse(localStorage.menuItems || "[]");
-      setMenuItems(items);
-      setLoading(false);
-    }, 1000);
+    const items = await fetchItems();
+    setMenuItems(items);
+    setLoading(false);
   };
 
   // When the page rendered for the first time

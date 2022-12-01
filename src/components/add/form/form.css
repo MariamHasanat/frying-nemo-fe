@@ -12,6 +12,8 @@
   outline: none;
   color: #fff;
   background-color: #4CAF50;
+  background-color: #efc6b9;
+    color: black;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
@@ -21,11 +23,13 @@
 }
 
 .add-form .create:hover {
-  background-color: #3e8e41
+  background-color: #3e8e41;
+  background-color: #e9a691;
 }
 
 .add-form .create:active {
   background-color: #3e8e41;
+  background-color: #efc6b9;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }

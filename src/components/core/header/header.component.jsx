@@ -22,34 +22,40 @@ const Header = (props) => {
         <p>Frying Nemo</p>
       </div>
       <div className="right">
-        <Link className="cart-click" to="/cart">
-          <img src={process.env.PUBLIC_URL + "/shopping-cart.png"} alt="" width={30} />
-          <span className="cart">{totalCartQuantity}</span>
-        </Link>
         <nav>
-          <Link
-            to="/add"
-            className={location.pathname === "/add" ? "add" : ""}
-          >
-            Add
-          </Link>
-          <Link
-            to="/view"
-            className={location.pathname === "/view" ? "view" : ""}
-          >
+          {
+            userContext.user ? (
+              <Link to="/add" className={location.pathname === "/add" ? 'add' : ''}>
+                Add
+              </Link>
+            ) : (
+              <Link to="/login" className={location.pathname === "/login" ? 'login' : ''}>
+                Login
+              </Link>
+            )
+          }
+          <Link to="/view" className={location.pathname === "/view" ? 'view' : ''}>
             View
           </Link>
         </nav>
-        {userContext.user && (
+        <Link className="cart" to="cart">
+          <img src={process.env.PUBLIC_URL + "/shopping-cart.png"} alt="" width={30} />
+          <span className="count">{totalCartQuantity}</span>
+        </Link>
+        {
+          userContext.user &&
           <span className="user-badge">
             <span className="user-name">{userContext.user.fullName}</span>
-            <button className="logout" onClick={() => {
-              userContext.setUser(null);
-              navigate('/login');
-            }
-            }>Logout</button>
+            <button className="logout"
+              onClick={() => {
+                userContext.setUser(null);
+                navigate('/login');
+              }}
+            >
+              Logout
+            </button>
           </span>
-        )}
+        }
       </div>
     </div>
   );

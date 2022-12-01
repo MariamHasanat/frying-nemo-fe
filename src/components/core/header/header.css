@@ -5,10 +5,12 @@
   align-items: center;
   flex-wrap: wrap;
 }
-.main-class .logo{
+
+.main-class .logo {
   min-width: 70%;
 }
-.main-class .right{
+
+.main-class .right {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -16,11 +18,13 @@
   flex-grow: 1;
 
 }
-.right .cart{
+
+.right .cart {
   margin-right: 23PX;
   margin-left: 10px;
 }
-.main-class .right a{
+
+.main-class .right a {
   color: #000;
   text-decoration: none;
   padding: 10px;
@@ -29,24 +33,44 @@
   cursor: pointer;
   background-color: #fff;
   box-shadow: 3px 3px 3px 1px #dbc4c4;
-
-}
-.main-class .right a:focus{
-  background-color: brown;
-  color: #fff;
-}
-.user-badge{
-  display: flex;
-  gap:20px;
-}
-.user-badge .user-name{
-  border: 1px solid #b70f0f;
-  background-color: #eee;
   padding: 10px;
 }
-.user-badge .logout:focus{
+
+.main-class .right .cart {
+  padding: 5px;
+}
+
+.main-class .right a:focus {
+  background-color: brown;
+  background-color: #efc6b9;
+  /* color: #fff; */
+}
+
+.user-badge {
+  display: flex;
+  gap: 20px;
+}
+
+.user-badge .user-name {
+  /* box-shadow: 2px 2px 4px 0px #888888; */
+  box-shadow: inset 0px 0px 6px 0px #888888;
+  background-color: #eee;
+  padding: 10px;
+  background-color: #efc6b9;
+}
+
+.user-badge .logout {
+  cursor: pointer;
+  border: none;
+  padding: 10px 15px;
+  box-shadow: inset 0px 0px 6px 0px #888888;
+  background-color: #efc6b9;
+}
+
+.user-badge .logout:focus {
   cursor: pointer;
 }
-.cart-click:focus{
+
+.cart-click:focus {
   color: #fff;
 }

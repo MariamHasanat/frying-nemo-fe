@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./view-item.css";
 import { useParams } from "react-router-dom";
-import { getItem } from "../../services/items";
+import { fetchItem } from "../../services/items";
 import Item from "../../components/view/item/item.component";
 import { getCartQuantity } from "../../utility/cart";
 import { useContext } from "react";
@@ -24,14 +24,20 @@ const ViewItemPage = (props) => {
   const [loading, setLoading] = useState(true);
   const cartContext = useContext(CartContext);
 
-  useEffect(() => {
+  const getItem = async () => {
     setLoading(true);
-    const item = getItem(params.id);
-    if (params.id) {
+    const item = await fetchItem(params.id);
+    console.log(item);
+    if (item !== null) {
       setCurrentItem(item);
       setLoading(false);
+    } else {
+      setLoading(false);
     }
-  }, [params.id]);
+  };
+  useEffect(() => {
+    getItem();
+  }, []);
 
   return (
     <div className="view-item-page">
@@ -63,10 +69,10 @@ const ViewItemPage = (props) => {
           cartQuantity={getCartQuantity(currentItem.id, cartContext.cart)}
         />
       ) : (
-        <span>Item Not Found!</span>
+        <img src={process.env.PUBLIC_URL + "/Error-404-02.jpg"} alt="" width={700} />
       )}
     </div>
   );
-};
+};//Error-404-02
 
 export default ViewItemPage;
