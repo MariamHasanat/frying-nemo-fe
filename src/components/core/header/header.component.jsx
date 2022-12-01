@@ -5,7 +5,7 @@ import { CartContext } from '../../providers/cart.provider.component';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../../providers/user.provider.component";
 const Header = (props) => {
-  const locatoin = useLocation();
+  const location = useLocation();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
   const cartContext = useContext(CartContext);
@@ -19,10 +19,23 @@ const Header = (props) => {
         <h1>Frying Nemo</h1>
       </div>
       <div className="right">
-        <nav>
-        <Link to="/add" className={locatoin.pathname === "/add"?"current" : ""}>Add</Link>
-        <Link to="/view" className={locatoin.pathname === "/view"?"current" : ""}>View</Link>
+      <nav>
+          {
+            userContext.user ? (
+              <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
+                Add
+              </Link>
+            ) : (
+              <Link to="/login" className={location.pathname === "/login" ? 'current' : ''}>
+                Login
+              </Link>
+            )
+          }
+          <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
+            View
+          </Link>
         </nav>
+
         <Link className="cart" to="cart">
           <img src={cartIcon} alt="cart icon" />
           <span className="count">{totalCartQuantity}</span>

@@ -31,7 +31,7 @@ const CartProvider = (props) => {
     updateCartFromLocalStorage(userContext.user?.email, cart);
   }, [cart]);
 
-  useEffect(() => console.debug('user updated'), [userContext.user])
+  // useEffect(() => console.debug('user updated'), [userContext.user])
   useEffect(() => dispatch({ type : 'SET' , cart: GetCartFromLocalStorage(userContext.user?.email) }),[userContext.user]);
   return (
     <CartContext.Provider value={{ cart, dispatch }}>

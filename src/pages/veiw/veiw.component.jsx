@@ -7,7 +7,7 @@ import "./veiw.css";
 import { getCartQuantity } from "../../utils/cart";
 import { useContext } from "react";
 import { CartContext } from '../../components/providers/cart.provider.component';
-
+import { getItems } from "../../services/items";
 /**
  * @type {Array<{
  * name: string;
@@ -29,15 +29,18 @@ const Addveiw = (props) => {
   const categoriesFromURL = params.getAll("category") || "";
   const userContext = useContext(UserContext);
   const cartContext = useContext(CartContext);
-  const getMenuItems = () => {
+  const getMenuItems = async () => {
     setLoading(true);
+    const items = await getItems();
+    // console.log(items);
+    setMenuItems(items);
+    // // Run the code inside after 1000 milliseconds (1 Second)
+    // setTimeout(() => {
+    //   const items = JSON.parse(localStorage.menuItems || "[]");
+    //   setMenuItems(items);
+    //   setLoading(false);
+    // }, 1000);
 
-    // Run the code inside after 1000 milliseconds (1 Second)
-    setTimeout(() => {
-      const items = JSON.parse(localStorage.menuItems || "[]");
-      setMenuItems(items);
-      setLoading(false);
-    }, 1000);
   };
   useEffect(() => {
     // To check if the user is already logged in, send him to the view page

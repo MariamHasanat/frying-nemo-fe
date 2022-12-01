@@ -1,10 +1,13 @@
   const CATEGORIES = [
-  "Fish",
-  "drink",
-  "Main Dishes",
-  "Chocolate",
-  "Salads",
-  "Sandowich",
+    "Fish",
+    "Drinks",
+    "Hookah",
+    "Salads",
+    "Sandwiches",
+    "Main Dish",
+    "Appetizers",
+    "Ice Cream"
+  
 ]
 export {
   CATEGORIES

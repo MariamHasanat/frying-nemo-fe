@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { getItem } from '../../services/items';
 import { useNavigate } from 'react-router-dom';
 import './veiw-item.css';
@@ -25,10 +25,11 @@ const AddveiwItem = (props) => {
 const navigate =useNavigate();
 const cartContext = useContext(CartContext);
   useEffect(() => {
-  const item = getItem(params.id);
-  setCurrentItem(item);
-  if(item == null)
-  navigate('/404')
+  getItem(params.id).then((item)=>{
+    setCurrentItem(item);
+    if(item === null)
+    navigate("/404");
+  });
  }, []
 );
  return (
@@ -46,7 +47,7 @@ const cartContext = useContext(CartContext);
           <PriceBar item={currentItem} 
           dispatch={cartContext.dispatch} 
           cartQuantity={getCartQuantity(currentItem.id, cartContext.cart)}/>
-        </div> : navigate('/error')}
+        </div> : null}
 
   </div>
 );

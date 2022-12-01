@@ -33,11 +33,11 @@ const Form = (props) => {
 
     const menuItem = {
       name, // or name =name
-      descreption,
       price,
-      image,
+      descreption,
       category,
       ingredients,
+      image,
     };
 
     const itemsJSON = localStorage.getItem("menuItems") || "[]";

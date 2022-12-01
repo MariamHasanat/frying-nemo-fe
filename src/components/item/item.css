@@ -24,12 +24,14 @@
   padding: 15px;
 }
 
-.item-card>.info>h2 {
+h2 {
   margin: 0;
   font-size: 24px;
-  color: #333;
+  color: rgba(82, 79, 79, 0.808);
   font-weight: 500;
-
+}
+a{
+  text-decoration: none;
 }
 
 .item-card>.info>p {

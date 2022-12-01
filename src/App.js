@@ -13,9 +13,6 @@ import CartProvider from "./components/providers/cart.provider.component";
 
 
 function App() {
-  
-
-
   return (
     <UseProvider>
       <div>
