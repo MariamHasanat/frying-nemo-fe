@@ -7,6 +7,8 @@ import FilterBar from './filter-bar/filter.bar.component.jsx';
 import { CartContext } from '../../components/providers/cart-provider';
 import { getCartQuantity } from '../../utils/cart';
 //import UserContext from '../../App';
+// import { getItem , getItems } from '../../services/items.js';
+import { getItems } from '../../services/items.js';
 const initialItems = [];
 
 const ViewPage = (props) => {
@@ -21,9 +23,11 @@ const ViewPage = (props) => {
     setLoading(true);
 
     // Run the code inside after 1000 milliseconds (1 Second)
-    setTimeout(() => {
-      const items = JSON.parse(localStorage.menuItems || '[]');
+    setTimeout(async () => {
+      //    const items = JSON.parse(localStorage.menuItems || '[]');
+      const items = await getItems();
       setMenuItems(items);
+      // setMenuItems(items);
       setLoading(false);
     }, 1000);
   };
@@ -70,15 +74,19 @@ const ViewPage = (props) => {
 
     setParams(newParams);
   };
+  // const itemId = getItem();
 
   return (
     <div className="view-page">
-      <h1>View Menu Items</h1>
-      <FilterBar
-        searchTerms={searchTermsFromURL}
-        categories={categoriesFromURL}
-        setParam={setParam}
-      />
+      <div  className='title'>
+
+        <h1>View Menu Items</h1>
+        <FilterBar
+          searchTerms={searchTermsFromURL}
+          categories={categoriesFromURL}
+          setParam={setParam}
+        />
+      </div>
       {
         loading
           ? <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Spinner /></div>

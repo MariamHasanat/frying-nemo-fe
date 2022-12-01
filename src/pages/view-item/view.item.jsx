@@ -16,22 +16,27 @@ import { CartContext } from '../../components/providers/cart-provider';
  * }>}
  */
 
-  const ViewItemPage = (props) => {
+const ViewItemPage = (props) => {
   const params = useParams();
   navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const cartContext = useContext(CartContext);
-  
-  useEffect(() => {
+
+  const getOneItem = async () => {
     setLoading(true);
-    const item = getItem(params.id);
+    const item = await getItem(params.id);
+    console.log(item);
 
     if (item === null) {
       navigate("/404");
     }
     setCurrentItem(item);
     setLoading(false);
+  };
+  useEffect(() => {
+    const oneItem = getOneItem;
+    setCurrentItem(oneItem);
   }, [params.id]);
 
 

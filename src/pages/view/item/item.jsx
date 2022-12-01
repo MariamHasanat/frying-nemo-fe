@@ -25,7 +25,7 @@ const Item = (props) => {
         <img src={props.data.image} alt="food" />
       </div>
       <div className="info">
-        <Link to={`/view-details/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
+        <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients.join(", ")}</p>
       </div>

@@ -34,7 +34,7 @@ const CartList = (props) => {
           cartContext.cart.map((item, index) => <CartRow item={item} dispatch={cartContext.dispatch} key={"r_" + index} />)
         }
       </ul>
-      <div>
+      <div className='row-cart-clear'>
         <button className='nemo-button grey' onClick={clear}>Clear All</button>
         <span>TOTAL : ${total}</span>
       </div>
