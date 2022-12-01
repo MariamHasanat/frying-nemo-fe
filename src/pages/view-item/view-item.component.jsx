@@ -22,13 +22,18 @@ const ViewItemPage = (props) => {
   const params = useParams();
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
-  
-  useEffect(() => {
-    const item = getItem(params.id);
-    setCurrentItem(item);
+
+  const getOneItem  = async () =>{
+    const item = await getItem(params.id);
     if (item === null) {
       navigate("/404", { replace: true });
-    }
+    }else{setCurrentItem(item);}
+    
+
+  };
+  
+  useEffect(() => {
+    getOneItem();
   }, []);
 
   return (
@@ -59,7 +64,7 @@ const ViewItemPage = (props) => {
               </div>
               <div className="card-buttom-container">
                 <Select name="category" label="" className="card-Ingredients">
-                  {currentItem.ingredients.map((current) => {
+                  {currentItem.ingredients?.map((current) => {
                     return (
                       <option key={current} value={current} disabled>
                         {current}

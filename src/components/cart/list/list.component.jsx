@@ -26,9 +26,8 @@ const CartList = (props) => {
       }
       <div className='cart-list-total-clear-container'>
         <span className='cart-total-span'>Total= {total}$</span>
-        <button onClick={clear}>Clear</button>
+        <button onClick={clear} className="cart-list-clear-button">Clear</button>
       </div>
-      
     </>
   );
 };

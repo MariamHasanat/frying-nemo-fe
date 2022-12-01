@@ -11,10 +11,19 @@ const getItems = () =>{
  * Fake Fetching of single item
  * @param {number} id 
  */
- const getItem = (id) => {
-  const items = localStorage.getItem("menuItems").length ? [...JSON.parse(localStorage.getItem("menuItems"))]: [];
-  const item = items.find(it => it.id.toString() === id);
-  return item;
+ const getItem = async (id) => {
+  try {
+    const item= await fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/' + id);
+    if(item.status === 200){
+      const itemRes = await item.json();  
+      return itemRes;
+    }else{
+      return null;
+    }
+  } catch (error) {
+    
+   return undefined; 
+  }
 };
 
 export {

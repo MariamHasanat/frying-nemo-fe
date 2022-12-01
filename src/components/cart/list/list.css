@@ -21,3 +21,18 @@ span.cart-total-span{
   background-color: gold;
   font-size: 40px;
 }
+
+.cart-list-clear-button{
+  background-color: white;
+  font-size: 30px;
+  border: 1px solid #dddddd;
+  cursor: pointer;
+}
+
+.cart-list-clear-button:hover{
+  background-color: rgb(214, 214, 214);
+}
+
+.cart-list-clear-button:active{
+  transform: scale(0.9);
+}
