@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './view-item.css';
-import { getItem } from '../../services/items';
+import { fetchItem } from '../../services/items';
 import Spinner from '../../components/core/spinner/spinner.component';
 import PriceBar from '../../components/view/price-bar/price-bar.component';
 import { getCartQuantity } from '../../utils/cart';
@@ -17,17 +17,20 @@ const ViewItemPage = (props) => {
 
   useEffect(() => {
     setLoading(true);
-    const item = getItem(params.id);
-    if (item === null) {
-      navigate("/404", { replace: true });
-    }
-    setCurrentItem(item);
+    fetchItem(params.id)
+      .then(item => {
+        if (item === null) {
+          navigate("/404", { replace: true });
+        } else {
+          setCurrentItem(item);
+        }
+      });
     setLoading(false);
   }, []);
 
   return (
     <div className="view-item-page">
-      {loading
+      {loading || currentItem == null
         ? <Spinner />
         : <div className="item-details">
           <h1>{currentItem.name}</h1>
