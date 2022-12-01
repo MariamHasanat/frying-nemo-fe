@@ -7,6 +7,7 @@ import Item from '../../components/view/item/item.component';
 import './view.css';
 import { getCartQuantity } from '../../utils/cart';
 import { CartContext } from '../../components/providers/cart-provider.component';
+import { getItems } from '../../services/items';
 
 /**
  * @type {Array<{
@@ -31,15 +32,8 @@ const ViewPage = (props) => {
 
   const getMenuItems = async () => {
     setLoading(true);
-    fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/')
-      .then(async (res) => {
-        const jsonRes = await res.json();
-        setMenuItems(jsonRes);
-      })
-      .catch((error) => {
-        alert(error.toString());
-      });
-    // const items = JSON.parse(localStorage.menuItems || '[]');
+    const items = await getItems();
+    setMenuItems(items);
     setLoading(false);
   };
 
