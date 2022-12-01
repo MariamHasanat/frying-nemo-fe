@@ -3,7 +3,6 @@ const NotFound = (props) => {
 
   return (
     <div className="not-found-page">
-
         {/* <a href="https://codepen.io/uiswarup/full/yLzypyY" target="_blank"> */}
           <header class="top-header">
           </header>
