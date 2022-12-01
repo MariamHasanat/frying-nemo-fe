@@ -9,7 +9,7 @@ import { UserContext } from '../../components/providers/user-provider.component'
 import pic from '../../assets/illustrations/frustrated-realistic .png';
 import { getCartQuantity } from '../../utils/cart';
 import { CartContext } from '../../components/providers/cart-provider.component';
-import { getItem, getItems } from '../../services/items';
+import { fetchItems } from '../../services/items';
 /**
  * @type {Array<{
  * id: number;
@@ -35,7 +35,7 @@ const ViewPage = (props) => {
 
   const getMenuItems = async () => {
     setLoading(true);
-    const items = await getItems();
+    const items = await fetchItems();
     setMenuItems(items);
     setLoading(false);
 

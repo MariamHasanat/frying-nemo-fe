@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './view-item.css';
-import { getItem } from '../../services/items';
+import { fetchItem } from '../../services/items';
 import Spinner from '../../components/spinner/spinner.component';
 import PriceBar from '../../components/view/price-bar/price-bar.component';
 import { getCartQuantity } from '../../utils/cart';
@@ -13,17 +13,22 @@ import { CartContext } from '../../components/providers/cart-provider.component'
 const ViewItemPage = (props) => {
   const params = useParams();
   const navigate = useNavigate();
-  const [currentItem, setCurrentItem] = useState(null);
+  const [currentItem, setCurrentItem] = useState({});
   const [loading, setLoading] = useState(true);
   const cartContext = useContext(CartContext);
 
+
+
   useEffect(() => {
     setLoading(true);
-    const item = getItem(params.id);
-    if (item === null) {
-      navigate("/404", { replace: true });
-    }
-    setCurrentItem(item);
+    fetchItem(params.id)
+      .then(item => {
+
+        if (item === null) {
+          navigate("/404", { replace: true });
+        }
+        setCurrentItem(item);
+      });
     setLoading(false);
   }, []);
 
@@ -41,7 +46,7 @@ const ViewItemPage = (props) => {
           <div className="info">
             <p><b>Item Description: </b> {currentItem.description}</p>
             <p className="ingredients"><b>Ingredients:</b>
-              <br />{currentItem.ingredients.join(", ")}</p>
+              <br />{currentItem.ingredients?.join(", ")}</p>
           </div>
           <PriceBar
             item={currentItem}

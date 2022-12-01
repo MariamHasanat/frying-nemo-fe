@@ -2,8 +2,9 @@
 
 
 
-const getItems = () => {
+const fetchItems = () => {
   return fetch("https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/")
+
     .then(response => {
       return response.json();
     })
@@ -16,13 +17,26 @@ const getItems = () => {
  * Fake Fetching of single item
  * @param {number} id 
  */
-const getItem = (id) => {
-  const items = JSON.parse(localStorage.menuItems || '[]');
-  const item = items.filter(it => it.id.toString() === id);
-  return item[0] || null;
+const fetchItem = async (id) => {
+
+  try {
+
+    const response = await fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${id} `);
+    if (response.status === 200) {
+
+      const item = await response.json();
+      return item;
+    } else {
+      return null;
+    }
+
+  } catch (error) {
+    console.error(error);
+    return undefined;
+  };
 };
 
 export {
-  getItem,
-  getItems
+  fetchItem,
+  fetchItems
 };
