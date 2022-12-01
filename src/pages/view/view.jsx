@@ -9,6 +9,7 @@ import { CATEGORIES } from '../../data/data';
 import { useEffect } from 'react';
 import { UserContext } from '../../App';
 import { CartContext } from '../../components/providers/cart-provider';
+import { getItemsFromAPI } from '../../components/services/items';
 /**
    * @type {Array<
    * 
@@ -21,16 +22,18 @@ import { CartContext } from '../../components/providers/cart-provider';
    * image: string;}>}
    */
 const ViewPage = (props) => {
+  const initial = [];
+  const [menuitems, setMenuItems] = useState(initial);
 
-  // const initial = [];
+  const getItems = async () => {
+    const items = await getItemsFromAPI();
+    setMenuItems(items);
+  };
+
   const cartContext = useContext(CartContext);
-
-  const GetmenuItems = () => JSON.parse(localStorage.menuitems || '[]');
-  const [menuitems, setMenuItems] = useState(GetmenuItems());
+  // const GetmenuItems = () => JSON.parse(localStorage.menuitems || '[]');
   const navigate = useNavigate();
-
   const userContext = useContext(UserContext);
-
   //instance of class 
   const [search, setSearch] = useState('');
   /***  القيم الي يتجي بعد علامة الاستفهانم   */
@@ -39,15 +42,10 @@ const ViewPage = (props) => {
   const searchFromURL = params.get("searchTerms") || '';
   const categoriesFromURL = params.getAll("categories") || '';
   const categoriesURL = params.get("categoriess") || '';
-
   const maxFromURL = params.get("max") || '';
   const minFromURL = params.get("min") || '';
   const price = params.get("price") || '';
   // const [price,setPrice] =useState(10)
-
-
-
-  console.log(params.get("search"));
 
   /**
          * Check if search terms are somewhere inside given string.
@@ -63,7 +61,9 @@ const ViewPage = (props) => {
       navigate('/login', { replace: false });
     }
 
+    getItems();
   }, []);
+
   const filterItems = menuitems.filter(item => {
 
     /**
@@ -123,7 +123,7 @@ const ViewPage = (props) => {
   };
 
 
-  const getCartQuantity = (id,cart) => {
+  const getCartQuantity = (id, cart) => {
     const currentCartItme = cart.find(CartItem => CartItem.meal.id === id);
     if (currentCartItme)
       return currentCartItme.quantity;
@@ -147,24 +147,16 @@ const ViewPage = (props) => {
       <div className="container" >
 
         {
-
           filterItems.length
             ?
-
             (filterItems.map((item, index) =>
-              <Card data={item} 
-              key={item.name + index}
+              <Card data={item}
+                key={item.name + index}
                 dispatch={cartContext.dispatch}
                 // cartQuantity={props.cart}
-            
                 cartQuantity={getCartQuantity(item.id, cartContext.cart)}
-
-
-              />)
-
-
-            )
-
+              />
+            ))
             : (
               <div className="no-results">
                 {/* <img src="./frustrated-realistic.png" alt="No results" /> */}

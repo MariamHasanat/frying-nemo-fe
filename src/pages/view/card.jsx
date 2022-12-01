@@ -19,7 +19,6 @@ import Price from './price-bar';
  *  
  */
 const Card = (props) => {
-  
   return (
     <div className="wrapper">
       <div className="card">
@@ -41,7 +40,7 @@ const Card = (props) => {
         </div>
 
         <div className="description">
-       <small> {props.data.ingrediant.join(" " + "," + " ")}</small>
+       <small> {props.data.ingredients.join(" " + "," + " ")}</small>
         </div>
         <Price item={props.data} 
         dispatch={props.dispatch}
