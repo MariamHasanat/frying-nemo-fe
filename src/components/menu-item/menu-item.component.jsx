@@ -30,7 +30,6 @@ const Item = (props) => {
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients.join(', ')}</p>
       </div>
-        <span>{props.data.price}$</span>
         <PriceBar
         item={props.data}
         dispatch={props.dispatch}

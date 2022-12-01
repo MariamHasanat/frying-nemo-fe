@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './view-item.css';
 import {useNavigate, useParams } from 'react-router-dom';
-import { getItem } from './item';
+import { getItem, getItems, getSingleItem } from './item';
 import Item from '../../components/menu-item/menu-item.component';
 import Spinner from '../../components/spinner/spinner.component';
 import { getCartQuantity } from '../../components/header/cart';
@@ -16,15 +16,18 @@ const ViewItemPage = (props) =>{
   const [loading, setLoading] = useState(true);
   const cartContext = useContext(CartContext);
 
-  useEffect(() =>{
+  const itemGetting = async ()=>{
     setLoading(true);
-    const item = getItem(params.id);
+    const item = await getSingleItem(params.id);
     if (item != null) {
       setCurrentItem(item);
       setLoading(false);
     }
-    else{navigate("/404", { replace: true });
-  }
+  else{navigate("/404", { replace: true });
+  }};
+
+  useEffect(() =>{
+    itemGetting();
   },[]);
 
   return(

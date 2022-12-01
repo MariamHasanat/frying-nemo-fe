@@ -4,7 +4,8 @@ const CATEGORIES =[
   'Salads',
   'Sandwiches',
   'sweets',
-  'appetizers'
+  'appetizers',
+  'soups'
 ]
 
 export default CATEGORIES;

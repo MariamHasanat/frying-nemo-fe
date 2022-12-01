@@ -9,6 +9,7 @@ import { UserContext } from '../../components/providers/provider.component';
 import { useContext } from 'react';
 import { getCartQuantity } from '../../components/header/cart';
 import { CartContext } from '../../components/providers/cart-provider.component';
+import { getItems } from '../view-item/item';
 
 
 /**
@@ -45,15 +46,14 @@ const ViewPage = (props) => {
 
   console.log('search params = ', search);
 
-  const getMenuItems = () => {
+  const getMenuItems = async () => {
     setLoading(true);
-
-    // Run the code inside after 1000 milliseconds (1 Second)
-    setTimeout(() => {
-      const items = JSON.parse(localStorage.menuItem || '[]');
+    const items = await getItems();
+    // setTimeout(() => {
+    //   const items = JSON.parse(localStorage.menuItem || '[]');
       setMenuItems(items);
       setLoading(false);
-    }, 1000);
+    // }, 1000);
   };
 
   useEffect(() => {
