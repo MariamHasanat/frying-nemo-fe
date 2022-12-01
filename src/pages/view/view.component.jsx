@@ -9,6 +9,7 @@ import { UserContext } from '../../components/providers/user-provider.component'
 import pic from '../../assets/illustrations/frustrated-realistic .png';
 import { getCartQuantity } from '../../utils/cart';
 import { CartContext } from '../../components/providers/cart-provider.component';
+import { getItem, getItems } from '../../services/items';
 /**
  * @type {Array<{
  * id: number;
@@ -32,15 +33,12 @@ const ViewPage = (props) => {
   const searchTermsFromURL = params.get('searchTerms') || '';
   const categoriesFromURL = params.getAll('category') || '';
 
-  const getMenuItems = () => {
+  const getMenuItems = async () => {
     setLoading(true);
+    const items = await getItems();
+    setMenuItems(items);
+    setLoading(false);
 
-    // Run the code inside after 1000 milliseconds (1 Second)
-    setTimeout(() => {
-      const items = JSON.parse(localStorage.menuItems || '[]');
-      setMenuItems(items);
-      setLoading(false);
-    }, 1000);
   };
 
   useEffect(() => {
