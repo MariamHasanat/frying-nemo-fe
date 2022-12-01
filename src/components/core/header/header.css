@@ -3,6 +3,10 @@
 }
 
 .page-header {
+  user-select: none;
+}
+
+.page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,6 +18,7 @@
 }
 
 .page-header .logo {
+  cursor: pointer;
   display: flex;
   justify-content: left;
   align-items: center;
@@ -37,6 +42,13 @@
   justify-content: center;
   align-items: center;
   margin: 0px 10px;
+  padding: 0px 7px;
+  transition: .3s all;
+}
+
+.page-header .btns .user-info:hover {
+  background-color: rgba(119, 119, 119, 0.199);
+  border-radius: 10px;
 }
 
 .page-header .btns .user-info img {

@@ -6,8 +6,10 @@ import FilterBar from "../../components/view/common/filter/filter-bar.component"
 import { CATEGORIES } from "../../data/constants";
 import { useEffect } from "react";
 import { capitalizeFirstLetter } from "../../services/utilities";
+import { fetchMenuItems } from "../../services/fetchers";
 
 const ViewPage = () => {
+  const [menuItems, setMenuItems] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get("search") || "");
   let categories = searchParams.getAll("category")[0] || "";
@@ -26,20 +28,30 @@ const ViewPage = () => {
     }
   }, []);
 
-  let arr = JSON.parse(localStorage.getItem("menuItems")) || []; // Fetching data
-  arr = arr.filter((item) => {
-    const fixStr = (str) => str.toLowerCase().trim(); // Helper
-    const isMatch = (str1) => fixStr(str1).includes(fixStr(search)); // Helper
-    return (
-      (isMatch(item.name) ||
-        isMatch(item.description) ||
-        item.ingredients.some((ing) => ing.includes(search))) &&
-      categories
-        .toLocaleLowerCase()
-        .split(",")
-        .includes(item.category.toLowerCase())
-    );
-  });
+  useEffect(() => {
+  }, []);
+
+  const fetchItems = () => {
+    fetchMenuItems().then(
+      (res) => {
+        setMenuItems(
+          res.filter((item) => {
+            const fixStr = (str) => str.toLowerCase().trim(); // Helper
+            const isMatch = (str1) => fixStr(str1).includes(fixStr(search)); // Helper
+            return (
+              (isMatch(item.name) ||
+                isMatch(item.description) ||
+                item.ingredients.some((ing) => ing.includes(search))) && categories.toLocaleLowerCase().split(",").includes(item.category.toLowerCase())
+            );
+          })
+        );
+      }
+    )
+  }
+
+  if (menuItems.length == 0) {
+    fetchItems();
+  }
 
   return (
     <div className="view-page">
@@ -54,8 +66,8 @@ const ViewPage = () => {
         ></FilterBar>
       </div>
       <div className="cards">
-        {arr.length > 0 ? (
-          arr.map((item, i) => (
+        {menuItems.length > 0 ? (
+          menuItems.map((item, i) => (
             <Card
               key={item.id}
               item={item}

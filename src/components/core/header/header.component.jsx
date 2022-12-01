@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../providers/user-provider.component';
 import { CartContext } from '../providers/cart-provider.component';
 import './header.css';
@@ -10,6 +10,7 @@ const Header = () => {
   const { user, setUser } = useContext(UserContext);
   const { cart } = useContext(CartContext);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isSelected = (path) => location.pathname.includes(path) ? `selected` : null;
   const getCartQuantity = () => cart.reduce((accumulator, cartItem) => accumulator + cartItem.quantity, 0)
@@ -17,7 +18,7 @@ const Header = () => {
   return (
     <div className='page-header'>
 
-      <div className='logo'>
+      <div onClick={() => {!isSelected(`view`) && navigate('/view')}} className='logo'>
         <img src={logo} alt="Logo" />
         <p>FRYING NEMO</p>
       </div>
