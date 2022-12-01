@@ -5,7 +5,7 @@ import { CartContext } from "../../providers/cart-provider.component";
 import { useContext } from "react";
 import cartIcon from "../../../assets/cart.svg";
 
-const Header = (props) => {
+const Header = () => {
   const cartContext = useContext(CartContext);
   let itemsCount = 0;
   for (let i = 0; i < cartContext.cart.length; i++) {

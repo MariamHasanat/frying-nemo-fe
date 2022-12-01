@@ -1,4 +1,12 @@
 
+const getItems = () =>{
+  return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/').then(async (response) =>{
+    const items = await response.json();
+    return items;
+  }).catch((error) => {
+    alert(error.toString);
+  });
+};
 /**
  * Fake Fetching of single item
  * @param {number} id 
@@ -10,5 +18,6 @@
 };
 
 export {
-  getItem
+  getItem,
+  getItems
 };

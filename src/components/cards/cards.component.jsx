@@ -7,6 +7,9 @@ import "../../common.css";
 import PriceBar from "../view/price-bar/price-bar.component";
 import { useContext } from "react";
 import { CartContext } from "../providers/cart-provider.component";
+import { getItems } from "../../services/items";
+import { useEffect } from "react";
+import { useState } from "react";
 /**
  * @type {Array<{
  * id: number
@@ -18,14 +21,33 @@ import { CartContext } from "../providers/cart-provider.component";
  * image: string;
  * }>}
  */
-const Cards = (props) => {
+const Cards =  (props) => {
   const cartContext = useContext(CartContext);
-  const menuItems = localStorage.getItem("menuItems").length ? [...JSON.parse(localStorage.getItem("menuItems"))]: [];
+  //localStorage.getItem("menuItems").length ? [...JSON.parse(localStorage.getItem("menuItems"))]: [];
   const [searchParams, setSearchParams] = useSearchParams();
   const searchTermsFromURL = searchParams.get('q') || '';
   const categoryFromURL = searchParams.get('category') || '';
   let minPriceFromUrl= parseInt(searchParams.get('minprice'));
   let maxPriceFromUrl= parseInt(searchParams.get('maxprice'));
+  const [menuItems,setMenuItems] = useState([]);
+
+
+  const getMenuItems = async () => {
+  fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/')
+  .then(async (res) => {
+    const jsonRes = await res.json();
+    setMenuItems(jsonRes);
+    console.log(jsonRes);
+  })
+  .catch((error) => {
+    alert(error.toString());
+  });
+};
+
+useEffect (()=>{
+  getMenuItems();
+},[]);
+
   const searchList= menuItems.filter(item=>{
     /**
      * @param {string} str
