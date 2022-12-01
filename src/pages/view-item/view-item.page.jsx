@@ -25,13 +25,19 @@ const ViewItem = (props) => {
   useEffect(() => {
     setLoading(true);
 
-    const item = getItem(params.id);
-    if (item == null) {
-      navigate('/404', { replace: true });
-    }
+    const getSingleItem = async () => {
 
-    setCurrentItem(item);
-    setLoading(false);
+      const item = await getItem(params.id);
+      if (item == null) {
+        navigate('/404', { replace: true });
+      }
+
+      setCurrentItem(item);
+      setLoading(false);
+    };
+
+    getSingleItem();
+
 
   }, []);
 
