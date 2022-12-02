@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ItemCard from '../../components/view/item-card/item-card.component';
@@ -8,6 +7,7 @@ import { useContext } from 'react';
 import { getItemQuantity } from '../../utilities/get-item-quantity';
 import { CartContext } from '../../components/providers/cart-provider';
 import { getItems } from '../../services/items';
+import Spinner from '../../components/core/spinner/spinner';
 // const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]');
 
 /**
@@ -38,6 +38,7 @@ const View = (props) => {
   const [params, setParams] = useSearchParams();
   const searchParamFromURl = params.get('search') || '';
   const categoryFromURl = params.getAll('category') || '';
+  const [loading, setLoading] = useState(true);
 
   // useEffect(() => {
   //   getItems().then(items => {
@@ -46,8 +47,10 @@ const View = (props) => {
   // }, []);
 
   useEffect(() => {
+    setLoading(true);
     const getData = async () => {
       setMenuItems(await getItems());
+      setLoading(false);
     };
     getData();
   }, []);
@@ -106,23 +109,27 @@ const View = (props) => {
 
       />
 
-      <div className='items-container'>
+      {
+        loading ? <Spinner /> :
+          <>
+            <div className='items-container'>
+              {
+                filteredItems.map(
+                  (item, index) => {
+                    return (
+                      <ItemCard
+                        item={item}
+                        key={item + index}
+                        dispatch={cartContext.dispatch}
+                        itemQuantity={getItemQuantity(cartContext.cart, item.id)}
+                      />
+                    );
+                  })
+              }
+            </div>
+          </>
+      }
 
-        {
-          filteredItems.map(
-            (item, index) => {
-              return (
-                <ItemCard
-                  item={item}
-                  key={item + index}
-                  dispatch={cartContext.dispatch}
-                  itemQuantity={getItemQuantity(cartContext.cart, item.id)}
-                />
-              );
-
-            })
-        }
-      </div>
     </div>
   );
 };

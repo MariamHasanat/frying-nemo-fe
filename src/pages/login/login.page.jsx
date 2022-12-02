@@ -1,14 +1,14 @@
 import React, { useEffect, useContext } from 'react';
-import './login.css';
-import Input from '../../components/common/input/input.component.jsx';
 import { loginUser } from '../../services/users';
 import { useNavigate } from 'react-router';
-
 import { UserContext } from '../../components/providers/user-provider';
+import Input from '../../components/common/input/input.component.jsx';
+import './login.css';
+
 const LoginComponent = () => {
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
-  
+
   useEffect(() => {
     // To check if the user is already logged in, send him to the view page
     if (userContext.user?.id) {
@@ -21,21 +21,25 @@ const LoginComponent = () => {
    * 
    * @param {React.FormEvent<HTMLFormElement>} e 
    */
-  const handelLogin = (e) => {
+  const handelLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value.trim();
     const password = e.target.password.value.trim();
 
-    if (email && password) {
-      const user = loginUser(email, password);
+    /**
+     * @type {Array}
+     */
+    const user = await loginUser(email, password);
 
-      if (user) {
-        userContext.setUser(user);
-        navigate('/view', { replace: true });
-      } else {
-        alert('email or password are not correct, try again !');
-      }
+    console.log(user);
+
+    if (user) {
+      userContext.setUser(user);
+      navigate('/view', { replace: true });
+    } else {
+      alert('email or password are not correct, try again !');
     }
+
   };
 
 
@@ -64,10 +68,10 @@ const LoginComponent = () => {
         <div>
           <input className="nemo-button" type="submit" value="Login" />
         </div>
-          <span>new user? <a href="#" className='create-account'>create account</a> </span>
+        <span>new user? <a href="#" className='create-account'>create account</a> </span>
       </form >
     </div >
-         
+
   );
 };
 

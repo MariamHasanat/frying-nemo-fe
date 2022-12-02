@@ -7,6 +7,7 @@ import { getItemQuantity } from '../../utilities/get-item-quantity';
 import PriceBar from '../../components/price-bar/price-bar.component';
 import { useContext } from 'react';
 import { CartContext } from '../../components/providers/cart-provider';
+import Spinner from '../../components/core/spinner/spinner';
 
 /**
  * 
@@ -43,9 +44,10 @@ const ViewItem = (props) => {
 
   const cartContext = useContext(CartContext);
   return (
+
     <div className="view-item-page">
       {loading
-        ? <span>error</span>
+        ? <Spinner />
         : <div>
           <h1>{currentItem.name}</h1>
           <img className='item-image' src={currentItem.image} alt='item' />
