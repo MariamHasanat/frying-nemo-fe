@@ -40,7 +40,7 @@ const Card = (props) => {
         </div>
 
         <div className="description">
-       <small> {props.data.ingredients.join(" " + "," + " ")}</small>
+       {props.data.ingredients.join(" " + "," + " ")}
         </div>
         <Price item={props.data} 
         dispatch={props.dispatch}

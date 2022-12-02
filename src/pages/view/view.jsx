@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { UserContext } from '../../App';
 import { CartContext } from '../../components/providers/cart-provider';
 import { getItem, getItemsFromAPI } from '../../components/services/items';
+import Spinner from '../../components/pop/spinner';
 /**
    * @type {Array<
    * 
@@ -26,8 +27,11 @@ const ViewPage = (props) => {
   const [menuitems, setMenuItems] = useState(initial);
 
   const getItems = async () => {
+    setLoading(true);
     const items = await getItemsFromAPI();
     setMenuItems(items);
+    setLoading(false);
+
   };
 
   const cartContext = useContext(CartContext);
@@ -45,6 +49,8 @@ const ViewPage = (props) => {
   const maxFromURL = params.get("max") || '';
   const minFromURL = params.get("min") || '';
   const price = params.get("price") || '';
+  const [loading, setLoading] = useState(true);
+
 
   /**
          * Check if search terms are somewhere inside given string.
@@ -58,20 +64,17 @@ const ViewPage = (props) => {
 
 
 
-  /*TODO:
-  *
-  *return single item from the API
-  * 
-  */
 
   useEffect(() => {
- 
+
     if (!userContext.user?.id) {
       navigate('/login', { replace: false });
     }
 
     getItems();
   }, []);
+
+
 
 
 
@@ -153,9 +156,14 @@ const ViewPage = (props) => {
           searchTerms={searchFromURL}
           categories={categoriesFromURL}
           setParam={setParam}
-        />
+          />
+        
       </div>
 
+         {
+loading ?<div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Spinner /></div>
+
+      :(
       <div className="container" >
 
         {
@@ -177,8 +185,8 @@ const ViewPage = (props) => {
             )
         }
 
-      </div>
-
+      </div>)
+}
     </div>
   );
 };

@@ -12,14 +12,20 @@ const getItemsFromAPI = async () => {
 
 
 const getItem = async (id) => {
-  try {
-    const response = await fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/?id=${id}`);
-    const item = await response.json();
-    return item;
-  } catch (error) {
-    alert(error.toString());
 
+  try {
+    const response = await fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${id}`);
+    if (response.status === 200) {
+      const item = await response.json();
+      return item;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error(error);
+    return undefined;
   }
+
   // const items = JSON.parse(localStorage.menuitems || '[]');
   // const item = items.filter(it => it.id.toString() === id);
   // return item[0] || null;

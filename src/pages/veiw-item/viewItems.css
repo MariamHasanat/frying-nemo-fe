@@ -1,0 +1,13 @@
+.view-item-page >h1{
+  display: flex;
+  justify-content: center;
+color: darkmagenta;
+text-shadow: 1px 1px 1px plum;
+
+}
+
+.view-item-page {
+width: 100%;
+/* background-color: red; */
+
+}
