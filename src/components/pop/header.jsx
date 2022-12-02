@@ -12,7 +12,7 @@ const Head = (props) => {
   const userContext = useContext(UserContext);
   const cartContext = useContext(CartContext);
 
-  
+
   let itemsCount = 0;
   for (let i = 0; i < cartContext.cart.length; i++) {
     itemsCount += cartContext.cart[i].quantity;
@@ -29,33 +29,39 @@ const Head = (props) => {
       <div className="right">
         {/* <span>Your Cart {itemsCount}</span> */}
         <nav>
-          <Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
-            Add
-          </Link>
+          {
+            userContext.user ?
+              (<Link to="/add" className={location.pathname === "/add" ? 'current' : ''}>
+                Add
+              </Link>) :
+              <Link to="/login" className={location.pathname === "/login" ? 'current' : ''}>
+                LOGIN
+              </Link>
+          }
           <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
             View
           </Link>
           <Link className="cart" to="cart">
-          <img src={cartIcon} alt="cart icon" />
-          <span className="count">
-      
-            {itemsCount}
+            <img src={cartIcon} alt="cart icon" />
+            <span className="count">
+              {itemsCount}
             </span>
-        </Link>
+          </Link>
         </nav>
         {
           userContext.user &&
           <span>{userContext.user.fullName}</span>
         }
-        <button onClick={() => {
-          userContext.setUser(null);
-          localStorage.removeItem('cart');
-
-          navigate('/login');
+        {userContext.user ?
+          <button onClick={() => {
+            userContext.setUser(null);
+            localStorage.removeItem('cart');
+            // cartContext.se
+            navigate('/login');
+          }
+          }
+          >LogOut</button> : ""
         }
-        }
-        >LogOut</button>
-
       </div>
     </header>
   );

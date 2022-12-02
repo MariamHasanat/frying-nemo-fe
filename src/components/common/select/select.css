@@ -9,13 +9,19 @@
 *::after {
   box-sizing: border-box;
 }
-select >lable {
-  color: rgb(240, 217, 217);
+.selector >label >span{
+  color: purple;
+  font-weight: bold;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-transform: uppercase;
+
 
 }
 select {
-  /* appearance: none; */
-  /* background-color: transparent; */
+  appearance: none;
+  background-color: transparent;
   border: none;
   padding: 0 1em 0 0;
   margin: 0;
@@ -37,20 +43,20 @@ select::-ms-expand {
 
 .select {
   width: 100%;
-  min-width: 15ch;
+  /* min-width: 15ch; */
   max-width: 24ch;
-  border: 1px solid var(--select-border);
+  /* border: 1px solid var(--select-border); */
   border-radius: 0.25em;
-  padding: 0.25em 0.5em;
+  padding: 5px 10px;
   font-size: 1rem;
   cursor: pointer;
-  line-height: 1.1;
+  /* line-height: 1.1; */
   background-color: #fff;
   background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
   display: grid;
   grid-template-areas: "select";
   align-items: center;
-  position: relative;
+  /* position: relative; */
 
 
 
@@ -80,7 +86,7 @@ select:focus + .focus {
 }
 select[multiple] {
   padding-right: 0;
-  height: 6rem;
+  /* height: 6rem; */
 }
 
 select[multiple] option {

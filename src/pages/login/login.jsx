@@ -1,4 +1,4 @@
-import { useEffect,useContext  } from "react";
+import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../../components/common/input/input";
 import { LoginUser } from "../../components/services/user";
@@ -6,7 +6,7 @@ import { UserContext } from "../../App";
 import './login.css';
 const Login = (props) => {
   const navigate = useNavigate();
-  const userContext =useContext (UserContext);
+  const userContext = useContext(UserContext);
 
   useEffect(() => {
 
@@ -17,26 +17,27 @@ const Login = (props) => {
 
 
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    const email=e.target.email.value.trim();
-    const password=e.target.password.value.trim();
+    const email = e.target.email.value.trim();
+    const password = e.target.password.value.trim();
 
-    if (email && password) {
-      const user = LoginUser(email, password);
-      if (email && password) {
-        const user = LoginUser(email, password);
-        // If Successful login, go to view page
-        if (user) {
-          userContext.setUser(user);
-          navigate('/view', { replace: true });
-        } else {
-          alert("Invalid Email or password ! try again please ");
-        }
+    // const user = LoginUser(email, password);
+    // if (email && password) {
 
-      }
+    const user = await LoginUser(email, password);
+    console.log('user is  :', user);
+    // If Successful login, go to view page
+    if (user) {
+      userContext.setUser(user);
+      navigate('/view', { replace: true });
+    } else {
+      alert("Invalid Email or password ! try again please ");
     }
+
+
+
   };
 
 
@@ -65,7 +66,7 @@ const Login = (props) => {
           />
         </div>
         <div className="LOGIN" >
-          <button  type="submit" >Login</button>
+          <button type="submit" >Login</button>
         </div>
       </form>
     </div >

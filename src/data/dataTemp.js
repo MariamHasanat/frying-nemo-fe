@@ -61,14 +61,25 @@ const USERS = [{
   "fullName": "Robers Woloschin",
   "imageUrl": "http://dummyimage.com/193x181.png/cc0000/ffffff",
   "role": null
-}, {
+},
+ {
   "id": "f48eec3b-f2df-41f5-8fca-7f62de5cd67b",
   "email": "lschoolfield9@uol.com.br",
   "password": '123456',
   "fullName": "Lauraine Schoolfield",
   "imageUrl": "http://dummyimage.com/127x199.png/ff4444/ffffff",
   "role": null
-}];
+},
+{
+  "id": "f48eec3b-f2df-41f5-8fca-7f62de5cd67b",
+  "email": "ayat@admin.com",
+  "password": '1234567',
+  "fullName": "Ayat Schoolfield",
+  "imageUrl": "http://dummyimage.com/127x199.png/ff4444/ffffff",
+  "role": null
+}
+
+];
 
 export {
   USERS

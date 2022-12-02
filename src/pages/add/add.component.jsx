@@ -26,11 +26,11 @@ const AddPage = (props) => {
   };
   return (
     <div className='wrapper-addPage'>
-<span>{time.toLocaleTimeString()}</span>
+      <span>{time.toLocaleTimeString()}</span>
       {/* <h1>Add a new item</h1> */}
       {/* <Form onNavigate={props.onNavigate} /> */}
 
-<Form onNavigate={props.onNavigate}/>
+      <Form onNavigate={props.onNavigate} />
     </div>
   );
 };

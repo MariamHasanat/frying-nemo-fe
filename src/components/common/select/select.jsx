@@ -16,13 +16,13 @@ const MySelect = props => {
   const { label, ...selectProps } = props;
 
   return (
-    <div >
+    <div className='selector'>
       {
         label ? (
           <label>
             <span>{label}</span>
             &nbsp;
-            {selectProps.required && <span>*</span>}
+            {selectProps.required && <span style={{color:'red'}}>*</span>}
           </label>
         ) : null
       }

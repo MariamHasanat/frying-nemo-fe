@@ -95,57 +95,65 @@ const Form = (props) => {
       <form onSubmit={submitHandeller} >
 
         <h1>Add to the menu !</h1>
-        <Input
-          label="Name"
-          value={name}
-          onChange={onNameChange}
-          required
-        />
-    <Input
-      label="Image"
-      name="image"
+        <div className="row">
 
-    />
-    
-        <Textarea
-          label="Decription"
-          name='description'
-        />
-        <MySelect
-          name="categories"
-          label='categories' required>
-          {
-            CATEGORIES.map(item => {
+          <div className="colmn">
+            <Input
+              label="Name"
+              value={name}
+              onChange={onNameChange}
+              required
+            />
+            <Input
+              label="Image"
+              name="image"
+            />
 
-              return <option value={item} key={item}>{item}</option>;
-            })
-          }
-        </MySelect>
 
-        <Input
-          name="price"
-          label="price"
-          type="number"
-          min={0}
-          required
-        />
-        <MultivalueInput
-          label="Ingradiant"
-          value={ingrediant}
-          onChange={newI => setIngrediant(newI)}
+            <Textarea
+              label="Decription"
+              name='description'
+            />
+          </div>
 
-        />
+          <div className="colmn">
+            <MySelect
+              name="categories"
+              label='categories' required>
+              {
+                CATEGORIES.map(item => {
 
-        {/* <div className='btn'> */}
+                  return <option value={item} key={item}>{item}</option>;
+                })
+              }
+            </MySelect>
+
+            <Input
+              name="price"
+              label="price"
+              type="number"
+              min={0}
+              required
+            />
+            <MultivalueInput
+              label="Ingradiant"
+              value={ingrediant}
+              onChange={newI => setIngrediant(newI)}
+            />
+
+          </div>
+        </div>
+
         <div className="submit-form-btn">
-
           <button type='submit'
             className="nemo-button"
             disabled={
               userContext.user?.role !== 'ADMIN'
             }
-          >create</button>
+          >create
+          </button>
         </div>
+
       </form>
     </div>
   );

@@ -1,34 +1,52 @@
-.add-wapper{
+.add-wapper {
   background-color: rgb(240, 234, 240);
+  display: flex;
+  justify-content: center;
+  border-radius: 15px;
+
 }
+
 .add-wapper>form {
   background-color: "";
   width: 900px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-  /* margin: 10px; */
-  border: 2px purple solid;
-color: purple;
+  color:  #d1a2d1;
+}
+
+.add-wapper>form>.row {
   display: flex;
   justify-content: center;
-}
-
-.add-wapper>.btn >button {
-  background-color: non;
-  border: none;
-  color: purple;
-padding: .5rem ;
-margin-top: 5px;
-font-weight: bolder;
-
-
 
 }
-.add-wapper >form> .form-design{
+
+.add-wapper>form>.row>.colmn {
   display: flex;
-  justify-content: space-evenly;
-  
+  flex-direction: column;
+  justify-content: baseline;
+  margin: 5rem;
+}
 
+.add-wapper>form>h1 {
+  text-align: center;
+}
+
+.submit-form-btn>.nemo-button {
+  background-color: #d1a2d1;
+  border: unset;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 5px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0px 0px 5px 1px #a77ca7;
+
+}
+
+.submit-form-btn>.nemo-button:hover {
+  box-shadow: -1px 0px 10px 1px #2a0c2a;
+}
+
+.submit-form-btn>.nemo-button:active {
+  box-shadow: 1px 1px 1px 1px #a77ca7;
 }
