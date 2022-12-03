@@ -6,8 +6,10 @@ import { USERS } from '../data/users';
  * @param {string} password 
  * @returns 
  */
-const checkUser = (email, password) => {
-    const user = USERS.find(user => user.email === email && user.password === password);
+const checkUser = async (email, password) => {
+    const users = await USERS();
+    console.log('users', users);
+    const user = users.find(user => user.email === email && user.password === password);
     return user || null;
 };
 

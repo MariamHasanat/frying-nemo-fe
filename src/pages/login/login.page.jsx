@@ -16,14 +16,14 @@ const Login = () => {
 
     const userContext = useContext(UserContext);
 
-    const submitHandler = (e) => {
+    const submitHandler =async (e) => {
         e.preventDefault();
         const userEmail = e.target.email.value.trim();
         const userPassword = e.target.password.value.trim();
 
-        const user = checkUser(userEmail, userPassword)
+        const user = await checkUser(userEmail, userPassword)
         if (user) {
-            console.log('welcome here!');
+            console.log('welcome', user.fullName);
             userContext.setUser(user);
             navigate('/view');
         }
