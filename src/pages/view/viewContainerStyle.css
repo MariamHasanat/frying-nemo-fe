@@ -35,10 +35,12 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .item-card {
-  margin: 20px;
+  margin: 10px;
   width: 300px;
 
 }

@@ -40,7 +40,6 @@ a {
 
 input,
 select,
-button,
 textarea {
   margin: 0;
   font-size: 100%;
@@ -184,7 +183,7 @@ input {
 }
 
 
-
+/* 
 button {
   border: none;
   padding: 0;
@@ -192,7 +191,7 @@ button {
   line-height: 0;
   background: none;
   cursor: pointer;
-}
+} */
 
 :focus {
   outline: 0;
