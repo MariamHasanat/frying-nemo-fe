@@ -2,7 +2,7 @@
 import { React , useEffect , useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../components/common/input/input.component';
-import { loginUser } from '../../services/users';
+import { LoginUser } from '../../services/users';
 import './login.css';
 import { UserContext } from '../../components/providers/user-provider.component';
 
@@ -23,14 +23,14 @@ const LoginPage = (props) => {
   }, []);
 
 
-  const HandelLogin = (e) => {
+  const HandelLogin = async (e) => {
     e.preventDefault();
 
     const email = e.target.email.value.trim();
     const password = e.target.password.value.trim();
-
-    if (email && password) {
-      const user = loginUser(email, password);
+    console.log(email);
+    console.log(password);
+ const user = await LoginUser(email,password);
       if (user) {
         userContext.setUser(user);
         navigate('/view', { replace: true });
@@ -38,7 +38,7 @@ const LoginPage = (props) => {
       else {
         alert("Email or Password are not correct! Please try again.");
       }
-    }
+    
 
   };
 
