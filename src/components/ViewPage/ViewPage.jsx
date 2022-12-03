@@ -39,6 +39,7 @@ const ViewPage = (props) => {
       setLoading(false);
     }, 1000);
 const items=await getItems()
+
     setMenuItems(items);
 
   };
