@@ -1,6 +1,5 @@
 li.cart-row {
     background-color: #fff;
-    margin: 0 20px;
     list-style: none;
     border-bottom: 1px solid #efefef;
     border-top: 1px solid #efefef;
@@ -44,4 +43,27 @@ li.cart-row>.center .quant{
     display: inline-block;
     text-align: center;
     width: 30px;
+}
+
+li.cart-row>.right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction:column;
+}
+
+li.cart-row>.right .price{
+    font-size: 17px;
+    margin-right: 10px;
+}
+
+li.cart-row>.right .trash{
+    background: none;
+    outline: none;
+    border: none; 
+}
+li.cart-row>.right .trash:active{
+    box-shadow: 1px 1px 5px grey;
+    border-radius: var(--border-radius);
 }

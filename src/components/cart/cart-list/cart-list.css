@@ -5,10 +5,40 @@
     border-radius: var(--border-radius);
     margin-top: 20px;
     height: fit-content;
+    padding: 20px;
 }
 
-.cart-list>h1{
-    padding: 20px 0  0 20px;
+.cart-list>h1 {
+    padding: 20px 0 0 20px;
     font-weight: 600;
     color: rgb(55, 55, 55)
+}
+
+.cart-list .bottom {
+    display: flex;
+    align-items: center;
+}
+
+.cart-list >.bottom .total-price {
+    margin-left: auto;
+}
+
+.cart-list >.bottom .delete-all-btn {
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    background-color: #efefef;
+    height: 40px;
+    border-radius: var(--border-radius);
+    margin: 4px 10px 0 0;
+    border: 1px solid transparent; 
+    white-space: nowrap;
+    font-size: 15px;
+}
+
+.cart-list >.bottom .delete-all-btn:hover {
+    background-color: transparent;
+    border: 1px solid #ced4da;
+    box-sizing: border-box;
 }

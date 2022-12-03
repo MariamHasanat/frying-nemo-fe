@@ -22,9 +22,9 @@ const CartList = (props) => {
                 <>{cartContext.cart?.map((item) =>
                     <CartRow key={item.meal.id + Date.now()} item={item} />
                 )}
-                    <div>
-                        <p>total price: ${getTotalPrice()}</p>
-                        <button onClick={deleteAll}>delete all</button>
+                    <div className='bottom'>
+                        <button className='delete-all-btn' onClick={deleteAll}>delete all</button>
+                        <p className='total-price'>total price: ${getTotalPrice()}</p>
                     </div>
                 </>
             }

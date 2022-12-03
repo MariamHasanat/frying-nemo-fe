@@ -12,19 +12,19 @@ const CartRow = (props) => {
     return (
         <li className='cart-row'>
             <div className="left">
-                <img src={props.item.meal.img} width={170} height={200} alt="" />
+                <img src={props.item.meal.image} width={170} height={200} alt="" />
             </div>
             <div className="center">
                 <h2>{props.item.meal.name}</h2>
                 <p>${props.item.meal.price}&nbsp;&nbsp;<span className='green-text'>In Stock</span></p>
                 <PlusMinusButtons item={props.item.meal} quantity={props.item.quantity} />
                 {/* i should later get this div out and style it */}
-                <div className='right'>
-                    <button onClick={deleteItem}>
-                        <img src={trash} width={25} alt="" />
-                    </button>
-                    <p>Price ${props.item.meal.price * props.item.quantity}</p>
-                </div>
+            </div>
+            <div className='right'>
+                <p className='price'>Price: <b>${props.item.meal.price * props.item.quantity}</b></p>
+                <button className='trash' onClick={deleteItem}>
+                    <img src={trash} width={25} alt="" />
+                </button >
             </div>
         </li>
     );
