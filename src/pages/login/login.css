@@ -6,7 +6,7 @@
 }
 
 .login-page>form {
-  display: flex;  
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -19,7 +19,7 @@
 .login-page>form>h1 {
   font-size: 28px;
   color: #be441d;
-  line-height: 1.2;  
+  line-height: 1.2;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
