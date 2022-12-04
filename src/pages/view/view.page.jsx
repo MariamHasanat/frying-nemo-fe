@@ -8,6 +8,7 @@ import { getItemQuantity } from '../../utilities/get-item-quantity';
 import { CartContext } from '../../components/providers/cart-provider';
 import { getItems } from '../../services/items';
 import Spinner from '../../components/core/spinner/spinner';
+import { useMemo } from 'react';
 // const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]');
 
 /**
@@ -40,11 +41,6 @@ const View = (props) => {
   const categoryFromURl = params.getAll('category') || '';
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   getItems().then(items => {
-  //     setMenuItems(items);
-  //   });
-  // }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -56,27 +52,30 @@ const View = (props) => {
   }, []);
 
 
-  const filteredItems = menuItems.filter(e => {
+  const filteredItems = useMemo(() => {
+    return menuItems.filter(e => {
 
-    /**
-     * 
-     * @param {String} str 
-     * @returns 
-     */
-    const doesItMatch = str => str.toLowerCase().includes(searchParamFromURl.toLowerCase().trim());
+      /**
+       * 
+       * @param {String} str 
+       * @returns 
+       */
+      const doesItMatch = str => str.toLowerCase().includes(searchParamFromURl.toLowerCase().trim());
 
-    let match = (
-      doesItMatch(e.name) ||
-      doesItMatch(e.description) ||
-      e.ingredients.some(ingredient => doesItMatch(ingredient)));
+      let match = (
+        doesItMatch(e.name) ||
+        doesItMatch(e.description) ||
+        e.ingredients.some(ingredient => doesItMatch(ingredient)));
 
-    if (categoryFromURl.length) {
-      match = match && (categoryFromURl.includes(e.category));
-    }
+      if (categoryFromURl.length) {
+        match = match && (categoryFromURl.includes(e.category));
+      }
 
-    return match;
+      return match;
 
-  });
+    });
+
+  }, [params]);
 
   /**
    * Set query string parameter.
