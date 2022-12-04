@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { useState } from 'react';
 import './form.css';
+import { createdItem } from '../../../services/items';
 
 
 const Form = (props) => {
@@ -21,7 +22,7 @@ const Form = (props) => {
    * @param {React.ChangeEvent<HTMLInputElement>} e On change event object.
    */
 
-  const handler = e => {
+  const handler = async e => {
 
     e.preventDefault();
     /**
@@ -46,11 +47,12 @@ const Form = (props) => {
       id: new Date()
     };
 
-
-    const itemJson = localStorage.getItem('menuItems') || '[]';
-    const items = JSON.parse(itemJson);
-    items.push(menuItem);
-    localStorage.setItem('menuItems', JSON.stringify(items));
+    const res = await createdItem(menuItem);
+    
+    // const itemJson = localStorage.getItem('menuItems') || '[]';
+    // const items = JSON.parse(itemJson);
+    // items.push(menuItem);
+    // localStorage.setItem('menuItems', JSON.stringify(items));
 
     navigate('/view');
   };

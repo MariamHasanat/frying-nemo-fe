@@ -32,7 +32,24 @@ const fetchItem = async (id) => {
  
 };
 
+const createdItem = async(item) => {
+  const res = await fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu' , {
+    method : 'POST' ,
+    body : JSON.stringify(item)
+  })
+  .then(response => {
+    if(response.status === 201) {
+      alert("Adding Successfully");
+      return true;
+    } else {
+      return false;
+    }
+  }) .catch ((err) =>{
+    return false;
+  })
+}
 export {
   fetchItem,
-  getMenu
+  getMenu,
+  createdItem
 };
