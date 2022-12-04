@@ -1,11 +1,9 @@
 import React, { useContext } from 'react';
-import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-
 import cartIcon from '../../../assets/cart.svg';
 import { CartContext } from '../../providers/cart-provider.component';
 import { UserContext } from '../../providers/user-provider.component';
-
+import "./header.css";
 
 
   const Header = (props) => {
@@ -23,7 +21,7 @@ import { UserContext } from '../../providers/user-provider.component';
   
   
   return (
-    <header className="webisteHeader">
+    <header className="websiteHeader">
       <div className="left">
         <h1>
           <img src="./008.svg" alt="fish-pic"  width={40} height={40} />
