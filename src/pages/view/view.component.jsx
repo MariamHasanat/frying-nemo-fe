@@ -9,6 +9,7 @@ import Item from '../../components/view/item/item.component';
 import './view.css';
 import { getCartQuantity } from '../../utilities/get-item-quantity';
 import { getItem, getItems } from '../../services/item';
+import { useMemo } from 'react';
 
 /**
  * @type {Array<{
@@ -49,25 +50,29 @@ const ViewPage = () => {
     getMenuItems();
   }, []);
 
-  const filteredItems = menuItems.filter(item => {
-    /**
-     * Check if search terms are somewhere inside given string.
-     * @param {string} str 
-     */
-    const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
-
-    let match = (
-      doesItMatch(item.name) ||
-      doesItMatch(item.description) ||
-      item.ingredients.some(ingredient => doesItMatch(ingredient))
-    );
-
-    if (categoriesFromURL.length) {
-      match = match && (categoriesFromURL.includes(item.category));
-    }
-
-    return match;
+  const filteredItems = useMemo(()=>{
+    
+    return  menuItems.filter(item => {
+      /**
+       * Check if search terms are somewhere inside given string.
+       * @param {string} str 
+       */
+      const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
+  
+      let match = (
+        doesItMatch(item.name) ||
+        doesItMatch(item.description) ||
+        item.ingredients.some(ingredient => doesItMatch(ingredient))
+      );
+  
+      if (categoriesFromURL.length) {
+        match = match && (categoriesFromURL.includes(item.category));
+      }
+  
+      return match;
   });
+  
+  } , [params]);
 
   /**
    * Set query string parameter.
