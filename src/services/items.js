@@ -25,8 +25,23 @@ const getItems = () =>{
    return undefined; 
   }
 };
+const createItem = (item) =>{
+  fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/',
+  {
+    method: 'POST',
+    body: JSON.stringify(item),
+    
+  }
+  ).then(response =>{
+    console.log(response);
+    return true;}).catch
+    (error =>{
+    console.log(error);
+    return false;})
 
+}
 export {
   getItem,
-  getItems
+  getItems,
+  createItem
 };

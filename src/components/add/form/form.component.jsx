@@ -8,6 +8,7 @@ import "./form.css";
 import MultivalueInput from "../../common/multi-value-input.jsx/multivalue-input.component";
 import "../../../../src/common.css";
 import { CATEGORIES } from "../../../data/constants";
+import { createItem } from "../../../services/items";
 
 const Form = (props) => {
   const [name, setName] = useState("");
@@ -18,7 +19,7 @@ const Form = (props) => {
    * Handler function for the form onSubmit event.
    * @param {React.FormEvent<HTMLFormElement>} e Event object.
    */
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     let description = e.target.description.value;
     let price = e.target.price.value;
@@ -37,11 +38,18 @@ const Form = (props) => {
     e.target.price.value = "";
     setName("");
     setIngredients([]);
-    const itemsJson = localStorage.getItem("menuItems") || "[]";
-    const items = JSON.parse(itemsJson);
-    items.push(menuItem);
-    localStorage.setItem("menuItems", JSON.stringify(items));
-    navigate("/view");
+    const result = await createItem(menuItem);
+    if(result === false){
+      alert("wasn't able to create new item, please try again");
+    }else{
+      alert("item created succesfully!");
+      navigate("/view");
+    }
+    // const itemsJson = localStorage.getItem("menuItems") || "[]";
+    // const items = JSON.parse(itemsJson);
+    // items.push(menuItem);
+    // localStorage.setItem("menuItems", JSON.stringify(items));
+    //navigate("/view");
   };
 
   const onNameChange = (e) => {
