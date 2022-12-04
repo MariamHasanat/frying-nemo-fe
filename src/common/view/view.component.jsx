@@ -7,6 +7,7 @@ import {getCartQuantity} from '../../utilit/cart';
 import { UserContext } from '../../components/provider/provider.component';
 import { CartContext } from '../../components/provider/cart-provider.component';
 import { getItems } from '../../data/items';
+import { useMemo } from 'react';
 
 const ViewPage = (props) => {
   /**
@@ -57,7 +58,10 @@ const ViewPage = (props) => {
   
 
 
-  const filterItem = menuItems.filter(item => {
+  const filterItem = useMemo(()=>{
+    console.log("Calculating filteredItems---");
+
+    return menuItems.filter(item => {
     /**
      * @param {string}str
      */
@@ -81,8 +85,7 @@ const ViewPage = (props) => {
     }
     return match;
   });
-
-
+  }, [params,menuItems]);
   return (
     <div className="view-page">
       <h1>View All Menu Items</h1>
