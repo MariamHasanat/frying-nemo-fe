@@ -1,7 +1,7 @@
 // import { CartContext } from "../../components/providers/cart-provider";
 import React, { useContext } from 'react';
 
-
+import './price-bar.css'
 
 const Price = (props) => { 
 
@@ -20,12 +20,14 @@ const Price = (props) => {
 
 
   return (
-    <div className="price">
-      <div className="add-cart">
-        <button onClick={handelIcrement}>+</button>
-        <input type="number" max={500} value={props.cartQuantity} disabled />
-        <button onClick={handelDecrement}>-</button>
-      </div>
-    </div>);
+    <div class='ctrl'>
+  <button class='ctrl__button ctrl__button--decrement'  onClick={handelIcrement}>+</button>
+  <div class='ctrl__counter'>
+    <input class='ctrl__counter-input ctrl__counter-num' type="number" max={500} value={props.cartQuantity} disabled/>
+    {/* <div class='ctrl__counter-num'>0</div> */}
+  </div>
+  <button class='ctrl__button ctrl__button--increment' onClick={handelDecrement}>-</button>
+</div>
+   );
 };
 export default Price;

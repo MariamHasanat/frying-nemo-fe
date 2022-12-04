@@ -24,7 +24,7 @@ const Card = (props) => {
       <div className="card">
         <div className="imgs">
           {/* <img src="./burg.png" alt="burger" /> */}
-          <img src={props.data.image} alt="food" />
+          <img src={`${props.data.image}?x=${Math.random()}`} alt="food" />
 
         </div>
         <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
