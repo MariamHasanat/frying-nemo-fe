@@ -7,6 +7,7 @@
   position: sticky;
   top: 0;
   background: #fff;
+  z-index: 1;
 }
 
 .websiteHeader>.left {
@@ -16,7 +17,7 @@
 
 .websiteHeader>.left>h1 {
   font-size: 18px;
-  color: #0e0d0d;
+  color: #F90;
   line-height: 1.2;
   display: flex;
   align-items: center;
@@ -62,7 +63,7 @@
 }
 
 .websiteHeader .right nav a.current {
-  background-color: #be441d;
+  background-color:  #F90;
   border-radius: 5px;
   color: white;
 }
@@ -113,7 +114,7 @@
   right: -11px;
   z-index: 2;
   font-weight: bold;
-  background: #f15a29;
+  background:  #F90;
   padding: 2px;
   border-radius: 50%;
   font-size: 12px;

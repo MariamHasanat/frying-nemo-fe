@@ -7,7 +7,8 @@ import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import { CATEGORIES } from '../../../data/constant';
-import {UserContext} from '../../providers/user-provider.component';
+import { UserContext } from '../../providers/user-provider.component';
+import { CreateItem } from '../../../services/item';
 const Form = (props) => {
   const [name, setName] = useState('yara');
   const [Ingredients, setIngredients] = useState([]);
@@ -34,15 +35,25 @@ const Form = (props) => {
       Ingredients
 
     };
-    const itemsJason = localStorage.getItem('menuItems') || '[]';
-    const items = JSON.parse(itemsJason);
-    items.push(menuItem);
-    localStorage.setItem('menuItems', JSON.stringify(items));
-    navigate('/view');
-    console.log('form Submitted')
+    const res = CreateItem(menuItem);
+    if (res) {
+      alert
+        ("item added successfully");
+      navigate('/view');
+    }
+    else {
+      alert('error adding the item !');
+    }
+    // const itemsJason = localStorage.getItem('menuItems') || '[]';
+    // const items = JSON.parse(itemsJason);
+    // items.push(menuItem);
+    // localStorage.setItem('menuItems', JSON.stringify(items));
+    // navigate('/view');
+    // console.log('form Submitted')
 
   };
-  
+
+
 
   /**
    * Handles on change events on the name field.
@@ -64,7 +75,6 @@ const Form = (props) => {
   };
 
 
- 
 
 
   return (

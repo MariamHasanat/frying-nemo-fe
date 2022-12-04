@@ -13,9 +13,7 @@ import PriceBar from '../price-bar/price-bar.component';
  *     description: string;
  *     price: number;
  *     category: string;
- *     ingredients
-
-: string[];
+ *     ingredients: string[];
  *    },
  *    dispatch: React.DispatchWithoutAction
  *   }} props
@@ -26,7 +24,7 @@ const Item = (props) => {
   return (
     <div className="item-card">
       <div className="img">
-        <img src={props.data.image} alt="food" />
+        <img src={`${props.data.image}?x=${Math.random()}`} alt="food" />
       </div>
       <div className="info">
       <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
