@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
+import './form.css';
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/constants';
-import './form.css';
+import { createItem } from '../../../services/items.service';
 
 import { UserContext } from '../../providers/user-provider.component';
 
@@ -11,7 +12,7 @@ import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 
 const Form = (props) => {
-  const [name, setName] = useState('Sajeda');
+  const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
@@ -20,7 +21,7 @@ const Form = (props) => {
    * Handler function for the form onSubmit event.
    * @param {React.FormEvent<HTMLFormElement>} e Event object.
    */
-  const submitHandler = e => {
+  const submitHandler = async e => {
     e.preventDefault();
 
     const description = e.target.description.value;
@@ -29,23 +30,23 @@ const Form = (props) => {
     const category = e.target.category.value;
 
     const menuItem = {
-      id: Date.now(),
+      // id: Date.now(),
       name: name,
       image,
       description: description,
-      price: price,
+      price: price.toString(),
       category: category,
       ingredients: ingredients
     };
 
-    const itemsJson = localStorage.getItem('menuItems');
-    const items = JSON.parse(itemsJson) || [];
+    const res = await createItem(menuItem);
+    if (res) {
+      alert("Item added successfully");
+      navigate('/view');
+    } else {
+      alert("Error adding the item!");
+    }
 
-    items.push(menuItem);
-
-    localStorage.setItem('menuItems', JSON.stringify(items));
-
-    navigate('/view');
   };
 
   /**
