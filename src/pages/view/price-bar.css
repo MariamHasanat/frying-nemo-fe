@@ -21,7 +21,7 @@
   border: none;
   background-color: purple;
   height: 100%;
-  box-shadow: 1px 1px 10px 1px #b9a8b9;
+  box-shadow: 1px 1px 19px 3px #afa1af;
 }
 .ctrl__counter {
   position: relative;
@@ -32,13 +32,13 @@
   overflow: hidden;
 }
 .ctrl__counter.is-input .ctrl__counter-num {
-  visability: hidden;
+  visibility: hidden;
   opacity: 0;
   -webkit-transition: opacity 100ms ease-in;
   transition: opacity 100ms ease-in;
 }
 .ctrl__counter.is-input .ctrl__counter-input {
-  visability: visible;
+  visibility: visible;
   opacity: 1;
   -webkit-transition: opacity 100ms ease-in;
   transition: opacity 100ms ease-in;
@@ -56,10 +56,9 @@
   font-size: 30px;
   line-height: 100px;
   text-align: center;
-  visability: hidden;
+  visibility: hidden;
   opacity: 0;
   -webkit-transition: opacity 100ms ease-in;
-  transition: opacity 100ms ease-in;
 }
 .ctrl__button {
   width: 100px;
@@ -78,7 +77,7 @@
   transition: background-color 100ms ease-in;
 }
 .ctrl__button:active {
-  background-color: #778996;
+  background-color: rgb(155, 130, 155);
   -webkit-transition: background-color 100ms ease-in;
   transition: background-color 100ms ease-in;
 }
