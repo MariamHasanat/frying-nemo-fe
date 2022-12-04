@@ -32,7 +32,7 @@ const LoginPage = (props) => {
     const password = e.target.password.value.trim();
 
     if (email && password) {
-      const user =await loginUser(email, password);
+      const user = await loginUser(email, password);
       // If Successful login, go to view page
       if (user) {
         userContext.setUser(user);
