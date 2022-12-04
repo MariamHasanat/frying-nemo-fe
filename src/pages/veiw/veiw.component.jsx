@@ -6,8 +6,9 @@ import Item from "../../components/item/item.component";
 import "./veiw.css";
 import { getCartQuantity } from "../../utils/cart";
 import { useContext } from "react";
-import { CartContext } from '../../components/providers/cart.provider.component';
+import { CartContext } from "../../components/providers/cart.provider.component";
 import { getItems } from "../../services/items";
+import { useMemo } from "react";
 /**
  * @type {Array<{
  * name: string;
@@ -40,7 +41,6 @@ const Addveiw = (props) => {
     //   setMenuItems(items);
     //   setLoading(false);
     // }, 1000);
-
   };
   useEffect(() => {
     // To check if the user is already logged in, send him to the view page
@@ -52,26 +52,32 @@ const Addveiw = (props) => {
   useEffect(() => {
     getMenuItems();
   }, []);
+  const filteredItems = useMemo(() => {
+    console.log("Calculating filtered");
+    return menuItems.filter(
+      (item) => {
+        /**
+         * Check if search terms are somewhere inside given string.
+         * @param {string} str
+         */
+        const doesItMatch = (str) =>
+          str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
 
-  const filteredItems = menuItems.filter((item) => {
-    /**
-     * Check if search terms are somewhere inside given string.
-     * @param {string} str
-     */
-    const doesItMatch = (str) =>
-      str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
+        let match =
+          doesItMatch(item.name) ||
+          doesItMatch(item.description) ||
+          item.ingredients.some((ingredient) => doesItMatch(ingredient));
 
-    let match =
-      doesItMatch(item.name) ||
-      doesItMatch(item.description) ||
-      item.ingredients.some((ingredient) => doesItMatch(ingredient));
+        if (categoriesFromURL.length) {
+          match = match && categoriesFromURL.includes(item.category);
+        }
 
-    if (categoriesFromURL.length) {
-      match = match && categoriesFromURL.includes(item.category);
-    }
-
-    return match;
+        return match;
+      },
+      [params]
+    );
   });
+  console.log(filteredItems);
 
   /**
    * Set query string parameter.
@@ -84,14 +90,14 @@ const Addveiw = (props) => {
     newParams.delete(name);
 
     if (Array.isArray(value)) {
-        value.forEach((item) => newParams.append(name, item));
+      value.forEach((item) => newParams.append(name, item));
     } else if (value) {
-        newParams.set(name, value.trim());
+      newParams.set(name, value.trim());
     }
 
     setParams(newParams);
   };
- 
+
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>

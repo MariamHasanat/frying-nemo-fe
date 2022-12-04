@@ -7,6 +7,7 @@ import Textarea from "../../common/textarea/textarea/textarea.component";
 import "./form.css";
 import { UserContext } from "../../providers/user.provider.component";
 import { CATEGORIES } from "../../../data/constant";
+import { createItem } from "../../../services/items";
 
 const Form = (props) => {
   const [name, setName] = useState("ali");
@@ -23,7 +24,7 @@ const Form = (props) => {
    * @param {React.ChangeEvent<HTMLInputElement>} e On change event object.
    */
 
-  const submitHandler = (e) => {
+  const submitHandler  = async (e) => {
     e.preventDefault();
 
     const descreption = e.target.descreption.value;
@@ -39,13 +40,13 @@ const Form = (props) => {
       ingredients,
       image,
     };
-
-    const itemsJSON = localStorage.getItem("menuItems") || "[]";
-    const items = JSON.parse(itemsJSON);
-    items.push(menuItem);
-
-    localStorage.setItem("menuItems", JSON.stringify(items));
-    navigate("/view");
+    const res = await createItem(menuItem);
+        if(res){
+          alert("item added succesfully!");
+          navigate('/view');
+        }else{
+          alert("Error Adding the Item !");
+        }
     /**
      * @type {HTMLFormElement}
      */
