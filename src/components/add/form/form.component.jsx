@@ -7,6 +7,7 @@ import MultivalueInput from "../../common/multivalue-input/multivalue-input.comp
 import { useNavigate } from "react-router-dom";
 import { CATEGORIES } from "../../../data/constants";
 import { UserContext } from "../../../components/providers/user-provider";
+import { createItem } from "../../../services/items";
 const Form = () => {
   const navigate = useNavigate();
 
@@ -17,7 +18,7 @@ const Form = () => {
    *
    * @param {React.FormEvent<HTMLFormElement>} e
    */
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     const description = e.target.description.value;
     const category = e.target.category.value;
@@ -34,14 +35,15 @@ const Form = () => {
       image: imageUrl,
     };
 
-    const itemsJson = localStorage.getItem("menuItems");
-    const items = JSON.parse(itemsJson) || [];
+    const result = await createItem(menuItem);
+    if (result) {
+      navigate("/view");
+    }
+    else {
+      alert("ERROR in adding item");
+    }
 
-    items.push(menuItem);
 
-    localStorage.setItem("menuItems", JSON.stringify(items));
-
-    navigate("/view");
   };
 
   return (

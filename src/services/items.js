@@ -18,11 +18,21 @@ const getItem = async (id) => {
     .then(response => {
       return response.json();
     }).catch(e => console.log(e.toString()));
-  // const items = JSON.parse(localStorage.menuItems || '[]');
-  // const item = items.filter(it => it.id.toString() === id);
-  // return item[0] || null;
+
+};
+
+const createItem = async (item) => {
+  return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu',
+    {
+      method: 'POST',
+      body: JSON.stringify(item),
+    }).then((response) => {
+      return response.status === 201;
+    }).catch(error => console.log(error));
 };
 
 export {
-  getItem, getItems
+  getItem,
+  getItems,
+  createItem
 };
