@@ -9,20 +9,21 @@ import Textarea from '../../common/textarea/textarea.component';
 import { UserContext } from '../../provider/provider';
 import Withborder from '../../withborder/withborder';
 import { CATEGORIES } from './data/constant';
+import { creatItem } from './data/items';
 
 import './form.css';
 const Form = (props) => {
   const [ingredients, setIngredients] = useState([]);
   const [name, setname] = useState('Sajeda');
   const navigate = useNavigate();
-   const userContext = useContext(UserContext)
+  const userContext = useContext(UserContext);
   /**
    * 
    * @param {React.FormEvent<HTMLFormElement>} e 
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-   debugger
+    debugger;
     const image = e.target.image.value;
     const price = Number(e.target.price.value);
     const description = e.target.description.value;
@@ -38,12 +39,15 @@ const Form = (props) => {
     };
 
 
-    const itemJ = localStorage.getItem('menuItem');
-    const items = JSON.parse(itemJ) || [];
-    items.push(menuItem);
-    localStorage.setItem('menuItem', JSON.stringify(items));
+    const res = await creatItem(menuItem);
+    if (res) {
+       alert("succses go data");
+      navigate("/view");
+    }
+    else {
+      alert("ERROR go data");
+    }
 
-    navigate("/View");
   };
   const onNameChange = (e) => {
     let value = e.target.value;
@@ -64,12 +68,12 @@ const Form = (props) => {
     <form className='form' onSubmit={handleSubmit}>
       <div className='input'>
         <Withborder>
-        <Input
-          label='name'
-          value={name}
-          onChange={(e) => onNameChange(e)}
-          required
-        />
+          <Input
+            label='name'
+            value={name}
+            onChange={(e) => onNameChange(e)}
+            required
+          />
         </Withborder>
         <Textarea
           label="Description"
@@ -105,9 +109,9 @@ const Form = (props) => {
 
       </div>
       <button
-      type="submit"
-      className="nemo" 
-      disabled={userContext.user?.role !== 'ADMIN'}
+        type="submit"
+        className="nemo"
+        disabled={userContext.user?.role !== 'ADMIN'}
       >Create</button>
     </form>
   );
