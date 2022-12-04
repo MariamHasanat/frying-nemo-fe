@@ -8,6 +8,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import CATEGORIES from '../../data/categories';
 import { useContext } from 'react';
 import { UserContext } from '../../providers/provider.component';
+import { createItem } from '../../../pages/view-item/item';
 
 const Form = () => {
   const [name, setName] = useState('Huda');
@@ -19,7 +20,7 @@ const Form = () => {
    * Handler function for the form onSubmit event.
    * @param {React.FormEvent<HTMLFormElement>} e Event object.
    */
-  const submitHandler = e => {
+  const submitHandler = async e => {
     e.preventDefault();
 
     const description = e.target.description.value;
@@ -36,6 +37,15 @@ const Form = () => {
       category:category,
       ingredients:ingredients
     };
+
+    const res = await createItem(menuItem);
+    if (res){
+      alert('you add an item successfully');
+      Navigate('/view');
+    }
+    else{
+      alert('adding item failed');
+    }
 
     console.log('form submetted' , menuItem)
     const JsonItem = localStorage.getItem('menuItem');
