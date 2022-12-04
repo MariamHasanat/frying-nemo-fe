@@ -8,7 +8,7 @@ const getItems = async () => {
 
 
 /**
- * Fake Fetching of single item
+ * Fetching of single item
  * @param {number} id 
  */
 const getItem = async (id) => {

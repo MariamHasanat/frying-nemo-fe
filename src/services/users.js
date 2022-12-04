@@ -5,11 +5,11 @@
  */
 const loginUser = async (email, password) => {
 
-  const allUsers = await (await fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/users/')).json();
-  const user = await allUsers.find(user => {
-    return user['email'] === email && user['password'] === password;
-  });
-  return user;
+  return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/users/')
+    .then(async (res) => {
+      const users = await res.json();
+      return users.find(user => user['email'] === email && user['password'] === password);
+    });
 
 };
 

@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { getItem } from '../../services/items';
-import './view-item.css';
 import { getItemQuantity } from '../../utilities/get-item-quantity';
 import PriceBar from '../../components/price-bar/price-bar.component';
 import { useContext } from 'react';
 import { CartContext } from '../../components/providers/cart-provider';
 import Spinner from '../../components/core/spinner/spinner';
+import './view-item.css';
 
 /**
  * 
