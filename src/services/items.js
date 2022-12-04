@@ -31,6 +31,16 @@ const createItem = async (item) => {
     }).catch(error => console.log(error));
 };
 
+
+const deleteItem = async (id) => {
+  return fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu${id}`,
+    {
+      method: 'DELETE',
+    }).then((response) => {
+      return response.status === 201;
+    }).catch(error => console.log(error));
+};
+
 export {
   getItem,
   getItems,
