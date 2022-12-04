@@ -8,6 +8,7 @@ import "./form.css";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../providers/user-provider";
+import { createItem } from "../../../services/items";
 
 const categories = [
   "Fish",
@@ -30,7 +31,7 @@ const Form = (props) => {
    *
    * @param {React.FormEvent<HTMLFormElement>} e Event Object.
    */
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     // this function handling the form
     e.preventDefault(); // don't refresh and don't take me to another page
 
@@ -51,14 +52,20 @@ const Form = (props) => {
       ingredients,
     };
 
-    const itemsJson = localStorage.getItem("menuItems") || "[]"; // local storage take string
-    const items = JSON.parse(itemsJson); // convert string to javascript object
+    const response = await createItem(menuItems); // this is actually a menu Item
+    if (response === true) {
+      alert('Item Added Successfully');
+      navigate("/view");
+    } else {
+      alert('Error While Adding This Item');
+    }
+    // const itemsJson = localStorage.getItem("menuItems") || "[]"; // local storage take string
+    // const items = JSON.parse(itemsJson); // convert string to javascript object
 
-    items.push(menuItems);
+    // items.push(menuItems);
 
-    localStorage.setItem("menuItems", JSON.stringify(items)); // convert javascript object to string
+    // localStorage.setItem("menuItems", JSON.stringify(items)); // convert javascript object to string
 
-    navigate("/view");
   };
 
   const onNameChange = (e) => {

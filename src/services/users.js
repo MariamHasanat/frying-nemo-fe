@@ -15,9 +15,7 @@ import { getUsers } from '../data/tmp_data';
 
 const loginUser = async (email, password) => {
   const USER = await getUsers();
-  console.log(USER);
   const user = USER.filter(user => user.email === email && user.password === password);
-  console.log(user[0]);
   return user[0] || null;
 };
 
