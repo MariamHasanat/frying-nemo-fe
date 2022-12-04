@@ -28,7 +28,6 @@ const LoginPage = (props) => {
 
     if (email && password) {
       const user = loginUser(email, password);
-      // If Successful login, go to view page
       if (user) {
         ContextUser.setUser(user);
         navigate('/view', { replace: true });

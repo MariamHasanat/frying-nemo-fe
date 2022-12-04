@@ -7,6 +7,7 @@ import MultivalueInput from '../../../common/multivalue-input/multivalue-input.c
 import Image from '../../../common/image/Image';
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../../App';
+import { createItem } from '../../../services/items';
 
 
 
@@ -14,12 +15,12 @@ import { UserContext } from '../../../App';
  * 
  * @param {React.ChangeEvent<HTMLInputElement>} e 
  */
-const Form = (props) => {
+const Form =  (props) => {
   const navigate = useNavigate()
   const [name, SetName] = useState('Add item');
   const [ingredients, setIngredients] = useState([]);
   const ContextUser=useContext(UserContext)
-  const submitHandler = e => {
+  const submitHandler =  async e => {
     e.preventDefault();
 
     const description = e.target.description.value;
@@ -38,13 +39,15 @@ const Form = (props) => {
       ingredients: ingredients
     };
 
-    const itemsJson = localStorage.getItem('menuItems');
-    const items = JSON.parse(itemsJson) || [];
 
-    items.push(menuItem);
 
-    localStorage.setItem('menuItems', JSON.stringify(items));
-    navigate("/view")
+   const res= await createItem(menuItem)
+   if (res) {
+    alert("the send is successfully")
+     navigate("/view")
+   } else {
+    alert("the send is Failed")
+   }
 
   };
 
@@ -108,7 +111,7 @@ const Form = (props) => {
 
         />
 
-        <button className='point' type='sumbit'    disabled={ContextUser.user?.role !== 'ADMIN'} >Create</button>
+        <button className='point' type='sumbit'    >Create</button>
       </div>
     </form>
   );
