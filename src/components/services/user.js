@@ -10,8 +10,7 @@ const LoginUser = async (email, password) => {
     // .then(error => console.log(error));
   const result = await response.json();
   const user = await result.find(user => {
-    // return user.email === email && user.password === password;
-    return user['email'] === email && user['password'] === password;
+    return user.email === email && user.password === password;
 
   });
   return user;
