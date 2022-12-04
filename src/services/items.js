@@ -36,7 +36,36 @@ const fetchItem = async (id) => {
   };
 };
 
+const creatItem = async (item) => {
+
+
+
+  return fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu `,
+    {
+
+      method: 'POST',
+      body: JSON.stringify(item),
+    })
+    .then(response => {
+      if (response.status === 201) {
+
+        return true;
+      } else {
+        return false;
+      }
+    })
+
+    .catch(error => {
+
+      console.log(error);
+      return false;
+    });
+
+};
+
+
 export {
   fetchItem,
-  fetchItems
+  fetchItems,
+  creatItem
 };

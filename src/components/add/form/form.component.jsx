@@ -7,6 +7,7 @@ import MultivalueInput from '../../common/mutivalue-input/multivalue-input.compo
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import { UserContext } from '../../providers/user-provider.component';
+import { creatItem } from '../../../services/items';
 
 
 
@@ -20,7 +21,7 @@ const Form = (props) => {
    * Handler fn for the form onSubmit event .
    * @param {React.FormEvent<HTMLFormElement>}e Event object.
    */
-  const submitHandler = e => {
+  const submitHandler = async e => {
     e.preventDefault();
 
 
@@ -40,13 +41,13 @@ const Form = (props) => {
       ingredients: ingredients
     };
 
-    // console.debug('Form submitted', menuItem);
-    const itemsJson = localStorage.getItem('menuItems') || '[]';
-    const items = JSON.parse(itemsJson);
-
-    items.push(menuItem);
-    localStorage.setItem('menuItems', JSON.stringify(items));
-    props.onNavigate('view');
+    const res = await creatItem(menuItem);
+    if (res) {
+      alert("Item added sucessfully!");
+      navigate('/view');
+    } else {
+      alert("Error adding the item !");
+    }
   };
 
   /**
