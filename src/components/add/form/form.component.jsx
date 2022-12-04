@@ -45,11 +45,6 @@ const Form = (props) => {
       alert("item created succesfully!");
       navigate("/view");
     }
-    // const itemsJson = localStorage.getItem("menuItems") || "[]";
-    // const items = JSON.parse(itemsJson);
-    // items.push(menuItem);
-    // localStorage.setItem("menuItems", JSON.stringify(items));
-    //navigate("/view");
   };
 
   const onNameChange = (e) => {

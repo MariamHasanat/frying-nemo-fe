@@ -8,8 +8,8 @@ import PriceBar from "../view/price-bar/price-bar.component";
 import { useContext } from "react";
 import { CartContext } from "../providers/cart-provider.component";
 import { getItems } from "../../services/items";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect,useState} from "react";
+
 /**
  * @type {Array<{
  * id: number
@@ -23,7 +23,7 @@ import { useState } from "react";
  */
 const Cards =  (props) => {
   const cartContext = useContext(CartContext);
-  //localStorage.getItem("menuItems").length ? [...JSON.parse(localStorage.getItem("menuItems"))]: [];
+   //localStorage.getItem("menuItems").length ? [...JSON.parse(localStorage.getItem("menuItems"))]: [];
   const [searchParams, setSearchParams] = useSearchParams();
   const searchTermsFromURL = searchParams.get('q') || '';
   const categoryFromURL = searchParams.get('category') || '';
