@@ -61,7 +61,7 @@ const ViewPage = (props) => {
 
       return match;
     });
-  }, [params]);
+  }, [params, menuItems]);
 
   /**
    * Set query string parameter.
