@@ -7,6 +7,7 @@ import MultivalueInput from '../../../common/Multivalue-input/multivalue-input.c
 import { useNavigate } from 'react-router-dom';
 import React,{ useContext } from 'react';
 import  { UserContext } from '../../provider/provider.component';
+import { createItem } from '../../../data/items';
 
 const Form = () => {
   const [name, setName] = useState('Nadeen');
@@ -34,14 +35,22 @@ const Form = () => {
       category: category,
       ingredients: ingredients
     };
-    const itemsJson = localStorage.getItem('menuItems') || '[]';
-    const items = JSON.parse(itemsJson);
+   const res= createItem(menuItem);
+   if(res){
+    console.log(res);
+    alert("item added");
+        navigate("/view");
+   }else{
+    alert("error added");
 
-    items.push(menuItem);
+   }
+    // const itemsJson = localStorage.getItem('menuItems') || '[]';
+    // const items = JSON.parse(itemsJson);
 
-    localStorage.setItem('menuItems', JSON.stringify(items));
+    // items.push(menuItem);
 
-    navigate("/view");
+    // localStorage.setItem('menuItems', JSON.stringify(items));
+
 
 
   };
