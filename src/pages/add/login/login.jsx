@@ -26,7 +26,7 @@ const LoginPage = (props) => {
     const email = e.target.email.value.trim();
     const password = e.target.password.value.trim();
     if (email && password) {
-      const user =await loginUser(email, password);
+      const user = await loginUser(email, password);
 
       if (user) {
         userContext.setUser(user);
