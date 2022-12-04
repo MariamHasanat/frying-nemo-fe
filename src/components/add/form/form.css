@@ -35,11 +35,12 @@
   background-color: #d1a2d1;
   border: unset;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
   margin-top: 5px;
   color: #fff;
   text-align: center;
   box-shadow: 0px 0px 5px 1px #a77ca7;
+  margin: .5rem;
 
 }
 

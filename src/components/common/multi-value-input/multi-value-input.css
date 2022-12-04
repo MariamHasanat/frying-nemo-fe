@@ -1,17 +1,14 @@
 
 .multivalue {
   list-style: none;
-  margin-top: 10px;
   padding: 5px 10px;
   font-weight: bolder;
-  /* width: 500px; */
 
 
 }
 
 .multivalue>ul {
   list-style: none;
-  /* margin-top: 10px; */
   padding: 5px 10px;
   border: 1px solid #ddd;
   background-color: white;
@@ -25,15 +22,24 @@
 
 
 }
-.nemo-button{
+.multivalue>.nemo-button{
+  background-color: #d1a2d1;
+  border: unset;
+  padding: 5px;
+  border-radius: 10px;
   width: 5rem;
-  border: none;
-  background-color: none;
- color: white;
-font-weight: bolder;
-margin-top: .5rem;
-padding: .2rem;
-background: unset;
-background: rgb(173, 147, 190);
+  margin-top: 5px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0px 0px 5px 1px #a77ca7;
+  margin: .5rem;
+  
+}
+.multivalue>.nemo-button:hover{
+  box-shadow: -1px 0px 10px 1px #2a0c2a;
+
+}
+.multivalue>.nemo-button:active{
+  box-shadow: 1px 1px 1px 1px #a77ca7;
 
 }
