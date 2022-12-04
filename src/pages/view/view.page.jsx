@@ -9,6 +9,7 @@ import { CartContext } from '../../components/providers/cart-provider.component'
 import { UserContext } from '../../components/providers/user-provider.component';
 import { getCartQuantity } from '../../utils/cart';
 import { getItems } from '../../services/item';
+import { useMemo } from 'react';
 
 
 /**
@@ -66,7 +67,9 @@ const ViewPage = (props) => {console.log("from view pGE ")
 
   });
 
-  const filteredItems = menuItems.filter(item => {
+  const filteredItems = useMemo(()=>{
+    console.log("calculating items ... ");
+    return menuItems.filter(item => {
 
     /**
      * Check if search terms are somewhere inside given string.
@@ -93,6 +96,8 @@ const ViewPage = (props) => {console.log("from view pGE ")
 
     return Match;
   });
+  },[params]);
+  
   /**
      * Set query string parameter.
      * @param {string} name Parameter name.
