@@ -8,6 +8,7 @@ import MultivalueInput from '../multivalue/multivalue-input';
 import { CATEGORIES } from '../data/categories';
 
 import { UserContext } from '../providers/user-provider';
+import { createItem } from '../../services/items';
 
 const Form = (props) => {
 
@@ -19,12 +20,14 @@ const Form = (props) => {
    * 
    * @param {React.FormEvent<HTMLFormElement>} e event object
    */
-  const submitHandler = e => {
+  const submitHandler = async e => {
     e.preventDefault();
-    const description = e.target.description.value;
+    // const name = e.target.name.value;
     const image = e.target.image.value;
+    const description = e.target.description.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
+    // const ingredients = e.target.ingredients.value;
 
     const menuItem = {
       id: Date.now(),
@@ -36,14 +39,22 @@ const Form = (props) => {
       ingredients: ingredients
     };
     // console.log(menuItem);
-    const itemsJson = localStorage.getItem('menuItems');
-    const items = JSON.parse(itemsJson) || [];
+    const res = await createItem(menuItem);
+    if (res) {
+      alert("Items added successfully");
+      navigate('/view');
+    } else {
+      alert("error adding the item");
+    }
 
-    items.push(menuItem);
 
-    localStorage.setItem('menuItems', JSON.stringify(items));
+    // const itemsJson = localStorage.getItem('menuItems');
+    // const items = JSON.parse(itemsJson) || [];
 
-    navigate('/view');
+    // items.push(menuItem);
+
+    // localStorage.setItem('menuItems', JSON.stringify(items));
+
 
   };
 
@@ -64,6 +75,7 @@ const Form = (props) => {
 
     setName(value);
   };
+
 
   return (
 
