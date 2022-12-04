@@ -21,13 +21,13 @@ const LoginPage = () => {
  * Handler function for the form onSubmit event.
  * @param {React.FormEvent<HTMLFormElement>} e Event object.
  */
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value.trim();
     const password = e.target.password.value.trim();
 
     if (email && password) {
-      const user = loginUser(email, password);
+      const user =await loginUser(email, password);
       if (user) {
         userContext.setUser(user);
         navigate('/view', { replace: true });

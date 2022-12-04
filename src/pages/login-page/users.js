@@ -1,12 +1,18 @@
-import { USERS } from "./tmp-data";
 /**
  * Fake Fetching of single item
  * @param {string} email
  * @param {string} password
  */
 const loginUser = (email, password) => {
-  const user = USERS.find(user => user.email === email && user.password === password);
-  return user || null;
+  return fetch ('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/users')
+  .then(async res=>{
+    const users = await res.json();
+    return users.find(user => user.email === email && user.password === password);
+  })
+  .catch (error=>{
+    console.error(error);
+    return null;
+  });
 };
 
 export {
