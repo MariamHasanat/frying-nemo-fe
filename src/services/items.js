@@ -36,7 +36,7 @@ const fetchItem = async (id) => {
   };
 };
 
-const creatItem = async (item) => {
+const createItem = async (item) => {
 
 
 
@@ -67,5 +67,5 @@ const creatItem = async (item) => {
 export {
   fetchItem,
   fetchItems,
-  creatItem
+  createItem 
 };

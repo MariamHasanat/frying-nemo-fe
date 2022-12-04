@@ -7,7 +7,7 @@ import MultivalueInput from '../../common/mutivalue-input/multivalue-input.compo
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import { UserContext } from '../../providers/user-provider.component';
-import { creatItem } from '../../../services/items';
+import { createItem } from '../../../services/items';
 
 
 
@@ -41,7 +41,7 @@ const Form = (props) => {
       ingredients: ingredients
     };
 
-    const res = await creatItem(menuItem);
+    const res = await createItem(menuItem);
     if (res) {
       alert("Item added sucessfully!");
       navigate('/view');
