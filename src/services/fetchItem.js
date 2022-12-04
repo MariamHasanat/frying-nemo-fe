@@ -9,8 +9,8 @@ const getItem = (myId) => {
     // return items.filter(item => item.id.toString() === myId)[0] || null;
     const url = menuURL + myId;
     return fetch(url)
-    .then(res => res.json())
-    .catch(err => console.log(err.toString()))
+        .then(res => res.json())
+        .catch(err => console.log(err.toString()));
 };
 
 /**
@@ -22,4 +22,24 @@ const getAllItems = () => {
         .catch(err => console.log(err.toString()));
 };
 
-export { getItem, getAllItems };
+const createItem = (item) => {
+    return fetch(menuURL, {
+        method: 'POST',
+        body: JSON.stringify(item)
+    })
+        .then(res => {
+            if (res.status === 201) {
+                alert('success');
+                return true;
+            } else {
+                alert(res.status)
+                return false;
+            }
+        })
+        .catch((err) => {
+            alert(err.toString());
+            return false;
+        });
+};
+
+export { getItem, getAllItems, createItem };

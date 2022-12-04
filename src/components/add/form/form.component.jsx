@@ -9,6 +9,7 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/constants';
 import { UserContext } from '../../providers/user-provider.component';
+import { createItem } from '../../../services/fetchItem';
 const Form = () => {
     const [name, setName] = useState('');
     const [ingredients, setIngredients] = useState([]);
@@ -36,11 +37,11 @@ const Form = () => {
             image: image
         };
 
-        const menu = localStorage.getItem('menu') || '[]';
-        const parsed = JSON.parse(menu);
-        parsed.push(menuItem);
-        // console.log('parsed:', parsed);
-        localStorage.setItem('menu', JSON.stringify(parsed));
+        // const menu = localStorage.getItem('menu') || '[]';
+        // const parsed = JSON.parse(menu);
+        // parsed.push(menuItem);
+        // // console.log('parsed:', parsed);
+        // localStorage.setItem('menu', JSON.stringify(parsed));
 
         // just in case ;)
         // e.target.description.value = '';
@@ -49,7 +50,10 @@ const Form = () => {
         // setIngredients([]);
         // setName('');
 
-        navigate('/view');
+        const res = createItem(menuItem);
+        if (res) {
+            navigate('/view');
+        }
     };
 
     const inputChangeHandler = e => {
