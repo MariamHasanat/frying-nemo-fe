@@ -20,13 +20,13 @@ const LoginPage = (props) => {
  * Handler function for the form onSubmit event.
  * @param {React.FormEvent<HTMLFormElement>} e Event object.
  */
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value.trim();
     const password = e.target.password.value.trim();
 
     if (email && password) {
-      const user = loginUser(email, password);
+      const user = await loginUser(email, password);
       // If Successful login, go to view page
       if (user) {
         userContext.setUser(user);
