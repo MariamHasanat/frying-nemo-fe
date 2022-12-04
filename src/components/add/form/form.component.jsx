@@ -7,7 +7,7 @@ import './form.css';
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/data';
 import { UserContext } from '../../../App';
-
+import {creatItem} from '../../services/items'  
 
 
 const Form = (props) => {
@@ -45,14 +45,18 @@ const Form = (props) => {
 
     };
 
-    const itemsJson = localStorage.getItem('menuitems');
 
-    const items = JSON.parse(itemsJson) || [];
+/** store item in the local storage before using API */
+    // const itemsJson = localStorage.getItem('menuitems');
+    // const items = JSON.parse(itemsJson) || [];
+    // items.push(menuItem);
+    // localStorage.setItem('menuitems', JSON.stringify(items));
+    // console.table('menuitems', items);
 
-    items.push(menuItem);
 
-    localStorage.setItem('menuitems', JSON.stringify(items));
-    console.table('menuitems', items);
+    /** create item bu  using Fech API method POST */
+    creatItem(menuItem);
+
     navigate('/view');
 
 

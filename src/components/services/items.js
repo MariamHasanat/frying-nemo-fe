@@ -31,7 +31,22 @@ const getItem = async (id) => {
   // return item[0] || null;
 };
 
+const creatItem = (item) => {
+  return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/', 
+  {
+    method: 'POST',
+    body: JSON.stringify(item),
+
+  })
+  .then( respons=>{
+    respons.json()
+  })
+  .catch(error=>{console.log(error)})
+
+};
+
 export {
   getItem,
-  getItemsFromAPI
+  getItemsFromAPI,
+  creatItem
 };

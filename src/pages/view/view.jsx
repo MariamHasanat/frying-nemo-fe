@@ -45,7 +45,7 @@ const ViewPage = (props) => {
   //my query 
   const searchFromURL = params.get("searchTerms") || '';
   const categoriesFromURL = params.getAll("categories") || '';
-  const categoriesURL = params.get("categoriess") || '';
+  const categoriesURL = params.get("categories") || '';
   const maxFromURL = params.get("max") || '';
   const minFromURL = params.get("min") || '';
   const price = params.get("price") || '';
@@ -104,6 +104,7 @@ const ViewPage = (props) => {
     }
 
 
+
     if (maxFromURL && minFromURL) {
       match = match && (item.price >= minFromURL && item.price <= maxFromURL);
 
@@ -148,45 +149,44 @@ const ViewPage = (props) => {
   return (
 
     <div className='wrapper' >
-      <h1>View items page</h1>
-
-
+      {/* <h1>View items page</h1> */}
+      <br />
       <div className="filter">
         <FilterBar
           searchTerms={searchFromURL}
           categories={categoriesFromURL}
           setParam={setParam}
-          />
-        
+        />
+
       </div>
 
-         {
-loading ?<div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Spinner /></div>
+      {
+        loading ? <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Spinner /></div>
 
-      :(
-      <div className="container" >
+          : (
+            <div className="container" >
 
-        {
-          filterItems.length
-            ?
-            (filterItems.map((item, index) =>
-              <Card data={item}
-                key={item.name + index}
-                dispatch={cartContext.dispatch}
-                // cartQuantity={props.cart}
-                cartQuantity={getCartQuantity(item.id, cartContext.cart)}
-              />
-            ))
-            : (
-              <div className="no-results">
-                {/* <img src="./frustrated-realistic.png" alt="No results" /> */}
-                <p>No results found</p>
-              </div>
-            )
-        }
+              {
+                filterItems.length
+                  ?
+                  (filterItems.map((item, index) =>
+                    <Card data={item}
+                      key={item.name + index}
+                      dispatch={cartContext.dispatch}
+                      // cartQuantity={props.cart}
+                      cartQuantity={getCartQuantity(item.id, cartContext.cart)}
+                    />
+                  ))
+                  : (
+                    <div className="no-results">
+                      {/* <img src="./frustrated-realistic.png" alt="No results" /> */}
+                      <p>No results found</p>
+                    </div>
+                  )
+              }
 
-      </div>)
-}
+            </div>)
+      }
     </div>
   );
 };
