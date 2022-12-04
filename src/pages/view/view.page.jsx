@@ -7,7 +7,7 @@ import Item from '../../components/view/item/item.component';
 import './view.css';
 import { getCartQuantity } from '../../utils/cart';
 import { CartContext } from '../../components/providers/cart-provider.component';
-import { fetchItems } from '../../services/items';
+import { fetchItems } from '../../services/items.service';
 
 /**
  * @type {Array<{

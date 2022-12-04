@@ -2,7 +2,7 @@ import { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../components/providers/user-provider.component';
 import Input from '../../components/common/input/input.component';
-import { loginUser } from '../../services/users';
+import { loginUser } from '../../services/users.service';
 import './login.css';
 
 const LoginPage = (props) => {
@@ -20,13 +20,15 @@ const LoginPage = (props) => {
  * Handler function for the form onSubmit event.
  * @param {React.FormEvent<HTMLFormElement>} e Event object.
  */
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value.trim();
     const password = e.target.password.value.trim();
 
     if (email && password) {
-      const user = loginUser(email, password);
+      const user = await loginUser(email, password);
+      console.log(user);
+
       // If Successful login, go to view page
       if (user) {
         userContext.setUser(user);

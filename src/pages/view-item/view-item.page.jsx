@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './view-item.css';
-import { fetchItem } from '../../services/items';
+import { fetchItem } from '../../services/items.service';
 import Spinner from '../../components/core/spinner/spinner.component';
 import PriceBar from '../../components/view/price-bar/price-bar.component';
 import { getCartQuantity } from '../../utils/cart';
