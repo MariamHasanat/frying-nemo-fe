@@ -9,33 +9,34 @@ import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/constants';
 import { getRandom } from '../../../services/utilities';
 import { UserContext } from '../../core/providers/user-provider.component';
+import { createItem } from '../../../services/items';
 
 const Form = () => {
-  const {user} = useContext(UserContext)
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const [name, setName] = useState(``)
-  let ingredients = [] // Ingredients
+  const [name, setName] = useState(``);
+  let ingredients = []; // Ingredients
   const updateIngs = (newIngs) => {
     ingredients = newIngs;
-  }
+  };
 
-  const submitHandler = e => {
+  const submitHandler = async e => {
     const resetForm = () => {
       e.target.reset();
-      setName('')
-      updateIngs([])
-      navigate('/view')
-    }
-    
-    e.preventDefault();
-    const id = getRandom()
-    const description = e.target.description.value
-    const price = e.target.price.value
-    const category = e.target.category.value
-    const image = e.target.image.value
+      setName('');
+      updateIngs([]);
+      navigate('/view');
+    };
 
-    const menuItems = {
+    e.preventDefault();
+    const id = getRandom();
+    const description = e.target.description.value;
+    const price = e.target.price.value;
+    const category = e.target.category.value;
+    const image = e.target.image.value;
+
+    const menuItem = {
       id,
       name,
       description,
@@ -43,30 +44,32 @@ const Form = () => {
       category,
       image,
       ingredients
+    };
+    try {
+      await createItem(menuItem);
+    } catch {
+      alert(`Error while adding the item`);
     }
-    let arr = JSON.parse(localStorage.getItem('menuItems')) || [];
-    arr.push(menuItems)
-    localStorage.setItem('menuItems', JSON.stringify(arr));
     resetForm();
-  }
+  };
 
 
   const changeName = (value) => {
     const isAllowed = (char) => {
       if (char === ' ') {
       }
-      const allowed = [['a', 'z'], ['A', 'Z'], [' ', ' '], ['0', '9']]
+      const allowed = [['a', 'z'], ['A', 'Z'], [' ', ' '], ['0', '9']];
       for (let i = 0; i < allowed.length; i++) {
         if (char >= allowed[i][0] && char <= allowed[i][1]) {
           return true;
         }
       }
       return false;
-    }
-    if (value.target.value.length > 20) alert(`You can't enter more than 20 characters`)
-    else if (isAllowed(value.nativeEvent.data)) setName(value.target.value.replace('find', 'fry'))
-    else alert(`Denied character (${value.nativeEvent.data})`)
-  }
+    };
+    if (value.target.value.length > 20) alert(`You can't enter more than 20 characters`);
+    else if (isAllowed(value.nativeEvent.data)) setName(value.target.value.replace('find', 'fry'));
+    else alert(`Denied character (${value.nativeEvent.data})`);
+  };
 
   return (
     <form className='add-form' onSubmit={submitHandler}>
@@ -76,7 +79,7 @@ const Form = () => {
         <Input name="price" label="Price" type="number" required></Input>
         <Input name="image" label="Image" type="text" required></Input>
         <Select name='category' items={CATEGORIES} required></Select>
-        <MultivalueInput onChange={updateIngs} name='ingredients' label='Ingredients'/>
+        <MultivalueInput onChange={updateIngs} name='ingredients' label='Ingredients' />
         <Button disabled={user?.role !== 'ADMIN'} name="SUBMIT" type="submit"></Button>
       </div>
     </form>
