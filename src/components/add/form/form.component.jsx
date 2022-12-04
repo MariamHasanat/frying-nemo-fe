@@ -4,7 +4,7 @@ import { CATEGORIES } from '../../../data/data';
 import './form.css';
 
 import { UserContext } from '../../provider/user-provider.component';
-
+import { createItem } from '../../../services/item';
 import Input from '../../common/input/input.component';
 import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
@@ -20,7 +20,7 @@ const Form = (props) => {
    * Handler function for the form onSubmit event.
    * @param {React.FormEvent<HTMLFormElement>} e Event object.
    */
-  const submitHandler = e => {
+  const submitHandler = async e => {
     e.preventDefault();
 
     const description = e.target.description.value;
@@ -38,13 +38,15 @@ const Form = (props) => {
       ingredients: ingredients
     };
 
-    const itemsJson = localStorage.getItem('menuItems') || '[]';
-    const items = JSON.parse(itemsJson) ;
-    items.push(menuItem);
+    const res = await createItem(menuItem);
+    if (res) {
+      navigate('/view');
+      alert('added succsefully');
+    }
+    else {
+      alert('error adding');
+    }
 
-    localStorage.setItem('menuItems', JSON.stringify(items));
-
-    navigate('/view');
   };
 
   /**
