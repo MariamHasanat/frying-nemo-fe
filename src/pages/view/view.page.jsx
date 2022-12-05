@@ -1,9 +1,9 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useMemo } from 'react';
 import ItemCard from '../../components/item-card/item-card.component';
 import Loading from '../../components/common/loading/loading.component';
 import './view.css';
 // import { useNavigate} from 'react-router-dom'
-import {useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import FilterBar from './filter-bar/filter-bar.component';
 // import { UserContext } from '../../components/providers/user-provider.component';
 import { CartContext } from '../../components/providers/cart-provider.component';
@@ -28,40 +28,40 @@ const ViewPage = (props) => {
         const items = await getAllItems();
         console.log(items);
         setMenu(items);
+        setLoading(false);
     };
 
     useEffect(() => {
         getMenu();
     }, []);
 
-    const filteredMenu = menu
-        .filter(
-            item => {
-                let match = (
-                    (item.name.toLowerCase().includes(searchTerms.trim().toLowerCase()))
-                    || (item.description.toLowerCase().includes(searchTerms.trim().toLowerCase()))
-                    || (item.ingredients.some(element => element.toLowerCase().includes(searchTerms.trim().toLowerCase())))
-                );
+    const filteredMenu = useMemo(() => {
+        console.log('re-filtering')
+        return menu
+            .filter(
+                item => {
+                    let match = (
+                        (item.name.toLowerCase().includes(searchTerms.trim().toLowerCase()))
+                        || (item.description.toLowerCase().includes(searchTerms.trim().toLowerCase()))
+                        || (item.ingredients.some(element => element.toLowerCase().includes(searchTerms.trim().toLowerCase())))
+                    );
 
-                if (categoryFilters.length) {
-                    match = match && (categoryFilters.includes(item.category));
-                }
-                if (priceMin && priceMax) {
-                    match = match && (item.price >= priceMin && item.price <= priceMax);
-                }
-                else if (priceMin) {
-                    match = match && (item.price >= priceMin);
-                }
-                else if (priceMax) {
-                    match = match && (item.price <= priceMax);
-                }
+                    if (categoryFilters.length) {
+                        match = match && (categoryFilters.includes(item.category));
+                    }
+                    if (priceMin && priceMax) {
+                        match = match && (item.price >= priceMin && item.price <= priceMax);
+                    }
+                    else if (priceMin) {
+                        match = match && (item.price >= priceMin);
+                    }
+                    else if (priceMax) {
+                        match = match && (item.price <= priceMax);
+                    }
 
-                return match;
-            });
-
-    setTimeout(() => {
-        setLoading(false);
-    }, 1000);
+                    return match;
+                });
+    },[params, menu]);
 
     const len = filteredMenu.length;
 
