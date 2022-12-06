@@ -7,9 +7,6 @@ import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import { UserContext } from '../../provider/user-provider.component.jsx';
-import { createItem } from '../../../services/item.js';
-
-
 
 const Form = (props) => {
   const [name, setName] = useState('Ruba');

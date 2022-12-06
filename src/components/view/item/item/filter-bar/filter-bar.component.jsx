@@ -2,23 +2,21 @@ import React from "react";
 import Input from "../../../../common/input/input.component";
 import CheckBox from "../../../../common/check-box/check-box.component";
 import CATEGORIES from "../../../../../data/constant.js";
+import useParams from "../../../../../hooks/params.hooh";
 
 /**
  * Renders a filters bar.
- * @param {{
- *  searchTerms: string;
- *  categories: string[];
- *  setParam: (name: string, value: string | string[]) => void
- * }} props Component properties object.
+ *
  */
 const FilterBar = (props) => {
+  const {myParams, setParam} = useParams();
   return (
     <div className="filter-bar">
       <Input
         type="search"
         label="Search for Item"
-        value={props.searchTerms}
-        onChange={e => props.setParam('searchTerms', e.target.value)}
+        value={myParams.searchTermsFromURL || ''}
+        onChange={e => setParam('searchTerms', e.target.value)}
         placeholder="Search"
       />
          <Input
@@ -39,11 +37,11 @@ const FilterBar = (props) => {
           <CheckBox
             key={item}
             label={item}
-            checked={props.categories.includes(item)}
+            checked={myParams.categories.includes(item)}
             onChange={e => {
               const updated = e.target.checked
-                ? [...props.categories, item]
-                : props.categories.filter(category => category !== item);
+                ? [...myParams.categories, item]
+                : myParams.categories.filter(category => category !== item);
 
               props.setParam('category', updated);
             }}
