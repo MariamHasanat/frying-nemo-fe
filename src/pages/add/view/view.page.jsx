@@ -9,6 +9,7 @@ import { useContext } from 'react';
 import { CartContext } from '../../../components/provider/cart.provider';
 import { getCartQuantity } from '../../../utils/cart';
 import getItems from '../../../services/item';
+import useFilterItem from '../../../hooks/items.hook';
 
         
 
@@ -46,17 +47,6 @@ const ViewPage = () => {
   // const items = JSON.parse(localStorage.menuItems || '[]');
   setLoading(false);
 
-   /* const items = await getItems();
-    setMenuItems(items);
-    setLoading(false);*/
-
-    // Run the code inside after 1000 milliseconds (1 Second)
-    /*setTimeout(() => {
-      const items = JSON.parse(localStorage.menuItems || '[]');
-      setMenuItems(items);
-      setLoading(false);
-    }, 1000);
-  };*/
  
 
 };
@@ -70,25 +60,8 @@ const ViewPage = () => {
     getMenuItems();
   }, []);
 
-  const filteredItems = menuItems.filter(item => {
-    /**
-     * Check if search terms are somewhere inside given string.
-     * @param {string} str 
-     */
-    const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
+  const filteredItems = useFilterItem(menuItems);
 
-    let match = (
-      doesItMatch(item.name) ||
-      doesItMatch(item.description) ||
-      item.ingredients.some(ingredient => doesItMatch(ingredient))
-    );
-
-    if (categoriesFromURL.length) {
-      match = match && (categoriesFromURL.includes(item.category));
-    }
-
-    return match;
-  });
 
   /**
    * Set query string parameter.

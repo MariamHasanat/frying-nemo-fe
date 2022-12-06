@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CATEGORIES from '../../../data/constant.js';
 import Input from '../../common/input/input.component';
@@ -7,6 +7,8 @@ import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import { UserContext } from '../../provider/user-provider.component.jsx';
+import { createItem } from '../../../services/item.js';
+
 
 
 const Form = (props) => {
@@ -19,33 +21,43 @@ const Form = (props) => {
    * Handler function for the form onSubmit event.
    * @param {React.FormEvent<HTMLFormElement>} e Event object.
    */
-  const submitHandler = e => {
+  const submitHandler =async e => {
     e.preventDefault();
 
     const description = e.target.description.value;
+    const image = e.target.image.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
-    const image = e.target.image.value;
 
     const menuItem = {
-      id: Date.now(),
+      // id: Date.now(),
       name: name,
+      image,
       description: description,
-      price: price,
+      price: price.toString(),
       category: category,
-      ingredients: ingredients,
-      image : image
+      ingredients: ingredients
     };
 
-    const itemsJson = localStorage.getItem('menuItems');
-    const items = JSON.parse(itemsJson) || [];
-
-    items.push(menuItem);
-
-    localStorage.setItem('menuItems', JSON.stringify(items));
-    navigate('View');
+    const res = await createItem(menuItem);
+    if (res) {
+      alert("Item added successfully");
+      navigate('/view');
+    } else {
+      alert("Error adding the item!");
+    }
 
   };
+
+    /* const itemsJson = localStorage.getItem('menuItems');
+     const items = JSON.parse(itemsJson) || [];
+ 
+     items.push(menuItem);
+ 
+     localStorage.setItem('menuItems', JSON.stringify(items));*/
+    navigate('View');
+
+  
 
   /**
    * Handles on change events on the name field.
@@ -66,7 +78,7 @@ const Form = (props) => {
     setName(value);
   };
 
-  
+
 
   return (
     <form className="addForm" onSubmit={submitHandler}>
@@ -83,8 +95,8 @@ const Form = (props) => {
       <Input
         label="img"
         name='image'
-       
-      
+
+
       />
       <Input
         name="price"
