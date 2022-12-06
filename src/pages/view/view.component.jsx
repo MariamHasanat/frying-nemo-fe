@@ -7,6 +7,9 @@ import AddDeleteItem from "./add-delete/add-delete.componenet";
 import { getCartQuantity } from "../../utility/cart";
 import { CartContext } from "../../components/providers/cart-provider.component";
 import { fetchItems, getItem, getItems } from "../../services/items";
+import { useMemo } from "react";
+import { useFilterItems } from "../../hooks/filter-items.hook";
+import { useParams } from "../../hooks/params.hook";
 
 /**
  * @type {Array<{
@@ -21,17 +24,17 @@ import { fetchItems, getItem, getItems } from "../../services/items";
 const initialItems = [];
 
 const ViewPage = (props) => {
+  // const [params, setParams] = useSearchParams();
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const [params, setParams] = useSearchParams();
   const userContext = useContext(UserContext);
   const cartContext = useContext(CartContext);
 
-  const searchTerms = params.get("searchTerms") || "";
-  const categoryFromURL = params.getAll("categoryFromURL") || "";
-  const minValue = params.get("minValue") || "";
-  const maxValue = params.get("maxValue") || "";
+  // const searchTerms = params.get("searchTerms") || "";
+  // const categoryFromURL = params.getAll("categoryFromURL") || "";
+  // const minValue = params.get("minValue") || "";
+  // const maxValue = params.get("maxValue") || "";
 
   const getMenuItems = async () => {
     setLoading(true);
@@ -46,31 +49,13 @@ const ViewPage = (props) => {
     getMenuItems();
   }, []);
 
-  const setParam = (name, value) => {
-    const newParams = new URLSearchParams(params);
 
-    newParams.delete(name);
-
-    if (Array.isArray(value)) {
-      value.forEach((item) => newParams.append(name, item));
-    } else if (value.trim()) {
-      newParams.set(name, value.trim());
-    }
-
-    setParams(newParams);
-  };
+  const filteredItems = useFilterItems(menuItems);
 
   return (
     <div>
       <h1>View Menu Items</h1>
-      <FilterBar
-        searchTerms={searchTerms}
-        minValue={minValue}
-        maxValue={maxValue}
-        categoryFromURL={categoryFromURL}
-        params={params}
-        setParam={setParam}
-      />
+      <FilterBar />
       {loading && (
         <div className="loading">
           <div className="lds-spinner">
@@ -91,38 +76,10 @@ const ViewPage = (props) => {
         </div>
       )}
       <div className="items-container">
-        {menuItems
-          .filter((item) => {
-            let match =
-              item.name
-                .toLowerCase()
-                .includes(searchTerms.toLowerCase().trim()) ||
-              item.description
-                .toLowerCase()
-                .trim()
-                .includes(searchTerms.toLowerCase().trim()) ||
-              item.ingredients.some((ingredient) => {
-                return ingredient
-                  .toLowerCase()
-                  .trim()
-                  .includes(searchTerms.toLowerCase().trim());
-              });
+        {
+          filteredItems.length ?
+            filteredItems.map((item, index) => (
 
-            if (categoryFromURL.length) {
-              match = match && categoryFromURL.includes(item.category);
-            }
-
-            if (minValue) {
-              match = match && item.price >= parseInt(minValue);
-            }
-            if (maxValue) {
-              match = match && item.price <= parseInt(maxValue);
-            }
-
-            return match;
-          })
-          .map((item, index) => {
-            return (
               <div key={item.name + index} className="box">
                 <div className="img">
                   <img src={item.image} alt="food" height={400} />
@@ -152,8 +109,9 @@ const ViewPage = (props) => {
                   cartQuantity={getCartQuantity(item.id, cartContext.cart)}
                 />
               </div>
-            );
-          })}
+            )) :
+            <img src={process.env.PUBLIC_URL + "/Error-404-02.jpg"} alt="" width={700} />
+        }
       </div>
     </div>
   );

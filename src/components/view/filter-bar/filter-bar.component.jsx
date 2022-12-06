@@ -3,28 +3,31 @@ import Input from "../../common/input/input-component";
 import Select from '../../common/select/select-component';
 import CATEGORIES from '../../../data/categories';
 import CheckBox from '../../common/toggle-bullets/checkbox.component';
+import { useParams } from '../../../hooks/params.hook';
 
 
-const FilterBar = (props) => {
+const FilterBar = () => {
+  const { myParams, setParam } = useParams();
+
   return (
     <div className="filter-bar">
       <Input
         type="search"
         label="Search for Item"
-        value={props.searchTerms}
-        onChange={e => props.setParam('searchTerms', e.target.value)}
+        value={myParams.searchTerms}
+        onChange={e => setParam('searchTerms', e.target.value)}
         placeholder="Search"
       />
       <Input
         type="number"
-        value={props.minValue}
-        onChange={e => props.setParam('minValue', e.target.value)}
+        value={myParams.minValue}
+        onChange={e => setParam('minValue', e.target.value)}
         placeholder="Min Value"
       />
       <Input
         type="number"
-        value={props.maxValue}
-        onChange={e => props.setParam('maxValue', e.target.value)}
+        value={myParams.maxValue}
+        onChange={e => setParam('maxValue', e.target.value)}
         placeholder="Max Value"
       />
       <div className="categories">
@@ -32,13 +35,13 @@ const FilterBar = (props) => {
           <CheckBox
             key={cat}
             label={cat}
-            checked={props.categoryFromURL.includes(cat)}
+            checked={myParams.categoryFromURL.includes(cat)}
             onChange={e => {
               const updated = e.target.checked
-                ? [...props.categoryFromURL, cat]
-                : props.categoryFromURL.filter(category => category !== cat);
+                ? [...myParams.categoryFromURL, cat]
+                : myParams.categoryFromURL.filter(category => category !== cat);
 
-              props.setParam('categoryFromURL', updated);
+              setParam('categoryFromURL', updated);
             }}
           />
         ))}
