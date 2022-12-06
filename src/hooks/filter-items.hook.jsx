@@ -1,11 +1,9 @@
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
+import useParams from "./params.hook";
 
 const useFilteredItems = (menuItems) => {
-
-  const [params, setParams] = useSearchParams();
-  const searchParamFromURl = params.get('search') || '';
-  const categoryFromURl = params.getAll('category') || '';
+  const { myParams } = useParams();
   const filteredItems = useMemo(() => {
 
     return menuItems.filter(e => {
@@ -15,22 +13,22 @@ const useFilteredItems = (menuItems) => {
        * @param {String} str 
        * @returns 
        */
-      const doesItMatch = str => str.toLowerCase().includes(searchParamFromURl.toLowerCase().trim());
+      const doesItMatch = str => str.toLowerCase().includes(myParams.searchParamFromURl.toLowerCase().trim());
 
       let match = (
         doesItMatch(e.name) ||
         doesItMatch(e.description) ||
         e.ingredients.some(ingredient => doesItMatch(ingredient)));
 
-      if (categoryFromURl.length) {
-        match = match && (categoryFromURl.includes(e.category));
+      if (myParams.categoryFromURl.length) {
+        match = match && (myParams.categoryFromURl.includes(e.category));
       }
 
       return match;
 
     });
 
-  }, [params, menuItems]);
+  }, [myParams, menuItems]);
 
 
   return filteredItems;

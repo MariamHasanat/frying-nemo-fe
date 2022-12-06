@@ -3,6 +3,7 @@ import Input from '../../common/input/input.component';
 import './filter-input.css';
 import CheckBox from '../toggle-bullets/check-box.component';
 import search from '../../../assets/images/search.png';
+import useParams from '../../../hooks/params.hook';
 
 /**
  * Renders a filters bar.
@@ -14,6 +15,8 @@ import search from '../../../assets/images/search.png';
  */
 const FilterBar = props => {
 
+  const {myParams, setParam} = useParams();
+
   return (
 
     <div className='filter-bar-container'>
@@ -23,10 +26,10 @@ const FilterBar = props => {
         <div className='search'>
 
           <Input
-            value={props.searchParamFromURl}
+            value={myParams.searchParamFromURl}
             type='Search'
             placeholder='search'
-            onChange={e => props.setParam('search', e.target.value)}
+            onChange={e => setParam('search', e.target.value)}
           />
           <img src={search} width='30' height='30' alt='search-icon'/>
         </div>
@@ -39,14 +42,14 @@ const FilterBar = props => {
               return <CheckBox
                 key={categoryItem}
                 label={categoryItem}
-                checked={props.categories.includes(categoryItem)}
+                checked={myParams.categoryFromURl.includes(categoryItem)}
                 onChange={e => {
-                  console.log(typeof props.categories);
+                  // console.log(typeof myParams.categoryFromURl);
                   const updated = e.target.checked
-                    ? [...props.categories, categoryItem]
-                    : props.categories.filter(category => category !== categoryItem);
-                  console.log(typeof props.categories);
-                  props.setParam('category', updated);
+                    ? [...myParams.categoryFromURl, categoryItem]
+                    : myParams.categoryFromURl.filter(category => category !== categoryItem);
+                  // console.log(typeof myParams.categoryFromURl);
+                  setParam('category', updated);
                 }}
               />;
             })
