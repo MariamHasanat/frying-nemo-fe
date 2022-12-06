@@ -1,15 +1,14 @@
 import Item from './item/item.jsx';
-import './viewContainerStyle.css';
+import './viewPage.css';
 import Spinner from '../../components/spinner/spinner.jsx';
 import { useState, useEffect, useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import FilterBar from './filter-bar/filter.bar.component.jsx';
 import { CartContext } from '../../components/providers/cart-provider';
 import { getCartQuantity } from '../../utils/cart';
-//import UserContext from '../../App';
-// import { getItem , getItems } from '../../services/items.js';
 import { getItems } from '../../services/items.js';
-import { useMemo } from 'react';
+import useFilteredItems from '../../hooks/item.hooks.js';
+
 const initialItems = [];
 
 const ViewPage = (props) => {
@@ -17,9 +16,7 @@ const ViewPage = (props) => {
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
   const cartContext = useContext(CartContext);
-  const searchTermsFromURL = params.get('searchTerms') || '';
-  const categoriesFromURL = params.getAll('category') || '';
-
+  
   const getMenuItems = () => {
     setLoading(true);
 
@@ -33,32 +30,36 @@ const ViewPage = (props) => {
     }, 1000);
   };
 
+
+
   useEffect(() => {
     getMenuItems();
   }, []);
 
-  const filteredItems = useMemo( () => {
-    console.log('5');
-    return menuItems.filter(item => {
-      /**
-       * Check if search terms are somewhere inside given string.
-       * @param {string} str 
-       */
-      const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
+  const filteredItems = useFilteredItems(menuItems);
 
-      let match = (
-        doesItMatch(item.name) ||
-        doesItMatch(item.description) ||
-        item.ingredients.some(ingredient => doesItMatch(ingredient))
-      );
+  // const filteredItems = useMemo( () => {
+  //   console.log('5');
+  //   return menuItems.filter(item => {
+  //     /**
+  //      * Check if search terms are somewhere inside given string.
+  //      * @param {string} str 
+  //      */
+  //     const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
 
-      if (categoriesFromURL.length) {
-        match = match && (categoriesFromURL.includes(item.category));
-      }
+  //     let match = (
+  //       doesItMatch(item.name) ||
+  //       doesItMatch(item.description) ||
+  //       item.ingredients.some(ingredient => doesItMatch(ingredient))
+  //     );
 
-      return match;
-    })
-  }, [params, menuItems]);
+  //     if (categoriesFromURL.length) {
+  //       match = match && (categoriesFromURL.includes(item.category));
+  //     }
+
+  //     return match;
+  //   })
+  // }, [params, menuItems]);
 
 
   /**
@@ -87,8 +88,8 @@ const ViewPage = (props) => {
 
         <h1>View Menu Items</h1>
         <FilterBar
-          searchTerms={searchTermsFromURL}
-          categories={categoriesFromURL}
+          searchTerms={params.get('searchTerms') || ''}
+          categories={params.getAll('category') || ''}
           setParam={setParam}
         />
       </div>

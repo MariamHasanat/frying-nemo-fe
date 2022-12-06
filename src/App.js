@@ -1,7 +1,7 @@
 import React ,{useReducer} from "react";
 import AddPage from "./pages/menuPageContainer/page.container";
 import Header from "./components/header/header.component";
-import ViewPage from "./pages/view/view.container";
+import ViewPage from "./pages/view/view.page";
 import NotFound from "./pages/not-found/not-found.component";
 import ViewItemPage from "./pages/view-item/view.item";
 import CartPage from "./pages/cart/cart.page";
