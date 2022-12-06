@@ -32,6 +32,21 @@ const ViewPage = (props) => {
         getMenu();
     }, []);
 
+    const setParam = (name, value) => {
+        const newParams = new URLSearchParams(params);
+    
+        newParams.delete(name);
+    
+        if (Array.isArray(value)) {
+          value.forEach(item => newParams.append(name, item));
+        } else if (value.trim()) {
+          newParams.set(name, value.trim());
+        }
+    
+        setParams(newParams);
+      };
+    
+    
     const filteredMenu = useFilterItems(menu);
 
     const len = filteredMenu.length;
@@ -50,7 +65,7 @@ const ViewPage = (props) => {
             <FilterBar
                 searchTerms={searchTerms}
                 params={params}
-                setParams={setParams}
+                setParams={setParam}
                 categoryFilters={categoryFilters}
                 priceMin={priceMin}
                 priceMax={priceMax}

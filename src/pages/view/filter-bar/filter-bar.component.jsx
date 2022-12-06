@@ -11,15 +11,7 @@ const FilterBar = (props) => {
                 type="search"
                 value={props.searchTerms}
                 label="Search"
-                onChange={e => {
-                    const newParams = new URLSearchParams(props.params);
-                    const searchVal = e.target.value;
-                    if (searchVal)
-                        newParams.set('searchTerms', searchVal);
-                    else
-                        newParams.delete('searchTerms');
-                    props.setParams(newParams);
-                }}
+                onChange={e => props.setParams('searchTerms', e.target.value)}
             />
 
             <div className="category-checkboxes">
@@ -31,21 +23,12 @@ const FilterBar = (props) => {
                             key={'item_' + item}
                             checked={props.categoryFilters.includes(item)}
                             onChange={e => {
-                                const newParams = new URLSearchParams(props.params);
-                                const cat = e.target.value;
-                                if (e.target.checked) {
-                                    newParams.append('category', cat);
-                                }
-                                else {
-                                    const oldCat = props.params.getAll('category');
-                                    newParams.delete('category');
-                                    const filteredCategories = oldCat.filter(item => item !== cat);
-                                    if (filteredCategories.length) {
-                                        // newParams.set('category', filteredCategories);    this is wrong!
-                                        filteredCategories.forEach(item => newParams.append('category', item));
-                                    }
-                                }
-                                props.setParams(newParams);
+                                const updated = e.target.checked
+                                  ? [...props.categoryFilters, item]
+                                  : props.categoryFilters.filter(category => category !== item);
+                  
+                                props.setParams('category', updated);
+                  
                             }}
                         />
                     )
