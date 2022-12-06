@@ -77,27 +77,51 @@
 }
 
 
-.websiteHeader .right>.cart {
+.websiteHeader .right>nav>.cart {
   position: relative;
 }
 
-.websiteHeader .right>.cart>img {
+.websiteHeader .right>nav>.cart>img {
   width: 50px;
   height:50px;
 }
 
-.websiteHeader .right>.cart>.count {
+.websiteHeader .right>nav>.cart>.count {
   position: absolute;
   color: #fff;
   top: -8px;
   right: -11px;
   z-index: 2;
   font-weight: bold;
-  background: red;
+  background: purple;
   padding: 2px;
   border-radius: 50%;
   font-size: 12px;
   min-width: 15px;
+  min-height: 15px;
+  text-align: center;
+}
+.websiteHeader .right>nav>.cart {
+  position: relative;
+}
+
+.websiteHeader .right>nav>.cart>img {
+  width: 20px;
+  height: 20px;
+}
+
+.websiteHeader .right>nav>.cart>.count {
+  position: absolute;
+  color: #fff;
+  top: -1px;
+  right: 11px;
+  z-index: 2;
+  font-weight: bold;
+  background: purple;
+  padding: 2px;
+  border-radius: 50%;
+  font-size: 10px;
+  min-width: 10px;
   min-height: 15px;
   text-align: center;
 }

@@ -1,9 +1,12 @@
 
 import { useMemo ,useState} from 'react';
 import { useSearchParams } from 'react-router-dom';
+import useParams from './use-params.hook';
 
 
 const useItems = (menuitems) => {
+  const { myParams} = useParams();
+
   // const initial = [];
   const [params] = useSearchParams();
   const searchFromURL = params.get("searchTerms") || '';
@@ -22,7 +25,7 @@ const useItems = (menuitems) => {
            */
 
       ///update the value in isMatch method to search from search query in the URL  //easy user experience 
-      const isMatch = str => str.toLowerCase().includes(searchFromURL.toLowerCase().trim());
+      const isMatch = str => str.toLowerCase().includes(myParams.searchFromURL.toLowerCase().trim());
       let match = (
         isMatch(item.name) ||
         isMatch(item.description) ||
@@ -30,17 +33,17 @@ const useItems = (menuitems) => {
 
       );
 
-      if (categoriesFromURL.length) {
+      if (myParams.categoriesFromURL.length) {
         match = match && (categoriesFromURL.includes(item.category));
         console.log(match);
       }
 
-      if (categoriesURL) {
-        match = match && (item.category === categoriesURL);
+      if (myParams.categoriesURL) {
+        match = match && (item.category === myParams.categoriesURL);
       }
 
-      if (maxFromURL && minFromURL) {
-        match = match && (item.price >= minFromURL && item.price <= maxFromURL);
+      if (myParams.maxFromURL && myParams.minFromURL) {
+        match = match && (item.price >= myParams.minFromURL && item.price <= myParams.maxFromURL);
 
       }
       if (price) {

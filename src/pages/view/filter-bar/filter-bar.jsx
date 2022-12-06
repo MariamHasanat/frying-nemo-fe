@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { CATEGORIES } from '../../../data/data';
 
 import './filter-bar.css';
+import useParams from '../../../components/Hooks/use-params.hook';
+// import {useParams} from '../../../components/Hooks/use-params.hook';
 /**
  * Renders a filters bar.
  * @param {{
@@ -16,22 +18,12 @@ import './filter-bar.css';
 
 
 
-export const FilterBar = (props) => {
+export const FilterBar = () => {
+  const { myParams, setParam } = useParams();
 
   const [price, setPrice] = useState(10);
-  const HandleFilterSearch = (filtetname, inputValue) => {
-
-    const newParm = new URLSearchParams(props.params);
-
-    if (inputValue) {
-      newParm.set(filtetname, inputValue);
-    } else {
-      newParm.delete(filtetname);
-    }
-    props.setParams(newParm);
 
 
-  };
 
   const handelPrice = e => {
     setPrice(e.target.value);
@@ -50,8 +42,8 @@ export const FilterBar = (props) => {
           // onChange={e => setSearchInLocalStorage(e.target.value)}
           type="search"
           label="Search for Item"
-          value={props.searchTerms ||""}
-          onChange={e => props.setParam('searchTerms', e.target.value)}
+          value={myParams.s}
+          onChange={e => setParam('searchTerms', e.target.value)}
           placeholder="Search..."
         />
       </div>
@@ -63,14 +55,14 @@ export const FilterBar = (props) => {
           <CheckBox
             key={cat}
             label={cat}
-            checked={props.categories
+            checked={myParams.categories
               .includes(cat)}
             onChange={e => {
               const updated = e.target.checked
-                ? [...props.categories, cat]
-                : props.categories.filter(category => category !== cat);
+                ? [...myParams.categories, cat]
+                : myParams.categories.filter(category => category !== cat);
 
-              props.setParam('categories', updated);
+             setParam('categories', updated);
             }}
           />
         ))}
@@ -81,7 +73,7 @@ export const FilterBar = (props) => {
         name="categories"
         label='categories' required
 
-        onChange={e =>  props.setParam('categoriess', e.target.value)}>
+        onChange={e =>  setParam('categories', e.target.value)}>
 
         {
           CATEGORIES.map(item => {
@@ -101,7 +93,7 @@ export const FilterBar = (props) => {
         <Input
           label='min price : '
           type="number"
-          onChange={e => props.setParam('min', e.target.value)}
+          onChange={e =>setParam('min', e.target.value)}
           min={10}
           max={500}
 
@@ -109,7 +101,7 @@ export const FilterBar = (props) => {
         <Input
           label='max price : '
           type="number"
-          onChange={e => props.setParam('max', e.target.value)}
+          onChange={e =>setParam('max', e.target.value)}
           max={500}
           min={10}
 
@@ -118,7 +110,7 @@ export const FilterBar = (props) => {
 className='slider'
           type="range"
           onChange={e => {
-            props.setParam('price', e.target.value);
+            setParam('price', e.target.value);
             handelPrice(e);
           }
           }

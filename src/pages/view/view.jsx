@@ -35,21 +35,25 @@ const ViewPage = (props) => {
 
   };
 
+
   const cartContext = useContext(CartContext);
   // const GetmenuItems = () => JSON.parse(localStorage.menuitems || '[]');
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
   //instance of class 
-  const [search, setSearch] = useState('');
   /***  القيم الي يتجي بعد علامة الاستفهانم   */
   const [params, setParams] = useSearchParams();
+
+  /*************************************************************************move logic to custom hook **************************/
+
   //my query 
-  const searchFromURL = params.get("searchTerms") || '';
-  const categoriesFromURL = params.getAll("categories") || '';
-  const categoriesURL = params.get("categories") || '';
-  const maxFromURL = params.get("max") || '';
-  const minFromURL = params.get("min") || '';
-  const price = params.get("price") || '';
+  // const [search, setSearch] = useState('');
+  // const searchFromURL = params.get("searchTerms") || '';
+  // const categoriesFromURL = params.getAll("categories") || '';
+  // const categoriesURL = params.get("categories") || '';
+  // const maxFromURL = params.get("max") || '';
+  // const minFromURL = params.get("min") || '';
+  // const price = params.get("price") || '';
   const [loading, setLoading] = useState(true);
 
 
@@ -79,7 +83,7 @@ const ViewPage = (props) => {
 
   const filterItems = useItems(menuitems);
 
-/*************************************************************************move logic to custom hook **************************/
+  /*************************************************************************move logic to custom hook **************************/
 
   // const filterItems = useMemo(() => {
   //   return menuitems.filter(item => {
@@ -96,7 +100,7 @@ const ViewPage = (props) => {
   //       item.ingrediant?.some(ingredient => isMatch(ingredient))
 
   //     );
-      
+
   //     if (categoriesFromURL.length) {
   //       match = match && (categoriesFromURL.includes(item.category));
   //       console.log(match);
@@ -125,19 +129,20 @@ const ViewPage = (props) => {
    * @param {string} name Parameter name.
    * @param {string | string[]} value Parameter value.
    */
-  const setParam = (name, value) => {
-    const newParams = new URLSearchParams(params);
 
-    newParams.delete(name);
+  /***********************************************************MOVE TO CUSTOM HOOK************************* */
+  // const setParam = (name, value) => {
+  //   const newParams = new URLSearchParams(params);
 
-    if (Array.isArray(value)) {
-      value.forEach(item => newParams.append(name, item));
-    } else if (value.trim()) {
-      newParams.set(name, value.trim());
-    }
+  //   newParams.delete(name);
 
-    setParams(newParams);
-  };
+  //   if (Array.isArray(value)) {
+  //     value.forEach(item => newParams.append(name, item));
+  //   } else if (value.trim()) {
+  //     newParams.set(name, value.trim());
+  //   }
+  //   setParams(newParams);
+  // };
 
 
   const getCartQuantity = (id, cart) => {
@@ -154,9 +159,9 @@ const ViewPage = (props) => {
       <br />
       <div className="filter">
         <FilterBar
-          searchTerms={params.get("searchTerms")}
-          categories={params.getAll("categories")}
-          setParam={setParam}
+          // searchTerms={params.get("searchTerms")}
+          // categories={params.getAll("categories")}
+          // setParam={setParam}
         />
 
       </div>
