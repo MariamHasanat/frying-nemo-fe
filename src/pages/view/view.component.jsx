@@ -8,8 +8,7 @@ import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import Item from '../../components/view/item/item.component';
 import './view.css';
 import { getCartQuantity } from '../../utilities/get-item-quantity';
-import { getItem, getItems } from '../../services/item';
-import { useMemo } from 'react';
+import { getItems } from '../../services/item';
 import useFilterItmes from '../../hooks/filter-item.hook';
 
 /**
@@ -28,15 +27,11 @@ const initialItems = [];
 const ViewPage = () => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
-  const [params, setParams] = useSearchParams();
   const cartContext = useContext(CartContext);
-  const searchTermsFromURL = params.get('searchTerms') || '';
-  const categoriesFromURL = params.getAll('category') || '';
 
   const getMenuItems = async () => {
     setLoading(true);
     const items = await getItems();
-
     setMenuItems(items);
     setLoading(false);
   };
@@ -47,34 +42,10 @@ const ViewPage = () => {
 
   const filteredItems = useFilterItmes(menuItems);
 
-
-  /**
-   * Set query string parameter.
-   * @param {string} name Parameter name.
-   * @param {string | string[]} value Parameter value.
-   */
-  const setParam = (name, value) => {
-    const newParams = new URLSearchParams(params);
-
-    newParams.delete(name);
-
-    if (Array.isArray(value)) {
-      value.forEach(item => newParams.append(name, item));
-    } else if (value.trim()) {
-      newParams.set(name, value.trim());
-    }
-
-    setParams(newParams);
-  };
-
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
-      <FilterBar
-        searchTerms={searchTermsFromURL}
-        categories={categoriesFromURL}
-        setParam={setParam}
-      />
+      <FilterBar />
       {
         loading
           ? <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Spinner /></div>
