@@ -12,6 +12,7 @@ import { UserContext } from '../../../components/provider/provider';
 import { getQuantity } from '../../../util/util';
 import { CartContext } from '../../../components/provider/cartprovider';
 import { fetchItemsApi, getItemsApi } from '../../../components/add/form/data/items';
+import { useMemo } from 'react';
 
 /**
  * @type {Array<{
@@ -48,24 +49,26 @@ const View = (props) => {
     }
   }, []);
 
-  const filterItem = menuItem.filter(item => {
-    console.log(item);
-    const dose = str => str.toLowerCase().includes(searchFromUrl.toLowerCase().trim());//function ببعت الو يلي جواتو اخنصار
+  const filterItem = useMemo(() => {
+    return menuItem.filter(item => {
+      console.log(item);
+      const dose = str => str.toLowerCase().includes(searchFromUrl.toLowerCase().trim());//function ببعت الو يلي جواتو اخنصار
 
-    let match = (
-      dose(item.name) ||//ممكن اكتب هيك بختصر 
-      item.description.toLowerCase().includes(searchFromUrl.toLowerCase().trim()) ||
-      item.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchFromUrl.toLowerCase().trim()))
-    );
-    if (categoriesFromURL.length) {
-      match = match && (categoriesFromURL.includes(item.category));
-    }
-    if (min)
-      match = match && (item.price >= min);
-    if (max)
-      match = match && (item.price <= max);
-    return match;
-  });
+      let match = (
+        dose(item.name) ||//ممكن اكتب هيك بختصر 
+        item.description.toLowerCase().includes(searchFromUrl.toLowerCase().trim()) ||
+        item.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchFromUrl.toLowerCase().trim()))
+      );
+      if (categoriesFromURL.length) {
+        match = match && (categoriesFromURL.includes(item.category));
+      }
+      if (min)
+        match = match && (item.price >= min);
+      if (max)
+        match = match && (item.price <= max);
+      return match;
+    });
+  },[params, menuItem]);
   /**
   * Set query string parameter.
   * @param {string} name Parameter name.
