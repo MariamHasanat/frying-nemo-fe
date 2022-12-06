@@ -12,9 +12,9 @@ import { CartContext } from '../../components/providers/cart-provider';
 import { getItem, getItemsFromAPI } from '../../components/services/items';
 import Spinner from '../../components/pop/spinner';
 import { useMemo } from 'react';
+import useItems from '../../components/Hooks/items-filter.hook';
 /**
    * @type {Array<
-   * 
    * {
    * id :number
    * name: string;description: string;
@@ -77,46 +77,49 @@ const ViewPage = (props) => {
 
 
 
-  const filterItems = useMemo(() => {
+  const filterItems = useItems(menuitems);
 
-    return menuitems.filter(item => {
+/*************************************************************************move logic to custom hook **************************/
 
-      /**
-           * Check if search terms are somewhere inside given string.
-           * @param {string} str 
-           */
+  // const filterItems = useMemo(() => {
+  //   return menuitems.filter(item => {
+  //     /**
+  //          * Check if search terms are somewhere inside given string.
+  //          * @param {string} str 
+  //          */
 
-      ///update the value in isMatch method to search from search query in the URL  //easy user experience 
-      const isMatch = str => str.toLowerCase().includes(searchFromURL.toLowerCase().trim());
-      let match = (
-        isMatch(item.name) ||
-        isMatch(item.description) ||
-        item.ingrediant.some(ingredient => isMatch(ingredient))
+  //     ///update the value in isMatch method to search from search query in the URL  //easy user experience 
+  //     const isMatch = str => str.toLowerCase().includes(searchFromURL.toLowerCase().trim());
+  //     let match = (
+  //       isMatch(item.name) ||
+  //       isMatch(item.description) ||
+  //       item.ingrediant?.some(ingredient => isMatch(ingredient))
 
-      );
+  //     );
+      
+  //     if (categoriesFromURL.length) {
+  //       match = match && (categoriesFromURL.includes(item.category));
+  //       console.log(match);
+  //     }
 
-      if (categoriesFromURL.length) {
-        match = match && (categoriesFromURL.includes(item.categories));
-      }
+  //     if (categoriesURL) {
+  //       match = match && (item.category === categoriesURL);
+  //     }
 
-      if (categoriesURL) {
-        match = match && (item.categories === categoriesURL);
-      }
+  //     if (maxFromURL && minFromURL) {
+  //       match = match && (item.price >= minFromURL && item.price <= maxFromURL);
 
+  //     }
+  //     if (price) {
+  //       match = match && (item.price >= price);
+  //     }
 
+  //     return match;
+  //     // item.name.toLowerCase().includes(search.toLowerCase().trim())
+  //   });
 
-      if (maxFromURL && minFromURL) {
-        match = match && (item.price >= minFromURL && item.price <= maxFromURL);
+  // }, [params, menuitems]);
 
-      }
-      if (price) {
-        match = match && (item.price >= price);
-      }
-
-      return match;
-      // item.name.toLowerCase().includes(search.toLowerCase().trim())
-    });
-  }, [params, menuitems]);
   /**
    * Set query string parameter.
    * @param {string} name Parameter name.
@@ -151,8 +154,8 @@ const ViewPage = (props) => {
       <br />
       <div className="filter">
         <FilterBar
-          searchTerms={searchFromURL}
-          categories={categoriesFromURL}
+          searchTerms={params.get("searchTerms")}
+          categories={params.getAll("categories")}
           setParam={setParam}
         />
 
@@ -166,8 +169,7 @@ const ViewPage = (props) => {
 
               {
                 filterItems.length
-                  ?
-                  filterItems.map((item, index) =>
+                  ? filterItems.map((item, index) =>
                     <Card data={item}
                       key={item.name + index}
                       dispatch={cartContext.dispatch}

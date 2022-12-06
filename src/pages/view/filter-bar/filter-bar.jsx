@@ -50,7 +50,7 @@ export const FilterBar = (props) => {
           // onChange={e => setSearchInLocalStorage(e.target.value)}
           type="search"
           label="Search for Item"
-          value={props.searchTerms}
+          value={props.searchTerms ||""}
           onChange={e => props.setParam('searchTerms', e.target.value)}
           placeholder="Search..."
         />

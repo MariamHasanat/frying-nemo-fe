@@ -6,7 +6,7 @@
 const getItemsFromAPI = async () => {
 
   return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/')
-    .then(res => (res.json()))
+    .then(res => res.json())
     .catch(error => { alert(error.toString()); });
 };
 
