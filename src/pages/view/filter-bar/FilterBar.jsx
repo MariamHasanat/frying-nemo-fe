@@ -1,6 +1,7 @@
 import CheckBox from '../../../common/check-box/check-box.component';
 import Input from '../../../common/input/input.component';
 import { CATEGORIES } from '../../../data/category';
+import useParam from '../../../Hooks/useParam.hook';
 import './filterBar.css';
 
 /**
@@ -14,19 +15,21 @@ import './filterBar.css';
  * }} props Component properties object.
  */
 const FilterBar = (props) => {
+  
+  const {myParams , setParam} = useParam();
   return (
     
     <div className="filter-group">
       <Input
         type="search"
         value={props.search || ''}
-        onChange={e => props.setParam('search', e.target.value)}
+        onChange={e => setParam('search', e.target.value)}
         placeholder="Search"
       />
       <Input
         type="number"
         value={props.min || ''}
-        onChange={e => props.setParam('min', e.target.value)}
+        onChange={e => setParam('min', e.target.value)}
         placeholder="Minimum price"
       />
       <Input
