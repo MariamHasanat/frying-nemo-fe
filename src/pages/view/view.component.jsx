@@ -10,6 +10,7 @@ import pic from '../../assets/illustrations/frustrated-realistic .png';
 import { getCartQuantity } from '../../utils/cart';
 import { CartContext } from '../../components/providers/cart-provider.component';
 import { fetchItems } from '../../services/items';
+import useFilteredItems from '../../hooks/filter-items.hook';
 /**
  * @type {Array<{
  * id: number;
@@ -41,29 +42,28 @@ const ViewPage = (props) => {
 
   };
 
-  useEffect(() => {
-    getMenuItems();
-  }, []);
+  useEffect(() => { getMenuItems(); }, []);
+  const filteredItems = useFilteredItems(menuItems);
 
-  const filteredItems = menuItems.filter(item => {
-    /**
-     * Check if search terms are somewhere inside given string.
-     * @param {string} str 
-     */
-    const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
+  // const filteredItems = menuItems.filter(item => {
+  //   /**
+  //    * Check if search terms are somewhere inside given string.
+  //    * @param {string} str 
+  //    */
+  //   const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
 
-    let match = (
-      doesItMatch(item.name) ||
-      doesItMatch(item.description) ||
-      item.ingredients.some(ingredient => doesItMatch(ingredient))
-    );
+  //   let match = (
+  //     doesItMatch(item.name) ||
+  //     doesItMatch(item.description) ||
+  //     item.ingredients.some(ingredient => doesItMatch(ingredient))
+  //   );
 
-    if (categoriesFromURL.length) {
-      match = match && (categoriesFromURL.includes(item.category));
-    }
+  //   if (categoriesFromURL.length) {
+  //     match = match && (categoriesFromURL.includes(item.category));
+  //   }
 
-    return match;
-  });
+  //   return match;
+  // });
 
   /**
    * Set query string parameter.
