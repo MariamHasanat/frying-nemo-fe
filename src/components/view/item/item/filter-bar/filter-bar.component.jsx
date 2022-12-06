@@ -2,7 +2,7 @@ import React from "react";
 import Input from "../../../../common/input/input.component";
 import CheckBox from "../../../../common/check-box/check-box.component";
 import CATEGORIES from "../../../../../data/constant.js";
-import useParams from "../../../../../hooks/params.hooh";
+import useParams from "../../../../../hooks/params.hook";
 
 /**
  * Renders a filters bar.

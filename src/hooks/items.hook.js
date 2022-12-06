@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
-import useParams from "./params.hooh";
+import useParams from "./params.hook";
 
-const useFilterItem = () => {
+const useFilterItem = (menuItems) => {
   const filteredItems = useMemo(() =>{
     const {myParams} = useParams();
     return menuItems.filter(item =>
