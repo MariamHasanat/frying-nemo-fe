@@ -7,12 +7,14 @@ import { CATEGORIES } from "../../data/constants";
 import { useEffect } from "react";
 import { capitalizeFirstLetter } from "../../services/utilities";
 import { fetchMenuItems } from "../../services/fetchers";
+import { useFilterItems } from "../../hooks/filter-items.hook";
 
 const ViewPage = () => {
   const [menuItems, setMenuItems] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get("search") || "");
   let categories = searchParams.getAll("category")[0] || "";
+  const filteredItems = useFilterItems(menuItems);
 
   const updateParam = (key, value) => {
     let params = new URLSearchParams(searchParams);
@@ -28,9 +30,6 @@ const ViewPage = () => {
     }
   }, []);
 
-  useEffect(() => {
-  }, []);
-
   const fetchItems = () => {
     fetchMenuItems().then(
       (res) => {
@@ -41,7 +40,7 @@ const ViewPage = () => {
             return (
               (isMatch(item.name) ||
                 isMatch(item.description) ||
-                item.ingredients.some((ing) => ing.includes(search))) && categories.toLocaleLowerCase().split(",").includes(item.category.toLowerCase())
+                (Array.isArray(item.ingredients) && item.ingredients.some((ing) => ing.includes(search)))) && categories.toLocaleLowerCase().split(",").includes(item.category.toLowerCase())
             );
           })
         );
@@ -66,8 +65,8 @@ const ViewPage = () => {
         ></FilterBar>
       </div>
       <div className="cards">
-        {menuItems.length > 0 ? (
-          menuItems.map((item, i) => (
+        {filteredItems.length > 0 ? (
+          filteredItems.map((item, i) => (
             <Card
               key={item.id}
               item={item}
