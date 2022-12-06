@@ -1,19 +1,20 @@
-import { useMemo, useState } from 'react';
+
+import { useMemo ,useState} from 'react';
 import { useSearchParams } from 'react-router-dom';
 import useParams from './use-params.hook';
 
+
 const useItems = (menuitems) => {
-  const { myParam } = useParams();
+  const { myParam} = useParams();
 
-  // const initial = []; 
-  const [params] = useSearchParams();
-
-  const searchFromURL = params.get("searchTerms") || '';
-  const categoriesFromURL = params.getAll("categories") || '';
-  const categoriesURL = params.get("categories") || '';
-  const maxFromURL = params.get("max") || '';
-  const minFromURL = params.get("min") || '';
-  const price = params.get("price") || '';
+  // const initial = [];
+  // const [params] = useSearchParams();
+  // const searchFromURL = params.get("searchTerms") || '';
+  // const categoriesFromURL = params.getAll("categories") || '';
+  // const categoriesURL = params.get("categories") || '';
+  // const maxFromURL = params.get("max") || '';
+  // const minFromURL = params.get("min") || '';
+  // const price = params.get("price") || '';
 
   console.log('hello custom Hook');
   const filterItems = useMemo(() => {
@@ -29,32 +30,32 @@ const useItems = (menuitems) => {
         isMatch(item.name) ||
         isMatch(item.description) ||
         item.ingrediant?.some(ingredient => isMatch(ingredient))
-​
+
       );
-​
-      if (myParam.categoriesURL.length) {
+
+      if (myParam.categoriesFromURL.length) {
         match = match && (myParam.categoriesFromURL.includes(item.category));
         console.log(match);
       }
-​
+
       if (myParam.categoriesURL) {
         match = match && (item.category === myParam.categoriesURL);
       }
-​
+
       if (myParam.maxFromURL && myParam.minFromURL) {
         match = match && (item.price >= myParam.minFromURL && item.price <= myParam.maxFromURL);
-​
+
       }
       if (myParam.price) {
-        match = match && (item.price >= price);
+        match = match && (item.price >= myParam.price);
       }
-​
+
       return match;
       // item.name.toLowerCase().includes(search.toLowerCase().trim())
     });
-​
-  }, [params, menuitems]);
+
+  }, [myParam, menuitems]);
   return filterItems;
 };
-​
+
 export default useItems;

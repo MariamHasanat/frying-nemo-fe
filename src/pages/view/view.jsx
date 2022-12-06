@@ -4,7 +4,7 @@ import React, { useState, useContext } from 'react';
 // import Input from '../../components/common/input/input';
 import './view.css';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-// import { FilterBar } from './filter-bar/filter-bar';
+import { FilterBar } from './filter-bar/filter-bar';
 import { CATEGORIES } from '../../data/data';
 import { useEffect } from 'react';
 import { UserContext } from '../../App';
@@ -13,7 +13,6 @@ import { getItem, getItemsFromAPI } from '../../components/services/items';
 import Spinner from '../../components/pop/spinner';
 import { useMemo } from 'react';
 import useItems from '../../components/Hooks/items-filter.hook';
-import FilterBar from './filter-bar/filter-bar';
 /**
    * @type {Array<
    * {
@@ -147,9 +146,9 @@ const ViewPage = (props) => {
 
 
   const getCartQuantity = (id, cart) => {
-    const currentCartItme = cart.find(CartItem => CartItem.meal.id === id);
-    if (currentCartItme)
-      return currentCartItme.quantity;
+    const currentCartItem = cart.find(CartItem => CartItem.meal.id === id);
+    if (currentCartItem)
+      return currentCartItem.quantity;
     else
       return 0;
   };
@@ -160,9 +159,9 @@ const ViewPage = (props) => {
       <br />
       <div className="filter">
         <FilterBar
-        // searchTerms={params.get("searchTerms")}
-        // categories={params.getAll("categories")}
-        // setParam={setParam}
+          // searchTerms={params.get("searchTerms")}
+          // categories={params.getAll("categories")}
+          // setParam={setParam}
         />
 
       </div>
