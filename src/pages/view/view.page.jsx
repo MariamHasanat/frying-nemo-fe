@@ -9,7 +9,8 @@ import { CartContext } from '../../components/providers/cart-provider.component'
 import { UserContext } from '../../components/providers/user-provider.component';
 import { getCartQuantity } from '../../utils/cart';
 import { getItems } from '../../services/item';
-import { useMemo } from 'react';
+
+import useFilterItems from '../../Hooks/filter-items.hook';
 
 
 /**
@@ -25,23 +26,20 @@ import { useMemo } from 'react';
  */
 const initialItems = [];
 
-const ViewPage = (props) => {console.log("from view pGE ")
+const ViewPage = (props) => {
+  console.log("from view pGE ");
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
   const cartContext = useContext(CartContext);
   const userContext = useContext(UserContext);
-  const price = params.get("price") || '';
-  const searchTermsFromURL = params.get('searchTerms') || '';
-  const categoryFromURL = params.getAll('category') || '';
+
+  // const searchTermsFromURL = params.get('searchTerms') || '';
+  // const categoryFromURL = params.getAll('category') || '';
   // const [min, setMin] = useState("");
   // const [max, setMax] = useState("");
-  const maxFromURL = params.get("max") || '';
-  const minFromURL = params.get("min") || '';
-  const navigate = useNavigate();
- 
-  console.debug('searchTerms =', searchTermsFromURL);
 
+  const navigate = useNavigate();
   const getMenuItems = async () => {
     setLoading(true);
     const items = await getItems();
@@ -67,37 +65,7 @@ const ViewPage = (props) => {console.log("from view pGE ")
 
   });
 
-  const filteredItems = useMemo(()=>{
-    console.log("calculating items ... ");
-    return menuItems.filter(item => {
-
-    /**
-     * Check if search terms are somewhere inside given string.
-     * @param {string} str 
-     */
-    const DoesItMatch = str =>
-      str.includes(searchTermsFromURL.toLowerCase().trim());
-
-    let Match = (
-      DoesItMatch(item.name) ||
-      DoesItMatch(item.Description) ||
-      item.Ingredients.some(Ingredient => DoesItMatch(Ingredient))
-    );
-
-    if (categoryFromURL.length) {
-      Match = Match && categoryFromURL.some(cat => cat === item.category);
-    }
-    if (maxFromURL && minFromURL) {
-      Match = Match && (item.price >= minFromURL && item.price <= maxFromURL);
-    }
-    if (price) {
-      Match = Match && (item.price >= price && item.price <= parseInt(price, 0));
-    }
-
-    return Match;
-  });
-  },[params]);
-  
+  const filteredItems = useFilterItems(menuItems);
   /**
      * Set query string parameter.
      * @param {string} name Parameter name.
@@ -117,15 +85,15 @@ const ViewPage = (props) => {console.log("from view pGE ")
     setParams(newParams);
   };
 
- 
-  
+
+
 
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
       <FilterBar
-        searchTermsFromURL={searchTermsFromURL}
-        categories={categoryFromURL}
+       value={params.get('searchTerms') || ''}
+        categories={params.getAll('category') || ''}
         setParams={setParam}
 
       />
