@@ -4,6 +4,8 @@ import { CATEGORIES } from '../../../data/constant';
 import CheckBox from '../../../components/common/toggle-bullets/check-boxes.component';
 import Input from '../../../components/common/input/input.component';
 import { useState } from 'react';
+import useParames from '../../../Hooks/params.hook';
+
 /**
  * 
  * @param {{
@@ -19,14 +21,15 @@ const FilterBar = (props) => {
     setPrice(e.target.value);
   };
 
+  const myParams =useParames();
   return (
     <div className="filter-bar">
       <div className='inputs'>
         <Input
           type="search"
           label="search for item"
-          value={props.searchTerms}
-          onChange={e => props.setParams('searchTerms', e.target.value)}
+          value={myParams.searchTermsFromURL ||''}
+          onChange={e =>myParams.setParams('searchTerms', e.target.value)}
           placeholder="search"
         />
         <Input
@@ -63,7 +66,7 @@ const FilterBar = (props) => {
         CATEGORIES.map(cat =>
           <CheckBox key={cat}
             label={cat}
-            checked={props.categories.includes(cat)}
+            checked={myParams.categories.includes(cat)}
             onChange={e => {
               const updated = e.target.checked
                 ? [...props.categories, cat]

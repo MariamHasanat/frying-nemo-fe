@@ -30,12 +30,10 @@ const ViewPage = (props) => {
   console.log("from view pGE ");
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
-  const [params, setParams] = useSearchParams();
   const cartContext = useContext(CartContext);
   const userContext = useContext(UserContext);
-
-  // const searchTermsFromURL = params.get('searchTerms') || '';
-  // const categoryFromURL = params.getAll('category') || '';
+  const filteredItems = useFilterItems(menuItems);
+  
   // const [min, setMin] = useState("");
   // const [max, setMax] = useState("");
 
@@ -65,25 +63,7 @@ const ViewPage = (props) => {
 
   });
 
-  const filteredItems = useFilterItems(menuItems);
-  /**
-     * Set query string parameter.
-     * @param {string} name Parameter name.
-     * @param {string | string[]} value Parameter value.
-     */
-  const setParam = (name, value) => {
-    const newParams = new URLSearchParams(params);
-
-    newParams.delete(name);
-
-    if (Array.isArray(value)) {
-      value.forEach(item => newParams.append(name, item));
-    } else if (value.trim()) {
-      newParams.set(name, value.trim());
-    }
-
-    setParams(newParams);
-  };
+ 
 
 
 
@@ -92,10 +72,7 @@ const ViewPage = (props) => {
     <div className="view-page">
       <h1>View Menu Items</h1>
       <FilterBar
-       value={params.get('searchTerms') || ''}
-        categories={params.getAll('category') || ''}
-        setParams={setParam}
-
+      
       />
 
 
