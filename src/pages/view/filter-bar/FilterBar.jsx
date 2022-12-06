@@ -15,22 +15,23 @@ import './filterBar.css';
  */
 const FilterBar = (props) => {
   return (
+    
     <div className="filter-group">
       <Input
         type="search"
-        value={props.search}
+        value={props.search || ''}
         onChange={e => props.setParam('search', e.target.value)}
         placeholder="Search"
       />
       <Input
         type="number"
-        value={props.min}
+        value={props.min || ''}
         onChange={e => props.setParam('min', e.target.value)}
         placeholder="Minimum price"
       />
       <Input
         type="number"
-        value={props.max}
+        value={props.max || ''}
         onChange={e => props.setParam('max', e.target.value)}
         placeholder="Maximum price"
       />
