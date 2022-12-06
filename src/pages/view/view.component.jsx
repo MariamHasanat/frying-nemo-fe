@@ -10,6 +10,7 @@ import './view.css';
 import { getCartQuantity } from '../../utilities/get-item-quantity';
 import { getItem, getItems } from '../../services/item';
 import { useMemo } from 'react';
+import useFilterItmes from '../../hooks/filter-item.hook';
 
 /**
  * @type {Array<{
@@ -28,9 +29,7 @@ const ViewPage = () => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
-  const userContext = useContext(UserContext);
   const cartContext = useContext(CartContext);
-  const navigate = useNavigate();
   const searchTermsFromURL = params.get('searchTerms') || '';
   const categoriesFromURL = params.getAll('category') || '';
 
@@ -43,36 +42,11 @@ const ViewPage = () => {
   };
 
   useEffect(() => {
-    if (!userContext.user?.id) {
-      navigate('/login', { replace: false });
-    }
-
     getMenuItems();
   }, []);
 
-  const filteredItems = useMemo(()=>{
-    
-    return  menuItems.filter(item => {
-      /**
-       * Check if search terms are somewhere inside given string.
-       * @param {string} str 
-       */
-      const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
-  
-      let match = (
-        doesItMatch(item.name) ||
-        doesItMatch(item.description) ||
-        item.ingredients.some(ingredient => doesItMatch(ingredient))
-      );
-  
-      if (categoriesFromURL.length) {
-        match = match && (categoriesFromURL.includes(item.category));
-      }
-  
-      return match;
-  });
-  
-  } , [params]);
+  const filteredItems = useFilterItmes(menuItems);
+
 
   /**
    * Set query string parameter.
