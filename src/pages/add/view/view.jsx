@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as React from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Input from '../../../components/common/input/input';
 import Item from '../../../components/item/items/item';
 import Spinner from '../../../components/spinner/spinner';
@@ -13,6 +13,7 @@ import { getQuantity } from '../../../util/util';
 import { CartContext } from '../../../components/provider/cartprovider';
 import { fetchItemsApi, getItemsApi } from '../../../components/add/form/data/items';
 import useFilterItems from '../../../hooks/filterItems.hook';
+import useSearchItem from '../../../hooks/searchItem.hook';
 
 /**
  * @type {Array<{
@@ -25,17 +26,13 @@ import useFilterItems from '../../../hooks/filterItems.hook';
  * }>}
  */
 const initialItems = [];
-const View = (props) => {
+const View = () => {
   const cartContext = useContext(CartContext);
   const [menuItem, setMenuItem] = useState(initialItems);
   const [loading, setLoading] = useState(true);
   const userContext = useContext(UserContext);
-  const [param, SetParam] = useSearchParams();
-  const searchFromUrl = param.get('searchTerms') || '';
-  const categoriesFromURL = param.getAll('category') || '';
-  console.log(searchFromUrl);
-  const [max, setMax] = useState();
-  const [min, setMin] = useState();
+  const  [min,setMin] = useState();
+  const  [max,setMax] = useState();
   const navigate = useNavigate();
   // const setItemSearchInLocalStoreg=(value)=>{
   //   localStorage.setItem("the informathion search",value);
@@ -47,26 +44,9 @@ const View = (props) => {
       navigate('/login');
     }
   }, []);
+  const {myParam,setParam}= useSearchItem();
 
-  const filterItem = useFilterItems(menuItem, { max, min });
-  /**
-  * Set query string parameter.
-  * @param {string} name Parameter name.
-  * @param {string | string[]} value Parameter value.
-  */
-  const setParam = (name, value) => {
-    const newParams = new URLSearchParams(param);
-
-    newParams.delete(name);
-
-    if (Array.isArray(value)) {
-      value.forEach(item => newParams.append(name, item));
-    } else if (value.trim()) {
-      newParams.set(name, value.trim());
-    }
-
-    SetParam(newParams);
-  };
+  const filterItem = useFilterItems(menuItem, {max, min });
 
 
   const getMenuItems = async () => {
@@ -85,10 +65,7 @@ const View = (props) => {
     <div className='view-page'>
       <h1>View menu item </h1>
       <FilterBar
-        searchFromUrl={searchFromUrl}
-        param={param}
-        setParam={setParam}
-        categoriesFromURL={categoriesFromURL}
+       
         setMax={setMax}
         setMin={setMin}
       >

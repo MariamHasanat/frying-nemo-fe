@@ -1,22 +1,21 @@
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import useSearchItem from './searchItem.hook';
 
 const useFilterItems = (menuItem, { max, min }) => {
-  const [param, SetParam] = useSearchParams();
-  const searchFromUrl = param.get('searchTerms') || '';
-  const categoriesFromURL = param.getAll('category') || '';
+   const {myParam}=useSearchItem();
   
   const filterItem = useMemo(() => {
     return menuItem.filter(item => {     
-      const dose = str => str.toLowerCase().includes(searchFromUrl.toLowerCase().trim());//function ببعت الو يلي جواتو اخنصار
+      const dose = str => str.toLowerCase().includes(myParam.searchFromUrl.toLowerCase().trim());//function ببعت الو يلي جواتو اخنصار
 
       let match = (
         dose(item.name) ||//ممكن اكتب هيك بختصر 
-        item.description.toLowerCase().includes(searchFromUrl.toLowerCase().trim()) ||
-        item.ingredients?.some(ingredient => ingredient.toLowerCase().includes(searchFromUrl.toLowerCase().trim()))
+        item.description.toLowerCase().includes(  myParam. searchFromUrl.toLowerCase().trim()) ||
+        item.ingredients?.some(ingredient => ingredient.toLowerCase().includes(myParam.searchFromUrl.toLowerCase().trim()))
       );
-      if (categoriesFromURL.length) {
-        match = match && (categoriesFromURL.includes(item.category));
+      if (myParam.categoriesFromURL.length) {
+        match = match && (myParam.categoriesFromURL.includes(item.category));
       }
       if (min)
         match = match && (item.price >= min);
@@ -24,7 +23,7 @@ const useFilterItems = (menuItem, { max, min }) => {
         match = match && (item.price <= max);
       return match;
     });
-  }, [param, menuItem, max, min]);
+  }, [myParam, menuItem, max, min]);
   return filterItem;
 };
 export default useFilterItems;
