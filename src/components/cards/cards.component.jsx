@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { CartContext } from "../providers/cart-provider.component";
 import { getItems } from "../../services/items";
 import { useEffect,useState} from "react";
+import { useFilterItems } from "../../hooks/filter-items.hook";
 
 /**
  * @type {Array<{
@@ -27,8 +28,6 @@ const Cards =  (props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchTermsFromURL = searchParams.get('q') || '';
   const categoryFromURL = searchParams.get('category') || '';
-  let minPriceFromUrl= parseInt(searchParams.get('minprice'));
-  let maxPriceFromUrl= parseInt(searchParams.get('maxprice'));
   const [menuItems,setMenuItems] = useState([]);
 
 
@@ -40,35 +39,8 @@ const Cards =  (props) => {
 useEffect (()=>{
   getMenuItems();
 },[]);
-
-  const searchList= menuItems.filter(item=>{
-    /**
-     * @param {string} str
-     */
-    const doesItMatch= (str)=>{return(str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim()));}
-    let match =(doesItMatch(item.name) ||
-    doesItMatch(item.description) ||
-    item.ingredients.some(ingredient=>doesItMatch(ingredient))
-    );
-    if (categoryFromURL) {
-      match = match && (item.category === categoryFromURL);
-    }
-    if(minPriceFromUrl || maxPriceFromUrl ){
-      if(!maxPriceFromUrl){
-        match = match && (item.price >= minPriceFromUrl);
-      }else
-      if(maxPriceFromUrl >= minPriceFromUrl){
-        match = match && (item.price >= minPriceFromUrl && item.price <= maxPriceFromUrl);
-      }else
-      if(!minPriceFromUrl){
-        match = match && (item.price <= maxPriceFromUrl);
-      }else
-      if(maxPriceFromUrl < minPriceFromUrl){
-        match = false;
-      }
-  }
-    return(match);
-  });
+ // cons searchList = useMemo
+  const searchList= useFilterItems(menuItems);
   const getCartQuantity = (id) => {
     const currentCartItem = cartContext.cart.find(cartItem => (cartItem.meal.id === id));
     if (currentCartItem) {
@@ -83,8 +55,8 @@ useEffect (()=>{
         <FilteredSearch
         searchTermsFromURL={searchTermsFromURL}
         categoryFromURL={categoryFromURL}
-        minPriceFromUrl={minPriceFromUrl}
-        maxPriceFromUrl={maxPriceFromUrl}
+        minPriceFromUrl={parseInt(searchParams.get('minprice'))}
+        maxPriceFromUrl={parseInt(searchParams.get('maxprice'))}
         searchParams= {searchParams}
         setSearchParams={setSearchParams}
         />
