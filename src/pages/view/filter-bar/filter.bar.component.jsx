@@ -1,8 +1,7 @@
 import React from 'react';
 import Input from '../../../components/common/input';
+import CheckBox from '../../../components/common/toggle-bullets/check-box.component';
 import { CATEGORIES } from '../../../components/data/categories';
-import Select from '../../../components/selector/selector.component';
-
 
 const Filter = (props) => {
 
@@ -33,23 +32,22 @@ const Filter = (props) => {
         }}
         placeholder="Search"
       />
-      <Select
-        name='select'
-        label='select'
-        value={props.categoriesFromURL}
-        onChange={e => {
-          handleOnchangeOnURL('category', e.target.value);
-        }
+      <div className="categories">
+        {CATEGORIES.map(cat => (
+          <CheckBox
+            key={cat}
+            label={cat}
+            checked={props.categories.includes(cat)}
+            onChange={e => {
+              const updated = e.target.checked
+                ? [...props.categories, cat]
+                : props.categories.filter(category => category !== cat);
 
-        }
-      >
-        {
-          CATEGORIES.map(item => {
-            return <option key={item} value={item}>{item}</option>;
-          }
-          )
-        }
-      </Select>
+              props.setParam('category', updated);
+            }}
+          />
+        ))}
+      </div>
     </div>
 
   );
