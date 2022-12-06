@@ -10,6 +10,7 @@ import { useContext } from 'react';
 import { getCartQuantity } from '../../components/header/cart';
 import { CartContext } from '../../components/providers/cart-provider.component';
 import { getItems } from '../view-item/item';
+import useFilteredItems from '../../components/hooks/items.hook';
 
 
 /**
@@ -36,7 +37,6 @@ const ViewPage = (props) => {
   const [params, setParams] = useSearchParams();
   const userContext = useContext(UserContext);
   const cartContext = useContext(CartContext);
-
   const search = params.get('search') || '';
   const categoriesFromURL = params.getAll('category') || '';
   const navigate = useNavigate();
@@ -66,30 +66,7 @@ const ViewPage = (props) => {
     getMenuItems();
   }, []);
 
-  const filteredItems = menuItems.filter(item => {
-    /**
-     * check if search terms are somewhere inside given string.
-     * @param {string} str
-     */
-    const isMatch = str => str.toLowerCase().includes(search.toLowerCase().trim());
-
-    let match = (
-      isMatch(item.name) ||
-      isMatch(item.description) ||
-      item.ingredients.some(ingredient => isMatch(ingredient))
-    );
-
-    if (categoriesFromURL.length) {
-      match = match && (categoriesFromURL.includes(item.category));
-    }
-
-    if (minPrice && maxPrice) {
-      match = match && (item.price >= minPrice && item.price <= maxPrice);
-    }
-
-
-    return match;
-  });
+  const filteredItems = useFilteredItems(menuItems);
 
   /**
   * Set query string parameter.

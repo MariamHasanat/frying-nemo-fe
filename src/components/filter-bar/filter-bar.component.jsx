@@ -4,6 +4,7 @@ import Input from "../../user-work/input/input.component";
 import CATEGORIES from "../data/categories";
 import Select from "../../user-work/select/select.component";
 import CheckBox from "../../user-work/check-box/check-box.component";
+import useParams from "../hooks/params.hook";
 
 /**
  * Renders a filters bar.
@@ -15,7 +16,8 @@ import CheckBox from "../../user-work/check-box/check-box.component";
  */
 
 
-const FilterBar = (props) => {
+const FilterBar = () => {
+  const { someParams, useParams } = useParams();
 
 
   return (
@@ -23,26 +25,26 @@ const FilterBar = (props) => {
       <Input
         type='search'
         label='Search for Item'
-        value={props.searchTerms}
-        onChange={e => props.setParam('searchTerms', e.target.value)}
+        value={someParams.searchTermsFromURL || ''}
+        onChange={e => setParam('searchTerms', e.target.value)}
         placeholder='Search'
       />
 
-<span className='min-price'><Input
-          type={"number"}
-          label='Minimum Price'
-          value={props.minPrice}
-          onChange={e => props.setParam("Min", e.target.value)}
-        ></Input>
-        </span>
+      <span className='min-price'><Input
+        type={"number"}
+        label='Minimum Price'
+        value={someParams.minPrice}
+        onChange={e =>setParam("Min", e.target.value)}
+      ></Input>
+      </span>
 
-        <span className='max-price'><Input
-          type={"number"}
-          label="Maximum Price"
-          value={props.maxPrice}
-          onChange={e => props.setParam("Max", e.target.value)}
-        >
-        </Input></span>
+      <span className='max-price'><Input
+        type={"number"}
+        label="Maximum Price"
+        value={someParams.maxPrice}
+        onChange={e => setParam("Max", e.target.value)}
+      >
+      </Input></span>
 
 
       {CATEGORIES.map(cat => (
@@ -50,13 +52,13 @@ const FilterBar = (props) => {
           key={cat}
           value={cat}
           label={cat}
-          checked={props.categories.includes(cat)}
+          checked={someParams.categoriesFromURL.includes(cat)}
           onChange={e => {
             const updated = e.target.checked
               ? [...props.categories, cat]
               : props.categories.filter(category => category !== cat);
 
-            props.setParam('category', updated);
+           setParam('category', updated);
           }}
         />
       ))}
