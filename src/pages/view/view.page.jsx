@@ -72,6 +72,7 @@ const ViewPage = (props) => {
 
     newParams.delete(name);
 
+    console.log(value);
     if (Array.isArray(value)) {
       value.forEach(item => newParams.append(name, item));
     } else if (value.trim()) {

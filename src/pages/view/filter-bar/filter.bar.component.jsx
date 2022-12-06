@@ -9,17 +9,15 @@ const Filter = (props) => {
 
   const handleOnchangeOnURL = (filterName, inputValue) => {
 
-    const newParam = new URLSearchParams(props.params);
-    
-    if(inputValue) {
-      newParam.set(filterName, inputValue);
-    } else {
-      newParam.delete(filterName);
-    }
-    props.setParams(newParam);
+    // const newParam = new URLSearchParams(props.params);
+
+    // if(inputValue) {
+    //   newParam.set(filterName, inputValue);
+    // } else {
+    //   newParam.delete(filterName);
+    // }
+    props.setParam(filterName, inputValue);
   };
-
-
 
 
 
@@ -29,9 +27,9 @@ const Filter = (props) => {
       <Input
         type="search"
         label='search'
-        value={props.searchParams}
+        value={props.searchTerms}
         onChange={e => {
-          handleOnchangeOnURL('q', e.target.value);
+          handleOnchangeOnURL('searchTerms', e.target.value);
         }}
         placeholder="Search"
       />
@@ -40,7 +38,7 @@ const Filter = (props) => {
         label='select'
         value={props.categoriesFromURL}
         onChange={e => {
-          handleOnchangeOnURL('category', e.target.value)
+          handleOnchangeOnURL('category', e.target.value);
         }
 
         }
