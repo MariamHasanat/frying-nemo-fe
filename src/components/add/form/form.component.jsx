@@ -42,7 +42,7 @@ const Form = (props) => {
     };
     const res = await createItem(menuItem);
         if(res){
-          alert("item added succesfully!");
+          alert("item added successfully!");
           navigate('/view');
         }else{
           alert("Error Adding the Item !");

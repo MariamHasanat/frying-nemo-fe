@@ -3,23 +3,23 @@ import './filter-bar.css';
 import Input from '../../../components/common/input/input.component';
 import { CATEGORIES } from '../../../data/constant';
 import CheckBox from '../../../components/common/checkbox/checkbox.component';
+import useParams from '../../../hooks/params.hooks';
 
 /**
  * Renders a filters bar.
- * @param {{
- *  searchTerms: string;
- *  categories: string[];
- *  setParam: (name: string, value: string | string[]) => void
- * }} props Component properties object.
+ * @param {}
  */
-const FilterBar = (props) => {
+const FilterBar = () => {
+  
+  const {myParams , setParam} = useParams();
   return (
+
     <div className="filter-bar">
       <Input
         type="search"
         label="Search for Item"
-        value={props.searchTerms}
-        onChange={e => props.setParam('searchTerms', e.target.value)}
+        value={myParams.searchTermsFromURL || ''} 
+        onChange={e =>setParam ('searchTerms', e.target.value)}
         placeholder="Search"
       />
       <div className="categories">
@@ -28,13 +28,13 @@ const FilterBar = (props) => {
             key={cat}
             value={cat}
             label={cat}
-            checked={props.categories.includes(cat)}
+            checked={myParams.categoriesFromURL.includes(cat)}
             onChange={e => {
               const updated = e.target.checked
-                ? [...props.categories, cat]
-                : props.categories.filter(category => category !== cat);
+                ? [myParams.categoriesFromURL, cat]
+                : myParams.categoriesFromURL.filter(category => category !== cat);
 
-              props.setParam('category', updated);
+              setParam('category', updated);
             }}
           />
         ))}

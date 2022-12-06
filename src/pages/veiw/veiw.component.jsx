@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useEffect, useState ,useContext} from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../components/providers/user.provider.component";
 import FilterBar from "./filter-bar/filter-bar.component";
 import Item from "../../components/item/item.component";
 import "./veiw.css";
 import { getCartQuantity } from "../../utils/cart";
-import { useContext } from "react";
 import { CartContext } from "../../components/providers/cart.provider.component";
 import { getItems } from "../../services/items";
-import { useMemo } from "react";
+import useFilterItems from "../../hooks/item.hooks";
 /**
  * @type {Array<{
  * name: string;
@@ -21,17 +20,14 @@ import { useMemo } from "react";
  */
 const initialItems = [];
 
-const Addveiw = (props) => {
+const Addveiw = () => {
   const [menuItems, setMenuItems] = useState(initialItems);
-  const [loading, setLoading] = useState(false);
-  const [params, setParams] = useSearchParams();
   const navigate = useNavigate();
-  const searchTermsFromURL = params.get("searchTerms") || "";
-  const categoriesFromURL = params.getAll("category") || "";
+  // const searchTermsFromURL = params.get("searchTerms") || "";
+  // const categoriesFromURL = params.getAll("category") || "";
   const userContext = useContext(UserContext);
   const cartContext = useContext(CartContext);
   const getMenuItems = async () => {
-    setLoading(true);
     const items = await getItems();
     // console.log(items);
     setMenuItems(items);
@@ -52,60 +48,19 @@ const Addveiw = (props) => {
   useEffect(() => {
     getMenuItems();
   }, []);
-  const filteredItems = useMemo(() => {
-    console.log("Calculating filtered");
-    return menuItems.filter(
-      (item) => {
-        /**
-         * Check if search terms are somewhere inside given string.
-         * @param {string} str
-         */
-        const doesItMatch = (str) =>
-          str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
-
-        let match =
-          doesItMatch(item.name) ||
-          doesItMatch(item.description) ||
-          item.ingredients.some((ingredient) => doesItMatch(ingredient));
-
-        if (categoriesFromURL.length) {
-          match = match && categoriesFromURL.includes(item.category);
-        }
-
-        return match;
-      },
-      [params]
-    );
-  });
-  console.log(filteredItems);
+  const filteredItems = useFilterItems(menuItems);
 
   /**
    * Set query string parameter.
    * @param {string} name Parameter name.
    * @param {string | string[]} value Parameter value.
    */
-  const setParam = (name, value) => {
-    const newParams = new URLSearchParams(params);
-
-    newParams.delete(name);
-
-    if (Array.isArray(value)) {
-      value.forEach((item) => newParams.append(name, item));
-    } else if (value) {
-      newParams.set(name, value.trim());
-    }
-
-    setParams(newParams);
-  };
+  
 
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
-      <FilterBar
-        searchTerms={searchTermsFromURL}
-        categories={categoriesFromURL}
-        setParam={setParam}
-      />
+      <FilterBar />
       {
         <div className="items-container">
           {filteredItems.length ? (
