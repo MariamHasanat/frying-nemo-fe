@@ -7,6 +7,7 @@ import './view.css';
 import { getCartQuantity } from '../../utils/cart';
 import { CartContext } from '../../components/providers/cart-provider.component';
 import { fetchItems } from '../../services/items.service';
+import useFilterItems from '../../hooks/filter-items.hook';
 
 /**
  * @type {Array<{
@@ -26,8 +27,6 @@ const ViewPage = (props) => {
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams();
   const cartContext = useContext(CartContext);
-  const searchTermsFromURL = params.get('searchTerms') || '';
-  const categoriesFromURL = params.getAll('category') || '';
 
   const getMenuItems = async () => {
     setLoading(true);
@@ -36,32 +35,9 @@ const ViewPage = (props) => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    getMenuItems();
-  }, []);
+  useEffect(() => { getMenuItems(); }, []);
 
-  const filteredItems = useMemo(() => {
-    console.log("Calculating filteredItems---");
-    return menuItems.filter(item => {
-      /**
-       * Check if search terms are somewhere inside given string.
-       * @param {string} str 
-       */
-      const doesItMatch = str => str.toLowerCase().includes(searchTermsFromURL.toLowerCase().trim());
-
-      let match = (
-        doesItMatch(item.name) ||
-        doesItMatch(item.description) ||
-        item.ingredients.some(ingredient => doesItMatch(ingredient))
-      );
-
-      if (categoriesFromURL.length) {
-        match = match && (categoriesFromURL.includes(item.category));
-      }
-
-      return match;
-    });
-  }, [params, menuItems]);
+  const filteredItems = useFilterItems(menuItems);
 
   /**
    * Set query string parameter.
@@ -69,7 +45,7 @@ const ViewPage = (props) => {
    * @param {string | string[]} value Parameter value.
    */
   const setParam = (name, value) => {
-    const newParams = new URLSearchParams(params);
+    const newParams = new URLSearchParams(params); 
 
     newParams.delete(name);
 
@@ -78,7 +54,6 @@ const ViewPage = (props) => {
     } else if (value.trim()) {
       newParams.set(name, value.trim());
     }
-
     setParams(newParams);
   };
 
@@ -86,8 +61,8 @@ const ViewPage = (props) => {
     <div className="view-page">
       <h1>View Menu Items</h1>
       <FilterBar
-        searchTerms={searchTermsFromURL}
-        categories={categoriesFromURL}
+        searchTerms={params.get('searchTerms')}
+        categories={params.getAll('category')}
         setParam={setParam}
       />
       {

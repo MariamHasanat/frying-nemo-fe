@@ -18,7 +18,7 @@ const FilterBar = (props) => {
       <Input
         type="search"
         label="Search for Item"
-        value={props.searchTerms}
+        value={props.searchTerms || ''}
         onChange={e => props.setParam('searchTerms', e.target.value)}
         placeholder="Search"
       />
