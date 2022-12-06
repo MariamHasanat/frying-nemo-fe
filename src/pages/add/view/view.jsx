@@ -12,7 +12,7 @@ import { UserContext } from '../../../components/provider/provider';
 import { getQuantity } from '../../../util/util';
 import { CartContext } from '../../../components/provider/cartprovider';
 import { fetchItemsApi, getItemsApi } from '../../../components/add/form/data/items';
-import { useMemo } from 'react';
+import useFilterItems from '../../../hooks/filterItems.hook';
 
 /**
  * @type {Array<{
@@ -30,9 +30,8 @@ const View = (props) => {
   const [menuItem, setMenuItem] = useState(initialItems);
   const [loading, setLoading] = useState(true);
   const userContext = useContext(UserContext);
-  // const [Search, SetSearch] = useState('');
   const [param, SetParam] = useSearchParams();
-  const searchFromUrl = param.get('search') || '';
+  const searchFromUrl = param.get('searchTerms') || '';
   const categoriesFromURL = param.getAll('category') || '';
   console.log(searchFromUrl);
   const [max, setMax] = useState();
@@ -49,26 +48,7 @@ const View = (props) => {
     }
   }, []);
 
-  const filterItem = useMemo(() => {
-    return menuItem.filter(item => {
-      console.log(item);
-      const dose = str => str.toLowerCase().includes(searchFromUrl.toLowerCase().trim());//function ببعت الو يلي جواتو اخنصار
-
-      let match = (
-        dose(item.name) ||//ممكن اكتب هيك بختصر 
-        item.description.toLowerCase().includes(searchFromUrl.toLowerCase().trim()) ||
-        item.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchFromUrl.toLowerCase().trim()))
-      );
-      if (categoriesFromURL.length) {
-        match = match && (categoriesFromURL.includes(item.category));
-      }
-      if (min)
-        match = match && (item.price >= min);
-      if (max)
-        match = match && (item.price <= max);
-      return match;
-    });
-  },[params, menuItem]);
+  const filterItem = useFilterItems(menuItem, { max, min });
   /**
   * Set query string parameter.
   * @param {string} name Parameter name.

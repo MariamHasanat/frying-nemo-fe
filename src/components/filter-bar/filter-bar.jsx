@@ -21,10 +21,7 @@ const FilterBar = (props) => {
         value={props.searchFromUrl}
         placeholder="Search"
         onChange={e => props.setParam('searchTerms', e.target.value)}
-
-      ></Input>
-
-  
+      />
 
       <div className="categories">
         {CATEGORIES.map(cat => (
@@ -44,21 +41,20 @@ const FilterBar = (props) => {
       </div>
       <br />
       <Input
-      className='price'
+        className='price'
         type={'number'}
         label={"Min"}
         placeholder="Min Number"
-        onChange={e =>
-          {
-            const min = e.target.value;
-            props.setMin(min);
-          }
+        onChange={e => {
+          const min = e.target.value;
+          props.setMin(min);
+        }
         }
 
       ></Input>
 
       <Input
-      className='price'
+        className='price'
         type={'number'}
         label={"Max"}
         placeholder="Max Number"
