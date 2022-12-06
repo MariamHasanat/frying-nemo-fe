@@ -1,9 +1,8 @@
-import { useEffect, useState, useContext, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState, useContext } from 'react';
+import './view.css';
 import Spinner from '../../components/core/spinner/spinner.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import Item from '../../components/view/item/item.component';
-import './view.css';
 import { getCartQuantity } from '../../utils/cart';
 import { CartContext } from '../../components/providers/cart-provider.component';
 import { fetchItems } from '../../services/items.service';
@@ -22,10 +21,10 @@ import useFilterItems from '../../hooks/filter-items.hook';
  */
 const initialItems = [];
 
-const ViewPage = (props) => {
+const ViewPage = () => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
-  const [params, setParams] = useSearchParams();
+
   const cartContext = useContext(CartContext);
 
   const getMenuItems = async () => {
@@ -37,34 +36,12 @@ const ViewPage = (props) => {
 
   useEffect(() => { getMenuItems(); }, []);
 
-  const filteredItems = useFilterItems(menuItems);
-
-  /**
-   * Set query string parameter.
-   * @param {string} name Parameter name.
-   * @param {string | string[]} value Parameter value.
-   */
-  const setParam = (name, value) => {
-    const newParams = new URLSearchParams(params); 
-
-    newParams.delete(name);
-
-    if (Array.isArray(value)) {
-      value.forEach(item => newParams.append(name, item));
-    } else if (value.trim()) {
-      newParams.set(name, value.trim());
-    }
-    setParams(newParams);
-  };
+  const filteredItems = useFilterItems(menuItems);  
 
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
-      <FilterBar
-        searchTerms={params.get('searchTerms')}
-        categories={params.getAll('category')}
-        setParam={setParam}
-      />
+      <FilterBar />
       {
         loading
           ? <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Spinner /></div>
