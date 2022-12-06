@@ -1,14 +1,13 @@
-
-import { useMemo ,useState} from 'react';
+import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import useParams from './use-params.hook';
 
-
 const useItems = (menuitems) => {
-  const { myParams} = useParams();
+  const { myParam } = useParams();
 
-  // const initial = [];
+  // const initial = []; 
   const [params] = useSearchParams();
+
   const searchFromURL = params.get("searchTerms") || '';
   const categoriesFromURL = params.getAll("categories") || '';
   const categoriesURL = params.get("categories") || '';
@@ -25,37 +24,37 @@ const useItems = (menuitems) => {
            */
 
       ///update the value in isMatch method to search from search query in the URL  //easy user experience 
-      const isMatch = str => str.toLowerCase().includes(myParams.searchFromURL.toLowerCase().trim());
+      const isMatch = str => str.toLowerCase().includes(myParam.searchFromURL.toLowerCase().trim());
       let match = (
         isMatch(item.name) ||
         isMatch(item.description) ||
         item.ingrediant?.some(ingredient => isMatch(ingredient))
-
+​
       );
-
-      if (myParams.categoriesFromURL.length) {
-        match = match && (categoriesFromURL.includes(item.category));
+​
+      if (myParam.categoriesURL.length) {
+        match = match && (myParam.categoriesFromURL.includes(item.category));
         console.log(match);
       }
-
-      if (myParams.categoriesURL) {
-        match = match && (item.category === myParams.categoriesURL);
+​
+      if (myParam.categoriesURL) {
+        match = match && (item.category === myParam.categoriesURL);
       }
-
-      if (myParams.maxFromURL && myParams.minFromURL) {
-        match = match && (item.price >= myParams.minFromURL && item.price <= myParams.maxFromURL);
-
+​
+      if (myParam.maxFromURL && myParam.minFromURL) {
+        match = match && (item.price >= myParam.minFromURL && item.price <= myParam.maxFromURL);
+​
       }
-      if (price) {
+      if (myParam.price) {
         match = match && (item.price >= price);
       }
-
+​
       return match;
       // item.name.toLowerCase().includes(search.toLowerCase().trim())
     });
-
+​
   }, [params, menuitems]);
   return filterItems;
 };
-
+​
 export default useItems;

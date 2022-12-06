@@ -56,7 +56,7 @@ const Head = (props) => {
           <button onClick={() => {
             userContext.setUser(null);
             localStorage.removeItem('cart');
-            // cartContext.se
+            cartContext.cart={}
             navigate('/login');
           }
           }
