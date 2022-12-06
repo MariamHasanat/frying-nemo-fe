@@ -75,7 +75,7 @@ const View = (props) => {
 
     });
 
-  }, [params]);
+  }, [params, menuItems]);
 
   /**
    * Set query string parameter.
