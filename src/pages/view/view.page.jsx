@@ -2,7 +2,7 @@ import Item from './item/item.jsx';
 import './viewPage.css';
 import Spinner from '../../components/spinner/spinner.jsx';
 import { useState, useEffect, useContext } from 'react';
-import { useSearchParams } from 'react-router-dom';
+// import { useSearchParams } from 'react-router-dom';
 import FilterBar from './filter-bar/filter.bar.component.jsx';
 import { CartContext } from '../../components/providers/cart-provider';
 import { getCartQuantity } from '../../utils/cart';
@@ -14,7 +14,7 @@ const initialItems = [];
 const ViewPage = (props) => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
-  const [params, setParams] = useSearchParams();
+  // const [params, setParams] = useSearchParams();
   const cartContext = useContext(CartContext);
   
   const getMenuItems = () => {
@@ -62,25 +62,25 @@ const ViewPage = (props) => {
   // }, [params, menuItems]);
 
 
-  /**
-   * Set query string parameter.
-   * @param {string} name Parameter name.
-   * @param {string | string[]} value Parameter value.
-   */
-  const setParam = (name, value) => {
-    const newParams = new URLSearchParams(params);
+  // /**
+  //  * Set query string parameter.
+  //  * @param {string} name Parameter name.
+  //  * @param {string | string[]} value Parameter value.
+  //  */
+  // const setParam = (name, value) => {
+  //   const newParams = new URLSearchParams(params);
 
-    newParams.delete(name);
+  //   newParams.delete(name);
 
-    console.log(value);
-    if (Array.isArray(value)) {
-      value.forEach(item => newParams.append(name, item));
-    } else if (value.trim()) {
-      newParams.set(name, value.trim());
-    }
+  //   console.log(value);
+  //   if (Array.isArray(value)) {
+  //     value.forEach(item => newParams.append(name, item));
+  //   } else if (value.trim()) {
+  //     newParams.set(name, value.trim());
+  //   }
 
-    setParams(newParams);
-  };
+  //   setParams(newParams);
+  // };
   // const itemId = getItem();
 
   return (
@@ -88,11 +88,8 @@ const ViewPage = (props) => {
       <div className='title'>
 
         <h1>View Menu Items</h1>
-        <FilterBar
-          searchTerms={params.get('searchTerms') || ''}
-          categories={params.getAll('category') || ''}
-          setParam={setParam}
-        />
+        <FilterBar/>
+        
       </div>
       {
         loading
@@ -111,7 +108,7 @@ const ViewPage = (props) => {
                   ))
                   : (
                     <div className="no-results">
-                      <img src="./frustrated-realistic.png" alt="No results" />
+                      <img src="https://img.freepik.com/premium-vector/cute-cartoon-pensive-beautiful-girl-drinking-coffee-cafe_533043-4.jpg?w=2000" alt="No results" />
                       <p>No results found</p>
                     </div>
                   )
