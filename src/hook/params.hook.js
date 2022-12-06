@@ -1,32 +1,37 @@
-import { useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
+const useParams = () => {
+  const [params, setParams] = useSearchParams();
 
-const useParams=()=>{
+  const myParams = useMemo(() => {
+    const searchTermsFromURL = params.get('searchTerms') || '';
+    const categoriesFromURL = params.getAll('category') || [];
+    const maxFromUrl = +params.get('max') || "";
+    const minFromUrl = +params.get('min') || "";
+    return { maxFromUrl, minFromUrl, searchTermsFromURL, categoriesFromURL };
+  }, [params]);
 
-  const [params ,setParams] = useSearchParams();
-  const myParams = useMemo(()=>{
- 
-    const searchTerm = params.get('searchFood') || "";
-    const categoryFromURL = params.getAll('category') || [];
-       return {searchTerm,categoryFromURL}
-  },[])
+  /**
+   * Set query string parameter.
+   * @param {string} name Parameter name.
+   * @param {string | string[]} value Parameter value.
+   */
+  const setParam = (name, value) => {
+    const newParams = new URLSearchParams(params);
 
-/**
-     * Set query string parameter.
-     * @param {string} name Parameter name.
-     * @param {string | string[]} value Parameter value.
-     */
- const setParam = (name, value) => {
-  const newParams = new URLSearchParams(params);
-  newParams.delete(name);
-  if (Array.isArray(value)) {
-    value.forEach(item => newParams.append(name, item));
-  } else if (value.trim()) {
-    newParams.set(name, value.trim());
-  }
-  setParams(newParams);
+    newParams.delete(name);
+
+    if (Array.isArray(value)) {
+      value.forEach(item => newParams.append(name, item));
+    } else if (value.trim()) {
+      newParams.set(name, value.trim());
+    }
+    setParams(newParams);
+  };
+
+  return { myParams, setParam };
+
 };
-};
 
-export default useParams
+export default useParams;

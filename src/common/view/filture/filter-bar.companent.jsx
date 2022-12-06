@@ -1,10 +1,12 @@
 import { CATEGORY } from '../../../data/cons';
+import useFilterItems from '../../../hook/filter-item.hook';
 import useParams from '../../../hook/params.hook';
 import Input from '../../input/input.component';
 import CheckBox from '../check-box/check-box';
 import './filter.css';
 
 const FilterBar = (props) => {
+  const { myParams, setParam} = useParams();
   const HandelFilter = (name, inputValue) => {
     const newParams = new URLSearchParams(props.params);
     if (inputValue) {
@@ -14,17 +16,17 @@ const FilterBar = (props) => {
     }
     props.setParams(newParams);
   };
-const  myParams = useParams();
+  
   return (
     <div className="filter-bar">
       <div>
-      <Input
-      label='search' 
-        type="search"
-        placeholder='Search'
-        value={myParams.searchTerm}
-        onChange={e => HandelFilter("searchTerm", e.target.value)}
-      />
+        <Input
+          label='search'
+          type="search"
+          placeholder='Search'
+          value={myParams.searchTerm}
+          onChange={e => setParam("searchTerm", e.target.value)}
+        />
       </div>
       <div className="categories">
 
@@ -32,23 +34,12 @@ const  myParams = useParams();
           key={category}
           label={category}
           value={category}
-          checked={myParams.categoryFromURL.includes(category)}
-          onChange={(e) => {
-            const newParams = new URLSearchParams(props.params);
-            const oldItems = newParams.getAll('category');
-
-            if (e.target.checked) {
-              newParams.append('category', e.target.value);
-            } else {
-              const filteredCategories = oldItems.filter(oItem => oItem !== category);
-              if (filteredCategories.length) {
-                newParams.delete('category');
-                filteredCategories.forEach((v) => newParams.append('category', v));
-              } else {
-                newParams.delete('category');
-              }
-            }
-            myParams.setParams(newParams);
+          checked={myParams.categoriesFromURL.includes(category)}
+          onChange={e => {
+            const updated = e.target.checked
+              ? [...myParams.categoriesFromURL, category]
+              : myParams.categoriesFromURL.filter(categorys => categorys !== category);
+            setParam('category', updated);
           }}
         />
         )}
@@ -58,18 +49,18 @@ const  myParams = useParams();
         <Input
           type="text"
           placeholder='Max'
-          value={props.params.get('max')}
+          value={myParams.maxFromUrl}
           onChange={(e) => HandelFilter('max', e.target.value)}
         />
         <label >Min price</label>
         <Input
           type="text"
           placeholder='Min'
-          value={props.params.get('min')}
+          value={myParams.minFromUrl}
           onChange={(e) => HandelFilter('min', e.target.value)}
-
         />
-      </div></div>
+      </div>
+      </div>
 
 
   );
