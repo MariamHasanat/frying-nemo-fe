@@ -7,7 +7,7 @@ import {getCartQuantity} from '../../utilit/cart';
 import { UserContext } from '../../components/provider/provider.component';
 import { CartContext } from '../../components/provider/cart-provider.component';
 import { getItems } from '../../data/items';
-import { useMemo } from 'react';
+import useFilterItems from '../../hook/item.hook';
 
 const ViewPage = (props) => {
   /**
@@ -24,15 +24,10 @@ const ViewPage = (props) => {
   const initialItems = [];
   const [loading, setLoading] = useState(false);
   const [menuItems, setMenuItems] = useState(initialItems);
-  const navigate = useNavigate();
-  const userContext=useContext(UserContext);
   const cartContext = useContext(CartContext);
 
   const [params, setParams] = useSearchParams();
-  const searchTerm = params.get('searchFood') || "";
-  const categoryFromURL = params.getAll('category') || [];
-  const maxFromUrl = params.get('max') || "";
-  const minFromUrl = params.get('min') || "";
+ 
 
   /**
     * @param {string} value
@@ -58,42 +53,26 @@ const ViewPage = (props) => {
   
 
 
-  const filterItem = useMemo(()=>{
-    console.log("Calculating filteredItems---");
-
-    return menuItems.filter(item => {
-    /**
-     * @param {string}str
+  const filterItem = useFilterItems(menuItems);
+  /**
+     * Set query string parameter.
+     * @param {string} name Parameter name.
+     * @param {string | string[]} value Parameter value.
      */
-    const doesItemMatch = str => str.toLowerCase().includes(searchTerm.toLowerCase().trim());
-    let match = (
-      doesItemMatch(item.name) ||
-      doesItemMatch(item.description) ||
-      item.ingredients.some(ingredient => doesItemMatch(ingredient))
-    );
-
-    if (categoryFromURL.length) {
-      match = match && (categoryFromURL.includes(item.category));
+   const setParam = (name, value) => {
+    const newParams = new URLSearchParams(params);
+    newParams.delete(name);
+    if (Array.isArray(value)) {
+      value.forEach(item => newParams.append(name, item));
+    } else if (value.trim()) {
+      newParams.set(name, value.trim());
     }
-
-    if (minFromUrl) {
-      match = match && (item.price >= minFromUrl);
-    }
-
-    if (maxFromUrl) {
-      match = match && (item.price <= maxFromUrl);
-    }
-    return match;
-  });
-  }, [params,menuItems]);
+    setParams(newParams);
+  };
   return (
     <div className="view-page">
       <h1>View All Menu Items</h1>
-      <FilterBar
-        value={searchTerm}
-        categoryFromURL={categoryFromURL}
-        params={params}
-        setParams={setParams} />
+      <FilterBar />
 
       <div className="item" >
         {

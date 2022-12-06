@@ -1,4 +1,5 @@
 import { CATEGORY } from '../../../data/cons';
+import useParams from '../../../hook/params.hook';
 import Input from '../../input/input.component';
 import CheckBox from '../check-box/check-box';
 import './filter.css';
@@ -13,21 +14,25 @@ const FilterBar = (props) => {
     }
     props.setParams(newParams);
   };
-
+const  myParams = useParams();
   return (
     <div className="filter-bar">
+      <div>
       <Input
+      label='search' 
         type="search"
         placeholder='Search'
-        value={props.searchTerm}
+        value={myParams.searchTerm}
         onChange={e => HandelFilter("searchTerm", e.target.value)}
       />
+      </div>
       <div className="categories">
+
         {CATEGORY.map(category => <CheckBox
           key={category}
           label={category}
           value={category}
-          checked={props.categoryFromURL.includes(category)}
+          checked={myParams.categoryFromURL.includes(category)}
           onChange={(e) => {
             const newParams = new URLSearchParams(props.params);
             const oldItems = newParams.getAll('category');
@@ -43,7 +48,7 @@ const FilterBar = (props) => {
                 newParams.delete('category');
               }
             }
-            props.setParams(newParams);
+            myParams.setParams(newParams);
           }}
         />
         )}
