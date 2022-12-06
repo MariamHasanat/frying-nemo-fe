@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router-dom";
 
 const useFilterItems =(menuItems) =>{
   
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const searchTermsFromURL = searchParams.get('q') || '';
   const categoryFromURL = searchParams.get('category') || '';
   let minPriceFromUrl= parseInt(searchParams.get('minprice'));

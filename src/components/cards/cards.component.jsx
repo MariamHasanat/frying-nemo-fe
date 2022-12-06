@@ -10,6 +10,7 @@ import { CartContext } from "../providers/cart-provider.component";
 import { getItems } from "../../services/items";
 import { useEffect,useState} from "react";
 import { useFilterItems } from "../../hooks/filter-items.hook";
+//import { useParams } from "react-router-dom";
 
 /**
  * @type {Array<{
@@ -26,9 +27,11 @@ const Cards =  (props) => {
   const cartContext = useContext(CartContext);
    //localStorage.getItem("menuItems").length ? [...JSON.parse(localStorage.getItem("menuItems"))]: [];
   const [searchParams, setSearchParams] = useSearchParams();
+  // const {myParams} = useParams();
   const searchTermsFromURL = searchParams.get('q') || '';
   const categoryFromURL = searchParams.get('category') || '';
   const [menuItems,setMenuItems] = useState([]);
+ 
 
 
   const getMenuItems = async () => {
