@@ -11,6 +11,7 @@ import { UserContext } from '../../App';
 import { CartContext } from '../../components/providers/cart-provider';
 import { getItem, getItemsFromAPI } from '../../components/services/items';
 import Spinner from '../../components/pop/spinner';
+import { useMemo } from 'react';
 /**
    * @type {Array<
    * 
@@ -76,49 +77,46 @@ const ViewPage = (props) => {
 
 
 
+  const filterItems = useMemo(() => {
+
+    return menuitems.filter(item => {
+
+      /**
+           * Check if search terms are somewhere inside given string.
+           * @param {string} str 
+           */
+
+      ///update the value in isMatch method to search from search query in the URL  //easy user experience 
+      const isMatch = str => str.toLowerCase().includes(searchFromURL.toLowerCase().trim());
+      let match = (
+        isMatch(item.name) ||
+        isMatch(item.description) ||
+        item.ingrediant.some(ingredient => isMatch(ingredient))
+
+      );
+
+      if (categoriesFromURL.length) {
+        match = match && (categoriesFromURL.includes(item.categories));
+      }
+
+      if (categoriesURL) {
+        match = match && (item.categories === categoriesURL);
+      }
 
 
 
-  const filterItems = menuitems.filter(item => {
+      if (maxFromURL && minFromURL) {
+        match = match && (item.price >= minFromURL && item.price <= maxFromURL);
 
-    /**
-         * Check if search terms are somewhere inside given string.
-         * @param {string} str 
-         */
+      }
+      if (price) {
+        match = match && (item.price >= price);
+      }
 
-    ///update the value in isMatch method to search from search query in the URL  //easy user experience 
-    const isMatch = str => str.toLowerCase().includes(searchFromURL.toLowerCase().trim());
-    let match = (
-      isMatch(item.name) ||
-      isMatch(item.description) ||
-      item.ingrediant.some(ingredient => isMatch(ingredient))
-
-    );
-
-    if (categoriesFromURL.length) {
-      match = match && (categoriesFromURL.includes(item.categories));
-    }
-
-    if (categoriesURL) {
-      match = match && (item.categories === categoriesURL);
-    }
-
-
-
-    if (maxFromURL && minFromURL) {
-      match = match && (item.price >= minFromURL && item.price <= maxFromURL);
-
-    }
-    if (price) {
-      match = match && (item.price >= price);
-    }
-
-    return match;
-
-    // item.name.toLowerCase().includes(search.toLowerCase().trim())
-  });
-
-
+      return match;
+      // item.name.toLowerCase().includes(search.toLowerCase().trim())
+    });
+  }, [params, menuitems]);
   /**
    * Set query string parameter.
    * @param {string} name Parameter name.
@@ -169,14 +167,14 @@ const ViewPage = (props) => {
               {
                 filterItems.length
                   ?
-                  (filterItems.map((item, index) =>
+                  filterItems.map((item, index) =>
                     <Card data={item}
                       key={item.name + index}
                       dispatch={cartContext.dispatch}
                       // cartQuantity={props.cart}
                       cartQuantity={getCartQuantity(item.id, cartContext.cart)}
                     />
-                  ))
+                  )
                   : (
                     <div className="no-results">
                       {/* <img src="./frustrated-realistic.png" alt="No results" /> */}
