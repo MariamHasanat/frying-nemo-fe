@@ -56,6 +56,10 @@ const nav=useNavigate()
           <div className="info">
             <p><b>Item Description: </b> {currentItem.description}</p>
           </div>
+          <div className="info">
+            <p><b>Item ingredients:</b> {currentItem.ingredients}</p>
+          </div>
+          
           <PriceBar data={currentItem} cartQuantity={getCartQuantity(currentItem.id, ContextCart.cart)} />
         </div>
       }

@@ -4,6 +4,7 @@ import Select from '../../../common/Select/Select';
 import "./filter.css";
 import { CATAGORIES } from '../../../common/data/constants.js';
 import Checkbox from '../cheak-box/Checkbox';
+import { useParams } from '../../../hooks/params.item';
 
 
 
@@ -18,34 +19,34 @@ import Checkbox from '../cheak-box/Checkbox';
 
 
 const Filter = (props) => {
-
+const {myParams,setParam} = useParams();
 
   return (
     <div>
       <div className='beside' ><Input
         label='Search'
         type={"search"}
-        value={props.searchURL}
+        value={myParams.searchURL||""}
         placeholder="Search"
-        onChange={e => props.setParam('searchTerms', e.target.value)} ></Input>
+        onChange={e => setParam('searchTerms', e.target.value)} ></Input>
 
 
 
 
         <span className='Minclass'><Input
           type={"number"}
-          value={props.MINParams}
+          value={myParams.MINParams||""}
           label='Min'
-          onChange={e => props.setParam("Min", e.target.value)}
+          onChange={e =>setParam("Min", e.target.value)}
         ></Input>
         </span>
 
         <span>------</span>
         <span className='Maxclass'><Input
           type={"number"}
-          value={props.MAXParams}
+          value={myParams.MAXParams||""}
           label="Max"
-          onChange={e => props.setParam("Max", e.target.value)}
+          onChange={e => setParam("Max", e.target.value)}
         >
         </Input></span>
 
@@ -56,14 +57,14 @@ const Filter = (props) => {
           <Checkbox
           key={val}
           label={val}
-          checked={props.categories.includes(val)}
+          checked={myParams.categoryParams.includes(val)}
           onChange={e => {
         
             const updated = e.target.checked
-              ? [...props.categories, val]
-              : props.categories.filter(category => category !== val);
+              ? [...myParams.categories, val]
+              :myParams.categories.filter(category => category !== val);
 
-              props.setParam('category', updated);
+            setParam('category', updated);
           }}
 
 

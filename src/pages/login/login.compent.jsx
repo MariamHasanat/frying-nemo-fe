@@ -21,13 +21,13 @@ const LoginPage = (props) => {
  * Handler function for the form onSubmit event.
  * @param {React.FormEvent<HTMLFormElement>} e Event object.
  */
-  const handleLogin = (e) => {
+  const handleLogin =async (e) => {
     e.preventDefault();
     const email = e.target.email.value.trim();
     const password = e.target.password.value.trim();
 
     if (email && password) {
-      const user = loginUser(email, password);
+      const user =  await loginUser(email, password);
       if (user) {
         ContextUser.setUser(user);
         navigate('/view', { replace: true });
@@ -61,7 +61,7 @@ const LoginPage = (props) => {
       
 <span>
 
-        <Link  to="Sign-in">Sign-in</Link>  <span>/</span>  <Link  to="Sign-in">Forget-my-Password</Link> 
+        <Link  to="/Sign-in">Sign-in</Link>  <span>/</span>  <Link  to="Sign-in">Forget-my-Password</Link> 
 </span>
       
       </form >

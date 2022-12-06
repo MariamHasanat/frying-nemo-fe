@@ -10,6 +10,7 @@ import React from "react";
 import Provider from "./common/Provider/Provider-commponet";
 import CartProvider from "./common/Provider/cart-provider-component";
 import CartPage from "./pages/cart/cart.page";
+import Sighin from "./pages/login/Sighin";
 export const UserContext = React.createContext(null);
 
 
@@ -32,7 +33,7 @@ function App() {
                 <Route path="/view/:id" element={<ViewItemPage  ></ViewItemPage>}></Route>
                 <Route path="/cart" element={<CartPage  />} />
                 <Route path="/login" element={<LoginPage />} />
-
+                <Route path="/Sign-in" element={<Sighin></Sighin> } />
               </Routes>
 
             </div>

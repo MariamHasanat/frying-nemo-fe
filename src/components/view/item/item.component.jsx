@@ -23,7 +23,7 @@ const Item = (props) => {
   return (
     <div className="item-card">
       <div className="img">
-        <img src={`${props.data.image}?x=${Math.random()}`} alt="food" />
+        <img src={`${props.data.image}?x=${Math.random()*Math.random()* Math.random()}`} alt="food" />
       </div>
       <div className="info">
 
