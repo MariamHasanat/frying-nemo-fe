@@ -28,6 +28,7 @@ const ViewPage = () => {
   const [loading, setLoading] = useState(false);
   const cartContext = useContext(CartContext);
 
+
   const getCartQuntity = (id) => {
     const currentItem = cartContext.cart.find(element => (id === element.meal.id));
     if (currentItem) {
@@ -51,13 +52,13 @@ const ViewPage = () => {
 
   const filteredItems = useFilteredItem(menuItems);
   
- 
+  
 
 
   return (
     <div className="View-page">
       <FilterBar
-        dispatch={cartContext.dispatch}
+      
       />
 
       {loading

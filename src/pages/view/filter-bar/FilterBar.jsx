@@ -15,26 +15,25 @@ import './filterBar.css';
  * }} props Component properties object.
  */
 const FilterBar = (props) => {
-  
   const {myParams , setParam} = useParam();
+
   return (
-    
     <div className="filter-group">
       <Input
         type="search"
-        value={props.search || ''}
+        value={myParams.searchFromURL || ''}
         onChange={e => setParam('search', e.target.value)}
         placeholder="Search"
       />
       <Input
         type="number"
-        value={props.min || ''}
+        value={myParams.minFromURL || ''}
         onChange={e => setParam('min', e.target.value)}
         placeholder="Minimum price"
       />
       <Input
         type="number"
-        value={props.max || ''}
+        value={myParams.maxFromURL || ''}
         onChange={e => props.setParam('max', e.target.value)}
         placeholder="Maximum price"
       />
@@ -43,7 +42,7 @@ const FilterBar = (props) => {
           <CheckBox
             key={category}
             label={category}
-            checked={props.categories.includes(category)}
+            checked={myParams.categoriesFromURL.includes(category)}
             onChange={e => {
               const updatedList = e.target.checked
                 ? [...props.categories, category]

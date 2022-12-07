@@ -25,7 +25,7 @@ const fetchItem = async (id) => {
   } else {
     return null;
   }
-} catch (err){
+}catch (err){
   console.log(err);
   return null;
 }

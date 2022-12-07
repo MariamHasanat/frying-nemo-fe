@@ -2,11 +2,6 @@ import { useMemo } from "react";
 import { useSearchParams } from 'react-router-dom';
 
 const useParam = () => {
-  /**
-   * Set query string parameter.
-   * @param {string} name Parameter name.
-   * @param {string | string[]} value Parameter value.
-   */
   const [params, setParams] = useSearchParams();
   
   const myParams = useMemo (() => {
@@ -14,10 +9,16 @@ const useParam = () => {
     const categoriesFromURL = params.getAll('category') || '';
     const minFromURL = params.get('min') || '';
     const maxFromURL = params.get('max') || '';
+    return { searchFromURL , categoriesFromURL , minFromURL , minFromURL }
   }, [params]) 
+
+  /**
+   * Set query string parameter.
+   * @param {string} name Parameter name.
+   * @param {string | string[]} value Parameter value.
+   */
    const setParam = (name, value) => {
     const newParams = new URLSearchParams(params);
-
     newParams.delete(name);
 
     if (Array.isArray(value)) {

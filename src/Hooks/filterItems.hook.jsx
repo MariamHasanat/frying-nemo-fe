@@ -1,7 +1,10 @@
 import { useMemo } from "react";
 import {  useSearchParams } from 'react-router-dom';
+import useParam from "./useParam.hook";
 
 const useFilteredItem = (menuItems) => {
+  const { myParams } = useParam();
+
   const [params] = useSearchParams();
   const searchFromURL = params.get('search') || '';
   const categoriesFromURL = params.getAll('category') || '';
@@ -14,7 +17,7 @@ const useFilteredItem = (menuItems) => {
      * Check if search terms are somewhere inside given string.
      * @param {string} str 
      */
-    const doesItMatch = str => str.toLowerCase().includes(searchFromURL.toLowerCase().trim());
+    const doesItMatch = str => str.toLowerCase().includes(myParams.searchFromURL.toLowerCase().trim());
 
     let match = (
       doesItMatch(item.name) ||
@@ -22,21 +25,21 @@ const useFilteredItem = (menuItems) => {
       item.ingredients.some(ingredient => doesItMatch(ingredient))
     );
 
-    if (categoriesFromURL.length) {
+    if (myParams.categoriesFromURL.length) {
       match = match && categoriesFromURL.includes(item.category);
     }
 
-    if (minFromURL) {
+    if (myParams.minFromURL) {
         match = match && item.price >= minFromURL
     }
 
-    if (maxFromURL) {
+    if (myParams.maxFromURL) {
       match = match && item.price <= maxFromURL
     }
 
     return match;
   });
-} , [params , menuItems]);
+} , [myParams , menuItems]);
 
 
 
