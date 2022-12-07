@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import './login.css';
 
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../../services/users';
+import { loginUser } from '../../services/users.service.js';
 
 import Input from '../../components/common/input/input.component';
 import { UserContext } from '../../components/providers/user-provider.component';

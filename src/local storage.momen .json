@@ -1,9 +1,22 @@
 [
     {
+        "id": "55101",
+        "name": "fatoosh",
+        "price": 20,
+        "description": "best meal ever",
+        "category": "Salads",
+        "ingredients": [
+            "tomato",
+            "cucumber",
+            "onion"
+        ],
+        "image": "https://upload.wikimedia.org/wikipedia/commons/9/93/Fattoush_mixed-salad.jpg"
+    },
+    {
         "id": "1",
         "name": "Mansaf",
         "price": 50,
-        "description": "great meal ",
+        "description": "great meal",
         "category": "Main Dish",
         "ingredients": [
             "meat",

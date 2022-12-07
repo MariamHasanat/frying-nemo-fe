@@ -27,7 +27,7 @@ const Item = (props) => {
     return (
         <Card>
             <Link to={`/view-details/${props.item.id}`}>
-                <img alt="food" src={props.item.image} />
+                <img src={`${props.item.image}?x=${Math.random()}`} alt="food" />
             </Link>
             <div className='info'>
                 <h2>

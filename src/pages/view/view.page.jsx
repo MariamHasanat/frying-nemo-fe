@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
 import './view.css';
 import { useSearchParams } from "react-router-dom";
-
 import Spinner from "../../components/core/spinner/spinner";
 import FilterBar from "../../components/view/filter-bar/filter-bar.component";
 import Item from "../../components/view/item/item.component";
-import { getMenuItems } from "./functions";
+import { fetchItems } from "../../services/items.service";
 import { getCartQuantity } from "../../util/cart";
 import { CartContext } from "../../components/providers/cart-provider.component";
 
@@ -32,8 +31,15 @@ const View = () => {
     const searchParFromURL = params.get('searchTerms') || '';
     const categoriesFromURL = params.getAll('categories') || [];
 
+    const getMenuItems = async () => {
+        setLoading(true);
+        const items = await fetchItems();
+        setMeuItems(items);
+        setLoading(false);
+    };
+
     useEffect(() => {
-        getMenuItems(setLoading, setMeuItems); // exists in the function.js in the same file
+        getMenuItems(); 
     }, []);
 
     /**
