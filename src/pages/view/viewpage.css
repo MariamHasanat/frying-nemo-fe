@@ -13,5 +13,9 @@
   margin-left: 30px;
 }
 
+.View-page .tourist {
+  display: flex;
+  margin-bottom: 20px;
+}
 
 

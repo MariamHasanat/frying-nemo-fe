@@ -8,6 +8,8 @@ import './viewpage.css';
 import { getMenu } from '../../services/items';
 import { CartContext } from '../../components/add/form/provider/CartProvider.jsx';
 import useFilteredItem from '../../Hooks/filterItems.hook';
+import useToggle from '../../Hooks/toggle/tourist-toggle.hook';
+
 
 
 /**
@@ -27,6 +29,7 @@ const ViewPage = () => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
   const cartContext = useContext(CartContext);
+  const [isTourist , toggleIsTourist] = useToggle(false);
 
 
   const getCartQuntity = (id) => {
@@ -50,15 +53,17 @@ const ViewPage = () => {
     getMenuItems();
   }, []);
 
-  const filteredItems = useFilteredItem(menuItems);
+  const filteredItems = useFilteredItem(menuItems , isTourist);
   
   
 
 
   return (
     <div className="View-page">
+    
       <FilterBar
-      
+       isTourist={isTourist}
+       toggleIsTourist={toggleIsTourist}
       />
 
       {loading
