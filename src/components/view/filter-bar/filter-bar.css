@@ -13,3 +13,45 @@
   display: flex;
   margin: 20px;
 }
+
+.categories>.checkbox-group {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.categories>.checkbox-group>input {
+  display: none;
+}
+
+.categories>.checkbox-group>label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #666;
+  letter-spacing: 0.5px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  border: 1px solid #e1cbc4;
+  color: #be441d;
+}
+
+.categories>.checkbox-group>label>span:nth-child(2) {
+  color: rgb(210, 21, 21);
+}
+
+.categories>.checkbox-group>label.checked {
+  background-color: #be441d;
+  color: #fff;
+}
+
+.tourists .checkbox-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tourists .tourist-box{
+  width: 30px;
+}

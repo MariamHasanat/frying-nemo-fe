@@ -4,9 +4,11 @@ import Select from '../../common/select/select-component';
 import CATEGORIES from '../../../data/categories';
 import CheckBox from '../../common/toggle-bullets/checkbox.component';
 import { useParams } from '../../../hooks/params.hook';
+import { useState } from 'react';
+import { useToggle } from '../../../hooks/common/toggle.hook';
 
 
-const FilterBar = () => {
+const FilterBar = (props) => {
   const { myParams, setParam } = useParams();
 
   return (
@@ -45,7 +47,13 @@ const FilterBar = () => {
             }}
           />
         ))}
+        <div className='tourists'
+        checked={props.isTourist}
+        onChange={props.toggleIsTourist}>
+        <CheckBox label='Tourist' className='tourist-box'/>
       </div>
+      </div>
+   
     </div>
   );
 };

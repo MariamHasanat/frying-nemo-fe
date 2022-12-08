@@ -10,6 +10,7 @@ import { fetchItems, getItem, getItems } from "../../services/items";
 import { useMemo } from "react";
 import { useFilterItems } from "../../hooks/filter-items.hook";
 import { useParams } from "../../hooks/params.hook";
+import { useToggle } from "../../hooks/common/toggle.hook";
 
 /**
  * @type {Array<{
@@ -30,6 +31,8 @@ const ViewPage = (props) => {
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
   const cartContext = useContext(CartContext);
+  const [isTourist, toggleIsTourist] = useToggle(false);
+
 
   // const searchTerms = params.get("searchTerms") || "";
   // const categoryFromURL = params.getAll("categoryFromURL") || "";
@@ -50,12 +53,12 @@ const ViewPage = (props) => {
   }, []);
 
 
-  const filteredItems = useFilterItems(menuItems);
+  const filteredItems = useFilterItems(menuItems,isTourist);
 
   return (
     <div>
       <h1>View Menu Items</h1>
-      <FilterBar />
+      <FilterBar isTourist={isTourist} toggleIsTourist={toggleIsTourist}/>
       {loading && (
         <div className="loading">
           <div className="lds-spinner">
