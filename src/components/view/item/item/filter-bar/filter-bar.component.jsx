@@ -43,7 +43,7 @@ const FilterBar = (props) => {
                 ? [...myParams.categories, item]
                 : myParams.categories.filter(category => category !== item);
 
-              props.setParam('category', updated);
+              setParam('category', updated);
             }}
           />
         ))}

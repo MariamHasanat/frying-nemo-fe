@@ -1,14 +1,11 @@
 import Item from '../../../components/view/item/item/item.component';
 import './view.css';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import FilterBar from '../../../components/view/item/item/filter-bar/filter-bar.component';
-import { useEffect } from 'react';
 import Spinner from '../../../components/core/header/spinner/spinner.component';
-import { useSearchParams} from 'react-router-dom';
-import { useContext } from 'react';
 import { CartContext } from '../../../components/provider/cart.provider';
 import { getCartQuantity } from '../../../utils/cart';
-import getItems from '../../../services/item';
+import {getItems} from '../../../services/item';
 import useFilterItem from '../../../hooks/items.hook';
 
         
@@ -26,13 +23,13 @@ import useFilterItem from '../../../hooks/items.hook';
  */
 const initialItems = [];
 
+
 const ViewPage = () => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
-  const [params, setParams] = useSearchParams();
+  
  const cartContext = useContext(CartContext);
-  const searchTermsFromURL = params.get('searchTerms') || '';
-  const categoriesFromURL = params.getAll('category') || '';
+  
 
   const getMenuItems = async () => {
     setLoading(true);
@@ -66,7 +63,7 @@ const ViewPage = () => {
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
-      <FilterBar />
+      <FilterBar/>
       {
         loading
           ? <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Spinner /></div>

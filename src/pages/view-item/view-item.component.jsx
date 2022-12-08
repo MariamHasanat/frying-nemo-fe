@@ -1,10 +1,10 @@
-import getItem from "../../services/item";
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Spinner from "../../components/core/header/spinner/spinner.component";
 import PriceBar from "../../components/view/item/item/price-bar/price-bar.cpmponent";
 import { useContext } from "react";
 import { CartContext } from "../../components/provider/cart.provider";
+import {getItem} from "../../services/item";
 
 
 /**
@@ -36,7 +36,6 @@ const ViewItemPage = () => {
   return (
     <div className="view-item-page">
       {loading ?<Spinner />
-      
         :loading && currentItem !== null
           ? <div className="item-details">
             <h1>{currentItem.name}</h1>

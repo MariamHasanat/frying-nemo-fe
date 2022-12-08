@@ -7,7 +7,6 @@ const getItems = () => {
     });
 };
 
-
 /**
  * Fake Fetching of single item
  * @param {number} id 
@@ -43,5 +42,5 @@ const createItem = (item) => {
 };
 
 
-export { getItem, getItems, createItem };
+export { getItem, getItems, createItem};
 

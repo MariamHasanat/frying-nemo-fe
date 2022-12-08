@@ -1,4 +1,4 @@
-import getItem from "../../../../services/item";
+import {getItem }from "../../../../services/item";
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import './view-item.css';
@@ -6,6 +6,7 @@ import Spinner from "../../../../components/core/header/spinner/spinner.componen
 import PriceBar from "../../../../components/view/item/item/price-bar/price-bar.cpmponent";
 import { useContext } from "react";
 import { CartContext } from "../../../../components/provider/cart.provider";
+
 
 
 /**
