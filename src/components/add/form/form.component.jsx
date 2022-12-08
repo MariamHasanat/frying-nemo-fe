@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useAddItem from '../../../hooks/Add_item.hook';
 
 import Input from '../../common/input/input';
 import Multiinput from '../../common/maltiinput-value/multiinput';
@@ -13,65 +14,17 @@ import { creatItem } from './data/items';
 
 import './form.css';
 const Form = (props) => {
-  const [ingredients, setIngredients] = useState([]);
-  const [name, setname] = useState('Sajeda');
-  const navigate = useNavigate();
   const userContext = useContext(UserContext);
-  /**
-   * 
-   * @param {React.FormEvent<HTMLFormElement>} e 
-   */
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    debugger;
-    const image = e.target.image.value;
-    const price = Number(e.target.price.value);
-    const description = e.target.description.value;
-    const category = e.target.category.value;
-    const menuItem = {
-      name: name,
-      image,
-      id: Date.now(),
-      description: description,
-      price: price,
-      category: category,
-      ingredients: ingredients
-    };
-
-
-    const res = await creatItem(menuItem);
-    if (res) {
-       alert("succses go data");
-      navigate("/view");
-    }
-    else {
-      alert("ERROR go data");
-    }
-
-  };
-  const onNameChange = (e) => {
-    let value = e.target.value;
-    if (value.includes('.')) {
-      alert('Wrong input');
-      value.replace('.', '');
-    }
-    if (/find/ig.test(value)) {
-      value = value.replace(/find/ig, 'fry');
-    }
-    if (value.length >= 20) {
-      value = value.substring(0, 18);
-    }
-    setname(value);
-  };
+  const addItem = useAddItem();
 
   return (
-    <form className='form' onSubmit={handleSubmit}>
+    <form className='form' onSubmit={addItem.submit}>
       <div className='input'>
         <Withborder>
           <Input
             label='name'
-            value={name}
-            onChange={(e) => onNameChange(e)}
+            value={addItem.name.value}
+            onChange={addItem.name.onChange}
             required
           />
         </Withborder>
@@ -102,8 +55,8 @@ const Form = (props) => {
         </Select>
         <Multiinput
           label="Ingradaint"
-          value={ingredients}
-          onChange={newIngredients => setIngredients(newIngredients)}
+          value={addItem.ingredients.value}
+          onChange={newIngredients => addItem.ingredients.setIngredients(newIngredients)}
         />
 
 
