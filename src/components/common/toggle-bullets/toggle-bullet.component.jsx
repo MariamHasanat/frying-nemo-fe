@@ -6,7 +6,7 @@ import { useSearchParams } from 'react-router-dom';
  * 
  * @param {{
  * name:string;
- * useParam: => void;
+ * useParam: () => void;
  * }} props 
  * @returns 
  */

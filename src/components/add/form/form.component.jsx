@@ -1,86 +1,29 @@
 import './form.css';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Input from '../../common/input/input.component';
 import Textarea from '../../common/textarea/textarea.component';
 import SelectArea from '../../common/selectarea/selectarea.component';
 import MultivalueInput from '../../common/multivalue-input/multivalueInput';
-import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/constants';
 import { UserContext } from '../../providers/user-provider.component';
+import useAddItem from '../../../hooks/add/add-item.hook';
 
-import { createItem } from '../../../services/items.service';
-import { useContext } from 'react';
-
-/**
-* 
-* @param {{
-*       user: {
-*           id: string;
-*           email: string;
-*           password: string;
-*           fullName: string;
-*           imageUrl: string;
-*           role: string | null;
-*       }   
-*           | null
- * }} props 
- * @returns 
- */
 const Form = () => {
-    const [name, setName] = useState('');
-    const [ingredients, setIngredients] = useState([]);
     const userContext = useContext(UserContext);
-    const navigate = useNavigate();
-
-    /**
-     * @param {React.ChangeEvent<HTMLInputElement>} e
-     */
-    const submitHandler = async (e) => {
-        const price = Number(e.target.price.value);
-        const des = e.target.description.value;
-        const image = e.target.image.value;
-        const cat = e.target.category.value;
-
-        const item = {
-            // id: (new Date().getTime() + "" + Math.random() * 1000),
-            name: name,
-            price: price.toString(),
-            description: des,
-            category: cat,
-            ingredients: ingredients,
-            image,
-        };
-        const res = await createItem(item);
-        if (res) {
-            alert('Item added successfully');
-            navigate('/view');
-        }
-        else {
-            alert('Error adding the item!');
-        }
-    };
-
-    const changeHandler = (e) => {
-        let val = e.target.value;
-
-        if (val.length > 20) {
-            val = val.substring(0, val.length - 1);
-        }
-        setName(val);
-    };
-
+    const addItem = useAddItem();
+      
     return (
         <div>
             <form className='form' onSubmit={e => {
                 e.preventDefault();
-                submitHandler(e);
+                addItem.submitHandler(e);
             }}>
                 <Input
                     name='Name'
                     label='Name'
                     type={'Text'}
-                    value={name}
-                    onChange={changeHandler}
+                    value={addItem.name.value}
+                    onChange={addItem.name.onchange}
                     required
                 />
                 <Textarea
@@ -109,10 +52,10 @@ const Form = () => {
                 </SelectArea>
                 <MultivalueInput
                     label={'Ingredients'}
-                    value={ingredients}
+                    value={addItem.ingredients.value}
                     name={'ingredients'}
                     onChange={(newItem) => {
-                        setIngredients(newItem);
+                        addItem.ingredients.setValue(newItem);
                     }}
                 />
                 <div className='sub'>

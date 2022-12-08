@@ -21,17 +21,14 @@ const fetchItem = async (id) => {
     }
 };
 
-const createItem = (item) => {
-    fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/',
+const createItem = async (item) => {
+    return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu',
         {
             method: 'POST',
             body: JSON.stringify(item)
         })
         .then(async (response) => {
-            if (response.status === 201)
-                return true;
-            else
-                return false;
+            return (response.status === 201);
         })
         .catch((error) => {
             console.log(error.toString());
@@ -39,8 +36,8 @@ const createItem = (item) => {
         });
 };
 
-const deleteItem = (id) => {
-    fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${id}`,
+const deleteItem = async (id) => {
+    return fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${id}`,
         { method: 'DELETE' })
         .then((response) => {
             if (response)
@@ -54,8 +51,8 @@ const deleteItem = (id) => {
         });
 };
 
-const updateItem = (item) => {
-    fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${item.id}`,
+const updateItem = async (item) => {
+    return fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${item.id}`,
         {
             method: 'PUT',
             body: JSON.stringify(item)
