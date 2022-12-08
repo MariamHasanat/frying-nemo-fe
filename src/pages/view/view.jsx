@@ -13,6 +13,7 @@ import { getItem, getItemsFromAPI } from '../../components/services/items';
 import Spinner from '../../components/pop/spinner';
 import { useMemo } from 'react';
 import useItems from '../../components/Hooks/items-filter.hook';
+import useToggle from '../../components/Hooks/toggle.hook';
 /**
    * @type {Array<
    * {
@@ -55,6 +56,7 @@ const ViewPage = (props) => {
   // const minFromURL = params.get("min") || '';
   // const price = params.get("price") || '';
   const [loading, setLoading] = useState(true);
+  const [isTourist, toggleIsTourist] = useToggle(false);
 
 
   /**
@@ -81,7 +83,7 @@ const ViewPage = (props) => {
 
 
 
-  const filterItems = useItems(menuitems);
+  const filterItems = useItems(menuitems,isTourist);
 
   /*************************************************************************move logic to custom hook **************************/
 
@@ -162,6 +164,8 @@ const ViewPage = (props) => {
           // searchTerms={params.get("searchTerms")}
           // categories={params.getAll("categories")}
           // setParam={setParam}
+          isTourist={isTourist}
+          toggleIsTourist={toggleIsTourist}
         />
 
       </div>

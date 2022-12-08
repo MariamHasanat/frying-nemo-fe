@@ -89,15 +89,15 @@
 .websiteHeader .right>nav>.cart>.count {
   position: absolute;
   color: #fff;
-  top: -8px;
-  right: -11px;
+  top: -10px;
+  right: 14px;
   z-index: 2;
   font-weight: bold;
   background: purple;
-  padding: 2px;
+  padding: 5px;
   border-radius: 50%;
-  font-size: 12px;
-  min-width: 15px;
+  font-size: 10px;
+  min-width: 10px;
   min-height: 15px;
   text-align: center;
 }
