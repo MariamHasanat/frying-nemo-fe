@@ -4,6 +4,7 @@ import Spinner from '../../components/core/spinner/spinner.componenr';
 import MenuItem from '../../components/view/menu-item/menu-item.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import './view.css';
+import getItems from '../../services/get-item';
 
 /**
  * @type {Array<{
@@ -41,14 +42,9 @@ const ViewPage = (props) => {
 
   const getMenuItems = async () => {
     setLoading(true);
-    fetch ('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/') 
-    .then (async (data) => {
-      const parsedData = await data.json() ;
-      setItems (parsedData) ;
-      console.log ('fetched')
-    }) 
-    .catch (error => {alert (error)})
-    setLoading (false)
+    const tempItems = await getItems() ;
+    setItems (tempItems);
+    setLoading (false);
   };
 
   useEffect(() => {
