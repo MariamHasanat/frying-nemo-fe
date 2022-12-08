@@ -1,11 +1,16 @@
 import { useMemo } from 'react';
 import useParams from './params.hook';
 
-const useFilterItems = (menuItems) => {
+/**
+ * Filters menu items based on parameter values.
+ * @param {boolean} isTourist Is the person ordering a tourist.
+ * @returns Filtered list of
+ */
+const useFilterItems = (menuItems, isTourist) => {
   const { myParams } = useParams();
 
   const filteredItems = useMemo(() => {
-    return menuItems.filter(item => {
+    const filtered = menuItems.filter(item => {
       /**
        * Check if search terms are somewhere inside given string.
        * @param {string} str 
@@ -25,7 +30,13 @@ const useFilterItems = (menuItems) => {
       return match;
     });
 
-  }, [myParams, menuItems]);
+    if (isTourist) {
+      return filtered.map(item => ({ ...item, price: item.price * 2 }));
+    } else {
+      return filtered;
+    }
+
+  }, [myParams, menuItems, isTourist]);
 
   return filteredItems;
 };

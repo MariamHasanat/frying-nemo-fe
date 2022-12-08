@@ -7,6 +7,7 @@ import { getCartQuantity } from '../../utils/cart';
 import { CartContext } from '../../components/providers/cart-provider.component';
 import { fetchItems } from '../../services/items.service';
 import useFilterItems from '../../hooks/filter-items.hook';
+import useToggle from '../../hooks/common/toggle.hook';
 
 /**
  * @type {Array<{
@@ -24,6 +25,7 @@ const initialItems = [];
 const ViewPage = () => {
   const [menuItems, setMenuItems] = useState(initialItems);
   const [loading, setLoading] = useState(false);
+  const [isTourist, toggleIsTourist] = useToggle(false);
 
   const cartContext = useContext(CartContext);
 
@@ -36,12 +38,12 @@ const ViewPage = () => {
 
   useEffect(() => { getMenuItems(); }, []);
 
-  const filteredItems = useFilterItems(menuItems);  
+  const filteredItems = useFilterItems(menuItems, isTourist);  
 
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
-      <FilterBar />
+      <FilterBar isTourist={isTourist} toggleIsTourist={toggleIsTourist} />
       {
         loading
           ? <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Spinner /></div>
