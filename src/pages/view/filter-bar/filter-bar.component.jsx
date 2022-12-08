@@ -2,7 +2,6 @@ import './filter-bar.css';
 import Input from '../../../components/common/input/input.component';
 import FilterCheckbox from '../../../components/common/filter-checkbox/filter-checkbox.component';
 import { CATEGORIES } from '../../../data/constants';
-
 const FilterBar = (props) => {
     return (
         <div className='filter-group'>
@@ -28,7 +27,7 @@ const FilterBar = (props) => {
                                   : props.categoryFilters.filter(category => category !== item);
                   
                                 props.setParams('category', updated);
-                  
+    
                             }}
                         />
                     )

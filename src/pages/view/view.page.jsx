@@ -8,13 +8,18 @@ import { CartContext } from '../../components/providers/cart-provider.component'
 import Jiji from '../../components/common/jiji-the-cat/jiji.component';
 import { getAllItems } from '../../services/fetchItem';
 import useFilterItems from '../../hooks/filterItems.hook';
+import Checkbox from '../../components/common/checkbox/checkbox.component';
+import useToggle from '../../hooks/toggle.hook';
 
 
 const ViewPage = (props) => {
+    const [isTourist, setIsTourist] = useToggle();
+    
     const [menu, setMenu] = useState([]);
     const [loading, setLoading] = useState(true);
     const [params, setParams] = useSearchParams();
     const cartContext = useContext(CartContext);
+
 
     const searchTerms = params.get('searchTerms') || '';
     const categoryFilters = params.getAll('category') || '';
@@ -34,20 +39,20 @@ const ViewPage = (props) => {
 
     const setParam = (name, value) => {
         const newParams = new URLSearchParams(params);
-    
+
         newParams.delete(name);
-    
+
         if (Array.isArray(value)) {
-          value.forEach(item => newParams.append(name, item));
+            value.forEach(item => newParams.append(name, item));
         } else if (value.trim()) {
-          newParams.set(name, value.trim());
+            newParams.set(name, value.trim());
         }
-    
+
         setParams(newParams);
-      };
-    
-    
-    const filteredMenu = useFilterItems(menu);
+    };
+
+
+    const filteredMenu = useFilterItems(menu, isTourist);
 
     const len = filteredMenu.length;
 
@@ -61,8 +66,12 @@ const ViewPage = (props) => {
 
     return (
         <div className='view-page'>
-            <h1>view items</h1>
+            <h1>view items
+                <Checkbox label='Are you a Tourist?' checked={isTourist} onChange={setIsTourist} />
+            </h1>
+
             <FilterBar
+
                 searchTerms={searchTerms}
                 params={params}
                 setParams={setParam}

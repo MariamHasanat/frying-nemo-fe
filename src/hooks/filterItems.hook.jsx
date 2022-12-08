@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useSearchParams } from 'react-router-dom';
 
 
-const useFilterItems = (menu) => {
+const useFilterItems = (menu, isTourist) => {
     const [params] = useSearchParams();
     const searchTerms = params.get('searchTerms') || '';
     const categoryFilters = params.getAll('category') || '';
@@ -11,7 +11,7 @@ const useFilterItems = (menu) => {
 
     const filteredMenu = useMemo(() => {
         console.log('re-filtering');
-        return menu
+        const filtered = menu
             .filter(
                 item => {
                     let match = (
@@ -35,7 +35,8 @@ const useFilterItems = (menu) => {
 
                     return match;
                 });
-    }, [params, menu]);
-    return filteredMenu;
+        return isTourist? filtered.map(item => ({...item, price: item.price * 2})) : filtered;
+}, [params, menu, isTourist]);
+return filteredMenu;
 };
 export default useFilterItems;
