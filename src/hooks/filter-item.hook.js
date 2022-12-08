@@ -4,9 +4,6 @@ import useParam from "./params.hook";
 const useFilterItmes = (menuItems) => {
   const {myParams} = useParam()
 
-  // const searchTermsFromURL = myParams.get('searchTerms') || '';
-  // const categoriesFromURL = myParams.getAll('category') || '';
-
   const filteredItems = useMemo(() => {
 
     return menuItems.filter(item => {
