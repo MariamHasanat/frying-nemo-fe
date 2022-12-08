@@ -8,7 +8,7 @@ import './viewpage.css';
 import { getMenu } from '../../services/items';
 import { CartContext } from '../../components/add/form/provider/CartProvider.jsx';
 import useFilteredItem from '../../Hooks/filterItems.hook';
-import useParam from '../../Hooks/useParam.hook';
+
 
 /**
  * @type {Array<{

@@ -4,86 +4,24 @@ import Input from '../../../common/input/input.component';
 import { UserContext } from './provider/UserProvider';
 import { CATEGORIES } from '../../../data/category';
 import Select from '../../../common/Select/Select';
-import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { useState } from 'react';
 import './form.css';
-import { createdItem } from '../../../services/items';
+import useAddItem from '../../../Hooks/menu/add-item.hook';
 
 
 const Form = (props) => {
-  const [name, setName] = useState('dala');
-  const [ingredients, setIngredients] = useState([]);
-  const navigate = useNavigate();
+
   const userContext = useContext(UserContext);
-
-  /**
-   * Handles on change events on the name field.
-   * @param {React.ChangeEvent<HTMLInputElement>} e On change event object.
-   */
-
-  const handler = async e => {
-
-    e.preventDefault();
-    /**
-     * @type {HTMLformElement}
-     */
-
-    const description = e.target.description.value;
-    // const image = e.target.image.value;
-    const price = Number(e.target.price.value);
-    const category = e.target.category.value;
-    const image = e.target.image.value;
-
-
-    const menuItem = {
-      name: name,
-      // image,
-      description: description,
-      image,
-      price: price,
-      category: category,
-      ingredients: ingredients,
-      id: new Date()
-    };
-
-    const res = await createdItem(menuItem);
-    
-    // const itemJson = localStorage.getItem('menuItems') || '[]';
-    // const items = JSON.parse(itemJson);
-    // items.push(menuItem);
-    // localStorage.setItem('menuItems', JSON.stringify(items));
-
-    navigate('/view');
-  };
-
-  const onNamechange = e => {
-
-    let val = e.target.value;
-
-    if (val.includes('.')) {
-      val = val.replace('.', '');
-    }
-
-    if (/find/ig.test(val)) {
-      val = val.replace(/find/ig, 'fry');
-    }
-
-    if (val.length > 20) {
-      alert('charecter limit excedded');
-      val = val.substring(0, 20);
-    }
-    setName(val);
-  };
-
+  const addItem = useAddItem();
+  
   return (
-    <form className='add-form' onSubmit={handler}>
+    <form className='add-form' onSubmit={addItem.handler}>
       <div style={{ margintop: 20 }}>
         <Input
-          // name = "name"
+         
           label="Name"
-          value={name}
-          onChange={onNamechange}
+          value={addItem.name.value}
+          onChange={addItem.name.onChange}
           required
         />
         <Input
@@ -101,7 +39,6 @@ const Form = (props) => {
         <Textarea
           name="description"
           label="Description"
-        // value={props.description}
         />
         <Select
           name="category"
@@ -113,8 +50,8 @@ const Form = (props) => {
         </Select>
         <MultivalueInput
           label="Ingrediants"
-          value={ingredients}
-          onChange={newIngredients => setIngredients(newIngredients)}
+          value={addItem.ingredients.value}
+          onChange={newIngredients => addItem.ingredients.setIngredients(newIngredients)}
         />
         <div className="create-btn">
           <button
