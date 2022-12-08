@@ -1,17 +1,19 @@
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
+import useToggle from "./toggle.hook";
 
 const useFilterItems=(menuItems)=>{
-  const [params] =useSearchParams();
-  const searchTermsFromURL = params.get('searchTerms') || '';
+const [params] =useSearchParams(); 
+const searchTermsFromURL = params.get('searchTerms') || '';
 const categoryFromURL = params.getAll('category') || '';
 const price = params.get("price") || '';
 const maxFromURL = params.get("max") || '';
 const minFromURL = params.get("min") || '';
+const [isTourist,toggleIsTourist]=useToggle(false);
 const filteredItems = useMemo(()=>{
   
   console.log("calculating items ... ");
-  return menuItems.filter(item => {
+const filtered = menuItems.filter(item => {
 
   /**
    * Check if search terms are somewhere inside given string.
@@ -38,7 +40,13 @@ const filteredItems = useMemo(()=>{
 
   return Match;
 });
-},[params,menuItems]);
+
+if (isTourist){
+  return filtered.map(item => ({...item,price:item.price * 2}));
+}else{
+  return filtered
+}
+},[params,menuItems,isTourist]);
 return filteredItems;
 };
 export default useFilterItems;

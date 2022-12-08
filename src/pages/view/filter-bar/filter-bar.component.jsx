@@ -5,6 +5,7 @@ import CheckBox from '../../../components/common/toggle-bullets/check-boxes.comp
 import Input from '../../../components/common/input/input.component';
 import { useState } from 'react';
 import useParames from '../../../Hooks/params.hook';
+import useToggle from '../../../Hooks/toggle.hook';
 
 /**
  * 
@@ -21,7 +22,8 @@ const FilterBar = (props) => {
     setPrice(e.target.value);
   };
 
-  const {myParams,setParams }=useParames();
+  const {myParams,setParam }=useParames();
+  const [isTourist,toggleIsTourist]=useToggle(false);
   return (
     <div className="filter-bar">
       <div className='inputs'>
@@ -29,13 +31,13 @@ const FilterBar = (props) => {
           type="search"
           label="search for item"
           value={myParams.searchTermsFromURL}
-          onChange={e =>setParams('searchTerms', e.target.value)}
+          onChange={e =>setParam('searchTerms', e.target.value)}
           placeholder="search"
         />
         <Input
           label='min price :'
           type="number"
-          onChange={e =>setParams('min', e.target.value)}
+          onChange={e =>setParam('min', e.target.value)}
           min={0}
           max={100}
 
@@ -43,7 +45,7 @@ const FilterBar = (props) => {
         <Input
           label='max price : '
           type="number"
-          onChange={e => setParams('max', e.target.value)}
+          onChange={e => setParam('max', e.target.value)}
           min={0}
           max={500}
 
@@ -52,7 +54,7 @@ const FilterBar = (props) => {
 
           type="range"
           onChange={e => {
-            setParams('price', e.target.value);
+            setParam('price', e.target.value);
             handelPrice(e); }}
           min={0}
           max={500}
@@ -72,11 +74,16 @@ const FilterBar = (props) => {
                 ? [...myParams.categoryFromURL, cat]
                 : myParams.categoryFromURL.filter(category => category !== cat);
 
-                setParams('category', updated);
+                setParam('category', updated);
             }}
           />
         )
       }
+      <CheckBox
+       label = 'tourist'
+      checked={isTourist} 
+      onChange={toggleIsTourist}
+      />
     </div>
   );
 };
