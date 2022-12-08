@@ -11,8 +11,8 @@ import './menu-item.css' ;
  * id : number;
  * name : string ;
  * price : number ;
- * discription : string ;
- * catigory : string ;
+ * description : string ;
+ * category : string ;
  * image : string ;
  * ingredients : string[] ;
  * } props 
@@ -26,8 +26,8 @@ const MenuItem = (props) => {
       <div className='img'><img src={props.item.image} alt="" /></div>
        <h2> <Link to = {`/view-details/${props.item.id}`}>{props.item.name}</Link></h2> 
       <div className="info">
-        <span>Its a : {props.item.catigory}</span>
-        <p> {props.item.discription}</p>
+        <span>Its a : {props.item.category}</span>
+        <p> {props.item.description}</p>
         <p className="ingredients"> {props.item.ingredients.join(", ")}</p>
       </div>
       <PriceBar item = {props.item} dispatch = {cartContext.dispatch} cartQuantity = {getCartQuantity(props.item.id , cartContext.cart)}/>

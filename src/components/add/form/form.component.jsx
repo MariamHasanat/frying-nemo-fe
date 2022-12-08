@@ -22,16 +22,16 @@ const Form = (props) => {
     e.preventDefault();
     console.log('Form Submitted');
     const price = e.target.price.value;
-    const discription = e.target.discription.value;
-    const catigory = e.target.catigory.value;
+    const description = e.target.description.value;
+    const category = e.target.category.value;
     const image = e.target.image.value;
 
     const menueItem = {
       id: Date.now(),
       name: name,
       price: price,
-      discription: discription,
-      catigory: catigory,
+      description: description,
+      category: category,
       ingredients: ingredients,
       image: image
     };
@@ -69,8 +69,8 @@ const Form = (props) => {
         onChange={nameChange}
       />
       <Textarea
-        name='discription'
-        label="Discription"
+        name='description'
+        label="description"
         className='textarea-group'
       />
       <Input label='Enter image link' type="text" name="image" />
@@ -83,7 +83,7 @@ const Form = (props) => {
         min={0}
       />
       {/* using array mapping */}
-      <Select label='Select' name='catigory'>
+      <Select label='Select' name='category'>
         {CATEGORIES.map(item =>
           <option key={item} value={item}>{item}</option>
         )}

@@ -8,10 +8,10 @@ import './view.css';
 /**
  * @type {Array<{
  * name: string;
- * discription: string;
+ * description: string;
  * ingredients: string[];
  * price: number;
- * catigory: string;
+ * category: string;
  * image: string;
  * }>}
  */
@@ -39,12 +39,16 @@ const ViewPage = (props) => {
     setParam(newParam);
   };
 
-  const getMenuItems = () => {
+  const getMenuItems = async () => {
     setLoading(true);
-    setTimeout(() => {
-      setItems(JSON.parse(localStorage.getItem('menuItems') || '[]'));
-      setLoading(false);
-    }, 1000);
+    fetch ('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/') 
+    .then (async (data) => {
+      const parsedData = await data.json() ;
+      setItems (parsedData) ;
+      console.log ('fetched')
+    }) 
+    .catch (error => {alert (error)})
+    setLoading (false)
   };
 
   useEffect(() => {
@@ -56,13 +60,13 @@ const ViewPage = (props) => {
     const doesItMatch = (value) => value.toLowerCase().includes(searchUsingURL.toLowerCase().trim());
     let match = (
       doesItMatch(element.name)
-      || doesItMatch(element.discription)
+      || doesItMatch(element.description)
       || element.ingredients.some(ingredient => doesItMatch(ingredient))
       // => i can use find function instead , but (some is better to use) 
     );
     if (categoryUsingURL) {
-      // match = match && element.catigory == categoryUsingURL ;   => for a single category filter :) 
-      match = match && categoryUsingURL.includes(element.catigory);  // for a multiple category filter :)
+      // match = match && element.category == categoryUsingURL ;   => for a single category filter :) 
+      match = match && categoryUsingURL.includes(element.category);  // for a multiple category filter :)
     }
     if (minPrice)
       match = match && element.price >= minPrice;
