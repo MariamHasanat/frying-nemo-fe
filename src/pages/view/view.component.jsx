@@ -1,7 +1,5 @@
 import { useContext } from 'react';
 import { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { UserContext } from '../../components/provider/user-provider.component';
 import { CartContext } from '../../components/provider/cart-provider.component';
 import Spinner from '../../components/core/spinner/spinner.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';

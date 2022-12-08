@@ -6,6 +6,7 @@ import useParam from '../../../hooks/params.hook';
 
 const FilterBar = () => {
   const {myParams , setParam} = useParam();
+  
   return (
     <div className="filter-bar">
       <Input
