@@ -11,6 +11,7 @@ import { getCartQuantity } from '../../components/header/cart';
 import { CartContext } from '../../components/providers/cart-provider.component';
 import { getItems } from '../view-item/item';
 import useFilteredItems from '../../components/hooks/items.hook';
+import useToggle from '../../components/hooks/toggle.hook';
 
 
 /**
@@ -42,6 +43,7 @@ const ViewPage = (props) => {
   const navigate = useNavigate();
   const minPrice = params.get('Min') || '';
   const maxPrice = params.get('Max') || '';
+  const [isTourist, toggleIsTourist] = useToggle(false);
 
 
   console.log('search params = ', search);
@@ -68,36 +70,30 @@ const ViewPage = (props) => {
 
   const filteredItems = useFilteredItems(menuItems);
 
-  /**
-  * Set query string parameter.
-  * @param {string} name Parameter name.
-  * @param {string | string[]} value Parameter value.
-  */
-  const setParam = (name, value) => {
-    const newParams = new URLSearchParams(params);
+  // /**
+  // * Set query string parameter.
+  // * @param {string} name Parameter name.
+  // * @param {string | string[]} value Parameter value.
+  // */
+  // const setParam = (name, value) => {
+  //   const newParams = new URLSearchParams(params);
 
-    newParams.delete(name);
+  //   newParams.delete(name);
 
-    if (Array.isArray(value)) {
-      value.forEach(item => newParams.append(name, item));
-    } else if (value.trim()) {
-      newParams.set(name, value.trim());
-    }
+  //   if (Array.isArray(value)) {
+  //     value.forEach(item => newParams.append(name, item));
+  //   } else if (value.trim()) {
+  //     newParams.set(name, value.trim());
+  //   }
 
-    setParams(newParams);
-  };
+  //   setParams(newParams);
+  // };
 
 
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
-      <FilterBar
-        searchTerms={search}
-        categories={categoriesFromURL}
-        setParam={setParam}
-        minPrice={minPrice}
-        maxPrice={maxPrice}
-      />
+      <FilterBar isTourist={isTourist} toggleIsTourist={toggleIsTourist}/>
       <br />
 
       {loading

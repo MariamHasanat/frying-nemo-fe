@@ -1,4 +1,5 @@
 import React from 'react';
+import useToggle from '../../components/hooks/toggle.hook';
 import './check-box.css';
 
 /**
@@ -8,6 +9,7 @@ import './check-box.css';
  * }} props 
  */
 const CheckBox = props => {
+  const toggle = useToggle();
   const { label, ...inputProps } = props;
 
   return (

@@ -13,11 +13,12 @@ import useParams from "../hooks/params.hook";
  *  categories: string[];
  *  setParam: (name: string, value: string | string[]) => void
  * }} props Component properties object.
+ * @params {}
  */
 
 
-const FilterBar = () => {
-  const { someParams, useParams } = useParams();
+const FilterBar = (props) => {
+  const { someParams, setParam } = useParams();
 
 
   return (
@@ -33,7 +34,7 @@ const FilterBar = () => {
       <span className='min-price'><Input
         type={"number"}
         label='Minimum Price'
-        value={someParams.minPrice}
+        value={someParams.minPrice || ''}
         onChange={e =>setParam("Min", e.target.value)}
       ></Input>
       </span>
@@ -41,7 +42,7 @@ const FilterBar = () => {
       <span className='max-price'><Input
         type={"number"}
         label="Maximum Price"
-        value={someParams.maxPrice}
+        value={someParams.maxPrice || ''}
         onChange={e => setParam("Max", e.target.value)}
       >
       </Input></span>
@@ -55,13 +56,18 @@ const FilterBar = () => {
           checked={someParams.categoriesFromURL.includes(cat)}
           onChange={e => {
             const updated = e.target.checked
-              ? [...props.categories, cat]
-              : props.categories.filter(category => category !== cat);
+              ? [...someParams.categories, cat]
+              : someParams.categories.filter(category => category !== cat);
 
            setParam('category', updated);
           }}
         />
       ))}
+      <div className="tourists"
+      checked ={props.isTourist}
+      onChange = {props.toggleIsTourist}>
+        <CheckBox label="Tourist"></CheckBox>
+      </div>
 
     </div>
   );
