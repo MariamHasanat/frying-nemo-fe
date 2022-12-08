@@ -21,21 +21,21 @@ const FilterBar = (props) => {
     setPrice(e.target.value);
   };
 
-  const myParams =useParames();
+  const {myParams,setParams }=useParames();
   return (
     <div className="filter-bar">
       <div className='inputs'>
         <Input
           type="search"
           label="search for item"
-          value={myParams.searchTermsFromURL ||''}
-          onChange={e =>myParams.setParams('searchTerms', e.target.value)}
+          value={myParams.searchTermsFromURL}
+          onChange={e =>setParams('searchTerms', e.target.value)}
           placeholder="search"
         />
         <Input
           label='min price :'
           type="number"
-          onChange={e => props.setParams('min', e.target.value)}
+          onChange={e =>setParams('min', e.target.value)}
           min={0}
           max={100}
 
@@ -43,7 +43,7 @@ const FilterBar = (props) => {
         <Input
           label='max price : '
           type="number"
-          onChange={e => props.setParams('max', e.target.value)}
+          onChange={e => setParams('max', e.target.value)}
           min={0}
           max={500}
 
@@ -52,7 +52,7 @@ const FilterBar = (props) => {
 
           type="range"
           onChange={e => {
-            props.setParams('price', e.target.value);
+            setParams('price', e.target.value);
             handelPrice(e); }}
           min={0}
           max={500}
@@ -66,13 +66,13 @@ const FilterBar = (props) => {
         CATEGORIES.map(cat =>
           <CheckBox key={cat}
             label={cat}
-            checked={myParams.categories.includes(cat)}
+            checked={myParams.categoryFromURL.includes(cat)}
             onChange={e => {
               const updated = e.target.checked
-                ? [...props.categories, cat]
-                : props.categories.filter(category => category !== cat);
+                ? [...myParams.categoryFromURL, cat]
+                : myParams.categoryFromURL.filter(category => category !== cat);
 
-              props.setParams('category', updated);
+                setParams('category', updated);
             }}
           />
         )

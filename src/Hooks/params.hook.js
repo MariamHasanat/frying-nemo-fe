@@ -30,7 +30,7 @@ const [params,setParams]=useSearchParams();
       setParams(newParams);
     };
   
-   
+   return {myParams,setParam};
   
 }
 export default useParames;

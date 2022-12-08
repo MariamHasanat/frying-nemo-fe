@@ -1,6 +1,6 @@
 
-import { useNavigate } from 'react-router-dom';
-import React, { useState, useContext } from 'react';
+
+import React, { useContext } from 'react';
 import Input from '../../common/input/input.component';
 import MultivalueInput from '../../common/multivalueinput/multi-value-input';
 import Select from '../../common/select/select.component';
@@ -8,81 +8,17 @@ import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import { CATEGORIES } from '../../../data/constant';
 import { UserContext } from '../../providers/user-provider.component';
-import { CreateItem } from '../../../services/item';
+import useAddItem from '../../../Hooks/menu/add-item.hook';
 const Form = (props) => {
-  const [name, setName] = useState('yara');
-  const [Ingredients, setIngredients] = useState([]);
-  const navigate = useNavigate();
   const userContext = useContext(UserContext);
-  /**
-   * Handler function for the form onSubmit event.
-   * @param {React.FormEvent<HTMLFormElement>} e Event object.
-   */
-  const submitHandler = e => {
-    e.preventDefault();
-    const image = e.target.image.value;
-    const Price = Number(e.target.Price.value);
-    const Description = e.target.Description.value;
-    const category = e.target.category.value;
 
-    const menuItem = {
-      id: Date.now(),
-      name,
-      Description,
-      image,
-      Price,
-      category,
-      Ingredients
-
-    };
-    const res = CreateItem(menuItem);
-    if (res) {
-      alert
-        ("item added successfully");
-      navigate('/view');
-    }
-    else {
-      alert('error adding the item !');
-    }
-    // const itemsJason = localStorage.getItem('menuItems') || '[]';
-    // const items = JSON.parse(itemsJason);
-    // items.push(menuItem);
-    // localStorage.setItem('menuItems', JSON.stringify(items));
-    // navigate('/view');
-    // console.log('form Submitted')
-
-  };
-
-
-
-  /**
-   * Handles on change events on the name field.
-   * @param {React.ChangeEvent<HTMLInputElement>} e On change event object.
-   */
-  const onNameChange = (e) => {
-    let value = e.target.value;
-
-    if (value.includes('.')) {
-      alert('. character is not allowed');
-      value = value.replace('.', '');
-    }
-
-    if (/find/ig.test(value)) {
-      value = value.replace(/find/ig, 'fry');
-    }
-
-    setName(value);
-  };
-
-
-
-
+  const addItem = useAddItem();
   return (
-    <form className="addForm" onSubmit={submitHandler} >
+    <form className="addForm" onSubmit={addItem.submit} >
       <Input
         label="Name"
-        value={name}
-        onChange={onNameChange}
+        value={addItem.name.value}
+        onChange={addItem.name.onChange}
         required
       />
       <Textarea
@@ -115,8 +51,8 @@ const Form = (props) => {
 
         label="Ingredients"
         name="Ingredients"
-        value={Ingredients}
-        onChange={newIngredients => setIngredients(newIngredients)}
+        value={addItem.Ingredients.value}
+        onChange={newIngredients => addItem.Ingredients.setValue(newIngredients)}
       />
 
       <div className="addFormButtons">
