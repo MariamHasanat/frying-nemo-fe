@@ -1,12 +1,13 @@
 import { useMemo } from "react";
-import { useSearchParams} from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useParams } from "./params.item";
-const useFilterItems=(menuItems)=>
-{
-const {myParams}=useParams()
+import useToggle from "./toggole-hook";
+
+const useFilterItems = (menuItems, isTourist) => {
+  const { myParams } = useParams();
 
   const filteredMenu = useMemo(() => {
-    return menuItems.filter(item => {
+    const filtered= menuItems.filter(item => {
       /**
        * Check if search terms are somewhere inside given string.
        * @param {string} str 
@@ -20,7 +21,7 @@ const {myParams}=useParams()
       );
 
       if (myParams.categoryParams.length) {
-        match = match && ( myParams.categoryParams .includes(item.category));
+        match = match && (myParams.categoryParams.includes(item.category));
       }
 
       if (myParams.MINParams && myParams.MAXParams) {
@@ -29,13 +30,30 @@ const {myParams}=useParams()
       if (myParams.categoryParams.length) {
         match = match && (myParams.categoryParams.includes(item.category));
       }
+     
       return match;
-    });
+      
+    } );
+    if(isTourist)
+    {
 
-  }, [myParams, menuItems])
+      return filtered.map(item => ({...item,price:item.price*2}))
+    }
+  else {
+    return filtered
+
+  }
+  
+    
+
+  }, [myParams, menuItems,isTourist]);
+
   return filteredMenu;
-}
+
+
+
+};
 export {
 
   useFilterItems
-}
+};

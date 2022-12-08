@@ -5,6 +5,7 @@ import "./filter.css";
 import { CATAGORIES } from '../../../common/data/constants.js';
 import Checkbox from '../cheak-box/Checkbox';
 import { useParams } from '../../../hooks/params.item';
+import useToggle from '../../../hooks/toggole-hook';
 
 
 
@@ -19,14 +20,14 @@ import { useParams } from '../../../hooks/params.item';
 
 
 const Filter = (props) => {
-const {myParams,setParam} = useParams();
+  const { myParams, setParam } = useParams();
 
   return (
     <div>
       <div className='beside' ><Input
         label='Search'
         type={"search"}
-        value={myParams.searchURL||""}
+        value={myParams.searchURL || ""}
         placeholder="Search"
         onChange={e => setParam('searchTerms', e.target.value)} ></Input>
 
@@ -35,16 +36,16 @@ const {myParams,setParam} = useParams();
 
         <span className='Minclass'><Input
           type={"number"}
-          value={myParams.MINParams||""}
+          value={myParams.MINParams || ""}
           label='Min'
-          onChange={e =>setParam("Min", e.target.value)}
+          onChange={e => setParam("Min", e.target.value)}
         ></Input>
         </span>
 
         <span>------</span>
         <span className='Maxclass'><Input
           type={"number"}
-          value={myParams.MAXParams||""}
+          value={myParams.MAXParams || ""}
           label="Max"
           onChange={e => setParam("Max", e.target.value)}
         >
@@ -55,26 +56,29 @@ const {myParams,setParam} = useParams();
       <div className="flex1">{
         CATAGORIES.map(val => (
           <Checkbox
-          key={val}
-          label={val}
-          checked={myParams.categoryParams.includes(val)}
-          onChange={e => {
-        
-            const updated = e.target.checked
-              ? [...myParams.categories, val]
-              :myParams.categories.filter(category => category !== val);
+            key={val}
+            label={val}
+            checked={myParams.categoryParams.includes(val)}
+            onChange={e => {
 
-            setParam('category', updated);
-          }}
+              const updated = e.target.checked
+                ? [...myParams.categoryParams, val]
+                : myParams.categoryParams.filter(category => category !== val);
+
+              setParam('category', updated);
+            }}
 
 
 
 
           />
 
-        ))
 
-      }</div>
+        ))
+      } <div className='Tourist'>
+      <Checkbox label='Tourist' checked={props.isTourist} onChange={() => props.toggleIsTourist()} ></Checkbox>
+    </div> </div>
+     
     </div>
   );
 };

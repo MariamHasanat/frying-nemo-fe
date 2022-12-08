@@ -33,7 +33,7 @@ function App() {
                 <Route path="/view/:id" element={<ViewItemPage  ></ViewItemPage>}></Route>
                 <Route path="/cart" element={<CartPage  />} />
                 <Route path="/login" element={<LoginPage />} />
-                <Route path="/Sign-in" element={<Sighin></Sighin> } />
+                <Route path="/Sign-up" element={<Sighin></Sighin> } />
               </Routes>
 
             </div>

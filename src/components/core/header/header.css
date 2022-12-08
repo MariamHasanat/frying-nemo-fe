@@ -7,6 +7,7 @@
   background-color: #070707ad;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 
 .webisteHeader>.left>h1 {
@@ -108,6 +109,7 @@
 .cart>img{
   width: 32px;
   height: 30px;
+  rotate: 30deg;
 }
 .left-header{
   display: flex;

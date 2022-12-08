@@ -1,20 +1,20 @@
 import React from 'react';
-import './filter-bar.css';
+import './-bar.css';
 import Input from '../../common/input/input.component';
 import { CATEGORIES } from '../../../data/constants';
 import CheckBox from '../../common/toggle-bullets/check-box.component';
 
 /**
- * Renders a filters bar.
+ * Renders a s bar.
  * @param {{
  *  searchTerms: string;
  *  categories: string[];
  *  setParam: (name: string, value: string | string[]) => void
  * }} props Component properties object.
  */
-const FilterBar = (props) => {
+const Bar = (props) => {
   return (
-    <div className="filter-bar">
+    <div className="-bar">
       <Input
         type="search"
         label="Search for Item"
@@ -31,7 +31,7 @@ const FilterBar = (props) => {
             onChange={e => {
               const updated = e.target.checked
                 ? [...props.categories, cat]
-                : props.categories.filter(category => category !== cat);
+                : props.categories.(category => category !== cat);
 
               props.setParam('category', updated);
             }}
@@ -42,4 +42,4 @@ const FilterBar = (props) => {
   );
 };
 
-export default FilterBar;
+export default Bar;

@@ -61,7 +61,7 @@ const LoginPage = (props) => {
       
 <span>
 
-        <Link  to="/Sign-in">Sign-in</Link>  <span>/</span>  <Link  to="Sign-in">Forget-my-Password</Link> 
+        <Link  to="/Sign-up">Sign-in</Link>  <span>/</span>  <Link  to="Sign-in">Forget-my-Password</Link> 
 </span>
       
       </form >

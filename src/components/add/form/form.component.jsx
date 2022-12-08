@@ -1,80 +1,31 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import Select from '../../../common/Select/Select';
 import Textarea from '../../../common/textarea/textarea';
 import Input from '../../../common/input/input';
 import './form.css';
 import MultivalueInput from '../../../common/multivalue-input/multivalue-input.component';
 import Image from '../../../common/image/Image';
-import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../../App';
-import { createItem } from '../../../services/items';
-
+import useAddItem from "../../../hooks/menu/add-item-hook";
 
 
 /**
  * 
  * @param {React.ChangeEvent<HTMLInputElement>} e 
  */
-const Form =  (props) => {
-  const navigate = useNavigate()
-  const [name, SetName] = useState('Add item');
-  const [ingredients, setIngredients] = useState([]);
-  const ContextUser=useContext(UserContext)
-  const submitHandler =  async e => {
-    e.preventDefault();
+const Form = (props) => {
+  const userContext = useContext(UserContext);
+  const addItem = useAddItem();
+  const category = ["Fish", "Meat", "Hooka", "Salads", "Sandwich", "Appetizers", "Ice cream", "Drinks", "Main Dishes"];
 
-    const description = e.target.description.value;
-    const image = e.target.image.value;
-    const price = Number(e.target.price.value);
-    const category = e.target.category.value;
-   
-
-    const menuItem = {
-      id: Date.now(),
-      name: name,
-      image,
-      description: description,
-      price: price,
-      category: category,
-      ingredients: ingredients
-    };
-
-
-
-   const res= await createItem(menuItem)
-   if (res) {
-    alert("the send is successfully")
-     navigate("/view")
-   } else {
-    alert("the send is Failed")
-   }
-
-  };
-
-  const onChange1 = e => {
-
-    let value = e.target.value;
-    if (/find/ig.test(value)) {
-      value = value.replace(/find/ig, "fry");
-
-    }
-    if (value.length > 20) {
-      alert("more than 20 char");
-      value = "";
-    }
-    SetName(value);
-  };
-
-  const category = [ "Fish", "Meat", "Hooka", "Salads", "Sandwich", "Appetizers", "Ice cream", "Drinks","Main Dishes"]
-    ;
   return (
-    <form className='item-page' onSubmit={submitHandler}>
+    <form className='item-page' onSubmit={addItem.submit}>
       <br />
       <div className='div1'>
         <Input
           label="Name "
-          value={name}
-          onChange={onChange1}
+          value={addItem.name.value}
+          onChange={addItem.name.onChange}
           required
 
         />
@@ -87,7 +38,7 @@ const Form =  (props) => {
 
         />
         <br></br>
-        <Image required name="image" label="Image" onSubmit={e=>{console.log(e.target.value)}}>
+        <Image required name="image" label="Image" onSubmit={e => { console.log(e.target.value); }}>
         </Image>
 
 
@@ -106,12 +57,12 @@ const Form =  (props) => {
 
         <MultivalueInput
           label="Ingredients"
-          value={ingredients}
-          onChange={newIngredients => setIngredients(newIngredients)}
+          value={addItem.ingredients.value}
+          onChange={newIngredients => addItem.ingredients.setIngredients(newIngredients)}
 
         />
 
-        <button className='point' type='sumbit'    >Create</button>
+        <button className='point' type='sumbit'>Create</button>
       </div>
     </form>
   );

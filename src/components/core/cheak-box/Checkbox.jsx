@@ -1,5 +1,5 @@
 import React from "react";
-import "./Checkbox.css"
+import "./Checkbox.css";
 
 
 /**
@@ -14,7 +14,8 @@ const Checkbox = props => {
 
   return (
     <div >
-      <span className="check-input">  <input id={`chk-lbl-${label}`} type={"checkbox"}  {...inputProps} />
+      <span className="check-input">
+        <input id={`chk-lbl-${label}`} type={"checkbox"}  {...inputProps} />
         {label ?
           <label className={props.checked ? 'checked' : "not-checked"} htmlFor={`chk-lbl-${label}`}>
             <span> {label}</span>
