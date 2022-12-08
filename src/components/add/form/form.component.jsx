@@ -1,6 +1,6 @@
-import { useState,useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../providers/user-provider.component";
-import { useNavigate } from "react-router-dom";
+
 import Input from "../../common/input/input.component";
 import Textarea from "../../common/textarea/textarea.component";
 import Select from "../../common/select/select.component";
@@ -8,72 +8,24 @@ import "./form.css";
 import MultivalueInput from "../../common/multi-value-input.jsx/multivalue-input.component";
 import "../../../../src/common.css";
 import { CATEGORIES } from "../../../data/constants";
-import { createItem } from "../../../services/items";
 
-const Form = (props) => {
-  const [name, setName] = useState("");
-  const [ingredients, setIngredients] = useState([]);
-  const navigate = useNavigate();
+import useAddItem from "../../../hooks/add-item/add-item.hook";
 
-  /**
-   * Handler function for the form onSubmit event.
-   * @param {React.FormEvent<HTMLFormElement>} e Event object.
-   */
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    let description = e.target.description.value;
-    let price = e.target.price.value;
-    let category = e.target.category.value;
-    let photo = e.target.photo.value;
-    const menuItem = {
-      id: Date.now(),
-      name: name,
-      description: description,
-      price: parseInt(price),
-      category: category,
-      ingredients,
-      photo: photo
-    };
-    e.target.description.value = "";
-    e.target.price.value = "";
-    setName("");
-    setIngredients([]);
-    const result = await createItem(menuItem);
-    if(result === false){
-      alert("wasn't able to create new item, please try again");
-    }else{
-      alert("item created succesfully!");
-      navigate("/view");
-    }
-  };
-
-  const onNameChange = (e) => {
-    let value = e.target.value;
-
-    if (value.includes(".")) {
-      alert(". character is not allowed");
-      value = value.replace(".", "");
-    }
-
-    if (/find/gi.test(value)) {
-      value = value.replace(/find/gi, "fry");
-    }
-
-    setName(value);
-  };
+const Form = () => {
+  const addItem = useAddItem();
   const userContext = useContext(UserContext);
   return (
     <div className="form-container">
       <br/>
       <br/>
       <br/>
-      <form className="addForm" onSubmit={submitHandler}>
+      <form className="addForm" onSubmit={addItem.submit}>
         <h1>Add Menu Item</h1>
         <Input
           name="name"
           label="Name"
-          value={name}
-          onChange={onNameChange}
+          value={addItem.name.value}
+          onChange={addItem.name.onChange}
           required
         />
         <Textarea name="description" label="Description" />
@@ -89,8 +41,8 @@ const Form = (props) => {
         </Select>
         <MultivalueInput
           label="Ingredients"
-          value={ingredients}
-          onChange={(newIngredients) => setIngredients(newIngredients)}
+          value={addItem.ingredients.value}
+          onChange={(newIngredients) => addItem.ingredients.setIngredient(newIngredients)}
         />
         <Input name="photo" label="insert photo link" type="text"/>
         <div className="addFormButtons">
