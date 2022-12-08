@@ -1,78 +1,24 @@
-import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react';
 import { CATEGORIES } from '../../../data/constants';
-import './form.css';
-
 import { UserContext } from '../../providers/user-provider.component';
-
+import useAddItem from '../../../hooks/menu/add-item.hook/add-item.hook'
 import Input from '../../common/input-bar-component/input.jsx';
 import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
+import './form.css';
 
 const Form = (props) => {
-  const [name, setName] = useState('');
-  const [ingredients, setIngredients] = useState([]);
-  const navigate = useNavigate();
   const userContext = useContext(UserContext);
-
-  /**
-   * Handler function for the form onSubmit event.
-   * @param {React.FormEvent<HTMLFormElement>} e Event object.
-   */
-  const submitHandler = e => {
-    e.preventDefault();
-
-    const description = e.target.description.value;
-    const image = e.target.image.value;
-    const price = Number(e.target.price.value);
-    const category = e.target.category.value;
-
-    const menuItem = {
-      id: Date.now(),
-      name: name,
-      image,
-      description: description,
-      price: price,
-      category: category,
-      ingredients: ingredients
-    };
-
-    const itemsJson = localStorage.getItem('menuItems');
-    const items = JSON.parse(itemsJson) || [];
-
-    items.push(menuItem);
-
-    localStorage.setItem('menuItems', JSON.stringify(items));
-
-    navigate('/view');
-  };
-
-  /**
-   * Handles on change events on the name field.
-   * @param {React.ChangeEvent<HTMLInputElement>} e On change event object.
-   */
-  const onNameChange = (e) => {
-    let value = e.target.value;
-
-    if (value.includes('.')) {
-      alert('. character is not allowed');
-      value = value.replace('.', '');
-    }
-
-    if (/find/ig.test(value)) {
-      value = value.replace(/find/ig, 'fry');
-    }
-
-    setName(value);
-  };
+  const addItem = useAddItem();
+  
 
   return (
-    <form className="addForm" onSubmit={submitHandler}>
+    <form className="addForm" onSubmit={addItem.submit}>
       <Input
         label="Name"
-        value={name}
-        onChange={onNameChange}
+        value={addItem.name.value}
+        onChange={addItem.name.onChange}
         required
       />
       <Textarea
@@ -98,8 +44,8 @@ const Form = (props) => {
       </Select>
       <MultivalueInput
         label="Ingredients"
-        value={ingredients}
-        onChange={newIngredients => setIngredients(newIngredients)}
+        value={addItem.ingredients.value}
+        onChange={newIngredients => addItem.ingredients.setValue(newIngredients)}
       />
       <div className="addFormButtons">
         <button
