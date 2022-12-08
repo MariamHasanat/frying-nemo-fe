@@ -30,11 +30,12 @@ const useFilteredItems = (menuItems, tourist) => {
 
     });
 
+
     if (tourist) {
       return filteredMenu.map(item => ({ ...item, price: item.price * 2 }));
-    } else {
-      return filteredMenu;
     }
+    return filteredMenu;
+
   }, [myParams, menuItems, tourist]);
 
   return filteredItems;

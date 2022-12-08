@@ -9,7 +9,6 @@ import { getItems } from '../../services/items';
 import Spinner from '../../components/core/spinner/spinner';
 import useFilteredItems from '../../hooks/filter-items.hook';
 import useToggle from '../../hooks/toggle.hook';
-// const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]');
 
 /**
  * @type {Array<{

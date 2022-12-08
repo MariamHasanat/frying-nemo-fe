@@ -5,8 +5,6 @@ import CheckBox from '../toggle-bullets/check-box.component';
 import search from '../../../assets/images/search.png';
 import useParams from '../../../hooks/params.hook';
 import Toggle from '../../common/toggle/toggle.component';
-import useTourist from '../../../hooks/toggle.hook';
-// import CheckBox from '../toggle-bullets/check-box.component';
 
 /**
  * Renders a filters bar.
@@ -19,7 +17,6 @@ import useTourist from '../../../hooks/toggle.hook';
 const FilterBar = props => {
 
   const { myParams, setParam } = useParams();
-  // const { tourist, setTourist } = useTourist(false);
 
   return (
 
