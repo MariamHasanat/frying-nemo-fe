@@ -1,12 +1,14 @@
 import { useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
 import useParams from "./params.hook";
 
-const useFilteredItems = (menuItems) => {
+const useFilteredItems = (menuItems, tourist) => {
   const { myParams } = useParams();
+  /**
+   * @type {Array}
+   */
   const filteredItems = useMemo(() => {
 
-    return menuItems.filter(e => {
+    const filteredMenu = menuItems.filter(e => {
 
       /**
        * 
@@ -28,8 +30,12 @@ const useFilteredItems = (menuItems) => {
 
     });
 
-  }, [myParams, menuItems]);
-
+    if (tourist) {
+      return filteredMenu.map(item => ({ ...item, price: item.price * 2 }));
+    } else {
+      return filteredMenu;
+    }
+  }, [myParams, menuItems, tourist]);
 
   return filteredItems;
 };

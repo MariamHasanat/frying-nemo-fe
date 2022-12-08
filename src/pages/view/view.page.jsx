@@ -8,6 +8,7 @@ import { CartContext } from '../../components/providers/cart-provider';
 import { getItems } from '../../services/items';
 import Spinner from '../../components/core/spinner/spinner';
 import useFilteredItems from '../../hooks/filter-items.hook';
+import useToggle from '../../hooks/toggle.hook';
 // const getMenuItems = () => JSON.parse(localStorage.getItem('menuItems') || '[]');
 
 /**
@@ -46,14 +47,17 @@ const View = () => {
   }, []);
 
 
-  const filteredItems = useFilteredItems(menuItems);
+  const [isTourist, setTourist] = useToggle(false);
+  const filteredItems = useFilteredItems(menuItems, isTourist);
 
   return (
     <div className="view-page">
       <h1>All Menu Items</h1>
 
-      <FilterBar />
-
+      <FilterBar
+        tourist={isTourist}
+        setTourist={setTourist}
+      />
       {
         loading ? <Spinner /> :
           <>

@@ -4,6 +4,9 @@ import './filter-input.css';
 import CheckBox from '../toggle-bullets/check-box.component';
 import search from '../../../assets/images/search.png';
 import useParams from '../../../hooks/params.hook';
+import Toggle from '../../common/toggle/toggle.component';
+import useTourist from '../../../hooks/toggle.hook';
+// import CheckBox from '../toggle-bullets/check-box.component';
 
 /**
  * Renders a filters bar.
@@ -15,7 +18,8 @@ import useParams from '../../../hooks/params.hook';
  */
 const FilterBar = props => {
 
-  const {myParams, setParam} = useParams();
+  const { myParams, setParam } = useParams();
+  // const { tourist, setTourist } = useTourist(false);
 
   return (
 
@@ -24,14 +28,14 @@ const FilterBar = props => {
       <div className='search-bar'>
 
         <div className='search'>
-
           <Input
+
             value={myParams.searchParamFromURl}
             type='Search'
             placeholder='search'
             onChange={e => setParam('search', e.target.value)}
           />
-          <img src={search} width='30' height='30' alt='search-icon'/>
+          <img src={search} width='30' height='30' alt='search-icon' />
         </div>
       </div>
 
@@ -55,7 +59,12 @@ const FilterBar = props => {
             })
         }
       </div>
+      <Toggle
+        label='tourist'
+        checked={props.tourist}
+        onChange={props.setTourist}
 
+      />
       <div className='price-filter'>
         <div className='min'>
 
