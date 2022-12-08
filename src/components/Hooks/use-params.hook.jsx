@@ -7,7 +7,7 @@ const useParams =()=>{
 
 const myParam =useMemo(()=>{
   const searchFromURL = params.get("searchTerms") || '';
-  const categoriesURL = params.get("categories") || '';
+  const categoriesURL = params.get("categoriesMenu") || '';
   const categoriesFromURL = params.getAll("categories") || [];
   const maxFromURL = params.get("max") || '';
   const minFromURL = params.get("min") || '';

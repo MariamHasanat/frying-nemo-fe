@@ -1,11 +1,11 @@
 
-import { useMemo ,useState} from 'react';
+import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import useParams from './use-params.hook';
 
 
 const useItems = (menuitems) => {
-  const { myParam} = useParams();
+  const { myParam } = useParams();
 
   // const initial = [];
   // const [params] = useSearchParams();
