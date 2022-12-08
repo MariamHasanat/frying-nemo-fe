@@ -1,14 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
 import './view.css';
-import { useSearchParams } from "react-router-dom";
 import Spinner from "../../components/core/spinner/spinner";
 import FilterBar from "../../components/view/filter-bar/filter-bar.component";
 import Item from "../../components/view/item/item.component";
 import { fetchItems } from "../../services/items.service";
 import { getCartQuantity } from "../../util/cart";
 import { CartContext } from "../../components/providers/cart-provider.component";
-import { useMemo } from "react";
 import useToggle from "../../hooks/check-box.hook";
+import useFilter from "../../hooks/view/filter-items.hook";
 
 /**
 * @type {Array<{
@@ -26,14 +25,8 @@ const initialItems = [];
 const View = () => {
     const [menuItems, setMeuItems] = useState(initialItems);
     const [loading, setLoading] = useState(true);
-    const [params, setParam] = useSearchParams();
-    const [min, setMin] = useState(null);
-    const [max, setMax] = useState(null);
-    const cartContext = useContext(CartContext);
-    const searchParFromURL = params.get('searchTerms') || '';
-    const categoriesFromURL = params.getAll('categories') || [];
-
     const [isTourist, toggleIsTourist] = useToggle(false);
+    const cartContext = useContext(CartContext);
 
     const getMenuItems = async () => {
         setLoading(true);
@@ -46,52 +39,7 @@ const View = () => {
         getMenuItems();
     }, []);
 
-    /**
-     * @param {string} name 
-     * @param {string | string[]} value 
-     */
-    const useParam = (name, value) => {
-        const newParam = new URLSearchParams(params);
-        newParam.delete(name);
-
-        if (Array.isArray(value)) {
-            if (value.length > 0) {
-
-                value.forEach(item => {
-                    newParam.append(name, item);
-                });
-            }
-        }
-        else
-            newParam.set(name, value);
-
-        setParam(newParam);
-    };
-
-    const filteredItems = useMemo(() => {
-        const filtered = menuItems.filter((item) => {
-            let match = true;
-            const check = str => str.toLowerCase().includes(searchParFromURL.toLowerCase().trim());
-            match = (
-                check(item.name) ||
-                check(item.description) ||
-                item.ingredients.some(ingredient => check(ingredient))
-            );
-            if (categoriesFromURL.length > 0)
-                match &= (categoriesFromURL.includes(item.category));
-            if (min !== null && min !== '')
-                match &= (item.price >= min);
-            if (max !== null && max !== '')
-                match &= (item.price <= max);
-            return match;
-        });
-
-
-        if (isTourist)
-            return filtered.map(item => { return { ...item, price: item.price * 2 }; });
-        else
-            return filtered;
-    }, [params, menuItems, isTourist]);
+    const { filteredItems, setMin, setMax } = useFilter(menuItems, isTourist);
 
     return (
         <div className="div-view">
@@ -99,17 +47,10 @@ const View = () => {
                 Menu Items
             </h1>
             <FilterBar
-                useParam={useParam}
-                params={params}
-                setParam={setParam}
-                searchParFromURL={searchParFromURL}
-                categoriesFromURL={categoriesFromURL}
-                setMin={setMin}
-                setMax={setMax}
-
                 isTourist={isTourist}
                 toggleIsTourist={toggleIsTourist}
-
+                setMin={setMin}
+                setMax={setMax}
             />
             {
                 loading

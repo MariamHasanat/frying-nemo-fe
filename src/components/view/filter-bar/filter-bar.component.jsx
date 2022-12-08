@@ -5,26 +5,22 @@ import { CATEGORIES } from '../../../data/constants';
 import Input from '../../common/input/input.component';
 import ToggleBullet from '../../common/toggle-bullets/toggle-bullet.component';
 import CheckBox from '../../common/check-box/check-box.component';
+import useParams from '../../../hooks/view/params.hook';
 
 const FilterBar = (props) => {
-    const handleFilterChange = (filter, valueOfInput) => {
-        const newP = new URLSearchParams(props.params);
-        if (valueOfInput)
-            newP.set(filter, valueOfInput);
-        else
-            newP.delete(filter);
-        props.setParam(newP);
-    };
+
+    const { myParams, setParam } = useParams();
+
     return (
         <div className='filter-bar'>
             <Input
                 className='search-terms'
                 label='Search For Item'
                 name='Search'
-                value={props.searchParFromURL}
+                value={myParams.searchParFromURL}
                 type="search"
                 placeholder={'Search'}
-                onChange={(e) => { handleFilterChange('searchTerms', e.target.value); }}
+                onChange={(e) => { setParam('searchTerms', e.target.value); }}
             />
             <Input
                 className='price-filter'
@@ -50,7 +46,7 @@ const FilterBar = (props) => {
                         return <ToggleBullet
                             name={item}
                             key={index}
-                            useParam={props.useParam}
+                            useParam={setParam}
                         />;
                     })
                 }
@@ -58,8 +54,8 @@ const FilterBar = (props) => {
             <div className='tourist'>
                 <CheckBox
                     label='tourists'
-                    checked = {props.isTourist}
-                    onChange = {props.toggleIsTourist}
+                    checked={props.isTourist}
+                    onChange={props.toggleIsTourist}
                 />
             </div>
         </div>
