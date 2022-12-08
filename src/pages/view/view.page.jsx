@@ -14,7 +14,7 @@ import { useMemo } from "react";
 * id:string;
 * name: string;
 * description: string;
-* Ingredients: string[];
+* ingredients: string[];
 * price: number;
 * category: string;
 * img: string;
@@ -64,7 +64,6 @@ const View = () => {
 
         setParam(newParam);
     };
-
 
     const filteredItems = useMemo(() => {
         return menuItems.filter((item) => {
