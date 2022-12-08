@@ -1,25 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Input from '../../../components/common/input-bar-component/input';
 import CheckBox from '../../../components/common/toggle-bullets/check-box.component';
 import { CATEGORIES } from '../../../components/data/categories';
 import useParams from '../../../hooks/params.hook';
+import useToggle from '../../../hooks/toggle.hook';
 import './filter.css';
-const Filter = () => {
+const Filter = (props) => {
   const { myParams, setParam } = useParams();
-
-  const handleOnchangeOnURL = (filterName, inputValue) => {
-
-    // const newParam = new URLSearchParams(myParams.params);
-
-    // if(inputValue) {
-    //   newParam.set(filterName, inputValue);
-    // } else {
-    //   newParam.delete(filterName);
-    // }
-    setParam(filterName, inputValue);
-  };
-
-
+  //const [isTourist, setIsTourist] = useToggle(false);
+ 
+  const handleOnchangeOnURL = (filterName, inputValue) => setParam(filterName, inputValue);
+  
 
   return (
     <div className='filter-bar'>
@@ -48,6 +39,13 @@ const Filter = () => {
             }}
           />
         ))}
+      </div>
+      <div className='tourist'>
+        <CheckBox
+          label='Tourist'
+          value={props.isTourist} 
+          onChange={props.setIsTourist}
+        />
       </div>
     </div>
 
