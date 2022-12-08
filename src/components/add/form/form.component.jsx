@@ -1,87 +1,30 @@
 import './form.css';
-import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react';
 import { CATEGORIES } from '../../../data/constants';
 import Input from '../../common/input/input.component';
 import MultivalueInput from '../../common/mutivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import { UserContext } from '../../providers/user-provider.component';
-import { createItem } from '../../../services/items';
+import useAddItem from '../../../hooks/menu/add-item.hook';
 
 
 
-const Form = (props) => {
-  const [name, setName] = useState('Lana');
-  const [ingredients, setIngredients] = useState([]);
-  const navigate = useNavigate();
+const Form = () => {
+
   const userContext = useContext(UserContext);
+  const addItem = useAddItem();
 
-  /**
-   * Handler fn for the form onSubmit event .
-   * @param {React.FormEvent<HTMLFormElement>}e Event object.
-   */
-  const submitHandler = async e => {
-    e.preventDefault();
-
-
-    const description = e.target.description.value;
-    const image = e.target.image.value;
-    const price = Number(e.target.price.value);
-    const category = e.target.category.value;
-
-
-    const menuItem = {
-      id: Date.now(),
-      name: name,
-      description: description,
-      image,
-      price: price,
-      category: category,
-      ingredients: ingredients
-    };
-
-    const res = await createItem(menuItem);
-    if (res) {
-      alert("Item added sucessfully!");
-      navigate('/view');
-    } else {
-      alert("Error adding the item !");
-    }
-  };
-
-  /**
-   * Handles on change event on the name field.
-   * @param {React.ChangeEvent<HTMLInputElement>} e on change event object . 
-   */
-  const onNameChange = (e) => {
-
-    let value = e.target.value;
-
-    if (value.includes('.')) {
-
-      alert('. character is not allowed !');
-      value = value.replace('.', ' ');
-    }
-
-    if (/find/ig.test(value)) {
-
-      alert('find word is not allowed !');
-      value = value.replace('/find/ig', 'fry ');
-    }
-
-    setName(value);
-  };
 
 
   return (
-    <form className="add-form" onSubmit={submitHandler}>
+    <form className="add-form" onSubmit={addItem.submit}>
       <div style={{ marginTop: 20 }}>
 
         <Input
           label="Name"
-          value={name}
-          onChange={onNameChange}
+          value={addItem.name.value}
+          onChange={addItem.name.onChange}
           required
         />
 
@@ -113,8 +56,8 @@ const Form = (props) => {
 
         <MultivalueInput
           label="Ingredients"
-          value={ingredients}
-          onChange={newIngredients => setIngredients(newIngredients)}
+          value={addItem.ingredients.value}
+          onChange={newIngredients => addItem.ingredients.setIngredient(newIngredients)}
         />
 
         <div><button type="submit" disabled={userContext.user?.role !== 'ADMIN'}>Create </button></div>
