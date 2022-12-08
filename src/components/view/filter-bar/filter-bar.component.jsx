@@ -4,6 +4,7 @@ import './filter-bar.css';
 import { CATEGORIES } from '../../../data/constants';
 import Input from '../../common/input/input.component';
 import ToggleBullet from '../../common/toggle-bullets/toggle-bullet.component';
+import CheckBox from '../../common/check-box/check-box.component';
 
 const FilterBar = (props) => {
     const handleFilterChange = (filter, valueOfInput) => {
@@ -53,6 +54,13 @@ const FilterBar = (props) => {
                         />;
                     })
                 }
+            </div>
+            <div className='tourist'>
+                <CheckBox
+                    label='tourists'
+                    checked = {props.isTourist}
+                    onChange = {props.toggleIsTourist}
+                />
             </div>
         </div>
     );

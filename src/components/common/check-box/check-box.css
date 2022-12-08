@@ -1,0 +1,13 @@
+.tourist{
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.tourist>.check-box-group {
+    display: flex;
+    user-select: none;
+}
+
+.tourist>.check-box-group> .check-box{
+    margin-left: 10px;
+}

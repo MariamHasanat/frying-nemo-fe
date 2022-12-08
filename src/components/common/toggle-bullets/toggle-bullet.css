@@ -1,4 +1,4 @@
-.check-box-group {
+.toggle-bullet-group {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -6,7 +6,7 @@
     gap: 8px;
 }
 
-.check-box-group .check-box {
+.toggle-bullet-group .toggle-bullet {
     height: 20px;
     width: 20px;
     cursor: pointer;
@@ -14,7 +14,7 @@
     display: none;
 }
 
-.check-box-group .check-box-label {
+.toggle-bullet-group .toggle-bullet-label {
     display: block;
     font-size: 20px;
     font-weight: bold;
@@ -29,7 +29,7 @@
     cursor: pointer;
 }
 
-.check-box-group .checked {
+.toggle-bullet-group .checked {
     display: block;
     font-size: 20px;
     font-weight: bold;

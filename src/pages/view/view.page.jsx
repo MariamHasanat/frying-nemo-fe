@@ -8,6 +8,7 @@ import { fetchItems } from "../../services/items.service";
 import { getCartQuantity } from "../../util/cart";
 import { CartContext } from "../../components/providers/cart-provider.component";
 import { useMemo } from "react";
+import useToggle from "../../hooks/check-box.hook";
 
 /**
 * @type {Array<{
@@ -31,6 +32,8 @@ const View = () => {
     const cartContext = useContext(CartContext);
     const searchParFromURL = params.get('searchTerms') || '';
     const categoriesFromURL = params.getAll('categories') || [];
+
+    const [isTourist, toggleIsTourist] = useToggle(false);
 
     const getMenuItems = async () => {
         setLoading(true);
@@ -66,7 +69,7 @@ const View = () => {
     };
 
     const filteredItems = useMemo(() => {
-        return menuItems.filter((item) => {
+        const filtered = menuItems.filter((item) => {
             let match = true;
             const check = str => str.toLowerCase().includes(searchParFromURL.toLowerCase().trim());
             match = (
@@ -82,7 +85,13 @@ const View = () => {
                 match &= (item.price <= max);
             return match;
         });
-    }, [params, menuItems]);
+
+
+        if (isTourist)
+            return filtered.map(item => { return { ...item, price: item.price * 2 }; });
+        else
+            return filtered;
+    }, [params, menuItems, isTourist]);
 
     return (
         <div className="div-view">
@@ -97,6 +106,10 @@ const View = () => {
                 categoriesFromURL={categoriesFromURL}
                 setMin={setMin}
                 setMax={setMax}
+
+                isTourist={isTourist}
+                toggleIsTourist={toggleIsTourist}
+
             />
             {
                 loading
