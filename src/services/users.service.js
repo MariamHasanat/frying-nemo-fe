@@ -1,12 +1,18 @@
-import { USERS } from '../data/temp_data';
 /**
  * @param {string} email
  * @param {string} password 
  * @returns 
  */
 const loginUser = (email, password) => {
-    let user = USERS.find(user => user.email.trim() === email.trim() && user.password === password);
-    return user || null;
+    return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/users')
+        .then(async (response) => {
+            const users = await response.json();
+            return users.find((user) => user.email === email && user.password === password);
+        })
+        .catch((error) => {
+            console.log(error.toString());
+            return null;
+        });
 };
 
 export {
