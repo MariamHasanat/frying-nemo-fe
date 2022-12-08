@@ -1,6 +1,6 @@
 import "./view.css";
 import Card from "../../components/view/common/card/card.component";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import FilterBar from "../../components/view/common/filter/filter-bar.component";
 import { CATEGORIES } from "../../data/constants";
@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import { capitalizeFirstLetter } from "../../services/utilities";
 import { fetchMenuItems } from "../../services/fetchers";
 import { useFilterItems } from "../../hooks/filter-items.hook";
+import useToggle from "../../hooks/toggle.hook";
+import { DataContext } from "../../components/core/providers/data-provider.component";
 
 const ViewPage = () => {
   const [menuItems, setMenuItems] = useState([]);
@@ -15,6 +17,7 @@ const ViewPage = () => {
   const [search, setSearch] = useState(searchParams.get("search") || "");
   let categories = searchParams.getAll("category")[0] || "";
   const filteredItems = useFilterItems(menuItems);
+  const {isToggled, toggle} = useContext(DataContext)
 
   const updateParam = (key, value) => {
     let params = new URLSearchParams(searchParams);
@@ -57,6 +60,7 @@ const ViewPage = () => {
       <div className="header">
         <p>OUR MENU</p>
         <FilterBar
+        toggle={toggle}
           searchParams={searchParams}
           updateParam={updateParam}
           search={search}
@@ -77,7 +81,7 @@ const ViewPage = () => {
               itemIngredients={item.ingredients
                 .toString()
                 .replaceAll(",", ", ")}
-              itemPrice={item.price}
+              itemPrice={item.price*(isToggled? 2 : 1)}
               image={item.image}
               i={i}
               ctr={0}

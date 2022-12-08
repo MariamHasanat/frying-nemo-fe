@@ -1,0 +1,77 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createItem } from "../../services/items";
+import { getRandom } from "../../services/utilities";
+
+
+const useAddItem = () => {
+  const navigate = useNavigate();
+  const [name, setName] = useState(``);
+  const [ingredients, setIngredients] = useState([]);
+
+  const updateIngs = (newIngs) => {
+    setIngredients(newIngs);
+  };
+
+  const changeName = (value) => {
+    const isAllowed = (char) => {
+      const allowed = [['a', 'z'], ['A', 'Z'], [' ', ' '], ['0', '9']];
+      for (let i = 0; i < allowed.length; i++) {
+        if (char >= allowed[i][0] && char <= allowed[i][1]) {
+          return true;
+        }
+      }
+      return false;
+    };
+    if (value.target.value.length > 20) alert(`You can't enter more than 20 characters`);
+    else if (isAllowed(value.nativeEvent.data)) setName(value.target.value.replace('find', 'fry'));
+    else alert(`Denied character (${value.nativeEvent.data})`);
+  };
+
+  const submitHandler = async e => {
+    const resetForm = () => {
+      e.target.reset();
+      setName('');
+      updateIngs([]);
+      navigate('/view');
+    };
+
+    e.preventDefault();
+    const id = getRandom();
+    const description = e.target.description.value;
+    const price = e.target.price.value;
+    const category = e.target.category.value;
+    const image = e.target.image.value;
+
+    const menuItem = {
+      id,
+      name,
+      description,
+      price,
+      category,
+      image,
+      ingredients
+    };
+    try {
+      await createItem(menuItem);
+    } catch {
+      alert(`Error while adding the item`);
+    }
+    resetForm();
+  };
+  return {
+    name: {
+      value: name,
+      onChange: changeName
+    },
+    ingredients: {
+      value: ingredients,
+      onChange: setIngredients
+    },
+    submitHandler: {
+      value: submitHandler
+    }
+  };
+};
+
+export default useAddItem;

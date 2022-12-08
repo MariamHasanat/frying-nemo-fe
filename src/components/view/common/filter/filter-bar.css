@@ -4,6 +4,16 @@
   flex-direction: column;
 }
 
+.filter-bar .tags-bar {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.tags-bar .checkbox-container {
+  margin-left: 20px;
+  margin-top: 6px;
+}
+
 .filter-bar > * {
   margin-bottom: 20px;
 }
