@@ -21,7 +21,53 @@ const fetchItem = async (id) => {
     }
 };
 
+const createItem = (item) => {
+    fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/',
+        {
+            method: 'POST',
+            body: JSON.stringify(item)
+        })
+        .then(async (response) => {
+            if (response.status === 201)
+                return true;
+            else
+                return false;
+        })
+        .catch((error) => {
+            console.log(error.toString());
+            return false;
+        });
+};
+
+const deleteItem = (id) => {
+    fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${id}`,
+        { method: 'DELETE' })
+        .then((response) => {
+            if (response)
+                return true;
+            else
+                return false;
+        })
+        .catch((error) => {
+            console.log(error.toString());
+            return undefined;
+        });
+};
+
+const updateItem = (item) => {
+    fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${item.id}`,
+        {
+            method: 'PUT',
+            body: JSON.stringify(item)
+        })
+        .then((response) => { return (response ? true : false); })
+        .catch((error) => { return false; });
+};
+
 export {
     fetchItems,
     fetchItem,
+    deleteItem,
+    updateItem,
+    createItem,
 };

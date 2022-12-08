@@ -6,6 +6,10 @@ import SelectArea from '../../common/selectarea/selectarea.component';
 import MultivalueInput from '../../common/multivalue-input/multivalueInput';
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../../../data/constants';
+import { UserContext } from '../../providers/user-provider.component';
+
+import { createItem } from '../../../services/items.service';
+import { useContext } from 'react';
 
 /**
 * 
@@ -22,36 +26,39 @@ import { CATEGORIES } from '../../../data/constants';
  * }} props 
  * @returns 
  */
-const Form = (props) => {
+const Form = () => {
     const [name, setName] = useState('');
     const [ingredients, setIngredients] = useState([]);
+    const userContext = useContext(UserContext);
     const navigate = useNavigate();
 
     /**
      * @param {React.ChangeEvent<HTMLInputElement>} e
      */
-    const submitHandler = e => {
+    const submitHandler = async (e) => {
         const price = Number(e.target.price.value);
         const des = e.target.description.value;
         const image = e.target.image.value;
         const cat = e.target.category.value;
 
         const item = {
-            id: (new Date().getTime() + "" + Math.random() * 1000),
+            // id: (new Date().getTime() + "" + Math.random() * 1000),
             name: name,
-            price: price,
+            price: price.toString(),
             description: des,
             category: cat,
             ingredients: ingredients,
-            image: image,
+            image,
         };
-
-        let items = localStorage.getItem('menuItems');
-        items = JSON.parse(items) || [];
-        items.push(item);
-        localStorage.setItem('menuItems', JSON.stringify(items));
-
-        navigate('/view');
+        const res = await createItem(item);
+        if (res) {
+            alert('Item added successfully');
+            navigate('/view');
+        }
+        else
+        {
+            alert('Error adding the item!');
+        }
     };
 
     const changeHandler = (e) => {
@@ -113,7 +120,7 @@ const Form = (props) => {
                     <input
                         type="submit"
                         className='nemo-button'
-                        disabled={props.user?.role !== "ADMIN"}
+                        disabled={userContext.user?.role !== 'ADMIN'}
                     />
                 </div>
             </form>
