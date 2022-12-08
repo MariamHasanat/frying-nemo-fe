@@ -6,6 +6,7 @@ import {getCartQuantity} from '../../utilit/cart';
 import { CartContext } from '../../components/provider/cart-provider.component';
 import { getItems } from '../../data/items';
 import useFilterItems from '../../hook/filter-item.hook';
+import useToggle from '../../hook/tourist.hook';
 
 const ViewPage = () => {
   /**
@@ -47,13 +48,12 @@ const ViewPage = () => {
   }, []);
   
 
-
   const filterItem = useFilterItems(menuItems);
 
   return (
     <div className="view-page">
       <h1>View All Menu Items</h1>
-      <FilterBar />
+      <FilterBar  />
 
       <div className="item" >
         {

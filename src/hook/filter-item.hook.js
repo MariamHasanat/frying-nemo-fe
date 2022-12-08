@@ -1,13 +1,16 @@
 import { useSearchParams } from "react-router-dom";
 import { useMemo } from 'react';
 import useParams from "./params.hook";
+import useToggle from "./tourist.hook";
+/**
+ * @param {boolean} isTourist
+ * 
+ */
 
-
-const useFilterItems = (menuItems) => {
+const useFilterItems = (menuItems,isTourist) => {
   const { myParams } = useParams();
-
   const filterItem = useMemo(() => {
-    return menuItems.filter(item => {
+    const filtered= menuItems.filter(item => {
       /**
        * @param {string}str
        */
@@ -31,7 +34,11 @@ const useFilterItems = (menuItems) => {
       }
       return match;
     });
-  }, [myParams, menuItems]);
+    if(isTourist){
+      return filterItem.map(item=>({...item,price:item.price*2}));
+    }else
+    return filtered;
+  }, [myParams, menuItems,isTourist]);
   return filterItem;
 };
 

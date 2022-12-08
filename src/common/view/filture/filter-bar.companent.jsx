@@ -1,12 +1,21 @@
 import { CATEGORY } from '../../../data/cons';
-import useFilterItems from '../../../hook/filter-item.hook';
 import useParams from '../../../hook/params.hook';
+import useToggle from '../../../hook/tourist.hook';
 import Input from '../../input/input.component';
 import CheckBox from '../check-box/check-box';
 import './filter.css';
 
+/**
+ *
+ * @param {{
+ * searchTerms: string ;
+ * categories: string[];
+ * setParams:(name :string , value : string | string[]) => void
+ * }} props
+ */
 const FilterBar = (props) => {
   const { myParams, setParam} = useParams();
+ const {isTourist,toggleIsTourist} = useToggle(false);
   const HandelFilter = (name, inputValue) => {
     const newParams = new URLSearchParams(props.params);
     if (inputValue) {
@@ -43,6 +52,7 @@ const FilterBar = (props) => {
           }}
         />
         )}
+        <CheckBox label='Tourist' checked={isTourist} onChange={toggleIsTourist}/>
       </div>
       <div className="price">
         <label >Max price</label>
