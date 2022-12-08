@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './form.css';
-import Input from '../common/input';
+import Input from '../common/input-bar-component/input';
 import Textarea from '../textarea/textarea.component';
 import Select from '../selector/selector.component';
 import MultivalueInput from '../multivalue/multivalue-input';

@@ -1,7 +1,7 @@
 import { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../components/providers/user-provider';
-import Input from '../../components/common/input';
+import Input from '../../components/common/input-bar-component/input';
 import { loginUser } from '../../services/users';
 import './login.css';
 

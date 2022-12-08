@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Input from '../common/input.jsx';
+import Input from '../common/input-bar-component/input';
 import './multivalue-input.css';
 
 /**

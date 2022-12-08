@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from '../../../components/common/input';
+import Input from '../../../components/common/input-bar-component/input';
 import CheckBox from '../../../components/common/toggle-bullets/check-box.component';
 import { CATEGORIES } from '../../../components/data/categories';
 import useParams from '../../../hooks/params.hook';

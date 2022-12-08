@@ -5,7 +5,7 @@ import './form.css';
 
 import { UserContext } from '../../providers/user-provider.component';
 
-import Input from '../../common/input/input.component';
+import Input from '../../common/input-bar-component/input.jsx';
 import MultivalueInput from '../../common/multivalue-input/multivalue-input.component';
 import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
