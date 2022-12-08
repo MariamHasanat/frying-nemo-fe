@@ -4,9 +4,8 @@ import { useSearchParams } from 'react-router-dom';
 import useParams from './use-params.hook';
 
 
-const useItems = (menuitems) => {
+const useItems = (menuitems, isTourist) => {
   const { myParam } = useParams();
-
   // const initial = [];
   // const [params] = useSearchParams();
   // const searchFromURL = params.get("searchTerms") || '';
@@ -18,7 +17,7 @@ const useItems = (menuitems) => {
 
   console.log('hello custom Hook');
   const filterItems = useMemo(() => {
-    return menuitems.filter(item => {
+    const filter = menuitems.filter(item => {
       /**
            * Check if search terms are somewhere inside given string.
            * @param {string} str 
@@ -54,7 +53,16 @@ const useItems = (menuitems) => {
       // item.name.toLowerCase().includes(search.toLowerCase().trim())
     });
 
-  }, [myParam, menuitems]);
+    if (isTourist) {
+      return filter.map(item => ({ ...item, price: item.price * 2 }));
+    } else {
+      return filter;
+    }
+
+
+
+  }, [myParam, menuitems, isTourist]);
+
   return filterItems;
 };
 

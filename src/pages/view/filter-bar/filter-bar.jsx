@@ -6,6 +6,7 @@ import { CATEGORIES } from '../../../data/data';
 
 import './filter-bar.css';
 import useParams from '../../../components/Hooks/use-params.hook';
+import useToggle from '../../../components/Hooks/toggle.hook';
 
 /**
  * Renders a filters bar.
@@ -20,6 +21,10 @@ export const FilterBar = () => {
   const { myParam, setParam } = useParams();
   const [price, setPrice] = useState(10);
 
+
+  /*********************************************** add torist hook ************************************/
+  const [isTorist, setTorist] = useToggle(false);
+  const toggleTorist = () => setTorist(isTorist);
 
 
   const handelPrice = e => {
@@ -45,6 +50,8 @@ export const FilterBar = () => {
         />
       </div>
 
+
+      <CheckBox label="torist label" checked={isTorist} onChange={toggleTorist} />
       &nbsp;&nbsp;&nbsp;
 
       <div className="categories">
