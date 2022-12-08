@@ -55,8 +55,7 @@ const Form = () => {
             alert('Item added successfully');
             navigate('/view');
         }
-        else
-        {
+        else {
             alert('Error adding the item!');
         }
     };

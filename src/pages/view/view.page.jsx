@@ -7,6 +7,7 @@ import Item from "../../components/view/item/item.component";
 import { fetchItems } from "../../services/items.service";
 import { getCartQuantity } from "../../util/cart";
 import { CartContext } from "../../components/providers/cart-provider.component";
+import { useMemo } from "react";
 
 /**
 * @type {Array<{
@@ -39,7 +40,7 @@ const View = () => {
     };
 
     useEffect(() => {
-        getMenuItems(); 
+        getMenuItems();
     }, []);
 
     /**
@@ -65,22 +66,24 @@ const View = () => {
     };
 
 
-    const filteredItems = menuItems.filter((item) => {
-        let match = true;
-        const check = str => str.toLowerCase().includes(searchParFromURL.toLowerCase().trim());
-        match = (
-            check(item.name) ||
-            check(item.description) ||
-            item.ingredients.some(ingredient => check(ingredient))
-        );
-        if (categoriesFromURL.length > 0)
-            match &= (categoriesFromURL.includes(item.category));
-        if (min !== null && min !== '')
-            match &= (item.price >= min);
-        if (max !== null && max !== '')
-            match &= (item.price <= max);
-        return match;
-    });
+    const filteredItems = useMemo(() => {
+        return menuItems.filter((item) => {
+            let match = true;
+            const check = str => str.toLowerCase().includes(searchParFromURL.toLowerCase().trim());
+            match = (
+                check(item.name) ||
+                check(item.description) ||
+                item.ingredients.some(ingredient => check(ingredient))
+            );
+            if (categoriesFromURL.length > 0)
+                match &= (categoriesFromURL.includes(item.category));
+            if (min !== null && min !== '')
+                match &= (item.price >= min);
+            if (max !== null && max !== '')
+                match &= (item.price <= max);
+            return match;
+        });
+    }, [params, menuItems]);
 
     return (
         <div className="div-view">
