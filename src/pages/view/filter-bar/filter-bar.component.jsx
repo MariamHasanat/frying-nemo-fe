@@ -2,15 +2,18 @@ import './filter-bar.css';
 import Input from '../../../components/common/input/input.component';
 import FilterCheckbox from '../../../components/common/filter-checkbox/filter-checkbox.component';
 import { CATEGORIES } from '../../../data/constants';
-const FilterBar = (props) => {
+import { useParam } from '../../../hooks/setParam.hook'
+const FilterBar = () => {
+
+    const [myParams, setParam] = useParam();
     return (
         <div className='filter-group'>
             <Input
                 placeholder='Search'
                 type="search"
-                value={props.searchTerms}
+                value={myParams.searchTerms}
                 label="Search"
-                onChange={e => props.setParams('searchTerms', e.target.value)}
+                onChange={e => setParam('searchTerms', e.target.value)}
             />
 
             <div className="category-checkboxes">
@@ -20,14 +23,14 @@ const FilterBar = (props) => {
                             value={item}
                             label={item}
                             key={'item_' + item}
-                            checked={props.categoryFilters.includes(item)}
+                            checked={myParams.categoryFilters.includes(item)}
                             onChange={e => {
                                 const updated = e.target.checked
-                                  ? [...props.categoryFilters, item]
-                                  : props.categoryFilters.filter(category => category !== item);
-                  
-                                props.setParams('category', updated);
-    
+                                    ? [...myParams.categoryFilters, item]
+                                    : myParams.categoryFilters.filter(category => category !== item);
+
+                                setParam('category', updated);
+
                             }}
                         />
                     )
@@ -40,28 +43,12 @@ const FilterBar = (props) => {
                     <Input
                         placeholder='min'
                         type="number"
-                        onChange={e => {
-                            const newParams = new URLSearchParams(props.params);
-                            const val = e.target.value;
-                            if (val)
-                                newParams.set('priceMin', val);
-                            else
-                                newParams.delete('priceMin');
-                            props.setParams(newParams);
-                        }}
+                        onChange={e => setParam('priceMin', e.target.value)}
                     />
                     <Input
                         placeholder='max'
                         type="number"
-                        onChange={e => {
-                            const newParams = new URLSearchParams(props.params);
-                            const val = e.target.value;
-                            if (val)
-                                newParams.set('priceMax', val);
-                            else
-                                newParams.delete('priceMax');
-                            props.setParams(newParams);
-                        }}
+                        onChange={e => setParam('priceMax', e.target.value)}
                     />
                 </div>
             </div>
