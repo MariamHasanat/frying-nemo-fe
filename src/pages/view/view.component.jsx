@@ -4,7 +4,7 @@ import Spinner from '../../components/core/spinner/spinner.componenr';
 import MenuItem from '../../components/view/menu-item/menu-item.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import './view.css';
-import { fetchItems } from '../../services/get-item';
+import { fetchItems } from '../../services/view/fetch-items.service';
 
 /**
  * @type {Array<{

@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Spinner from '../../components/core/spinner/spinner.componenr';
 import { CartContext } from '../../components/providers/cart-provider.component';
 import PriceBar from '../../components/view/price-bar/price-bar.component';
-import { fetchItem } from '../../services/get-item';
+import { fetchItem } from '../../services/view/fetch-items.service';
 import { getCartQuantity } from '../../util/cart';
 import './single-item.css';
 
