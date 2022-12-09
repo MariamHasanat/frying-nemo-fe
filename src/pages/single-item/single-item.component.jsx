@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Spinner from '../../components/core/spinner/spinner.componenr';
 import { CartContext } from '../../components/providers/cart-provider.component';
 import PriceBar from '../../components/view/price-bar/price-bar.component';
+import { fetchItem } from '../../services/get-item';
 import { getCartQuantity } from '../../util/cart';
 import './single-item.css';
 
@@ -22,7 +23,7 @@ import './single-item.css';
  */
 
 const SingleItem = (props) => {
-  const cartContext = useContext (CartContext) ;
+  const cartContext = useContext(CartContext);
   const params = useParams();
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState(null);
@@ -30,24 +31,28 @@ const SingleItem = (props) => {
 
   useEffect(() => {
     setLoading(true);
-    const item = getItem(params.id);
-    if (item === null) {
-      navigate("/404", { replace: true });
-    }
-    setCurrentItem(item);
+
+    fetchItem(params.id)
+      .then(item => {
+        if (item === null) {
+          navigate("/404", { replace: true });
+        }
+        setCurrentItem(item);
+      });
     setLoading(false);
+    // console.log(currentItem);
   }, []);
 
 
-  const getItem = (id) => {
-    const items = JSON.parse(localStorage.menuItems || '[]');
-    const item = items.filter(it => it.id.toString() === id);
-    return item[0] || null;
-  };
+  // const getItem = (id) => {
+  //   const items = JSON.parse(localStorage.menuItems || '[]');
+  //   const item = items.filter(it => it.id.toString() === id);
+  //   return item[0] || null;
+  // };
 
   return (
     <div className='singleItem'>
-      {loading
+      {(loading || (currentItem === null))
         ? <Spinner />
         : <div className="item-details">
           <h1>{currentItem.name}</h1>
@@ -59,7 +64,7 @@ const SingleItem = (props) => {
             <p className="ingredients"><b>Ingredients:</b>
               <br />{currentItem.ingredients.join(", ")}</p>
           </div>
-          <PriceBar item={currentItem} dispatch = {cartContext.dispatch} cartQuantity = {getCartQuantity(currentItem.id , cartContext.cart)}/>
+          <PriceBar item={currentItem} dispatch={cartContext.dispatch} cartQuantity={getCartQuantity(currentItem.id, cartContext.cart)} />
         </div>
       }
     </div>

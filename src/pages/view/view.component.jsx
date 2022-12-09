@@ -4,7 +4,7 @@ import Spinner from '../../components/core/spinner/spinner.componenr';
 import MenuItem from '../../components/view/menu-item/menu-item.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import './view.css';
-import getItems from '../../services/get-item';
+import { fetchItems } from '../../services/get-item';
 
 /**
  * @type {Array<{
@@ -42,9 +42,14 @@ const ViewPage = (props) => {
 
   const getMenuItems = async () => {
     setLoading(true);
-    const tempItems = await getItems() ;
-    setItems (tempItems);
-    setLoading (false);
+    try {
+      const tempItems = await fetchItems() ;
+      setItems (tempItems);
+      setLoading (false);
+    }
+    catch (error) {
+      console.error (error) ;
+    }
   };
 
   useEffect(() => {
