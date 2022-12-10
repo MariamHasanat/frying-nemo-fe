@@ -1,6 +1,5 @@
 import { CATEGORY } from '../../../data/cons';
 import useParams from '../../../hook/params.hook';
-import useToggle from '../../../hook/tourist.hook';
 import Input from '../../input/input.component';
 import CheckBox from '../check-box/check-box';
 import './filter.css';
@@ -13,9 +12,17 @@ import './filter.css';
  * setParams:(name :string , value : string | string[]) => void
  * }} props
  */
+
+/**
+ * Renders a filters bar.
+ * @param {{ 
+ *  isTourist: boolean;
+ *  toggleIsTourist: () => void;
+ * }} props
+ */
+
 const FilterBar = (props) => {
   const { myParams, setParam} = useParams();
- const {isTourist,toggleIsTourist} = useToggle(false);
   const HandelFilter = (name, inputValue) => {
     const newParams = new URLSearchParams(props.params);
     if (inputValue) {
@@ -52,7 +59,7 @@ const FilterBar = (props) => {
           }}
         />
         )}
-        <CheckBox label='Tourist' checked={isTourist} onChange={toggleIsTourist}/>
+        <CheckBox label='Tourist' checked={props.isTourist} onChange={props.toggleIsTourist}/>
       </div>
       <div className="price">
         <label >Max price</label>

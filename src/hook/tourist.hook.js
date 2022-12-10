@@ -2,12 +2,12 @@ import { useState } from "react";
 
 /**
  * @param {boolean} Defultvalue
- * @return {[value:boolean,toggle:()=>void]}
+ * @return {{toggle: Function, value: Boolean}}
  */
 
-const useToggle=(Defultvalue)=>{
-const [value , setValue]=useState(Defultvalue);
-const toggle= ()=> setValue(!value);
-return {toggle,value};
+const useToggle = (Defultvalue) => {
+  const [value, setValue] = useState(() => Defultvalue);
+  const toggle = () => setValue(Boolean(!value));
+  return { toggle, value };
 };
 export default useToggle;

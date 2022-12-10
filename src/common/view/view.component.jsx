@@ -1,8 +1,8 @@
 import './view.css';
 import Items from '../view/item/item.component';
-import React,{ useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import FilterBar from './filture/filter-bar.companent';
-import {getCartQuantity} from '../../utilit/cart';
+import { getCartQuantity } from '../../utilit/cart';
 import { CartContext } from '../../components/provider/cart-provider.component';
 import { getItems } from '../../data/items';
 import useFilterItems from '../../hook/filter-item.hook';
@@ -10,25 +10,18 @@ import useToggle from '../../hook/tourist.hook';
 
 const ViewPage = () => {
   /**
- * @type {Array<{
- * id:number;
- * name: string;
-   * description: string;
-   * ingredients: string[];
-   * price: number;
-   * category: string;
-   * image: string;
-   * }>}
+ * @type {Array<>}
    */
   const initialItems = [];
   const [loading, setLoading] = useState(false);
   const [menuItems, setMenuItems] = useState(initialItems);
-  const cartContext = useContext(CartContext); 
+  const cartContext = useContext(CartContext);
+  const { toggle: toggleIsTourist, value: isTourist } = useToggle(false);
 
   /**
     * @param {string} value
     */
-  const getMenuItems =async () => {
+  const getMenuItems = async () => {
     setLoading(true);
     const data = await getItems();
     setMenuItems(data);
@@ -44,21 +37,20 @@ const ViewPage = () => {
 
   useEffect(() => {
     getMenuItems();
-    
   }, []);
-  
 
-  const filterItem = useFilterItems(menuItems);
+
+  const filterItem = useFilterItems(menuItems, isTourist);
 
   return (
     <div className="view-page">
       <h1>View All Menu Items</h1>
-      <FilterBar  />
+      <FilterBar isTourist={isTourist} toggleIsTourist={toggleIsTourist} />
 
-      <div className="item" >
+      <div className="item">
         {
           filterItem
-            .map((item, index) => <Items data={item} key={item.name + index} dispatch={cartContext.dispatch} cartQuantity = {getCartQuantity(item.id,cartContext.cart)} />)
+            .map((item, index) => <Items data={item} key={item.name + index} dispatch={cartContext.dispatch} cartQuantity={getCartQuantity(item.id, cartContext.cart)} />)
         }
       </div>
     </div>

@@ -1,6 +1,7 @@
 import '.././item/item.css';
 import { Link } from 'react-router-dom';
 import Price from '../filture/price-par/price-par';
+import React from 'react';
 
 /**
  * 
@@ -13,6 +14,7 @@ import Price from '../filture/price-par/price-par';
  * image:string;
  * category: string;
  * ingredients: string[];
+ * cartQuantity: number;
  * }
  * }} props 
  * 
