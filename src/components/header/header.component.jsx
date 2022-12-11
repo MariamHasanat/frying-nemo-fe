@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../providers/user-provider.component';
-import cartIcon from '../../assets/cart.svg';
+import { ShoppingCart, SignOut } from 'phosphor-react';
 import { CartContext } from '../providers/cart-provider.component';
 
-const Header = (props) => {
+const Header = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -49,7 +49,7 @@ const Header = (props) => {
 
         <Link className="cart" to="cart">
 
-          <img src={cartIcon} alt="cart icon" />
+          <ShoppingCart size={32} color="#000" />
           <span className="count">{totalCartQuantity}</span>
 
         </Link>
@@ -60,19 +60,20 @@ const Header = (props) => {
             <img src={userContext.user.imageUrl} alt="user logo" width={30} height={30} className="orange" />
             {userContext.user.fullName}
             <button
-              onClick={() => {
-                userContext.setUser(null);
-                navigate('/login');
 
-              }}
+            onClick={() => {
+              userContext.setUser(null);
+              navigate('/login');
 
+            }}
+              
             >
-              Logout
-            </button>
+            <SignOut size={30} color="#a70c65" />
+          </button>
           </span>
         }
 
-      </div>
+    </div>
     </header >
   );
 };

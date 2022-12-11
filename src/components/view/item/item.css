@@ -74,6 +74,7 @@
 }
 
 .item-card>.price>.add-cart>button {
+  margin: 0px;
   background-color: #fff;
   color: grey;
   padding: 10px;
