@@ -3,7 +3,8 @@ import { Link,useLocation,useNavigate } from "react-router-dom";
 import { UserContext } from "../../providers/user-provider.component";
 import { CartContext } from "../../providers/cart-provider.component";
 import { useContext } from "react";
-import cartIcon from "../../../assets/cart.svg";
+
+import {ShoppingCartSimple,SignOut} from "phosphor-react";
 
 const Header = () => {
   const cartContext = useContext(CartContext);
@@ -47,7 +48,7 @@ const Header = () => {
           </Link>
         </nav>
         <Link className="cart" to="cart">
-          <img src={cartIcon} alt="cart icon" />
+          <ShoppingCartSimple size={32} color={"#d14841"}/>
           <span className="count">{itemsCount}</span>
         </Link>
         {
@@ -60,8 +61,9 @@ const Header = () => {
                 userContext.setUser(null);
                 navigate('/login');
               }}
+              title="Log out"
             >
-              Logout
+              <SignOut size={30}  />
             </button>
           </span>
         }

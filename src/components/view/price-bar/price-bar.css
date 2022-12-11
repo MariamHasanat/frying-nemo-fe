@@ -19,3 +19,18 @@ div.price{
   font-size: 25px;
   margin-bottom: 10px;
 }
+.price-bar-button {
+  appearance: none;
+  border: solid 1px black;
+
+  background: #ffffff;
+  padding: 10px 15px;
+  font-size: 13px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.price-bar-button:active{
+  transform: scale(0.9);
+}
