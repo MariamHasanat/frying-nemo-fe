@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../providers/user-provider.component';
 import logo from '../../../assets/images/nemoInHeader.png';
 import { CartContext } from '../../providers/cart-provider.component';
+import { ShoppingCart, SignOut } from 'phosphor-react';
 
 const Header = () => {
     const [time, setTime] = useState(new Date());
@@ -49,7 +50,7 @@ const Header = () => {
                 <nav>
 
                     <Link className='count-items' to={'./cart'}>
-                        Your Cart {totalQuantity}
+                        <ShoppingCart size={30} /> {totalQuantity}
                     </Link>
                     {
                         userContext.user &&
@@ -75,15 +76,15 @@ const Header = () => {
                     }
                     {
                         (userContext.user) &&
-                        <button
-                            className='log'
+                        <SignOut
+                            size={24}
+                            style={{ cursor: 'pointer' }}
                             onClick={() => {
                                 userContext.setUser(null);
                                 navigate('/log-in');
                             }}
-                        >
-                            Logout
-                        </button>
+                        />
+
                     }
                 </nav>
             </div>
