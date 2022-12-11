@@ -53,7 +53,7 @@
 
 .websiteHeader .right>span {
 
-  padding-top: 9px;
+  padding-top: 0px;
 }
 
 .websiteHeader .right nav a {
@@ -88,8 +88,13 @@
   color: #666;
 }
 
+.websiteHeader .right .user-badge {
+  display: flex;
+  align-items: center;
+}
+
 button {
-  border: none; 
+  border: none;
   background: none;
   margin-left: 10px;
 }
@@ -97,7 +102,7 @@ button {
 .orange {
   border-radius: 50%;
   padding-right: 7px;
-  padding-top: 5px;
+ 
 }
 
 .websiteHeader .right>.cart {
