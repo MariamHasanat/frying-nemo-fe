@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import cartIcon from '../../../assets/cart.svg';
 import { CartContext } from '../../providers/cart-provider.component';
 import { UserContext } from '../../providers/user-provider.component';
+import { ShoppingCart } from 'phosphor-react';
 import "./header.css";
 
 
@@ -52,7 +53,8 @@ import "./header.css";
         </nav>
         
         <Link className="cart" to="cart">
-          <img src={cartIcon} alt="cart icon"  width={30} height={30} />
+          {/* <img src={cartIcon} alt="cart icon"  width={30} height={30} /> */}
+          <ShoppingCart size={32} />
           <span className="count">{totalCartQuantity}</span>
         </Link>
 

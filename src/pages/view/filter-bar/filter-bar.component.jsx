@@ -18,6 +18,7 @@ import useToggle from '../../../Hooks/toggle.hook';
 
 const FilterBar = (props) => {
   const [price, setPrice] = useState(0);
+  
   const handelPrice = e => {
     setPrice(e.target.value);
   };

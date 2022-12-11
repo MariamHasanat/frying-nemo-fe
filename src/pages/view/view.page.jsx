@@ -11,7 +11,7 @@ import { getCartQuantity } from '../../utils/cart';
 import { getItems } from '../../services/item';
 
 import useFilterItems from '../../Hooks/filter-items.hook';
-
+import useToggle from '../../Hooks/toggle.hook';
 
 /**
  * @type {Array<{
@@ -32,8 +32,10 @@ const ViewPage = (props) => {
   const [loading, setLoading] = useState(false);
   const cartContext = useContext(CartContext);
   const userContext = useContext(UserContext);
-  const filteredItems = useFilterItems(menuItems);
-  
+  const [isTourist, toggleIsTouriest] = useToggle(false);
+  const filteredItems = useFilterItems(menuItems,isTourist);
+
+
   // const [min, setMin] = useState("");
   // const [max, setMax] = useState("");
 
@@ -63,7 +65,7 @@ const ViewPage = (props) => {
 
   });
 
- 
+
 
 
 
@@ -71,8 +73,9 @@ const ViewPage = (props) => {
   return (
     <div className="view-page">
       <h1>View Menu Items</h1>
-      <FilterBar
-      
+      <FilterBar 
+        isTourist={isTourist}
+        toggleIsTouriest={toggleIsTouriest}
       />
 
 

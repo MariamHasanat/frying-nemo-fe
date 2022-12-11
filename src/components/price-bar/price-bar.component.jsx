@@ -1,4 +1,4 @@
-
+import React from "react";
 const PriceBar=(props)=>{
   const handleIncrement=()=>{
     props.dispatch({ type: 'INCREMENT_CART_QUANTITY', meal: props.item });
