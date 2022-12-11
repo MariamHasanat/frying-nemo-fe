@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import { UserContext } from '../provider/provider';
 import cartIcon from '../../assets/illustrations/cart.svg';
 import { CartContext } from '../provider/cartprovider';
+import { ShoppingCart, SignOut } from 'phosphor-react';
 const Handel = (props) => {
 
   const location = useLocation();
@@ -19,7 +20,8 @@ const Handel = (props) => {
   return (
     <header className='websiteHeader'>
       <div className='left'>
-        <img src={logo} alt="Nemo" />
+        {/* <img src={logo} alt="Nemo" /> */}
+        <ShoppingCart size={30} />
         <h1>Seafood Restaurant</h1>
       </div>
 
@@ -53,7 +55,8 @@ const Handel = (props) => {
                 navigate('/login');
               }}
             >
-              Logout
+            <SignOut size={30} weight={'fill'} />
+          
             </button>
           </span>
         }
