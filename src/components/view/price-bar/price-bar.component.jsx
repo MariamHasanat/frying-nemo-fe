@@ -1,3 +1,4 @@
+import { Minus, Plus } from 'phosphor-react';
 import React from 'react';
 import './price-bar.css';
 
@@ -40,9 +41,9 @@ const PriceBar = (props) => {
                 {props.item.price}&nbsp;$
             </span>
             <div className='number-of-items'>
-                <button onClick={handleIncrement}> + </button>
+                <button onClick={handleIncrement}> <Plus weight='bold'/> </button>
                 <span className='show-the-quantity'> {props.cartQuantity} </span>
-                <button onClick={handleDecrement}> - </button>
+                <button onClick={handleDecrement}> <Minus weight='bold'/></button>
             </div>
         </div>
     );
