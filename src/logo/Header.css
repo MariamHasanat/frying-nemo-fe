@@ -58,7 +58,7 @@ header {
 .Header > .right > nav >.cart-icon {
   position :relative ;
 }
-.Header > .right > nav >.cart-icon>a> img {
+.Header > .right > nav >.cart-icon>a> .shoppingCart {
   padding: 9px 20px;  
   width: 30px;
 }

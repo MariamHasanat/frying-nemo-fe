@@ -5,6 +5,7 @@ import cartIcon from '../assests/cart1.svg'
 import picture from '../assests/imges.jpg'
 import { useContext } from 'react';
 import './Header.css';
+import { ShoppingCart, SignOut } from 'phosphor-react';
 
 
 
@@ -33,7 +34,8 @@ const Header = props => {
               <div className="cart-icon">
               <Link
                 to='/cart'>
-                  <img src={cartIcon} alt=""/>
+                  <ShoppingCart size={32} className="shoppingCart" />
+                  
                 <span>{itemsCount}</span>
               </Link>
             </div>
@@ -63,7 +65,8 @@ const Header = props => {
               userContext.setUser(null)
               navigate('/login')
             } }
-            >Logout</button>
+            ><SignOut size={32} /></button>
+            
           </span>
         }
      
