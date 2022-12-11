@@ -60,6 +60,6 @@ return cart;
 }
 
 
-const initialState = [];
+
 
 export  {reducer};

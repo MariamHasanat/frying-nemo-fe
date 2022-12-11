@@ -3,6 +3,8 @@ import './header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../provider/user-provider.component.jsx';
 import CartProvider, { CartContext } from '../../provider/cart.provider';
+import { ShoppingCart } from 'phosphor-react';
+
 
 
 const Header = (props) => {
@@ -43,6 +45,11 @@ const Header = (props) => {
             View
           </Link>
         </nav>
+        <Link className="cart" to="cart">
+        <ShoppingCart size={24} color="#976d92" weight="fill" />
+          <span className="count">{totalCartQuantity}</span>
+        </Link>
+
         {
           userContext.user &&
           <span className="user-badge">

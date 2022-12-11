@@ -1,7 +1,8 @@
 .checkbox-group {
-    display: flex;
     align-items: center;
-    user-select: none;
+    display: inline-flex;
+    align-items: center;
+  
   }
   
   .checkbox-group>input {
