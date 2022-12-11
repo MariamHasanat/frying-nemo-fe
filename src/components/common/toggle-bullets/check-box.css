@@ -1,12 +1,13 @@
 .checkbox-group {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  user-select: none;
+
 }
 
 .checkbox-group>input {
-  
-  display: none;
+  cursor: pointer;
+  margin-top: 32px;
+  margin-right: 2px;
 }
 
 .checkbox-group>label {
@@ -23,6 +24,7 @@
   color: #be441d;
   background-color: white;
   margin-top: 31px;
+  margin-left: 5px;
 }
 
 .checkbox-group>label>span:nth-child(2) {
@@ -30,6 +32,6 @@
 }
 
 .checkbox-group>label.checked {
-  background-color: #be441d;  
+  background-color: #be441d;
   color: #fff;
 }

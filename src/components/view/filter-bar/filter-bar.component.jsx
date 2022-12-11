@@ -7,9 +7,12 @@ import useParams from '../../../hooks/params.hook';
 
 /**
  * Renders a filters bar.
- * @param {}
+ * @param {{ 
+ *  isTourist: boolean;
+ *  toggleIsTourist: () => void;
+ * }} props
  */
-const FilterBar = () => {
+const FilterBar = (props) => {
   const { myParams, setParam } = useParams();
 
   return (
@@ -37,6 +40,11 @@ const FilterBar = () => {
           />
         ))}
       </div>
+
+      <div className="tourists">
+        <CheckBox label="Tourist" checked={props.isTourist} onChange={props.toggleIsTourist} />
+      </div>
+
     </div>
   );
 };
