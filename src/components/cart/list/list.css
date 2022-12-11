@@ -10,8 +10,17 @@
   justify-content: space-between;
 }
 
-.cartBottomRow > span {
+.cartBottomRow>span {
   font-size: 18px;
   color: #666;
   font-weight: bold;
+}
+
+.no-results>p {
+  margin-top: 30px;
+  font-size: large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import trashIcon from '../../../assets/trash.svg';
+import {Trash} from 'phosphor-react';
 import './row.css';
 
 const CartRow = (props) => {
@@ -26,8 +26,8 @@ const CartRow = (props) => {
       </div>
       <div className="total-price">
         <h3>${meal.price * quantity}</h3>
-        <button onClick={deleteItem}>
-          <img src={trashIcon} alt="delete" />Delete
+        <button className='paddingUp' onClick={deleteItem}>
+        <Trash size={20} />Delete
         </button>
       </div>
     </li>

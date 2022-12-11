@@ -101,3 +101,7 @@
 .cart-row>.total-price button:active {
   color: #555555;
 }
+
+.paddingUp{
+  margin-top: 8px;
+}

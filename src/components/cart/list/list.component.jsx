@@ -1,9 +1,10 @@
 //import { getToPathname } from '@remix-run/router';
 import React from 'react';
 import { useContext } from 'react';
+import './list.css'
 import { CartContext } from '../../providers/cart-provider.jsx';
 import CartRow from '../row/row.component';
-
+import {Trash} from 'phosphor-react'
 const CartList = (props) => {
 
   const cartContext = useContext(CartContext);
@@ -21,7 +22,7 @@ const CartList = (props) => {
   if (cartContext.cart.length === 0)
     return (
       <div className="no-results">
-        <img src="../../../assets/trash.svg" alt="empty cart" width={300} />
+        <Trash size={300} />
         <p>Your Cart is Empty!</p>
       </div>
     );

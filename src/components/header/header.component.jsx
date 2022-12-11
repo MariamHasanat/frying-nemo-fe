@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import './header.css';
 import logo from '../../assets/nemo.svg';
-import cartIcon from '../../assets/cart.svg';
+import {ShoppingCart} from 'phosphor-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../components/providers/user-provider';
 import { CartContext } from '../../components/providers/cart-provider';
+import { SignOut } from 'phosphor-react';
 
 const Header = props => {
 
@@ -47,7 +48,7 @@ const Header = props => {
           </Link>
         </nav>
         <Link className="cart" to="cart">
-          <img src={cartIcon} alt="cart icon" />
+          <ShoppingCart size={30} />
           <span className="count">{itemsCount}</span>
         </Link>
         {
@@ -61,7 +62,7 @@ const Header = props => {
                 navigate('/login');
               }}
             >
-              Logout
+              <SignOut size={29} color="black" />
             </button>
           </span>
         }
