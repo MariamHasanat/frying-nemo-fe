@@ -6,6 +6,7 @@ import logout from '../../../assets/images/logout.png';
 import { useContext } from 'react';
 import { UserContext } from '../../../components/providers/user-provider';
 import { CartContext } from '../../providers/cart-provider';
+import { ShoppingCart, SignOut } from 'phosphor-react';
 
 
 const Header = () => {
@@ -34,7 +35,13 @@ const Header = () => {
         </nav>
       </div>
 
-      <span>Your Cart: <span className='items-counter'>{itemsCounter}</span></span>
+
+      <span style={{ display: 'flex', justifyContent: "center", alignItems: 'center' }}>
+        <ShoppingCart size={32} color="#121212" weight="light" />
+        <span className='items-counter'>
+          {itemsCounter}
+        </span>
+      </span>
       {
         userContext.user !== null &&
         <div className='user-info'>
@@ -43,16 +50,18 @@ const Header = () => {
             <img src={profile} alt="user" />
           </div>
 
+          <SignOut size={32} onClick={() => { userContext.setUser(null); }} />
 
-
-          <button
+          {/* <button
             className='logout'
             onClick={() => { userContext.setUser(null);  }}>
             <div className='logout-button'>
               <span>Logout</span>
               <img src={logout} alt="logout" />
             </div>
-          </button>
+          </button> */}
+
+
         </div>
 
 
