@@ -1,4 +1,7 @@
 import React from "react";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from "./components/core/header/header.component";
 import AddPage from "./pages/add/add.page";

@@ -1,12 +1,24 @@
-import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
 import './view-item.css';
 import { fetchItem } from '../../services/items.service';
+import { getCartQuantity } from '../../utils/cart';
+
+import Slider from "react-slick";
 import Spinner from '../../components/core/spinner/spinner.component';
 import PriceBar from '../../components/view/price-bar/price-bar.component';
-import { getCartQuantity } from '../../utils/cart';
-import { useContext } from 'react';
 import { CartContext } from '../../components/providers/cart-provider.component';
+
+import { useContext, useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  autoPlay: true
+};
 
 const ViewItemPage = (props) => {
   const params = useParams();
@@ -35,7 +47,20 @@ const ViewItemPage = (props) => {
         : <div className="item-details">
           <h1>{currentItem.name}</h1>
           <div className="img">
-            <img src={currentItem.image} alt="food" />
+            <Slider {...settings}>
+              <div>
+                <img src={currentItem.image} alt="food" />
+              </div>
+              <div>
+                <img src={currentItem.image} alt="food" />
+              </div>
+              <div>
+                <img src={currentItem.image} alt="food" />
+              </div>
+              <div>
+                <img src={currentItem.image} alt="food" />
+              </div>
+            </Slider>
           </div>
           <div className="info">
             <p><b>Item Description: </b> {currentItem.description}</p>

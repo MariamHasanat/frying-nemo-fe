@@ -18,11 +18,11 @@
   flex-direction: column;  
 }
 
-.item-details>.img {
+.item-details .img {
   height: 400px;
 }
 
-.item-details>.img>img {
+.item-details .img img {
   width: 100%;
   height: 400px;
   object-fit: cover;
