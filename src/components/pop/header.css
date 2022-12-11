@@ -40,11 +40,12 @@
   border: unset;
   cursor: pointer;
   font-size: 14px;
-  padding: 10px 20px;
+  padding: 5px 20px;
   text-decoration: none;
   color: inherit;
   display: flex;
   align-items: center;
+  margin-bottom: 2px;
 
 }
 
@@ -124,4 +125,8 @@
   min-width: 10px;
   min-height: 15px;
   text-align: center;
+}
+.websiteHeader .right>nav>.log{
+  cursor: pointer;
+  
 }

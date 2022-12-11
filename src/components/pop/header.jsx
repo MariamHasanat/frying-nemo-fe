@@ -4,6 +4,7 @@ import { UserContext } from '../../App';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { CartContext } from '../providers/cart-provider';
 import cartIcon from '../../assets/cart.svg';
+import { ShoppingCart, SignOut } from 'phosphor-react';
 
 
 const Head = (props) => {
@@ -41,27 +42,31 @@ const Head = (props) => {
           <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
             View
           </Link>
-          <Link className="cart" to="cart">
-            <img src={cartIcon} alt="cart icon" />
+          <Link className="cart" to="cart" >
+            <ShoppingCart size={24} color="#800080" />
+
             <span className="count">
               {itemsCount}
             </span>
           </Link>
+          {userContext.user ?
+            <SignOut onClick={() => {
+              userContext.setUser(null);
+              localStorage.removeItem('cart');
+              cartContext.cart = {};
+              navigate('/login');
+            }
+            }
+              className="log"
+              size={32} color="#800080" >
+            </SignOut> : ""
+          }
         </nav>
         {
           userContext.user &&
           <span>{userContext.user.fullName}</span>
         }
-        {userContext.user ?
-          <button onClick={() => {
-            userContext.setUser(null);
-            localStorage.removeItem('cart');
-            cartContext.cart={}
-            navigate('/login');
-          }
-          }
-          >LogOut</button> : ""
-        }
+
       </div>
     </header>
   );
