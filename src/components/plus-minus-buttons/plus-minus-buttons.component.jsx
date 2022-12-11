@@ -1,5 +1,7 @@
+import { Minus, Plus } from "phosphor-react";
 import { useContext } from "react";
 import { CartContext } from "../providers/cart-provider.component";
+import './plus-minus-buttons.css'
 const PlusMinusButtons = (props) => {
 
     const cartContext = useContext(CartContext);
@@ -16,13 +18,13 @@ const PlusMinusButtons = (props) => {
                 className='nemo-button'
                 onClick={handleIncrement}
             >
-                <b>+</b>
+                <Plus size={15} weight="bold"/>
             </button>
             <span className='quant'>{props.quantity}</span>
             <button
                 className='nemo-button'
                 onClick={handleDecrement}>
-                <b>-</b>
+                <Minus size={15} weight="bold"/>
             </button>
         </div>
     );

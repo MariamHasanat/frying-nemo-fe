@@ -1,8 +1,8 @@
 import PlusMinusButtons from '../../plus-minus-buttons/plus-minus-buttons.component';
-import trash from '../../../images/trash.png';
 import { useContext } from 'react';
 import { CartContext } from '../../providers/cart-provider.component';
 import './cart-row.css';
+import { Trash } from 'phosphor-react';
 
 const CartRow = (props) => {
     const cartContext = useContext(CartContext);
@@ -23,7 +23,7 @@ const CartRow = (props) => {
             <div className='right'>
                 <p className='price'>Price: <b>${props.item.meal.price * props.item.quantity}</b></p>
                 <button className='trash' onClick={deleteItem}>
-                    <img src={trash} width={25} alt="" />
+                    <Trash size={20} weight="bold" />
                 </button >
             </div>
         </li>

@@ -1,0 +1,10 @@
+.item-quantity>button {
+    line-height: 0px;
+    padding: 5px;
+}
+.item-quantity>.quant {
+    display: inline-block;
+    text-align: center;
+    width: 30px;
+    font-size: 15px;
+}

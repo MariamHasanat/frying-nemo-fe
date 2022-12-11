@@ -1,11 +1,11 @@
 import './header.css';
 import nemo from '../../../images/nemo.png';
-import cart from '../../../images/cart.png';
 // import profilePic from '../../../images/profile.png';
 import { Link, useNavigate, useLocation, NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../providers/user-provider.component';
 import { CartContext } from '../../providers/cart-provider.component'
+import { ShoppingCartSimple, UserSwitch } from 'phosphor-react';
 const Header = (props) => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -30,7 +30,7 @@ const Header = (props) => {
                     <button className='cartBtn'
                         onClick={() => navigate('/cart')}
                     >
-                        <img src={cart} alt='cart' width={30} />
+                        <ShoppingCartSimple size={20} weight="bold"/>
                         {itemsCount || 0}&nbsp;&nbsp;
                     </button>
                     {
@@ -44,7 +44,8 @@ const Header = (props) => {
                                         userContext.setUser(null);
                                         navigate('/login');
                                     }}>
-                                    logout
+                                    
+                                    <UserSwitch size={20} weight="bold" />
                                 </button>
                             </div>
                             : <Link className='nemo-button' to='/login'>login</Link>}</div>
