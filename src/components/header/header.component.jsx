@@ -41,7 +41,7 @@ const Header = () => {
 
             )
           }
-          <Link to="/view" className={location.pathname === "/view" ? 'current' : ''}>
+          <Link to="/view" className={location.pathname.startsWith('/view') ? 'current' : ''}>
             View
           </Link>
 
