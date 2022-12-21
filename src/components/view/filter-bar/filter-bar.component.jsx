@@ -13,6 +13,7 @@ import useParams from '../../../hooks/params.hook';
  * }} props
  */
 const FilterBar = (props) => {
+
   const { myParams, setParam } = useParams();
 
   return (
@@ -24,6 +25,32 @@ const FilterBar = (props) => {
         onChange={e => setParam('searchTerms', e.target.value)}
         placeholder="Search"
       />
+
+      <div className="price">
+
+        <Input
+          type="number"
+          label="Min Price"
+          // value={props.min}
+          placeholder='Min'
+          onChange={e => {
+            const min = e.target.value;
+            props.setMin(min);
+          }}
+        />
+
+        <Input
+          type="number"
+          label="Max Price"
+          // value={props.max}
+          placeholder='Max'
+          onChange={e => {
+            const max = e.target.value;
+            props.setMax(max);
+          }}
+        />
+
+      </div>
       <div className="categories">
         {CATEGORIES.map(cat => (
           <CheckBox

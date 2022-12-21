@@ -52,3 +52,14 @@
   background-color: #be441d;
   color: #fff;
 }
+
+.filter-bar>.price{
+  display: inline-flex;
+  column-gap: 15px;
+}
+
+.filter-bar>.price input{
+  width: 50px; 
+
+}
+

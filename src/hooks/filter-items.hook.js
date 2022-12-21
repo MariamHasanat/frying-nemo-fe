@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import useParams from "./params.hook";
 
 /**
@@ -8,6 +8,8 @@ import useParams from "./params.hook";
  */
 const useFilterItems = (menuItems, isTourist) => {
   const { myParams } = useParams();
+  const [min, setMin] = useState(null);
+  const [max, setMax] = useState(null);
 
   const filteredItems = useMemo(() => {
     const filtered = menuItems.filter(item => {
@@ -23,10 +25,13 @@ const useFilterItems = (menuItems, isTourist) => {
         item.ingredients.some(ingredient => doesItMatch(ingredient))
       );
 
-      if (myParams.categoriesFromURL.length) {
+      if (myParams.categoriesFromURL.length > 0) {
         match = match && (myParams.categoriesFromURL.includes(item.category));
       }
-
+      if (min !== null && min !== '')
+        match &= (item.price >= min);
+      if (max !== null && max !== '')
+        match &= (item.price <= max);
       return match;
     });
 
@@ -36,10 +41,10 @@ const useFilterItems = (menuItems, isTourist) => {
       return filtered;
     }
 
-  }, [myParams, menuItems, isTourist]);
+  }, [myParams, menuItems, isTourist, min, max]);
 
-  return filteredItems;
+  return { filteredItems, setMin, setMax };
 
 };
 
-export default useFilterItems ;
+export default useFilterItems;
