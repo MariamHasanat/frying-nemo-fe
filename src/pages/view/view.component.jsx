@@ -77,7 +77,7 @@ const ViewPage = (props) => {
         match = match && element.price <= maxPrice;
       return match;
     });
-  } , [param]) ;
+  } , [param , items]) ;
 
   return (
     <div className='view'>
