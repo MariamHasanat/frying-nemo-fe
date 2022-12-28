@@ -8,6 +8,7 @@ import './form.css';
 import CATEGORIES from '../../../data/constants';
 import { useContext } from 'react';
 import { UserContext } from '../../../components/providers/user-provider.component';
+import {createItem} from '../../../services/view/fetch-items.service';
 
 const Form = (props) => {
   const [name, setName] = useState('');
@@ -18,7 +19,7 @@ const Form = (props) => {
    * calls JSDoc
    * @param {React.ChangeEvent<HTMLInputElement>} e   //Event object
    */
-  const handle = e => {
+  const handle = async e => {
     e.preventDefault();
     console.log('Form Submitted');
     const price = e.target.price.value;
@@ -29,17 +30,26 @@ const Form = (props) => {
     const menueItem = {
       id: Date.now(),
       name: name,
-      price: price,
+      price: price.toString(),
       description: description,
       category: category,
       ingredients: ingredients,
       image: image
     };
-    const itemsJson = localStorage.getItem('menuItems') || '[]';
-    const items = JSON.parse(itemsJson);
-    items.push(menueItem);
-    localStorage.setItem('menuItems', JSON.stringify(items));
-    navigate('/view');   // to change url without link , without needing to render it as a link component
+    // const itemsJson = localStorage.getItem('menuItems') || '[]';
+    // const items = JSON.parse(itemsJson);
+    // items.push(menueItem);
+    // localStorage.setItem('menuItems', JSON.stringify(items));
+    // navigate('/view');   // to change url without link , without needing to render it as a link component
+
+    const response = await createItem (menueItem) ;
+    if (response) {
+      alert ("item added successfully") ;
+      navigate('/view') ;
+    }
+    else {
+      alert ('something went wrong , can\'t add the item');
+    }
   };
   /**
    * 
