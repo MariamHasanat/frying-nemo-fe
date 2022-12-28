@@ -5,6 +5,7 @@ import MenuItem from '../../components/view/menu-item/menu-item.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import './view.css';
 import { fetchItems } from '../../services/view/fetch-items.service';
+import { useMemo } from 'react';
 
 /**
  * @type {Array<{
@@ -57,24 +58,26 @@ const ViewPage = (props) => {
     return (() => console.log('Im out'));
   }, []);
 
-  const filteredIetems = items.filter(element => {
-    const doesItMatch = (value) => value.toLowerCase().includes(searchUsingURL.toLowerCase().trim());
-    let match = (
-      doesItMatch(element.name)
-      || doesItMatch(element.description)
-      || element.ingredients.some(ingredient => doesItMatch(ingredient))
-      // => i can use find function instead , but (some is better to use) 
-    );
-    if (categoryUsingURL) {
-      // match = match && element.category == categoryUsingURL ;   => for a single category filter :) 
-      match = match && categoryUsingURL.includes(element.category);  // for a multiple category filter :)
-    }
-    if (minPrice)
-      match = match && element.price >= minPrice;
-    if (maxPrice)
-      match = match && element.price <= maxPrice;
-    return match;
-  });
+  const filteredIetems = useMemo(() => {
+    return items.filter(element => {
+      const doesItMatch = (value) => value.toLowerCase().includes(searchUsingURL.toLowerCase().trim());
+      let match = (
+        doesItMatch(element.name)
+        || doesItMatch(element.description)
+        || element.ingredients.some(ingredient => doesItMatch(ingredient))
+        // => i can use find function instead , but (some is better to use) 
+      );
+      if (categoryUsingURL) {
+        // match = match && element.category == categoryUsingURL ;   => for a single category filter :) 
+        match = match && categoryUsingURL.includes(element.category);  // for a multiple category filter :)
+      }
+      if (minPrice)
+        match = match && element.price >= minPrice;
+      if (maxPrice)
+        match = match && element.price <= maxPrice;
+      return match;
+    });
+  } , [param]) ;
 
   return (
     <div className='view'>
