@@ -18,10 +18,10 @@ const useParams = () => {
    * @param {string | string[]} value Parameter value.
    */
   const setParam = (name, value) => {
-    const newParams = URLSearchParams(params);
+    const newParams = new URLSearchParams(params);
     newParams.delete (name) ;
     if (Array.isArray(value)) {
-      value.array.forEach(category => {
+      value.forEach(category => {
         newParams.append(name, category);
       });
     }
