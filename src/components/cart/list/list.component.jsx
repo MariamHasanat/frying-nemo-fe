@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import './list.css'
 import { CartContext } from '../../providers/cart-provider.jsx';
 import CartRow from '../row/row.component';
-import {Trash} from 'phosphor-react'
+import {Smiley} from 'phosphor-react'
 const CartList = (props) => {
 
   const cartContext = useContext(CartContext);
@@ -22,7 +22,7 @@ const CartList = (props) => {
   if (cartContext.cart.length === 0)
     return (
       <div className="no-results">
-        <Trash size={300} />
+        <Smiley size={400} />
         <p>Your Cart is Empty!</p>
       </div>
     );

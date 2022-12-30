@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import './header.css';
 import logo from '../../assets/nemo.svg';
-import {ShoppingCart} from 'phosphor-react';
+import {ShoppingCart, SignOut } from 'phosphor-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../components/providers/user-provider';
 import { CartContext } from '../../components/providers/cart-provider';
-import { SignOut } from 'phosphor-react';
 
 const Header = props => {
 
