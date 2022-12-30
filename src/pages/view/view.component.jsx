@@ -5,7 +5,7 @@ import MenuItem from '../../components/view/menu-item/menu-item.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import './view.css';
 import { fetchItems } from '../../services/view/fetch-items.service';
-import { useMemo } from 'react';
+import { useFilterItems } from '../../hooks/filter-items.hook';
 
 /**
  * @type {Array<{
@@ -24,11 +24,6 @@ const ViewPage = (props) => {
   const [items, setItems] = useState(initialItems);
   //param is an instance of complex class (URLSearchParams) so I need to use get (name) to access specific param 
   const [param, setParam] = useSearchParams();
-  const searchUsingURL = param.get('searchTerms') || '';
-  const categoryUsingURL = param.getAll('category') || '';
-  const minPrice = param.get('min') || '';
-  const maxPrice = param.get('max') || '';
-  // const userContext = useContext(UserContext);
 
   const setParams = (addTo, value) => {
     let newParam = new URLSearchParams(param);
@@ -53,40 +48,20 @@ const ViewPage = (props) => {
     }
   };
 
+  const filteredIetems = useFilterItems(items) ;
+
   useEffect(() => {
     getMenuItems();
-    return (() => console.log('Im out'));
   }, []);
-
-  const filteredIetems = useMemo(() => {
-    return items.filter(element => {
-      const doesItMatch = (value) => value.toLowerCase().includes(searchUsingURL.toLowerCase().trim());
-      let match = (
-        doesItMatch(element.name)
-        || doesItMatch(element.description)
-        || element.ingredients.some(ingredient => doesItMatch(ingredient))
-        // => i can use find function instead , but (some is better to use) 
-      );
-      if (categoryUsingURL) {
-        // match = match && element.category == categoryUsingURL ;   => for a single category filter :) 
-        match = match && categoryUsingURL.includes(element.category);  // for a multiple category filter :)
-      }
-      if (minPrice)
-        match = match && element.price >= minPrice;
-      if (maxPrice)
-        match = match && element.price <= maxPrice;
-      return match;
-    });
-  } , [param , items]) ;
 
   return (
     <div className='view'>
       <h1 align='center'>View Menu Items</h1>
       <FilterBar
-        searchUsingURL={searchUsingURL}
-        categoryUsingURL={categoryUsingURL}
-        maxPrice={maxPrice}
-        minPrice={minPrice}
+        searchUsingURL={param.get('searchTerms') || ''}
+        categoryUsingURL={param.getAll('category') || ''}
+        maxPrice={param.get('max') || ''}
+        minPrice={param.get('min') || ''}
         param={param}
         setParam={setParam}
         setParams={setParams}
