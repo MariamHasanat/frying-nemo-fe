@@ -2,11 +2,11 @@ import { useMemo } from "react";
 import { useParams } from "../hooks/params.hook";
 
 
-const useFilterItems = (menuItems) => {
+const useFilterItems = (menuItems , isTourist) => {
   const { param } = useParams() ;
   
   const filteredIetems = useMemo(() => {
-    return menuItems.filter(element => {
+    const filtered = menuItems.filter(element => {
       const doesItMatch = (value) => value.toLowerCase().includes(param.searchUsingURL.toLowerCase().trim());
       let match = (
         doesItMatch(element.name)
@@ -24,7 +24,12 @@ const useFilterItems = (menuItems) => {
         match = match && element.price <= param.maxPrice;
       return match;
     });
-  } , [param , menuItems]) ;
+    if (isTourist) {
+      return filtered.map (item => ({...item , price: (item.price * 2)}))
+    } else {
+      return filtered
+    }
+  } , [param , menuItems , isTourist]) ;
   return filteredIetems ;
 }
 export {useFilterItems} ;

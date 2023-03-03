@@ -5,6 +5,7 @@ import MenuItem from '../../components/view/menu-item/menu-item.component';
 import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import { fetchItems } from '../../services/view/fetch-items.service';
 import { useFilterItems } from '../../hooks/filter-items.hook';
+import useToggle from '../../hooks/toggle.hook';
 
 /**
  * @type {Array<{
@@ -22,6 +23,7 @@ const ViewPage = () => {
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState(initialItems);
   //param is an instance of complex class (URLSearchParams) so I need to use get (name) to access specific param 
+  const [isTourist , toggleIsTourist] = useToggle(false)
 
   const getMenuItems = async () => {
     setLoading(true);
@@ -35,7 +37,7 @@ const ViewPage = () => {
     }
   };
 
-  const filteredIetems = useFilterItems(items) ;
+  const filteredIetems = useFilterItems(items , isTourist) ;
 
   useEffect(() => {
     getMenuItems();
@@ -44,7 +46,7 @@ const ViewPage = () => {
   return (
     <div className='view'>
       <h1 align='center'>View Menu Items</h1>
-      <FilterBar />
+      <FilterBar isTourist = {isTourist} toggleIsTourist = {toggleIsTourist} />
       {loading
         ? <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Spinner />

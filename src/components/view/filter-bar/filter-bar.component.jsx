@@ -5,7 +5,15 @@ import CATEGORIES from '../../../data/constants';
 import { useParams } from '../../../hooks/params.hook';
 import './filter-bar.css';
 
-const FilterBar = () => {
+/**
+ * Renders a filters bar.
+ * @param {{ 
+*  isTourist: boolean;
+*  toggleIsTourist: () => void;
+* }} props
+*/
+
+const FilterBar = (props) => {
   const {param , setParam} = useParams() ;
   return (
     <div className='filter-bar'>
@@ -40,6 +48,9 @@ const FilterBar = () => {
             }}
           />);
         })}
+      </div>
+      <div className="tourists">
+        <CheckBox label="Tourist" checked={props.isTourist} onChange={props.toggleIsTourist} />
       </div>
     </div>
   );
