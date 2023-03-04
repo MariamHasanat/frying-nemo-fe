@@ -5,7 +5,7 @@ const useParams = () => {
   const [params, setParams] = useSearchParams();
 
   const myParams = useMemo(() => {
-    const searchTermsFromURL = params.get('searchTerms') || '';
+    const searchTermsFromURL = params.get('searchTerms') || "";
     const categoriesFromURL = params.getAll('category') || [];
     const maxFromUrl = +params.get('max') || "";
     const minFromUrl = +params.get('min') || "";

@@ -3,7 +3,6 @@ import useParams from '../../../hook/params.hook';
 import Input from '../../input/input.component';
 import CheckBox from '../check-box/check-box';
 import './filter.css';
-
 /**
  *
  * @param {{
@@ -12,6 +11,7 @@ import './filter.css';
  * setParams:(name :string , value : string | string[]) => void
  * }} props
  */
+
 
 /**
  * Renders a filters bar.
@@ -22,27 +22,18 @@ import './filter.css';
  */
 
 const FilterBar = (props) => {
-  const { myParams, setParam} = useParams();
-  const HandelFilter = (name, inputValue) => {
-    const newParams = new URLSearchParams(props.params);
-    if (inputValue) {
-      newParams.set(name, inputValue);
-    } else {
-      newParams.set(name, inputValue);
-    }
-    props.setParams(newParams);
-  };
-  
+  const { myParams, setParam} = useParams();  
   return (
     <div className="filter-bar">
       <div>
         <Input
-          label='search'
           type="search"
-          placeholder='Search'
-          value={myParams.searchTerm}
-          onChange={e => setParam("searchTerm", e.target.value)}
+          label="Search for Item"
+          value={myParams.searchTermsFromURL || ''}
+          onChange={e => setParam('searchTerms', e.target.value)}
+          placeholder="Search"
         />
+
       </div>
       <div className="categories">
 
@@ -67,14 +58,14 @@ const FilterBar = (props) => {
           type="text"
           placeholder='Max'
           value={myParams.maxFromUrl}
-          onChange={(e) => HandelFilter('max', e.target.value)}
+          onChange={(e) => setParam('max', e.target.value)}
         />
         <label >Min price</label>
         <Input
           type="text"
           placeholder='Min'
           value={myParams.minFromUrl}
-          onChange={(e) => HandelFilter('min', e.target.value)}
+          onChange={(e) => setParam('min', e.target.value)}
         />
       </div>
       </div>
