@@ -1,15 +1,21 @@
-import React from "react";
-import Input from "../../../../common/input/input.component";
-import CheckBox from "../../../../common/check-box/check-box.component";
-import CATEGORIES from "../../../../../data/constant.js";
-import useParams from "../../../../../hooks/params.hook";
+import React from 'react';
+import './filter-bar.css';
+import Input from '../../../../common/input/input.component';
+import CATEGORIES from '../../../../../data/constant';
+import CheckBox from '../../../../common/toggle-bullets/check-box.component';
+import useParams from '../../../../../hooks/params.hook';
+
 
 /**
  * Renders a filters bar.
- *
+ * @param {{ 
+ *  isTourist: boolean;
+ *  toggleIsTourist: () => void;
+ * }} props
  */
 const FilterBar = (props) => {
-  const {myParams, setParam} = useParams();
+  const { myParams, setParam } = useParams();
+
   return (
     <div className="filter-bar">
       <Input
@@ -19,42 +25,29 @@ const FilterBar = (props) => {
         onChange={e => setParam('searchTerms', e.target.value)}
         placeholder="Search"
       />
-         <Input
-        type="number"
-        value={props.min}
-        onChange={e => props.setParam('min', e.target.value)}
-        placeholder="MinPrice"
-      />
-      <Input
-        type="number"
-        value={props.max}
-        onChange={e => props.setParam('max', e.target.value)}
-        placeholder="MaxPrice"
-      />
-
-           <div className="categories">
-        {CATEGORIES.map(item => (
+      <div className="categories">
+        {CATEGORIES.map(cat => (
           <CheckBox
-            key={item}
-            label={item}
-            checked={myParams.categories.includes(item)}
+            key={cat}
+            label={cat}
+            checked={myParams.categoriesFromURL.includes(cat)}
             onChange={e => {
               const updated = e.target.checked
-                ? [...myParams.categories, item]
-                : myParams.categories.filter(category => category !== item);
+                ? [...myParams.categoriesFromURL, cat]
+                : myParams.categoriesFromURL.filter(category => category !== cat);
 
               setParam('category', updated);
             }}
           />
         ))}
       </div>
-
-
-
-
+      <div className="tourists">
+        <CheckBox label="Tourist" checked={props.isTourist} onChange={props.toggleIsTourist} />
+      </div>
     </div>
   );
 };
 
 export default FilterBar;
+
 
