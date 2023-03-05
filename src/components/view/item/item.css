@@ -24,6 +24,9 @@
   background-color: #ffffff6e;
   flex-grow: 1;
 }
+.item-card>.info>a {
+  text-decoration: none;
+}
 
 .item-card>.info>h2 {
   margin: 0;
