@@ -1,14 +1,11 @@
-import { useEffect, useState } from 'react';
 import ItemCard from '../../components/view/item-card/item-card.component';
 import FilterBar from '../../components/view/filter-bar/filter-input.component';
 import './view.css';
 import { useContext } from 'react';
 import { getItemQuantity } from '../../utilities/get-item-quantity';
 import { CartContext } from '../../components/providers/cart-provider';
-import { getItems } from '../../services/items';
 import Spinner from '../../components/core/spinner/spinner';
-import useFilteredItems from '../../hooks/filter-items.hook';
-import useToggle from '../../hooks/toggle.hook';
+import useGetItems from '../../hooks/get-item.hook';
 
 /**
  * @type {Array<{
@@ -21,7 +18,6 @@ import useToggle from '../../hooks/toggle.hook';
  * image: string; 
  * }>}
  */
-const initialItems = [];
 
 
 /**
@@ -33,36 +29,19 @@ const initialItems = [];
  */
 const View = () => {
   const cartContext = useContext(CartContext);
-  const [menuItems, setMenuItems] = useState(initialItems);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-    const getData = async () => {
-      setMenuItems(await getItems());
-      setLoading(false);
-    };
-    getData();
-  }, []);
-
-
-  const [isTourist, setTourist] = useToggle(false);
-  const filteredItems = useFilteredItems(menuItems, isTourist);
+  const { loading, menuItems } = useGetItems();
 
   return (
     <div className="view-page">
       <h1>All Menu Items</h1>
 
-      <FilterBar
-        tourist={isTourist}
-        setTourist={setTourist}
-      />
+      <FilterBar />
       {
         loading ? <Spinner /> :
           <>
             <div className='items-container'>
               {
-                filteredItems.map(
+                menuItems.map(
                   (item, index) => {
                     return (
                       <ItemCard

@@ -60,11 +60,9 @@ const FilterBar = props => {
         label='tourist'
         checked={props.tourist}
         onChange={props.setTourist}
-
       />
       <div className='price-filter'>
         <div className='min'>
-
           <label htmlFor="min">min price</label>
           <input type='number' id='min' min={10} />
         </div>

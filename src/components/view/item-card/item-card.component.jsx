@@ -23,7 +23,7 @@ function ItemCard(props) {
 
   return (
     <div className='card-container'>
-      <img src={props.item.image} alt='food' />
+      <img src={props.item.imageUrl} alt='food' />
 
       <Link to={`/view/${props.item.id}`}>
         <h2>{props.item.name}</h2>

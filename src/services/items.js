@@ -1,5 +1,6 @@
+const API = 'http://localhost:3006';
 const getItems = async () => {
-  return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/')
+  return fetch(`${API}/items`, { method: 'GET' })
     .then((response) => {
       return response.json();
     })
@@ -13,8 +14,7 @@ const getItems = async () => {
  */
 const getItem = async (id) => {
 
-  // console.log('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/' + id);
-  return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/' + id)
+  return fetch(`${API}/items` + id)
     .then(response => {
       return response.json();
     }).catch(e => console.log(e.toString()));
@@ -22,7 +22,7 @@ const getItem = async (id) => {
 };
 
 const createItem = async (item) => {
-  return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu',
+  return fetch(`${API}/items`,
     {
       method: 'POST',
       body: JSON.stringify(item),
