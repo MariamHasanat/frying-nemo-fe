@@ -16,7 +16,7 @@ import './filterBar.css';
  * }} props Component properties object.
  */
 
-const FilterBar = (props) => {
+const FilterBar = () => {
   const {myParams , setParam} = useParam();
 
 
@@ -37,7 +37,7 @@ const FilterBar = (props) => {
       <Input
         type="number"
         value={myParams.maxFromURL || ''}
-        onChange={e => props.setParam('max', e.target.value)}
+        onChange={e => setParam('max', e.target.value)}
         placeholder="Maximum price"
       />
       <div className="category">
@@ -48,10 +48,10 @@ const FilterBar = (props) => {
             checked={myParams.categoriesFromURL.includes(category)}
             onChange={e => {
               const updatedList = e.target.checked
-                ? [...props.categories, category]
-                : props.categories.filter(t => t !== category);
+                ? [...myParams.categoriesFromURL ,category]
+                : myParams.categoriesFromURL.filter(t => t !== category);
 
-              props.setParam('category', updatedList);
+             setParam('category', updatedList);
             }}
           />
         ))}

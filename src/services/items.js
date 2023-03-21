@@ -1,6 +1,6 @@
 
-const getMenu = async () => {
-  return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/')
+const getMenu = async (searchTerm , categories) => {
+  return fetch(`http://127.0.0.1:3001/items?searchTerms=${searchTerm}&category=${categories}`)
     .then((res) => res.json())
     .catch((err) => {
       alert(err.toString());
