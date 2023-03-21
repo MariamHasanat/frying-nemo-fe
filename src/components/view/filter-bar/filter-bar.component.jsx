@@ -8,8 +8,6 @@ import useParams from '../../../hooks/params.hook';
 /**
  * Renders a filters bar.
  * @param {{ 
- *  isTourist: boolean;
- *  toggleIsTourist: () => void;
  * }} props
  */
 const FilterBar = (props) => {
@@ -39,10 +37,7 @@ const FilterBar = (props) => {
             }}
           />
         ))}
-      </div>
-      <div className="tourists">
-        <CheckBox label="Tourist" checked={props.isTourist} onChange={props.toggleIsTourist} />
-      </div>
+      </div>      
     </div>
   );
 };
