@@ -5,8 +5,6 @@ import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import useGetItems from '../../hooks/get-items.hook';
 
 const ViewPage = () => {
-  //param is an instance of complex class (URLSearchParams) so I need to use get (name) to access specific param 
-
   const { loading, items } = useGetItems();
 
   return (

@@ -1,5 +1,5 @@
-const fetchItems = async () => {
-    return fetch ('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/') 
+const fetchItems = async (searchTerms , categories) => {
+    return fetch (`http://localhost:3001/items/?searchTerms=${searchTerms}&categories=${categories}`) 
     .then ((data) =>  data.json()) 
     .catch (error => {alert (error.toString())})
 }
