@@ -6,7 +6,7 @@
 
 
 const getItems = async () => {
-  const res = await fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/');
+  const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/items`);
   const item = await res.json();
   return item;
 
@@ -19,7 +19,7 @@ const getItem = async (id) => {
 };
 
 const createItem = (item) => {
-  return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/',
+  return fetch('http://localhost:3001/items',
     {
       method: 'POST',
       body: JSON.stringify(item)

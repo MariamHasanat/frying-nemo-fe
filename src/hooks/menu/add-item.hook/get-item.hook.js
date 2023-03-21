@@ -2,18 +2,22 @@
 
 import { useState, useEffect } from "react";
 import {getItems} from'./../../../services/items.js'
+import useParams from "../../params.hook.js";
 
 const useGetItems = () => {
 
   const [state, setState] = useState({ menuItems: [], loading: true });
+  const { myParams } = useParams();
   
   const getMenuItems = async () => {
-    setState ({...state , loading : true})
-    const items = await getItems();
+    setState ({...state , loading : true});
+
+    const items = await getItems(myParams.searchTermsFromURL);
     setState({loading : false , menuItems : items})
   };
 
-  useEffect(() => { getMenuItems(); }, []);
+  useEffect(() => { getMenuItems(); }, [myParams]);
+
 
   return {
     ...state
