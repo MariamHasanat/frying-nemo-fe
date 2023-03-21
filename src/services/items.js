@@ -1,47 +1,44 @@
-
-const getItems = () =>{
-  return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/').then(async (response) =>{
-    const items = await response.json();
-    return items;
-  }).catch((error) => {
-    alert(error.toString);
-  });
+const getItems = () => {
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items`)
+    .then(async (response) => {
+      const items = await response.json();
+      return items;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 /**
  * Fake Fetching of single item
- * @param {number} id 
+ * @param {number} id
  */
- const getItem = async (id) => {
+const getItem = async (id) => {
   try {
-    const item= await fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/' + id);
-    if(item.status === 200){
-      const itemRes = await item.json();  
+    const item = await fetch(
+      "https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/" + id
+    );
+    if (item.status === 200) {
+      const itemRes = await item.json();
       return itemRes;
-    }else{
+    } else {
       return null;
     }
   } catch (error) {
-    
-   return undefined; 
+    return undefined;
   }
 };
-const createItem = (item) =>{
-  fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/',
-  {
-    method: 'POST',
+const createItem = (item) => {
+  fetch("https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/", {
+    method: "POST",
     body: JSON.stringify(item),
-    
-  }
-  ).then(response =>{
-    console.log(response);
-    return true;}).catch
-    (error =>{
-    console.log(error);
-    return false;})
-
-}
-export {
-  getItem,
-  getItems,
-  createItem
+  })
+    .then((response) => {
+      console.log(response);
+      return true;
+    })
+    .catch((error) => {
+      console.log(error);
+      return false;
+    });
 };
+export { getItem, getItems, createItem };

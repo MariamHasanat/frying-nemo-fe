@@ -7,9 +7,7 @@ import "../../common.css";
 import PriceBar from "../view/price-bar/price-bar.component";
 import { useContext } from "react";
 import { CartContext } from "../providers/cart-provider.component";
-import { getItems } from "../../services/items";
-import { useEffect,useState} from "react";
-import { useFilterItems } from "../../hooks/filter-items.hook";
+import useGetItems from "../../hooks/add-item/get-items.hook";
 //import { useParams } from "react-router-dom";
 
 /**
@@ -25,25 +23,10 @@ import { useFilterItems } from "../../hooks/filter-items.hook";
  */
 const Cards =  (props) => {
   const cartContext = useContext(CartContext);
-   //localStorage.getItem("menuItems").length ? [...JSON.parse(localStorage.getItem("menuItems"))]: [];
   const [searchParams, setSearchParams] = useSearchParams();
-  // const {myParams} = useParams();
   const searchTermsFromURL = searchParams.get('q') || '';
   const categoryFromURL = searchParams.get('category') || '';
-  const [menuItems,setMenuItems] = useState([]);
- 
-
-
-  const getMenuItems = async () => {
-    const items = await getItems();
-    setMenuItems (items);
-};
-
-useEffect (()=>{
-  getMenuItems();
-},[]);
- // cons searchList = useMemo
-  const searchList= useFilterItems(menuItems);
+  const items= useGetItems();
   const getCartQuantity = (id) => {
     const currentCartItem = cartContext.cart.find(cartItem => (cartItem.meal.id === id));
     if (currentCartItem) {
@@ -52,7 +35,7 @@ useEffect (()=>{
       return 0;
     }
   };
-
+ 
   return (
     <div>
         <FilteredSearch
@@ -65,7 +48,7 @@ useEffect (()=>{
         />
       
     <div className="card-container">
-      {searchList.map((item, index) => {
+      {items.menuItems.map((item, index) => {
         return (
 
             <div className="card" key={index}>
