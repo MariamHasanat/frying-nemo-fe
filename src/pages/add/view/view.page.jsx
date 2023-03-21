@@ -1,63 +1,25 @@
 import Item from '../../../components/view/item/item/item.component';
 import './view.css';
-import { useState, useEffect, useContext } from 'react';
+import {  useContext } from 'react';
 import FilterBar from '../../../components/view/item/item/filter-bar/filter-bar.component';
 import Spinner from '../../../components/core/header/spinner/spinner.component';
 import { CartContext } from '../../../components/provider/cart.provider';
 import { getCartQuantity } from '../../../utils/cart';
-import {getItems} from '../../../services/item';
-import useFilterItem from '../../../hooks/items.hook';
+import useGetItem from '../../../hooks/menu/get-items.hook';
+
+
 
         
 
-/**
- * @type {Array<{
- * id: number;
- * name: string;
- * description: string;
- * ingredients: string[];
- * price: number;
- * category: string;
- * image: string;
- * }>}
- */
-const initialItems = [];
+
+
 
 
 const ViewPage = () => {
-  const [menuItems, setMenuItems] = useState(initialItems);
-  const [loading, setLoading] = useState(false);
-  
+  const { loading, menuItems } = useGetItem();
  const cartContext = useContext(CartContext);
   
 
-  const getMenuItems = async () => {
-    setLoading(true);
-    fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/')
-    .then(async (res) => {
-      const jsonRes = await res.json();
-      setMenuItems(jsonRes);
-    })
-    .catch((error) => {
-      alert(error.toString());
-    });
-  // const items = JSON.parse(localStorage.menuItems || '[]');
-  setLoading(false);
-
- 
-
-};
-
-  useEffect(() => {
-    // To check if the user is already logged in, send him to the view page
-   /* if (!userContext.user?.id) {
-      navigate('/login', { replace: false });
-    }*/
-
-    getMenuItems();
-  }, []);
-
-  const filteredItems = useFilterItem(menuItems);
 
 
   return (
@@ -70,8 +32,8 @@ const ViewPage = () => {
           : (
             <div className="items-container">
               {
-                filteredItems.length
-                  ? filteredItems.map((item, index) => 
+                menuItems.length
+                  ? menuItems.map((item, index) => 
                   <Item
                   data={item}
                   key={item.name + index}
