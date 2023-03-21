@@ -49,16 +49,16 @@ const ViewItemPage = (props) => {
           <div className="img">
             <Slider {...settings}>
               <div>
-                <img src={currentItem.image} alt="food" />
+                <img src={currentItem.imageUrl} alt="food" />
               </div>
               <div>
-                <img src={currentItem.image} alt="food" />
+                <img src={currentItem.imageUrl} alt="food" />
               </div>
               <div>
-                <img src={currentItem.image} alt="food" />
+                <img src={currentItem.imageUrl} alt="food" />
               </div>
               <div>
-                <img src={currentItem.image} alt="food" />
+                <img src={currentItem.imageUrl} alt="food" />
               </div>
             </Slider>
           </div>
