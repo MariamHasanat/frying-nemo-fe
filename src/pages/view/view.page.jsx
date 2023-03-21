@@ -1,50 +1,23 @@
 import Item from './item/item.jsx';
 import './viewPage.css';
 import Spinner from '../../components/spinner/spinner.jsx';
-import { useState, useEffect, useContext } from 'react';
-// import { useSearchParams } from 'react-router-dom';
+import { useContext } from 'react';
 import FilterBar from './filter-bar/filter.bar.component.jsx';
 import { CartContext } from '../../components/providers/cart-provider';
 import { getCartQuantity } from '../../utils/cart';
-import { getItems } from '../../services/items.js';
-import useFilteredItems from '../../hooks/item.hooks.js';
-import useToggle from '../../hooks/toggle.hook';
-const initialItems = [];
+import useGetItems from '../../hooks/menu/items.hook.js';
+
 
 const ViewPage = (props) => {
-  const [menuItems, setMenuItems] = useState(initialItems);
-  const [loading, setLoading] = useState(false);
-  const [isTourist, setIsTourist] = useToggle(false);
-
+  const { menuItems, loading } = useGetItems();
   const cartContext = useContext(CartContext);
-
-  const getMenuItems = () => {
-    setLoading(true);
-
-    // Run the code inside after 1000 milliseconds (1 Second)
-    setTimeout(async () => {
-
-      const items = await getItems();
-      setMenuItems(items);
-
-      setLoading(false);
-    }, 1000);
-  };
-
-
-
-  useEffect(() => {
-    getMenuItems();
-  }, []);
-
-  const filteredItems = useFilteredItems(menuItems, isTourist);
 
   return (
     <div className="view-page">
       <div className='title'>
 
         <h1>View Menu Items</h1>
-        <FilterBar isTourist={isTourist} setIsTourist={setIsTourist} />
+        <FilterBar />
 
       </div>
       {
@@ -53,8 +26,8 @@ const ViewPage = (props) => {
           : (
             <div className="items-container">
               {
-                filteredItems?.length
-                  ? filteredItems.map((item, index) => (
+                menuItems?.length
+                  ? menuItems.map((item, index) => (
                     <Item
                       data={item}
                       key={item.name + index}

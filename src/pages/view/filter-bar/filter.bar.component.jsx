@@ -41,13 +41,6 @@ const Filter = (props) => {
           />
         ))}
       </div>
-      <div className='tourist'>
-        <CheckBox
-          label='Tourist'
-          value={props.isTourist} 
-          onChange={props.setIsTourist}
-        />
-      </div>
     </div>
 
   );
