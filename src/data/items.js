@@ -1,5 +1,5 @@
-const getItems =  () => {
-  return fetch("https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/")
+const getItems =  (searchTerm,categories) => {
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items?searchTerms=${searchTerm}&categories=${categories}`)
     .then((response) => {
       const jsonRes = response.json();
       return jsonRes;
