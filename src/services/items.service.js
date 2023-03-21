@@ -1,6 +1,6 @@
 
-const fetchItems = (searchTerm) => {
-  return fetch(`${process.env.REACT_APP_SERVER_URL}/items?searchTerms=${searchTerm}`)
+const fetchItems = (searchTerm, categories) => {
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items?searchTerms=${searchTerm}&categories=${categories}`)
     .then((response) => response.json())
     .catch((error) => {
       alert(error.toString());

@@ -13,8 +13,9 @@ const useGetItems = () => {
 
   const getMenuItems = async () => {
     setState({ ...state, loading: true });
+    const categories = JSON.stringify(myParams.categoriesFromURL);
+    const items = await fetchItems(myParams.searchTermsFromURL, categories);
     
-    const items = await fetchItems(myParams.searchTermsFromURL);
     setState({ loading: false, menuItems: items });
   };
 
