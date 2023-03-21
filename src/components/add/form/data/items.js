@@ -1,17 +1,10 @@
 
 
-const fetchItemsApi = async ( searchTerm) => {
+const fetchItemsApi = async ( searchTerm,categories) => {
 
-  const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/items?searchTerm=${searchTerm}`);
+  const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/items?searchTerm=${searchTerm}&categories=${categories}`);
   return response.json();
 
-  // return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/')
-  //   .then( (res) => {
-  //     return  res.json();
-  //   })
-  //   .catch((err) => {
-  //     alert(err.toString());
-  //   });
 };
 
 const getItem = async (id) => {

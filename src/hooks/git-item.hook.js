@@ -5,22 +5,22 @@
 
 
 import {useState , useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom';
 import { fetchItemsApi } from '../components/add/form/data/items';
 import useSearchItem from './searchItem.hook';
  const useGetitems =()=>{
     const [state ,setState ]= useState({menuItems:[],loading:true});
-   const {myParams} = useSearchItem();
+   const { myParam} = useSearchItem();
 
 
     const getMenuItems = async () => {
+      console.log(myParam);
         setState ({...state,loading:true});
-     
-        const items = await fetchItemsApi(myParams.searchTermsFromURL);
+        const  categories = JSON.stringify(myParam.categoriesFromURL)
+        const items = await fetchItemsApi(myParam.searchFromUrl,categories);
         setState ({menuItems:items,loading:false});
       };
 
-      useEffect (()=>{getMenuItems()},[myParams]);
+      useEffect (()=>{getMenuItems()},[myParam]);
       
       return {...state};
  }

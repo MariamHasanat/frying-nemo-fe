@@ -12,7 +12,7 @@ const Item = (props) => {
       <div className='info'>
       <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
          <p>{props.data.description}</p>
-         <p className='ingredients'> {props.data.ingredients.join(", ")} </p>
+         <p className='ingredients'> {props.data.ingredients?.join(", ")} </p>
          <hr/>
       </div>
     
