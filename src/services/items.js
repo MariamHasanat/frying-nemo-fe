@@ -1,5 +1,5 @@
-const getItems = () => {
-  return fetch(`${process.env.REACT_APP_SERVER_URL}/items`)
+const getItems = (searchTerm,categories) => {
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items?searchTerms=${searchTerm}&categories=${categories}`)
     .then(async (response) => {
       const items = await response.json();
       return items;

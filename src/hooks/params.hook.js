@@ -1,17 +1,14 @@
-import React from "react";
-import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
-
-
+import { useMemo } from "react";
 
 const useParams =()=>{
   const [searchParams,setSearchParams] = useSearchParams();
 
-  const myParams =() =>{
-    const categoryFromURL = searchParams.get('category') || '';
-    const searchTermsFromURL = searchParams.get('q') || '';
-    return {categoryFromURL,searchTermsFromURL};
-  };
+  const myParams = useMemo(() => {
+    const searchTermsFromURL = searchParams.get('searchTerms') || '';
+    const categoriesFromURL = searchParams.getAll('category') || [];
+    return { searchTermsFromURL, categoriesFromURL };
+  }, [searchParams]);
 
   const setParam = (str,value)=>{
     const newParams = new URLSearchParams(searchParams);
