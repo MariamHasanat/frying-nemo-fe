@@ -23,7 +23,7 @@ const Form = (props) => {
   const submitHandler = async e => {
     e.preventDefault();
     // const name = e.target.name.value;
-    const image = e.target.image.value;
+    const imageUrl = e.target.image.value;
     const description = e.target.description.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
@@ -32,7 +32,7 @@ const Form = (props) => {
     const menuItem = {
       id: Date.now(),
       name: name,
-      image,
+      imageUrl: imageUrl,
       description: description,
       price: price,
       category: category,

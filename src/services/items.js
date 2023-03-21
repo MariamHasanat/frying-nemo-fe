@@ -8,6 +8,7 @@
 const getItems = async (searchTerm,categories) => {
   const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/items?searchTerms=${searchTerm}&category=${categories}`);
   const item = await res.json();
+ 
   return item;
 
 };

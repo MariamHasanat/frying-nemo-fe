@@ -11,9 +11,9 @@ const useGetItems = () => {
   
   const getMenuItems = async () => {
     setState ({...state , loading : true});
-    const categories = myParams.categoriesFromURL ;
+    const categories = JSON.stringify(myParams.categoriesFromURL) ;
     const items = await getItems(myParams.searchTermsFromURL, categories);
-    setState({loading : false , menuItems : items})
+    setState({loading : false , menuItems : items.items})
   };
 
   useEffect(() => { getMenuItems(); }, [myParams]);

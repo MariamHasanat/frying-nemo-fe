@@ -10,7 +10,7 @@ import Card from '../../../components/common/card/card.component';
  *     data:{
  *     id: number;
  *     name: string;
- *     image: string;
+ *     imageUrl: string;
  *     description: string;
  *     price: number;
  *     category: string;
@@ -22,7 +22,7 @@ const Item = (props) => {
   return (
     <Card>
       <div className="img">
-        <img src={props.data.image} alt="food" />
+        <img src={props.data.imageUrl} alt="food" />
       </div>
       <div className="info">
         <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>

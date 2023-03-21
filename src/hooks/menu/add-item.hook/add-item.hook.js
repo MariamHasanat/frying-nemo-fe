@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const useAddItem = () => {
@@ -6,42 +6,42 @@ const useAddItem = () => {
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
 
-    /**
-   * Handler function for the form onSubmit event.
-   * @param {React.FormEvent<HTMLFormElement>} e Event object.
-   */
-     const submitHandler = e => {
-      e.preventDefault();
-  
-      const description = e.target.description.value;
-      const image = e.target.image.value;
-      const price = Number(e.target.price.value);
-      const category = e.target.category.value;
-  
-      const menuItem = {
-        id: Date.now(),
-        name: name,
-        image,
-        description: description,
-        price: price,
-        category: category,
-        ingredients: ingredients
-      };
-  
-      const itemsJson = localStorage.getItem('menuItems');
-      const items = JSON.parse(itemsJson) || [];
-  
-      items.push(menuItem);
-  
-      localStorage.setItem('menuItems', JSON.stringify(items));
-  
-      navigate('/view');
+  /**
+ * Handler function for the form onSubmit event.
+ * @param {React.FormEvent<HTMLFormElement>} e Event object.
+ */
+  const submitHandler = e => {
+    e.preventDefault();
+
+    const description = e.target.description.value;
+    const imageUrl = e.target.imageUrl.value;
+    const price = Number(e.target.price.value);
+    const category = e.target.category.value;
+
+    const menuItem = {
+      id: Date.now(),
+      name: name,
+      imageUrl,
+      description: description,
+      price: price,
+      category: category,
+      ingredients: ingredients
     };
 
-    /**
-   * Handles on change events on the name field.
-   * @param {React.ChangeEvent<HTMLInputElement>} e On change event object.
-   */
+    const itemsJson = localStorage.getItem('menuItems');
+    const items = JSON.parse(itemsJson) || [];
+
+    items.push(menuItem);
+
+    localStorage.setItem('menuItems', JSON.stringify(items));
+
+    navigate('/view');
+  };
+
+  /**
+ * Handles on change events on the name field.
+ * @param {React.ChangeEvent<HTMLInputElement>} e On change event object.
+ */
   const onNameChange = (e) => {
     let value = e.target.value;
 
@@ -58,17 +58,17 @@ const useAddItem = () => {
   };
 
   return {
-    
+
     name: {
       value: name,
-      onChange : onNameChange
+      onChange: onNameChange
     },
-    ingredients:{
+    ingredients: {
       value: ingredients,
       setValue: setIngredients
     },
     submit: submitHandler
-  }
+  };
 };
 
 export default useAddItem;

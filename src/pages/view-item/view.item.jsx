@@ -12,7 +12,7 @@ import { CartContext } from '../../components/providers/cart-provider';
  * ingredients: string[];
  * price: number;
  * category: string;
- * image: string;
+ * imageUrl: string;
  * }>}
  */
 
