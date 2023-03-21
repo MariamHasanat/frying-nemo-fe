@@ -1,8 +1,8 @@
 
 
-const fetchItemsApi = async () => {
+const fetchItemsApi = async ( searchTerm) => {
 
-  const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/items`);
+  const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/items?searchTerm=${searchTerm}`);
   return response.json();
 
   // return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/')
