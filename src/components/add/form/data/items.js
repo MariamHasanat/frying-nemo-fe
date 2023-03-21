@@ -1,8 +1,8 @@
-import { json } from "react-router-dom";
+
 
 const fetchItemsApi = async () => {
 
-  const response = await fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/');
+  const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/items`);
   return response.json();
 
   // return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/')
