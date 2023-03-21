@@ -1,5 +1,5 @@
 import { CATEGORY } from '../../../data/cons';
-import useParams from '../../../hook/params.hook';
+import useParams from '../../../hook/menu/params.hook';
 import Input from '../../input/input.component';
 import CheckBox from '../check-box/check-box';
 import './filter.css';
@@ -13,13 +13,7 @@ import './filter.css';
  */
 
 
-/**
- * Renders a filters bar.
- * @param {{ 
- *  isTourist: boolean;
- *  toggleIsTourist: () => void;
- * }} props
- */
+
 
 const FilterBar = (props) => {
   const { myParams, setParam} = useParams();  

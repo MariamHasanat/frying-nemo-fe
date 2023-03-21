@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createItem } from '../data/items';
+import { createItem } from '../../data/items';
 
 const useAddItem = () => {
   const [name, setName] = useState('');
