@@ -7,6 +7,7 @@ import PriceBar from '../../components/common/PriceBar/PriceBar';
 import { getCartQuantity } from '../../data/getCartQuantity';
 import { CartContext } from '../../common/Provider/cart-provider-component';
 import { useContext } from 'react';
+import UseGetItem from '../../hooks/menu/get-items';
 /**
  * @type {Array<{
  * id: number;
@@ -24,6 +25,8 @@ const ViewItemPage = (props) => {
 const nav=useNavigate()
   const [currentItem, setCurrentItem] = useState({});
   const [loading, setLoading] = useState(true);
+
+ 
 
 
   const ContextCart = useContext(CartContext);

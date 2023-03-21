@@ -7,7 +7,7 @@ import Guard from "./components/core/Guard/Guard-component";
 import ViewItemPage from "./pages/view-item/view-item.component";
 import LoginPage from "./pages/login/login.compent";
 import React from "react";
-import Provider from "./common/Provider/Provider-commponet";
+import UserProvider from "./common/Provider/Provider-commponet";
 import CartProvider from "./common/Provider/cart-provider-component";
 import CartPage from "./pages/cart/cart.page";
 import Sighin from "./pages/login/Sighin";
@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div>
-      <Provider>
+      <UserProvider>
         <CartProvider>
           <BrowserRouter>
             < Header  />
@@ -39,7 +39,7 @@ function App() {
             </div>
           </BrowserRouter>
         </CartProvider>
-      </Provider>
+      </UserProvider>
     </div>
   );
 }

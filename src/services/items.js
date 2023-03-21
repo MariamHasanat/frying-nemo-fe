@@ -1,11 +1,7 @@
 
-/**
- * Fake Fetching of single item
- * @param {number} id 
- */
-const getItems = async () => {
-  return fetch("https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/").
-    then(Response => Response.json())
+const getItems = async (searchTerms,categories) => {
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items?searchTerms=${searchTerms}&category=${categories}`)
+    .then(Response => Response.json())
     .catch(err => alert(err.toString()));
 
 };

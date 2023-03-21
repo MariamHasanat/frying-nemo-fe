@@ -48,10 +48,10 @@ const reduce = (cart, action) => {
     }
     case 'SET':
       return action.cart;
-  
+
 
   }
-  
+
   return cart;
 };
 

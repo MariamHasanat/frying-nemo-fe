@@ -8,7 +8,7 @@ import { UserContext } from '../../App';
  * @param {{children:React.ReactNode;}} pro 
  * @returns
  */
-function Provider(pro) {
+function UserProvider(pro) {
   const initialization=JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(initialization);
   const setUserOverride = user => {
@@ -30,4 +30,4 @@ function Provider(pro) {
  )
 }
 
-export default Provider
+export default UserProvider
