@@ -13,8 +13,6 @@ import Loading from '../../components/common/loading/loading.component';
 import './view.css';
 
 const ViewPage = () => {
-    const [isTourist, setIsTourist] = useToggle();
-    
     const [menu, setMenu] = useState([]);
     const [loading, setLoading] = useState(true);
     const cartContext = useContext(CartContext);
@@ -30,7 +28,7 @@ const ViewPage = () => {
         getMenu();
     }, []);
     
-    const filteredMenu = useFilterItems(menu, isTourist);
+    const filteredMenu = useFilterItems(menu);
     
     const getItemQuantity = (id) => {
         const currentItem = cartContext.cart?.find(item => item.meal.id === id);
@@ -42,10 +40,6 @@ const ViewPage = () => {
 
     return (
         <div className='view-page'>
-            <h1>view items
-                <Checkbox label='Are you a Tourist?' checked={isTourist} onChange={setIsTourist} />
-            </h1>
-
             <FilterBar />
 
             {loading
