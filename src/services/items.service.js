@@ -1,6 +1,6 @@
 
 const fetchItems = () => {
-  return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu')
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items`)
     .then((response) => response.json())
     .catch((error) => {
       alert(error.toString());
