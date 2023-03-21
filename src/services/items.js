@@ -1,7 +1,7 @@
 const API = 'http://localhost:3006';
 const getItems = async (category, searchTerm) => {
   console.log({ category });
-  return fetch(`${API}/items?category=${category || ''}&searchTerms=${searchTerm || ''}`,
+  return fetch(`${API}/items?category=${category}&searchTerms=${searchTerm}`,
     {
       method: 'GET',
       headers: {
