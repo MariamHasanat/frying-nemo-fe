@@ -4,10 +4,9 @@ import './filter-bar.css';
 import { CATEGORIES } from '../../../data/constants';
 import Input from '../../common/input/input.component';
 import ToggleBullet from '../../common/toggle-bullets/toggle-bullet.component';
-import CheckBox from '../../common/check-box/check-box.component';
 import useParams from '../../../hooks/view/params.hook';
 
-const FilterBar = (props) => {
+const FilterBar = () => {
 
     const { myParams, setParam } = useParams();
 
@@ -22,7 +21,7 @@ const FilterBar = (props) => {
                 placeholder={'Search'}
                 onChange={(e) => { setParam('searchTerms', e.target.value); }}
             />
-            <Input
+            {/* <Input
                 className='price-filter'
                 type={'number'}
                 label={'Min'}
@@ -39,7 +38,7 @@ const FilterBar = (props) => {
                     const max = e.target.value;
                     props.setMax(max);
                 }}
-            />
+            /> */}
             <div className='categories-in-view-page'>
                 {
                     CATEGORIES.map((item, index) => {
@@ -50,13 +49,6 @@ const FilterBar = (props) => {
                         />;
                     })
                 }
-            </div>
-            <div className='tourist'>
-                <CheckBox
-                    label='tourists'
-                    checked={props.isTourist}
-                    onChange={props.toggleIsTourist}
-                />
             </div>
         </div>
     );

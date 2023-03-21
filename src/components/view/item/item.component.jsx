@@ -13,7 +13,7 @@ import { useContext } from 'react';
  *      item:{
  *          id: string;
  *          name: string;
- *          image: string;
+ *          imageURL: string;
  *          description: string;
  *          price: number;
  *          category: string;
@@ -27,7 +27,7 @@ const Item = (props) => {
     return (
         <Card>
             <Link to={`/view-details/${props.item.id}`}>
-                <img src={`${props.item.image}?x=${Math.random()}`} alt="food" />
+                <img src={`${props.item.imageURL}?x=${Math.random()}`} alt="food" />
             </Link>
             <div className='info'>
                 <h2>

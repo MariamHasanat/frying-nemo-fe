@@ -1,12 +1,13 @@
 import { useMemo, useState } from "react";
 import useParams from "./params.hook";
 
-const useFilter = (menuItems, isTourist) => {
+const useFilter = (menuItems) => {
     const { myParams } = useParams();
     const [min, setMin] = useState(null);
     const [max, setMax] = useState(null);
 
     const filteredItems = useMemo(() => {
+        console.log('from hook', menuItems);
         const filtered = menuItems.filter((item) => {
             let match = true;
 
@@ -26,11 +27,14 @@ const useFilter = (menuItems, isTourist) => {
             return match;
         });
 
-        if (isTourist)
-            return filtered.map(item => { return { ...item, price: item.price * 2 }; });
+
         return filtered;
-    }, [myParams, menuItems, isTourist, min, max]);
-    return { filteredItems, setMin, setMax };
+    }, [myParams, menuItems, min, max]);
+    return {
+        filteredItems,
+        setMin,
+        setMax
+    };
 };
 
 export default useFilter;

@@ -31,7 +31,6 @@ const useParams = () => {
             if (!value)
                 newParam.delete(typeOfTerm);
         }
-        console.log(newParam.values);
         setParams(newParam);
 
     };

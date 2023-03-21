@@ -1,45 +1,15 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import './view.css';
 import Spinner from "../../components/core/spinner/spinner";
 import FilterBar from "../../components/view/filter-bar/filter-bar.component";
 import Item from "../../components/view/item/item.component";
-import { fetchItems } from "../../services/items.service";
 import { getCartQuantity } from "../../util/cart";
 import { CartContext } from "../../components/providers/cart-provider.component";
-import useToggle from "../../hooks/check-box.hook";
-import useFilter from "../../hooks/view/filter-items.hook";
-
-/**
-* @type {Array<{
-* id:string;
-* name: string;
-* description: string;
-* ingredients: string[];
-* price: number;
-* category: string;
-* img: string;
-* }>}
-*/
-const initialItems = [];
+import useGetItems from "../../hooks/get-items/get-items.hook";
 
 const View = () => {
-    const [menuItems, setMeuItems] = useState(initialItems);
-    const [loading, setLoading] = useState(true);
-    const [isTourist, toggleIsTourist] = useToggle(false);
+    const { loading, menuItems } = useGetItems();
     const cartContext = useContext(CartContext);
-
-    const getMenuItems = async () => {
-        setLoading(true);
-        const items = await fetchItems();
-        setMeuItems(items);
-        setLoading(false);
-    };
-
-    useEffect(() => {
-        getMenuItems();
-    }, []);
-
-    const { filteredItems, setMin, setMax } = useFilter(menuItems, isTourist);
 
     return (
         <div className="div-view">
@@ -47,10 +17,8 @@ const View = () => {
                 Menu Items
             </h1>
             <FilterBar
-                isTourist={isTourist}
-                toggleIsTourist={toggleIsTourist}
-                setMin={setMin}
-                setMax={setMax}
+            // setMin={setMin}
+            // setMax={setMax}
             />
             {
                 loading
@@ -62,8 +30,8 @@ const View = () => {
                     <div className="items">
                         {
 
-                            (filteredItems.length > 0)
-                                ? filteredItems
+                            (menuItems.length > 0)
+                                ? menuItems
                                     .map((item, index) => {
                                         return <Item
                                             item={item}
