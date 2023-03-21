@@ -1,150 +1,14 @@
 import Card from './card';
 import './view.css';
-import React, { useState, useContext } from 'react';
-// import Input from '../../components/common/input/input';
-import './view.css';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react';
 import { FilterBar } from './filter-bar/filter-bar';
-import { CATEGORIES } from '../../data/data';
-import { useEffect } from 'react';
-import { UserContext } from '../../App';
 import { CartContext } from '../../components/providers/cart-provider';
-import { getItem, getItemsFromAPI } from '../../components/services/items';
 import Spinner from '../../components/pop/spinner';
-import { useMemo } from 'react';
-import useItems from '../../components/Hooks/items-filter.hook';
-import useToggle from '../../components/Hooks/toggle.hook';
-/**
-   * @type {Array<
-   * {
-   * id :number
-   * name: string;description: string;
-   * ingredients: string[];
-   * price: number;
-   * category: string;
-   * image: string;}>}
-   */
+import useGetItems from '../../components/Hooks/get-item-hook';
+
 const ViewPage = (props) => {
-  const initial = [];
-  const [menuitems, setMenuItems] = useState(initial);
-
-  const getItems = async () => {
-    setLoading(true);
-    const items = await getItemsFromAPI();
-    setMenuItems(items);
-    setLoading(false);
-
-  };
-
-
+  const { loading, menuItems } = useGetItems();
   const cartContext = useContext(CartContext);
-  // const GetmenuItems = () => JSON.parse(localStorage.menuitems || '[]');
-  const navigate = useNavigate();
-  const userContext = useContext(UserContext);
-  //instance of class 
-  /***  القيم الي يتجي بعد علامة الاستفهانم   */
-  const [params, setParams] = useSearchParams();
-
-  /*************************************************************************move logic to custom hook **************************/
-
-  //my query 
-  // const [search, setSearch] = useState('');
-  // const searchFromURL = params.get("searchTerms") || '';
-  // const categoriesFromURL = params.getAll("categories") || '';
-  // const categoriesURL = params.get("categories") || '';
-  // const maxFromURL = params.get("max") || '';
-  // const minFromURL = params.get("min") || '';
-  // const price = params.get("price") || '';
-  const [loading, setLoading] = useState(true);
-  const [isTourist, toggleIsTourist] = useToggle(false);
-
-
-  /**
-         * Check if search terms are somewhere inside given string.
-          @param {string} value 
-         */
-
-  // const setSearchInLocalStorage = (value) => {
-  //   localStorage.setItem("search-Terms ", value);
-  //   setSearch(value);
-  // };
-
-
-
-
-  useEffect(() => {
-
-    // if (!userContext.user?.id) {
-    //   navigate('/login', { replace: false });
-    // }
-
-    getItems();
-  }, []);
-
-
-
-  const filterItems = useItems(menuitems,isTourist);
-
-  /*************************************************************************move logic to custom hook **************************/
-
-  // const filterItems = useMemo(() => {
-  //   return menuitems.filter(item => {
-  //     /**
-  //          * Check if search terms are somewhere inside given string.
-  //          * @param {string} str 
-  //          */
-
-  //     ///update the value in isMatch method to search from search query in the URL  //easy user experience 
-  //     const isMatch = str => str.toLowerCase().includes(searchFromURL.toLowerCase().trim());
-  //     let match = (
-  //       isMatch(item.name) ||
-  //       isMatch(item.description) ||
-  //       item.ingrediant?.some(ingredient => isMatch(ingredient))
-
-  //     );
-
-  //     if (categoriesFromURL.length) {
-  //       match = match && (categoriesFromURL.includes(item.category));
-  //       console.log(match);
-  //     }
-
-  //     if (categoriesURL) {
-  //       match = match && (item.category === categoriesURL);
-  //     }
-
-  //     if (maxFromURL && minFromURL) {
-  //       match = match && (item.price >= minFromURL && item.price <= maxFromURL);
-
-  //     }
-  //     if (price) {
-  //       match = match && (item.price >= price);
-  //     }
-
-  //     return match;
-  //     // item.name.toLowerCase().includes(search.toLowerCase().trim())
-  //   });
-
-  // }, [params, menuitems]);
-
-  /**
-   * Set query string parameter.
-   * @param {string} name Parameter name.
-   * @param {string | string[]} value Parameter value.
-   */
-
-  /***********************************************************MOVE TO CUSTOM HOOK************************* */
-  // const setParam = (name, value) => {
-  //   const newParams = new URLSearchParams(params);
-
-  //   newParams.delete(name);
-
-  //   if (Array.isArray(value)) {
-  //     value.forEach(item => newParams.append(name, item));
-  //   } else if (value.trim()) {
-  //     newParams.set(name, value.trim());
-  //   }
-  //   setParams(newParams);
-  // };
 
 
   const getCartQuantity = (id, cart) => {
@@ -157,16 +21,9 @@ const ViewPage = (props) => {
   return (
 
     <div className='wrapper' >
-      {/* <h1>View items page</h1> */}
       <br />
       <div className="filter">
-        <FilterBar
-          // searchTerms={params.get("searchTerms")}
-          // categories={params.getAll("categories")}
-          // setParam={setParam}
-          isTourist={isTourist}
-          toggleIsTourist={toggleIsTourist}
-        />
+        <FilterBar />
 
       </div>
 
@@ -177,18 +34,16 @@ const ViewPage = (props) => {
             <div className="container" >
 
               {
-                filterItems.length
-                  ? filterItems.map((item, index) =>
+                menuItems.length
+                  ? menuItems.map((item, index) =>
                     <Card data={item}
                       key={item.name + index}
                       dispatch={cartContext.dispatch}
-                      // cartQuantity={props.cart}
                       cartQuantity={getCartQuantity(item.id, cartContext.cart)}
                     />
                   )
                   : (
                     <div className="no-results">
-                      {/* <img src="./frustrated-realistic.png" alt="No results" /> */}
                       <p>No results found</p>
                     </div>
                   )

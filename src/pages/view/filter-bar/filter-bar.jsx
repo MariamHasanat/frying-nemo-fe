@@ -16,10 +16,8 @@ import useParams from '../../../components/Hooks/use-params.hook';
  * }} props Component properties object.
  */
 export const FilterBar = (props) => {
-  // const { myParams, setParam } = useParams();
   const { myParam, setParam } = useParams();
   const [price, setPrice] = useState(10);
-
   const handelPrice = e => {
     setPrice(e.target.value);
   };
@@ -29,12 +27,6 @@ export const FilterBar = (props) => {
     <div className='wrapper'>
       <div className="input-bar">
         <Input
-
-          //set the vlaue in the search input
-          // onChange={e => setSearch(e.target.value)}
-
-          /// GET THE search value from the local storage 
-          // onChange={e => setSearchInLocalStorage(e.target.value)}
           type="search"
           label="Search for Item"
           value={myParam.searchFromURL}
@@ -44,7 +36,6 @@ export const FilterBar = (props) => {
       </div>
 
 
-      <CheckBox label="Tourist ?  " checked={props.isTourist} onChange={props.toggleIsTourist} />
 
       &nbsp;&nbsp;&nbsp;
 

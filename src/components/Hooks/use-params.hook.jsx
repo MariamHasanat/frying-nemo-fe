@@ -1,28 +1,28 @@
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 
-const useParams =()=>{
+const useParams = () => {
 
   const [params, setParams] = useSearchParams();
 
-const myParam =useMemo(()=>{
-  const searchFromURL = params.get("searchTerms") || '';
-  const categoriesURL = params.get("categoriesMenu") || '';
-  const categoriesFromURL = params.getAll("categories") || [];
-  const maxFromURL = params.get("max") || '';
-  const minFromURL = params.get("min") || '';
-  const price = params.get("price") || '';
+  const myParam = useMemo(() => {
+    const searchFromURL = params.get("searchTerms") || '';
+    const categoriesURL = params.get("categoriesMenu") || '';
+    const categoriesFromURL = params.getAll("categories") || [];
+    const maxFromURL = params.get("max") || '';
+    const minFromURL = params.get("min") || '';
+    const price = params.get("price") || '';
 
-  return { searchFromURL, categoriesURL,categoriesFromURL ,maxFromURL,minFromURL,price};
+    return { searchFromURL, categoriesURL, categoriesFromURL, maxFromURL, minFromURL, price };
 
-}, [params]);
+  }, [params]);
 
 
- /**
-   * Set query string parameter.
-   * @param {string} name Parameter name.
-   * @param {string | string[]} value Parameter value.
-   */
+  /**
+    * Set query string parameter.
+    * @param {string} name Parameter name.
+    * @param {string | string[]} value Parameter value.
+    */
   const setParam = (name, value) => {
     const newParams = new URLSearchParams(params);
 
@@ -35,7 +35,7 @@ const myParam =useMemo(()=>{
     }
     setParams(newParams);
   };
-return { myParam, setParam}
+  return { myParam, setParam }
 
 
 }
