@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import FilterBar from './filter-bar/filter.bar.component.jsx';
 import { CartContext } from '../../components/providers/cart-provider';
 import { getCartQuantity } from '../../utils/cart';
-import useGetItems from '../../hooks/menu/items.hook.js';
+import useGetItems from '../../hooks/menu/add-item.hook/get-item.hook.js';
 
 
 const ViewPage = (props) => {

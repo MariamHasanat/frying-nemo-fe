@@ -1,7 +1,7 @@
 // this hook is used to fetch items (all items or filtered ) from the server , and stores the state of the menu items 
 
-import { useState } from "react";
-import { fetchItems } from "../../services/items.service";
+import { useState, useEffect } from "react";
+import {getItems} from'./../../../services/items.js'
 
 const useGetItems = () => {
 
@@ -9,7 +9,7 @@ const useGetItems = () => {
   
   const getMenuItems = async () => {
     setState ({...state , loading : true})
-    const items = await fetchItems();
+    const items = await getItems();
     setState({loading : false , menuItems : items})
   };
 
