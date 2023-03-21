@@ -3,6 +3,7 @@ const CATEGORIES = [
   `Drink`,
   `Chicken`,
   `Salad`,
+  `Main Dish`,
   'Sweet'
 ]
 

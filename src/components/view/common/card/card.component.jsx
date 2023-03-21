@@ -1,24 +1,20 @@
 import './card.css';
 import Counter from '../counter/counter.component';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { capitalizeFirstLetter } from '../../../../services/utilities';
 import { CartContext } from '../../../core/providers/cart-provider.component';
 
 const Card = ({ item, itemId, itemName, itemCategory, itemPrice, itemDescription, itemIngredients, image, i, ctr }) => {
+  console.log({ item, itemId, itemName, itemCategory, itemPrice, itemDescription, itemIngredients, image, i, ctr });
   const { cart, dispatch } = useContext(CartContext);
 
   const incCounter = () => dispatch({ type: `INCREMENT`, item });
 
   const decCounter = () => dispatch({ type: `DECREMENT`, item });
 
-  const itemQuantity = cart.find(cartItem => cartItem.item.id === item.id)?.quantity || 0;
-
+  const itemQuantity = cart.find(cartItem => cartItem.item._id === item._id)?.quantity || 0;
   return (
-    <div className='card-wrapper' onLoad={(e) => {
-      setTimeout(() => {
-        e.target.offsetParent.style.opacity = 1;
-      }, 50 * i);
-    }}>
+    <div className='card-wrapper'>
       <img src={image} alt="" />
       <div className='info'>
         <a href={`/view/${itemId}`} className='itemName'>{capitalizeFirstLetter(itemName)}</a>

@@ -29,6 +29,7 @@ const useAddItem = () => {
   };
 
   const submitHandler = async e => {
+    console.log(`wt`);
     const resetForm = () => {
       e.target.reset();
       setName('');
@@ -44,21 +45,24 @@ const useAddItem = () => {
     const image = e.target.image.value;
 
     const menuItem = {
-      id,
+      _id: id,
       name,
       description,
       price,
       category,
-      image,
+      imageURL: image,
       ingredients
     };
+
     try {
       await createItem(menuItem);
-    } catch {
+      resetForm();
+    } catch (err) {
+      console.log(err);
       alert(`Error while adding the item`);
     }
-    resetForm();
   };
+
   return {
     name: {
       value: name,

@@ -5,7 +5,7 @@ const reducer = (cart, action) => {
       let found = false;
 
       let newCart = cart.map((cartItem) => {
-        if (cartItem.item.id == action.item.id) {
+        if (cartItem.item._id == action.item._id) {
           found = true;
           return { ...cartItem, quantity: cartItem.quantity + 1 };
         } else return cartItem;
@@ -21,7 +21,7 @@ const reducer = (cart, action) => {
     }
     case `DECREMENT`: {
       let newCart = cart.map((cartItem) => {
-        if (cartItem.item.id == action.item.id) return { ...cartItem, quantity: cartItem.quantity - 1 };
+        if (cartItem.item._id == action.item._id) return { ...cartItem, quantity: cartItem.quantity - 1 };
         else return cartItem;
       });
       newCart = newCart.filter(cartItem => cartItem.quantity != 0);
@@ -29,7 +29,7 @@ const reducer = (cart, action) => {
     }
     case `DELETE`: {
       let newCart = [...cart];
-      newCart = newCart.filter(cartItem => cartItem.item.id != action.item.id);
+      newCart = newCart.filter(cartItem => cartItem.item._id != action.item._id);
       return newCart;
     }
     case `CLEAR`: {

@@ -8,16 +8,16 @@ import { useEffect } from "react";
 import { capitalizeFirstLetter } from "../../services/utilities";
 import { fetchMenuItems } from "../../services/fetchers";
 import { useFilterItems } from "../../hooks/filter-items.hook";
-import useToggle from "../../hooks/toggle.hook";
 import { DataContext } from "../../components/core/providers/data-provider.component";
+import useGetItems from "../../hooks/menu/get-items.hook";
 
 const ViewPage = () => {
-  const [menuItems, setMenuItems] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get("search") || "");
   let categories = searchParams.getAll("category")[0] || "";
+  const { menuItems, loading } = useGetItems(search, categories);
   const filteredItems = useFilterItems(menuItems);
-  const {isToggled, toggle} = useContext(DataContext)
+  const { isToggled, toggle } = useContext(DataContext);
 
   const updateParam = (key, value) => {
     let params = new URLSearchParams(searchParams);
@@ -33,34 +33,12 @@ const ViewPage = () => {
     }
   }, []);
 
-  const fetchItems = () => {
-    fetchMenuItems().then(
-      (res) => {
-        setMenuItems(
-          res.filter((item) => {
-            const fixStr = (str) => str.toLowerCase().trim(); // Helper
-            const isMatch = (str1) => fixStr(str1).includes(fixStr(search)); // Helper
-            return (
-              (isMatch(item.name) ||
-                isMatch(item.description) ||
-                (Array.isArray(item.ingredients) && item.ingredients.some((ing) => ing.includes(search)))) && categories.toLocaleLowerCase().split(",").includes(item.category.toLowerCase())
-            );
-          })
-        );
-      }
-    )
-  }
-
-  if (menuItems.length == 0) {
-    fetchItems();
-  }
-
   return (
     <div className="view-page">
       <div className="header">
         <p>OUR MENU</p>
         <FilterBar
-        toggle={toggle}
+          toggle={toggle}
           searchParams={searchParams}
           updateParam={updateParam}
           search={search}
@@ -69,27 +47,30 @@ const ViewPage = () => {
         ></FilterBar>
       </div>
       <div className="cards">
-        {filteredItems.length > 0 ? (
-          filteredItems.map((item, i) => (
-            <Card
-              key={item.id}
-              item={item}
-              itemId={item.id}
-              itemName={item.name}
-              itemCategory={capitalizeFirstLetter(item.category)}
-              itemDescription={item.description}
-              itemIngredients={item.ingredients
-                .toString()
-                .replaceAll(",", ", ")}
-              itemPrice={item.price*(isToggled? 2 : 1)}
-              image={item.image}
-              i={i}
-              ctr={0}
-            />
-          ))
-        ) : (
-          <div className="none">No items found!</div>
-        )}
+        {!loading ? (
+          filteredItems.length > 0 ? (
+            filteredItems.map((item, i) => (
+              <Card
+                key={item?._id}
+                item={item}
+                itemId={item?._id}
+                itemName={item?.name}
+                itemCategory={capitalizeFirstLetter(item?.category)}
+                itemDescription={item?.description}
+                itemIngredients={item?.ingredients
+                  .toString()
+                  .replaceAll(",", ", ")}
+                itemPrice={item?.price * (isToggled ? 2 : 1)}
+                image={item?.imageURL}
+                i={i}
+                ctr={0}
+              />
+            ))
+          ) : (
+            <div className="none">No items found!</div>
+          )
+        ) :
+          <div className="none">Loading...</div>}
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ const Form = () => {
         <Input name="image" label="Image" type="text" required></Input>
         <Select name='category' items={CATEGORIES} required></Select>
         <MultivalueInput onChange={ingredients.onChange} name='ingredients' label='Ingredients' />
-        <Button disabled={user?.role !== 'ADMIN'} name="SUBMIT" type="submit"></Button>
+        <Button name="SUBMIT" type="submit"></Button>
       </div>
     </form>
   );
