@@ -30,7 +30,6 @@ function ItemCard(props) {
       </Link>
 
       <p className='item-description'>{props.item.description}</p>
-
       <p className='item-ingredients'>{props.item.ingredients.join(', ')}</p>
       <br />
       <hr />

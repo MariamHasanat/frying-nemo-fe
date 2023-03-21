@@ -21,12 +21,9 @@ const FilterBar = props => {
   return (
 
     <div className='filter-bar-container'>
-
       <div className='search-bar'>
-
         <div className='search'>
           <Input
-
             value={myParams.searchParamFromURl}
             type='Search'
             placeholder='search'

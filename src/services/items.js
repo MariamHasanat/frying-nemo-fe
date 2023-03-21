@@ -1,6 +1,13 @@
 const API = 'http://localhost:3006';
-const getItems = async () => {
-  return fetch(`${API}/items`, { method: 'GET' })
+const getItems = async (category, searchTerm) => {
+  console.log({ category });
+  return fetch(`${API}/items?category=${category || ''}&searchTerms=${searchTerm || ''}`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     .then((response) => {
       return response.json();
     })
@@ -13,7 +20,6 @@ const getItems = async () => {
  * @param {number} id 
  */
 const getItem = async (id) => {
-
   return fetch(`${API}/items` + id)
     .then(response => {
       return response.json();

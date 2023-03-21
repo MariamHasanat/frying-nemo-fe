@@ -35,7 +35,7 @@ const View = () => {
     <div className="view-page">
       <h1>All Menu Items</h1>
 
-      <FilterBar />
+      <FilterBar menuItems={menuItems} />
       {
         loading ? <Spinner /> :
           <>
