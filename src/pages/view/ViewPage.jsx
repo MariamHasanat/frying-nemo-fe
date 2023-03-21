@@ -1,37 +1,17 @@
 
 import Spinner from '../spinner/spinner.component';
 import FilterBar from './filter-bar/FilterBar';
-import { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import Card from './Card/Card';
 import './viewpage.css';
-import { getMenu } from '../../services/items';
 import { CartContext } from '../../components/add/form/provider/CartProvider.jsx';
-import useFilteredItem from '../../Hooks/filterItems.hook';
-import useToggle from '../../Hooks/toggle/tourist-toggle.hook';
+import useGetItems from '../../Hooks/menu/get-items.hooks';
 
-
-
-/**
- * @type {Array<{
- * name: string;
- * description: string;
- * ingredients: string[];
- * price: number;
- * category: string;
- * image: string;
- * }>}
- */
-const initialItems = [];
 
 const ViewPage = () => {
-
-  const [menuItems, setMenuItems] = useState(initialItems);
-  const [loading, setLoading] = useState(false);
+  const { menuItems, loading } = useGetItems();
+  console.log("menuItems" , menuItems);
   const cartContext = useContext(CartContext);
-  const [isTourist , toggleIsTourist] = useToggle(false);
-
-
   const getCartQuntity = (id) => {
     const currentItem = cartContext.cart.find(element => (id === element.meal.id));
     if (currentItem) {
@@ -41,41 +21,20 @@ const ViewPage = () => {
     }
   };
 
-  const getMenuItems = async () => {
-    setLoading(true);
-    const items = await getMenu();
-    setMenuItems(items);
-    console.log(items);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    getMenuItems();
-  }, []);
-
-  const filteredItems = useFilteredItem(menuItems , isTourist);
-  
-  
-
-
   return (
     <div className="View-page">
-    
-      <FilterBar
-       isTourist={isTourist}
-       toggleIsTourist={toggleIsTourist}
-      />
 
+      <FilterBar />
       {loading
         ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinner /></div>
         : <div className="items-container">
-          {
-            filteredItems.map((item, index) => <Card
+          { menuItems?.length ?
+            menuItems.map((item, index) => <Card
               data={item}
               key={item.name + index}
               dispatch={cartContext.dispatch}
               getCartQuntity={getCartQuntity(item.id)}
-            />)
+            />) : <h1>No result found</h1>
           }
 
         </div>

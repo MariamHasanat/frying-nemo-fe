@@ -1,7 +1,6 @@
 import CheckBox from '../../../common/check-box/check-box.component';
 import Input from '../../../common/input/input.component';
 import { CATEGORIES } from '../../../data/category';
-import useToggle from '../../../Hooks/toggle/tourist-toggle.hook';
 import useParam from '../../../Hooks/useParam.hook';
 
 import './filterBar.css';
@@ -56,12 +55,6 @@ const FilterBar = (props) => {
             }}
           />
         ))}
-      </div>
-      <div className="tourist">
-        <CheckBox 
-         label="tourist"
-         checked={props.isTourist}
-         onChange={props.toggleIsTourist}/>
       </div>
     </div>
   );
