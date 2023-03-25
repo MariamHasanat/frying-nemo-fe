@@ -4,7 +4,7 @@ import { useState, useEffect, useContext } from 'react';
 import ItemCard from '../../components/item-card/item-card.component';
 import { useParams, useNavigate } from 'react-router-dom';
 import NotFound from '../not-found/not-found.page';
-import { getItem } from '../../services/fetchItem';
+import { getItem } from '../../services/items';
 import { CartContext } from '../../components/providers/cart-provider.component';
 
 const ViewItemPage = (props) => {
