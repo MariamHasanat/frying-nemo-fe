@@ -12,7 +12,7 @@ const CartRow = (props) => {
     return (
         <li className='cart-row'>
             <div className="left">
-                <img src={props.item.meal.image} width={170} height={200} alt="" />
+                <img src={props.item.meal.imageURL} width={170} height={200} alt="" />
             </div>
             <div className="center">
                 <h2>{props.item.meal.name}</h2>

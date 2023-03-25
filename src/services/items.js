@@ -1,11 +1,11 @@
-// const menuURL = `${process.env.REACT_APP_SERVER_URL}/`;
-const menuURL = `http://172.0.0.1:3001/menu`;
+// const menuURL = `${process.env.REACT_APP_SERVER_URL}`; // TODO
+const menuURL = `http://localhost:3001/menu`;
 
 /**
  * Fake Fetching of single item
  * @param {number} id 
  */
-const getItem = (myId) => {
+const getItem = (myId) => { // TODO: 
     const url = menuURL + myId;
     return fetch(url)
         .then(res => { res.json(); console.log(res.josn()); })
@@ -15,8 +15,8 @@ const getItem = (myId) => {
 /**
  * Fetch all items from api 
  */
-const getAllItems = () => {
-    return fetch(`${process.env.REACT_APP_SERVER_URL}/menu`)
+const getAllItems = () => { 
+    return fetch(menuURL)
         .then(res => res.json())
         .catch(err => console.log(err.toString()));
 };
