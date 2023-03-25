@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 
 const useParam = () => {
     const [params, setParams] = useSearchParams();
+    
     const myParams = useMemo(() => {
         const searchTerms = params.get('searchTerms') || '';
         const categoryFilters = params.getAll('category') || '';
@@ -28,4 +29,4 @@ const useParam = () => {
     };
     return [myParams, setParam];
 };
-export {useParam};
+export default useParam;

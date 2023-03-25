@@ -23,7 +23,7 @@ const Login = () => {
 
         const user = await checkUser(userEmail, userPassword)
         if (user) {
-            console.log('welcome', user.fullName);
+            // console.log('welcome', user.fullName);
             userContext.setUser(user);
             navigate('/view');
         }

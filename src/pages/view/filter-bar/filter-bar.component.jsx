@@ -2,7 +2,7 @@ import './filter-bar.css';
 import Input from '../../../components/common/input/input.component';
 import FilterCheckbox from '../../../components/common/filter-checkbox/filter-checkbox.component';
 import { CATEGORIES } from '../../../data/constants';
-import { useParam } from '../../../hooks/setParam.hook'
+import useParam from '../../../hooks/setParam.hook'
 const FilterBar = () => {
 
     const [myParams, setParam] = useParam();

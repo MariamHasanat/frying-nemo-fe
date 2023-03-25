@@ -6,7 +6,7 @@ const menuURL = `http://localhost:3001/menu`;
  * @param {number} id 
  */
 const getItem = (myId) => { // TODO: 
-    const url = menuURL + myId;
+    const url = menuURL + "/" + myId;
     return fetch(url)
         .then(res => { res.json(); console.log(res.josn()); })
         .catch(err => console.log(err.toString()));
@@ -15,8 +15,8 @@ const getItem = (myId) => { // TODO:
 /**
  * Fetch all items from api 
  */
-const getAllItems = () => { 
-    return fetch(menuURL)
+const getAllItems = (searchTerms) => {
+    return fetch(`${menuURL}?searchTerms=${searchTerms}`)
         .then(res => res.json())
         .catch(err => console.log(err.toString()));
 };

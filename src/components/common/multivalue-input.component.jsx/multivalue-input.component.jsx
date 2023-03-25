@@ -20,7 +20,7 @@ const Multivalue = (props) => {
         setNewItem('');
     };
     const removeItem = (toRemove) => {
-        console.log(toRemove);
+        // console.log(toRemove);
         props.onChange(props.value.filter(value => value !== toRemove));
     };
 

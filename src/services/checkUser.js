@@ -8,7 +8,7 @@ import { USERS } from '../data/users';
  */
 const checkUser = async (email, password) => {
     const users = await USERS();
-    console.log('users', users);
+    // console.log('users', users);
     const user = users.find(user => user.email === email && user.password === password);
     return user || null;
 };
