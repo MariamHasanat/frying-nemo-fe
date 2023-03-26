@@ -3,9 +3,9 @@
  * Fake Fetching of single item
  * @param {number} id 
  */
-const getItemsFromAPI = async () => {
+const getItemsFromAPI = async (searchTerm, categories) => {
 
-  return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/')
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items?searchTerms=${searchTerm}&categories=${categories}`)
     .then(res => res.json())
     .catch(error => { alert(error.toString()); });
 };
@@ -34,6 +34,7 @@ const getItem = async (id) => {
 const creatItem = (item) => {
   return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/', 
   {
+    
     method: 'POST',
     body: JSON.stringify(item),
 
