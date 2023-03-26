@@ -29,7 +29,7 @@ import useGetItems from '../../hooks/get-item.hook';
  */
 const View = () => {
   const cartContext = useContext(CartContext);
-  const { loading, menuItems } = useGetItems();
+  const { loading, menuItems, fetchItems } = useGetItems();
 
   return (
     <div className="view-page">
@@ -45,6 +45,7 @@ const View = () => {
                   (item, index) => {
                     return (
                       <ItemCard
+                        fetchItems={fetchItems}
                         item={item}
                         key={item + index}
                         dispatch={cartContext.dispatch}

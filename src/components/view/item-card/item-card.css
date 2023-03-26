@@ -1,3 +1,4 @@
+.hover-bg,
 .card-container {
   box-sizing: border-box;
   padding: 1em;
@@ -8,6 +9,48 @@
   margin: 1em;
   transition: transform .2s;
   border-radius: 0.2em;
+  position: relative;
+  cursor: pointer;
+}
+
+.hover-bg {
+  z-index: 1;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  margin: 0;
+  display: none !important;
+  background-color: rgba(0, 0, 0, 0.38);
+}
+
+.remove-sign {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  background-color: rgb(235, 98, 74);
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  text-align: center;
+  z-index: 3;
+  border: none;
+}
+
+.remove-sign:hover {
+  background-color: rgb(196, 80, 59);
+}
+
+.card-container:hover .remove-sign {
+  display: block;
+}
+
+.card-container:hover .hover-bg {
+  display: block !important;
 }
 
 .card-container:hover {
@@ -48,3 +91,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+
+
+/* .remove-sign:hover {
+  visibility: visible;
+} */

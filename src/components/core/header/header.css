@@ -15,6 +15,7 @@
   background-color: whitesmoke;
   border-bottom: 0.2px solid grey;
   box-sizing: border-box;
+  z-index: 3;
 }
 
 .header>.logo {

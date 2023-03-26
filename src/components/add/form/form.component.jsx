@@ -7,6 +7,7 @@ import MultivalueInput from "../../common/multivalue-input/multivalue-input.comp
 import { CATEGORIES } from "../../../data/constants";
 import { UserContext } from "../../../components/providers/user-provider";
 import useAddItem from "../../../hooks/add-item.hook";
+
 const Form = () => {
 
   const userContext = useContext(UserContext);
@@ -21,7 +22,7 @@ const Form = () => {
           </button>
         </div>
 
-        <Input label="name" name="name" onChange={addItem.name.onChange} required />
+        <Input label="name" name="name" required />
         <Input label="Price" name="price" required />
 
         <Textarea name="description" label="description" />

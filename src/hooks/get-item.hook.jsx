@@ -22,7 +22,7 @@ const useGetItems = () => {
     fetchItems();
   }, [myParams]);
 
-  return { ...state };
+  return { ...state, fetchItems };
 };
 
 export default useGetItems;

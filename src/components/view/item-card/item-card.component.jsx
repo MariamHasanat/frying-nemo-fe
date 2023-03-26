@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import PriceBar from '../../price-bar/price-bar.component';
 import './item-card.css';
+import { deleteItem } from '../../../services/items';
 
 /**
  * 
@@ -21,24 +22,34 @@ import './item-card.css';
  */
 function ItemCard(props) {
 
+  const handleDeleteItem = async (id) => {
+    await deleteItem(id);
+    props.fetchItems();
+
+  };
+
   return (
-    <div className='card-container'>
-      <img src={props.item.imageUrl} alt='food' />
+    <>
+      <div className='card-container'>
+        <div className='hover-bg'></div>
+        <img src={props.item.imageUrl} alt='food' />
 
-      <Link to={`/view/${props.item.id}`}>
-        <h2>{props.item.name}</h2>
-      </Link>
+        <Link to={`/view/${props.item.id}`}>
+          <h2>{props.item.name}</h2>
+        </Link>
 
-      <p className='item-description'>{props.item.description}</p>
-      <p className='item-ingredients'>{props.item.ingredients.join(', ')}</p>
-      <br />
-      <hr />
+        <p className='item-description'>{props.item.description}</p>
+        <p className='item-ingredients'>{props.item.ingredients.join(', ')}</p>
+        <br />
+        <hr />
 
-      <PriceBar
-        itemQuantity={props.itemQuantity}
-        item={props.item}
-      />
-    </div>
+        <button onClick={() => handleDeleteItem(props.item._id)} className='remove-sign'>X</button>
+        <PriceBar
+          itemQuantity={props.itemQuantity}
+          item={props.item}
+        />
+      </div>
+    </>
   );
 }
 

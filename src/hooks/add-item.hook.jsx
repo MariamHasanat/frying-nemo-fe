@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { createItem } from "../services/items";
 
 const useAddItem = () => {
-  const [name, setName] = useState("abd");
+  // const [name, setName] = useState("abd");
   const [ingredients, setNewIngredients] = useState([]);
   const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ const useAddItem = () => {
     if (value === "find") {
       value = "fry";
     }
-    setName(value);
+    // setName(value);
   }
   /**
    *
@@ -20,6 +20,7 @@ const useAddItem = () => {
    */
   const submitHandler = async (e) => {
     e.preventDefault();
+    const name = e.target.name.value;
     const description = e.target.description.value;
     const category = e.target.category.value;
     const price = Number(e.target.price.value);
@@ -36,6 +37,7 @@ const useAddItem = () => {
     };
 
     const result = await createItem(menuItem);
+    console.log({ result });
     if (result) {
       navigate("/view");
     }
@@ -48,7 +50,7 @@ const useAddItem = () => {
   return {
 
     name: {
-      value: name,
+      // value: name,
       onChange: onNameChange
     },
 

@@ -1,4 +1,5 @@
 const API = 'http://localhost:3006';
+
 const getItems = async (category, searchTerm) => {
   console.log({ category });
   return fetch(`${API}/items?category=${category}&searchTerms=${searchTerm}`,
@@ -13,7 +14,6 @@ const getItems = async (category, searchTerm) => {
     })
     .catch((error) => console.log(error.toString()));
 };
-
 
 /**
  * Fetching of single item
@@ -32,23 +32,27 @@ const createItem = async (item) => {
     {
       method: 'POST',
       body: JSON.stringify(item),
+      headers: {
+        'Content-Type': 'application/json'
+      }
     }).then((response) => {
+      console.log(response.status);
       return response.status === 201;
     }).catch(error => console.log(error));
 };
 
-
 const deleteItem = async (id) => {
-  return fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu${id}`,
+  return fetch(`${API}/items/${id}`,
     {
       method: 'DELETE',
-    }).then((response) => {
-      return response.status === 201;
+    }).then(async (response) => {
+      return response.status === 200;
     }).catch(error => console.log(error));
 };
 
 export {
   getItem,
   getItems,
-  createItem
+  createItem,
+  deleteItem
 };

@@ -2,7 +2,6 @@ import { Link, useLocation } from 'react-router-dom';
 import './header.css';
 import logo from '../../../assets/images/image.png';
 import profile from '../../../assets/images/profile-user.png';
-import logout from '../../../assets/images/logout.png';
 import { useContext } from 'react';
 import { UserContext } from '../../../components/providers/user-provider';
 import { CartContext } from '../../providers/cart-provider';

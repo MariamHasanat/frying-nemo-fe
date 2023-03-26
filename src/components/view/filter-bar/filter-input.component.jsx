@@ -48,7 +48,7 @@ const FilterBar = props => {
                     : myParams.categoryFromURl.filter(category => category !== categoryItem);
                   // console.log(typeof myParams.categoryFromURl);
                   setParam('category', updated);
-                }}
+                }} 
               />;
             })
         }
