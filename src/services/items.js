@@ -33,14 +33,17 @@ const fetchItem = async (id) => {
   };
 };
 
-const createItem = async (item) => {
+const createItem =  (item) => {
 
 
 
-  return fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu `,
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items`,
     {
 
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(item),
     })
     .then(response => {

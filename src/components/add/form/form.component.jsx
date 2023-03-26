@@ -34,7 +34,7 @@ const Form = () => {
         />
 
         <Input
-          name='image'
+          name='imageUrl'
           label="Image"
           required
         />
