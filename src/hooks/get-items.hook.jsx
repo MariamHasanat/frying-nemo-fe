@@ -8,9 +8,9 @@ const useGetItems = () => {
     const getMenu = async () => {
         setState({ ...state, loading: true });
 
+        const categories = JSON.stringify(myParams.categoryFilters);
         const searchTerms = myParams.searchTerms;
-        // console.log(searchTerms);
-        const items = await getAllItems(searchTerms);
+        const items = await getAllItems(searchTerms, categories);
         setState({ menu: items, loading: false });
     };
 

@@ -15,8 +15,9 @@ const getItem = (myId) => { // TODO:
 /**
  * Fetch all items from api 
  */
-const getAllItems = (searchTerms) => {
-    return fetch(`${menuURL}?searchTerms=${searchTerms}`)
+const getAllItems = (searchTerms, categories) => {
+    console.log(categories);
+    return fetch(`${menuURL}?searchTerms=${searchTerms}&categories=${categories}`)
         .then(res => res.json())
         .catch(err => console.log(err.toString()));
 };
