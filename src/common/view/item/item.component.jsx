@@ -7,7 +7,7 @@ import React from 'react';
  * 
  * @param {{
  * data:{
- * id:number;
+ * _id:number;
  * name: string;
  * description: string;
  * price: number;
@@ -27,7 +27,7 @@ const Items = (props) => {
       <img src={`${props.data.imageUrl}?x=${Math.random()}`} alt="food" />
       </div>
       <div className="details">
-        <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
+        <Link to={`/view/${props.data._id}`} ><h2>{props.data.name}</h2></Link>
 
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients}</p>

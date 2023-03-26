@@ -14,18 +14,21 @@ const getItems =  (searchTerm,categories) => {
  * Fake Fetching of single item
  * @param {number} id 
  */
-const getItem = (id) => {
-  return fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/?id=${id}`)
-  .then((response) => {
-    const jsonRes = response.json();
-    return jsonRes;
-  }).then((items)=>{
-    return items[0];
-  })
-  .catch((error) => {
-    alert(error.toString());
-  });
+const getItem = async (id) => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/items/${id}`);
+    if (response.status === 200) {
+      const item = await response.json();
+      return item;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error(error);
+    return undefined;
+  }
 };
+
  const createItem=(item)=>{
   return fetch(`${process.env.REACT_APP_SERVER_URL}/items`,
   {
