@@ -29,8 +29,11 @@ const fetchItem = async (id) => {
 };
 
 const createdItem = async (item) => {
-  return await fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu', {
+  return await fetch('http://127.0.0.1:3001/items', {
     method: 'POST',
+    headers : {
+     'Content-Type' : 'application/json'
+    },
     body: JSON.stringify(item)
   })
     .then(response => {
