@@ -22,10 +22,10 @@ const useAddItem = () => {
             id: Date.now(),
             name: name,
             description: description,
-            price: price,
+            price: Number(price),
             category: category,
             ingredients: ingredients,
-            image: image
+            imageURL: image
         };
 
         const res = createItem(menuItem);

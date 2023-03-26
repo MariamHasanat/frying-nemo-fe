@@ -25,7 +25,10 @@ const getAllItems = (searchTerms, categories) => {
 const createItem = (item) => {
     return fetch(menuURL, {
         method: 'POST',
-        body: JSON.stringify(item)
+        body: JSON.stringify(item),
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
         .then(res => {
             if (res.status === 201) {
