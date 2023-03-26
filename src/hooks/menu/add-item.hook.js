@@ -15,16 +15,16 @@ const useAddItem = () => {
     e.preventDefault();
 
     const description = e.target.description.value;
-    const image = e.target.image.value;
+    const imageURL = e.target.imageURL.value;
     const price = Number(e.target.price.value);
     const category = e.target.category.value;
 
     const menuItem = {
       // id: Date.now(),
       name: name,
-      image,
+      imageURL,
       description: description,
-      price: price.toString(),
+      price,
       category: category,
       ingredients: ingredients
     };
