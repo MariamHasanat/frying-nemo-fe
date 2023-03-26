@@ -38,8 +38,6 @@ const ViewItem = (props) => {
     };
 
     getSingleItem();
-
-
   }, []);
 
   const cartContext = useContext(CartContext);

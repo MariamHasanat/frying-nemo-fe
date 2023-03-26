@@ -34,7 +34,7 @@ const View = () => {
   return (
     <div className="view-page">
       <h1>All Menu Items</h1>
-
+      {console.log({ menuItems })}
       <FilterBar menuItems={menuItems} />
       {
         loading ? <Spinner /> :

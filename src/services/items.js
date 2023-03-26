@@ -20,7 +20,14 @@ const getItems = async (category, searchTerm) => {
  * @param {number} id 
  */
 const getItem = async (id) => {
-  return fetch(`${API}/items` + id)
+  console.log({ id });
+  return fetch(`${API}/items/${id}`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     .then(response => {
       return response.json();
     }).catch(e => console.log(e.toString()));

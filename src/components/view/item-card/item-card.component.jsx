@@ -31,12 +31,14 @@ function ItemCard(props) {
   return (
     <>
       <div className='card-container'>
-        <div className='hover-bg'></div>
+        <Link to={`/view/${props.item.id}`}>
+          <div className='hover-bg'></div>
+        </Link>
         <img src={props.item.imageUrl} alt='food' />
 
-        <Link to={`/view/${props.item.id}`}>
-          <h2>{props.item.name}</h2>
-        </Link>
+
+        <h2>{props.item.name}</h2>
+
 
         <p className='item-description'>{props.item.description}</p>
         <p className='item-ingredients'>{props.item.ingredients.join(', ')}</p>
