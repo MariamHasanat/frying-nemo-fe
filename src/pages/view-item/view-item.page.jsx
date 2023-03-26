@@ -29,7 +29,7 @@ const ViewItemPage = (props) => {
 
   useEffect(() => {
     setLoading(true);
-    fetchItem(params.id)
+    fetchItem(params._id)
       .then(item => {
         if (item === null) {
           navigate("/404", { replace: true });

@@ -12,6 +12,7 @@ const useGetItems = () => {
   const getMenuItems = async () => {
     setState({ ...state, loading: true });
     const items = await fetchItems();
+    console.log(items);
     setState({ loading: false, menuItems: items });
   };
 
