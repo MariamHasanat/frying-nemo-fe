@@ -55,7 +55,7 @@ const Cards =  (props) => {
               <div
                 className="card-image"
                 key={index + item.price}
-                style={{ backgroundImage: "url(" + item.image + ")" }}
+                style={{ backgroundImage: "url(" + item.imageUrl + ")" }}
               >
               </div>
               <Link className="card-name" to = {`/view-item/${item.id}`}>{item.name}</Link>

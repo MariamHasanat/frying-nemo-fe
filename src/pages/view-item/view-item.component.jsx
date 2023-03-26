@@ -45,7 +45,7 @@ const ViewItemPage = (props) => {
             <div className="card">
               <div
                 className="card-image"
-                style={{ backgroundImage: "url(" + currentItem.image + ")" }}
+                style={{ backgroundImage: "url(" + currentItem.imageUrl + ")" }}
               ></div>
               <div className="card-name">{currentItem.name}</div>
               <span className="card-text">Description</span>

@@ -28,14 +28,12 @@ const getItem = async (id) => {
   }
 };
 const createItem = (item) => {
-  console.log("from craetItem in fe",item);
   fetch(`${process.env.REACT_APP_SERVER_URL}/items`, {
     method: "POST",
     body: JSON.stringify(item),
     headers: { 'Content-Type': 'application/json' }
   })
     .then((response) => {
-      console.log(response);
       return true;
     })
     .catch((error) => {
