@@ -9,6 +9,7 @@ const getItems = async (searchTerm,categories) => {
   const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/items?searchTerms=${searchTerm}&category=${categories}`);
   const item = await res.json();
  
+  
   return item;
 
 };
@@ -20,9 +21,12 @@ const getItem = async (id) => {
 };
 
 const createItem = (item) => {
-  return fetch('http://localhost:3001/items',
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items/`,
     {
       method: 'POST',
+      headers :{
+       'Content-Type' : "application/json"
+      },
       body: JSON.stringify(item)
     })
     .then(async response => {

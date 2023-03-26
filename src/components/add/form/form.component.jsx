@@ -27,7 +27,7 @@ const Form = (props) => {
       />
       <Input
         label="Image"
-        name="image"
+        name="imageUrl"
         required
       />
       <Input
