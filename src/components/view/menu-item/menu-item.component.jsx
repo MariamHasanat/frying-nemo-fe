@@ -24,7 +24,7 @@ const MenuItem = (props) => {
   return (
     <div className='item-card'>
       <div className='img'><img src={props.item.image} alt="" /></div>
-       <h2> <Link to = {`/view-details/${props.item.id}`}>{props.item.name}</Link></h2> 
+       <h2> <Link to = {`/view-details/${props.item._id}`}>{props.item.name}</Link></h2> 
       <div className="info">
         <span>Its a : {props.item.category}</span>
         <p> {props.item.description}</p>

@@ -6,7 +6,7 @@ const fetchItems = async (searchTerms , categories) => {
 
 const fetchItem = async (id) => {
   try {
-    const response = await fetch (`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${id}`) ;
+    const response = await fetch (`http://localhost:3001/items/${id}`) ;
     if (response.status === 200) {
       const singleItem = await response.json() ;
       return singleItem ;
