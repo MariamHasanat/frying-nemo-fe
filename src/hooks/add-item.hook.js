@@ -17,22 +17,17 @@ const useAddItem = () => {
     const price = e.target.price.value;
     const description = e.target.description.value;
     const category = e.target.category.value;
-    const image = e.target.image.value;
+    const imageUrl = e.target.image.value;
 
     const menueItem = {
       id: Date.now(),
       name: name,
-      price: price.toString(),
+      price: Number(price),
       description: description,
       category: category,
       ingredients: ingredients,
-      image: image
+      imageUrl: imageUrl
     };
-    // const itemsJson = localStorage.getItem('menuItems') || '[]';
-    // const items = JSON.parse(itemsJson);
-    // items.push(menueItem);
-    // localStorage.setItem('menuItems', JSON.stringify(items));
-    // navigate('/view');   // to change url without link , without needing to render it as a link component
 
     const response = await createItem(menueItem);
     if (response) {

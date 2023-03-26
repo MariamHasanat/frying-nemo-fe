@@ -21,8 +21,11 @@ const fetchItem = async (id) => {
 }
 
 const createItem = (item) => {
-  return fetch ('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/' , 
+  return fetch ('http://localhost:3001/items/' , 
   {
+    headers : {
+      'Content-Type' : 'application/json'
+    },
     method: "POST" , 
     body: JSON.stringify(item)
   })
