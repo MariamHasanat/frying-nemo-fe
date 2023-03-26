@@ -28,7 +28,7 @@ const Cards =  (props) => {
   const categoryFromURL = searchParams.get('category') || '';
   const items= useGetItems();
   const getCartQuantity = (id) => {
-    const currentCartItem = cartContext.cart.find(cartItem => (cartItem.meal.id === id));
+    const currentCartItem = cartContext.cart.find(cartItem => (cartItem.meal._id === id));
     if (currentCartItem) {
       return currentCartItem.quantity;
     } else {
@@ -77,7 +77,7 @@ const Cards =  (props) => {
                     })}
                 </div>
               </div>
-              <PriceBar item={item} dispatch={cartContext.dispatch} cartQuantity={getCartQuantity(item.id, cartContext.cart)} />
+              <PriceBar item={item} dispatch={cartContext.dispatch} cartQuantity={getCartQuantity(item._id, cartContext.cart)} />
             </div>
         );
       })}
