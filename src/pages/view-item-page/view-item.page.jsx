@@ -18,7 +18,7 @@ const ViewItemPage = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetchItem(params.id)
+        fetchItem(params._id)
             .then((item) => {
                 if (item === null)
                     navigate("/404", { replace: true });
@@ -37,7 +37,7 @@ const ViewItemPage = () => {
                     : <Item
                         cart={cartContext.cart}
                         item={currentItem}
-                        cartQuantity={getCartQuantity(currentItem.id, cartContext.cart)}
+                        cartQuantity={getCartQuantity(currentItem._id, cartContext.cart)}
                     />
             }
         </div>

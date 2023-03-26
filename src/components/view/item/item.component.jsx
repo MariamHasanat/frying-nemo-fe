@@ -11,7 +11,7 @@ import { useContext } from 'react';
  * Render a single menu item based on the data passed
  * @param {{
  *      item:{
- *          id: string;
+ *          _id: string;
  *          name: string;
  *          imageURL: string;
  *          description: string;
@@ -26,12 +26,12 @@ const Item = (props) => {
     const cartContext = useContext(CartContext);
     return (
         <Card>
-            <Link to={`/view-details/${props.item.id}`}>
-                <img src={`${props.item.imageURL}?x=${Math.random()}`} alt="food" />
+            <Link to={`/view-details/${props.item._id}`}>
+                <img src={`${props.item.image}?x=${Math.random()}`} alt="food" />
             </Link>
             <div className='info'>
                 <h2>
-                    <Link to={`/view-details/${props.item.id}`} className='link-in-h2'>
+                    <Link to={`/view-details/${props.item._id}`} className='link-in-h2'>
                         {props.item.name}
                     </Link>
                 </h2>

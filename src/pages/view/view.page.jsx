@@ -36,7 +36,7 @@ const View = () => {
                                         return <Item
                                             item={item}
                                             key={item.name + index}
-                                            cartQuantity={getCartQuantity(item.id, cartContext.cart)}
+                                            cartQuantity={getCartQuantity(item._id, cartContext.cart)}
                                         />;
                                     })
                                 : <div className="empty">The is no any meal</div>

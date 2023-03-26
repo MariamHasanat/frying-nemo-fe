@@ -19,7 +19,7 @@ const useAddItem = () => {
         const item = {
             // id: (new Date().getTime() + "" + Math.random() * 1000),
             name: name,
-            price: price.toString(),
+            price: price,
             description: des,
             category: cat,
             ingredients: ingredients,

@@ -31,12 +31,12 @@ const reduce = (cart, action) => {
             return [...cart, { item: action.item, quantity: 1 }];
         }
         case "DELETE_CART_ITEM": {
-            return cart.filter(cartItem => cartItem.item.id !== action.item.id);
+            return cart.filter(cartItem => cartItem.item._id !== action.item._id);
         }
         case "INCREMENT_CART_QUANTITY": {
             let found = false;
             const newCart1 = cart.map(cartItem => {
-                if (cartItem.item.id === action.item.id) {
+                if (cartItem.item._id === action.item._id) {
                     found = true;
                     return { ...cartItem, quantity: cartItem.quantity + 1 };
                 }
@@ -50,7 +50,7 @@ const reduce = (cart, action) => {
         }
         case "DECREMENT_CART_QUANTITY": {
             const newCart2 = cart.map(cartItem => {
-                return cartItem.item.id === action.item.id
+                return cartItem.item._id === action.item._id
                     ? { ...cartItem, quantity: cartItem.quantity - 1 }
                     : cartItem;
             });

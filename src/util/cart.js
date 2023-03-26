@@ -1,6 +1,6 @@
 const getCartQuantity = (id, cart) => {
     const newCartItem = cart.find((carItem) => {
-        return (carItem.item.id === id);
+        return (carItem.item._id === id);
     });
     if (newCartItem) {
         return newCartItem.quantity;
