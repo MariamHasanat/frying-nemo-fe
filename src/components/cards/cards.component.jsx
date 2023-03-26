@@ -50,7 +50,6 @@ const Cards =  (props) => {
     <div className="card-container">
       {items.menuItems.map((item, index) => {
         return (
-
             <div className="card" key={index}>
               <div
                 className="card-image"
@@ -58,7 +57,7 @@ const Cards =  (props) => {
                 style={{ backgroundImage: "url(" + item.imageUrl + ")" }}
               >
               </div>
-              <Link className="card-name" to = {`/view-item/${item.id}`}>{item.name}</Link>
+              <Link className="card-name" to = {`/view-item/${item._id}`}>{item.name}</Link>
               <span className="card-text">Description</span>
               <div className="card-description">&nbsp;{item.description}</div>
               <div className="card-category">

@@ -10,12 +10,12 @@ const getItems = (searchTerm,categories) => {
 };
 /**
  * Fake Fetching of single item
- * @param {number} id
+ * @param {string} id
  */
 const getItem = async (id) => {
   try {
     const item = await fetch(
-      "https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/" + id
+      `${process.env.REACT_APP_SERVER_URL}/items/${id}`
     );
     if (item.status === 200) {
       const itemRes = await item.json();

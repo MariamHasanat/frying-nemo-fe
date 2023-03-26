@@ -24,6 +24,7 @@ const ViewItemPage = (props) => {
   const [currentItem, setCurrentItem] = useState(null);
 
   const getOneItem  = async () =>{
+    
     const item = await getItem(params.id);
     if (item === null) {
       navigate("/404", { replace: true });
