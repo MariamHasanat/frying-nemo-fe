@@ -7,7 +7,7 @@ const CartRow = (props) => {
   return (
     <div className='row'>
       <div className='cart-item-img'>
-        <img src={props.item.meal.image} alt="orderedMeal" />
+        <img src={props.item.meal.imageUrl} alt="orderedMeal" />
       </div>
       <div className="cart-info">
         <h3>{props.item.meal.name}</h3>

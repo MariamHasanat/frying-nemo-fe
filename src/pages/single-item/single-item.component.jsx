@@ -18,7 +18,7 @@ import './single-item.css';
  * ingredients: string[];
  * price: number;
  * category: string;
- * image: string;
+ * imageUrl: string;
  * }>}
  */
 
@@ -57,7 +57,7 @@ const SingleItem = (props) => {
         : <div className="item-details">
           <h1>{currentItem.name}</h1>
           <div className="img">
-            <img src={currentItem.image} alt="food" />
+            <img src={currentItem.imageUrl} alt="food" />
           </div>
           <div className="info">
             <p><b>Item Description: </b> {currentItem.description}</p>

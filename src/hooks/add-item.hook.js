@@ -17,7 +17,7 @@ const useAddItem = () => {
     const price = e.target.price.value;
     const description = e.target.description.value;
     const category = e.target.category.value;
-    const imageUrl = e.target.image.value;
+    const imageUrl = e.target.imageUrl.value;
 
     const menueItem = {
       id: Date.now(),

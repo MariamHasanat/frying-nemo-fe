@@ -28,7 +28,7 @@ const Form = () => {
         label="description"
         className='textarea-group'
       />
-      <Input label='Enter image link' type="text" name="image" />
+      <Input label='Enter image link' type="text" name="imageUrl" />
       <Input
         className='input-group'
         type="number"

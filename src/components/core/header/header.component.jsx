@@ -35,7 +35,7 @@ const Header = (props) => {
           {
             userContext.user &&
             <span className="user-badge">
-              <img src={userContext.user.imageUrl} alt="user  logo" width={30} height={30} />
+              <img src={userContext.user.image} alt="user  logo" width={30} height={30} />
               {userContext.user.fullName}
               <button
                 onClick={() => {

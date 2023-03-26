@@ -13,7 +13,7 @@ import './menu-item.css' ;
  * price : number ;
  * description : string ;
  * category : string ;
- * image : string ;
+ * imageUrl : string ;
  * ingredients : string[] ;
  * } props 
  * @returns 
@@ -23,7 +23,7 @@ const MenuItem = (props) => {
   //const items = JSON.parse (localStorage.getItem ('menuItems') || '[]') ;
   return (
     <div className='item-card'>
-      <div className='img'><img src={props.item.image} alt="" /></div>
+      <div className='img'><img src={props.item.imageUrl} alt="" /></div>
        <h2> <Link to = {`/view-details/${props.item._id}`}>{props.item.name}</Link></h2> 
       <div className="info">
         <span>Its a : {props.item.category}</span>
