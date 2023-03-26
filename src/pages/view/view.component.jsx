@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useContext } from 'react';
 import './view.css';
 import Item from '../../components/view/item/item.component';
 import Spinner from '../../components/spinner/spinner.component';
@@ -6,19 +6,18 @@ import FilterBar from '../../components/view/filter-bar/filter-bar.component';
 import pic from '../../assets/illustrations/frustrated-realistic .png';
 import { getCartQuantity } from '../../utils/cart';
 import { CartContext } from '../../components/providers/cart-provider.component';
-import { fetchItems } from '../../services/items';
 import useFilteredItems from '../../hooks/filter-items.hook';
 import useToggle from '../../hooks/common/toggle.hook';
 import useGetItems from '../../hooks/menu/get-items.hook';
 
 const ViewPage = () => {
 
-  //const [loading, setLoading] = useState(false);
+
   const [isTourist, toggleIsTourist] = useToggle(false);
   const { loading, menuItems } = useGetItems();
   const cartContext = useContext(CartContext);
 
-  
+
 
   const { filteredItems, setMin, setMax } = useFilteredItems(menuItems, isTourist);
 
