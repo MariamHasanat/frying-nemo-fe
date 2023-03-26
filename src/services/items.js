@@ -28,9 +28,11 @@ const getItem = async (id) => {
   }
 };
 const createItem = (item) => {
-  fetch("https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/", {
+  console.log("from craetItem in fe",item);
+  fetch(`${process.env.REACT_APP_SERVER_URL}/items`, {
     method: "POST",
     body: JSON.stringify(item),
+    headers: { 'Content-Type': 'application/json' }
   })
     .then((response) => {
       console.log(response);

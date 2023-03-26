@@ -17,7 +17,7 @@ const useAddItem = () =>{
     let description = e.target.description.value;
     let price = e.target.price.value;
     let category = e.target.category.value;
-    let photo = e.target.photo.value;
+    let imageUrl = e.target.imageUrl.value;
     const menuItem = {
       id: Date.now(),
       name: name,
@@ -25,7 +25,7 @@ const useAddItem = () =>{
       price: parseInt(price),
       category: category,
       ingredients,
-      photo: photo
+      imageUrl: imageUrl
     };
     e.target.description.value = "";
     e.target.price.value = "";

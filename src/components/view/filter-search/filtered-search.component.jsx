@@ -19,7 +19,7 @@ return(
   <div className='search-items-constained'>
   <Input
   value={props.searchTermsFromURL}
-  onChange={(e) => handleFilterSearch("q",e.target.value)}
+  onChange={(e) => handleFilterSearch("searchTerms",e.target.value)}
   label="Search"
   /> 
   <Select name="category" label="categories"

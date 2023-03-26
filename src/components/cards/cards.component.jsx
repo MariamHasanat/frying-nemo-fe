@@ -24,7 +24,7 @@ import useGetItems from "../../hooks/add-item/get-items.hook";
 const Cards =  (props) => {
   const cartContext = useContext(CartContext);
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchTermsFromURL = searchParams.get('q') || '';
+  const searchTermsFromURL = searchParams.get('searchTerms') || '';
   const categoryFromURL = searchParams.get('category') || '';
   const items= useGetItems();
   const getCartQuantity = (id) => {

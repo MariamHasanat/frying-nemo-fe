@@ -44,7 +44,7 @@ const Form = () => {
           value={addItem.ingredients.value}
           onChange={(newIngredients) => addItem.ingredients.setIngredient(newIngredients)}
         />
-        <Input name="photo" label="insert photo link" type="text"/>
+        <Input name="imageUrl" label="insert photo link" type="text"/>
         <div className="addFormButtons">
           <button type="submit" disabled={userContext.user?.role !== 'ADMIN'}>Create</button>
         </div>
