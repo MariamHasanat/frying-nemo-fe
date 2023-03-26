@@ -26,12 +26,10 @@ const nav=useNavigate()
   const [currentItem, setCurrentItem] = useState({});
   const [loading, setLoading] = useState(true);
 
- 
 
 
   const ContextCart = useContext(CartContext);
   useEffect(() => {
-
     singleItem();
   }, []);
 
@@ -39,6 +37,7 @@ const nav=useNavigate()
     setLoading(true);
     getSingleItem(params.id)
     .then(item => {
+      console.log(item)
       setCurrentItem(item);
        if (item === null)
   nav("/404",{return:false})
@@ -54,7 +53,7 @@ const nav=useNavigate()
         : <div className="item-details">
           <h1>{currentItem.name}</h1>
           <div className="img">
-            <img src={currentItem.image} alt="food" />
+            <img src={currentItem.imageUrl} alt="food" />
           </div>
           <div className="info">
             <p><b>Item Description: </b> {currentItem.description}</p>

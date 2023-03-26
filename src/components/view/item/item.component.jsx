@@ -23,11 +23,11 @@ const Item = (props) => {
   return (
     <div className="item-card">
       <div className="img">
-        <img src={`${props.data.image}?x=${Math.random()*Math.random()* Math.random()}`} alt="food" />
+        <img src={`${props.data.imageUrl}?x=${Math.random()*Math.random()* Math.random()}`} alt="food" />
       </div>
       <div className="info">
 
-        <Link to={`/view/${props.data.id}`}><h2>{props.data.name}</h2></Link>
+        <Link to={`/view/${props.data._id}`}><h2>{props.data.name}</h2></Link>
 
        
 

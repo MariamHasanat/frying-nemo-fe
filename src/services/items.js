@@ -7,7 +7,8 @@ const getItems = async (searchTerms,categories) => {
 };
 
 const getSingleItem = (id) => {
-  return fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${id}`)
+  console.log(id)
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items/${id}`)
     .then(response => {
       if (response.status === 200) {
         return response.json();
@@ -22,9 +23,12 @@ const getSingleItem = (id) => {
 };
 
 const createItem = (menu) => {
-  return fetch("https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/",
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items`,
     { 
       method: "post",
+      headers:{
+        "Content-Type": "application/json"
+      },
      body: JSON.stringify(menu)
      }
      )
