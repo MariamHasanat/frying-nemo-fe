@@ -12,6 +12,7 @@ const useFilterItems = (menuItems, isTourist) => {
   const [max, setMax] = useState(null);
 
   const filteredItems = useMemo(() => {
+    
     const filtered = menuItems.filter(item => {
       /**
        * Check if search terms are somewhere inside given string.
@@ -25,9 +26,7 @@ const useFilterItems = (menuItems, isTourist) => {
         item.ingredients.some(ingredient => doesItMatch(ingredient))
       );
 
-      if (myParams.categoriesFromURL.length > 0) {
-        match = match && (myParams.categoriesFromURL.includes(item.category));
-      }
+  
       if (min !== null && min !== '')
         match &= (item.price >= min);
       if (max !== null && max !== '')
