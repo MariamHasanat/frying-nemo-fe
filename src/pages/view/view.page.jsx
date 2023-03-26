@@ -32,7 +32,7 @@ const ViewPage = (props) => {
                       data={item}
                       key={item.name + index}
                       dispatch={cartContext.dispatch}
-                      cartQuantity={getCartQuantity(item.id, cartContext.cart)}
+                      cartQuantity={getCartQuantity(item._id, cartContext.cart)}
                     />
                   ))
                   : (

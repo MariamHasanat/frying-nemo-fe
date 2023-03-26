@@ -13,7 +13,7 @@ const useGetItems = () => {
     setState ({...state , loading : true});
     const categories = JSON.stringify(myParams.categoriesFromURL) ;
     const items = await getItems(myParams.searchTermsFromURL, categories);
-    setState({loading : false , menuItems : items.items})
+    setState({loading : false , menuItems : items})
   };
 
   useEffect(() => { getMenuItems(); }, [myParams]);

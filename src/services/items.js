@@ -15,7 +15,7 @@ const getItems = async (searchTerm,categories) => {
 };
 
 const getItem = async (id) => {
-  const res = await fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${id}`);
+  const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/items/${id}`);
   const item = await res.json();
   return item;
 };

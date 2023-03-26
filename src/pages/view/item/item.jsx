@@ -8,7 +8,7 @@ import Card from '../../../components/common/card/card.component';
  * Render a single menu item based on the data passed
  * @param {{
  *     data:{
- *     id: number;
+ *     _id: number;
  *     name: string;
  *     imageUrl: string;
  *     description: string;
@@ -25,7 +25,7 @@ const Item = (props) => {
         <img src={props.data.imageUrl} alt="food" />
       </div>
       <div className="info">
-        <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
+        <Link to={`/view/${props.data._id}`} ><h2>{props.data.name}</h2></Link>
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients.join(", ")}</p>
       </div>
