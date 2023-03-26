@@ -5,7 +5,7 @@ import './item.css';
  * Render a single menu item based on the data passed
  * @param {{
  * data:{
- *  id: number;
+ *  _id: number;
  *  name: string;
  *  description: string;
  *  imageUrl: string ;
@@ -25,7 +25,7 @@ const Item = (props) => {
         <img src={props.data.imageUrl+"?x="+Math.random()} alt="food" />
       </div>
       <div className="info">
-        <Link to={`/view-details/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
+        <Link to={`/view-details/${props.data._id}`} ><h2>{props.data.name}</h2></Link>
         <p>{props.data.description}</p>
         <p className="ingredients">{props.data.ingredients.join(" , ")}</p>
         {/* instead of join you can use // map((ing, i) => ing + (i < props.data.ingredients.length - 1 ? ', ' : ' ')) */}
