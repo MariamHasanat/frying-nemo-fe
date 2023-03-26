@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchItems } from "../../services/items";
+import useParams from "../params.hook";
+
 
 /*
 * This hooks is used to fetch items form the server (all items or filtered), 
@@ -7,15 +9,16 @@ import { fetchItems } from "../../services/items";
 */
 const useGetItems = () => {
   const [state, setState] = useState({ menuItems: [], loading: true });
-
+  const { myParams } = useParams();
 
   const getMenuItems = async () => {
     setState({ ...state, loading: true });
-    const items = await fetchItems;
+    const items = await fetchItems(myParams.searchTermsFromURL);
     setState({ loading: false, menuItems: items });
 
   };
-  useEffect(() => { getMenuItems(); }, []);
+
+  useEffect(() => { getMenuItems(); }, [myParams]);
   return { ...state };
 };
 export default useGetItems;
