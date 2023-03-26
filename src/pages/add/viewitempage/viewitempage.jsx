@@ -10,7 +10,7 @@ import { getQuantity } from '../../../util/util';
 import { CartContext } from '../../../components/provider/cartprovider';
 /**
  * @type {Array<{
- * id: number;
+ * _id: number;
  * name: string;
  * description: string;
  * ingredients: string[];
@@ -66,7 +66,7 @@ const ViewItemPage = (props) => {
           <PriceBox
             item={currentItem}
             dispatch={cartContext.dispatch}
-            cartQuantity={getQuantity(currentItem.id, cartContext.cart)}
+            cartQuantity={getQuantity(currentItem._id, cartContext.cart)}
           />
         </div>
 

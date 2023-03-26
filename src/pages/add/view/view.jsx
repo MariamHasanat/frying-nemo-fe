@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import Item from '../../../components/item/items/item';
 import Spinner from '../../../components/spinner/spinner';
 import './view.css';
-// import FilterBar from '../../../components/filter-bar/filter-bar';
+import FilterBar from '../../../components/filter-bar/filter-bar';
 import { useContext } from 'react';
 import { UserContext } from '../../../components/provider/provider';
 import { getQuantity } from '../../../util/util';
@@ -20,7 +20,6 @@ const View = () => {
   // const setItemSearchInLocalStoreg=(value)=>{
   //   localStorage.setItem("the informathion search",value);
   //   SetSearch(value);[]
-
   // }
   useEffect(() => {
     if (!userContext.user?.id) {
@@ -36,12 +35,10 @@ const View = () => {
   return (
     <div className='view-page'>
       <h1>View menu item </h1>
-      {/* <FilterBar
+      <FilterBar
        
-        setMax={setMax}
-        setMin={setMin}
       >
-      </FilterBar > */}
+      </FilterBar >
       {
         loading
           ? <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}><Spinner /></div>

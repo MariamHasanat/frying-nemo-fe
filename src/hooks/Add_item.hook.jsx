@@ -5,7 +5,7 @@ import { creatItem } from "../components/add/form/data/items";
 
 const useAddItem=()=>{
   const [ingredients, setIngredients] = useState([]);
-  const [name, setname] = useState('Sajeda');
+  const [name, setname] = useState('jgdj');
   const navigate = useNavigate();
 
   /**
@@ -15,13 +15,13 @@ const useAddItem=()=>{
   const handleSubmit = async (e) => {
     e.preventDefault();
     debugger;
-    const image = e.target.image.value;
+    const imageUrl= e.target.imageUrl.value;
     const price = Number(e.target.price.value);
     const description = e.target.description.value;
     const category = e.target.category.value;
     const menuItem = {
       name: name,
-      image,
+      imageUrl,
       id: Date.now(),
       description: description,
       price: price,
@@ -57,7 +57,7 @@ const useAddItem=()=>{
   return{
     name:{
       value:name,
-      onchange:onNameChange,
+      onChange:onNameChange,
     },
     ingredients:{
       value: ingredients,

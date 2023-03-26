@@ -7,7 +7,7 @@ const reducer = (cart, action)=>{
     case "INCREMENT_CART_QUANTITY":{
       let found = false;
       const newCart = cart.map(cartItem =>{
-        if(cartItem.meal.id === action.meal.id){
+        if(cartItem.meal._id === action.meal._id){
           found = true;
           return{...cartItem , quantity:cartItem.quantity+1}
         }else {
@@ -22,7 +22,7 @@ const reducer = (cart, action)=>{
     case "DECREMENT_CART_QUANTITY":{
 
       const newCart=cart.map(cartItem=>{
-        return cartItem.meal.id === action.meal.id
+        return cartItem.meal._id === action.meal._id
         ? {...cartItem,quantity:cartItem.quantity-1}
          : cartItem
       });
@@ -33,7 +33,7 @@ const reducer = (cart, action)=>{
    
     
     case"DELETE_CART_ITEM":{
-      return cart.filter(cartItem=>cartItem.meal.id!==action.meal.id);
+      return cart.filter(cartItem=>cartItem.meal._id!==action.meal._id);
 
     }
     case "CLEAR":{

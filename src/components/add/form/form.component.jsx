@@ -1,8 +1,5 @@
 import { useContext } from 'react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import useAddItem from '../../../hooks/Add_item.hook';
-
 import Input from '../../common/input/input';
 import Multiinput from '../../common/maltiinput-value/multiinput';
 import Select from '../../common/select/select';
@@ -10,7 +7,6 @@ import Textarea from '../../common/textarea/textarea.component';
 import { UserContext } from '../../provider/provider';
 import Withborder from '../../withborder/withborder';
 import { CATEGORIES } from './data/constant';
-import { creatItem } from './data/items';
 
 import './form.css';
 const Form = (props) => {
@@ -34,7 +30,7 @@ const Form = (props) => {
         />
         <Input
           label="Image"
-          name="image"
+          name="imageUrl"
           required
         />
         <Input
