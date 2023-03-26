@@ -1,6 +1,6 @@
 
-const fetchItems = (searchTerm) => {
-  return fetch(`${process.env.REACT_APP_SERVER_URL}/items?searchTerms=${searchTerm}`)
+const fetchItems = (searchTerm, categories) => {
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items?searchTerms=${searchTerm}&categories=${categories}`)
 
     .then(response => {
       return response.json();
@@ -64,5 +64,5 @@ const createItem = async (item) => {
 export {
   fetchItem,
   fetchItems,
-  createItem 
+  createItem
 };
