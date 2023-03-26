@@ -49,7 +49,7 @@ const useAddItem = () => {
       alert('. character is not allowed');
       value = value.replace('.', '');
     }
-
+//this iis the regex which qusai said about
     if (/find/ig.test(value)) {
       value = value.replace(/find/ig, 'fry');
     }
