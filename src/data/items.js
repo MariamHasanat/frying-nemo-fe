@@ -27,10 +27,16 @@ const getItem = (id) => {
   });
 };
  const createItem=(item)=>{
-  return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/',{
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items`,
+  {
     method:'POST',
-    body: JSON.stringify()
-  }).then((response)=>{
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(item)
+
+  })
+  .then((response)=>{
 const result = response.json();
 console.log(result);
   }).catch((error) => {

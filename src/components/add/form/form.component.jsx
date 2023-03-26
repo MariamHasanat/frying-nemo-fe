@@ -24,7 +24,7 @@ const Form = () => {
       />
       <Input
         label="Image"
-        name='image'
+        name='imageUrl'
         required
       />
       <Textarea

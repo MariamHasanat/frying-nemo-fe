@@ -9,7 +9,7 @@ const CartRow = (props) => {
   const delete_item = () => props.dispatch({ type: 'DELETE_CART_ITEM', meal });
   return (
     <li className="cart-row">
-      <img src={meal.image} alt="meal" />
+        <img src={`${props.data.imageUrl}?x=${Math.random()}`} alt="food" />
       <div className="main-info">
         <div className="info">
           <h2>{meal.name}</h2>

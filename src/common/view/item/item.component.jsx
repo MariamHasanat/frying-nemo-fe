@@ -11,7 +11,7 @@ import React from 'react';
  * name: string;
  * description: string;
  * price: number;
- * image:string;
+ * imageUrl:string;
  * category: string;
  * ingredients: string[];
  * cartQuantity: number;
@@ -24,7 +24,7 @@ const Items = (props) => {
   return (
     <div className="item-page">
       <div className='image'>
-        <img src={`${props.data.image}?x=${Math.random()}`}   />
+      <img src={`${props.data.imageUrl}?x=${Math.random()}`} alt="food" />
       </div>
       <div className="details">
         <Link to={`/view/${props.data.id}`} ><h2>{props.data.name}</h2></Link>
