@@ -30,7 +30,7 @@ const MenuItem = (props) => {
         <p> {props.item.description}</p>
         <p className="ingredients"> {props.item.ingredients.join(", ")}</p>
       </div>
-      <PriceBar item = {props.item} dispatch = {cartContext.dispatch} cartQuantity = {getCartQuantity(props.item.id , cartContext.cart)}/>
+      <PriceBar item = {props.item} dispatch = {cartContext.dispatch} cartQuantity = {getCartQuantity(props.item._id , cartContext.cart)}/>
     </div>
   )
 }

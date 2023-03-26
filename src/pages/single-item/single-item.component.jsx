@@ -64,7 +64,7 @@ const SingleItem = (props) => {
             <p className="ingredients"><b>Ingredients:</b>
               <br />{currentItem.ingredients.join(", ")}</p>
           </div>
-          <PriceBar item={currentItem} dispatch={cartContext.dispatch} cartQuantity={getCartQuantity(currentItem.id, cartContext.cart)} />
+          <PriceBar item={currentItem} dispatch={cartContext.dispatch} cartQuantity={getCartQuantity(currentItem._id, cartContext.cart)} />
         </div>
       }
     </div>
