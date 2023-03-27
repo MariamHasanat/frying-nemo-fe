@@ -1,5 +1,6 @@
 import Header from "./components/core/header/header.component";
 import AddPage from "./pages/add/add.component";
+import UpdatePage from "./pages/update/update.component";
 import ViewPage from "./pages/view/view.component";
 import './common.css';
 import NotFound from "./pages/not-found/notFound.component";
@@ -29,6 +30,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate to='/view' replace />} />   {/* page redirection using navigate component , which is built in react router dom library */}
               <Route path="/add" element={<Guard permittedRoles={['ADMIN']} ><AddPage /></Guard>} />
+              <Route path="/update/:id" element={<Guard permittedRoles={['ADMIN']} ><UpdatePage /></Guard>} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/view" element={<ViewPage />} />

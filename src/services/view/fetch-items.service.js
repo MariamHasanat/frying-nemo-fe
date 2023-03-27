@@ -55,10 +55,14 @@ const deleteItem = async (id) => {
   }
 }
 
-const updateItem = async (item) => {
+const updateItem = async (item , id) => {
   try {
-    const response =  await fetch (`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${item.id}` ,
-    { method: 'PUT' ,
+    const response =  await fetch (`http://localhost:3001/items/${id}` ,
+    { 
+      headers : {
+        'Content-Type' : 'application/json'
+      },
+      method: 'PUT' ,
       body: JSON.stringify(item)
     }) ;
     if (response)

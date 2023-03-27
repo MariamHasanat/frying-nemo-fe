@@ -22,7 +22,7 @@ import './single-item.css';
  * }>}
  */
 
-const SingleItem = (props) => {
+const SingleItem = () => {
   const cartContext = useContext(CartContext);
   const params = useParams();
   const navigate = useNavigate();
@@ -44,12 +44,16 @@ const SingleItem = (props) => {
 
   const handleDeleteItem = () => {
     if (deleteItem(params.id)) {
-      alert ('Item deleted .')
-      navigate('/view') ;
+      alert('Item deleted .');
+      navigate('/view');
     }
     else {
-      alert ('something went wrong , item not deleted !')
+      alert('something went wrong , item not deleted !');
     }
+  };
+
+  const handleUpdateItem = () => {
+    navigate(`/update/${params.id}`)
   }
 
 
@@ -58,11 +62,18 @@ const SingleItem = (props) => {
       {(loading || (currentItem === null))
         ? <Spinner />
         : <div className="item-details">
-          <button className='nemo-button'
-            onClick={handleDeleteItem}
-          >
-            Delete
+          <div className="action-buttons">
+            <button className='nemo-button'
+              onClick={handleUpdateItem}
+            >
+              Edit
             </button>
+            <button className='nemo-button'
+              onClick={handleDeleteItem}
+            >
+              Delete
+            </button>
+          </div>
           <h1>{currentItem.name}</h1>
           <div className="img">
             <img src={currentItem.imageUrl} alt="food" />

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../components/providers/user-provider.component';
 
-const AddPage = (props) => {
+const AddPage = () => {
   const [time, setTime] = useState(new Date());
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
