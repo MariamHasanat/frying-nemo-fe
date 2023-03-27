@@ -63,3 +63,24 @@
     font-weight: 600;
     font-size: 25px;
 }
+
+.the-price-trash {
+    font-size: 30px;
+    font-weight: 600;
+    height: 45px;
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+    color: #be441d;
+    cursor: pointer;
+}
+
+.trash-in-price-bar {
+    cursor: pointer;
+}
+
+.trash-in-price-bar:hover {
+    text-shadow: 1px 1px 1px saddlebrown;
+}

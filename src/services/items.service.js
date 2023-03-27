@@ -1,16 +1,18 @@
 
 const fetchItems = (categoriesFromURL, searchTerms) => {
-    return fetch(`${process.env.REACT_APP_SERVER_URL}/items?searchTerms=${searchTerms}&categories=${JSON.stringify(categoriesFromURL)}`)
+    return fetch(`http://127.0.0.1:3001/items?searchTerms=${searchTerms}&categories=${JSON.stringify(categoriesFromURL)}`)
         .then((response) => response.json())
-        .catch((error) => alert(error.toString()));
+        .catch((error) => {
+            alert(error);
+        });
 };
 
 const fetchItem = async (id) => {
     try {
-        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/items/${id}`);
+        const response = await fetch(`http://127.0.0.1:3001/items/${id.id}`);
         if (response.status === 200) {
             const item = await response.json();
-            return item;
+            return item.value;
         }
         else {
             return null;
@@ -23,7 +25,7 @@ const fetchItem = async (id) => {
 };
 
 const createItem = async (item) => {
-    return fetch(`${process.env.REACT_APP_SERVER_URL}/items`,
+    return fetch(`http://127.0.0.1:3001/items`,
         {
             headers: {
                 'Content-Type': 'application/json'
@@ -41,7 +43,7 @@ const createItem = async (item) => {
 };
 
 const deleteItem = async (id) => {
-    return fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${id}`,
+    return fetch(`http://127.0.0.1:3001/items/${id}`,
         { method: 'DELETE' })
         .then((response) => {
             if (response)

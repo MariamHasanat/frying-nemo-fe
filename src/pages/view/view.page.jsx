@@ -8,7 +8,7 @@ import { CartContext } from "../../components/providers/cart-provider.component"
 import useGetItems from "../../hooks/get-items/get-items.hook";
 
 const View = () => {
-    const { loading, menuItems } = useGetItems();
+    const { loading, menuItems, deleteItems } = useGetItems();
     const cartContext = useContext(CartContext);
 
     return (
@@ -34,6 +34,7 @@ const View = () => {
                                 ? menuItems
                                     .map((item, index) => {
                                         return <Item
+                                            deleteItems={deleteItems}
                                             item={item}
                                             key={item.name + index}
                                             cartQuantity={getCartQuantity(item._id, cartContext.cart)}
