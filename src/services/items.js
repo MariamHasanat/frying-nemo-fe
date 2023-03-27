@@ -42,9 +42,45 @@ const createItem = (menu) => {
 
 
 };
+const UpdateItem = (menu,id) => {
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items/${id}`,
+    { 
+      method: "PUT",
+      headers:{
+        "Content-Type": "application/json"
+      },
+     body: JSON.stringify(menu)
+     }
+     )
+    .then( async (res) => {
+      if (res.status === 200) {
+        return true;
+      } else {
+        return false;
+      }
+    }).catch(err=>console.error(err))
+
+
+};
+
+const deleteItem = (id) => {
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items/${id}`)
+    .then( async (res) => {
+      if (res.status === 200) {
+        return true;
+      } else {
+        return false;
+      }
+    }).catch(err=>console.error(err))
+
+
+};
+
 
 export {
   getSingleItem,
   getItems,
-  createItem
+  createItem,
+  UpdateItem,
+  deleteItem
 };

@@ -14,7 +14,6 @@ import './multivalue-input.css';
 const MultivalueInput = props => {
 
   const [newItemValue, setNewItemValue] = useState('');
-
   const addItem = () => {
     if (newItemValue.trim().length > 0 && !props.value.includes(newItemValue)) {
       props.onChange([...props.value, newItemValue]);
@@ -49,10 +48,10 @@ const MultivalueInput = props => {
       </div>
       {
         props.value.length > 0 && (
-          <ul>
+          <ul >
             {props.value.map(item => {
               return (
-                <li key={item} >
+                <li key={item}  >
                   <span>{item}</span>
                   <button type="button" onClick={() => { removeitem(item); }}>&times;</button>
                 </li>

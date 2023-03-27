@@ -11,6 +11,7 @@ import UserProvider from "./common/Provider/Provider-commponet";
 import CartProvider from "./common/Provider/cart-provider-component";
 import CartPage from "./pages/cart/cart.page";
 import Sighin from "./pages/login/Sighin";
+import UpdateForm from "./pages/update/add/update.component";
 export const UserContext = React.createContext(null);
 
 
@@ -28,6 +29,7 @@ function App() {
               <Routes>
                 <Route path="/404" element={<NotFoundPage></NotFoundPage>}></Route>
                 <Route path="/add" element={<Guard Allowed={["ADMIN"]}><AddPage ></AddPage></Guard>} ></Route>
+                <Route path="/update/:id" element={<Guard Allowed={["ADMIN"]}><UpdateForm></UpdateForm></Guard>} ></Route>
                 <Route path="/" element={<Navigate to="/view"></Navigate>} ></Route>
                 <Route path="/view" element={<ViewPage  ></ViewPage>}></Route>
                 <Route path="/view/:id" element={<ViewItemPage  ></ViewItemPage>}></Route>

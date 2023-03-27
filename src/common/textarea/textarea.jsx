@@ -14,8 +14,8 @@ const Textarea = props => {
     <div className="textarea-group">
       {
         label ? (
-          <label>
-            <span className='dec'>{label}</span>
+          <label >
+            <span className='dec'  style={{color:"black"}}>{label}</span>
             &nbsp;
             {textareaProps.required && <span>*</span>}
           </label>

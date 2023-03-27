@@ -48,6 +48,8 @@ const Header = (props) => {
             }
 
             <span className='header' >  <Link className={location.pathname.includes("/view") ? "add" : "default"} to="/view"> View</Link></span>
+            
+        
 
           </span>
           <span className='account-flex'> {userContext.user && <span className='header-flex'><span>

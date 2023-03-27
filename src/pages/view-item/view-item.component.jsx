@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import './view-item.css';
-import { getSingleItem } from '../../services/items';
+import { deleteItem, getSingleItem } from '../../services/items';
 import Spinner from '../../components/core/spinner/spinner.component';
 import PriceBar from '../../components/common/PriceBar/PriceBar';
 import { getCartQuantity } from '../../data/getCartQuantity';
 import { CartContext } from '../../common/Provider/cart-provider-component';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import UseGetItem from '../../hooks/menu/get-items';
+import { UserContext } from '../../App';
 /**
  * @type {Array<{
  * id: number;
@@ -25,19 +27,27 @@ const ViewItemPage = (props) => {
 const nav=useNavigate()
   const [currentItem, setCurrentItem] = useState({});
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+const deleteItemById= async() =>{
 
-
-
+ const res=await deleteItem(params.id)
+ if (res) {
+  alert("the delete successfully");
+  navigate("/view");
+} else {
+  alert("the delete is Failed");
+}
+}
+  const userContext = useContext(UserContext);
   const ContextCart = useContext(CartContext);
   useEffect(() => {
     singleItem();
   }, []);
 
-  const singleItem =() => {
+  const singleItem = () => {
     setLoading(true);
     getSingleItem(params.id)
     .then(item => {
-      console.log(item)
       setCurrentItem(item);
        if (item === null)
   nav("/404",{return:false})
@@ -61,7 +71,16 @@ const nav=useNavigate()
           <div className="info">
             <p><b>Item ingredients:</b> {currentItem.ingredients}</p>
           </div>
-          
+          <div>{
+          userContext.user&&userContext.user.role ==="ADMIN"?
+          <div>
+            <Link to={`/update/${currentItem._id}`}>update</Link>
+            <span>-</span>
+            <span onClick={()=>deleteItemById()}>delete</span>
+          </div>
+             :""
+            }
+            </div>
           <PriceBar data={currentItem} cartQuantity={getCartQuantity(currentItem.id, ContextCart.cart)} />
         </div>
       }
