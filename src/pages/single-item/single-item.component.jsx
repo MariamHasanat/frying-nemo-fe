@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Spinner from '../../components/core/spinner/spinner.componenr';
 import { CartContext } from '../../components/providers/cart-provider.component';
 import PriceBar from '../../components/view/price-bar/price-bar.component';
-import { fetchItem } from '../../services/view/fetch-items.service';
+import { deleteItem, fetchItem } from '../../services/view/fetch-items.service';
 import { getCartQuantity } from '../../util/cart';
 import './single-item.css';
 
@@ -40,21 +40,29 @@ const SingleItem = (props) => {
         setCurrentItem(item);
       });
     setLoading(false);
-    // console.log(currentItem);
   }, []);
 
+  const handleDeleteItem = () => {
+    if (deleteItem(params.id)) {
+      alert ('Item deleted .')
+      navigate('/view') ;
+    }
+    else {
+      alert ('something went wrong , item not deleted !')
+    }
+  }
 
-  // const getItem = (id) => {
-  //   const items = JSON.parse(localStorage.menuItems || '[]');
-  //   const item = items.filter(it => it.id.toString() === id);
-  //   return item[0] || null;
-  // };
 
   return (
     <div className='singleItem'>
       {(loading || (currentItem === null))
         ? <Spinner />
         : <div className="item-details">
+          <button className='nemo-button'
+            onClick={handleDeleteItem}
+          >
+            Delete
+            </button>
           <h1>{currentItem.name}</h1>
           <div className="img">
             <img src={currentItem.imageUrl} alt="food" />

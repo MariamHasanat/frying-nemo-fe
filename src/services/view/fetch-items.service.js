@@ -43,7 +43,7 @@ const createItem = (item) => {
 
 const deleteItem = async (id) => {
   try {
-    const response =  await fetch (`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${id}` , {method: 'DELETE'}) ;
+    const response =  await fetch (`http://localhost:3001/items/${id}` , {method: 'DELETE'}) ;
     if (response)
       return true ;
     else 
