@@ -30,7 +30,7 @@ const ViewItemPage = (props) => {
     }, [params.id]);
 
     const getItemQuantity = (id) => {
-        const currentItem = cartContext.cart?.find(item => item.meal.id === id);
+        const currentItem = cartContext.cart?.find(item => item.meal._id === id);
         if (currentItem) {
             return currentItem.quantity;
         }
@@ -47,7 +47,7 @@ const ViewItemPage = (props) => {
                         {currentItem
                             ? <ItemCard
                                 item={currentItem}
-                                itemQuantity={getItemQuantity(currentItem.id)}
+                                itemQuantity={getItemQuantity(currentItem._id)}
                             />
                             : <NotFound />
                         }

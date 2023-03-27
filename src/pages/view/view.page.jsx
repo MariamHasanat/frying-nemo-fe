@@ -14,7 +14,7 @@ const ViewPage = () => {
     const {menu, loading } = useGetItems()
 
     const getItemQuantity = (id) => {
-        const currentItem = cartContext.cart?.find(item => item.meal.id === id);
+        const currentItem = cartContext.cart?.find(item => item.meal._id === id);
         if (currentItem) {
             return currentItem.quantity;
         }
@@ -32,7 +32,7 @@ const ViewPage = () => {
                             return <ItemCard
                                 item={item}
                                 key={item + index}
-                                itemQuantity={getItemQuantity(item.id)}
+                                itemQuantity={getItemQuantity(item._id)}
                             />;
                         })
                     }

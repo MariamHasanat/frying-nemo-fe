@@ -20,7 +20,7 @@ const CartList = (props) => {
                 :
 
                 <>{cartContext.cart?.map((item) =>
-                    <CartRow key={item.meal.id + Date.now()} item={item} />
+                    <CartRow key={item.meal._id} item={item} />
                 )}
                     <div className='bottom'>
                         <button className='delete-all-btn' onClick={deleteAll}>delete all</button>

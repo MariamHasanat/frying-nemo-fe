@@ -9,7 +9,7 @@ const ItemCard = (props) => {
             <Card>
                 <img src={props.item.imageURL} width={350} height={230} alt={props.item.name} />
                 <div className="item-description">
-                    <Link to={`/view/${props.item.id}`}>{props.item.name}</Link >
+                    <Link to={`/view/${props.item._id}`}>{props.item.name}</Link >
                     <p>{props.item.description}</p>
                     <p><b>{props.item.ingredients?.join(', ')}</b></p>
                 </div>

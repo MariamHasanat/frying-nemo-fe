@@ -5,10 +5,10 @@ const menuURL = `http://localhost:3001/menu`;
  * Fake Fetching of single item
  * @param {number} id 
  */
-const getItem = (myId) => { // TODO: 
-    const url = menuURL + "/" + myId;
-    return fetch(url)
-        .then(res => { res.json(); console.log(res.josn()); })
+const getItem = (id) => {
+    console.log(id);
+    return fetch(`${menuURL}/${id}`)
+        .then(res => res.json())
         .catch(err => console.log(err.toString()));
 };
 

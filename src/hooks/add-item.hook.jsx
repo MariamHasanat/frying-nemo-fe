@@ -19,7 +19,6 @@ const useAddItem = () => {
         const image = e.target.image.value;
 
         const menuItem = {
-            id: Date.now(),
             name: name,
             description: description,
             price: Number(price),
