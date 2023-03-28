@@ -27,7 +27,10 @@
     padding: 7px
 }
 
-.view-item-page .dish-info .trash:active {
+.view-item-page .dish-info .trash:active,
+.view-item-page .dish-info .trash:hover
+ {
+    cursor: pointer;
     border: none;
     background-color: rgb(241, 74, 74);
     color: white;

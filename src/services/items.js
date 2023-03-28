@@ -45,4 +45,11 @@ const createItem = (item) => {
         });
 };
 
-export { getItem, getAllItems, createItem };
+const deleteItem = (id) => {
+    console.log(id);
+    return fetch(`${menuURL}/${id}`, {method: 'DELETE'})
+        .then(res => res.status === 200? true: false)
+        .catch(err => console.error(err.toString()));
+};
+
+export { getItem, getAllItems, createItem, deleteItem };

@@ -4,17 +4,15 @@ import './view-item.css';
 import PlusMinusButtons from '../../components/plus-minus-buttons/plus-minus-buttons.component';
 import { useParams, useNavigate } from 'react-router-dom';
 import NotFound from '../not-found/not-found.page';
-import { getItem } from '../../services/items';
+import { deleteItem, getItem } from '../../services/items';
 import { CartContext } from '../../components/providers/cart-provider.component';
-import {Trash} from 'phosphor-react'
 
-const ViewItemPage = (props) => {
+const ViewItemPage = () => {
     const [loading, setLoading] = useState(true);
     const [currentItem, setCurrentItem] = useState(null);
     const params = useParams();
     const navigate = useNavigate();
     const cartContext = useContext(CartContext);
-
     const getCurrentItem = async () => {
         const item = await getItem(params.id);
         if (item) setCurrentItem(item);
@@ -38,8 +36,23 @@ const ViewItemPage = (props) => {
         return 0;
     };
 
+    const deleteHandler = (id) => {
+        const confirmed = window.confirm('are you sure you want to delete this item?\nthis process CANNOT be undone!')
+        if (!confirmed) return;
+        const res = deleteItem(id);
+        if(res){
+            alert('sucessfully deleted!');
+            navigate('/view');   
+        }
+        else{
+            alert('something went wrong')
+        }
+
+    }
+
     return (
         <div className='view-item-page'>
+            
             {loading
                 ? <Loading />
                 : (
@@ -55,7 +68,7 @@ const ViewItemPage = (props) => {
                                         <p>{currentItem.description}</p>
                                         <p><b>{currentItem.ingredients?.join(', ')}</b></p>
 
-                                        <button className='trash'>delete item</button>
+                                        <button className='trash' onClick={() => deleteHandler(currentItem._id)}>delete item</button>
                                     </div>
                                 </div>
                                 <div className="buy-item">
