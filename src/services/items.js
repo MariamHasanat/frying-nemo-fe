@@ -6,9 +6,8 @@ const menuURL = `http://localhost:3001/menu`;
  * @param {number} id 
  */
 const getItem = (id) => {
-    console.log(id);
     return fetch(`${menuURL}/${id}`)
-        .then(res => res.json())
+        .then(res => res.status === 200 ? res.json(): false )
         .catch(err => console.log(err.toString()));
 };
 
@@ -16,7 +15,6 @@ const getItem = (id) => {
  * Fetch all items from api 
  */
 const getAllItems = (searchTerms, categories) => {
-    console.log(categories);
     return fetch(`${menuURL}?searchTerms=${searchTerms}&categories=${categories}`)
         .then(res => res.json())
         .catch(err => console.log(err.toString()));
@@ -45,10 +43,27 @@ const createItem = (item) => {
 };
 
 const deleteItem = (id) => {
-    console.log(id);
-    return fetch(`${menuURL}/${id}`, {method: 'DELETE'})
-        .then(res => res.status === 200? true: false)
-        .catch(err => console.error(err.toString()));
+    return fetch(`${menuURL}/${id}`, { method: 'DELETE' })
+        .then(res => res.status === 200 ? true : false)
+        .catch(err => {
+            console.error(err.toString());
+            return false;
+        });
 };
 
-export { getItem, getAllItems, createItem, deleteItem };
+const updateItem = (id, newItem) => {
+    return fetch(`${menuURL}/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(newItem),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(
+        res => res.status === 200 || res.status === 201 || res.status === 202 ? true : false
+    ).catch(err => {
+        console.error(err.toString());
+        return false;
+    });
+};
+
+export { getItem, getAllItems, createItem, deleteItem, updateItem };
