@@ -57,9 +57,21 @@ const deleteItem = async (id) => {
     }).catch(error => console.log(error));
 };
 
+const editItem = async (id, updatedItem) => {
+  return fetch(`${API}/items/${id}`,
+    {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedItem),
+    });
+};
+
 export {
   getItem,
   getItems,
   createItem,
+  editItem,
   deleteItem
 };
