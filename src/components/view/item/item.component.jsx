@@ -28,6 +28,8 @@ const Item = (props) => {
       <div className="info">
         <Link to={`/view-details/${props.data._id}`} ><h2>{props.data.name}</h2></Link>
         <p>{props.data.description}</p>
+        {props.data.addedBy && <small><label>Added By: </label>{props.data.addedBy.fullName}</small>}
+        <br/><br/>
         <p className="ingredients">{props.data.ingredients.join(", ")}</p>
       </div>
       <PriceBar

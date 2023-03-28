@@ -1,4 +1,4 @@
-import React, {  useContext } from 'react';
+import React, { useContext } from 'react';
 import { CATEGORIES } from '../../../data/constants';
 import { UserContext } from '../../providers/user-provider.component';
 import './form.css';
@@ -11,7 +11,7 @@ import useAddItem from '../../../hooks/menu/add-item.hook';
 
 const Form = (props) => {
   const userContext = useContext(UserContext);
-  const addItem = useAddItem();
+  const addItem = useAddItem(userContext.user?._id);
 
   return (
     <form className="addForm" onSubmit={addItem.submit}>
@@ -51,7 +51,7 @@ const Form = (props) => {
         <button
           className="nemo-button"
           type="submit"
-          disabled={userContext.user?.role !== 'ADMIN'}
+          disabled={userContext.user?.role !== 'admin'}
         >
           Create
         </button>

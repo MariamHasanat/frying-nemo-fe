@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createItem } from '../../services/items.service';
 
-const useAddItem = () => {
+const useAddItem = (userId) => {
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const useAddItem = () => {
  * Handler function for the form onSubmit event.
  * @param {React.FormEvent<HTMLFormElement>} e Event object.
  */
-  const submitHandler = async e => {
+  const submitHandler = async (e) => {
     e.preventDefault();
 
     const description = e.target.description.value;
@@ -20,13 +20,13 @@ const useAddItem = () => {
     const category = e.target.category.value;
 
     const menuItem = {
-      // id: Date.now(),
       name: name,
       imageUrl,
       description: description,
       price,
       category: category,
-      ingredients: ingredients
+      ingredients: ingredients,
+      addedBy: userId
     };
 
     const res = await createItem(menuItem);

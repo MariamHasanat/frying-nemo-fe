@@ -23,7 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Navigate to="/view" replace />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/add" element={<Guard permittedRoles={['ADMIN']}><AddPage /></Guard>} />
+            <Route path="/add" element={<Guard permittedRoles={['admin']}><AddPage /></Guard>} />
             <Route path="/view" element={<ViewPage />} />
             <Route path="/view-details/:id" element={<ViewItemPage />} />
             <Route path="/cart" element={<CartPage />} />
