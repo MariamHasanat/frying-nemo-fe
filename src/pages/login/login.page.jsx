@@ -27,7 +27,6 @@ const LoginPage = (props) => {
 
     if (email && password) {
       const user = await loginUser(email, password);
-      console.log(user);
 
       // If Successful login, go to view page
       if (user) {
