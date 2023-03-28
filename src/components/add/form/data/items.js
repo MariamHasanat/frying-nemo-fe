@@ -1,6 +1,6 @@
 
 
-const fetchItemsApi = async ( searchTerm,categories) => {
+const fetchItemsApi = async (searchTerm, categories) => {
 
   const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/items?searchTerm=${searchTerm}&categories=${categories}`);
   return response.json();
@@ -27,7 +27,7 @@ const creatItem = (item) => {
   return fetch(`${process.env.REACT_APP_SERVER_URL}/items`,
     {
       method: 'POST',
-      headers:{
+      headers: {
         'Content-Type': 'application/json'
       },
 
@@ -44,23 +44,55 @@ const creatItem = (item) => {
       return false;
     });
 };
-// const deleteItem = async (id) => {
-//   return fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${id}`,{methode : 'DELETE'})
-//     .then(res)
-    
-//       }
-//       else {
-//         return null;
-//       }
+const deleteItem = async (id) => {
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items/${id}`,
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
 
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       return null;
-//     });
-// };
+      body: JSON.stringify(item),
+    }
+  )
+    .then(async res => {
+      if (res.status === 200)
+        return true;
+      else
+        return false;
+    })
+    .catch(err => {
+      return false;
+    });
+};
+
+const updateItem = async (id) => {
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items/${id}`,
+    {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+      body: JSON.stringify(item),
+    }
+  )
+    .then(async res => {
+      if (res.status === 200)
+        return true;
+      else
+        return false;
+    })
+    .catch(err => {
+      return false;
+    });
+
+
+};
 export {
   fetchItemsApi,
   getItem,
+  deleteItem,
+  updateItem,
   creatItem
 };
