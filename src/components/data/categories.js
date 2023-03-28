@@ -5,9 +5,10 @@ const CATEGORIES = [
   'Hookah',
   'Salads',
   'Sandwiches',
-  'Main Dish',
+  'Main Dishes',
   'Appetizers',
-  'Ice Cream'
+  'Ice Cream',
+  'Sweets'
 ]
 
 export {
