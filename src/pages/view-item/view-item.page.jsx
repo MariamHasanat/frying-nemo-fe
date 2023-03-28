@@ -1,7 +1,8 @@
 import Loading from '../../components/common/loading/loading.component';
-import './view-item.css';
 import { useState, useEffect, useContext } from 'react';
-import ItemCard from '../../components/item-card/item-card.component';
+import './view-item.css';
+import { Link } from 'react-router-dom';
+import PlusMinusButtons from '../../components/plus-minus-buttons/plus-minus-buttons.component';
 import { useParams, useNavigate } from 'react-router-dom';
 import NotFound from '../not-found/not-found.page';
 import { getItem } from '../../services/items';
@@ -17,16 +18,16 @@ const ViewItemPage = (props) => {
     const getCurrentItem = async () => {
         const item = await getItem(params.id);
         if (item) setCurrentItem(item);
-        
+
         else navigate("/404", { replace: true });
-        
+
         setLoading(false);
         return item;
     };
 
     useEffect(() => {
         getCurrentItem();
-       
+
     }, [params.id]);
 
     const getItemQuantity = (id) => {
@@ -43,18 +44,35 @@ const ViewItemPage = (props) => {
                 ? <Loading />
                 : (
                     <>
-                        <h2>One-Item-ViewPage</h2>
                         {currentItem
-                            ? <ItemCard
-                                item={currentItem}
-                                itemQuantity={getItemQuantity(currentItem._id)}
-                            />
+                            ? <>
+                                <div className='dish-image'>
+                                    <img src={currentItem.imageURL} alt={currentItem.name} />
+                                </div>
+                                <div className='dish-info'>
+                                    <div className="item-description">
+                                        <h1>{currentItem.name}</h1>
+                                        <p>{currentItem.description}</p>
+                                        <p><b>{currentItem.ingredients?.join(', ')}</b></p>
+                                    </div>
+                                </div>
+                                <div className="buy-item">
+                                    <div className="price">
+                                        <h3>${currentItem.price}</h3>
+                                    </div>
+                                    <PlusMinusButtons
+                                        item={currentItem}
+                                        quantity={getItemQuantity(currentItem._id)}
+                                    />
+                                </div>
+
+                            </>
+
                             : <NotFound />
                         }
                     </>
-                )
-            }
-        </div>
+                )}
+        </div >
     );
 };
 
