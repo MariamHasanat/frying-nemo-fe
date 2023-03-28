@@ -42,7 +42,6 @@ const Form = () => {
             <Multivalue
                 label="Ingredients"
                 name="ingredients"
-                // value={[2, 3, 4, 5]}
                 value={addItem.ingredients.value}
                 onChange={(newIngredients) => addItem.ingredients.setValue(newIngredients)}
             />

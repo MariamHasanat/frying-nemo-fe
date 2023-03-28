@@ -31,8 +31,7 @@ const createItem = (item) => {
         }
     })
         .then(res => {
-            if (res.status === 201) {
-                alert('success');
+            if (res.status === 201 || res.status === 200) {
                 return true;
             } else {
                 alert(res.status);
