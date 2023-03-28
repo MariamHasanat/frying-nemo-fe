@@ -29,7 +29,6 @@ const nav=useNavigate()
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 const deleteItemById= async() =>{
-
  const res=await deleteItem(params.id)
  if (res) {
   alert("the delete successfully");

@@ -18,7 +18,7 @@ const CartRow = (props) => {
         
 
     <li className="cart-row">
-      <img src={props.cartItem.meal.image} alt="meal" />
+      <img src={props.cartItem.meal.imageUrl} alt="meal" />
       <div className="main-info">
         <h2>{props.cartItem.meal.name}</h2>
         <span className="item-price">

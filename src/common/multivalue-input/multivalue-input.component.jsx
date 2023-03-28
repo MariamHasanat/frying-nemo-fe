@@ -22,8 +22,7 @@ const MultivalueInput = props => {
   const removeitem = (item) => {
 
     const newlistafteremove = props.value.filter(elemnt => elemnt !== item);
-    props.
-      onChange(newlistafteremove);
+    props.onChange(newlistafteremove);
   };
   return (
     <div className="multivalueInputWrapper">

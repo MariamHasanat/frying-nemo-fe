@@ -7,7 +7,6 @@ const getItems = async (searchTerms,categories) => {
 };
 
 const getSingleItem = (id) => {
-  console.log(id)
   return fetch(`${process.env.REACT_APP_SERVER_URL}/items/${id}`)
     .then(response => {
       if (response.status === 200) {
@@ -63,8 +62,11 @@ const UpdateItem = (menu,id) => {
 
 };
 
-const deleteItem = (id) => {
-  return fetch(`${process.env.REACT_APP_SERVER_URL}/items/${id}`)
+const deleteItem = (_id) => {
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items/${_id}`,
+  {
+   method: 'DELETE'
+  })
     .then( async (res) => {
       if (res.status === 200) {
         return true;

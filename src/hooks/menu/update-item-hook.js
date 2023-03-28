@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UpdateItem } from "../../services/items";
 
-const useUpdateItem =   (item) => {
- 
+const useUpdateItem = (item) => {
+
   const navigate = useNavigate();
   const [name, SetName] = useState(item.name);
-  const Params=useParams()
-  const [ingredients, setIngredients] = useState([item.ingredients]);
+  const Params = useParams();
+  const [ingredients, setIngredients] = useState([]);
   const submitHandler = async e => {
     e.preventDefault();
 
@@ -19,14 +19,14 @@ const useUpdateItem =   (item) => {
     const menuItem = {
       id: Date.now(),
       name: name,
-      imageUrl:imageUrl,
+      imageUrl: imageUrl,
       description: description,
       price: price,
       category: category,
       ingredients: ingredients
     };
 
-    const res = await UpdateItem(menuItem,Params.id);
+    const res = await UpdateItem(menuItem, Params.id);
     if (res) {
       alert("the update successfully");
       navigate("/view");
@@ -34,10 +34,8 @@ const useUpdateItem =   (item) => {
       alert("the update is Failed");
     }
 
-  };
-
+  }
   const onChangeName = e => {
-
     let value = e.target.value;
     if (/find/ig.test(value)) {
       value = value.replace(/find/ig, "fry");
@@ -49,6 +47,12 @@ const useUpdateItem =   (item) => {
     }
     SetName(value);
   };
+
+  useEffect(() => {
+    setIngredients([...item.ingredients||" "]);
+  }, [item]);
+
+
   return {
     name: {
       value: name,
