@@ -37,22 +37,34 @@ const ViewItemPage = () => {
     };
 
     const deleteHandler = (id) => {
-        const confirmed = window.confirm('are you sure you want to delete this item?\nthis process CANNOT be undone!')
+        const confirmed = window.confirm('are you sure you want to delete this item?\nthis process CANNOT be undone!');
         if (!confirmed) return;
         const res = deleteItem(id);
-        if(res){
+        if (res) {
             alert('sucessfully deleted!');
-            navigate('/view');   
+            navigate('/view');
         }
-        else{
-            alert('something went wrong')
+        else {
+            alert('something went wrong');
         }
 
-    }
+    };
+
+    const updateHandler = async (id, newItem) => {
+        const oldItem = await getItem(id);
+        if(oldItem){
+            alert('found')
+        }
+        else{
+            alert('not found')
+        }
+        // alert("item", oldItem? "yes": "no");
+        navigate("/add", {state: {oldItem, newItem}});
+    };
 
     return (
         <div className='view-item-page'>
-            
+
             {loading
                 ? <Loading />
                 : (
@@ -69,6 +81,7 @@ const ViewItemPage = () => {
                                         <p><b>{currentItem.ingredients?.join(', ')}</b></p>
 
                                         <button className='trash' onClick={() => deleteHandler(currentItem._id)}>delete item</button>
+                                        <button className='trash' onClick={() => updateHandler(currentItem._id, {name: 'yes!'})}>edit item</button>
                                     </div>
                                 </div>
                                 <div className="buy-item">
@@ -77,12 +90,11 @@ const ViewItemPage = () => {
                                     </div>
                                     <PlusMinusButtons
                                         item={currentItem}
-                                        quantity={getItemQuantity(currentItem._id)}
+                                        quantity={() => { getItemQuantity(currentItem._id)}}
                                     />
                                 </div>
 
                             </>
-
                             : <NotFound />
                         }
                     </>

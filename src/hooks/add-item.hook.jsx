@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createItem } from '../services/items';
 
-const useAddItem = () => {
-    const [name, setName] = useState('');
-    const [ingredients, setIngredients] = useState([]);
+const useAddItem = (defaults) => {
+    const [name, setName] = useState(defaults?.name || '');
+    const [ingredients, setIngredients] = useState(defaults?.ingredients || []);
     const navigate = useNavigate();
     /**
      * Form Submit Handler 
