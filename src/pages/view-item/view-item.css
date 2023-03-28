@@ -16,6 +16,23 @@
     padding: 10px
 }
 
+.view-item-page .dish-info .trash {
+    background: none;
+    outline: none;
+    border: 1px solid rgb(241, 74, 74);
+    border-radius: var(--border-radius);
+    color: rgb(241, 74, 74);
+
+    font-size: 15px;
+    padding: 7px
+}
+
+.view-item-page .dish-info .trash:active {
+    border: none;
+    background-color: rgb(241, 74, 74);
+    color: white;
+}
+
 .view-item-page .dish-image img {
     width: 700px;
     height: 500px;

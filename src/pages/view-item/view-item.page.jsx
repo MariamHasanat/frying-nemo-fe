@@ -1,12 +1,12 @@
 import Loading from '../../components/common/loading/loading.component';
 import { useState, useEffect, useContext } from 'react';
 import './view-item.css';
-import { Link } from 'react-router-dom';
 import PlusMinusButtons from '../../components/plus-minus-buttons/plus-minus-buttons.component';
 import { useParams, useNavigate } from 'react-router-dom';
 import NotFound from '../not-found/not-found.page';
 import { getItem } from '../../services/items';
 import { CartContext } from '../../components/providers/cart-provider.component';
+import {Trash} from 'phosphor-react'
 
 const ViewItemPage = (props) => {
     const [loading, setLoading] = useState(true);
@@ -54,6 +54,8 @@ const ViewItemPage = (props) => {
                                         <h1>{currentItem.name}</h1>
                                         <p>{currentItem.description}</p>
                                         <p><b>{currentItem.ingredients?.join(', ')}</b></p>
+
+                                        <button className='trash'>delete item</button>
                                     </div>
                                 </div>
                                 <div className="buy-item">
