@@ -20,7 +20,6 @@ const useAddItem = () => {
     const category = e.target.category.value;
 
     const menuItem = {
-      // id: Date.now(),
       name: name,
       imageUrl,
       description: description,

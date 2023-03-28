@@ -62,4 +62,14 @@
   padding: 0px;
   display: flex;
 }
+.btn{
+border: none;
+}
+.btn:hover{
+  cursor: pointer;;
+}
+.more{
+  display: flex;
+  justify-content: space-between;
+}
 

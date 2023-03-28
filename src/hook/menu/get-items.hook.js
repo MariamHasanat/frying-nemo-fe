@@ -10,7 +10,6 @@ const useGetItem = () => {
     setState({ ...state, loading: true });
     const categories = JSON.stringify(myParams.categoriesFromURL);
     const data = await getItems(myParams.searchTermsFromURL, categories);
-    console.log(data);
     setState({ loading: false, menuItems: data });
 
   };
@@ -18,6 +17,6 @@ const useGetItem = () => {
   useEffect(() => {
     getMenuItems();
   }, [myParams]);
-  return { ...state };
+  return { ...state, getMenuItems };
 };
 export default useGetItem;

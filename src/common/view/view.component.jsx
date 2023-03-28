@@ -6,12 +6,18 @@ import { getCartQuantity } from '../../utilit/cart';
 import { CartContext } from '../../components/provider/cart-provider.component';
 import useGetItem from '../../hook/menu/get-items.hook';
 import { Spinner } from 'phosphor-react';
+import { deleteItem, updateItem } from '../../data/items';
 
 const ViewPage = () => {
 
-  const { menuItems, loading } = useGetItem();
+  const { menuItems, loading, getMenuItems } = useGetItem();
   const cartContext = useContext(CartContext);
 
+  const onDelete = (id) => {
+    deleteItem(id).then(() => {
+      getMenuItems();
+    });
+  };
 
   return (
     <div className="view-page">
@@ -30,6 +36,8 @@ const ViewPage = () => {
                       key={item.name + index}
                       dispatch={cartContext.dispatch}
                       cartQuantity={getCartQuantity(item.id, cartContext.cart)}
+                      deleteItem={onDelete}
+                      updateItem={updateItem}
                     />
                   ))
                   : (
