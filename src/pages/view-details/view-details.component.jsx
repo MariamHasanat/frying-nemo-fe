@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchMenuItems } from '../../services/fetchers';
+import { fetchMenuItem } from '../../services/fetchers';
 import './view-details.css';
 
 const ViewDetailsPage = () => {
@@ -8,13 +8,13 @@ const ViewDetailsPage = () => {
   const [item, setItem] = useState(null);
 
   if (item == null) {
-    fetchMenuItems(id).then(
+    fetchMenuItem(id).then(
       (res) => {
-        setItem(res)
+        setItem(res);
+        console.log(res);
       }
-    )
+    );
   }
-
   return (
     <div className='view-page'>
       <div className='header'>
@@ -22,7 +22,7 @@ const ViewDetailsPage = () => {
         <p className='itemName'>{item?.name}</p>
       </div>
       <div className='details'>
-        <img src={item?.image} alt="Item Image" />
+        <img src={item?.imageURL} alt="Item Image" />
         <div className='info'>
           <h3>Item Description:{item?.description}</h3>
           <h2>Ingredients:</h2>

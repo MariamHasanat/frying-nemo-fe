@@ -25,6 +25,7 @@ function App() {
                 <Route path="/add" element={<AddPage />} />
                 <Route path="/view" element={<ViewPage />} />
                 <Route path="/cart" element={<CartPage />} />
+                <Route path="/login" element={<LoginPage />} />
                 <Route path="/view/:id" element={<ViewDetailsPage />} />
                 <Route path="/*" element={<NotFoundPage />} />
               </Routes>

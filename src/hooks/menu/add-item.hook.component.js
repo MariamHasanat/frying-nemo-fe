@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../components/core/providers/user-provider.component";
 import { createItem } from "../../services/items";
-import { getRandom } from "../../services/utilities";
 
 
 const useAddItem = () => {
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const [name, setName] = useState(``);
   const [ingredients, setIngredients] = useState([]);
@@ -38,20 +39,19 @@ const useAddItem = () => {
     };
 
     e.preventDefault();
-    const id = getRandom();
     const description = e.target.description.value;
-    const price = e.target.price.value;
+    const price = parseInt(e.target.price.value);
     const category = e.target.category.value;
     const image = e.target.image.value;
 
     const menuItem = {
-      _id: id,
       name,
       description,
       price,
       category,
       imageURL: image,
-      ingredients
+      ingredients,
+      addedBy: user._id,
     };
 
     try {

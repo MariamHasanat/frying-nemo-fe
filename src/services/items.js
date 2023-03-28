@@ -11,7 +11,8 @@ const getItem = (id) => {
 };
 
 const createItem = (item) => {
-  return axios.post(`http://localhost:3001/item`, item);
+    console.log(item)
+    return axios.post(`http://localhost:3001/item`, item);
 };
 
 export { getItem, createItem };

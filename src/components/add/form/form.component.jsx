@@ -10,7 +10,6 @@ import { UserContext } from '../../core/providers/user-provider.component';
 import useAddItem from '../../../hooks/menu/add-item.hook.component';
 
 const Form = () => {
-  const { user } = useContext(UserContext);
   const {name, ingredients, submitHandler} = useAddItem();
   
   return (
