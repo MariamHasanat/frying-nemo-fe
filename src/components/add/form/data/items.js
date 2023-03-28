@@ -50,10 +50,8 @@ const deleteItem = async (id) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
-      },
-
-      body: JSON.stringify(item),
-    }
+      }
+}
   )
     .then(async res => {
       if (res.status === 200)
@@ -72,9 +70,7 @@ const updateItem = async (id) => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
-      },
-
-      body: JSON.stringify(item),
+      }
     }
   )
     .then(async res => {
