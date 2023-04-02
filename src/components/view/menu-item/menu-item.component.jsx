@@ -26,6 +26,7 @@ const MenuItem = (props) => {
       <div className='img'><img src={props.item.imageUrl} alt="" /></div>
        <h2> <Link to = {`/view-details/${props.item._id}`}>{props.item.name}</Link></h2> 
       <div className="info">
+        {props.item.addedBy?.fullName && <p>added by : {props.item.addedBy.fullName}</p>}
         <span>Its a : {props.item.category}</span>
         <p> {props.item.description}</p>
         <p className="ingredients"> {props.item.ingredients.join(", ")}</p>

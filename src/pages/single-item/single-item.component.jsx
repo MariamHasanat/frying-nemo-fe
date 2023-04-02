@@ -80,6 +80,7 @@ const SingleItem = () => {
           </div>
           <div className="info">
             <p><b>Item Description: </b> {currentItem.description}</p>
+            {currentItem.addedBy?.fullName && <p><b>added by: </b> {currentItem.addedBy.fullName}</p>}
             <p className="ingredients"><b>Ingredients:</b>
               <br />{currentItem.ingredients.join(", ")}</p>
           </div>
