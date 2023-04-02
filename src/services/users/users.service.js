@@ -1,12 +1,18 @@
-const loginUser = (email , password) => {
-  return fetch ('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/users')
-  .then (async res => {
-    const users = await res.json() ;
-    return users.find (user => user.email === email && user.password === password) || null ;
+const loginUser = (email, password) => {
+  return fetch('http://localhost:3001/users/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password })
   })
-  .catch (error => {
-    console.error (error) ;
-    return null ;
-  })
-}
-export {loginUser} ;
+    .then(async res => {
+      if (res) { return res; }
+      else { return null; }
+    })
+    .catch(error => {
+      console.error(error);
+      return null;
+    });
+};
+export { loginUser };
