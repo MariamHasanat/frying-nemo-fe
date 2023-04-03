@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createItem } from "../../services/items.service";
+import { UserContext } from './../../components/providers/user-provider.component';
 
 const useAddItem = () => {
     const [name, setName] = useState('');
     const [ingredients, setIngredients] = useState([]);
     const navigate = useNavigate();
-
+    const userContext = useContext(UserContext);
     /**
      * @param {React.ChangeEvent<HTMLInputElement>} e
      */
@@ -15,9 +16,7 @@ const useAddItem = () => {
         const des = e.target.description.value;
         const image = e.target.image.value;
         const cat = e.target.category.value;
-
         const item = {
-            // id: (new Date().getTime() + "" + Math.random() * 1000),
             name: name,
             price: price,
             description: des,
@@ -27,7 +26,7 @@ const useAddItem = () => {
         };
 
 
-        const res = await createItem(item);
+        const res = await createItem(item, userContext.user._id);
         if (res) {
             alert('Item added successfully');
             navigate('/view');
