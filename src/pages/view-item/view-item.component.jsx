@@ -44,6 +44,8 @@ const ViewItemPage = (props) => {
             <img src={currentItem.imageUrl} alt="food" />
           </div>
           <div className="info">
+            {currentItem.addedBy && <small><label>Added By: </label>{currentItem.addedBy.fullName}</small>}
+            <br /><br />
             <p><b>Item Description: </b> {currentItem.description}</p>
             <p className="ingredients"><b>Ingredients:</b>
               <br />{currentItem.ingredients?.join(", ")}</p>

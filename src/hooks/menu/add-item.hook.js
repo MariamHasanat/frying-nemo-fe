@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createItem } from '../../services/items';
 
-const useAddItem = () => {
+const useAddItem = (userId) => {
 
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState([]);
@@ -12,7 +12,7 @@ const useAddItem = () => {
    * Handler fn for the form onSubmit event .
    * @param {React.FormEvent<HTMLFormElement>}e Event object.
    */
-  const submitHandler = async e => {
+  const submitHandler = async (e) => {
     e.preventDefault();
 
     const description = e.target.description.value;
@@ -28,7 +28,8 @@ const useAddItem = () => {
       imageUrl,
       price: price,
       category: category,
-      ingredients: ingredients
+      ingredients: ingredients,
+      addedBy: userId
     };
 
 

@@ -13,7 +13,7 @@ import useAddItem from '../../../hooks/menu/add-item.hook';
 const Form = () => {
 
   const userContext = useContext(UserContext);
-  const addItem = useAddItem();
+  const addItem = useAddItem(userContext.user?._id);
 
 
 

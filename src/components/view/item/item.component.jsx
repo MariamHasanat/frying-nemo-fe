@@ -22,22 +22,24 @@ const Item = (props) => {
   return (
     <div className="item-card">
       <div className="img">
-        <img src={props.data.imageUrl+"?x="+Math.random()} alt="food" />
+        <img src={props.data.imageUrl + "?x=" + Math.random()} alt="food" />
       </div>
       <div className="info">
         <Link to={`/view-details/${props.data._id}`} ><h2>{props.data.name}</h2></Link>
         <p>{props.data.description}</p>
+        {props.data.addedBy && <small><label>Added By: </label>{props.data.addedBy.fullName}</small>}
+        <br /><br />
         <p className="ingredients">{props.data.ingredients.join(" , ")}</p>
         {/* instead of join you can use // map((ing, i) => ing + (i < props.data.ingredients.length - 1 ? ', ' : ' ')) */}
         <hr />
       </div>
 
-      <PriceBar 
-      item={props.data}
-       dispatch={props.dispatch}
-        cartQuantity = {props.cartQuantity}
-        />
-      
+      <PriceBar
+        item={props.data}
+        dispatch={props.dispatch}
+        cartQuantity={props.cartQuantity}
+      />
+
 
     </div>
   );
