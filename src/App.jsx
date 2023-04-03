@@ -10,7 +10,7 @@ import UserProvider from './components/providers/user-provider.component';
 import Guard from './components/common/guard/guard.component';
 import CartProvider from "./components/providers/cart-provider.component";
 import CartPage from "./pages/cart/cart.page";
-
+import UpdatePage from "./pages/update/update.component";
 
 function App() {
 
@@ -25,6 +25,7 @@ function App() {
             <Route path="/" element={<Navigate to="/view" replace />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/add" element={<Guard permittedRoles={['ADMIN']}><AddPage /></Guard>} />
+            <Route path="/update/:id" element={<Guard permittedRoles={['ADMIN']} ><UpdatePage /></Guard>} />
             <Route path="/view" element={<ViewPage />} />
             <Route path="/view-details/:id" element={<ViewItemPage />} />
             <Route path="/cart" element={<CartPage />} />

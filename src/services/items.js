@@ -61,6 +61,7 @@ const createItem = (item) => {
 
 };
 
+
 const deleteItem = async (id) => {
 
   try {
@@ -80,10 +81,36 @@ const deleteItem = async (id) => {
 };
 
 
+const updateItem = async (item, id) => {
+
+  try {
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/items/${id}`,
+
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'PUT',
+        body: JSON.stringify(item)
+      });
+
+    if (response)
+      return true;
+
+    else
+      return false;
+  }
+
+  catch (error) {
+    console.log(error);
+    return false;
+  }
+};
 
 export {
   fetchItem,
   fetchItems,
   createItem,
-  deleteItem
+  deleteItem,
+  updateItem
 };

@@ -17,7 +17,10 @@
   display: flex;
   flex-direction: column;  
 }
-
+.item-details>.edel{
+  display: flex;
+ justify-content: end;
+}
 .item-details>.img {
   height: 400px;
 }

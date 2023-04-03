@@ -7,7 +7,7 @@ import PriceBar from '../../components/view/price-bar/price-bar.component';
 import { getCartQuantity } from '../../utils/cart';
 import { useContext } from 'react';
 import { CartContext } from '../../components/providers/cart-provider.component';
-import { Trash } from 'phosphor-react';
+import { Trash, PencilSimple } from 'phosphor-react';
 
 
 const ViewItemPage = () => {
@@ -43,15 +43,26 @@ const ViewItemPage = () => {
     }
   };
 
+  const UpdateItem = () => {
+    navigate(`/update/${params.id}`);
+  };
+
   return (
     <div className="view-item-page">
       {loading
         ? <Spinner />
         : <div className="item-details">
 
-          <button className='.delete-button' onClick={DeleteItem} >
-            <Trash size={32} color="#000" />
-          </button>
+          <div className='edel'>
+            <button className='delete-button' onClick={DeleteItem} >
+              <Trash size={32} color="#000" />
+            </button>
+
+
+            <button className="edit-button" onClick={UpdateItem} >
+              <PencilSimple size={32} color="#000" />
+            </button>
+          </div>
 
           <h1>{currentItem.name}</h1>
           <div className="img">
