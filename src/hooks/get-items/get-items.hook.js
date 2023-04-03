@@ -14,14 +14,14 @@ const useGetItems = () => {
         setState((oldState) => ({ ...oldState, menuItems: items.value.items || [], loading: false }));
     };
 
-    const deleteItems = (id) => {
-        const res = window.confirm('Are you sure to delete the item? ');
+    const deleteItems = async (id) => {
+        const res = window.confirm('Are you sure to delete the item?');
         if (!res) {
             alert('The item is not deleted');
             return;
         }
         setState((oldState) => ({ ...oldState, loading: true }));
-        const deleteValue = deleteItem(id);
+        const deleteValue = await deleteItem(id);
         if (!deleteValue) {
             alert('Error, the item is not deleted');
         }

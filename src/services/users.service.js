@@ -4,10 +4,19 @@
  * @returns 
  */
 const loginUser = (email, password) => {
-    return fetch('https://6385ec80beaa6458266d44f1.mockapi.io/nemo/users')
+    return fetch('http://127.0.0.1:3001/users/login', {
+        method: 'POST',
+        body: JSON.stringify({
+            email,
+            password
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
         .then(async (response) => {
             const users = await response.json();
-            return users.find((user) => user.email === email && user.password === password) || null;
+            return users.status === 200 ? users : null;
         })
         .catch((error) => {
             console.log(error.toString());

@@ -24,14 +24,14 @@ const fetchItem = async (id) => {
     }
 };
 
-const createItem = async (item) => {
+const createItem = async (item, user) => {
     return fetch(`http://127.0.0.1:3001/items`,
         {
             headers: {
                 'Content-Type': 'application/json'
             },
             method: 'POST',
-            body: JSON.stringify(item)
+            body: JSON.stringify({ ...item, addedBy: user })
         })
         .then(async (response) => {
             return (response.status === 201);
