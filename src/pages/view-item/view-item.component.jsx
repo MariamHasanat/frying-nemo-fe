@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './view-item.css';
-import { fetchItem } from '../../services/items';
+import { fetchItem, deleteItem } from '../../services/items';
 import Spinner from '../../components/spinner/spinner.component';
 import PriceBar from '../../components/view/price-bar/price-bar.component';
 import { getCartQuantity } from '../../utils/cart';
 import { useContext } from 'react';
 import { CartContext } from '../../components/providers/cart-provider.component';
+import { Trash } from 'phosphor-react';
 
 
-
-const ViewItemPage = (props) => {
+const ViewItemPage = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [currentItem, setCurrentItem] = useState({});
@@ -33,12 +33,26 @@ const ViewItemPage = (props) => {
   }, []);
 
 
+  const DeleteItem = () => {
+    if (deleteItem(params.id)) {
+      alert('Item deleted successfully !');
+      navigate('/view');
+    }
+    else {
+      alert('Something went wrong, the item is not deleted !');
+    }
+  };
 
   return (
     <div className="view-item-page">
       {loading
         ? <Spinner />
         : <div className="item-details">
+
+          <button className='.delete-button' onClick={DeleteItem} >
+            <Trash size={32} color="#000" />
+          </button>
+
           <h1>{currentItem.name}</h1>
           <div className="img">
             <img src={currentItem.imageUrl} alt="food" />

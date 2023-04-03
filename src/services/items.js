@@ -33,9 +33,7 @@ const fetchItem = async (id) => {
   };
 };
 
-const createItem =  (item) => {
-
-
+const createItem = (item) => {
 
   return fetch(`${process.env.REACT_APP_SERVER_URL}/items`,
     {
@@ -63,9 +61,29 @@ const createItem =  (item) => {
 
 };
 
+const deleteItem = async (id) => {
+
+  try {
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/items/${id}`, { method: 'DELETE' });
+
+    if (response)
+      return true;
+
+    else
+      return null;
+  }
+
+  catch (error) {
+    console.log(error);
+    return undefined;
+  }
+};
+
+
 
 export {
   fetchItem,
   fetchItems,
-  createItem
+  createItem,
+  deleteItem
 };
