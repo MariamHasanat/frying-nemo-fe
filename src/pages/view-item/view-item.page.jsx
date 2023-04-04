@@ -82,7 +82,7 @@ const ViewItemPage = () => {
                                     </div>
                                     <PlusMinusButtons
                                         item={currentItem}
-                                        quantity={() => { getItemQuantity(currentItem._id); }}
+                                        quantity={getItemQuantity(currentItem._id)}
                                     />
                                 </div>
 
