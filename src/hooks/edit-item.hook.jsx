@@ -14,18 +14,13 @@ const useUpdateItem = (id) => {
         e.preventDefault();
 
         getItem(id).then((old) => {
-            // const description = e.target.description.value;
-            // const category = e.target.category.value;
-            // const price = e.target.price.value;
-            // const image = e.target.image.value;
-
             const menuItem = {
                 name: newItem.name || old.name,
                 description: newItem.description || old.description,
-                // price: Number(price) || old.price,
-                // category: category || old.category,
-                // ingredients: ingredients || old.ingredients,
-                // imageURL: image || old.image
+                price: Number(newItem.price) || old.price,
+                category: newItem.category || old.category,
+                ingredients: newItem.ingredients || old.ingredients,
+                imageURL: newItem.imageURL || old.imageURL
             };
             const updated = updateItem(id, menuItem);
             if (updated) {
@@ -76,7 +71,7 @@ const useUpdateItem = (id) => {
             onChange: inputChangeHandler
         },
         imageURL: {
-            value: newItem.image,
+            value: newItem.imageURL,
             onChange: inputChangeHandler()
         },
         submit: submitHandler
