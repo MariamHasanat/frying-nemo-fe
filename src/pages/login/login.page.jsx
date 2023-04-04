@@ -1,6 +1,6 @@
 
 import LoginBlock from '../../components/login-block/login.component';
-import { checkUser } from '../../services/checkUser';
+import { login } from '../../services/users';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
 import { UserContext } from '../../components/providers/user-provider.component';
@@ -21,7 +21,7 @@ const Login = () => {
         const userEmail = e.target.email.value.trim();
         const userPassword = e.target.password.value.trim();
 
-        const user = await checkUser(userEmail, userPassword)
+        const user = await login(userEmail, userPassword)
         if (user) {
             // console.log('welcome', user.fullName);
             userContext.setUser(user);
