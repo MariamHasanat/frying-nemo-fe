@@ -16,7 +16,7 @@
     padding: 10px
 }
 
-.view-item-page .dish-info .trash {
+.view-item-page .dish-info .btns {
     background: none;
     outline: none;
     border: 1px solid rgb(241, 74, 74);
@@ -24,16 +24,18 @@
     color: rgb(241, 74, 74);
 
     font-size: 15px;
+    font-weight: 700;
     padding: 7px
 }
 
-.view-item-page .dish-info .trash:active,
-.view-item-page .dish-info .trash:hover
- {
+.view-item-page .dish-info .btns:active,
+.view-item-page .dish-info .btns:hover
+{
     cursor: pointer;
-    border: none;
+    border: 1px solid transparent;
     background-color: rgb(241, 74, 74);
     color: white;
+    font-weight: 700;
 }
 
 .view-item-page .dish-image img {
@@ -49,6 +51,7 @@
 }
 
 .view-item-page .buy-item {
+    margin-right: 50px;
     border: 1px solid rgba(0, 0, 0, 0.276);
     height: 300px;
     width: 200px;

@@ -80,8 +80,8 @@ const ViewItemPage = () => {
                                         <p>{currentItem.description}</p>
                                         <p><b>{currentItem.ingredients?.join(', ')}</b></p>
 
-                                        <button className='trash' onClick={() => deleteHandler(currentItem._id)}>delete item</button>
-                                        <button className='trash' onClick={() => updateHandler(currentItem._id, {name: 'yes!'})}>edit item</button>
+                                        <button className='btns' onClick={() => deleteHandler(currentItem._id)}>delete item</button>
+                                        <button className='btns' onClick={() => updateHandler(currentItem._id, {name: 'yes!'})} style={{"margin": 10}}>edit item</button>
                                     </div>
                                 </div>
                                 <div className="buy-item">
