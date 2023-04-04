@@ -33,7 +33,7 @@ const Cards =  (props) => {
       return currentCartItem.quantity;
     } else {
       return 0;
-    }
+    } 
   };
  
   return (
