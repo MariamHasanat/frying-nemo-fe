@@ -4,7 +4,7 @@ import Select from '../../common/select/select.component';
 import Textarea from '../../common/textarea/textarea.component';
 import './form.css';
 import '../../../common.css';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { CATEGORIES } from '../../../data/constants';
 import { UserContext } from '../../providers/user-provider.component';
 import { useAddItem } from '../../../hooks/add-item.hook';
