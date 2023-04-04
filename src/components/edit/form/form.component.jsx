@@ -12,9 +12,10 @@ import { useParams } from 'react-router-dom';
 
 const EditForm = (props) => {
     const params = useParams();
-    const [category, setCategory] = useState(CATEGORIES[0]);
+    const [currentItem, setCurrentItem] = useState({ ...props.currentItem });
     useEffect(() => {
-        console.log(props); setCategory(props.currentItem?.category);
+        console.log('currentItem', currentItem);
+        console.log(props); setCurrentItem({ ...currentItem, ...props.currentItem });
     }, [props]);
 
     const userContext = useContext(UserContext);
@@ -26,19 +27,23 @@ const EditForm = (props) => {
             <Input
                 name="name"
                 label="Name"
-                onChange={updateItem.name.onChange}
-                value={updateItem.name.value || props.currentItem?.name}
+                value={updateItem.name.value || currentItem.name}
+                onChange={() => updateItem.name.onChange}
                 required
             />
             <Textarea
                 name="description"
                 label='Description'
+                value={updateItem.description.value}
+                onchange={(desc) => updateItem.description.onChange('description', desc)}
             />
 
             <Input
                 name="price"
                 label="Price"
                 type="number"
+                value={updateItem.price.value || currentItem.price}
+                onchange={(price) => updateItem.price.onChange('price', price)}
                 required
             />
 
@@ -46,8 +51,9 @@ const EditForm = (props) => {
                 required
                 name="category"
                 label='Category'
-                value={category}
-                onChange={(cat) => setCategory(cat)}>
+                value={updateItem.category.value || currentItem.category}
+                onchange={(category) => updateItem.category.onChange('category', category)}
+                >
                 {CATEGORIES.map((item) => {
                     return <option key={item} value={item}>{item}</option>;
                 })}
@@ -59,7 +65,11 @@ const EditForm = (props) => {
                 value={updateItem.ingredients.value || props.currentItem?.ingredients}
                 onChange={(newIngredients) => updateItem.ingredients.setValue(newIngredients)}
             />
-            <Input name="image" label='Image link' />
+            <Input name="image" 
+            label='Image link' 
+            value={updateItem.imageURL.value || currentItem.imageURL}
+                onchange={(imageURL) => updateItem.imageURL.onChange('imageURL', imageURL)}
+            />
 
             <div>
                 <button
@@ -70,7 +80,7 @@ const EditForm = (props) => {
                 </button>
 
             </div>
-        </form>
+        </form >
     );
 };
 

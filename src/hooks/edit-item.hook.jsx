@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { updateItem } from '../services/items';
+import { getItem, updateItem } from '../services/items';
 
 const useUpdateItem = (id) => {
-    const [name, setName] = useState('');
     const [ingredients, setIngredients] = useState([]);
+    const [newItem, setNewItem] = useState({});
     const navigate = useNavigate();
     /**
      * Form Submit Handler 
@@ -13,28 +13,29 @@ const useUpdateItem = (id) => {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        const description = e.target.description.value;
-        const category = e.target.category.value;
-        const price = e.target.price.value;
-        const image = e.target.image.value;
+        getItem(id).then((old) => {
+            // const description = e.target.description.value;
+            // const category = e.target.category.value;
+            // const price = e.target.price.value;
+            // const image = e.target.image.value;
 
-        const menuItem = {
-            name: name,
-            description: description,
-            price: Number(price),
-            category: category,
-            ingredients: ingredients,
-            imageURL: image
-        };
-
-        const res = updateItem(id, menuItem);
-        if (res) {
-            navigate(`/view/${id}`);
-        }
+            const menuItem = {
+                name: newItem.name || old.name,
+                description: newItem.description || old.description,
+                // price: Number(price) || old.price,
+                // category: category || old.category,
+                // ingredients: ingredients || old.ingredients,
+                // imageURL: image || old.image
+            };
+            const updated = updateItem(id, menuItem);
+            if (updated) {
+                navigate(`/view/${id}`);
+            }
+        })
+            .catch((err) => console.error(err));
     };
 
-    const inputChangeHandler = e => {
-
+    const nameChangeHandler = e => {
         let value = e.target.value;
         if (value.includes('find')) {
             value = value.replace('find', 'fry');
@@ -44,16 +45,39 @@ const useUpdateItem = (id) => {
             alert('character limit exceeded');
             value = value.substring(0, 20);
         }
-        setName(value);
+        setNewItem({ ...newItem, name: value });
     };
+
+    const inputChangeHandler = (key, value) => {
+        const tmp = {};
+        tmp[key] = value
+        setNewItem({ ...newItem, ...tmp });
+    };
+
     return {
         name: {
-            value: name,
-            onChange: inputChangeHandler
+            value: newItem.name,
+            onChange: nameChangeHandler
         },
         ingredients: {
             value: ingredients,
             setValue: setIngredients
+        },
+        description: {
+            value: newItem.description,
+            onChange: inputChangeHandler
+        },
+        price: {
+            value: newItem.price,
+            onChange: inputChangeHandler
+        },
+        category: {
+            value: newItem.category,
+            onChange: inputChangeHandler
+        },
+        imageURL: {
+            value: newItem.image,
+            onChange: inputChangeHandler()
         },
         submit: submitHandler
     };
