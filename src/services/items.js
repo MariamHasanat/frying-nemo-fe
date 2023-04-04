@@ -41,4 +41,17 @@ const createItem = (item) => {
       return false;
     });
 };
-export { getItem, getItems, createItem };
+const removeItem = (id) =>{
+  const body = {id: id};
+  fetch(`${process.env.REACT_APP_SERVER_URL}/items/remove`, {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: { 'Content-Type': 'application/json'}
+  }).then((response)=>{
+    return true;
+  }).catch((error)=>{
+    console.log(error);
+    return false;
+  })
+}
+export { getItem, getItems, createItem, removeItem };

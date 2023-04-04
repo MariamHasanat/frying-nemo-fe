@@ -68,3 +68,11 @@ span.card-text-dollar{
   width: 90%;
   padding: 0px;
 }
+.delete-card{
+  position: relative;
+  font-size: 30px;
+  color: red;
+  font-weight: bold;
+  user-select: none;
+  cursor: pointer;
+}

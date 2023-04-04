@@ -8,6 +8,7 @@ import PriceBar from "../view/price-bar/price-bar.component";
 import { useContext } from "react";
 import { CartContext } from "../providers/cart-provider.component";
 import useGetItems from "../../hooks/add-item/get-items.hook";
+import { removeItem } from "../../services/items";
 //import { useParams } from "react-router-dom";
 
 /**
@@ -35,7 +36,10 @@ const Cards =  (props) => {
       return 0;
     } 
   };
- 
+  const  deleteItem = (id) => {
+    removeItem(id);
+    window.location.reload(true);
+  }
   return (
     <div>
         <FilteredSearch
@@ -78,6 +82,7 @@ const Cards =  (props) => {
                 </div>
               </div>
               <PriceBar item={item} dispatch={cartContext.dispatch} cartQuantity={getCartQuantity(item._id, cartContext.cart)} />
+              <div className="delete-card" onClick={()=>deleteItem(item._id)}>X</div>
             </div>
         );
       })}
