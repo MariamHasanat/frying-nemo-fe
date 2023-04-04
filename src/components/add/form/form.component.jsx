@@ -8,12 +8,9 @@ import { useContext } from 'react';
 import { CATEGORIES } from '../../../data/constants';
 import { UserContext } from '../../providers/user-provider.component';
 import { useAddItem } from '../../../hooks/add-item.hook';
-const Form = (props) => {
-    console.log('props', props);
+const Form = () => {
     const userContext = useContext(UserContext);
-    const oldItem = props?.item || null;
-    console.log("old Item: ", oldItem);
-    const addItem = useAddItem({ name: oldItem?.name || null, ingredients: oldItem?.ingredients || null });
+    const addItem = useAddItem();
     return (
         <form onSubmit={addItem.submit} className="styled-form">
 
@@ -27,18 +24,16 @@ const Form = (props) => {
             <Textarea
                 name="description"
                 label='Description'
-                value={oldItem?.description}
             />
 
             <Input
                 name="price"
                 label="Price"
                 type="number"
-                value={oldItem?.price}
                 required
             />
 
-            <Select required name="category" label='Category' value={oldItem?.category}>
+            <Select required name="category" label='Category' >
                 {CATEGORIES.map((item) => {
                     return <option key={item} value={item}>{item}</option>;
                 })}
@@ -50,7 +45,7 @@ const Form = (props) => {
                 value={addItem.ingredients.value}
                 onChange={(newIngredients) => addItem.ingredients.setValue(newIngredients)}
             />
-            <Input name="image" label='Image link' value={oldItem?.imageURL} />
+            <Input name="image" label='Image link' />
 
             <div>
                 <button
