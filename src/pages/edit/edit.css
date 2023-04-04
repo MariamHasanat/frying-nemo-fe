@@ -1,0 +1,14 @@
+.edit-page>.main {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-page>.main>.styled-form {
+    margin-left: 50px;
+}
+
+.edit-page h1,
+.edit-page h2,
+.edit-page h3 {
+    text-align: center;
+}

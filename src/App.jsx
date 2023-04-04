@@ -11,6 +11,7 @@ import React from "react";
 import UserProvider from "./components/providers/user-provider.component";
 import Guard from "./components/guard/guard.component";
 import CartProvider from "./components/providers/cart-provider.component";
+import Editpage from "./pages/edit/edit.page";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                             <Route path="/view" element={<ViewPage />} />
                             <Route path="/*" element={<NotFound />} />
                             <Route path="/view/:id" element={<ViewItemPage />} />
+                            <Route path="/view/:id/edit" element={<Editpage />} />
                             <Route path="/cart" element={<Cart />} />
                         </Routes>
                     </BrowserRouter>

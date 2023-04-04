@@ -50,16 +50,8 @@ const ViewItemPage = () => {
 
     };
 
-    const updateHandler = async (id, newItem) => {
-        const oldItem = await getItem(id);
-        if(oldItem){
-            alert('found')
-        }
-        else{
-            alert('not found')
-        }
-        // alert("item", oldItem? "yes": "no");
-        navigate("/add", {state: {oldItem, newItem}});
+    const updateHandler = () => {
+        navigate(`/view/${params.id}/edit`);
     };
 
     return (
@@ -81,7 +73,7 @@ const ViewItemPage = () => {
                                         <p><b>{currentItem.ingredients?.join(', ')}</b></p>
 
                                         <button className='btns' onClick={() => deleteHandler(currentItem._id)}>delete item</button>
-                                        <button className='btns' onClick={() => updateHandler(currentItem._id, {name: 'yes!'})} style={{"margin": 10}}>edit item</button>
+                                        <button className='btns' onClick={() => updateHandler()} style={{ "margin": 10 }}>edit item</button>
                                     </div>
                                 </div>
                                 <div className="buy-item">
@@ -90,7 +82,7 @@ const ViewItemPage = () => {
                                     </div>
                                     <PlusMinusButtons
                                         item={currentItem}
-                                        quantity={() => { getItemQuantity(currentItem._id)}}
+                                        quantity={() => { getItemQuantity(currentItem._id); }}
                                     />
                                 </div>
 
