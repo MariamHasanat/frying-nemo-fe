@@ -58,12 +58,19 @@ const deleteItem = async (id) => {
 };
 
 const updateItem = async (item) => {
-    return fetch(`https://6385ec80beaa6458266d44f1.mockapi.io/nemo/menu/${item.id}`,
+    console.log(item);
+    return fetch(`http://127.0.0.1:3001/items/${item._id}`,
         {
             method: 'PUT',
-            body: JSON.stringify(item)
+            body: JSON.stringify(item),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
-        .then((response) => { return (response ? true : false); })
+        .then(async (response) => {
+            console.log(await response.json());
+            return (response ? true : false);
+        })
         .catch((error) => { return false; });
 };
 

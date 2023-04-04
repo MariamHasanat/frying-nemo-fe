@@ -1,6 +1,7 @@
-import { Minus, Plus, Trash } from 'phosphor-react';
+import { Minus, PencilLine, Plus, Trash } from 'phosphor-react';
 import React from 'react';
 import './price-bar.css';
+import { useNavigate } from 'react-router-dom';
 
 /** 
  * @param {{
@@ -30,6 +31,7 @@ import './price-bar.css';
 *   }} props
 */
 const PriceBar = (props) => {
+    const navigate = useNavigate();
     const handleIncrement = () => {
         props.dispatch({ type: "INCREMENT_CART_QUANTITY", item: props.item });
     };
@@ -48,6 +50,11 @@ const PriceBar = (props) => {
                         className='trash-in-price-bar'
                         size={25} color={'#db4530'}
                         onClick={() => props.deleteItems(props.item._id)}
+                    />
+                    <PencilLine
+                        className='trash-in-price-bar'
+                        size={25} color={'#db4530'}
+                        onClick={() => navigate(`/edit-item-page/${props.item._id}`)}
                     />
                 </span>
             }

@@ -10,6 +10,7 @@ import Cart from './pages/cart/cart.page';
 import UserProvider from './components/providers/user-provider.component.jsx';
 import Guard from "./components/core/guard/guard.component";
 import CartProvider from "./components/providers/cart-provider.component";
+import EditItemPage from "./pages/edit-item/edit-item";
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
                             <Route path="/" element={<Navigate to={"/log-in"} replace />} />
                             <Route path="/log-in" element={<LogIn />} />
                             <Route path="/add" element={<Guard premmitedRoles={['ADMIN']}><AddPage /></Guard>} />
+                            <Route path="/edit-item-page/:id" element={<EditItemPage />} />
                             <Route path="/view" element={<View />} />
                             <Route path="/cart" element={<Cart />} />
                             <Route path="/view-details/:id" element={<ViewItemPage />} />
