@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createItem } from '../../data/items';
 
-const useAddItem = () => {
+const useAddItem = (userId) => {
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const navigate = useNavigate();
@@ -25,7 +25,8 @@ const useAddItem = () => {
       description: description,
       price,
       category: category,
-      ingredients: ingredients
+      ingredients: ingredients,
+      addedBy:userId
     };
 
     const res = await createItem(menuItem);

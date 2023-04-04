@@ -10,7 +10,7 @@ import useAddItem from '../../../hook/menu/add-item.hook';
 
 const Form = () => {
   const userContext=useContext(UserContext);
-  const addItem = useAddItem();
+  const addItem = useAddItem(userContext.user?._id);
 
   return (
     <form className='add-form' onSubmit={addItem.submit}>
@@ -52,7 +52,7 @@ const Form = () => {
       />
 
       <div>
-        <button type='submit' className='submit' disabled={userContext.user?.role !== 'ADMIN'} >Create</button>
+        <button type='submit' className='submit' disabled={userContext.user?.role !== 'admin'} >Create</button>
       </div>
     </form>
   );

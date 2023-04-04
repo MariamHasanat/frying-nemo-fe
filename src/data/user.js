@@ -4,16 +4,19 @@
  * @param {string} password
  */
 const loginUser = (email, password) => {
-  return fetch("https://6385ec80beaa6458266d44f1.mockapi.io/nemo/users")
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/users/login`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email,
+        password
+      })
+    })
     .then(async (response) => {
-      const users = await response.json();
-      console.log(users);
-      const result = await users.filter(user =>
-        user['email'] === email && user['password'] === password); console.log(users['email']);
-      return result;
-
-    }).then((user) => {
-      return user[0];
+      return await response.json();
     })
     .catch((error) => {
       alert(error.toString());

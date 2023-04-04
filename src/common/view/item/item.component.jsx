@@ -4,6 +4,7 @@ import Price from '../filture/price-par/price-par';
 import React, { useState } from 'react';
 import { PencilLine, Trash } from 'phosphor-react';
 import PopupEdit from '../../update/popup.component';
+import useEditItem from '../../../hook/menu/update-item.hook';
 
 /**
  * 
@@ -24,15 +25,19 @@ import PopupEdit from '../../update/popup.component';
 
 const Items = (props) => {
   const [isEdit, setIsEdit] = useState(false);
-  const [foodForEdit, setFoodForEdit] = useState(null);
+  const edit = useEditItem(props.data);
 
   const togglePopupEdit = () => {
     setIsEdit(!isEdit);
   };
-  const handelEditFood = (food) => {
-    setFoodForEdit(food);
-    setIsEdit(true);
+
+  const onSave = (e) => {
+    edit.update(e).then(item => {
+      setIsEdit(false);
+      props.refreash();
+    })
   }
+
   return (
     <div className="item-page">
       <div className='image'>
@@ -40,23 +45,23 @@ const Items = (props) => {
       </div>
       <div className="details">
         <div className='more'>
-          
-        <Link to={`/view/${props.data._id}`} ><h2>{props.data.name}</h2></Link> <div>
-         <button className='btn' onClick={togglePopupEdit}><PencilLine size={32} /></button>
-        <button className='btn' onClick={() => props.deleteItem(props.data._id)}><Trash size={32} /></button>
+          <Link to={`/view/${props.data._id}`} ><h2>{props.data.name}</h2></Link> <div>
+            <button className='btn' onClick={togglePopupEdit}><PencilLine size={32} /></button>
+            <button className='btn' onClick={() => props.deleteItem(props.data._id)}><Trash size={32} /></button>
+          </div>
         </div>
-        </div>
-       
         {
           isEdit && <PopupEdit
             close={() => setIsEdit(false)}
-            updateItem={props.updateItem}
-            editedFood={foodForEdit}
-            handelEditFood={handelEditFood}
+            item={props.data}
+            edit={edit}
+            onSave={onSave}
           />
         }
         <p>{props.data.description}</p>
-        <p className="ingredients">{props.data.ingredients}</p>
+        {props.data.addedBy && <small><label>Added By: </label>{props.data.addedBy.fullName}</small>}
+        <br /><br />
+        <p className="ingredients">{props.data.ingredients.join(',')}</p>
 
       </div>
       <div className="price">

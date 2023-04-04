@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './item.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import {getItem }from '../../../data/items';
+import { getItem } from '../../../data/items';
 import "../../header/header.css";
 import { getCartQuantity } from '../../../utilit/cart';
 import Price from '../filture/price-par/price-par';
@@ -27,35 +27,36 @@ const ViewItemPage = (props) => {
   const [currentItem, setCurrentItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const cartContext = useContext(CartContext);
-  useEffect( () => { 
+  useEffect(() => {
 
     setLoading(true);
-   const item =getItem(params.id)
-   if (item === null) {
-    navigate('/404')
-   } 
+    const item = getItem(params.id);
+    if (item === null) {
+      navigate('/404');
+    }
     item
-   .then((items)=>{
-    setCurrentItem(items);
-   });
-      setCurrentItem(item);
-      setLoading(false);
+      .then((items) => {
+        setCurrentItem(items);
+      });
+    setCurrentItem(item);
+    setLoading(false);
   }, []);
 
 
   return (
     <div className="view-item-page">
       <h1>View Menu Item</h1>
-      {loading }
+      {loading}
       {
         !loading && currentItem !== null
           ? <div className="item-details">
             <h1>{currentItem.name}</h1>
             <div className="img">
-            <img src={currentItem.imageUrl} alt="food" />
+              <img src={currentItem.imageUrl} alt="food" />
             </div>
             <div className="info">
-              <p><b>Item Description: </b> {currentItem.description}</p>
+              {currentItem.addedBy && <small><label>Added By: </label>{currentItem.addedBy.fullName}</small>}
+              <br /><br />
               <p className="ingredients"><b>Ingredients:</b>
                 <br />{currentItem.ingredients}</p>
             </div>

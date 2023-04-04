@@ -24,7 +24,7 @@ import CartProvider from "./components/provider/cart-provider.component";
           <Header />
           <Routes>
             <Route path="/" element={<Navigate to="/view" replace />} />
-              <Route path="/add/*" element={<Guard permittedRoles={['ADMIN']} ><AddPage /> </Guard>} />
+              <Route path="/add/*" element={<Guard permittedRoles={['admin']} ><AddPage /> </Guard>} />
             <Route path="/view" element={<ViewPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/view/:id" element={<ViewItemPage />} />

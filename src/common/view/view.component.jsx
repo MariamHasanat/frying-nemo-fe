@@ -6,7 +6,7 @@ import { getCartQuantity } from '../../utilit/cart';
 import { CartContext } from '../../components/provider/cart-provider.component';
 import useGetItem from '../../hook/menu/get-items.hook';
 import { Spinner } from 'phosphor-react';
-import { deleteItem, updateItem } from '../../data/items';
+import { deleteItem } from '../../data/items';
 
 const ViewPage = () => {
 
@@ -37,7 +37,7 @@ const ViewPage = () => {
                       dispatch={cartContext.dispatch}
                       cartQuantity={getCartQuantity(item.id, cartContext.cart)}
                       deleteItem={onDelete}
-                      updateItem={updateItem}
+                      refreash={getMenuItems}
                     />
                   ))
                   : (

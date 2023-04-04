@@ -31,7 +31,7 @@ const getItem = async (id) => {
 const deleteItem = async (id) => {
   await fetch(`${process.env.REACT_APP_SERVER_URL}/items/${id}`, { method: 'DELETE' })
     .then(res => {
-      if (res.status === 200) {
+      if (res.status >= 200 && res.status <= 299) {
         console.debug('Successfully updated item');
         return true;
       } else {
@@ -41,18 +41,19 @@ const deleteItem = async (id) => {
 };
 
 const updateItem = (item) => {
-  fetch(`${process.env.REACT_APP_SERVER_URL}/items/${item.id}`,
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/items/${item._id}`,
     {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(item)
     })
     .then(res => {
-      if (res.status === 200) {
+      if (res.status >= 200 && res.status <= 299) {
         console.debug('Successfully updated item');
-        return getItems([], []);
+        return true;
       } else {
         console.debug('Failed', res.status);
+        throw new Error();
       }
     });
 };

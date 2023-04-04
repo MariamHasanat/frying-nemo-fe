@@ -1,69 +1,66 @@
-import React, { useState } from "react";
+import React from "react";
 import Input from "../input/input.component";
+import MultivalueInput from "../Multivalue-input/multivalue-input.component";
 import './popup.css';
+import Select from "../select/select.component";
+import { CATEGORY } from "../../data/cons";
 
 const PopupEdit = props => {
-  const [foodEdit, setFoodForm] = useState(props.editedFood);
-  const handleInputChange = (value, key) => {
-    console.log(value);
-    setFoodForm({
-      ...foodEdit,
-      [key]: value
-    }   
-);}
-  const handelEditFoodSubmit = (e) => {
-    e.preventDefault();    
-    props.handelEditFood(foodEdit);
-    props.close();
-  }
-
   return (
     <div className="popup ">
       <div className="box">
         <div className="edit">
           <h3>Update Food</h3>
-          <form onSubmit={(e) => handelEditFoodSubmit(e)}>
+          <form onSubmit={props.onSave}>
             <Input
               label="Name:"
               type="text"
-              onChange={e => handleInputChange(e.target.value, 'name')}
-
+              value={props.edit.name.value}
+              onChange={props.edit.name.onChange}
             />
             <Input
               label="Food Image:"
               type="url"
-              onChange={e => handleInputChange(e.target.value, 'imageUrl')}
-
+              value={props.edit.imageUrl.value}
+              onChange={props.edit.imageUrl.onChange}
             />
             <Input
               label="Description:"
               type="text"
-              onChange={e => handleInputChange(e.target.value, 'description')}
-
+               value={props.edit.description.value}
+               onChange={props.edit.description.onChange}
             />
             <Input
               label="Price:"
               type="number"
-              onChange={e => handleInputChange(e.target.value, 'price')}
+              value={props.edit.price.value}
+              onChange={props.edit.price.onChange}
 
             />
-            <Input
-              label="CATEGORY:"
-              type="text"
+            <Select 
+            name='category' 
+            label='Category' 
+            required 
+            value={props.edit.category.value}
+            onChange={props.edit.category.onChange}>
+              
+              {CATEGORY.map(item => {
+                return <option key={item} value={item}>{item}</option>;
+              })}
+            </Select>
 
-            />
-            <Input
-              label="INGREDIENTS:"
-              type="text"
-
+            <MultivalueInput
+              name='ingredients'
+              label="Ingredients"
+              value={props.edit.ingredients.value}
+              onChange={newIngredients => props.edit.ingredients.setValue(newIngredients)}
             />
             <div>
-              <button className="edit-btn" onClick={()=>props.updateItem(foodEdit)}>Edit</button>
+              <button className="edit-btn">Edit</button>
               <button className="edit-btn" onClick={(e) => props.close(e)}>Cancel</button>
             </div>
           </form>
         </div>
-
       </div>
     </div>
   );
